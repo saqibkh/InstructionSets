@@ -24,10 +24,6 @@ def load_and_merge_data():
             with open(os.path.join(DB_DIR, filename), 'r') as f:
                 master_db[arch_name] = json.load(f)
 
-    # Copy JS
-    if os.path.exists('search.js'):
-        shutil.copy('search.js', os.path.join(OUTPUT_DIR, 'search.js'))
-
     # 2. Process new inputs
     if os.path.exists(INPUT_DIR):
         for filename in os.listdir(INPUT_DIR):
@@ -36,7 +32,6 @@ def load_and_merge_data():
                 with open(filepath, 'r') as f:
                     new_data = json.load(f)
                     
-                    # Assuming input is a list of instructions
                     for inst in new_data.get('instructions', []):
                         arch = inst.get('architecture', 'Unknown')
                         if arch not in master_db:
@@ -72,12 +67,15 @@ def generate_site(master_db):
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
-    # 2. Copy CSS (Fix: Copy from ROOT to DOCS)
-    # Make sure 'style.css' exists in the same folder as this script!
+    # 2. Copy Assets (CSS & JS)
+    # Copies from ROOT to DOCS folder
     if os.path.exists('style.css'):
         shutil.copy('style.css', os.path.join(OUTPUT_DIR, 'style.css'))
     else:
         print("Warning: style.css not found in root directory.")
+
+    if os.path.exists('search.js'):
+        shutil.copy('search.js', os.path.join(OUTPUT_DIR, 'search.js'))
 
     # 3. Generate Architecture Pages
     template_detail = env.get_template('instruction_detail.html')
@@ -87,6 +85,14 @@ def generate_site(master_db):
         # Sort instructions for the sidebar
         sorted_insts = sorted(instructions, key=lambda x: x['mnemonic'])
         
+        # --- NEW: Pre-process binary patterns for visualization ---
+        for inst in instructions:
+            if 'encoding' in inst and 'binary_pattern' in inst['encoding']:
+                raw_pattern = inst['encoding']['binary_pattern']
+                # Split "0000 | rs1 | ..." into list for the template to loop over
+                inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('|')]
+        # ----------------------------------------------------------
+
         # Summary Page
         with open(os.path.join(OUTPUT_DIR, f"{arch.lower()}.html"), 'w') as f:
             f.write(template_summary.render(
