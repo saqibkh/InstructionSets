@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ instruction.mnemonic }} - {{ instruction.architecture }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="detail-layout">
+        
+        <div>
+            <div style="margin-bottom: 10px; font-family: var(--font-mono); color: var(--accent);">
+                {{ instruction.architecture }} / {{ instruction.extension|default('Base') }}
+            </div>
+            <h1 class="mono" style="font-size: 3rem;">{{ instruction.mnemonic }}</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">{{ instruction.full_name }}</h2>
+            
+            <div class="syntax-box">
+                {{ instruction.syntax }}
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                {{ instruction.summary }}
+            </p>
+
+            <div class="panel">
+                <h3>Pseudocode Operation</h3>
+                <div class="code-block" style="border:none; padding:0; background: transparent;">
+                    {{ instruction.pseudocode }}
+                </div>
+            </div>
+
+            {% if instruction.example %}
+            <div class="panel">
+                <h3>Example</h3>
+                <div class="code-block" style="margin-bottom: 10px;">{{ instruction.example }}</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">// {{ instruction.example_note }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="flex-col">
+            
+            <div class="panel">
+                <h3>Encoding</h3>
+                <div style="margin-bottom: 12px;">
+                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
+                    <span class="badge">{{ instruction.encoding.format }}</span>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
+                    <span style="font-family: var(--font-mono); color: var(--text-main);">{{ instruction.encoding.hex_opcode }}</span>
+                </div>
+                <div>
+                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
+                        {{ instruction.encoding.binary_pattern }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Operands</h3>
+                <ul class="operand-list">
+                    {% for op in instruction.operands %}
+                    <li>
+                        <span class="op-name">{{ op.name }}</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">{{ op.desc }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <a href="../{{ instruction.architecture|lower }}.html" style="display: block; text-align: center; padding: 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 0.9rem;">
+                &larr; Back to {{ instruction.architecture }}
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

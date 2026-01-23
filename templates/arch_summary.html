@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="padding-top: 40px;">
+    <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <h1>{{ arch }}</h1>
+            <p>Instruction Set Reference</p>
+        </div>
+        <a href="index.html" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Back to Home</a>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Mnemonic</th>
+                    <th style="width: 35%;">Name</th>
+                    <th style="width: 15%;">Format</th>
+                    <th style="width: 35%;">Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inst in instructions %}
+                <tr onclick="window.location='{{ arch|lower }}/{{ inst.mnemonic|lower|replace(' ', '_') }}.html';" style="cursor: pointer;">
+                    <td class="mono">{{ inst.mnemonic }}</td>
+                    <td style="font-weight: 500;">{{ inst.full_name }}</td>
+                    <td><span class="badge">{{ inst.encoding.format }}</span></td>
+                    <td style="color: var(--text-muted);">{{ inst.summary }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

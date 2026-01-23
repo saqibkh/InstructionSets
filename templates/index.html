@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>Instruction Set Database</h1>
+        <p style="margin: 0 auto;">A modern, open-source reference for CPU architectures. <br>Select an architecture below to browse the instruction set.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="arch-grid">
+        {% for arch in architectures %}
+        <a href="{{ arch|lower }}.html" class="arch-card">
+            <div>
+                <h2>{{ arch }}</h2>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
+            </div>
+            <div class="count">{{ counts[arch] }} Instructions &rarr;</div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

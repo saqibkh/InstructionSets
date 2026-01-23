@@ -1,0 +1,260 @@
+[
+  {
+    "mnemonic": "ADD (shifted)",
+    "architecture": "ARMv8",
+    "full_name": "Add (Shifted Register)",
+    "summary": "Adds a register value and an optionally-shifted register value.",
+    "syntax": "ADD <Xd>, <Xn>, <Xm>{, <shift> #<amount>}",
+    "encoding": {
+      "format": "Data Proc",
+      "binary_pattern": "sf 0001011 shift 0 Rm imm6 Rn Rd",
+      "hex_opcode": "0x8B (Base)"
+    },
+    "operands": [
+      {
+        "name": "Xd",
+        "desc": "Dest"
+      },
+      {
+        "name": "Xn",
+        "desc": "Src1"
+      },
+      {
+        "name": "Xm",
+        "desc": "Src2"
+      }
+    ],
+    "pseudocode": "Xd = Xn + Shift(Xm, shift, amount);",
+    "example": "ADD X0, X1, X2, LSL #2",
+    "example_note": "X0 = X1 + (X2 << 2)"
+  },
+  {
+    "mnemonic": "SUB (extended)",
+    "architecture": "ARMv8",
+    "full_name": "Subtract (Extended Register)",
+    "summary": "Subtracts an optionally-extended register value.",
+    "syntax": "SUB <Xd>, <Xn>, <Wm>, <extend> {#<amount>}",
+    "encoding": {
+      "format": "Data Proc",
+      "binary_pattern": "sf 0001011 001 Rm option imm3 Rn Rd",
+      "hex_opcode": "0xCB"
+    },
+    "operands": [
+      {
+        "name": "Xd",
+        "desc": "Dest"
+      },
+      {
+        "name": "Xn",
+        "desc": "Src1"
+      },
+      {
+        "name": "Wm",
+        "desc": "Src2 (32-bit)"
+      }
+    ],
+    "pseudocode": "Xd = Xn - Extend(Wm, amount);",
+    "example": "SUB X0, X1, W2, UXTW",
+    "example_note": "Subtracts W2 (zero extended) from X1."
+  },
+  {
+    "mnemonic": "MOV (register)",
+    "architecture": "ARMv8",
+    "full_name": "Move (Register)",
+    "summary": "Copies a value from one register to another (Alias of ORR).",
+    "syntax": "MOV <Xd>, <Xm>",
+    "encoding": {
+      "format": "Alias",
+      "binary_pattern": "sf 0101010 00 Rm 000000 Rn Rd (ORR)",
+      "hex_opcode": "0xAA (ORR)"
+    },
+    "operands": [
+      {
+        "name": "Xd",
+        "desc": "Dest"
+      },
+      {
+        "name": "Xm",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "Xd = Xm;",
+    "example": "MOV X0, X1",
+    "example_note": "Copies X1 to X0."
+  },
+  {
+    "mnemonic": "LDR (register)",
+    "architecture": "ARMv8",
+    "full_name": "Load Register (Register offset)",
+    "summary": "Loads a word or doubleword from memory.",
+    "syntax": "LDR <Xt>, [<Xn>, <Xm>]",
+    "encoding": {
+      "format": "Load/Store",
+      "binary_pattern": "1x 111000 011 Rm 011 S 10 Rn Rt",
+      "hex_opcode": "0xB8"
+    },
+    "operands": [
+      {
+        "name": "Xt",
+        "desc": "Target Reg"
+      },
+      {
+        "name": "Xn",
+        "desc": "Base Addr"
+      },
+      {
+        "name": "Xm",
+        "desc": "Offset Reg"
+      }
+    ],
+    "pseudocode": "Xt = Mem[Xn + Xm];",
+    "example": "LDR X0, [X1, X2]",
+    "example_note": "Load from address X1+X2 into X0."
+  },
+  {
+    "mnemonic": "STR (immediate)",
+    "architecture": "ARMv8",
+    "full_name": "Store Register (Immediate offset)",
+    "summary": "Stores a word or doubleword to memory.",
+    "syntax": "STR <Xt>, [<Xn>, #<simm>]",
+    "encoding": {
+      "format": "Load/Store",
+      "binary_pattern": "1x 111001 00 imm12 Rn Rt",
+      "hex_opcode": "0xF9"
+    },
+    "operands": [
+      {
+        "name": "Xt",
+        "desc": "Source Reg"
+      },
+      {
+        "name": "Xn",
+        "desc": "Base Addr"
+      },
+      {
+        "name": "simm",
+        "desc": "Offset"
+      }
+    ],
+    "pseudocode": "Mem[Xn + simm] = Xt;",
+    "example": "STR X0, [SP, #8]",
+    "example_note": "Store X0 to StackPointer + 8."
+  },
+  {
+    "mnemonic": "B",
+    "architecture": "ARMv8",
+    "full_name": "Branch",
+    "summary": "Unconditionally branches to a PC-relative offset.",
+    "syntax": "B <label>",
+    "encoding": {
+      "format": "Branch",
+      "binary_pattern": "000101 imm26",
+      "hex_opcode": "0x14"
+    },
+    "operands": [
+      {
+        "name": "label",
+        "desc": "Target"
+      }
+    ],
+    "pseudocode": "PC = PC + offset;",
+    "example": "B LoopStart",
+    "example_note": "Jump to LoopStart."
+  },
+  {
+    "mnemonic": "BL",
+    "architecture": "ARMv8",
+    "full_name": "Branch with Link",
+    "summary": "Calls a subroutine, storing return address in X30 (LR).",
+    "syntax": "BL <label>",
+    "encoding": {
+      "format": "Branch",
+      "binary_pattern": "100101 imm26",
+      "hex_opcode": "0x94"
+    },
+    "operands": [
+      {
+        "name": "label",
+        "desc": "Target"
+      }
+    ],
+    "pseudocode": "X30 = PC + 4; PC = PC + offset;",
+    "example": "BL printf",
+    "example_note": "Call printf, return addr in X30."
+  },
+  {
+    "mnemonic": "CBZ",
+    "architecture": "ARMv8",
+    "full_name": "Compare and Branch on Zero",
+    "summary": "Branches if the register is zero.",
+    "syntax": "CBZ <Xt>, <label>",
+    "encoding": {
+      "format": "Branch",
+      "binary_pattern": "sf 011010 imm19 Rt",
+      "hex_opcode": "0x34"
+    },
+    "operands": [
+      {
+        "name": "Xt",
+        "desc": "Register to test"
+      },
+      {
+        "name": "label",
+        "desc": "Target"
+      }
+    ],
+    "pseudocode": "if (Xt == 0) PC = PC + offset;",
+    "example": "CBZ X0, ErrorHandler",
+    "example_note": "If X0 is 0, jump to ErrorHandler."
+  },
+  {
+    "mnemonic": "CMP (immediate)",
+    "architecture": "ARMv8",
+    "full_name": "Compare (Immediate)",
+    "summary": "Compares register with immediate (Alias of SUBS).",
+    "syntax": "CMP <Xn>, #<imm>",
+    "encoding": {
+      "format": "Alias",
+      "binary_pattern": "sf 110001 00 imm12 Rn 11111 (SUBS)",
+      "hex_opcode": "0xF1 (SUBS)"
+    },
+    "operands": [
+      {
+        "name": "Xn",
+        "desc": "Source"
+      },
+      {
+        "name": "imm",
+        "desc": "Value"
+      }
+    ],
+    "pseudocode": "Discard(Xn - imm); // Update flags",
+    "example": "CMP X0, #10",
+    "example_note": "Check if X0 == 10 (updates flags)."
+  },
+  {
+    "mnemonic": "ADR",
+    "architecture": "ARMv8",
+    "full_name": "Form PC-relative Address",
+    "summary": "Calculates the address of a label.",
+    "syntax": "ADR <Xd>, <label>",
+    "encoding": {
+      "format": "Data Proc",
+      "binary_pattern": "0 immlo 10000 immhi Rd",
+      "hex_opcode": "0x10"
+    },
+    "operands": [
+      {
+        "name": "Xd",
+        "desc": "Dest"
+      },
+      {
+        "name": "label",
+        "desc": "Target"
+      }
+    ],
+    "pseudocode": "Xd = PC + offset;",
+    "example": "ADR X0, MyData",
+    "example_note": "Get pointer to MyData into X0."
+  }
+]

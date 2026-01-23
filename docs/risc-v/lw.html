@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LW - RISC-V</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
+                <div id="search-results" class="search-dropdown"></div>
+            </div>
+
+            <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
+                The Open Architecture Reference
+            </div>
+        </div>
+    </nav>
+
+    <script src="/search.js"></script>
+
+    
+<div class="container">
+    <div class="detail-layout">
+        
+        <div>
+            <div style="margin-bottom: 10px; font-family: var(--font-mono); color: var(--accent);">
+                RISC-V / Base
+            </div>
+            <h1 class="mono" style="font-size: 3rem;">LW</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Load Word</h2>
+            
+            <div class="syntax-box">
+                LW rd, offset(rs1)
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Loads a 32-bit word from memory.
+            </p>
+
+            <div class="panel">
+                <h3>Pseudocode Operation</h3>
+                <div class="code-block" style="border:none; padding:0; background: transparent;">
+                    R[rd] = M[R[rs1] + sext(offset)][31:0];
+                </div>
+            </div>
+
+            
+            <div class="panel">
+                <h3>Example</h3>
+                <div class="code-block" style="margin-bottom: 10px;">LW x5, 8(x2)</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">// Load value from memory at address (StackPointer + 8) into x5.</p>
+            </div>
+            
+        </div>
+
+        <div class="flex-col">
+            
+            <div class="panel">
+                <h3>Encoding</h3>
+                <div style="margin-bottom: 12px;">
+                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
+                    <span class="badge">I-Type</span>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
+                    <span style="font-family: var(--font-mono); color: var(--text-main);">0x03</span>
+                </div>
+                <div>
+                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
+                        offset | rs1 | 010 | rd | 0000011
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Operands</h3>
+                <ul class="operand-list">
+                    
+                    <li>
+                        <span class="op-name">rd</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">Dest</span>
+                    </li>
+                    
+                    <li>
+                        <span class="op-name">rs1</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">Base Address</span>
+                    </li>
+                    
+                    <li>
+                        <span class="op-name">offset</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">Byte Offset</span>
+                    </li>
+                    
+                </ul>
+            </div>
+
+            <a href="../risc-v.html" style="display: block; text-align: center; padding: 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 0.9rem;">
+                &larr; Back to RISC-V
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions.</p>
+    </footer>
+</body>
+</html>

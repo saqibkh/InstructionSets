@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ISA Database{% endblock %}</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
+                <div id="search-results" class="search-dropdown"></div>
+            </div>
+
+            <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
+                The Open Architecture Reference
+            </div>
+        </div>
+    </nav>
+
+    <script src="/search.js"></script>
+
+    {% block content %}{% endblock %}
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions.</p>
+    </footer>
+</body>
+</html>
