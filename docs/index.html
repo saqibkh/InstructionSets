@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="./index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -23,7 +23,7 @@
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="./search.js"></script>
 
     
 <div class="hero-wrapper">
@@ -84,13 +84,12 @@
         
         let searchIndex = [];
 
-        // Fetch the search index
+        // FIX: No leading slash
         fetch('search.json')
             .then(res => res.json())
             .then(data => searchIndex = data)
             .catch(err => console.error("Search index failed:", err));
 
-        // Search Event Listener
         if(heroInput) {
             heroInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase();
@@ -124,7 +123,6 @@
                 }
             });
 
-            // Keyboard Shortcut (Ctrl+K)
             document.addEventListener('keydown', (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
@@ -132,7 +130,6 @@
                 }
             });
 
-            // Close on click outside
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.cmd-palette')) {
                     heroResults.style.display = 'none';

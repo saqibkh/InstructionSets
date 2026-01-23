@@ -498,15 +498,12 @@ DB_DIR = 'db'
 OUTPUT_DIR = 'docs'
 TEMPLATE_DIR = 'templates'
 
-# Ensure directories exist
 os.makedirs(DB_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# --- STEP 1: LOAD & MERGE DATA ---
 def load_and_merge_data():
-    master_db = {} # Key: Architecture, Value: List of instructions
-
-    # 1. Load existing DB files
+    master_db = {} 
+    # 1. Load existing DB
     for filename in os.listdir(DB_DIR):
         if filename.endswith('.json'):
             arch_name = filename.replace('.json', '')
@@ -520,30 +517,24 @@ def load_and_merge_data():
                 filepath = os.path.join(INPUT_DIR, filename)
                 with open(filepath, 'r') as f:
                     new_data = json.load(f)
-                    
                     for inst in new_data.get('instructions', []):
                         arch = inst.get('architecture', 'Unknown')
-                        if arch not in master_db:
-                            master_db[arch] = []
-                        
-                        # Check for duplicates (simple check by mnemonic)
+                        if arch not in master_db: master_db[arch] = []
                         exists = any(i['mnemonic'] == inst['mnemonic'] for i in master_db[arch])
                         if not exists:
                             master_db[arch].append(inst)
                             print(f"Added {inst['mnemonic']} to {arch}")
 
-    # 3. Save updated DB back to files
+    # 3. Save DB
     for arch, instructions in master_db.items():
         with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
             json.dump(instructions, f, indent=2)
-            
     return master_db
 
-# --- STEP 2: GENERATE WEBSITE ---
 def generate_site(master_db):
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     
-    # 1. Generate Search Index
+    # 1. Search Index
     search_index = []
     for arch, insts in master_db.items():
         for inst in insts:
@@ -556,69 +547,65 @@ def generate_site(master_db):
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
-    if os.path.exists('animation.js'):
-        shutil.copy('animation.js', os.path.join(OUTPUT_DIR, 'animation.js'))
+    # 2. Copy Assets
+    for asset in ['style.css', 'search.js', 'animation.js']:
+        if os.path.exists(asset):
+            shutil.copy(asset, os.path.join(OUTPUT_DIR, asset))
+        else:
+            print(f"Warning: {asset} not found.")
 
-    # 2. Copy Assets (CSS & JS)
-    # Copies from ROOT to DOCS folder
-    if os.path.exists('style.css'):
-        shutil.copy('style.css', os.path.join(OUTPUT_DIR, 'style.css'))
-    else:
-        print("Warning: style.css not found in root directory.")
-
-    if os.path.exists('search.js'):
-        shutil.copy('search.js', os.path.join(OUTPUT_DIR, 'search.js'))
-
-    # 3. Generate Architecture Pages
+    # 3. Generate Pages
     template_detail = env.get_template('instruction_detail.html')
     template_summary = env.get_template('arch_summary.html')
+    template_index = env.get_template('index.html')
+
+    # Homepage (Root level)
+    arch_counts = {arch: len(insts) for arch, insts in master_db.items()}
+    with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f:
+        f.write(template_index.render(
+            architectures=list(master_db.keys()), 
+            counts=arch_counts,
+            root="." # FIX: Assets are in same folder
+        ))
 
     for arch, instructions in master_db.items():
-        # Sort instructions for the sidebar
         sorted_insts = sorted(instructions, key=lambda x: x['mnemonic'])
         
-        # --- NEW: Pre-process binary patterns for visualization ---
+        # FIX: Better Binary Splitting Logic
         for inst in instructions:
             if 'encoding' in inst and 'binary_pattern' in inst['encoding']:
                 raw_pattern = inst['encoding']['binary_pattern']
-                # Split "0000 | rs1 | ..." into list for the template to loop over
-                inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('|')]
-        # ----------------------------------------------------------
+                if '|' in raw_pattern:
+                    inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('|')]
+                elif '+' in raw_pattern:
+                     inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('+')]
+                else:
+                    inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split()]
 
-        # Summary Page
+        # Arch Summary (Root level)
         with open(os.path.join(OUTPUT_DIR, f"{arch.lower()}.html"), 'w') as f:
             f.write(template_summary.render(
                 arch=arch, 
-                instructions=sorted_insts
+                instructions=sorted_insts,
+                root="." # FIX: Assets are in same folder
             ))
         
-        # Detail Pages
+        # Detail Pages (Subfolder level)
         arch_folder = os.path.join(OUTPUT_DIR, arch.lower())
         os.makedirs(arch_folder, exist_ok=True)
 
         for inst in instructions:
             safe_name = inst['mnemonic'].lower().replace(' ', '_') + ".html"
-            
             with open(os.path.join(arch_folder, safe_name), 'w') as f:
                 f.write(template_detail.render(
                     instruction=inst,
                     sidebar_nav=sorted_insts,
-                    current_page=inst['mnemonic']
+                    current_page=inst['mnemonic'],
+                    root=".." # FIX: Assets are one level up
                 ))
-
-    # 4. Generate Homepage
-    template_index = env.get_template('index.html')
-    arch_counts = {arch: len(insts) for arch, insts in master_db.items()}
-    
-    with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f:
-        f.write(template_index.render(
-            architectures=list(master_db.keys()), 
-            counts=arch_counts
-        ))
 
     print("Website generation complete in /docs folder!")
 
-# --- MAIN ---
 if __name__ == "__main__":
     print("Scanning for new data...")
     db = load_and_merge_data()
@@ -1485,13 +1472,13 @@ FILE: ./docs/armv8.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="./index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -1504,7 +1491,7 @@ FILE: ./docs/armv8.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="./search.js"></script>
 
     
 <div class="container" style="padding-top: 40px;">
@@ -1624,13 +1611,13 @@ FILE: ./docs/index.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="./index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -1643,7 +1630,7 @@ FILE: ./docs/index.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="./search.js"></script>
 
     
 <div class="hero-wrapper">
@@ -1704,13 +1691,12 @@ FILE: ./docs/index.html
         
         let searchIndex = [];
 
-        // Fetch the search index
+        // FIX: No leading slash
         fetch('search.json')
             .then(res => res.json())
             .then(data => searchIndex = data)
             .catch(err => console.error("Search index failed:", err));
 
-        // Search Event Listener
         if(heroInput) {
             heroInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase();
@@ -1744,7 +1730,6 @@ FILE: ./docs/index.html
                 }
             });
 
-            // Keyboard Shortcut (Ctrl+K)
             document.addEventListener('keydown', (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
@@ -1752,7 +1737,6 @@ FILE: ./docs/index.html
                 }
             });
 
-            // Close on click outside
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.cmd-palette')) {
                     heroResults.style.display = 'none';
@@ -1778,13 +1762,13 @@ FILE: ./docs/x86-64.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="./index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -1797,7 +1781,7 @@ FILE: ./docs/x86-64.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="./search.js"></script>
 
     
 <div class="container" style="padding-top: 40px;">
@@ -1912,13 +1896,13 @@ FILE: ./docs/risc-v.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="./index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -1931,7 +1915,7 @@ FILE: ./docs/risc-v.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="./search.js"></script>
 
     
 <div class="container" style="padding-top: 40px;">
@@ -2046,13 +2030,13 @@ FILE: ./docs/risc-v/auipc.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUIPC - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -2065,7 +2049,7 @@ FILE: ./docs/risc-v/auipc.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2240,13 +2224,13 @@ FILE: ./docs/risc-v/sub.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -2259,7 +2243,7 @@ FILE: ./docs/risc-v/sub.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2452,13 +2436,13 @@ FILE: ./docs/risc-v/add.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -2471,7 +2455,7 @@ FILE: ./docs/risc-v/add.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2664,13 +2648,13 @@ FILE: ./docs/risc-v/jal.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAL - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -2683,7 +2667,7 @@ FILE: ./docs/risc-v/jal.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2858,13 +2842,13 @@ FILE: ./docs/risc-v/beq.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BEQ - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -2877,7 +2861,7 @@ FILE: ./docs/risc-v/beq.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3070,13 +3054,13 @@ FILE: ./docs/risc-v/lw.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LW - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -3089,7 +3073,7 @@ FILE: ./docs/risc-v/lw.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3278,13 +3262,13 @@ FILE: ./docs/risc-v/sw.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SW - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -3297,7 +3281,7 @@ FILE: ./docs/risc-v/sw.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3490,13 +3474,13 @@ FILE: ./docs/risc-v/ecall.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECALL - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -3509,7 +3493,7 @@ FILE: ./docs/risc-v/ecall.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3680,13 +3664,13 @@ FILE: ./docs/risc-v/addi.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADDI - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -3699,7 +3683,7 @@ FILE: ./docs/risc-v/addi.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3872,13 +3856,13 @@ FILE: ./docs/risc-v/lui.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUI - RISC-V</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -3891,7 +3875,7 @@ FILE: ./docs/risc-v/lui.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4066,13 +4050,13 @@ FILE: ./docs/x86-64/lea.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEA - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -4085,7 +4069,7 @@ FILE: ./docs/x86-64/lea.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4194,7 +4178,11 @@ FILE: ./docs/x86-64/lea.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">REX.W + 8D /r</span>
+                                    <span class="bit-value">REX.W</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">8D /r</span>
                                 </div>
                                 
                             </div>
@@ -4252,13 +4240,13 @@ FILE: ./docs/x86-64/sub.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -4271,7 +4259,7 @@ FILE: ./docs/x86-64/sub.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4380,7 +4368,11 @@ FILE: ./docs/x86-64/sub.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">REX.W + 29 /r</span>
+                                    <span class="bit-value">REX.W</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">29 /r</span>
                                 </div>
                                 
                             </div>
@@ -4438,13 +4430,13 @@ FILE: ./docs/x86-64/pop.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POP - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -4457,7 +4449,7 @@ FILE: ./docs/x86-64/pop.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4566,7 +4558,11 @@ FILE: ./docs/x86-64/pop.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">58+rd</span>
+                                    <span class="bit-value">58</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
                                 </div>
                                 
                             </div>
@@ -4618,13 +4614,13 @@ FILE: ./docs/x86-64/add.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -4637,7 +4633,7 @@ FILE: ./docs/x86-64/add.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4746,7 +4742,11 @@ FILE: ./docs/x86-64/add.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">REX.W + 01 /r</span>
+                                    <span class="bit-value">REX.W</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">01 /r</span>
                                 </div>
                                 
                             </div>
@@ -4804,13 +4804,13 @@ FILE: ./docs/x86-64/push.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUSH - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -4823,7 +4823,7 @@ FILE: ./docs/x86-64/push.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4932,7 +4932,11 @@ FILE: ./docs/x86-64/push.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">50+rd</span>
+                                    <span class="bit-value">50</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
                                 </div>
                                 
                             </div>
@@ -4984,13 +4988,13 @@ FILE: ./docs/x86-64/ret.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RET - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -5003,7 +5007,7 @@ FILE: ./docs/x86-64/ret.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5158,13 +5162,13 @@ FILE: ./docs/x86-64/call.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALL - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -5177,7 +5181,7 @@ FILE: ./docs/x86-64/call.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5286,7 +5290,11 @@ FILE: ./docs/x86-64/call.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">E8 cd</span>
+                                    <span class="bit-value">E8</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">cd</span>
                                 </div>
                                 
                             </div>
@@ -5338,13 +5346,13 @@ FILE: ./docs/x86-64/mov.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOV - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -5357,7 +5365,7 @@ FILE: ./docs/x86-64/mov.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5466,7 +5474,11 @@ FILE: ./docs/x86-64/mov.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">REX.W + 89 /r</span>
+                                    <span class="bit-value">REX.W</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">89 /r</span>
                                 </div>
                                 
                             </div>
@@ -5524,13 +5536,13 @@ FILE: ./docs/x86-64/jmp.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMP - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -5543,7 +5555,7 @@ FILE: ./docs/x86-64/jmp.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5652,7 +5664,11 @@ FILE: ./docs/x86-64/jmp.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">E9 cd</span>
+                                    <span class="bit-value">E9</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">cd</span>
                                 </div>
                                 
                             </div>
@@ -5704,13 +5720,13 @@ FILE: ./docs/x86-64/je.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JE - x86-64</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -5723,7 +5739,7 @@ FILE: ./docs/x86-64/je.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5832,7 +5848,11 @@ FILE: ./docs/x86-64/je.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">74 cb</span>
+                                    <span class="bit-value">74</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">cb</span>
                                 </div>
                                 
                             </div>
@@ -5884,13 +5904,13 @@ FILE: ./docs/armv8/cmp_(immediate).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMP (immediate) - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -5903,7 +5923,7 @@ FILE: ./docs/armv8/cmp_(immediate).html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6012,7 +6032,31 @@ FILE: ./docs/armv8/cmp_(immediate).html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">sf 110001 00 imm12 Rn 11111 (SUBS)</span>
+                                    <span class="bit-value">sf</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">110001</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">00</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm12</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rn</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">11111</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">(SUBS)</span>
                                 </div>
                                 
                             </div>
@@ -6070,13 +6114,13 @@ FILE: ./docs/armv8/b.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -6089,7 +6133,7 @@ FILE: ./docs/armv8/b.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6198,7 +6242,11 @@ FILE: ./docs/armv8/b.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">000101 imm26</span>
+                                    <span class="bit-value">000101</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm26</span>
                                 </div>
                                 
                             </div>
@@ -6250,13 +6298,13 @@ FILE: ./docs/armv8/add_(shifted).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD (shifted) - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -6269,7 +6317,7 @@ FILE: ./docs/armv8/add_(shifted).html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6378,7 +6426,35 @@ FILE: ./docs/armv8/add_(shifted).html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">sf 0001011 shift 0 Rm imm6 Rn Rd</span>
+                                    <span class="bit-value">sf</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0001011</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">shift</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm6</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rn</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rd</span>
                                 </div>
                                 
                             </div>
@@ -6442,13 +6518,13 @@ FILE: ./docs/armv8/ldr_(register).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR (register) - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -6461,7 +6537,7 @@ FILE: ./docs/armv8/ldr_(register).html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6570,7 +6646,39 @@ FILE: ./docs/armv8/ldr_(register).html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">1x 111000 011 Rm 011 S 10 Rn Rt</span>
+                                    <span class="bit-value">1x</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">111000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">011</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">011</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">S</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">10</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rn</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rt</span>
                                 </div>
                                 
                             </div>
@@ -6634,13 +6742,13 @@ FILE: ./docs/armv8/str_(immediate).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STR (immediate) - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -6653,7 +6761,7 @@ FILE: ./docs/armv8/str_(immediate).html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6762,7 +6870,27 @@ FILE: ./docs/armv8/str_(immediate).html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">1x 111001 00 imm12 Rn Rt</span>
+                                    <span class="bit-value">1x</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">111001</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">00</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm12</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rn</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rt</span>
                                 </div>
                                 
                             </div>
@@ -6826,13 +6954,13 @@ FILE: ./docs/armv8/adr.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADR - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -6845,7 +6973,7 @@ FILE: ./docs/armv8/adr.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6954,7 +7082,23 @@ FILE: ./docs/armv8/adr.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">0 immlo 10000 immhi Rd</span>
+                                    <span class="bit-value">0</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">immlo</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">10000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">immhi</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rd</span>
                                 </div>
                                 
                             </div>
@@ -7012,13 +7156,13 @@ FILE: ./docs/armv8/mov_(register).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOV (register) - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -7031,7 +7175,7 @@ FILE: ./docs/armv8/mov_(register).html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7140,7 +7284,35 @@ FILE: ./docs/armv8/mov_(register).html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">sf 0101010 00 Rm 000000 Rn Rd (ORR)</span>
+                                    <span class="bit-value">sf</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0101010</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">00</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">000000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rn</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rd</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">(ORR)</span>
                                 </div>
                                 
                             </div>
@@ -7198,13 +7370,13 @@ FILE: ./docs/armv8/sub_(extended).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB (extended) - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -7217,7 +7389,7 @@ FILE: ./docs/armv8/sub_(extended).html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7326,7 +7498,35 @@ FILE: ./docs/armv8/sub_(extended).html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">sf 0001011 001 Rm option imm3 Rn Rd</span>
+                                    <span class="bit-value">sf</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0001011</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">001</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">option</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm3</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rn</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rd</span>
                                 </div>
                                 
                             </div>
@@ -7390,13 +7590,13 @@ FILE: ./docs/armv8/bl.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BL - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -7409,7 +7609,7 @@ FILE: ./docs/armv8/bl.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7518,7 +7718,11 @@ FILE: ./docs/armv8/bl.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">100101 imm26</span>
+                                    <span class="bit-value">100101</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm26</span>
                                 </div>
                                 
                             </div>
@@ -7570,13 +7774,13 @@ FILE: ./docs/armv8/cbz.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CBZ - ARMv8</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="../index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -7589,7 +7793,7 @@ FILE: ./docs/armv8/cbz.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="../search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7698,7 +7902,19 @@ FILE: ./docs/armv8/cbz.html
                             <div class="bit-row">
                                 
                                 <div class="bit-box">
-                                    <span class="bit-value">sf 011010 imm19 Rt</span>
+                                    <span class="bit-value">sf</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">011010</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm19</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">Rt</span>
                                 </div>
                                 
                             </div>
@@ -7941,13 +8157,12 @@ FILE: ./templates/index.html
         
         let searchIndex = [];
 
-        // Fetch the search index
+        // FIX: No leading slash
         fetch('search.json')
             .then(res => res.json())
             .then(data => searchIndex = data)
             .catch(err => console.error("Search index failed:", err));
 
-        // Search Event Listener
         if(heroInput) {
             heroInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase();
@@ -7981,7 +8196,6 @@ FILE: ./templates/index.html
                 }
             });
 
-            // Keyboard Shortcut (Ctrl+K)
             document.addEventListener('keydown', (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
@@ -7989,7 +8203,6 @@ FILE: ./templates/index.html
                 }
             });
 
-            // Close on click outside
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.cmd-palette')) {
                     heroResults.style.display = 'none';
@@ -8010,13 +8223,13 @@ FILE: ./templates/base.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ISA Database{% endblock %}</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ root }}/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="{{ root }}/index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -8029,7 +8242,7 @@ FILE: ./templates/base.html
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="{{ root }}/search.js"></script>
 
     {% block content %}{% endblock %}
 

@@ -9,15 +9,12 @@ DB_DIR = 'db'
 OUTPUT_DIR = 'docs'
 TEMPLATE_DIR = 'templates'
 
-# Ensure directories exist
 os.makedirs(DB_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# --- STEP 1: LOAD & MERGE DATA ---
 def load_and_merge_data():
-    master_db = {} # Key: Architecture, Value: List of instructions
-
-    # 1. Load existing DB files
+    master_db = {} 
+    # 1. Load existing DB
     for filename in os.listdir(DB_DIR):
         if filename.endswith('.json'):
             arch_name = filename.replace('.json', '')
@@ -31,30 +28,24 @@ def load_and_merge_data():
                 filepath = os.path.join(INPUT_DIR, filename)
                 with open(filepath, 'r') as f:
                     new_data = json.load(f)
-                    
                     for inst in new_data.get('instructions', []):
                         arch = inst.get('architecture', 'Unknown')
-                        if arch not in master_db:
-                            master_db[arch] = []
-                        
-                        # Check for duplicates (simple check by mnemonic)
+                        if arch not in master_db: master_db[arch] = []
                         exists = any(i['mnemonic'] == inst['mnemonic'] for i in master_db[arch])
                         if not exists:
                             master_db[arch].append(inst)
                             print(f"Added {inst['mnemonic']} to {arch}")
 
-    # 3. Save updated DB back to files
+    # 3. Save DB
     for arch, instructions in master_db.items():
         with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
             json.dump(instructions, f, indent=2)
-            
     return master_db
 
-# --- STEP 2: GENERATE WEBSITE ---
 def generate_site(master_db):
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     
-    # 1. Generate Search Index
+    # 1. Search Index
     search_index = []
     for arch, insts in master_db.items():
         for inst in insts:
@@ -67,69 +58,65 @@ def generate_site(master_db):
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
-    if os.path.exists('animation.js'):
-        shutil.copy('animation.js', os.path.join(OUTPUT_DIR, 'animation.js'))
+    # 2. Copy Assets
+    for asset in ['style.css', 'search.js', 'animation.js']:
+        if os.path.exists(asset):
+            shutil.copy(asset, os.path.join(OUTPUT_DIR, asset))
+        else:
+            print(f"Warning: {asset} not found.")
 
-    # 2. Copy Assets (CSS & JS)
-    # Copies from ROOT to DOCS folder
-    if os.path.exists('style.css'):
-        shutil.copy('style.css', os.path.join(OUTPUT_DIR, 'style.css'))
-    else:
-        print("Warning: style.css not found in root directory.")
-
-    if os.path.exists('search.js'):
-        shutil.copy('search.js', os.path.join(OUTPUT_DIR, 'search.js'))
-
-    # 3. Generate Architecture Pages
+    # 3. Generate Pages
     template_detail = env.get_template('instruction_detail.html')
     template_summary = env.get_template('arch_summary.html')
+    template_index = env.get_template('index.html')
+
+    # Homepage (Root level)
+    arch_counts = {arch: len(insts) for arch, insts in master_db.items()}
+    with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f:
+        f.write(template_index.render(
+            architectures=list(master_db.keys()), 
+            counts=arch_counts,
+            root="." # FIX: Assets are in same folder
+        ))
 
     for arch, instructions in master_db.items():
-        # Sort instructions for the sidebar
         sorted_insts = sorted(instructions, key=lambda x: x['mnemonic'])
         
-        # --- NEW: Pre-process binary patterns for visualization ---
+        # FIX: Better Binary Splitting Logic
         for inst in instructions:
             if 'encoding' in inst and 'binary_pattern' in inst['encoding']:
                 raw_pattern = inst['encoding']['binary_pattern']
-                # Split "0000 | rs1 | ..." into list for the template to loop over
-                inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('|')]
-        # ----------------------------------------------------------
+                if '|' in raw_pattern:
+                    inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('|')]
+                elif '+' in raw_pattern:
+                     inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('+')]
+                else:
+                    inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split()]
 
-        # Summary Page
+        # Arch Summary (Root level)
         with open(os.path.join(OUTPUT_DIR, f"{arch.lower()}.html"), 'w') as f:
             f.write(template_summary.render(
                 arch=arch, 
-                instructions=sorted_insts
+                instructions=sorted_insts,
+                root="." # FIX: Assets are in same folder
             ))
         
-        # Detail Pages
+        # Detail Pages (Subfolder level)
         arch_folder = os.path.join(OUTPUT_DIR, arch.lower())
         os.makedirs(arch_folder, exist_ok=True)
 
         for inst in instructions:
             safe_name = inst['mnemonic'].lower().replace(' ', '_') + ".html"
-            
             with open(os.path.join(arch_folder, safe_name), 'w') as f:
                 f.write(template_detail.render(
                     instruction=inst,
                     sidebar_nav=sorted_insts,
-                    current_page=inst['mnemonic']
+                    current_page=inst['mnemonic'],
+                    root=".." # FIX: Assets are one level up
                 ))
-
-    # 4. Generate Homepage
-    template_index = env.get_template('index.html')
-    arch_counts = {arch: len(insts) for arch, insts in master_db.items()}
-    
-    with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f:
-        f.write(template_index.render(
-            architectures=list(master_db.keys()), 
-            counts=arch_counts
-        ))
 
     print("Website generation complete in /docs folder!")
 
-# --- MAIN ---
 if __name__ == "__main__":
     print("Scanning for new data...")
     db = load_and_merge_data()

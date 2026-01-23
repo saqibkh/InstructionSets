@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ISA Database{% endblock %}</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ root }}/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="/index.html" class="logo">ISA_<span>DB</span></a>
+            <a href="{{ root }}/index.html" class="logo">ISA_<span>DB</span></a>
             
             <div class="search-wrapper">
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
@@ -23,7 +23,7 @@
         </div>
     </nav>
 
-    <script src="/search.js"></script>
+    <script src="{{ root }}/search.js"></script>
 
     {% block content %}{% endblock %}
 

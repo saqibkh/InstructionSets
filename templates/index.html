@@ -41,13 +41,12 @@
         
         let searchIndex = [];
 
-        // Fetch the search index
+        // FIX: No leading slash
         fetch('search.json')
             .then(res => res.json())
             .then(data => searchIndex = data)
             .catch(err => console.error("Search index failed:", err));
 
-        // Search Event Listener
         if(heroInput) {
             heroInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase();
@@ -81,7 +80,6 @@
                 }
             });
 
-            // Keyboard Shortcut (Ctrl+K)
             document.addEventListener('keydown', (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
@@ -89,7 +87,6 @@
                 }
             });
 
-            // Close on click outside
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.cmd-palette')) {
                     heroResults.style.display = 'none';
