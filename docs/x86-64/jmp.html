@@ -26,11 +26,71 @@
     <script src="/search.js"></script>
 
     
-<div class="container">
-    <div class="detail-layout">
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>x86-64 Instructions</h3>
+        <nav>
+            
+            <a href="add.html" 
+               class="">
+                ADD
+            </a>
+            
+            <a href="call.html" 
+               class="">
+                CALL
+            </a>
+            
+            <a href="je.html" 
+               class="">
+                JE
+            </a>
+            
+            <a href="jmp.html" 
+               class="active">
+                JMP
+            </a>
+            
+            <a href="lea.html" 
+               class="">
+                LEA
+            </a>
+            
+            <a href="mov.html" 
+               class="">
+                MOV
+            </a>
+            
+            <a href="pop.html" 
+               class="">
+                POP
+            </a>
+            
+            <a href="push.html" 
+               class="">
+                PUSH
+            </a>
+            
+            <a href="ret.html" 
+               class="">
+                RET
+            </a>
+            
+            <a href="sub.html" 
+               class="">
+                SUB
+            </a>
+            
+        </nav>
         
+        <h3>Meta</h3>
+        <a href="../x86-64.html">← Back to Overview</a>
+    </aside>
+
+    <main class="content">
         <div>
-            <div style="margin-bottom: 10px; font-family: var(--font-mono); color: var(--accent);">
+            <div style="margin-bottom: 10px; font-family: 'JetBrains Mono'; color: var(--accent);">
                 x86-64 / Base
             </div>
             <h1 class="mono" style="font-size: 3rem;">JMP</h1>
@@ -44,60 +104,60 @@
                 Unconditionally jumps to target address.
             </p>
 
-            <div class="panel">
-                <h3>Pseudocode Operation</h3>
-                <div class="code-block" style="border:none; padding:0; background: transparent;">
-                    RIP = RIP + sign_ext(rel32);
-                </div>
-            </div>
-
-            
-            <div class="panel">
-                <h3>Example</h3>
-                <div class="code-block" style="margin-bottom: 10px;">JMP Label</div>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">// Transfers control flow to 'Label'.</p>
-            </div>
-            
-        </div>
-
-        <div class="flex-col">
-            
-            <div class="panel">
-                <h3>Encoding</h3>
-                <div style="margin-bottom: 12px;">
-                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                    <span class="badge">CISC Variable</span>
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                    <span style="font-family: var(--font-mono); color: var(--text-main);">E9</span>
-                </div>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
                 <div>
-                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                        E9 cd
+                    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            RIP = RIP + sign_ext(rel32);
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel">
+                        <h3>Example</h3>
+                        <div class="code-block" style="margin-bottom: 10px;">JMP Label</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Transfers control flow to 'Label'.</p>
+                    </div>
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        <div style="margin-bottom: 12px;">
+                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
+                            <span class="badge">CISC Variable</span>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
+                            <span style="font-family: var(--font-mono); color: var(--text-main);">E9</span>
+                        </div>
+                        <div>
+                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
+                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
+                                E9 cd
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">target</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Relative Address</span>
+                            </li>
+                            
+                        </ul>
                     </div>
                 </div>
             </div>
-
-            <div class="panel">
-                <h3>Operands</h3>
-                <ul class="operand-list">
-                    
-                    <li>
-                        <span class="op-name">target</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">Relative Address</span>
-                    </li>
-                    
-                </ul>
-            </div>
-
-            <a href="../x86-64.html" style="display: block; text-align: center; padding: 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 0.9rem;">
-                &larr; Back to x86-64
-            </a>
         </div>
-
-    </div>
+    </main>
 </div>
 
 
