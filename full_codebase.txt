@@ -62,117 +62,224 @@ document.addEventListener('DOMContentLoaded', async () => {
 FILE: ./style.css
 ==================================================
 :root {
-    --bg-body: #09090b; --bg-card: #18181b; --bg-hover: #27272a;
-    --border: #27272a; --text-main: #e4e4e7; --text-muted: #a1a1aa;
-    --accent: #38bdf8; --code-bg: #1e1e20;
-    --sidebar-width: 260px; --nav-height: 60px;
+    /* "Zinc" Palette - refined */
+    --bg-body: #09090b;
+    --bg-card: #18181b; 
+    --bg-hover: #27272a;
+    --border: #3f3f46;
+    --border-light: #52525b;
+    
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    
+    /* Dynamic Accent */
+    --accent: #38bdf8;        /* Sky Blue */
+    --accent-dim: rgba(56, 189, 248, 0.1);
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    
+    --code-bg: #121214;
+    --sidebar-width: 280px;
+    --nav-height: 64px;
 }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg-body); color: var(--text-main); font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+body {
+    background-color: var(--bg-body);
+    /* Engineering Grid Pattern */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    display: flex; flex-direction: column; min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 a:hover { color: var(--accent); }
 
-/* Nav */
-nav { height: var(--nav-height); border-bottom: 1px solid var(--border); background: rgba(9,9,11,0.8); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; }
-nav .container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 100%; }
-.logo { font-weight: 700; font-size: 1.2rem; font-family: 'JetBrains Mono', monospace; }
+/* --- Glassmorphism Nav --- */
+nav {
+    height: var(--nav-height);
+    border-bottom: 1px solid var(--border);
+    background: rgba(9, 9, 11, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 50;
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+
+.logo { font-weight: 800; font-size: 1.4rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -1px; }
 .logo span { color: var(--accent); }
 
-/* Layouts */
-.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; width: 100%; }
-.hero { padding: 80px 0; text-align: center; background: radial-gradient(circle at center, #1e1e2e 0%, transparent 70%); }
-.hero h1 { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+/* --- Hero Section --- */
+.hero {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 60%);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+}
+.hero h1 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    letter-spacing: -0.03em; 
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-/* Doc Layout (Sidebar + Content) */
-.doc-layout { display: flex; gap: 40px; margin-top: 30px; }
-.sidebar { width: var(--sidebar-width); position: sticky; top: 90px; height: calc(100vh - 100px); overflow-y: auto; border-right: 1px solid var(--border); padding-right: 20px; flex-shrink: 0; }
-.sidebar h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin: 20px 0 10px 0; }
-.sidebar a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.9rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+/* --- Layouts --- */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+.doc-layout { display: flex; gap: 40px; margin-top: 40px; align-items: flex-start; }
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    position: sticky; top: 100px; 
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 16px;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.sidebar h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 24px 0 12px 0; font-weight: 600; }
+.sidebar a {
+    display: block; padding: 8px 12px; border-radius: 6px;
+    font-size: 0.9rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    border-left: 2px solid transparent;
+}
 .sidebar a:hover { background: var(--bg-hover); color: var(--text-main); }
-.sidebar a.active { background: var(--bg-hover); color: var(--accent); font-weight: 600; }
-.content { flex: 1; min-width: 0; padding-bottom: 60px; }
-
-/* Cards & Tables */
-.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-.arch-card { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: 10px; }
-.arch-card:hover { border-color: var(--accent); }
-
-.data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-.data-table th { text-align: left; padding: 12px; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
-.data-table td { padding: 12px; border-bottom: 1px solid var(--border); }
-.data-table tr:hover { background: var(--bg-hover); }
-
-/* Components */
-.badge { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; background: #27272a; color: #a1a1aa; border: 1px solid var(--border); font-family: 'JetBrains Mono'; }
-.syntax-box { background: var(--code-bg); padding: 20px; border-left: 4px solid var(--accent); font-family: 'JetBrains Mono'; color: var(--accent); border-radius: 0 8px 8px 0; margin: 20px 0; }
-.code-block { background: #000; padding: 15px; border-radius: 6px; border: 1px solid var(--border); font-family: 'JetBrains Mono'; font-size: 0.9rem; overflow-x: auto; color: #e4e4e7; }
-.panel { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-.panel h3 { margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); }
-
-/* --- Search Bar --- */
-.search-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 20px;
+.sidebar a.active { 
+    background: var(--accent-dim); 
+    color: var(--accent); 
+    border-left-color: var(--accent);
 }
 
-#search-input {
-    width: 100%;
-    background: var(--bg-hover);
-    border: 1px solid var(--border);
-    color: var(--text-main);
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-family: var(--font-ui);
-    outline: none;
-    transition: border-color 0.2s;
-}
+.content { flex: 1; min-width: 0; padding-bottom: 80px; }
 
-#search-input:focus {
-    border-color: var(--accent);
-}
-
-.search-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+/* --- Interactive Cards --- */
+.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.arch-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    margin-top: 8px;
-    display: none;
-    z-index: 1000;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    padding: 32px;
+    border-radius: 16px;
+    position: relative;
     overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-
-.search-result-item a {
-    display: block;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
+.arch-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
 }
+.arch-card h2 { font-size: 1.5rem; margin-bottom: 8px; }
 
-.search-result-item a:hover {
-    background: var(--bg-hover);
-}
+/* --- Data Tables --- */
+.table-container { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { background: var(--bg-hover); padding: 16px; text-align: left; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
+.data-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover { background: var(--bg-hover); }
 
-.result-title {
+/* --- Instruction Detail Components --- */
+.syntax-box {
+    background: var(--code-bg);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
     color: var(--accent);
-    font-family: var(--font-mono);
-    font-weight: bold;
-    font-size: 0.9rem;
+    margin: 24px 0;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
 }
 
-.result-summary {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
 }
+.panel h3 { font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+
+/* Code Blocks */
+.code-block {
+    background: #000;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    color: #e4e4e7;
+    overflow-x: auto;
+}
+
+/* --- THE NEW BIT GRID --- */
+.bit-grid-container { margin-bottom: 20px; }
+.bit-grid-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
+.bit-row { display: flex; gap: 2px; width: 100%; overflow-x: auto; padding-bottom: 4px; }
+.bit-box {
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    flex: 1; /* Auto-width */
+    text-align: center;
+    min-width: max-content;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    transition: background 0.2s;
+}
+.bit-box:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Metadata Grid */
+.meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.meta-item { display: flex; flex-direction: column; }
+.meta-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+
+/* Badges & Mono */
+.badge { 
+    display: inline-block; padding: 4px 8px; border-radius: 6px; 
+    font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); color: var(--text-muted);
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+.accent { color: var(--accent); }
+
+/* --- Search (Updated) --- */
+.search-wrapper { position: relative; max-width: 400px; width: 100%; }
+#search-input {
+    width: 100%; padding: 10px 16px; border-radius: 8px;
+    background: rgba(0,0,0,0.2); border: 1px solid var(--border);
+    color: white; font-family: inherit; outline: none;
+    transition: all 0.2s;
+}
+#search-input:focus { border-color: var(--accent); background: var(--bg-card); box-shadow: 0 0 0 3px var(--accent-dim); }
+.search-dropdown {
+    position: absolute; top: 120%; left: 0; width: 100%;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 100; display: none;
+}
+.search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
 
 
 ==================================================
@@ -204,10 +311,6 @@ def load_and_merge_data():
             with open(os.path.join(DB_DIR, filename), 'r') as f:
                 master_db[arch_name] = json.load(f)
 
-    # Copy JS
-    if os.path.exists('search.js'):
-        shutil.copy('search.js', os.path.join(OUTPUT_DIR, 'search.js'))
-
     # 2. Process new inputs
     if os.path.exists(INPUT_DIR):
         for filename in os.listdir(INPUT_DIR):
@@ -216,7 +319,6 @@ def load_and_merge_data():
                 with open(filepath, 'r') as f:
                     new_data = json.load(f)
                     
-                    # Assuming input is a list of instructions
                     for inst in new_data.get('instructions', []):
                         arch = inst.get('architecture', 'Unknown')
                         if arch not in master_db:
@@ -252,12 +354,15 @@ def generate_site(master_db):
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
-    # 2. Copy CSS (Fix: Copy from ROOT to DOCS)
-    # Make sure 'style.css' exists in the same folder as this script!
+    # 2. Copy Assets (CSS & JS)
+    # Copies from ROOT to DOCS folder
     if os.path.exists('style.css'):
         shutil.copy('style.css', os.path.join(OUTPUT_DIR, 'style.css'))
     else:
         print("Warning: style.css not found in root directory.")
+
+    if os.path.exists('search.js'):
+        shutil.copy('search.js', os.path.join(OUTPUT_DIR, 'search.js'))
 
     # 3. Generate Architecture Pages
     template_detail = env.get_template('instruction_detail.html')
@@ -267,6 +372,14 @@ def generate_site(master_db):
         # Sort instructions for the sidebar
         sorted_insts = sorted(instructions, key=lambda x: x['mnemonic'])
         
+        # --- NEW: Pre-process binary patterns for visualization ---
+        for inst in instructions:
+            if 'encoding' in inst and 'binary_pattern' in inst['encoding']:
+                raw_pattern = inst['encoding']['binary_pattern']
+                # Split "0000 | rs1 | ..." into list for the template to loop over
+                inst['encoding']['visual_parts'] = [p.strip() for p in raw_pattern.split('|')]
+        # ----------------------------------------------------------
+
         # Summary Page
         with open(os.path.join(OUTPUT_DIR, f"{arch.lower()}.html"), 'w') as f:
             f.write(template_summary.render(
@@ -742,117 +855,224 @@ document.addEventListener('DOMContentLoaded', async () => {
 FILE: ./docs/style.css
 ==================================================
 :root {
-    --bg-body: #09090b; --bg-card: #18181b; --bg-hover: #27272a;
-    --border: #27272a; --text-main: #e4e4e7; --text-muted: #a1a1aa;
-    --accent: #38bdf8; --code-bg: #1e1e20;
-    --sidebar-width: 260px; --nav-height: 60px;
+    /* "Zinc" Palette - refined */
+    --bg-body: #09090b;
+    --bg-card: #18181b; 
+    --bg-hover: #27272a;
+    --border: #3f3f46;
+    --border-light: #52525b;
+    
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    
+    /* Dynamic Accent */
+    --accent: #38bdf8;        /* Sky Blue */
+    --accent-dim: rgba(56, 189, 248, 0.1);
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    
+    --code-bg: #121214;
+    --sidebar-width: 280px;
+    --nav-height: 64px;
 }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg-body); color: var(--text-main); font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+body {
+    background-color: var(--bg-body);
+    /* Engineering Grid Pattern */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    display: flex; flex-direction: column; min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 a:hover { color: var(--accent); }
 
-/* Nav */
-nav { height: var(--nav-height); border-bottom: 1px solid var(--border); background: rgba(9,9,11,0.8); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; }
-nav .container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 100%; }
-.logo { font-weight: 700; font-size: 1.2rem; font-family: 'JetBrains Mono', monospace; }
+/* --- Glassmorphism Nav --- */
+nav {
+    height: var(--nav-height);
+    border-bottom: 1px solid var(--border);
+    background: rgba(9, 9, 11, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 50;
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+
+.logo { font-weight: 800; font-size: 1.4rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -1px; }
 .logo span { color: var(--accent); }
 
-/* Layouts */
-.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; width: 100%; }
-.hero { padding: 80px 0; text-align: center; background: radial-gradient(circle at center, #1e1e2e 0%, transparent 70%); }
-.hero h1 { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+/* --- Hero Section --- */
+.hero {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 60%);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+}
+.hero h1 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    letter-spacing: -0.03em; 
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-/* Doc Layout (Sidebar + Content) */
-.doc-layout { display: flex; gap: 40px; margin-top: 30px; }
-.sidebar { width: var(--sidebar-width); position: sticky; top: 90px; height: calc(100vh - 100px); overflow-y: auto; border-right: 1px solid var(--border); padding-right: 20px; flex-shrink: 0; }
-.sidebar h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin: 20px 0 10px 0; }
-.sidebar a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.9rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+/* --- Layouts --- */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+.doc-layout { display: flex; gap: 40px; margin-top: 40px; align-items: flex-start; }
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    position: sticky; top: 100px; 
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 16px;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.sidebar h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 24px 0 12px 0; font-weight: 600; }
+.sidebar a {
+    display: block; padding: 8px 12px; border-radius: 6px;
+    font-size: 0.9rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    border-left: 2px solid transparent;
+}
 .sidebar a:hover { background: var(--bg-hover); color: var(--text-main); }
-.sidebar a.active { background: var(--bg-hover); color: var(--accent); font-weight: 600; }
-.content { flex: 1; min-width: 0; padding-bottom: 60px; }
-
-/* Cards & Tables */
-.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-.arch-card { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: 10px; }
-.arch-card:hover { border-color: var(--accent); }
-
-.data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-.data-table th { text-align: left; padding: 12px; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
-.data-table td { padding: 12px; border-bottom: 1px solid var(--border); }
-.data-table tr:hover { background: var(--bg-hover); }
-
-/* Components */
-.badge { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; background: #27272a; color: #a1a1aa; border: 1px solid var(--border); font-family: 'JetBrains Mono'; }
-.syntax-box { background: var(--code-bg); padding: 20px; border-left: 4px solid var(--accent); font-family: 'JetBrains Mono'; color: var(--accent); border-radius: 0 8px 8px 0; margin: 20px 0; }
-.code-block { background: #000; padding: 15px; border-radius: 6px; border: 1px solid var(--border); font-family: 'JetBrains Mono'; font-size: 0.9rem; overflow-x: auto; color: #e4e4e7; }
-.panel { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-.panel h3 { margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); }
-
-/* --- Search Bar --- */
-.search-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 20px;
+.sidebar a.active { 
+    background: var(--accent-dim); 
+    color: var(--accent); 
+    border-left-color: var(--accent);
 }
 
-#search-input {
-    width: 100%;
-    background: var(--bg-hover);
-    border: 1px solid var(--border);
-    color: var(--text-main);
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-family: var(--font-ui);
-    outline: none;
-    transition: border-color 0.2s;
-}
+.content { flex: 1; min-width: 0; padding-bottom: 80px; }
 
-#search-input:focus {
-    border-color: var(--accent);
-}
-
-.search-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+/* --- Interactive Cards --- */
+.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.arch-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    margin-top: 8px;
-    display: none;
-    z-index: 1000;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    padding: 32px;
+    border-radius: 16px;
+    position: relative;
     overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-
-.search-result-item a {
-    display: block;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
+.arch-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
 }
+.arch-card h2 { font-size: 1.5rem; margin-bottom: 8px; }
 
-.search-result-item a:hover {
-    background: var(--bg-hover);
-}
+/* --- Data Tables --- */
+.table-container { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { background: var(--bg-hover); padding: 16px; text-align: left; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
+.data-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover { background: var(--bg-hover); }
 
-.result-title {
+/* --- Instruction Detail Components --- */
+.syntax-box {
+    background: var(--code-bg);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
     color: var(--accent);
-    font-family: var(--font-mono);
-    font-weight: bold;
-    font-size: 0.9rem;
+    margin: 24px 0;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
 }
 
-.result-summary {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
 }
+.panel h3 { font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+
+/* Code Blocks */
+.code-block {
+    background: #000;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    color: #e4e4e7;
+    overflow-x: auto;
+}
+
+/* --- THE NEW BIT GRID --- */
+.bit-grid-container { margin-bottom: 20px; }
+.bit-grid-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
+.bit-row { display: flex; gap: 2px; width: 100%; overflow-x: auto; padding-bottom: 4px; }
+.bit-box {
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    flex: 1; /* Auto-width */
+    text-align: center;
+    min-width: max-content;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    transition: background 0.2s;
+}
+.bit-box:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Metadata Grid */
+.meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.meta-item { display: flex; flex-direction: column; }
+.meta-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+
+/* Badges & Mono */
+.badge { 
+    display: inline-block; padding: 4px 8px; border-radius: 6px; 
+    font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); color: var(--text-muted);
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+.accent { color: var(--accent); }
+
+/* --- Search (Updated) --- */
+.search-wrapper { position: relative; max-width: 400px; width: 100%; }
+#search-input {
+    width: 100%; padding: 10px 16px; border-radius: 8px;
+    background: rgba(0,0,0,0.2); border: 1px solid var(--border);
+    color: white; font-family: inherit; outline: none;
+    transition: all 0.2s;
+}
+#search-input:focus { border-color: var(--accent); background: var(--bg-card); box-shadow: 0 0 0 3px var(--accent-dim); }
+.search-dropdown {
+    position: absolute; top: 120%; left: 0; width: 100%;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 100; display: none;
+}
+.search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
 
 
 ==================================================
@@ -1468,18 +1688,34 @@ FILE: ./docs/risc-v/auipc.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">U-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm[31:12]</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0010111</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x17</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                imm[31:12] | rd | 0010111
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">U-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x17</span>
                             </div>
                         </div>
                     </div>
@@ -1646,18 +1882,46 @@ FILE: ./docs/risc-v/sub.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">R-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0100000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs2</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0110011</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x33</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                0100000 | rs2 | rs1 | 000 | rd | 0110011
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">R-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x33</span>
                             </div>
                         </div>
                     </div>
@@ -1830,18 +2094,46 @@ FILE: ./docs/risc-v/add.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">R-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0000000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs2</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0110011</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x33</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                0000000 | rs2 | rs1 | 000 | rd | 0110011
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">R-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x33</span>
                             </div>
                         </div>
                     </div>
@@ -2014,18 +2306,34 @@ FILE: ./docs/risc-v/jal.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">J-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">1101111</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x6F</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                imm | rd | 1101111
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">J-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x6F</span>
                             </div>
                         </div>
                     </div>
@@ -2192,18 +2500,46 @@ FILE: ./docs/risc-v/beq.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">B-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs2</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">1100011</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x63</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                imm | rs2 | rs1 | 000 | imm | 1100011
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">B-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x63</span>
                             </div>
                         </div>
                     </div>
@@ -2376,18 +2712,42 @@ FILE: ./docs/risc-v/lw.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">I-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">offset</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">010</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0000011</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x03</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                offset | rs1 | 010 | rd | 0000011
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">I-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x03</span>
                             </div>
                         </div>
                     </div>
@@ -2560,18 +2920,46 @@ FILE: ./docs/risc-v/sw.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">S-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs2</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">010</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0100011</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x23</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                imm | rs2 | rs1 | 010 | imm | 0100011
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">S-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x23</span>
                             </div>
                         </div>
                     </div>
@@ -2744,18 +3132,42 @@ FILE: ./docs/risc-v/ecall.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">I-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">000000000000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">00000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">00000</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">1110011</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x73</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                000000000000 | 00000 | 000 | 00000 | 1110011
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">I-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x73</span>
                             </div>
                         </div>
                     </div>
@@ -2910,18 +3322,26 @@ FILE: ./docs/risc-v/addi.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">I-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">...</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x13</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                ...
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">I-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x13</span>
                             </div>
                         </div>
                     </div>
@@ -3094,18 +3514,34 @@ FILE: ./docs/risc-v/lui.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">U-Type</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm[31:12]</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0110111</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x37</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                imm[31:12] | rd | 0110111
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">U-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x37</span>
                             </div>
                         </div>
                     </div>
@@ -3272,18 +3708,26 @@ FILE: ./docs/x86-64/lea.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">REX.W + 8D /r</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">8D</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                REX.W + 8D /r
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">8D</span>
                             </div>
                         </div>
                     </div>
@@ -3450,18 +3894,26 @@ FILE: ./docs/x86-64/sub.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">REX.W + 29 /r</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">29</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                REX.W + 29 /r
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">29</span>
                             </div>
                         </div>
                     </div>
@@ -3628,18 +4080,26 @@ FILE: ./docs/x86-64/pop.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">58+rd</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">58</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                58+rd
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">58</span>
                             </div>
                         </div>
                     </div>
@@ -3800,18 +4260,26 @@ FILE: ./docs/x86-64/add.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">REX.W + 01 /r</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">01</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                REX.W + 01 /r
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">01</span>
                             </div>
                         </div>
                     </div>
@@ -3978,18 +4446,26 @@ FILE: ./docs/x86-64/push.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">50+rd</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">50</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                50+rd
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">50</span>
                             </div>
                         </div>
                     </div>
@@ -4150,18 +4626,26 @@ FILE: ./docs/x86-64/ret.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">C3</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">C3</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                C3
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">C3</span>
                             </div>
                         </div>
                     </div>
@@ -4316,18 +4800,26 @@ FILE: ./docs/x86-64/call.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">E8 cd</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">E8</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                E8 cd
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">E8</span>
                             </div>
                         </div>
                     </div>
@@ -4488,18 +4980,26 @@ FILE: ./docs/x86-64/mov.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">REX.W + 89 /r</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">89</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                REX.W + 89 /r
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">89</span>
                             </div>
                         </div>
                     </div>
@@ -4666,18 +5166,26 @@ FILE: ./docs/x86-64/jmp.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">E9 cd</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">E9</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                E9 cd
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">E9</span>
                             </div>
                         </div>
                     </div>
@@ -4838,18 +5346,26 @@ FILE: ./docs/x86-64/je.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">CISC Variable</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">74 cb</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">74</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                74 cb
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">CISC Variable</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">74</span>
                             </div>
                         </div>
                     </div>
@@ -5010,18 +5526,26 @@ FILE: ./docs/armv8/cmp_(immediate).html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Alias</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">sf 110001 00 imm12 Rn 11111 (SUBS)</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0xF1 (SUBS)</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                sf 110001 00 imm12 Rn 11111 (SUBS)
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Alias</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0xF1 (SUBS)</span>
                             </div>
                         </div>
                     </div>
@@ -5188,18 +5712,26 @@ FILE: ./docs/armv8/b.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Branch</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">000101 imm26</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x14</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                000101 imm26
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Branch</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x14</span>
                             </div>
                         </div>
                     </div>
@@ -5360,18 +5892,26 @@ FILE: ./docs/armv8/add_(shifted).html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Data Proc</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">sf 0001011 shift 0 Rm imm6 Rn Rd</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x8B (Base)</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                sf 0001011 shift 0 Rm imm6 Rn Rd
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Data Proc</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x8B (Base)</span>
                             </div>
                         </div>
                     </div>
@@ -5544,18 +6084,26 @@ FILE: ./docs/armv8/ldr_(register).html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Load/Store</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">1x 111000 011 Rm 011 S 10 Rn Rt</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0xB8</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                1x 111000 011 Rm 011 S 10 Rn Rt
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Load/Store</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0xB8</span>
                             </div>
                         </div>
                     </div>
@@ -5728,18 +6276,26 @@ FILE: ./docs/armv8/str_(immediate).html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Load/Store</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">1x 111001 00 imm12 Rn Rt</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0xF9</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                1x 111001 00 imm12 Rn Rt
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Load/Store</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0xF9</span>
                             </div>
                         </div>
                     </div>
@@ -5912,18 +6468,26 @@ FILE: ./docs/armv8/adr.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Data Proc</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0 immlo 10000 immhi Rd</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x10</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                0 immlo 10000 immhi Rd
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Data Proc</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x10</span>
                             </div>
                         </div>
                     </div>
@@ -6090,18 +6654,26 @@ FILE: ./docs/armv8/mov_(register).html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Alias</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">sf 0101010 00 Rm 000000 Rn Rd (ORR)</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0xAA (ORR)</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                sf 0101010 00 Rm 000000 Rn Rd (ORR)
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Alias</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0xAA (ORR)</span>
                             </div>
                         </div>
                     </div>
@@ -6268,18 +6840,26 @@ FILE: ./docs/armv8/sub_(extended).html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Data Proc</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">sf 0001011 001 Rm option imm3 Rn Rd</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0xCB</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                sf 0001011 001 Rm option imm3 Rn Rd
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Data Proc</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0xCB</span>
                             </div>
                         </div>
                     </div>
@@ -6452,18 +7032,26 @@ FILE: ./docs/armv8/bl.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Branch</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">100101 imm26</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x94</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                100101 imm26
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Branch</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x94</span>
                             </div>
                         </div>
                     </div>
@@ -6624,18 +7212,26 @@ FILE: ./docs/armv8/cbz.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">Branch</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">sf 011010 imm19 Rt</span>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">0x34</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                sf 011010 imm19 Rt
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Branch</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x34</span>
                             </div>
                         </div>
                     </div>
@@ -6734,18 +7330,26 @@ FILE: ./templates/instruction_detail.html
                 <div class="flex-col">
                     <div class="panel">
                         <h3>Encoding</h3>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Format</span>
-                            <span class="badge">{{ instruction.encoding.format }}</span>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                {% for part in instruction.encoding.visual_parts %}
+                                <div class="bit-box">
+                                    <span class="bit-value">{{ part }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div style="margin-bottom: 12px;">
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Opcode</span>
-                            <span style="font-family: var(--font-mono); color: var(--text-main);">{{ instruction.encoding.hex_opcode }}</span>
-                        </div>
-                        <div>
-                            <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Binary Pattern</span>
-                            <div style="font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; margin-top: 5px; color: var(--accent);">
-                                {{ instruction.encoding.binary_pattern }}
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">{{ instruction.encoding.format }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">{{ instruction.encoding.hex_opcode }}</span>
                             </div>
                         </div>
                     </div>

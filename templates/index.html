@@ -1,24 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="hero">
-    <div class="container">
-        <h1>Instruction Set Database</h1>
-        <p style="margin: 0 auto;">A modern, open-source reference for CPU architectures. <br>Select an architecture below to browse the instruction set.</p>
+<div class="hero-wrapper">
+    <canvas id="hero-canvas"></canvas>
+    
+    <div class="hero-content container">
+        <div class="hero-text">
+            <h1 class="glitch-text" data-text="ISA_DB">ISA_DB</h1>
+            <p>The modern, open-source reference for CPU instruction sets.</p>
+        </div>
+
+        <div class="cmd-palette">
+            <div class="cmd-icon">>_</div>
+            <input type="text" id="hero-search" placeholder="Search instructions (e.g. MOV, RISC-V)...">
+            <div class="cmd-hint">CTRL + K</div>
+            <div id="hero-results" class="search-dropdown"></div>
+        </div>
+
+        <div class="arch-grid-hero">
+            {% for arch in architectures %}
+            <a href="{{ arch|lower }}.html" class="arch-card-glass">
+                <div class="card-icon">{{ arch[0] }}</div>
+                <div class="card-info">
+                    <h2>{{ arch }}</h2>
+                    <span>{{ counts[arch] }} Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="arch-grid">
-        {% for arch in architectures %}
-        <a href="{{ arch|lower }}.html" class="arch-card">
-            <div>
-                <h2>{{ arch }}</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">{{ counts[arch] }} Instructions &rarr;</div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
+<script src="/animation.js"></script>
+<script>
+    // Link Hero Search to the main logic
+    const heroInput = document.getElementById('hero-search');
+    const heroResults = document.getElementById('hero-results');
+    
+    // Simple redirection of events to your existing search logic (if modularized)
+    // Or simpler: just duplicate the event listener for this specific input
+    if(heroInput) {
+        heroInput.addEventListener('input', (e) => {
+            // ... (Copy search logic here or use shared function) ...
+            // Ideally, import the logic from search.js if you convert it to a module
+        });
+    }
+</script>
 {% endblock %}

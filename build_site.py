@@ -67,6 +67,9 @@ def generate_site(master_db):
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
+    if os.path.exists('animation.js'):
+        shutil.copy('animation.js', os.path.join(OUTPUT_DIR, 'animation.js'))
+
     # 2. Copy Assets (CSS & JS)
     # Copies from ROOT to DOCS folder
     if os.path.exists('style.css'):
