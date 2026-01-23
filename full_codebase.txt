@@ -281,6 +281,208 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 .search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
 .search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
 
+/* --- Advanced Hero Styles --- */
+.hero-wrapper {
+    position: relative;
+    height: 90vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.hero-text h1 {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
+}
+
+/* --- Command Palette Search --- */
+.cmd-palette {
+    background: rgba(20, 20, 25, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin: 40px auto;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cmd-palette:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 2px var(--accent), 0 30px 60px -10px rgba(56, 189, 248, 0.2);
+}
+
+.cmd-icon {
+    font-family: 'JetBrains Mono';
+    color: var(--accent);
+    padding: 0 15px;
+    font-size: 1.2rem;
+}
+
+.cmd-palette input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.cmd-hint {
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+/* --- Glass Cards --- */
+.arch-grid-hero {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.arch-card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 12px;
+    width: 200px;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
+}
+
+.arch-card-glass:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+    transform: translateY(-10px);
+}
+
+.card-icon {
+    font-family: 'JetBrains Mono';
+    font-size: 2rem;
+    color: var(--text-muted);
+    opacity: 0.2;
+}
+
+.card-info h2 { font-size: 1.2rem; margin: 0; color: #fff; }
+.card-info span { font-size: 0.8rem; color: var(--accent); }
+
+
+==================================================
+FILE: ./animation.js
+==================================================
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let particles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.5)'; // Your accent color
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    particles = [];
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Draw particles
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx*dx + dy*dy);
+            
+            if (distance < 150) {
+                ctx.strokeStyle = `rgba(56, 189, 248, ${0.1 - distance/1500})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resize);
+resize();
+init();
+animate();
+
+
+==================================================
+FILE: ./.gitignore
+==================================================
+full_codebase.txt
+
 
 ==================================================
 FILE: ./build_site.py
@@ -353,6 +555,9 @@ def generate_site(master_db):
     
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
+
+    if os.path.exists('animation.js'):
+        shutil.copy('animation.js', os.path.join(OUTPUT_DIR, 'animation.js'))
 
     # 2. Copy Assets (CSS & JS)
     # Copies from ROOT to DOCS folder
@@ -1074,6 +1279,202 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 .search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
 .search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
 
+/* --- Advanced Hero Styles --- */
+.hero-wrapper {
+    position: relative;
+    height: 90vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.hero-text h1 {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
+}
+
+/* --- Command Palette Search --- */
+.cmd-palette {
+    background: rgba(20, 20, 25, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin: 40px auto;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cmd-palette:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 2px var(--accent), 0 30px 60px -10px rgba(56, 189, 248, 0.2);
+}
+
+.cmd-icon {
+    font-family: 'JetBrains Mono';
+    color: var(--accent);
+    padding: 0 15px;
+    font-size: 1.2rem;
+}
+
+.cmd-palette input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.cmd-hint {
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+/* --- Glass Cards --- */
+.arch-grid-hero {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.arch-card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 12px;
+    width: 200px;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
+}
+
+.arch-card-glass:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+    transform: translateY(-10px);
+}
+
+.card-icon {
+    font-family: 'JetBrains Mono';
+    font-size: 2rem;
+    color: var(--text-muted);
+    opacity: 0.2;
+}
+
+.card-info h2 { font-size: 1.2rem; margin: 0; color: #fff; }
+.card-info span { font-size: 0.8rem; color: var(--accent); }
+
+
+==================================================
+FILE: ./docs/animation.js
+==================================================
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let particles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.5)'; // Your accent color
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    particles = [];
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Draw particles
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx*dx + dy*dy);
+            
+            if (distance < 150) {
+                ctx.strokeStyle = `rgba(56, 189, 248, ${0.1 - distance/1500})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resize);
+resize();
+init();
+animate();
+
 
 ==================================================
 FILE: ./docs/armv8.html
@@ -1084,7 +1485,7 @@ FILE: ./docs/armv8.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1223,7 +1624,7 @@ FILE: ./docs/index.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1245,42 +1646,121 @@ FILE: ./docs/index.html
     <script src="/search.js"></script>
 
     
-<div class="hero">
-    <div class="container">
-        <h1>Instruction Set Database</h1>
-        <p style="margin: 0 auto;">A modern, open-source reference for CPU architectures. <br>Select an architecture below to browse the instruction set.</p>
+<div class="hero-wrapper">
+    <canvas id="hero-canvas"></canvas>
+    
+    <div class="hero-content container">
+        <div class="hero-text">
+            <h1 class="glitch-text" data-text="ISA_DB">ISA_DB</h1>
+            <p>The modern, open-source reference for CPU instruction sets.</p>
+        </div>
+
+        <div class="cmd-palette">
+            <div class="cmd-icon">>_</div>
+            <input type="text" id="hero-search" placeholder="Search instructions (e.g. MOV, RISC-V)...">
+            <div class="cmd-hint">CTRL + K</div>
+            <div id="hero-results" class="search-dropdown"></div>
+        </div>
+
+        <div class="arch-grid-hero">
+            
+            <a href="risc-v.html" class="arch-card-glass">
+                <div class="card-icon">R</div>
+                <div class="card-info">
+                    <h2>RISC-V</h2>
+                    <span>10 Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <a href="x86-64.html" class="arch-card-glass">
+                <div class="card-icon">x</div>
+                <div class="card-info">
+                    <h2>x86-64</h2>
+                    <span>10 Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <a href="armv8.html" class="arch-card-glass">
+                <div class="card-icon">A</div>
+                <div class="card-info">
+                    <h2>ARMv8</h2>
+                    <span>10 Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+        </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="arch-grid">
+<script src="animation.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroInput = document.getElementById('hero-search');
+        const heroResults = document.getElementById('hero-results');
         
-        <a href="risc-v.html" class="arch-card">
-            <div>
-                <h2>RISC-V</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">10 Instructions &rarr;</div>
-        </a>
-        
-        <a href="x86-64.html" class="arch-card">
-            <div>
-                <h2>x86-64</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">10 Instructions &rarr;</div>
-        </a>
-        
-        <a href="armv8.html" class="arch-card">
-            <div>
-                <h2>ARMv8</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">10 Instructions &rarr;</div>
-        </a>
-        
-    </div>
-</div>
+        let searchIndex = [];
+
+        // Fetch the search index
+        fetch('search.json')
+            .then(res => res.json())
+            .then(data => searchIndex = data)
+            .catch(err => console.error("Search index failed:", err));
+
+        // Search Event Listener
+        if(heroInput) {
+            heroInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                heroResults.innerHTML = '';
+                
+                if (query.length < 2) {
+                    heroResults.style.display = 'none';
+                    return;
+                }
+
+                const results = searchIndex.filter(item => 
+                    item.label.toLowerCase().includes(query) || 
+                    item.summary.toLowerCase().includes(query)
+                );
+
+                if (results.length > 0) {
+                    heroResults.style.display = 'block';
+                    results.slice(0, 6).forEach(result => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <a href="${result.url}">
+                                <div class="result-title">${result.label}</div>
+                                <div class="result-summary">${result.summary}</div>
+                            </a>
+                        `;
+                        heroResults.appendChild(div);
+                    });
+                } else {
+                    heroResults.style.display = 'none';
+                }
+            });
+
+            // Keyboard Shortcut (Ctrl+K)
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    heroInput.focus();
+                }
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.cmd-palette')) {
+                    heroResults.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
 
 
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
@@ -1298,7 +1778,7 @@ FILE: ./docs/x86-64.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1432,7 +1912,7 @@ FILE: ./docs/risc-v.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1566,7 +2046,7 @@ FILE: ./docs/risc-v/auipc.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUIPC - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1760,7 +2240,7 @@ FILE: ./docs/risc-v/sub.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1972,7 +2452,7 @@ FILE: ./docs/risc-v/add.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2184,7 +2664,7 @@ FILE: ./docs/risc-v/jal.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAL - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2378,7 +2858,7 @@ FILE: ./docs/risc-v/beq.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BEQ - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2590,7 +3070,7 @@ FILE: ./docs/risc-v/lw.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LW - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2798,7 +3278,7 @@ FILE: ./docs/risc-v/sw.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SW - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3010,7 +3490,7 @@ FILE: ./docs/risc-v/ecall.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECALL - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3200,7 +3680,7 @@ FILE: ./docs/risc-v/addi.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADDI - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3392,7 +3872,7 @@ FILE: ./docs/risc-v/lui.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUI - RISC-V</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3586,7 +4066,7 @@ FILE: ./docs/x86-64/lea.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEA - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3772,7 +4252,7 @@ FILE: ./docs/x86-64/sub.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3958,7 +4438,7 @@ FILE: ./docs/x86-64/pop.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POP - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4138,7 +4618,7 @@ FILE: ./docs/x86-64/add.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4324,7 +4804,7 @@ FILE: ./docs/x86-64/push.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUSH - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4504,7 +4984,7 @@ FILE: ./docs/x86-64/ret.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RET - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4678,7 +5158,7 @@ FILE: ./docs/x86-64/call.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALL - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4858,7 +5338,7 @@ FILE: ./docs/x86-64/mov.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOV - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5044,7 +5524,7 @@ FILE: ./docs/x86-64/jmp.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMP - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5224,7 +5704,7 @@ FILE: ./docs/x86-64/je.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JE - x86-64</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5404,7 +5884,7 @@ FILE: ./docs/armv8/cmp_(immediate).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMP (immediate) - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5590,7 +6070,7 @@ FILE: ./docs/armv8/b.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5770,7 +6250,7 @@ FILE: ./docs/armv8/add_(shifted).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD (shifted) - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5962,7 +6442,7 @@ FILE: ./docs/armv8/ldr_(register).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR (register) - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6154,7 +6634,7 @@ FILE: ./docs/armv8/str_(immediate).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STR (immediate) - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6346,7 +6826,7 @@ FILE: ./docs/armv8/adr.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADR - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6532,7 +7012,7 @@ FILE: ./docs/armv8/mov_(register).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOV (register) - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6718,7 +7198,7 @@ FILE: ./docs/armv8/sub_(extended).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB (extended) - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6910,7 +7390,7 @@ FILE: ./docs/armv8/bl.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BL - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -7090,7 +7570,7 @@ FILE: ./docs/armv8/cbz.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CBZ - ARMv8</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -7421,26 +7901,103 @@ FILE: ./templates/index.html
 {% extends "base.html" %}
 
 {% block content %}
-<div class="hero">
-    <div class="container">
-        <h1>Instruction Set Database</h1>
-        <p style="margin: 0 auto;">A modern, open-source reference for CPU architectures. <br>Select an architecture below to browse the instruction set.</p>
+<div class="hero-wrapper">
+    <canvas id="hero-canvas"></canvas>
+    
+    <div class="hero-content container">
+        <div class="hero-text">
+            <h1 class="glitch-text" data-text="ISA_DB">ISA_DB</h1>
+            <p>The modern, open-source reference for CPU instruction sets.</p>
+        </div>
+
+        <div class="cmd-palette">
+            <div class="cmd-icon">>_</div>
+            <input type="text" id="hero-search" placeholder="Search instructions (e.g. MOV, RISC-V)...">
+            <div class="cmd-hint">CTRL + K</div>
+            <div id="hero-results" class="search-dropdown"></div>
+        </div>
+
+        <div class="arch-grid-hero">
+            {% for arch in architectures %}
+            <a href="{{ arch|lower }}.html" class="arch-card-glass">
+                <div class="card-icon">{{ arch[0] }}</div>
+                <div class="card-info">
+                    <h2>{{ arch }}</h2>
+                    <span>{{ counts[arch] }} Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="arch-grid">
-        {% for arch in architectures %}
-        <a href="{{ arch|lower }}.html" class="arch-card">
-            <div>
-                <h2>{{ arch }}</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">{{ counts[arch] }} Instructions &rarr;</div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
+<script src="animation.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroInput = document.getElementById('hero-search');
+        const heroResults = document.getElementById('hero-results');
+        
+        let searchIndex = [];
+
+        // Fetch the search index
+        fetch('search.json')
+            .then(res => res.json())
+            .then(data => searchIndex = data)
+            .catch(err => console.error("Search index failed:", err));
+
+        // Search Event Listener
+        if(heroInput) {
+            heroInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                heroResults.innerHTML = '';
+                
+                if (query.length < 2) {
+                    heroResults.style.display = 'none';
+                    return;
+                }
+
+                const results = searchIndex.filter(item => 
+                    item.label.toLowerCase().includes(query) || 
+                    item.summary.toLowerCase().includes(query)
+                );
+
+                if (results.length > 0) {
+                    heroResults.style.display = 'block';
+                    results.slice(0, 6).forEach(result => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <a href="${result.url}">
+                                <div class="result-title">${result.label}</div>
+                                <div class="result-summary">${result.summary}</div>
+                            </a>
+                        `;
+                        heroResults.appendChild(div);
+                    });
+                } else {
+                    heroResults.style.display = 'none';
+                }
+            });
+
+            // Keyboard Shortcut (Ctrl+K)
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    heroInput.focus();
+                }
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.cmd-palette')) {
+                    heroResults.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}
 
 
@@ -7453,7 +8010,7 @@ FILE: ./templates/base.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ISA Database{% endblock %}</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>

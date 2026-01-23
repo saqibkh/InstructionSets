@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -26,42 +26,121 @@
     <script src="/search.js"></script>
 
     
-<div class="hero">
-    <div class="container">
-        <h1>Instruction Set Database</h1>
-        <p style="margin: 0 auto;">A modern, open-source reference for CPU architectures. <br>Select an architecture below to browse the instruction set.</p>
+<div class="hero-wrapper">
+    <canvas id="hero-canvas"></canvas>
+    
+    <div class="hero-content container">
+        <div class="hero-text">
+            <h1 class="glitch-text" data-text="ISA_DB">ISA_DB</h1>
+            <p>The modern, open-source reference for CPU instruction sets.</p>
+        </div>
+
+        <div class="cmd-palette">
+            <div class="cmd-icon">>_</div>
+            <input type="text" id="hero-search" placeholder="Search instructions (e.g. MOV, RISC-V)...">
+            <div class="cmd-hint">CTRL + K</div>
+            <div id="hero-results" class="search-dropdown"></div>
+        </div>
+
+        <div class="arch-grid-hero">
+            
+            <a href="risc-v.html" class="arch-card-glass">
+                <div class="card-icon">R</div>
+                <div class="card-info">
+                    <h2>RISC-V</h2>
+                    <span>10 Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <a href="x86-64.html" class="arch-card-glass">
+                <div class="card-icon">x</div>
+                <div class="card-info">
+                    <h2>x86-64</h2>
+                    <span>10 Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <a href="armv8.html" class="arch-card-glass">
+                <div class="card-icon">A</div>
+                <div class="card-info">
+                    <h2>ARMv8</h2>
+                    <span>10 Opcodes</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+        </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="arch-grid">
+<script src="animation.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroInput = document.getElementById('hero-search');
+        const heroResults = document.getElementById('hero-results');
         
-        <a href="risc-v.html" class="arch-card">
-            <div>
-                <h2>RISC-V</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">10 Instructions &rarr;</div>
-        </a>
-        
-        <a href="x86-64.html" class="arch-card">
-            <div>
-                <h2>x86-64</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">10 Instructions &rarr;</div>
-        </a>
-        
-        <a href="armv8.html" class="arch-card">
-            <div>
-                <h2>ARMv8</h2>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Reference Manual</p>
-            </div>
-            <div class="count">10 Instructions &rarr;</div>
-        </a>
-        
-    </div>
-</div>
+        let searchIndex = [];
+
+        // Fetch the search index
+        fetch('search.json')
+            .then(res => res.json())
+            .then(data => searchIndex = data)
+            .catch(err => console.error("Search index failed:", err));
+
+        // Search Event Listener
+        if(heroInput) {
+            heroInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                heroResults.innerHTML = '';
+                
+                if (query.length < 2) {
+                    heroResults.style.display = 'none';
+                    return;
+                }
+
+                const results = searchIndex.filter(item => 
+                    item.label.toLowerCase().includes(query) || 
+                    item.summary.toLowerCase().includes(query)
+                );
+
+                if (results.length > 0) {
+                    heroResults.style.display = 'block';
+                    results.slice(0, 6).forEach(result => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <a href="${result.url}">
+                                <div class="result-title">${result.label}</div>
+                                <div class="result-summary">${result.summary}</div>
+                            </a>
+                        `;
+                        heroResults.appendChild(div);
+                    });
+                } else {
+                    heroResults.style.display = 'none';
+                }
+            });
+
+            // Keyboard Shortcut (Ctrl+K)
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    heroInput.focus();
+                }
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.cmd-palette')) {
+                    heroResults.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
 
 
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">

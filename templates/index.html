@@ -32,19 +32,70 @@
     </div>
 </div>
 
-<script src="/animation.js"></script>
+<script src="animation.js"></script>
+
 <script>
-    // Link Hero Search to the main logic
-    const heroInput = document.getElementById('hero-search');
-    const heroResults = document.getElementById('hero-results');
-    
-    // Simple redirection of events to your existing search logic (if modularized)
-    // Or simpler: just duplicate the event listener for this specific input
-    if(heroInput) {
-        heroInput.addEventListener('input', (e) => {
-            // ... (Copy search logic here or use shared function) ...
-            // Ideally, import the logic from search.js if you convert it to a module
-        });
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroInput = document.getElementById('hero-search');
+        const heroResults = document.getElementById('hero-results');
+        
+        let searchIndex = [];
+
+        // Fetch the search index
+        fetch('search.json')
+            .then(res => res.json())
+            .then(data => searchIndex = data)
+            .catch(err => console.error("Search index failed:", err));
+
+        // Search Event Listener
+        if(heroInput) {
+            heroInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                heroResults.innerHTML = '';
+                
+                if (query.length < 2) {
+                    heroResults.style.display = 'none';
+                    return;
+                }
+
+                const results = searchIndex.filter(item => 
+                    item.label.toLowerCase().includes(query) || 
+                    item.summary.toLowerCase().includes(query)
+                );
+
+                if (results.length > 0) {
+                    heroResults.style.display = 'block';
+                    results.slice(0, 6).forEach(result => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <a href="${result.url}">
+                                <div class="result-title">${result.label}</div>
+                                <div class="result-summary">${result.summary}</div>
+                            </a>
+                        `;
+                        heroResults.appendChild(div);
+                    });
+                } else {
+                    heroResults.style.display = 'none';
+                }
+            });
+
+            // Keyboard Shortcut (Ctrl+K)
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    heroInput.focus();
+                }
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.cmd-palette')) {
+                    heroResults.style.display = 'none';
+                }
+            });
+        }
+    });
 </script>
 {% endblock %}

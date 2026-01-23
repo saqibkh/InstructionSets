@@ -217,3 +217,123 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 }
 .search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
 .search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
+
+/* --- Advanced Hero Styles --- */
+.hero-wrapper {
+    position: relative;
+    height: 90vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.hero-text h1 {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
+}
+
+/* --- Command Palette Search --- */
+.cmd-palette {
+    background: rgba(20, 20, 25, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin: 40px auto;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cmd-palette:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 2px var(--accent), 0 30px 60px -10px rgba(56, 189, 248, 0.2);
+}
+
+.cmd-icon {
+    font-family: 'JetBrains Mono';
+    color: var(--accent);
+    padding: 0 15px;
+    font-size: 1.2rem;
+}
+
+.cmd-palette input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.cmd-hint {
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+/* --- Glass Cards --- */
+.arch-grid-hero {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.arch-card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 12px;
+    width: 200px;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
+}
+
+.arch-card-glass:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+    transform: translateY(-10px);
+}
+
+.card-icon {
+    font-family: 'JetBrains Mono';
+    font-size: 2rem;
+    color: var(--text-muted);
+    opacity: 0.2;
+}
+
+.card-info h2 { font-size: 1.2rem; margin: 0; color: #fff; }
+.card-info span { font-size: 0.8rem; color: var(--accent); }
