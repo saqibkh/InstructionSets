@@ -1,0 +1,440 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "MUL",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Multiply",
+      "summary": "Performs a 32-bit (or 64-bit) multiplication of rs1 and rs2 and stores the lower bits in rd.",
+      "syntax": "MUL rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Lower Bits)" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] * R[rs2])[XLEN-1:0];",
+      "example": "MUL x10, x11, x12",
+      "example_note": "x10 = lower bits of x11 * x12."
+    },
+    {
+      "mnemonic": "MULH",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Multiply High Signed",
+      "summary": "Performs a signed multiplication and stores the upper bits of the result.",
+      "syntax": "MULH rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 001 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Upper Bits)" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = (sext(R[rs1]) * sext(R[rs2])) >> XLEN;",
+      "example": "MULH x5, x6, x7",
+      "example_note": "Get upper bits of signed multiplication."
+    },
+    {
+      "mnemonic": "MRET",
+      "architecture": "RISC-V",
+      "extension": "Privileged",
+      "full_name": "Machine Return",
+      "summary": "Returns from a machine-mode trap handler.",
+      "syntax": "MRET",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0011000 | 00010 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [],
+      "pseudocode": "PC = MEPC; Priv = MPP; MIE = MPIE;",
+      "example": "MRET",
+      "example_note": "Return to previous privilege level defined in mstatus."
+    },
+    {
+      "mnemonic": "OR",
+      "architecture": "RISC-V",
+      "full_name": "Logical OR",
+      "summary": "Performs a bitwise logical OR operation.",
+      "syntax": "OR rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 110 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] | R[rs2];",
+      "example": "OR x10, x11, x12",
+      "example_note": "Bitwise OR of x11 and x12."
+    },
+    {
+      "mnemonic": "ORI",
+      "architecture": "RISC-V",
+      "full_name": "Logical OR Immediate",
+      "summary": "Performs a bitwise logical OR with a sign-extended immediate.",
+      "syntax": "ORI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "imm[11:0] | rs1 | 110 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Immediate" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] | sext(imm);",
+      "example": "ORI x10, x11, 1",
+      "example_note": "Sets the lowest bit of x11."
+    },
+    {
+      "mnemonic": "REM",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Remainder",
+      "summary": "Computes the signed remainder of division.",
+      "syntax": "REM rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 110 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Remainder)" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] % R[rs2];",
+      "example": "REM x5, x6, x7",
+      "example_note": "Signed remainder."
+    },
+    {
+      "mnemonic": "SB",
+      "architecture": "RISC-V",
+      "full_name": "Store Byte",
+      "summary": "Stores the lowest 8 bits of a register to memory.",
+      "syntax": "SB rs2, offset(rs1)",
+      "encoding": {
+        "format": "S-Type",
+        "binary_pattern": "imm[11:5] | rs2 | rs1 | 000 | imm[4:0] | 0100011",
+        "hex_opcode": "0x23"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Source" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1] + sext(offset)][7:0] = R[rs2][7:0];",
+      "example": "SB x5, 0(x10)",
+      "example_note": "Store low byte of x5 to address in x10."
+    },
+    {
+      "mnemonic": "SH",
+      "architecture": "RISC-V",
+      "full_name": "Store Halfword",
+      "summary": "Stores the lowest 16 bits of a register to memory.",
+      "syntax": "SH rs2, offset(rs1)",
+      "encoding": {
+        "format": "S-Type",
+        "binary_pattern": "imm[11:5] | rs2 | rs1 | 001 | imm[4:0] | 0100011",
+        "hex_opcode": "0x23"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Source" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1] + sext(offset)][15:0] = R[rs2][15:0];",
+      "example": "SH x5, 4(x10)",
+      "example_note": "Store halfword."
+    },
+    {
+      "mnemonic": "SW",
+      "architecture": "RISC-V",
+      "full_name": "Store Word",
+      "summary": "Stores a 32-bit word to memory.",
+      "syntax": "SW rs2, offset(rs1)",
+      "encoding": {
+        "format": "S-Type",
+        "binary_pattern": "imm[11:5] | rs2 | rs1 | 010 | imm[4:0] | 0100011",
+        "hex_opcode": "0x23"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Source" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1] + sext(offset)][31:0] = R[rs2][31:0];",
+      "example": "SW x5, 8(x10)",
+      "example_note": "Store word."
+    },
+    {
+      "mnemonic": "SD",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Store Doubleword",
+      "summary": "Stores a 64-bit doubleword to memory.",
+      "syntax": "SD rs2, offset(rs1)",
+      "encoding": {
+        "format": "S-Type",
+        "binary_pattern": "imm[11:5] | rs2 | rs1 | 011 | imm[4:0] | 0100011",
+        "hex_opcode": "0x23"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Source" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1] + sext(offset)][63:0] = R[rs2][63:0];",
+      "example": "SD x5, 16(x10)",
+      "example_note": "Store 64-bit value."
+    },
+    {
+      "mnemonic": "SLL",
+      "architecture": "RISC-V",
+      "full_name": "Shift Left Logical",
+      "summary": "Shifts a register left by the number of bits specified in another register.",
+      "syntax": "SLL rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 001 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] << (R[rs2] & 0x1F);",
+      "example": "SLL x10, x11, x12",
+      "example_note": "Shift x11 left by x12."
+    },
+    {
+      "mnemonic": "SLLI",
+      "architecture": "RISC-V",
+      "full_name": "Shift Left Logical Immediate",
+      "summary": "Shifts a register left by a constant amount.",
+      "syntax": "SLLI rd, rs1, shamt",
+      "encoding": {
+        "format": "I-Type (Shift)",
+        "binary_pattern": "0000000 | shamt | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "shamt", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] << shamt;",
+      "example": "SLLI x10, x11, 2",
+      "example_note": "Multiply x11 by 4."
+    },
+    {
+      "mnemonic": "SRL",
+      "architecture": "RISC-V",
+      "full_name": "Shift Right Logical",
+      "summary": "Shifts a register right, shifting in zeros.",
+      "syntax": "SRL rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 101 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] >> (R[rs2] & 0x1F);",
+      "example": "SRL x10, x11, x12",
+      "example_note": "Logical right shift."
+    },
+    {
+      "mnemonic": "SRA",
+      "architecture": "RISC-V",
+      "full_name": "Shift Right Arithmetic",
+      "summary": "Shifts a register right, preserving the sign bit.",
+      "syntax": "SRA rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100000 | rs2 | rs1 | 101 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] >>s (R[rs2] & 0x1F);",
+      "example": "SRA x10, x11, x12",
+      "example_note": "Arithmetic right shift (sign preserved)."
+    },
+    {
+      "mnemonic": "SLT",
+      "architecture": "RISC-V",
+      "full_name": "Set Less Than",
+      "summary": "Sets rd to 1 if rs1 < rs2 (signed), otherwise 0.",
+      "syntax": "SLT rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 010 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] <s R[rs2]) ? 1 : 0;",
+      "example": "SLT x5, x6, x7",
+      "example_note": "Check if x6 < x7."
+    },
+    {
+      "mnemonic": "SLTI",
+      "architecture": "RISC-V",
+      "full_name": "Set Less Than Immediate",
+      "summary": "Sets rd to 1 if rs1 < immediate (signed), otherwise 0.",
+      "syntax": "SLTI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "imm[11:0] | rs1 | 010 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Immediate" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] <s sext(imm)) ? 1 : 0;",
+      "example": "SLTI x5, x6, 10",
+      "example_note": "Check if x6 < 10."
+    },
+    {
+      "mnemonic": "SC.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Store Conditional Word",
+      "summary": "Conditionally stores a word to memory if the reservation (from LR) is still valid.",
+      "syntax": "SC.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00011 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Success/Fail)" },
+        { "name": "rs2", "desc": "Source Value" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "if (ReservationValid) { M[R[rs1]] = R[rs2]; R[rd] = 0; } else { R[rd] = 1; }",
+      "example": "SC.W x10, x11, (x12)",
+      "example_note": "Try to store x11 to x12. x10=0 on success."
+    },
+    {
+      "mnemonic": "SFENCE.VMA",
+      "architecture": "RISC-V",
+      "extension": "Privileged",
+      "full_name": "Supervisor Fence Virtual Memory",
+      "summary": "Synchronizes updates to in-memory address translation data structures (TLB flush).",
+      "syntax": "SFENCE.VMA rs1, rs2",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0001001 | rs2 | rs1 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Virtual Address (optional)" },
+        { "name": "rs2", "desc": "ASID (optional)" }
+      ],
+      "pseudocode": "Fence(PageTable);",
+      "example": "SFENCE.VMA x0, x0",
+      "example_note": "Flush all TLB entries."
+    },
+    {
+      "mnemonic": "SRET",
+      "architecture": "RISC-V",
+      "extension": "Privileged",
+      "full_name": "Supervisor Return",
+      "summary": "Returns from a supervisor-mode trap handler.",
+      "syntax": "SRET",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0001000 | 00010 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [],
+      "pseudocode": "PC = SEPC; Priv = SPP; SIE = SPIE;",
+      "example": "SRET",
+      "example_note": "Return from exception/interrupt in supervisor mode."
+    },
+    {
+      "mnemonic": "WFI",
+      "architecture": "RISC-V",
+      "extension": "Privileged",
+      "full_name": "Wait for Interrupt",
+      "summary": "Provides a hint to the implementation that the current hart can be stalled until an interrupt occurs.",
+      "syntax": "WFI",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0001000 | 00101 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [],
+      "pseudocode": "while(!Interrupt) { /* low power state */ }",
+      "example": "WFI",
+      "example_note": "Pause execution until interrupt."
+    },
+    {
+      "mnemonic": "XOR",
+      "architecture": "RISC-V",
+      "full_name": "Logical XOR",
+      "summary": "Performs a bitwise logical Exclusive-OR operation.",
+      "syntax": "XOR rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 100 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] ^ R[rs2];",
+      "example": "XOR x10, x11, x12",
+      "example_note": "x10 = x11 ^ x12"
+    },
+    {
+      "mnemonic": "XORI",
+      "architecture": "RISC-V",
+      "full_name": "Logical XOR Immediate",
+      "summary": "Performs a bitwise logical Exclusive-OR with a sign-extended immediate.",
+      "syntax": "XORI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "imm[11:0] | rs1 | 100 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Immediate" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] ^ sext(imm);",
+      "example": "XORI x10, x11, -1",
+      "example_note": "Bitwise invert (NOT) x11."
+    }
+  ]
+}

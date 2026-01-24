@@ -1,0 +1,208 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "ADD",
+      "architecture": "RISC-V",
+      "full_name": "Add",
+      "summary": "Adds the contents of two registers.",
+      "syntax": "ADD rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination Register" },
+        { "name": "rs1", "desc": "Source Register 1" },
+        { "name": "rs2", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] + R[rs2];",
+      "example": "ADD x10, x11, x12",
+      "example_note": "Computes x11 + x12 and stores the result in x10."
+    },
+    {
+      "mnemonic": "ADDI",
+      "architecture": "RISC-V",
+      "full_name": "Add Immediate",
+      "summary": "Adds a register and a sign-extended 12-bit immediate value.",
+      "syntax": "ADDI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "imm[11:0] | rs1 | 000 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination Register" },
+        { "name": "rs1", "desc": "Source Register" },
+        { "name": "imm", "desc": "12-bit Signed Immediate" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] + sext(imm);",
+      "example": "ADDI x5, x6, 10",
+      "example_note": "Adds 10 to the value in x6 and stores it in x5."
+    },
+    {
+      "mnemonic": "ADDW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Add Word",
+      "summary": "Adds two 32-bit registers and sign-extends the result to 64 bits.",
+      "syntax": "ADDW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 000 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination Register" },
+        { "name": "rs1", "desc": "Source Register 1" },
+        { "name": "rs2", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1] + R[rs2])[31:0]);",
+      "example": "ADDW x10, x11, x12",
+      "example_note": "Performs 32-bit addition of x11 and x12, result is sign-extended to 64 bits."
+    },
+    {
+      "mnemonic": "ADDIW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Add Immediate Word",
+      "summary": "Adds a 12-bit immediate to a register (32-bit arithmetic) and sign-extends to 64 bits.",
+      "syntax": "ADDIW rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "imm[11:0] | rs1 | 000 | rd | 0011011",
+        "hex_opcode": "0x1B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination Register" },
+        { "name": "rs1", "desc": "Source Register" },
+        { "name": "imm", "desc": "12-bit Signed Immediate" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1] + sext(imm))[31:0]);",
+      "example": "ADDIW x5, x6, 5",
+      "example_note": "Adds 5 to lower 32 bits of x6, sign-extends result to x5."
+    },
+    {
+      "mnemonic": "AND",
+      "architecture": "RISC-V",
+      "full_name": "Logical AND",
+      "summary": "Performs a bitwise logical AND operation between two registers.",
+      "syntax": "AND rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 111 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination Register" },
+        { "name": "rs1", "desc": "Source Register 1" },
+        { "name": "rs2", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] & R[rs2];",
+      "example": "AND x10, x11, x12",
+      "example_note": "Bitwise AND of x11 and x12."
+    },
+    {
+      "mnemonic": "ANDI",
+      "architecture": "RISC-V",
+      "full_name": "Logical AND Immediate",
+      "summary": "Performs a bitwise logical AND between a register and a sign-extended 12-bit immediate.",
+      "syntax": "ANDI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "imm[11:0] | rs1 | 111 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination Register" },
+        { "name": "rs1", "desc": "Source Register" },
+        { "name": "imm", "desc": "12-bit Signed Immediate" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] & sext(imm);",
+      "example": "ANDI x10, x11, 15",
+      "example_note": "Keeps only the lowest 4 bits of x11 (mask 0xF)."
+    },
+    {
+      "mnemonic": "AUIPC",
+      "architecture": "RISC-V",
+      "full_name": "Add Upper Immediate to PC",
+      "summary": "Adds a 20-bit upper immediate to the Program Counter, used for PC-relative addressing.",
+      "syntax": "AUIPC rd, imm",
+      "encoding": {
+        "format": "U-Type",
+        "binary_pattern": "imm[31:12] | rd | 0010111",
+        "hex_opcode": "0x17"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination Register" },
+        { "name": "imm", "desc": "20-bit Upper Immediate" }
+      ],
+      "pseudocode": "R[rd] = PC + (imm << 12);",
+      "example": "AUIPC x10, 0x1000",
+      "example_note": "Adds 0x1000000 to the current PC and stores in x10."
+    },
+    {
+      "mnemonic": "AMOADD.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Add Word",
+      "summary": "Atomically adds a value to a word in memory.",
+      "syntax": "AMOADD.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00000 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Value to Add" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp + R[rs2]; R[rd] = temp;",
+      "example": "AMOADD.W x10, x11, (x12)",
+      "example_note": "Atomically adds x11 to memory at x12. Old value stored in x10."
+    },
+    {
+      "mnemonic": "AMOSWAP.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Swap Word",
+      "summary": "Atomically swaps a value in memory with a register.",
+      "syntax": "AMOSWAP.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00001 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "New Value" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = R[rs2]; R[rd] = temp;",
+      "example": "AMOSWAP.W x10, x11, (x12)",
+      "example_note": "Writes x11 to memory at x12, loads old memory value into x10."
+    },
+    {
+      "mnemonic": "AMOAND.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic AND Word",
+      "summary": "Atomically performs bitwise AND on a word in memory.",
+      "syntax": "AMOAND.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "01100 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp & R[rs2]; R[rd] = temp;",
+      "example": "AMOAND.W x5, x6, (x7)",
+      "example_note": "Atomically ANDs memory at x7 with x6."
+    }
+  ]
+}

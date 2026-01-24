@@ -1,0 +1,315 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "CSRRC",
+      "architecture": "RISC-V",
+      "extension": "Zicsr",
+      "full_name": "Control Status Register Read and Clear",
+      "summary": "Reads the old value of the CSR, then clears bits in the CSR based on the mask in rs1.",
+      "syntax": "CSRRC rd, csr, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "csr | rs1 | 011 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "csr", "desc": "CSR Address" },
+        { "name": "rs1", "desc": "Bit Mask" }
+      ],
+      "pseudocode": "t = CSRs[csr]; CSRs[csr] = t & ~R[rs1]; R[rd] = t;",
+      "example": "CSRRC x10, sstatus, x5",
+      "example_note": "Clears bits in 'sstatus' where x5 is 1."
+    },
+    {
+      "mnemonic": "CSRRWI",
+      "architecture": "RISC-V",
+      "extension": "Zicsr",
+      "full_name": "CSR Read/Write Immediate",
+      "summary": "Updates a CSR using a 5-bit unsigned immediate (zimm) instead of a register.",
+      "syntax": "CSRRWI rd, csr, uimm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "csr | uimm | 101 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "csr", "desc": "CSR Address" },
+        { "name": "uimm", "desc": "5-bit Unsigned Imm" }
+      ],
+      "pseudocode": "t = CSRs[csr]; CSRs[csr] = zext(uimm); R[rd] = t;",
+      "example": "CSRRWI x0, 0x001, 0",
+      "example_note": "Writes 0 to CSR 0x001."
+    },
+    {
+      "mnemonic": "CSRRSI",
+      "architecture": "RISC-V",
+      "extension": "Zicsr",
+      "full_name": "CSR Read and Set Immediate",
+      "summary": "Sets bits in a CSR using a 5-bit unsigned immediate.",
+      "syntax": "CSRRSI rd, csr, uimm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "csr | uimm | 110 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "csr", "desc": "CSR Address" },
+        { "name": "uimm", "desc": "Bit Mask" }
+      ],
+      "pseudocode": "t = CSRs[csr]; CSRs[csr] = t | zext(uimm); R[rd] = t;",
+      "example": "CSRRSI x0, sstatus, 1",
+      "example_note": "Sets bit 0 of sstatus."
+    },
+    {
+      "mnemonic": "CSRRCI",
+      "architecture": "RISC-V",
+      "extension": "Zicsr",
+      "full_name": "CSR Read and Clear Immediate",
+      "summary": "Clears bits in a CSR using a 5-bit unsigned immediate.",
+      "syntax": "CSRRCI rd, csr, uimm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "csr | uimm | 111 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "csr", "desc": "CSR Address" },
+        { "name": "uimm", "desc": "Bit Mask" }
+      ],
+      "pseudocode": "t = CSRs[csr]; CSRs[csr] = t & ~zext(uimm); R[rd] = t;",
+      "example": "CSRRCI x0, sstatus, 2",
+      "example_note": "Clears bit 1 of sstatus."
+    },
+    {
+      "mnemonic": "FLD",
+      "architecture": "RISC-V",
+      "extension": "D (Double)",
+      "full_name": "Float Load Double",
+      "summary": "Loads a 64-bit double-precision floating-point value from memory.",
+      "syntax": "FLD rd, offset(rs1)",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "offset | rs1 | 011 | rd | 0000111",
+        "hex_opcode": "0x07"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Float Reg)" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "F[rd] = M[R[rs1] + sext(offset)][63:0];",
+      "example": "FLD f1, 8(x10)",
+      "example_note": "Loads double from address x10+8."
+    },
+    {
+      "mnemonic": "FSD",
+      "architecture": "RISC-V",
+      "extension": "D (Double)",
+      "full_name": "Float Store Double",
+      "summary": "Stores a 64-bit double-precision floating-point value to memory.",
+      "syntax": "FSD rs2, offset(rs1)",
+      "encoding": {
+        "format": "S-Type",
+        "binary_pattern": "imm[11:5] | rs2 | rs1 | 011 | imm[4:0] | 0100111",
+        "hex_opcode": "0x27"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Src (Float Reg)" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1] + sext(offset)][63:0] = F[rs2];",
+      "example": "FSD f1, 16(x2)",
+      "example_note": "Stores f1 to stack+16."
+    },
+    {
+      "mnemonic": "FADD.D",
+      "architecture": "RISC-V",
+      "extension": "D (Double)",
+      "full_name": "Float Add Double",
+      "summary": "Performs double-precision floating-point addition.",
+      "syntax": "FADD.D rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] + F[rs2];",
+      "example": "FADD.D f0, f1, f2",
+      "example_note": "64-bit float addition."
+    },
+    {
+      "mnemonic": "FSUB.D",
+      "architecture": "RISC-V",
+      "extension": "D (Double)",
+      "full_name": "Float Subtract Double",
+      "summary": "Performs double-precision floating-point subtraction.",
+      "syntax": "FSUB.D rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000101 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] - F[rs2];",
+      "example": "FSUB.D f0, f1, f2",
+      "example_note": "64-bit float subtraction."
+    },
+    {
+      "mnemonic": "FMUL.D",
+      "architecture": "RISC-V",
+      "extension": "D (Double)",
+      "full_name": "Float Multiply Double",
+      "summary": "Performs double-precision floating-point multiplication.",
+      "syntax": "FMUL.D rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001001 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] * F[rs2];",
+      "example": "FMUL.D f0, f1, f2",
+      "example_note": "64-bit float multiplication."
+    },
+    {
+      "mnemonic": "FDIV.D",
+      "architecture": "RISC-V",
+      "extension": "D (Double)",
+      "full_name": "Float Divide Double",
+      "summary": "Performs double-precision floating-point division.",
+      "syntax": "FDIV.D rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001101 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] / F[rs2];",
+      "example": "FDIV.D f0, f1, f2",
+      "example_note": "64-bit float division."
+    },
+    {
+      "mnemonic": "AMOOR.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic OR Word",
+      "summary": "Atomically performs bitwise OR on a word in memory.",
+      "syntax": "AMOOR.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "01000 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp | R[rs2]; R[rd] = temp;",
+      "example": "AMOOR.W x10, x11, (x12)",
+      "example_note": "Atomic OR."
+    },
+    {
+      "mnemonic": "AMOXOR.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic XOR Word",
+      "summary": "Atomically performs bitwise XOR on a word in memory.",
+      "syntax": "AMOXOR.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00100 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp ^ R[rs2]; R[rd] = temp;",
+      "example": "AMOXOR.W x10, x11, (x12)",
+      "example_note": "Atomic XOR."
+    },
+    {
+      "mnemonic": "AMOMAX.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Max Word",
+      "summary": "Atomically updates memory with the maximum of the memory value and register value (Signed).",
+      "syntax": "AMOMAX.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "10100 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = max(temp, R[rs2]); R[rd] = temp;",
+      "example": "AMOMAX.W x10, x11, (x12)",
+      "example_note": "Atomic Signed Max."
+    },
+    {
+      "mnemonic": "AMOMIN.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Min Word",
+      "summary": "Atomically updates memory with the minimum of the memory value and register value (Signed).",
+      "syntax": "AMOMIN.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "10000 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = min(temp, R[rs2]); R[rd] = temp;",
+      "example": "AMOMIN.W x10, x11, (x12)",
+      "example_note": "Atomic Signed Min."
+    },
+    {
+      "mnemonic": "URET",
+      "architecture": "RISC-V",
+      "extension": "Privileged",
+      "full_name": "User Return",
+      "summary": "Returns from a user-mode trap handler (requires N extension).",
+      "syntax": "URET",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0000000 | 00010 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [],
+      "pseudocode": "PC = UEPC; Priv = U; UIE = UPIE;",
+      "example": "URET",
+      "example_note": "Return from User-mode exception."
+    }
+  ]
+}

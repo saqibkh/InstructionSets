@@ -78,6 +78,83 @@
                     <td style="color: var(--text-muted);">Adds a register and a sign-extended 12-bit immediate value.</td>
                 </tr>
                 
+                <tr onclick="window.location='addiw/';" style="cursor: pointer;">
+                    <td class="mono">ADDIW</td>
+                    <td style="font-weight: 500;">Add Immediate Word</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Adds a 12-bit immediate to a register (32-bit arithmetic) and sign-extends to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='addw/';" style="cursor: pointer;">
+                    <td class="mono">ADDW</td>
+                    <td style="font-weight: 500;">Add Word</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Adds two 32-bit registers and sign-extends the result to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='amoadd.w/';" style="cursor: pointer;">
+                    <td class="mono">AMOADD.W</td>
+                    <td style="font-weight: 500;">Atomic Add Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Atomically adds a value to a word in memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='amoand.w/';" style="cursor: pointer;">
+                    <td class="mono">AMOAND.W</td>
+                    <td style="font-weight: 500;">Atomic AND Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Atomically performs bitwise AND on a word in memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='amomax.w/';" style="cursor: pointer;">
+                    <td class="mono">AMOMAX.W</td>
+                    <td style="font-weight: 500;">Atomic Max Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Atomically updates memory with the maximum of the memory value and register value (Signed).</td>
+                </tr>
+                
+                <tr onclick="window.location='amomin.w/';" style="cursor: pointer;">
+                    <td class="mono">AMOMIN.W</td>
+                    <td style="font-weight: 500;">Atomic Min Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Atomically updates memory with the minimum of the memory value and register value (Signed).</td>
+                </tr>
+                
+                <tr onclick="window.location='amoor.w/';" style="cursor: pointer;">
+                    <td class="mono">AMOOR.W</td>
+                    <td style="font-weight: 500;">Atomic OR Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Atomically performs bitwise OR on a word in memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='amoswap.w/';" style="cursor: pointer;">
+                    <td class="mono">AMOSWAP.W</td>
+                    <td style="font-weight: 500;">Atomic Swap Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Atomically swaps a value in memory with a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='amoxor.w/';" style="cursor: pointer;">
+                    <td class="mono">AMOXOR.W</td>
+                    <td style="font-weight: 500;">Atomic XOR Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Atomically performs bitwise XOR on a word in memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">AND</td>
+                    <td style="font-weight: 500;">Logical AND</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise logical AND operation between two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='andi/';" style="cursor: pointer;">
+                    <td class="mono">ANDI</td>
+                    <td style="font-weight: 500;">Logical AND Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise logical AND between a register and a sign-extended 12-bit immediate.</td>
+                </tr>
+                
                 <tr onclick="window.location='auipc/';" style="cursor: pointer;">
                     <td class="mono">AUIPC</td>
                     <td style="font-weight: 500;">Add Upper Immediate to PC</td>
@@ -92,6 +169,90 @@
                     <td style="color: var(--text-muted);">Branches if two registers are equal.</td>
                 </tr>
                 
+                <tr onclick="window.location='bge/';" style="cursor: pointer;">
+                    <td class="mono">BGE</td>
+                    <td style="font-weight: 500;">Branch if Greater or Equal</td>
+                    <td><span class="badge">B-Type</span></td>
+                    <td style="color: var(--text-muted);">Take the branch if rs1 is greater than or equal to rs2 (signed).</td>
+                </tr>
+                
+                <tr onclick="window.location='blt/';" style="cursor: pointer;">
+                    <td class="mono">BLT</td>
+                    <td style="font-weight: 500;">Branch if Less Than</td>
+                    <td><span class="badge">B-Type</span></td>
+                    <td style="color: var(--text-muted);">Take the branch if rs1 is less than rs2 (signed).</td>
+                </tr>
+                
+                <tr onclick="window.location='bne/';" style="cursor: pointer;">
+                    <td class="mono">BNE</td>
+                    <td style="font-weight: 500;">Branch if Not Equal</td>
+                    <td><span class="badge">B-Type</span></td>
+                    <td style="color: var(--text-muted);">Take the branch if registers rs1 and rs2 are not equal.</td>
+                </tr>
+                
+                <tr onclick="window.location='csrrc/';" style="cursor: pointer;">
+                    <td class="mono">CSRRC</td>
+                    <td style="font-weight: 500;">Control Status Register Read and Clear</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Reads the old value of the CSR, then clears bits in the CSR based on the mask in rs1.</td>
+                </tr>
+                
+                <tr onclick="window.location='csrrci/';" style="cursor: pointer;">
+                    <td class="mono">CSRRCI</td>
+                    <td style="font-weight: 500;">CSR Read and Clear Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Clears bits in a CSR using a 5-bit unsigned immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='csrrs/';" style="cursor: pointer;">
+                    <td class="mono">CSRRS</td>
+                    <td style="font-weight: 500;">Control Status Register Read and Set</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Reads the value of the CSR into rd, then bitwise ORs the value in rs1 into the CSR (setting bits).</td>
+                </tr>
+                
+                <tr onclick="window.location='csrrsi/';" style="cursor: pointer;">
+                    <td class="mono">CSRRSI</td>
+                    <td style="font-weight: 500;">CSR Read and Set Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Sets bits in a CSR using a 5-bit unsigned immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='csrrw/';" style="cursor: pointer;">
+                    <td class="mono">CSRRW</td>
+                    <td style="font-weight: 500;">Control Status Register Read/Write</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Atomically swaps values in the CSRs. Reads the old value of the CSR into rd, then writes rs1 to the CSR.</td>
+                </tr>
+                
+                <tr onclick="window.location='csrrwi/';" style="cursor: pointer;">
+                    <td class="mono">CSRRWI</td>
+                    <td style="font-weight: 500;">CSR Read/Write Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Updates a CSR using a 5-bit unsigned immediate (zimm) instead of a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='div/';" style="cursor: pointer;">
+                    <td class="mono">DIV</td>
+                    <td style="font-weight: 500;">Divide</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs signed integer division.</td>
+                </tr>
+                
+                <tr onclick="window.location='divu/';" style="cursor: pointer;">
+                    <td class="mono">DIVU</td>
+                    <td style="font-weight: 500;">Divide Unsigned</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs unsigned integer division.</td>
+                </tr>
+                
+                <tr onclick="window.location='ebreak/';" style="cursor: pointer;">
+                    <td class="mono">EBREAK</td>
+                    <td style="font-weight: 500;">Environment Break</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Used by debuggers to cause control to be transferred back to a debugging environment.</td>
+                </tr>
+                
                 <tr onclick="window.location='ecall/';" style="cursor: pointer;">
                     <td class="mono">ECALL</td>
                     <td style="font-weight: 500;">Environment Call</td>
@@ -99,11 +260,151 @@
                     <td style="color: var(--text-muted);">Triggers a service request to the execution environment (OS).</td>
                 </tr>
                 
+                <tr onclick="window.location='fadd.d/';" style="cursor: pointer;">
+                    <td class="mono">FADD.D</td>
+                    <td style="font-weight: 500;">Float Add Double</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs double-precision floating-point addition.</td>
+                </tr>
+                
+                <tr onclick="window.location='fadd.s/';" style="cursor: pointer;">
+                    <td class="mono">FADD.S</td>
+                    <td style="font-weight: 500;">Float Add (Single)</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs single-precision floating-point addition.</td>
+                </tr>
+                
+                <tr onclick="window.location='fdiv.d/';" style="cursor: pointer;">
+                    <td class="mono">FDIV.D</td>
+                    <td style="font-weight: 500;">Float Divide Double</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs double-precision floating-point division.</td>
+                </tr>
+                
+                <tr onclick="window.location='fence/';" style="cursor: pointer;">
+                    <td class="mono">FENCE</td>
+                    <td style="font-weight: 500;">Fence</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Orders device I/O and memory accesses.</td>
+                </tr>
+                
+                <tr onclick="window.location='fld/';" style="cursor: pointer;">
+                    <td class="mono">FLD</td>
+                    <td style="font-weight: 500;">Float Load Double</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads a 64-bit double-precision floating-point value from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='flw/';" style="cursor: pointer;">
+                    <td class="mono">FLW</td>
+                    <td style="font-weight: 500;">Float Load Word</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads a single-precision floating-point value from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmul.d/';" style="cursor: pointer;">
+                    <td class="mono">FMUL.D</td>
+                    <td style="font-weight: 500;">Float Multiply Double</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs double-precision floating-point multiplication.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsd/';" style="cursor: pointer;">
+                    <td class="mono">FSD</td>
+                    <td style="font-weight: 500;">Float Store Double</td>
+                    <td><span class="badge">S-Type</span></td>
+                    <td style="color: var(--text-muted);">Stores a 64-bit double-precision floating-point value to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsub.d/';" style="cursor: pointer;">
+                    <td class="mono">FSUB.D</td>
+                    <td style="font-weight: 500;">Float Subtract Double</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs double-precision floating-point subtraction.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsw/';" style="cursor: pointer;">
+                    <td class="mono">FSW</td>
+                    <td style="font-weight: 500;">Float Store Word</td>
+                    <td><span class="badge">S-Type</span></td>
+                    <td style="color: var(--text-muted);">Stores a single-precision floating-point value to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='hfence.gvma/';" style="cursor: pointer;">
+                    <td class="mono">HFENCE.GVMA</td>
+                    <td style="font-weight: 500;">Hypervisor Fence Guest Virtual Memory Address</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Synchronizes updates to guest physical address translation data structures.</td>
+                </tr>
+                
+                <tr onclick="window.location='hfence.vvma/';" style="cursor: pointer;">
+                    <td class="mono">HFENCE.VVMA</td>
+                    <td style="font-weight: 500;">Hypervisor Fence Virtual Virtual Memory Address</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Synchronizes updates to VS-stage address translation data structures.</td>
+                </tr>
+                
                 <tr onclick="window.location='jal/';" style="cursor: pointer;">
                     <td class="mono">JAL</td>
                     <td style="font-weight: 500;">Jump and Link</td>
                     <td><span class="badge">J-Type</span></td>
                     <td style="color: var(--text-muted);">Jumps to an offset and saves return address.</td>
+                </tr>
+                
+                <tr onclick="window.location='jalr/';" style="cursor: pointer;">
+                    <td class="mono">JALR</td>
+                    <td style="font-weight: 500;">Jump and Link Register</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Jumps to address in rs1 + offset, saving return address to rd.</td>
+                </tr>
+                
+                <tr onclick="window.location='lb/';" style="cursor: pointer;">
+                    <td class="mono">LB</td>
+                    <td style="font-weight: 500;">Load Byte</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads an 8-bit byte from memory and sign-extends it to the register width.</td>
+                </tr>
+                
+                <tr onclick="window.location='lbu/';" style="cursor: pointer;">
+                    <td class="mono">LBU</td>
+                    <td style="font-weight: 500;">Load Byte Unsigned</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads an 8-bit byte from memory and zero-extends it.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld/';" style="cursor: pointer;">
+                    <td class="mono">LD</td>
+                    <td style="font-weight: 500;">Load Doubleword</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads a 64-bit doubleword from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='lh/';" style="cursor: pointer;">
+                    <td class="mono">LH</td>
+                    <td style="font-weight: 500;">Load Halfword</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads a 16-bit halfword from memory and sign-extends it.</td>
+                </tr>
+                
+                <tr onclick="window.location='lhu/';" style="cursor: pointer;">
+                    <td class="mono">LHU</td>
+                    <td style="font-weight: 500;">Load Halfword Unsigned</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads a 16-bit halfword from memory and zero-extends it.</td>
+                </tr>
+                
+                <tr onclick="window.location='lr.d/';" style="cursor: pointer;">
+                    <td class="mono">LR.D</td>
+                    <td style="font-weight: 500;">Load Reserved Doubleword</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Loads a doubleword from memory and registers a reservation set.</td>
+                </tr>
+                
+                <tr onclick="window.location='lr.w/';" style="cursor: pointer;">
+                    <td class="mono">LR.W</td>
+                    <td style="font-weight: 500;">Load Reserved Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from memory and registers a reservation set for the address.</td>
                 </tr>
                 
                 <tr onclick="window.location='lui/';" style="cursor: pointer;">
@@ -120,6 +421,139 @@
                     <td style="color: var(--text-muted);">Loads a 32-bit word from memory.</td>
                 </tr>
                 
+                <tr onclick="window.location='lwu/';" style="cursor: pointer;">
+                    <td class="mono">LWU</td>
+                    <td style="font-weight: 500;">Load Word Unsigned</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Loads a 32-bit word from memory and zero-extends it to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='mret/';" style="cursor: pointer;">
+                    <td class="mono">MRET</td>
+                    <td style="font-weight: 500;">Machine Return</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Returns from a machine-mode trap handler.</td>
+                </tr>
+                
+                <tr onclick="window.location='mul/';" style="cursor: pointer;">
+                    <td class="mono">MUL</td>
+                    <td style="font-weight: 500;">Multiply</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a 32-bit (or 64-bit) multiplication of rs1 and rs2 and stores the lower bits in rd.</td>
+                </tr>
+                
+                <tr onclick="window.location='mulh/';" style="cursor: pointer;">
+                    <td class="mono">MULH</td>
+                    <td style="font-weight: 500;">Multiply High Signed</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a signed multiplication and stores the upper bits of the result.</td>
+                </tr>
+                
+                <tr onclick="window.location='or/';" style="cursor: pointer;">
+                    <td class="mono">OR</td>
+                    <td style="font-weight: 500;">Logical OR</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise logical OR operation.</td>
+                </tr>
+                
+                <tr onclick="window.location='ori/';" style="cursor: pointer;">
+                    <td class="mono">ORI</td>
+                    <td style="font-weight: 500;">Logical OR Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise logical OR with a sign-extended immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='rem/';" style="cursor: pointer;">
+                    <td class="mono">REM</td>
+                    <td style="font-weight: 500;">Remainder</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Computes the signed remainder of division.</td>
+                </tr>
+                
+                <tr onclick="window.location='sb/';" style="cursor: pointer;">
+                    <td class="mono">SB</td>
+                    <td style="font-weight: 500;">Store Byte</td>
+                    <td><span class="badge">S-Type</span></td>
+                    <td style="color: var(--text-muted);">Stores the lowest 8 bits of a register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='sc.w/';" style="cursor: pointer;">
+                    <td class="mono">SC.W</td>
+                    <td style="font-weight: 500;">Store Conditional Word</td>
+                    <td><span class="badge">R-Type (Atomic)</span></td>
+                    <td style="color: var(--text-muted);">Conditionally stores a word to memory if the reservation (from LR) is still valid.</td>
+                </tr>
+                
+                <tr onclick="window.location='sd/';" style="cursor: pointer;">
+                    <td class="mono">SD</td>
+                    <td style="font-weight: 500;">Store Doubleword</td>
+                    <td><span class="badge">S-Type</span></td>
+                    <td style="color: var(--text-muted);">Stores a 64-bit doubleword to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='sfence.vma/';" style="cursor: pointer;">
+                    <td class="mono">SFENCE.VMA</td>
+                    <td style="font-weight: 500;">Supervisor Fence Virtual Memory</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Synchronizes updates to in-memory address translation data structures (TLB flush).</td>
+                </tr>
+                
+                <tr onclick="window.location='sh/';" style="cursor: pointer;">
+                    <td class="mono">SH</td>
+                    <td style="font-weight: 500;">Store Halfword</td>
+                    <td><span class="badge">S-Type</span></td>
+                    <td style="color: var(--text-muted);">Stores the lowest 16 bits of a register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='sll/';" style="cursor: pointer;">
+                    <td class="mono">SLL</td>
+                    <td style="font-weight: 500;">Shift Left Logical</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Shifts a register left by the number of bits specified in another register.</td>
+                </tr>
+                
+                <tr onclick="window.location='slli/';" style="cursor: pointer;">
+                    <td class="mono">SLLI</td>
+                    <td style="font-weight: 500;">Shift Left Logical Immediate</td>
+                    <td><span class="badge">I-Type (Shift)</span></td>
+                    <td style="color: var(--text-muted);">Shifts a register left by a constant amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='slt/';" style="cursor: pointer;">
+                    <td class="mono">SLT</td>
+                    <td style="font-weight: 500;">Set Less Than</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Sets rd to 1 if rs1 < rs2 (signed), otherwise 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='slti/';" style="cursor: pointer;">
+                    <td class="mono">SLTI</td>
+                    <td style="font-weight: 500;">Set Less Than Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Sets rd to 1 if rs1 < immediate (signed), otherwise 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='sra/';" style="cursor: pointer;">
+                    <td class="mono">SRA</td>
+                    <td style="font-weight: 500;">Shift Right Arithmetic</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Shifts a register right, preserving the sign bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='sret/';" style="cursor: pointer;">
+                    <td class="mono">SRET</td>
+                    <td style="font-weight: 500;">Supervisor Return</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Returns from a supervisor-mode trap handler.</td>
+                </tr>
+                
+                <tr onclick="window.location='srl/';" style="cursor: pointer;">
+                    <td class="mono">SRL</td>
+                    <td style="font-weight: 500;">Shift Right Logical</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Shifts a register right, shifting in zeros.</td>
+                </tr>
+                
                 <tr onclick="window.location='sub/';" style="cursor: pointer;">
                     <td class="mono">SUB</td>
                     <td style="font-weight: 500;">Subtract</td>
@@ -132,6 +566,34 @@
                     <td style="font-weight: 500;">Store Word</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Stores a 32-bit word to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='uret/';" style="cursor: pointer;">
+                    <td class="mono">URET</td>
+                    <td style="font-weight: 500;">User Return</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Returns from a user-mode trap handler (requires N extension).</td>
+                </tr>
+                
+                <tr onclick="window.location='wfi/';" style="cursor: pointer;">
+                    <td class="mono">WFI</td>
+                    <td style="font-weight: 500;">Wait for Interrupt</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Provides a hint to the implementation that the current hart can be stalled until an interrupt occurs.</td>
+                </tr>
+                
+                <tr onclick="window.location='xor/';" style="cursor: pointer;">
+                    <td class="mono">XOR</td>
+                    <td style="font-weight: 500;">Logical XOR</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise logical Exclusive-OR operation.</td>
+                </tr>
+                
+                <tr onclick="window.location='xori/';" style="cursor: pointer;">
+                    <td class="mono">XORI</td>
+                    <td style="font-weight: 500;">Logical XOR Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise logical Exclusive-OR with a sign-extended immediate.</td>
                 </tr>
                 
             </tbody>

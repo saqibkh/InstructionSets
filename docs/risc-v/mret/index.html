@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Returns from a machine-mode trap handler.">
+    <title>MRET - RISC-V</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../../search.json";
+    </script>
+    
+    <script src="../../static/search.js"></script>
+
+    
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>RISC-V Instructions</h3>
+        <div class="sidebar-list">
+            
+            <a href="../add/" 
+               class="">
+                ADD
+            </a>
+            
+            <a href="../addi/" 
+               class="">
+                ADDI
+            </a>
+            
+            <a href="../addiw/" 
+               class="">
+                ADDIW
+            </a>
+            
+            <a href="../addw/" 
+               class="">
+                ADDW
+            </a>
+            
+            <a href="../amoadd.w/" 
+               class="">
+                AMOADD.W
+            </a>
+            
+            <a href="../amoand.w/" 
+               class="">
+                AMOAND.W
+            </a>
+            
+            <a href="../amomax.w/" 
+               class="">
+                AMOMAX.W
+            </a>
+            
+            <a href="../amomin.w/" 
+               class="">
+                AMOMIN.W
+            </a>
+            
+            <a href="../amoor.w/" 
+               class="">
+                AMOOR.W
+            </a>
+            
+            <a href="../amoswap.w/" 
+               class="">
+                AMOSWAP.W
+            </a>
+            
+            <a href="../amoxor.w/" 
+               class="">
+                AMOXOR.W
+            </a>
+            
+            <a href="../and/" 
+               class="">
+                AND
+            </a>
+            
+            <a href="../andi/" 
+               class="">
+                ANDI
+            </a>
+            
+            <a href="../auipc/" 
+               class="">
+                AUIPC
+            </a>
+            
+            <a href="../beq/" 
+               class="">
+                BEQ
+            </a>
+            
+            <a href="../bge/" 
+               class="">
+                BGE
+            </a>
+            
+            <a href="../blt/" 
+               class="">
+                BLT
+            </a>
+            
+            <a href="../bne/" 
+               class="">
+                BNE
+            </a>
+            
+            <a href="../csrrc/" 
+               class="">
+                CSRRC
+            </a>
+            
+            <a href="../csrrci/" 
+               class="">
+                CSRRCI
+            </a>
+            
+            <a href="../csrrs/" 
+               class="">
+                CSRRS
+            </a>
+            
+            <a href="../csrrsi/" 
+               class="">
+                CSRRSI
+            </a>
+            
+            <a href="../csrrw/" 
+               class="">
+                CSRRW
+            </a>
+            
+            <a href="../csrrwi/" 
+               class="">
+                CSRRWI
+            </a>
+            
+            <a href="../div/" 
+               class="">
+                DIV
+            </a>
+            
+            <a href="../divu/" 
+               class="">
+                DIVU
+            </a>
+            
+            <a href="../ebreak/" 
+               class="">
+                EBREAK
+            </a>
+            
+            <a href="../ecall/" 
+               class="">
+                ECALL
+            </a>
+            
+            <a href="../fadd.d/" 
+               class="">
+                FADD.D
+            </a>
+            
+            <a href="../fadd.s/" 
+               class="">
+                FADD.S
+            </a>
+            
+            <a href="../fdiv.d/" 
+               class="">
+                FDIV.D
+            </a>
+            
+            <a href="../fence/" 
+               class="">
+                FENCE
+            </a>
+            
+            <a href="../fld/" 
+               class="">
+                FLD
+            </a>
+            
+            <a href="../flw/" 
+               class="">
+                FLW
+            </a>
+            
+            <a href="../fmul.d/" 
+               class="">
+                FMUL.D
+            </a>
+            
+            <a href="../fsd/" 
+               class="">
+                FSD
+            </a>
+            
+            <a href="../fsub.d/" 
+               class="">
+                FSUB.D
+            </a>
+            
+            <a href="../fsw/" 
+               class="">
+                FSW
+            </a>
+            
+            <a href="../hfence.gvma/" 
+               class="">
+                HFENCE.GVMA
+            </a>
+            
+            <a href="../hfence.vvma/" 
+               class="">
+                HFENCE.VVMA
+            </a>
+            
+            <a href="../jal/" 
+               class="">
+                JAL
+            </a>
+            
+            <a href="../jalr/" 
+               class="">
+                JALR
+            </a>
+            
+            <a href="../lb/" 
+               class="">
+                LB
+            </a>
+            
+            <a href="../lbu/" 
+               class="">
+                LBU
+            </a>
+            
+            <a href="../ld/" 
+               class="">
+                LD
+            </a>
+            
+            <a href="../lh/" 
+               class="">
+                LH
+            </a>
+            
+            <a href="../lhu/" 
+               class="">
+                LHU
+            </a>
+            
+            <a href="../lr.d/" 
+               class="">
+                LR.D
+            </a>
+            
+            <a href="../lr.w/" 
+               class="">
+                LR.W
+            </a>
+            
+            <a href="../lui/" 
+               class="">
+                LUI
+            </a>
+            
+            <a href="../lw/" 
+               class="">
+                LW
+            </a>
+            
+            <a href="../lwu/" 
+               class="">
+                LWU
+            </a>
+            
+            <a href="../mret/" 
+               class="active">
+                MRET
+            </a>
+            
+            <a href="../mul/" 
+               class="">
+                MUL
+            </a>
+            
+            <a href="../mulh/" 
+               class="">
+                MULH
+            </a>
+            
+            <a href="../or/" 
+               class="">
+                OR
+            </a>
+            
+            <a href="../ori/" 
+               class="">
+                ORI
+            </a>
+            
+            <a href="../rem/" 
+               class="">
+                REM
+            </a>
+            
+            <a href="../sb/" 
+               class="">
+                SB
+            </a>
+            
+            <a href="../sc.w/" 
+               class="">
+                SC.W
+            </a>
+            
+            <a href="../sd/" 
+               class="">
+                SD
+            </a>
+            
+            <a href="../sfence.vma/" 
+               class="">
+                SFENCE.VMA
+            </a>
+            
+            <a href="../sh/" 
+               class="">
+                SH
+            </a>
+            
+            <a href="../sll/" 
+               class="">
+                SLL
+            </a>
+            
+            <a href="../slli/" 
+               class="">
+                SLLI
+            </a>
+            
+            <a href="../slt/" 
+               class="">
+                SLT
+            </a>
+            
+            <a href="../slti/" 
+               class="">
+                SLTI
+            </a>
+            
+            <a href="../sra/" 
+               class="">
+                SRA
+            </a>
+            
+            <a href="../sret/" 
+               class="">
+                SRET
+            </a>
+            
+            <a href="../srl/" 
+               class="">
+                SRL
+            </a>
+            
+            <a href="../sub/" 
+               class="">
+                SUB
+            </a>
+            
+            <a href="../sw/" 
+               class="">
+                SW
+            </a>
+            
+            <a href="../uret/" 
+               class="">
+                URET
+            </a>
+            
+            <a href="../wfi/" 
+               class="">
+                WFI
+            </a>
+            
+            <a href="../xor/" 
+               class="">
+                XOR
+            </a>
+            
+            <a href="../xori/" 
+               class="">
+                XORI
+            </a>
+            
+        </div>
+        
+        <h3>Meta</h3>
+        <a href="../../risc-v/">← Back to RISC-V</a>
+    </aside>
+
+    <main class="content">
+        <div>
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../risc-v/">RISC-V</a> <span>/</span> 
+                MRET
+            </div>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">MRET</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Machine Return</h2>
+            
+            <div class="syntax-box">
+                MRET
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Returns from a machine-mode trap handler.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
+                <div>
+                    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            PC = MEPC; Priv = MPP; MIE = MPIE;
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel">
+                        <h3>Example</h3>
+                        <div class="code-block" style="margin-bottom: 10px;">MRET</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Return to previous privilege level defined in mstatus.</p>
+                    </div>
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box" data-op="0011000">
+                                    <span class="bit-value">0011000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="00010">
+                                    <span class="bit-value">00010</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="00000">
+                                    <span class="bit-value">00000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="000">
+                                    <span class="bit-value">000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="00000">
+                                    <span class="bit-value">00000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="1110011">
+                                    <span class="bit-value">1110011</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">R-Type (System)</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x73</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../../static/theme.js"></script>
+
+    <script src="../../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

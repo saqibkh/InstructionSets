@@ -1,0 +1,266 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "BEQ",
+      "architecture": "RISC-V",
+      "full_name": "Branch if Equal",
+      "summary": "Take the branch if registers rs1 and rs2 are equal.",
+      "syntax": "BEQ rs1, rs2, offset",
+      "encoding": {
+        "format": "B-Type",
+        "binary_pattern": "imm[12|10:5] | rs2 | rs1 | 000 | imm[4:1|11] | 1100011",
+        "hex_opcode": "0x63"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" },
+        { "name": "offset", "desc": "PC-relative offset" }
+      ],
+      "pseudocode": "if (R[rs1] == R[rs2]) PC += sext(offset);",
+      "example": "BEQ x5, x6, 100",
+      "example_note": "Jump to PC+100 if x5 == x6."
+    },
+    {
+      "mnemonic": "BNE",
+      "architecture": "RISC-V",
+      "full_name": "Branch if Not Equal",
+      "summary": "Take the branch if registers rs1 and rs2 are not equal.",
+      "syntax": "BNE rs1, rs2, offset",
+      "encoding": {
+        "format": "B-Type",
+        "binary_pattern": "imm[12|10:5] | rs2 | rs1 | 001 | imm[4:1|11] | 1100011",
+        "hex_opcode": "0x63"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" },
+        { "name": "offset", "desc": "PC-relative offset" }
+      ],
+      "pseudocode": "if (R[rs1] != R[rs2]) PC += sext(offset);",
+      "example": "BNE x5, x6, loop",
+      "example_note": "Jump to 'loop' if x5 != x6."
+    },
+    {
+      "mnemonic": "BLT",
+      "architecture": "RISC-V",
+      "full_name": "Branch if Less Than",
+      "summary": "Take the branch if rs1 is less than rs2 (signed).",
+      "syntax": "BLT rs1, rs2, offset",
+      "encoding": {
+        "format": "B-Type",
+        "binary_pattern": "imm[12|10:5] | rs2 | rs1 | 100 | imm[4:1|11] | 1100011",
+        "hex_opcode": "0x63"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "if (R[rs1] <s R[rs2]) PC += sext(offset);",
+      "example": "BLT x10, x11, exit",
+      "example_note": "Branch to 'exit' if x10 < x11 (signed comparison)."
+    },
+    {
+      "mnemonic": "BGE",
+      "architecture": "RISC-V",
+      "full_name": "Branch if Greater or Equal",
+      "summary": "Take the branch if rs1 is greater than or equal to rs2 (signed).",
+      "syntax": "BGE rs1, rs2, offset",
+      "encoding": {
+        "format": "B-Type",
+        "binary_pattern": "imm[12|10:5] | rs2 | rs1 | 101 | imm[4:1|11] | 1100011",
+        "hex_opcode": "0x63"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "if (R[rs1] >=s R[rs2]) PC += sext(offset);",
+      "example": "BGE x10, x0, positive",
+      "example_note": "Branch if x10 is positive or zero."
+    },
+    {
+      "mnemonic": "CSRRW",
+      "architecture": "RISC-V",
+      "extension": "Zicsr",
+      "full_name": "Control Status Register Read/Write",
+      "summary": "Atomically swaps values in the CSRs. Reads the old value of the CSR into rd, then writes rs1 to the CSR.",
+      "syntax": "CSRRW rd, csr, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "csr | rs1 | 001 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "csr", "desc": "CSR Address" },
+        { "name": "rs1", "desc": "Src (New Value)" }
+      ],
+      "pseudocode": "t = CSRs[csr]; CSRs[csr] = R[rs1]; R[rd] = t;",
+      "example": "CSRRW x10, scause, x11",
+      "example_note": "Writes x11 to 'scause' CSR and reads old 'scause' into x10."
+    },
+    {
+      "mnemonic": "CSRRS",
+      "architecture": "RISC-V",
+      "extension": "Zicsr",
+      "full_name": "Control Status Register Read and Set",
+      "summary": "Reads the value of the CSR into rd, then bitwise ORs the value in rs1 into the CSR (setting bits).",
+      "syntax": "CSRRS rd, csr, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "csr | rs1 | 010 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "csr", "desc": "CSR Address" },
+        { "name": "rs1", "desc": "Bit Mask" }
+      ],
+      "pseudocode": "t = CSRs[csr]; CSRs[csr] = t | R[rs1]; R[rd] = t;",
+      "example": "CSRRS x0, sstatus, x5",
+      "example_note": "Sets bits in 'sstatus' using mask in x5 (Result discarded)."
+    },
+    {
+      "mnemonic": "DIV",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Divide",
+      "summary": "Performs signed integer division.",
+      "syntax": "DIV rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 100 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Quotient)" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] / R[rs2];",
+      "example": "DIV x10, x11, x12",
+      "example_note": "Signed division of x11 by x12."
+    },
+    {
+      "mnemonic": "DIVU",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Divide Unsigned",
+      "summary": "Performs unsigned integer division.",
+      "syntax": "DIVU rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 101 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] /u R[rs2];",
+      "example": "DIVU x5, x6, x7",
+      "example_note": "Unsigned division."
+    },
+    {
+      "mnemonic": "EBREAK",
+      "architecture": "RISC-V",
+      "full_name": "Environment Break",
+      "summary": "Used by debuggers to cause control to be transferred back to a debugging environment.",
+      "syntax": "EBREAK",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000001 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [],
+      "pseudocode": "RaiseException(Breakpoint);",
+      "example": "EBREAK",
+      "example_note": "Triggers a debugger breakpoint."
+    },
+    {
+      "mnemonic": "FENCE",
+      "architecture": "RISC-V",
+      "full_name": "Fence",
+      "summary": "Orders device I/O and memory accesses.",
+      "syntax": "FENCE pred, succ",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "fm | pred | succ | rs1 | 000 | rd | 0001111",
+        "hex_opcode": "0x0F"
+      },
+      "operands": [
+        { "name": "pred", "desc": "Predecessor Set" },
+        { "name": "succ", "desc": "Successor Set" }
+      ],
+      "pseudocode": "MemoryBarrier(pred, succ);",
+      "example": "FENCE rw, rw",
+      "example_note": "Ensures all previous reads/writes complete before subsequent reads/writes."
+    },
+    {
+      "mnemonic": "FLW",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Load Word",
+      "summary": "Loads a single-precision floating-point value from memory.",
+      "syntax": "FLW rd, offset(rs1)",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "offset | rs1 | 010 | rd | 0000111",
+        "hex_opcode": "0x07"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Float Reg)" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "F[rd] = M[R[rs1] + sext(offset)][31:0];",
+      "example": "FLW f1, 0(x10)",
+      "example_note": "Loads float from address in x10 to f1."
+    },
+    {
+      "mnemonic": "FSW",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Store Word",
+      "summary": "Stores a single-precision floating-point value to memory.",
+      "syntax": "FSW rs2, offset(rs1)",
+      "encoding": {
+        "format": "S-Type",
+        "binary_pattern": "imm[11:5] | rs2 | rs1 | 010 | imm[4:0] | 0100111",
+        "hex_opcode": "0x27"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Src (Float Reg)" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1] + sext(offset)] = F[rs2][31:0];",
+      "example": "FSW f1, 4(x2)",
+      "example_note": "Stores float in f1 to stack + 4."
+    },
+    {
+      "mnemonic": "FADD.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Add (Single)",
+      "summary": "Performs single-precision floating-point addition.",
+      "syntax": "FADD.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] + F[rs2];",
+      "example": "FADD.S f0, f1, f2",
+      "example_note": "f0 = f1 + f2"
+    }
+  ]
+}
