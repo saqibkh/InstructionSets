@@ -1,0 +1,484 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "cfuged",
+      "architecture": "PowerISA",
+      "full_name": "Centrifuge Doubleword",
+      "summary": "Separates bits of the source register into two groups based on a mask (Power10 Scalar).",
+      "syntax": "cfuged RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 68 | /", "hex_opcode": "0x7C000044" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Mask" }],
+      "extension": "Base (Power10)"
+    },
+    {
+      "mnemonic": "pdepd",
+      "architecture": "PowerISA",
+      "full_name": "Parallel Bits Deposit Doubleword",
+      "summary": "Deposits bits from RS to RA under control of mask RB (Scalar).",
+      "syntax": "pdepd RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 196 | /", "hex_opcode": "0x7C0000C4" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Mask" }],
+      "extension": "Base (Power10)"
+    },
+    {
+      "mnemonic": "pextd",
+      "architecture": "PowerISA",
+      "full_name": "Parallel Bits Extract Doubleword",
+      "summary": "Extracts bits from RS to RA under control of mask RB (Scalar).",
+      "syntax": "pextd RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 132 | /", "hex_opcode": "0x7C000084" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Mask" }],
+      "extension": "Base (Power10)"
+    },
+    {
+      "mnemonic": "cntlzdm",
+      "architecture": "PowerISA",
+      "full_name": "Count Leading Zeros Doubleword under Mask",
+      "summary": "Counts leading zeros in RS, but only considering bits set in mask RB.",
+      "syntax": "cntlzdm RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 59 | /", "hex_opcode": "0x7C00003B" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Mask" }],
+      "extension": "Base (Power10)"
+    },
+    {
+      "mnemonic": "cnttzdm",
+      "architecture": "PowerISA",
+      "full_name": "Count Trailing Zeros Doubleword under Mask",
+      "summary": "Counts trailing zeros in RS, but only considering bits set in mask RB.",
+      "syntax": "cnttzdm RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 571 | /", "hex_opcode": "0x7C00047B" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Mask" }],
+      "extension": "Base (Power10)"
+    },
+    {
+      "mnemonic": "crc32b",
+      "architecture": "PowerISA",
+      "full_name": "Cyclic Redundancy Check 32-bit Byte",
+      "summary": "Accumulates a CRC32 checksum using the low byte of RS.",
+      "syntax": "crc32b RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | 0 | 522 | /", "hex_opcode": "0x7C00020A" },
+      "operands": [{ "name": "RA", "desc": "Target/Accumulator" }, { "name": "RS", "desc": "Data" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "crc32h",
+      "architecture": "PowerISA",
+      "full_name": "Cyclic Redundancy Check 32-bit Halfword",
+      "summary": "Accumulates a CRC32 checksum using the low halfword of RS.",
+      "syntax": "crc32h RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | 0 | 586 | /", "hex_opcode": "0x7C00024A" },
+      "operands": [{ "name": "RA", "desc": "Target/Accumulator" }, { "name": "RS", "desc": "Data" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "crc32w",
+      "architecture": "PowerISA",
+      "full_name": "Cyclic Redundancy Check 32-bit Word",
+      "summary": "Accumulates a CRC32 checksum using the word in RS.",
+      "syntax": "crc32w RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | 0 | 650 | /", "hex_opcode": "0x7C00028A" },
+      "operands": [{ "name": "RA", "desc": "Target/Accumulator" }, { "name": "RS", "desc": "Data" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "crc32d",
+      "architecture": "PowerISA",
+      "full_name": "Cyclic Redundancy Check 32-bit Doubleword",
+      "summary": "Accumulates a CRC32 checksum using the doubleword in RS.",
+      "syntax": "crc32d RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | 0 | 714 | /", "hex_opcode": "0x7C0002CA" },
+      "operands": [{ "name": "RA", "desc": "Target/Accumulator" }, { "name": "RS", "desc": "Data" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "pli",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Immediate",
+      "summary": "Loads a 34-bit signed immediate into a register. (Replaces multiple 'lis/ori' instructions).",
+      "syntax": "pli RT, SI34",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | 0 | ... | 14 | RT | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "SI34", "desc": "Immediate" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "xxpermx",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Permute Extended",
+      "summary": "Permutes bytes from two source vectors using a control vector and a 3-bit selector.",
+      "syntax": "xxpermx XT, XA, XB, XC, UIM",
+      "encoding": { "format": "XX4-form", "binary_pattern": "60 | XT | XA | XB | XC | UIM | ...", "hex_opcode": "0xF0000000" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XC", "desc": "Control" }, { "name": "UIM", "desc": "Selector" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxblendvb",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Blend Variable Byte",
+      "summary": "Selects bytes from XA or XB based on the MSB of bytes in XC.",
+      "syntax": "xxblendvb XT, XA, XB, XC",
+      "encoding": { "format": "XX4-form", "binary_pattern": "60 | XT | XA | XB | XC | 33", "hex_opcode": "0xF0000021" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XC", "desc": "Control" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxblendvh",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Blend Variable Halfword",
+      "summary": "Selects halfwords from XA or XB based on the MSB of halfwords in XC.",
+      "syntax": "xxblendvh XT, XA, XB, XC",
+      "encoding": { "format": "XX4-form", "binary_pattern": "60 | XT | XA | XB | XC | 34", "hex_opcode": "0xF0000022" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XC", "desc": "Control" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxblendvw",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Blend Variable Word",
+      "summary": "Selects words from XA or XB based on the MSB of words in XC.",
+      "syntax": "xxblendvw XT, XA, XB, XC",
+      "encoding": { "format": "XX4-form", "binary_pattern": "60 | XT | XA | XB | XC | 35", "hex_opcode": "0xF0000023" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XC", "desc": "Control" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxblendvd",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Blend Variable Doubleword",
+      "summary": "Selects doublewords from XA or XB based on the MSB of doublewords in XC.",
+      "syntax": "xxblendvd XT, XA, XB, XC",
+      "encoding": { "format": "XX4-form", "binary_pattern": "60 | XT | XA | XB | XC | 36", "hex_opcode": "0xF0000024" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XC", "desc": "Control" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "lxvwsx",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Vector Word and Splat Indexed",
+      "summary": "Loads a 32-bit word and replicates it across the vector.",
+      "syntax": "lxvwsx XT, RA, RB",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XT | RA | RB | 364", "hex_opcode": "0x7C00016C" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "mtvsrws",
+      "architecture": "PowerISA",
+      "full_name": "Move To VSR Word and Splat",
+      "summary": "Moves a 32-bit word from a GPR and replicates it across the vector.",
+      "syntax": "mtvsrws XT, RA",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XT | RA | 0 | 243", "hex_opcode": "0x7C0000F3" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "RA", "desc": "Source GPR" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsmaxcdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Maximum Type-C Double-Precision",
+      "summary": "Max of two doubles (IEEE 754-2008 compliant).",
+      "syntax": "xsmaxcdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 152", "hex_opcode": "0xF0000098" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsmincdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Minimum Type-C Double-Precision",
+      "summary": "Min of two doubles (IEEE 754-2008 compliant).",
+      "syntax": "xsmincdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 153", "hex_opcode": "0xF0000099" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsmaxjdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Maximum Type-J Double-Precision",
+      "summary": "Max of two doubles (Java compliant).",
+      "syntax": "xsmaxjdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 160", "hex_opcode": "0xF00000A0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsminjdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Minimum Type-J Double-Precision",
+      "summary": "Min of two doubles (Java compliant).",
+      "syntax": "xsminjdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 168", "hex_opcode": "0xF00000A8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxgenpcvbm",
+      "architecture": "PowerISA",
+      "full_name": "VSX Generate PCV from Byte Mask",
+      "summary": "Generates a Permute Control Vector from a byte mask.",
+      "syntax": "xxgenpcvbm XT, XB, IMM",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | IMM | XB | 916", "hex_opcode": "0xF0000394" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }, { "name": "IMM", "desc": "Mask" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxgenpcvhm",
+      "architecture": "PowerISA",
+      "full_name": "VSX Generate PCV from Halfword Mask",
+      "summary": "Generates a Permute Control Vector from a halfword mask.",
+      "syntax": "xxgenpcvhm XT, XB, IMM",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | IMM | XB | 917", "hex_opcode": "0xF0000395" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }, { "name": "IMM", "desc": "Mask" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxgenpcvwm",
+      "architecture": "PowerISA",
+      "full_name": "VSX Generate PCV from Word Mask",
+      "summary": "Generates a Permute Control Vector from a word mask.",
+      "syntax": "xxgenpcvwm XT, XB, IMM",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | IMM | XB | 948", "hex_opcode": "0xF00003B4" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }, { "name": "IMM", "desc": "Mask" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxgenpcvdm",
+      "architecture": "PowerISA",
+      "full_name": "VSX Generate PCV from Doubleword Mask",
+      "summary": "Generates a Permute Control Vector from a doubleword mask.",
+      "syntax": "xxgenpcvdm XT, XB, IMM",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | IMM | XB | 949", "hex_opcode": "0xF00003B5" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }, { "name": "IMM", "desc": "Mask" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "vclzlsbb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Count Leading Zero Least Significant Bits Byte",
+      "summary": "Counts leading zeros on the LSB of each byte.",
+      "syntax": "vclzlsbb RA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | RA | 0 | vB | 1541", "hex_opcode": "0x10000605" },
+      "operands": [{ "name": "RA", "desc": "Target GPR" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vctzlsbb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Count Trailing Zero Least Significant Bits Byte",
+      "summary": "Counts trailing zeros on the LSB of each byte.",
+      "syntax": "vctzlsbb RA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | RA | 0 | vB | 1543", "hex_opcode": "0x10000607" },
+      "operands": [{ "name": "RA", "desc": "Target GPR" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vstril",
+      "architecture": "PowerISA",
+      "full_name": "Vector String Isolate Left",
+      "summary": "Isolates the leftmost element that matches the condition.",
+      "syntax": "vstril vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 1607", "hex_opcode": "0x10000647" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vstrir",
+      "architecture": "PowerISA",
+      "full_name": "Vector String Isolate Right",
+      "summary": "Isolates the rightmost element that matches the condition.",
+      "syntax": "vstrir vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 1671", "hex_opcode": "0x10000687" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vstril_p",
+      "architecture": "PowerISA",
+      "full_name": "Vector String Isolate Left and Record",
+      "summary": "Isolates the leftmost element and updates CR6.",
+      "syntax": "vstril. vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 1607", "hex_opcode": "0x10000647" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vstrir_p",
+      "architecture": "PowerISA",
+      "full_name": "Vector String Isolate Right and Record",
+      "summary": "Isolates the rightmost element and updates CR6.",
+      "syntax": "vstrir. vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 1671", "hex_opcode": "0x10000687" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vinserth_p",
+      "architecture": "PowerISA",
+      "full_name": "Vector Insert Halfword from GPR",
+      "summary": "Inserts halfword from GPR into Vector.",
+      "syntax": "vinserth vD, RB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | RB | 845", "hex_opcode": "0x1000034D" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "RB", "desc": "Source" }, { "name": "UIM", "desc": "Index" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vinsertw_p",
+      "architecture": "PowerISA",
+      "full_name": "Vector Insert Word from GPR",
+      "summary": "Inserts word from GPR into Vector.",
+      "syntax": "vinsertw vD, RB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | RB | 909", "hex_opcode": "0x1000038D" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "RB", "desc": "Source" }, { "name": "UIM", "desc": "Index" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "vinsertd_p",
+      "architecture": "PowerISA",
+      "full_name": "Vector Insert Doubleword from GPR",
+      "summary": "Inserts doubleword from GPR into Vector.",
+      "syntax": "vinsertd vD, RB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | RB | 973", "hex_opcode": "0x100003CD" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "RB", "desc": "Source" }, { "name": "UIM", "desc": "Index" }],
+      "extension": "Vector (P10)"
+    },
+    {
+      "mnemonic": "xxsplti32dx",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Splat Immediate 32-bit Double Index",
+      "summary": "Splats a 32-bit immediate into a doubleword index.",
+      "syntax": "xxsplti32dx XT, IX, IMM",
+      "encoding": { "format": "8RR:D-form", "binary_pattern": "60 | XT | IX | ...", "hex_opcode": "0xF0000000..." },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "IX", "desc": "Index" }, { "name": "IMM", "desc": "Value" }],
+      "extension": "VSX (P10)"
+    },
+    {
+      "mnemonic": "xxspltib",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Splat Immediate Byte",
+      "summary": "Splats an 8-bit immediate into all bytes.",
+      "syntax": "xxspltib XT, IMM",
+      "encoding": { "format": "X-form", "binary_pattern": "60 | XT | 0 | IMM | 360", "hex_opcode": "0xF0000168" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "IMM", "desc": "Value" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxlxor",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Logical XOR",
+      "summary": "Bitwise XOR.",
+      "syntax": "xxlxor XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 456", "hex_opcode": "0xF00001C8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxlnor",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Logical NOR",
+      "summary": "Bitwise NOR.",
+      "syntax": "xxlnor XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 464", "hex_opcode": "0xF00001D0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "hashchk",
+      "architecture": "PowerISA",
+      "full_name": "Hash Check",
+      "summary": "Checks the hash of the Return Address Stack (ROP Protection).",
+      "syntax": "hashchk RA",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | / | 754 | /", "hex_opcode": "0x7C0005E2" },
+      "operands": [{ "name": "RA", "desc": "Address" }],
+      "extension": "Base (Security)"
+    },
+    {
+      "mnemonic": "hashchkp",
+      "architecture": "PowerISA",
+      "full_name": "Hash Check Privileged",
+      "summary": "Privileged version of hash check.",
+      "syntax": "hashchkp RA",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | / | 722 | /", "hex_opcode": "0x7C0005A2" },
+      "operands": [{ "name": "RA", "desc": "Address" }],
+      "extension": "Privileged (Security)"
+    },
+    {
+      "mnemonic": "hashst",
+      "architecture": "PowerISA",
+      "full_name": "Hash Store",
+      "summary": "Stores the hash of the Return Address.",
+      "syntax": "hashst RA",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | / | 755 | /", "hex_opcode": "0x7C0005E3" },
+      "operands": [{ "name": "RA", "desc": "Address" }],
+      "extension": "Base (Security)"
+    },
+    {
+      "mnemonic": "hashstp",
+      "architecture": "PowerISA",
+      "full_name": "Hash Store Privileged",
+      "summary": "Privileged version of hash store.",
+      "syntax": "hashstp RA",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | / | 723 | /", "hex_opcode": "0x7C0005A3" },
+      "operands": [{ "name": "RA", "desc": "Address" }],
+      "extension": "Privileged (Security)"
+    },
+    {
+      "mnemonic": "psq_l",
+      "architecture": "PowerISA",
+      "full_name": "Paired Single Quantized Load",
+      "summary": "Loads a paired single from memory (Embedded/Legacy).",
+      "syntax": "psq_l FRT, D(RA), W, I",
+      "encoding": { "format": "X-form", "binary_pattern": "56 | FRT | RA | W | I | 6", "hex_opcode": "0xE0000006" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }, { "name": "W", "desc": "Width" }, { "name": "I", "desc": "Scale" }],
+      "extension": "Paired Single"
+    },
+    {
+      "mnemonic": "psq_st",
+      "architecture": "PowerISA",
+      "full_name": "Paired Single Quantized Store",
+      "summary": "Stores a paired single to memory (Embedded/Legacy).",
+      "syntax": "psq_st FRS, D(RA), W, I",
+      "encoding": { "format": "X-form", "binary_pattern": "60 | FRS | RA | W | I | 7", "hex_opcode": "0xF0000007" },
+      "operands": [{ "name": "FRS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }, { "name": "W", "desc": "Width" }, { "name": "I", "desc": "Scale" }],
+      "extension": "Paired Single"
+    },
+    {
+      "mnemonic": "ps_add",
+      "architecture": "PowerISA",
+      "full_name": "Paired Single Add",
+      "summary": "Adds two paired singles.",
+      "syntax": "ps_add FRT, FRA, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "60 | FRT | FRA | FRB | 21", "hex_opcode": "0xF0000015" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "Src A" }, { "name": "FRB", "desc": "Src B" }],
+      "extension": "Paired Single"
+    },
+    {
+      "mnemonic": "ps_sub",
+      "architecture": "PowerISA",
+      "full_name": "Paired Single Subtract",
+      "summary": "Subtracts two paired singles.",
+      "syntax": "ps_sub FRT, FRA, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "60 | FRT | FRA | FRB | 20", "hex_opcode": "0xF0000014" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "Src A" }, { "name": "FRB", "desc": "Src B" }],
+      "extension": "Paired Single"
+    },
+    {
+      "mnemonic": "ps_mul",
+      "architecture": "PowerISA",
+      "full_name": "Paired Single Multiply",
+      "summary": "Multiplies two paired singles.",
+      "syntax": "ps_mul FRT, FRA, FRC",
+      "encoding": { "format": "A-form", "binary_pattern": "60 | FRT | FRA | FRC | 25", "hex_opcode": "0xF0000019" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "Src A" }, { "name": "FRC", "desc": "Src C" }],
+      "extension": "Paired Single"
+    },
+    {
+      "mnemonic": "ps_madd",
+      "architecture": "PowerISA",
+      "full_name": "Paired Single Multiply-Add",
+      "summary": "Multiply-Add on paired singles.",
+      "syntax": "ps_madd FRT, FRA, FRC, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "60 | FRT | FRA | FRB | FRC | 29", "hex_opcode": "0xF000001D" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "Src A" }, { "name": "FRC", "desc": "Src C" }, { "name": "FRB", "desc": "Src B" }],
+      "extension": "Paired Single"
+    }
+  ]
+}

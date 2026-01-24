@@ -1,0 +1,574 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "daddq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Add Quad-Precision",
+      "summary": "Adds two 128-bit DFP numbers.",
+      "syntax": "daddq vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 2 | /", "hex_opcode": "0xFC000002" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dsubq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Subtract Quad-Precision",
+      "summary": "Subtracts two 128-bit DFP numbers.",
+      "syntax": "dsubq vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 514 | /", "hex_opcode": "0xFC000402" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dmulq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Multiply Quad-Precision",
+      "summary": "Multiplies two 128-bit DFP numbers.",
+      "syntax": "dmulq vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 34 | /", "hex_opcode": "0xFC000042" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "ddivq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Divide Quad-Precision",
+      "summary": "Divides two 128-bit DFP numbers.",
+      "syntax": "ddivq vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 546 | /", "hex_opcode": "0xFC000442" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dcmpuq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Compare Unordered Quad-Precision",
+      "summary": "Compares two 128-bit DFP numbers (Non-signaling).",
+      "syntax": "dcmpuq BF, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | BF | / | vA | vB | 642 | /", "hex_opcode": "0xFC000502" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dcmpoq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Compare Ordered Quad-Precision",
+      "summary": "Compares two 128-bit DFP numbers (Signaling).",
+      "syntax": "dcmpoq BF, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | BF | / | vA | vB | 130 | /", "hex_opcode": "0xFC000102" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dquaq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Quantize Quad-Precision",
+      "summary": "Adjusts exponent of 128-bit DFP number.",
+      "syntax": "dquaq vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 66 | /", "hex_opcode": "0xFC000082" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Source" }, { "name": "vB", "desc": "Reference" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "drrndq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Reround Quad-Precision",
+      "summary": "Rerounds a 128-bit DFP number to fewer digits.",
+      "syntax": "drrndq vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 98 | /", "hex_opcode": "0xFC0000C2" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Source" }, { "name": "vB", "desc": "Control" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dcffixq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert From Fixed Quad-Precision",
+      "summary": "Converts 64-bit integer to 128-bit DFP.",
+      "syntax": "dcffixq vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | 0 | vB | 802 | /", "hex_opcode": "0xFC000642" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dctfixq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert To Fixed Quad-Precision",
+      "summary": "Converts 128-bit DFP to 64-bit integer.",
+      "syntax": "dctfixq vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | 0 | vB | 290 | /", "hex_opcode": "0xFC000242" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dxexq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Extract Exponent Quad-Precision",
+      "summary": "Extracts exponent from 128-bit DFP.",
+      "syntax": "dxexq vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | 0 | vB | 354 | /", "hex_opcode": "0xFC0002C2" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "diexq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Insert Exponent Quad-Precision",
+      "summary": "Inserts exponent into 128-bit DFP.",
+      "syntax": "diexq vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 866 | /", "hex_opcode": "0xFC0006C2" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Coeff" }, { "name": "vB", "desc": "Exp" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "denbcdq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Encode BCD Quad-Precision",
+      "summary": "Encodes 128-bit DFP to BCD.",
+      "syntax": "denbcdq vD, vB, S",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | S | vB | 834 | /", "hex_opcode": "0xFC000682" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "S", "desc": "Sign" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "ddedpdq",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Decode DPD Quad-Precision",
+      "summary": "Decodes BCD to 128-bit DFP.",
+      "syntax": "ddedpdq vD, vB, SP",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | SP | vB | 322 | /", "hex_opcode": "0xFC000282" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "SP", "desc": "Sign" }],
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "vspltb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Byte",
+      "summary": "Duplicates a byte element across the vector.",
+      "syntax": "vspltb vD, vB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | vB | 524", "hex_opcode": "0x1000020C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "UIM", "desc": "Index" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vsplth",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Halfword",
+      "summary": "Duplicates a halfword element across the vector.",
+      "syntax": "vsplth vD, vB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | vB | 588", "hex_opcode": "0x1000024C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "UIM", "desc": "Index" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vspltisb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Immediate Signed Byte",
+      "summary": "Fills vector with immediate 5-bit signed value (-16 to 15).",
+      "syntax": "vspltisb vD, SIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | SIM | 00000 | 780", "hex_opcode": "0x1000030C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "SIM", "desc": "Immediate" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vspltish",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Immediate Signed Halfword",
+      "summary": "Fills vector with immediate 5-bit signed value.",
+      "syntax": "vspltish vD, SIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | SIM | 00000 | 844", "hex_opcode": "0x1000034C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "SIM", "desc": "Immediate" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vspltisw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Immediate Signed Word",
+      "summary": "Fills vector with immediate 5-bit signed value.",
+      "syntax": "vspltisw vD, SIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | SIM | 00000 | 908", "hex_opcode": "0x1000038C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "SIM", "desc": "Immediate" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vslb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Left Byte",
+      "summary": "Shifts each byte left.",
+      "syntax": "vslb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 260", "hex_opcode": "0x10000104" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vslh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Left Halfword",
+      "summary": "Shifts each halfword left.",
+      "syntax": "vslh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 324", "hex_opcode": "0x10000144" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vsrb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Byte",
+      "summary": "Shifts each byte right.",
+      "syntax": "vsrb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 516", "hex_opcode": "0x10000204" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vsrh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Halfword",
+      "summary": "Shifts each halfword right.",
+      "syntax": "vsrh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 580", "hex_opcode": "0x10000244" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vsrw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Word",
+      "summary": "Shifts each word right.",
+      "syntax": "vsrw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 644", "hex_opcode": "0x10000284" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vsrab",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Algebraic Byte",
+      "summary": "Arithmetic right shift of bytes.",
+      "syntax": "vsrab vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 772", "hex_opcode": "0x10000304" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vsrah",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Algebraic Halfword",
+      "summary": "Arithmetic right shift of halfwords.",
+      "syntax": "vsrah vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 836", "hex_opcode": "0x10000344" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vsraw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Algebraic Word",
+      "summary": "Arithmetic right shift of words.",
+      "syntax": "vsraw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 900", "hex_opcode": "0x10000384" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmrgew",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge Even Word",
+      "summary": "Merges even words from two vectors.",
+      "syntax": "vmrgew vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1932", "hex_opcode": "0x1000078C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmrgow",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge Odd Word",
+      "summary": "Merges odd words from two vectors.",
+      "syntax": "vmrgow vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1676", "hex_opcode": "0x1000068C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmulesb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Even Signed Byte",
+      "summary": "Multiplies even signed bytes to halfwords.",
+      "syntax": "vmulesb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 776", "hex_opcode": "0x10000308" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmuleub",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Even Unsigned Byte",
+      "summary": "Multiplies even unsigned bytes to halfwords.",
+      "syntax": "vmuleub vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 520", "hex_opcode": "0x10000208" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmulesh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Even Signed Halfword",
+      "summary": "Multiplies even signed halfwords to words.",
+      "syntax": "vmulesh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 840", "hex_opcode": "0x10000348" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmuleuh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Even Unsigned Halfword",
+      "summary": "Multiplies even unsigned halfwords to words.",
+      "syntax": "vmuleuh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 584", "hex_opcode": "0x10000248" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmulosb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Odd Signed Byte",
+      "summary": "Multiplies odd signed bytes to halfwords.",
+      "syntax": "vmulosb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 264", "hex_opcode": "0x10000108" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmuloub",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Odd Unsigned Byte",
+      "summary": "Multiplies odd unsigned bytes to halfwords.",
+      "syntax": "vmuloub vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 8", "hex_opcode": "0x10000008" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmulosh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Odd Signed Halfword",
+      "summary": "Multiplies odd signed halfwords to words.",
+      "syntax": "vmulosh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 328", "hex_opcode": "0x10000148" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmulouh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Odd Unsigned Halfword",
+      "summary": "Multiplies odd unsigned halfwords to words.",
+      "syntax": "vmulouh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 72", "hex_opcode": "0x10000048" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vabsdub",
+      "architecture": "PowerISA",
+      "full_name": "Vector Absolute Difference Unsigned Byte",
+      "summary": "Computes |A - B| for bytes.",
+      "syntax": "vabsdub vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1027", "hex_opcode": "0x10000403" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vabsduh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Absolute Difference Unsigned Halfword",
+      "summary": "Computes |A - B| for halfwords.",
+      "syntax": "vabsduh vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1091", "hex_opcode": "0x10000443" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vabsduw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Absolute Difference Unsigned Word",
+      "summary": "Computes |A - B| for words.",
+      "syntax": "vabsduw vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1155", "hex_opcode": "0x10000483" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "xsmaxcqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Maximum Type-C Quad-Precision",
+      "summary": "Max of Quad float (IEEE 754-2008 specific rules).",
+      "syntax": "xsmaxcqp vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 676 | /", "hex_opcode": "0xFC000544" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xsmincqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Minimum Type-C Quad-Precision",
+      "summary": "Min of Quad float (IEEE 754-2008 specific rules).",
+      "syntax": "xsmincqp vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 708 | /", "hex_opcode": "0xFC00058C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xscpsgnqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Copy Sign Quad-Precision",
+      "summary": "Copies sign from B to A (128-bit).",
+      "syntax": "xscpsgnqp vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 100 | /", "hex_opcode": "0xFC0000C4" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xststdcqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Test Data Class Quad-Precision",
+      "summary": "Tests class of Quad float (NaN/Inf/Zero).",
+      "syntax": "xststdcqp BF, vB, DCM",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | BF | / | DCM | vB | 706 | /", "hex_opcode": "0xFC000582" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "vB", "desc": "Source" }, { "name": "DCM", "desc": "Mask" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xscmpexpqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Compare Exponents Quad-Precision",
+      "summary": "Compares exponents of two Quad floats.",
+      "syntax": "xscmpexpqp BF, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | BF | / | vA | vB | 228 | /", "hex_opcode": "0xFC0001C4" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "tcheck",
+      "architecture": "PowerISA",
+      "full_name": "Transaction Check",
+      "summary": "Checks transaction status and updates CR.",
+      "syntax": "tcheck BF",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | BF | / | / | 716 | /", "hex_opcode": "0x7C00059C" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }],
+      "extension": "TM (Transactional Memory)"
+    },
+    {
+      "mnemonic": "tsuspend",
+      "architecture": "PowerISA",
+      "full_name": "Transaction Suspend",
+      "summary": "Suspends the current transaction.",
+      "syntax": "tsuspend.",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | 0 | 0 | 0 | 750 | 1", "hex_opcode": "0x7C0005DE" },
+      "operands": [],
+      "extension": "TM (Transactional Memory)"
+    },
+    {
+      "mnemonic": "tresume",
+      "architecture": "PowerISA",
+      "full_name": "Transaction Resume",
+      "summary": "Resumes a suspended transaction.",
+      "syntax": "tresume.",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | 1 | 0 | 0 | 750 | 1", "hex_opcode": "0x7C2005DE" },
+      "operands": [],
+      "extension": "TM (Transactional Memory)"
+    },
+    {
+      "mnemonic": "dcbtls",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Touch and Lock Set",
+      "summary": "Locks a cache line in the L1 cache.",
+      "syntax": "dcbtls CT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | CT | RA | RB | 166 | /", "hex_opcode": "0x7C00014C" },
+      "operands": [{ "name": "CT", "desc": "Cache Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "icbtls",
+      "architecture": "PowerISA",
+      "full_name": "Instruction Cache Block Touch and Lock Set",
+      "summary": "Locks an instruction cache line.",
+      "syntax": "icbtls CT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | CT | RA | RB | 486 | /", "hex_opcode": "0x7C0003CC" },
+      "operands": [{ "name": "CT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "tlbsync",
+      "architecture": "PowerISA",
+      "full_name": "TLB Synchronize",
+      "summary": "Ensures TLB invalidations have propagated to all processors.",
+      "syntax": "tlbsync",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | / | 566 | /", "hex_opcode": "0x7C00046C" },
+      "operands": [],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "slbsync",
+      "architecture": "PowerISA",
+      "full_name": "SLB Synchronize",
+      "summary": "Ensures SLB invalidations have propagated.",
+      "syntax": "slbsync",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | / | 438 | /", "hex_opcode": "0x7C00036C" },
+      "operands": [],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "lbarx",
+      "architecture": "PowerISA",
+      "full_name": "Load Byte And Reserve Indexed",
+      "summary": "Atomic Load Byte.",
+      "syntax": "lbarx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 52 | 0", "hex_opcode": "0x7C000034" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "lharx",
+      "architecture": "PowerISA",
+      "full_name": "Load Halfword And Reserve Indexed",
+      "summary": "Atomic Load Halfword.",
+      "syntax": "lharx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 116 | 0", "hex_opcode": "0x7C000074" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "lqarx",
+      "architecture": "PowerISA",
+      "full_name": "Load Quadword And Reserve Indexed",
+      "summary": "Atomic Load 128-bit Quadword.",
+      "syntax": "lqarx RTp, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RTp | RA | RB | 276 | 0", "hex_opcode": "0x7C000228" },
+      "operands": [{ "name": "RTp", "desc": "Target Pair" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "stbcx.",
+      "architecture": "PowerISA",
+      "full_name": "Store Byte Conditional Indexed",
+      "summary": "Atomic Store Byte.",
+      "syntax": "stbcx. RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 694 | 1", "hex_opcode": "0x7C00056D" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "sthcx.",
+      "architecture": "PowerISA",
+      "full_name": "Store Halfword Conditional Indexed",
+      "summary": "Atomic Store Halfword.",
+      "syntax": "sthcx. RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 726 | 1", "hex_opcode": "0x7C0005AD" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    }
+  ]
+}
