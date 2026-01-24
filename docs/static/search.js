@@ -1,57 +1,99 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('search-input');
     const resultsContainer = document.getElementById('search-results');
-    
-    // 1. Fetch the Search Index
     let searchIndex = [];
+    let selectedIndex = -1;
+
+    // 1. Fetch Search Index
     try {
-        // FIX: Use the global variable defined in base.html
-        // Fallback to 'search.json' if variable is missing (safety)
         const path = typeof SEARCH_INDEX_PATH !== 'undefined' ? SEARCH_INDEX_PATH : 'search.json';
-        
-        const response = await fetch(path); 
+        const response = await fetch(path);
         searchIndex = await response.json();
     } catch (error) {
         console.error("Could not load search index:", error);
     }
 
     // 2. Search Logic
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            selectedIndex = -1;
+            
+            if (query.length < 2) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            // Smart Search: Check if all query parts exist in label or summary
+            const terms = query.split(" ");
+            const results = searchIndex.filter(item => {
+                const text = (item.label + " " + item.summary).toLowerCase();
+                return terms.every(term => text.includes(term));
+            });
+
+            renderResults(results);
+        });
+
+        // 3. Keyboard Navigation
+        searchInput.addEventListener('keydown', (e) => {
+            const items = resultsContainer.querySelectorAll('.search-result-item');
+            if (items.length === 0) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedIndex = (selectedIndex + 1) % items.length;
+                updateSelection(items);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+                updateSelection(items);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (selectedIndex >= 0) {
+                    items[selectedIndex].querySelector('a').click();
+                }
+            }
+        });
+    }
+
+    function renderResults(results) {
         resultsContainer.innerHTML = '';
-        
-        if (query.length < 2) {
-            resultsContainer.style.display = 'none';
-            return;
-        }
-
-        const results = searchIndex.filter(item => 
-            item.label.toLowerCase().includes(query) || 
-            item.summary.toLowerCase().includes(query)
-        );
-
-        // 3. Render Results
         if (results.length > 0) {
             resultsContainer.style.display = 'block';
-            results.slice(0, 8).forEach(result => {
+            results.slice(0, 10).forEach((result, index) => {
                 const div = document.createElement('div');
                 div.className = 'search-result-item';
                 div.innerHTML = `
-                    <a href="/${result.url}">
+                    <a href="${typeof SEARCH_INDEX_PATH !== 'undefined' ? SEARCH_INDEX_PATH.replace('search.json', '') : './'}${result.url}">
                         <div class="result-title">${result.label}</div>
                         <div class="result-summary">${result.summary}</div>
                     </a>
                 `;
+                div.addEventListener('mouseenter', () => {
+                    selectedIndex = index;
+                    updateSelection(resultsContainer.querySelectorAll('.search-result-item'));
+                });
                 resultsContainer.appendChild(div);
             });
         } else {
             resultsContainer.style.display = 'none';
         }
-    });
+    }
 
-    // Close search if clicking outside
+    function updateSelection(items) {
+        items.forEach((item, index) => {
+            if (index === selectedIndex) {
+                item.classList.add('selected');
+                item.scrollIntoView({ block: 'nearest' });
+            } else {
+                item.classList.remove('selected');
+            }
+        });
+    }
+
+    // Close on click outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-wrapper')) {
+        if (searchInput && !e.target.closest('.search-wrapper')) {
             resultsContainer.style.display = 'none';
         }
     });

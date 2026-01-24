@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subtracts source from destination.">
     <title>SUB - x86-64</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
     <link rel="stylesheet" href="../../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="../../" class="logo">ISA_<span>DB</span></a>
-            
-            <div class="search-wrapper">
-                <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
-                <div id="search-results" class="search-dropdown"></div>
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
             </div>
-	
-	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-    	        <span>☀️</span>
-    	    </button>
-
-            <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
-                The Open Architecture Reference
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions (Ctrl+K)...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -38,70 +47,73 @@
     
     <aside class="sidebar">
         <h3>x86-64 Instructions</h3>
-	<nav>
+        <div class="sidebar-list">
             
-            <a href="../add/"
+            <a href="../add/" 
                class="">
                 ADD
             </a>
             
-            <a href="../call/"
+            <a href="../call/" 
                class="">
                 CALL
             </a>
             
-            <a href="../je/"
+            <a href="../je/" 
                class="">
                 JE
             </a>
             
-            <a href="../jmp/"
+            <a href="../jmp/" 
                class="">
                 JMP
             </a>
             
-            <a href="../lea/"
+            <a href="../lea/" 
                class="">
                 LEA
             </a>
             
-            <a href="../mov/"
+            <a href="../mov/" 
                class="">
                 MOV
             </a>
             
-            <a href="../pop/"
+            <a href="../pop/" 
                class="">
                 POP
             </a>
             
-            <a href="../push/"
+            <a href="../push/" 
                class="">
                 PUSH
             </a>
             
-            <a href="../ret/"
+            <a href="../ret/" 
                class="">
                 RET
             </a>
             
-            <a href="../sub/"
+            <a href="../sub/" 
                class="active">
                 SUB
             </a>
             
-        </nav>
+        </div>
         
-	<h3>Meta</h3>
-        <a href="../../x86-64/">← Back to Overview</a>
+        <h3>Meta</h3>
+        <a href="../../x86-64/">← Back to x86-64</a>
     </aside>
 
     <main class="content">
         <div>
-            <div style="margin-bottom: 10px; font-family: 'JetBrains Mono'; color: var(--accent);">
-                x86-64 / Base
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../x86-64/">x86-64</a> <span>/</span> 
+                SUB
             </div>
-            <h1 class="mono" style="font-size: 3rem;">SUB</h1>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">SUB</h1>
             <h2 style="font-weight: 400; color: var(--text-muted);">Subtract</h2>
             
             <div class="syntax-box">
@@ -188,9 +200,17 @@
 
 
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
-        <p>Generated automatically from JSON definitions.</p>
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
     </footer>
 
     <script src="../../static/theme.js"></script>
+    
+    <script>
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

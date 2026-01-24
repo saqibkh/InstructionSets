@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adds a register and a sign-extended 12-bit immediate value.">
     <title>ADDI - RISC-V</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
     <link rel="stylesheet" href="../../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="../../" class="logo">ISA_<span>DB</span></a>
-            
-            <div class="search-wrapper">
-                <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
-                <div id="search-results" class="search-dropdown"></div>
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
             </div>
-	
-	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-    	        <span>☀️</span>
-    	    </button>
-
-            <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
-                The Open Architecture Reference
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions (Ctrl+K)...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -38,70 +47,73 @@
     
     <aside class="sidebar">
         <h3>RISC-V Instructions</h3>
-	<nav>
+        <div class="sidebar-list">
             
-            <a href="../add/"
+            <a href="../add/" 
                class="">
                 ADD
             </a>
             
-            <a href="../addi/"
+            <a href="../addi/" 
                class="active">
                 ADDI
             </a>
             
-            <a href="../auipc/"
+            <a href="../auipc/" 
                class="">
                 AUIPC
             </a>
             
-            <a href="../beq/"
+            <a href="../beq/" 
                class="">
                 BEQ
             </a>
             
-            <a href="../ecall/"
+            <a href="../ecall/" 
                class="">
                 ECALL
             </a>
             
-            <a href="../jal/"
+            <a href="../jal/" 
                class="">
                 JAL
             </a>
             
-            <a href="../lui/"
+            <a href="../lui/" 
                class="">
                 LUI
             </a>
             
-            <a href="../lw/"
+            <a href="../lw/" 
                class="">
                 LW
             </a>
             
-            <a href="../sub/"
+            <a href="../sub/" 
                class="">
                 SUB
             </a>
             
-            <a href="../sw/"
+            <a href="../sw/" 
                class="">
                 SW
             </a>
             
-        </nav>
+        </div>
         
-	<h3>Meta</h3>
-        <a href="../../risc-v/">← Back to Overview</a>
+        <h3>Meta</h3>
+        <a href="../../risc-v/">← Back to RISC-V</a>
     </aside>
 
     <main class="content">
         <div>
-            <div style="margin-bottom: 10px; font-family: 'JetBrains Mono'; color: var(--accent);">
-                RISC-V / Base
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../risc-v/">RISC-V</a> <span>/</span> 
+                ADDI
             </div>
-            <h1 class="mono" style="font-size: 3rem;">ADDI</h1>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">ADDI</h1>
             <h2 style="font-weight: 400; color: var(--text-muted);">Add Immediate</h2>
             
             <div class="syntax-box">
@@ -190,9 +202,17 @@
 
 
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
-        <p>Generated automatically from JSON definitions.</p>
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
     </footer>
 
     <script src="../../static/theme.js"></script>
+    
+    <script>
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

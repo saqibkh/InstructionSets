@@ -1,31 +1,35 @@
 {% extends "base.html" %}
 
 {% block title %}{{ instruction.mnemonic }} - {{ instruction.architecture }}{% endblock %}
+{% block meta_desc %}{{ instruction.summary }}{% endblock %}
 
 {% block content %}
 <div class="container doc-layout">
     
     <aside class="sidebar">
         <h3>{{ instruction.architecture }} Instructions</h3>
-	<nav>
+        <div class="sidebar-list">
             {% for nav_inst in sidebar_nav %}
-            <a href="../{{ nav_inst.mnemonic|lower|replace(' ', '_') }}/"
+            <a href="../{{ nav_inst.mnemonic|lower|replace(' ', '_') }}/" 
                class="{% if nav_inst.mnemonic == current_page %}active{% endif %}">
                 {{ nav_inst.mnemonic }}
             </a>
             {% endfor %}
-        </nav>
+        </div>
         
-	<h3>Meta</h3>
-        <a href="../../{{ instruction.architecture|lower }}/">← Back to Overview</a>
+        <h3>Meta</h3>
+        <a href="../../{{ instruction.architecture|lower }}/">← Back to {{ instruction.architecture }}</a>
     </aside>
 
     <main class="content">
         <div>
-            <div style="margin-bottom: 10px; font-family: 'JetBrains Mono'; color: var(--accent);">
-                {{ instruction.architecture }} / {{ instruction.extension|default('Base') }}
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../{{ instruction.architecture|lower }}/">{{ instruction.architecture }}</a> <span>/</span> 
+                {{ instruction.mnemonic }}
             </div>
-            <h1 class="mono" style="font-size: 3rem;">{{ instruction.mnemonic }}</h1>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">{{ instruction.mnemonic }}</h1>
             <h2 style="font-weight: 400; color: var(--text-muted);">{{ instruction.full_name }}</h2>
             
             <div class="syntax-box">
@@ -33,7 +37,7 @@
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                {{ instruction.summary }}
+                {{ instruction.linked_summary | safe }}
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -42,7 +46,7 @@
                     <div class="panel">
                         <h3>Pseudocode Operation</h3>
                         <div class="code-block" style="border:none; padding:0; background: transparent;">
-                            {{ instruction.pseudocode }}
+                            {{ instruction.linked_pseudocode | safe }}
                         </div>
                     </div>
 

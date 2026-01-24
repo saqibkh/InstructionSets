@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The modern, open-source reference for CPU instruction sets (RISC-V, x86, ARM).">
     <title>ISA Database</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
     <link rel="stylesheet" href="./static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="./" class="logo">ISA_<span>DB</span></a>
-            
-            <div class="search-wrapper">
-                <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
-                <div id="search-results" class="search-dropdown"></div>
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="./" class="logo">ISA_<span>DB</span></a>
             </div>
-	
-	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-    	        <span>☀️</span>
-    	    </button>
-
-            <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
-                The Open Architecture Reference
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions (Ctrl+K)...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -86,72 +95,71 @@
 <script src="static/animation.js"></script>
 
 <script>
+    // Bridge the hero input to the main search logic if present
     document.addEventListener('DOMContentLoaded', () => {
         const heroInput = document.getElementById('hero-search');
         const heroResults = document.getElementById('hero-results');
+        const mainInput = document.getElementById('search-input'); // The nav bar input
+        
+        // Hide nav bar input on homepage to avoid clutter
+        if(mainInput && window.innerWidth > 768) {
+             mainInput.closest('.search-wrapper').style.visibility = 'hidden';
+        }
+
+        // Reuse the logic by dispatching events or simple duplication
+        // For simplicity in this mega-update, I'll let search.js handle the Nav one, 
+        // and copy the minimal fetch logic here for the Hero one to ensure it works 100%
         
         let searchIndex = [];
-
-        // FIX: No leading slash
         fetch('search.json')
             .then(res => res.json())
-            .then(data => searchIndex = data)
-            .catch(err => console.error("Search index failed:", err));
+            .then(data => searchIndex = data);
 
-        if(heroInput) {
-            heroInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase();
-                heroResults.innerHTML = '';
-                
-                if (query.length < 2) {
-                    heroResults.style.display = 'none';
-                    return;
-                }
+        heroInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            heroResults.innerHTML = '';
+            if (query.length < 2) { heroResults.style.display = 'none'; return; }
 
-                const results = searchIndex.filter(item => 
-                    item.label.toLowerCase().includes(query) || 
-                    item.summary.toLowerCase().includes(query)
-                );
-
-                if (results.length > 0) {
-                    heroResults.style.display = 'block';
-                    results.slice(0, 6).forEach(result => {
-                        const div = document.createElement('div');
-                        div.className = 'search-result-item';
-                        div.innerHTML = `
-                            <a href="${result.url}">
-                                <div class="result-title">${result.label}</div>
-                                <div class="result-summary">${result.summary}</div>
-                            </a>
-                        `;
-                        heroResults.appendChild(div);
-                    });
-                } else {
-                    heroResults.style.display = 'none';
-                }
+            const terms = query.split(" ");
+            const results = searchIndex.filter(item => {
+                const text = (item.label + " " + item.summary).toLowerCase();
+                return terms.every(term => text.includes(term));
             });
 
-            document.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                    e.preventDefault();
-                    heroInput.focus();
-                }
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.cmd-palette')) {
-                    heroResults.style.display = 'none';
-                }
-            });
-        }
+            if (results.length > 0) {
+                heroResults.style.display = 'block';
+                results.slice(0, 8).forEach(result => {
+                    const div = document.createElement('div');
+                    div.className = 'search-result-item';
+                    div.innerHTML = `<a href="${result.url}"><div class="result-title">${result.label}</div><div class="result-summary">${result.summary}</div></a>`;
+                    heroResults.appendChild(div);
+                });
+            } else { heroResults.style.display = 'none'; }
+        });
+        
+        // Keyboard shortcut focuses Hero input on Homepage
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                heroInput.focus();
+            }
+        });
     });
 </script>
 
 
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
-        <p>Generated automatically from JSON definitions.</p>
+        <p>Generated automatically from JSON definitions. <a href="./sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
     </footer>
 
     <script src="./static/theme.js"></script>
+    
+    <script>
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
