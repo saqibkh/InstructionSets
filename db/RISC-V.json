@@ -6102,5 +6102,277 @@
     "pseudocode": "F[rd] = i32_to_f64(R[rs1]);",
     "example": "FCVT.D.W f0, x10",
     "example_note": "Int -> Double."
+  },
+  {
+    "mnemonic": "CSRR",
+    "architecture": "RISC-V",
+    "extension": "Pseudo",
+    "full_name": "Control Status Register Read",
+    "summary": "Reads the value of a CSR into a register.",
+    "syntax": "CSRR rd, csr",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "CSRRS rd, csr, x0",
+      "hex_opcode": "See CSRRS"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "csr",
+        "desc": "CSR Address"
+      }
+    ],
+    "pseudocode": "R[rd] = CSRs[csr];",
+    "example": "CSRR x10, mstatus",
+    "example_note": "Read mstatus."
+  },
+  {
+    "mnemonic": "CSRW",
+    "architecture": "RISC-V",
+    "extension": "Pseudo",
+    "full_name": "Control Status Register Write",
+    "summary": "Writes a register value to a CSR.",
+    "syntax": "CSRW csr, rs",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "CSRRW x0, csr, rs",
+      "hex_opcode": "See CSRRW"
+    },
+    "operands": [
+      {
+        "name": "csr",
+        "desc": "CSR Address"
+      },
+      {
+        "name": "rs",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "CSRs[csr] = R[rs];",
+    "example": "CSRW mepc, x10",
+    "example_note": "Write address in x10 to mepc."
+  },
+  {
+    "mnemonic": "CSRS",
+    "architecture": "RISC-V",
+    "extension": "Pseudo",
+    "full_name": "Control Status Register Set",
+    "summary": "Sets bits in a CSR (bitwise OR).",
+    "syntax": "CSRS csr, rs",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "CSRRS x0, csr, rs",
+      "hex_opcode": "See CSRRS"
+    },
+    "operands": [
+      {
+        "name": "csr",
+        "desc": "CSR Address"
+      },
+      {
+        "name": "rs",
+        "desc": "Bit Mask"
+      }
+    ],
+    "pseudocode": "CSRs[csr] |= R[rs];",
+    "example": "CSRS sstatus, x5",
+    "example_note": "Set bits in sstatus."
+  },
+  {
+    "mnemonic": "CSRC",
+    "architecture": "RISC-V",
+    "extension": "Pseudo",
+    "full_name": "Control Status Register Clear",
+    "summary": "Clears bits in a CSR (bitwise AND NOT).",
+    "syntax": "CSRC csr, rs",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "CSRRC x0, csr, rs",
+      "hex_opcode": "See CSRRC"
+    },
+    "operands": [
+      {
+        "name": "csr",
+        "desc": "CSR Address"
+      },
+      {
+        "name": "rs",
+        "desc": "Bit Mask"
+      }
+    ],
+    "pseudocode": "CSRs[csr] &= ~R[rs];",
+    "example": "CSRC sstatus, x5",
+    "example_note": "Clear bits in sstatus."
+  },
+  {
+    "mnemonic": "FCVT.LU.D",
+    "architecture": "RISC-V",
+    "extension": "D (Double)",
+    "full_name": "Convert Double to Unsigned Long",
+    "summary": "Converts a double-precision float to a 64-bit unsigned integer.",
+    "syntax": "FCVT.LU.D rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1100001 | 00011 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (ULong)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Double)"
+      }
+    ],
+    "pseudocode": "R[rd] = f64_to_u64(F[rs1]);",
+    "example": "FCVT.LU.D x10, f0",
+    "example_note": "Double -> Unsigned 64-bit Int."
+  },
+  {
+    "mnemonic": "FLH",
+    "architecture": "RISC-V",
+    "extension": "Zfh (Half-Float)",
+    "full_name": "Float Load Halfword",
+    "summary": "Loads a 16-bit half-precision float from memory.",
+    "syntax": "FLH rd, offset(rs1)",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "offset | rs1 | 001 | rd | 0000111",
+      "hex_opcode": "0x07"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Float)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Base"
+      },
+      {
+        "name": "offset",
+        "desc": "Offset"
+      }
+    ],
+    "pseudocode": "F[rd] = M[R[rs1] + sext(offset)][15:0];",
+    "example": "FLH f1, 0(x10)",
+    "example_note": "Load 16-bit float."
+  },
+  {
+    "mnemonic": "FSH",
+    "architecture": "RISC-V",
+    "extension": "Zfh (Half-Float)",
+    "full_name": "Float Store Halfword",
+    "summary": "Stores a 16-bit half-precision float to memory.",
+    "syntax": "FSH rs2, offset(rs1)",
+    "encoding": {
+      "format": "S-Type",
+      "binary_pattern": "imm | rs2 | rs1 | 001 | imm | 0100111",
+      "hex_opcode": "0x27"
+    },
+    "operands": [
+      {
+        "name": "rs2",
+        "desc": "Source"
+      },
+      {
+        "name": "rs1",
+        "desc": "Base"
+      },
+      {
+        "name": "offset",
+        "desc": "Offset"
+      }
+    ],
+    "pseudocode": "M[R[rs1] + sext(offset)][15:0] = F[rs2];",
+    "example": "FSH f1, 0(x10)",
+    "example_note": "Store 16-bit float."
+  },
+  {
+    "mnemonic": "FADD.H",
+    "architecture": "RISC-V",
+    "extension": "Zfh (Half-Float)",
+    "full_name": "Float Add Half",
+    "summary": "Performs 16-bit floating-point addition.",
+    "syntax": "FADD.H rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000100 | rs2 | rs1 | 000 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2"
+      }
+    ],
+    "pseudocode": "F[rd] = F[rs1] + F[rs2];",
+    "example": "FADD.H f0, f1, f2",
+    "example_note": "16-bit float add."
+  },
+  {
+    "mnemonic": "FCVT.S.H",
+    "architecture": "RISC-V",
+    "extension": "Zfh (Half-Float)",
+    "full_name": "Convert Half to Single",
+    "summary": "Converts a 16-bit half-precision float to a 32-bit single-precision float.",
+    "syntax": "FCVT.S.H rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "0100000 | 00010 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Single)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Half)"
+      }
+    ],
+    "pseudocode": "F[rd] = f16_to_f32(F[rs1]);",
+    "example": "FCVT.S.H f0, f1",
+    "example_note": "Promote Half to Float."
+  },
+  {
+    "mnemonic": "FCVT.H.S",
+    "architecture": "RISC-V",
+    "extension": "Zfh (Half-Float)",
+    "full_name": "Convert Single to Half",
+    "summary": "Converts a 32-bit single-precision float to a 16-bit half-precision float.",
+    "syntax": "FCVT.H.S rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "0100010 | 00000 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Half)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Single)"
+      }
+    ],
+    "pseudocode": "F[rd] = f32_to_f16(F[rs1]);",
+    "example": "FCVT.H.S f0, f1",
+    "example_note": "Demote Float to Half."
   }
 ]
