@@ -1,0 +1,874 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vand",
+      "architecture": "PowerISA",
+      "full_name": "Vector AND",
+      "summary": "Bitwise AND of two 128-bit vectors.",
+      "syntax": "vand vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1028", "hex_opcode": "0x10000404" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vor",
+      "architecture": "PowerISA",
+      "full_name": "Vector OR",
+      "summary": "Bitwise OR of two 128-bit vectors.",
+      "syntax": "vor vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1156", "hex_opcode": "0x10000484" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vxor",
+      "architecture": "PowerISA",
+      "full_name": "Vector XOR",
+      "summary": "Bitwise XOR of two 128-bit vectors.",
+      "syntax": "vxor vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1220", "hex_opcode": "0x100004C4" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vnor",
+      "architecture": "PowerISA",
+      "full_name": "Vector NOR",
+      "summary": "Bitwise NOR of two 128-bit vectors. (NOT (A OR B)).",
+      "syntax": "vnor vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1284", "hex_opcode": "0x10000504" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vandc",
+      "architecture": "PowerISA",
+      "full_name": "Vector AND with Complement",
+      "summary": "Bitwise AND of vA with the ones' complement of vB (vA & ~vB).",
+      "syntax": "vandc vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1092", "hex_opcode": "0x10000444" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpequb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Equal Byte",
+      "summary": "Compares 16 bytes. Result is 0xFF (True) or 0x00 (False) per byte.",
+      "syntax": "vcmpequb vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 6", "hex_opcode": "0x10000006" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpequh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Equal Halfword",
+      "summary": "Compares 8 halfwords for equality.",
+      "syntax": "vcmpequh vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 70", "hex_opcode": "0x10000046" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpequd",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Equal Doubleword",
+      "summary": "Compares 2 doublewords for equality.",
+      "syntax": "vcmpequd vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 199", "hex_opcode": "0x100000C7" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtub",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Unsigned Byte",
+      "summary": "Unsigned > comparison for 16 bytes.",
+      "syntax": "vcmpgtub vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 518", "hex_opcode": "0x10000206" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtsb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Signed Byte",
+      "summary": "Signed > comparison for 16 bytes.",
+      "syntax": "vcmpgtsb vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 774", "hex_opcode": "0x10000306" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtuh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Unsigned Halfword",
+      "summary": "Unsigned > comparison for 8 halfwords.",
+      "syntax": "vcmpgtuh vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 582", "hex_opcode": "0x10000246" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtsh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Signed Halfword",
+      "summary": "Signed > comparison for 8 halfwords.",
+      "syntax": "vcmpgtsh vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 838", "hex_opcode": "0x10000346" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtuw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Unsigned Word",
+      "summary": "Unsigned > comparison for 4 words.",
+      "syntax": "vcmpgtuw vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 646", "hex_opcode": "0x10000286" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtsw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Signed Word",
+      "summary": "Signed > comparison for 4 words.",
+      "syntax": "vcmpgtsw vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 902", "hex_opcode": "0x10000386" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtud",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Unsigned Doubleword",
+      "summary": "Unsigned > comparison for 2 doublewords.",
+      "syntax": "vcmpgtud vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 711", "hex_opcode": "0x100002C7" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtsd",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Signed Doubleword",
+      "summary": "Signed > comparison for 2 doublewords.",
+      "syntax": "vcmpgtsd vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 967", "hex_opcode": "0x100003C7" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vavgub",
+      "architecture": "PowerISA",
+      "full_name": "Vector Average Unsigned Byte",
+      "summary": "Computes (a+b+1)/2 for bytes.",
+      "syntax": "vavgub vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1026", "hex_opcode": "0x10000402" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vavgsb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Average Signed Byte",
+      "summary": "Computes (a+b+1)/2 for signed bytes.",
+      "syntax": "vavgsb vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1282", "hex_opcode": "0x10000502" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vavguh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Average Unsigned Halfword",
+      "summary": "Computes (a+b+1)/2 for halfwords.",
+      "syntax": "vavguh vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1090", "hex_opcode": "0x10000442" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vavgsh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Average Signed Halfword",
+      "summary": "Computes (a+b+1)/2 for signed halfwords.",
+      "syntax": "vavgsh vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1346", "hex_opcode": "0x10000542" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vavguw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Average Unsigned Word",
+      "summary": "Computes (a+b+1)/2 for words.",
+      "syntax": "vavguw vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1154", "hex_opcode": "0x10000482" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vavgsw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Average Signed Word",
+      "summary": "Computes (a+b+1)/2 for signed words.",
+      "syntax": "vavgsw vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1410", "hex_opcode": "0x10000582" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vminub",
+      "architecture": "PowerISA",
+      "full_name": "Vector Minimum Unsigned Byte",
+      "summary": "Selects minimum value per byte (unsigned).",
+      "syntax": "vminub vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1026", "hex_opcode": "0x10000402" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vminsb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Minimum Signed Byte",
+      "summary": "Selects minimum value per byte (signed).",
+      "syntax": "vminsb vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1538", "hex_opcode": "0x10000602" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vminuh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Minimum Unsigned Halfword",
+      "summary": "Selects minimum value per halfword (unsigned).",
+      "syntax": "vminuh vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1090", "hex_opcode": "0x10000442" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vminsh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Minimum Signed Halfword",
+      "summary": "Selects minimum value per halfword (signed).",
+      "syntax": "vminsh vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1602", "hex_opcode": "0x10000642" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vminuw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Minimum Unsigned Word",
+      "summary": "Selects minimum value per word (unsigned).",
+      "syntax": "vminuw vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1154", "hex_opcode": "0x10000482" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vminsw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Minimum Signed Word",
+      "summary": "Selects minimum value per word (signed).",
+      "syntax": "vminsw vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1666", "hex_opcode": "0x10000682" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmaxub",
+      "architecture": "PowerISA",
+      "full_name": "Vector Maximum Unsigned Byte",
+      "summary": "Selects maximum value per byte (unsigned).",
+      "syntax": "vmaxub vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 4", "hex_opcode": "0x10000004" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmaxsb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Maximum Signed Byte",
+      "summary": "Selects maximum value per byte (signed).",
+      "syntax": "vmaxsb vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 516", "hex_opcode": "0x10000204" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmaxuh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Maximum Unsigned Halfword",
+      "summary": "Selects maximum value per halfword (unsigned).",
+      "syntax": "vmaxuh vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 68", "hex_opcode": "0x10000044" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmaxsh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Maximum Signed Halfword",
+      "summary": "Selects maximum value per halfword (signed).",
+      "syntax": "vmaxsh vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 580", "hex_opcode": "0x10000244" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmaxuw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Maximum Unsigned Word",
+      "summary": "Selects maximum value per word (unsigned).",
+      "syntax": "vmaxuw vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 132", "hex_opcode": "0x10000084" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmaxsw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Maximum Signed Word",
+      "summary": "Selects maximum value per word (signed).",
+      "syntax": "vmaxsw vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 644", "hex_opcode": "0x10000284" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmrghb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge High Byte",
+      "summary": "Interleaves high-order bytes from two vectors (Permutation).",
+      "syntax": "vmrghb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 12", "hex_opcode": "0x1000000C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmrghh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge High Halfword",
+      "summary": "Interleaves high-order halfwords.",
+      "syntax": "vmrghh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 76", "hex_opcode": "0x1000004C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmrghw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge High Word",
+      "summary": "Interleaves high-order words.",
+      "syntax": "vmrghw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 140", "hex_opcode": "0x1000008C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmrglb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge Low Byte",
+      "summary": "Interleaves low-order bytes.",
+      "syntax": "vmrglb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 268", "hex_opcode": "0x1000010C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmrglh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge Low Halfword",
+      "summary": "Interleaves low-order halfwords.",
+      "syntax": "vmrglh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 332", "hex_opcode": "0x1000014C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmrglw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Merge Low Word",
+      "summary": "Interleaves low-order words.",
+      "syntax": "vmrglw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 396", "hex_opcode": "0x1000018C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpkuhum",
+      "architecture": "PowerISA",
+      "full_name": "Vector Pack Unsigned Halfword Unsigned Modulo",
+      "summary": "Truncates 8 halfwords to 16 bytes (modulo 256).",
+      "syntax": "vpkuhum vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 14", "hex_opcode": "0x1000000E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpkuwum",
+      "architecture": "PowerISA",
+      "full_name": "Vector Pack Unsigned Word Unsigned Modulo",
+      "summary": "Truncates 4 words to 8 halfwords.",
+      "syntax": "vpkuwum vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 78", "hex_opcode": "0x1000004E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpkuhus",
+      "architecture": "PowerISA",
+      "full_name": "Vector Pack Unsigned Halfword Unsigned Saturate",
+      "summary": "Saturates 8 halfwords to 16 unsigned bytes.",
+      "syntax": "vpkuhus vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 142", "hex_opcode": "0x1000008E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpkshss",
+      "architecture": "PowerISA",
+      "full_name": "Vector Pack Signed Halfword Signed Saturate",
+      "summary": "Saturates 8 signed halfwords to 16 signed bytes.",
+      "syntax": "vpkshss vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 462", "hex_opcode": "0x100001CE" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpkswss",
+      "architecture": "PowerISA",
+      "full_name": "Vector Pack Signed Word Signed Saturate",
+      "summary": "Saturates 4 signed words to 8 signed halfwords.",
+      "syntax": "vpkswss vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 526", "hex_opcode": "0x1000020E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vupkhsb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Unpack High Signed Byte",
+      "summary": "Unpacks high 8 signed bytes to 8 signed halfwords.",
+      "syntax": "vupkhsb vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 526", "hex_opcode": "0x1000020E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vupkhsh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Unpack High Signed Halfword",
+      "summary": "Unpacks high 4 signed halfwords to 4 signed words.",
+      "syntax": "vupkhsh vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 590", "hex_opcode": "0x1000024E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vupklsb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Unpack Low Signed Byte",
+      "summary": "Unpacks low 8 signed bytes to 8 signed halfwords.",
+      "syntax": "vupklsb vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 654", "hex_opcode": "0x1000028E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vupklsh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Unpack Low Signed Halfword",
+      "summary": "Unpacks low 4 signed halfwords to 4 signed words.",
+      "syntax": "vupklsh vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 718", "hex_opcode": "0x100002CE" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddubm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Byte Modulo",
+      "summary": "Adds 16 bytes modulo 256.",
+      "syntax": "vaddubm vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 0", "hex_opcode": "0x10000000" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vadduhm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Halfword Modulo",
+      "summary": "Adds 8 halfwords modulo 65536.",
+      "syntax": "vadduhm vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 64", "hex_opcode": "0x10000040" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vadduwm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Word Modulo",
+      "summary": "Adds 4 words modulo 2^32.",
+      "syntax": "vadduwm vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 128", "hex_opcode": "0x10000080" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddudm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Doubleword Modulo",
+      "summary": "Adds 2 doublewords modulo 2^64.",
+      "syntax": "vaddudm vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 192", "hex_opcode": "0x100000C0" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddubs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Byte Saturate",
+      "summary": "Adds 16 unsigned bytes with saturation (0..255).",
+      "syntax": "vaddubs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 512", "hex_opcode": "0x10000200" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vadduhs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Halfword Saturate",
+      "summary": "Adds 8 unsigned halfwords with saturation.",
+      "syntax": "vadduhs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 576", "hex_opcode": "0x10000240" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vadduws",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Word Saturate",
+      "summary": "Adds 4 unsigned words with saturation.",
+      "syntax": "vadduws vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 640", "hex_opcode": "0x10000280" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddsbs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Signed Byte Saturate",
+      "summary": "Adds 16 signed bytes with saturation (-128..127).",
+      "syntax": "vaddsbs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 768", "hex_opcode": "0x10000300" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddshs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Signed Halfword Saturate",
+      "summary": "Adds 8 signed halfwords with saturation.",
+      "syntax": "vaddshs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 832", "hex_opcode": "0x10000340" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddsws",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Signed Word Saturate",
+      "summary": "Adds 4 signed words with saturation.",
+      "syntax": "vaddsws vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 896", "hex_opcode": "0x10000380" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsububm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Unsigned Byte Modulo",
+      "summary": "Subtracts 16 bytes modulo 256.",
+      "syntax": "vsububm vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1024", "hex_opcode": "0x10000400" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubuhm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Unsigned Halfword Modulo",
+      "summary": "Subtracts 8 halfwords modulo 65536.",
+      "syntax": "vsubuhm vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1088", "hex_opcode": "0x10000440" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubudm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Unsigned Doubleword Modulo",
+      "summary": "Subtracts 2 doublewords modulo 2^64.",
+      "syntax": "vsubudm vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1216", "hex_opcode": "0x100004C0" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsububs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Unsigned Byte Saturate",
+      "summary": "Subtracts 16 unsigned bytes with saturation.",
+      "syntax": "vsububs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1536", "hex_opcode": "0x10000600" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubuhs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Unsigned Halfword Saturate",
+      "summary": "Subtracts 8 unsigned halfwords with saturation.",
+      "syntax": "vsubuhs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1600", "hex_opcode": "0x10000640" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubuws",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Unsigned Word Saturate",
+      "summary": "Subtracts 4 unsigned words with saturation.",
+      "syntax": "vsubuws vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1664", "hex_opcode": "0x10000680" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubsbs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Signed Byte Saturate",
+      "summary": "Subtracts 16 signed bytes with saturation.",
+      "syntax": "vsubsbs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1792", "hex_opcode": "0x10000700" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubshs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Signed Halfword Saturate",
+      "summary": "Subtracts 8 signed halfwords with saturation.",
+      "syntax": "vsubshs vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1856", "hex_opcode": "0x10000740" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubsws",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Signed Word Saturate",
+      "summary": "Subtracts 4 signed words with saturation.",
+      "syntax": "vsubsws vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1920", "hex_opcode": "0x10000780" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "xsaddsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Add Single-Precision",
+      "summary": "Scalar float addition (32-bit).",
+      "syntax": "xsaddsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 0", "hex_opcode": "0xF0000000" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xssubsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Subtract Single-Precision",
+      "summary": "Scalar float subtraction (32-bit).",
+      "syntax": "xssubsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 8", "hex_opcode": "0xF0000008" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsmulsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Multiply Single-Precision",
+      "summary": "Scalar float multiplication (32-bit).",
+      "syntax": "xsmulsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 16", "hex_opcode": "0xF0000010" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsdivsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Divide Single-Precision",
+      "summary": "Scalar float division (32-bit).",
+      "syntax": "xsdivsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 24", "hex_opcode": "0xF0000018" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsmaxdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Maximum Double-Precision",
+      "summary": "Scalar maximum (64-bit float).",
+      "syntax": "xsmaxdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 160", "hex_opcode": "0xF00000A0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsmindp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Minimum Double-Precision",
+      "summary": "Scalar minimum (64-bit float).",
+      "syntax": "xsmindp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 168", "hex_opcode": "0xF00000A8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xssqrtdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Square Root Double-Precision",
+      "summary": "Scalar square root (64-bit float).",
+      "syntax": "xssqrtdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 75", "hex_opcode": "0xF000004B" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsabsdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Absolute Value Double-Precision",
+      "summary": "Scalar absolute value (64-bit float).",
+      "syntax": "xsabsdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 345", "hex_opcode": "0xF0000159" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsnegdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Negate Double-Precision",
+      "summary": "Scalar negation (64-bit float).",
+      "syntax": "xsnegdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 361", "hex_opcode": "0xF0000169" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xscmpodp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Compare Ordered Double-Precision",
+      "summary": "Scalar compare (Exceptions on NaN).",
+      "syntax": "xscmpodp BF, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | BF | / | XA | XB | 43", "hex_opcode": "0xF000002B" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xscmpudp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Compare Unordered Double-Precision",
+      "summary": "Scalar compare (No exceptions on NaN).",
+      "syntax": "xscmpudp BF, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | BF | / | XA | XB | 35", "hex_opcode": "0xF0000023" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "vsl",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Left",
+      "summary": "Shifts vector left by octet count in vB.",
+      "syntax": "vsl vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 452", "hex_opcode": "0x100001C4" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift Count" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsr",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right",
+      "summary": "Shifts vector right by octet count in vB.",
+      "syntax": "vsr vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 708", "hex_opcode": "0x100002C4" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift Count" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vslo",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Left by Octet",
+      "summary": "Shifts vector left by byte count.",
+      "syntax": "vslo vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1036", "hex_opcode": "0x1000040C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift Count" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsro",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right by Octet",
+      "summary": "Shifts vector right by byte count.",
+      "syntax": "vsro vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1100", "hex_opcode": "0x1000044C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Shift Count" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrlb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Rotate Left Byte",
+      "summary": "Rotates each byte left.",
+      "syntax": "vrlb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 4", "hex_opcode": "0x10000004" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Rotate Count" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrlh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Rotate Left Halfword",
+      "summary": "Rotates each halfword left.",
+      "syntax": "vrlh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 68", "hex_opcode": "0x10000044" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Rotate Count" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrlw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Rotate Left Word",
+      "summary": "Rotates each word left.",
+      "syntax": "vrlw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 132", "hex_opcode": "0x10000084" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Rotate Count" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrld",
+      "architecture": "PowerISA",
+      "full_name": "Vector Rotate Left Doubleword",
+      "summary": "Rotates each doubleword left.",
+      "syntax": "vrld vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 196", "hex_opcode": "0x100000C4" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Data" }, { "name": "vB", "desc": "Rotate Count" }],
+      "extension": "VMX (AltiVec)"
+    }
+  ]
+}

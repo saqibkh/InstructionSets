@@ -1,0 +1,236 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "sync",
+      "architecture": "PowerISA",
+      "full_name": "Synchronize",
+      "summary": "The master memory barrier. Ensures all previous instructions appear to complete before any subsequent instructions start. (L=0: Heavyweight, L=1: Lightweight/LWSYNC).",
+      "syntax": "sync L",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | / | L | 598 | /",
+        "hex_opcode": "0x7C0004AC"
+      },
+      "operands": [
+        { "name": "L", "desc": "Level (0=Heavy, 1=Light)" }
+      ],
+      "pseudocode": "MemoryBarrier(L)",
+      "example": "sync 0",
+      "example_note": "Full hardware fence.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lwsync",
+      "architecture": "PowerISA",
+      "full_name": "Lightweight Synchronize (Pseudo)",
+      "summary": "Orders loads with loads, stores with stores, and loads with stores. Does NOT order stores with loads. (Encoded as sync 1).",
+      "syntax": "lwsync",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "sync 1",
+        "hex_opcode": "0x7C2004AC"
+      },
+      "operands": [],
+      "pseudocode": "MemoryBarrier(Light)",
+      "example": "lwsync",
+      "example_note": "Standard multicore barrier.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rfid",
+      "architecture": "PowerISA",
+      "full_name": "Return From Interrupt Doubleword",
+      "summary": "Returns from an interrupt handler. Restores PC from SRR0 and MSR from SRR1.",
+      "syntax": "rfid",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | / | / | / | 18 | /",
+        "hex_opcode": "0x4C000024"
+      },
+      "operands": [],
+      "pseudocode": "PC <- SRR0; MSR <- SRR1",
+      "example": "rfid",
+      "example_note": "Exit Kernel Mode.",
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "tlbie",
+      "architecture": "PowerISA",
+      "full_name": "Translation Lookaside Buffer Invalidate Entry",
+      "summary": "Invalidates a TLB entry corresponding to the address in RB.",
+      "syntax": "tlbie RB, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | / | RB | 306 | /",
+        "hex_opcode": "0x7C000264"
+      },
+      "operands": [
+        { "name": "RB", "desc": "Effective Address" },
+        { "name": "RS", "desc": "Process ID (PID)" }
+      ],
+      "pseudocode": "InvalidateTLB(RB, RS)",
+      "example": "tlbie r3, r4",
+      "example_note": "Flush page translation.",
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "slbie",
+      "architecture": "PowerISA",
+      "full_name": "Segment Lookaside Buffer Invalidate Entry",
+      "summary": "Invalidates an SLB entry. Critical for memory management on Power systems.",
+      "syntax": "slbie RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | / | RB | 434 | /",
+        "hex_opcode": "0x7C000364"
+      },
+      "operands": [
+        { "name": "RB", "desc": "Effective Address" }
+      ],
+      "pseudocode": "InvalidateSLB(RB)",
+      "example": "slbie r3",
+      "example_note": "Flush segment translation.",
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "wait",
+      "architecture": "PowerISA",
+      "full_name": "Wait for Interrupt",
+      "summary": "Stops instruction execution and places the processor in a lower power state until an interrupt occurs.",
+      "syntax": "wait WC",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | WC | / | 62 | /",
+        "hex_opcode": "0x7C00007C"
+      },
+      "operands": [
+        { "name": "WC", "desc": "Wait Condition (0=Interrupt, 1=Resume)" }
+      ],
+      "pseudocode": "EnterLowPowerState()",
+      "example": "wait 0",
+      "example_note": "Idle CPU.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "tbegin.",
+      "architecture": "PowerISA",
+      "full_name": "Transaction Begin",
+      "summary": "Initiates a hardware transaction. If the transaction fails, execution rolls back to this point. Sets CR0 based on success/failure.",
+      "syntax": "tbegin. R",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | R | / | 654 | 1",
+        "hex_opcode": "0x7C00051D"
+      },
+      "operands": [
+        { "name": "R", "desc": "Rollback Handler (0=External, 1=Internal)" }
+      ],
+      "pseudocode": "StartTransaction(); CR0 <- Status",
+      "example": "tbegin. 0",
+      "example_note": "Start atomic hardware transaction.",
+      "extension": "TM (Transactional Memory)"
+    },
+    {
+      "mnemonic": "tend.",
+      "architecture": "PowerISA",
+      "full_name": "Transaction End",
+      "summary": "Commits the current hardware transaction. If successful, memory changes become visible atomically.",
+      "syntax": "tend. A",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | A | / | 686 | 1",
+        "hex_opcode": "0x7C00055D"
+      },
+      "operands": [
+        { "name": "A", "desc": "Abort Control" }
+      ],
+      "pseudocode": "CommitTransaction()",
+      "example": "tend. 0",
+      "example_note": "Commit transaction.",
+      "extension": "TM (Transactional Memory)"
+    },
+    {
+      "mnemonic": "tabort.",
+      "architecture": "PowerISA",
+      "full_name": "Transaction Abort",
+      "summary": "Forces a transaction failure and rollback.",
+      "syntax": "tabort. RA",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | RA | / | 910 | 1",
+        "hex_opcode": "0x7C00071D"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Abort Code" }
+      ],
+      "pseudocode": "AbortTransaction(RA)",
+      "example": "tabort. r3",
+      "example_note": "Force rollback.",
+      "extension": "TM (Transactional Memory)"
+    },
+    {
+      "mnemonic": "vcipher",
+      "architecture": "PowerISA",
+      "full_name": "Vector Cipher (AES)",
+      "summary": "Performs one round of AES encryption (SubBytes, ShiftRows, MixColumns, AddRoundKey).",
+      "syntax": "vcipher vD, vA, vB",
+      "encoding": {
+        "format": "VX-form",
+        "binary_pattern": "4 | vD | vA | vB | 1288",
+        "hex_opcode": "0x10000508"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target State" },
+        { "name": "vA", "desc": "Current State" },
+        { "name": "vB", "desc": "Round Key" }
+      ],
+      "pseudocode": "AES_Encrypt_Round(vA, vB)",
+      "example": "vcipher v1, v2, v3",
+      "example_note": "Hardware AES Encrypt.",
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vncipher",
+      "architecture": "PowerISA",
+      "full_name": "Vector Inverse Cipher (AES)",
+      "summary": "Performs one round of AES decryption.",
+      "syntax": "vncipher vD, vA, vB",
+      "encoding": {
+        "format": "VX-form",
+        "binary_pattern": "4 | vD | vA | vB | 1352",
+        "hex_opcode": "0x10000548"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target State" },
+        { "name": "vA", "desc": "Current State" },
+        { "name": "vB", "desc": "Round Key" }
+      ],
+      "pseudocode": "AES_Decrypt_Round(vA, vB)",
+      "example": "vncipher v1, v2, v3",
+      "example_note": "Hardware AES Decrypt.",
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vshasigmaw",
+      "architecture": "PowerISA",
+      "full_name": "Vector SHA-256 Sigma Word",
+      "summary": "Performs the Sigma0/Sigma1/sigma0/sigma1 functions for SHA-256.",
+      "syntax": "vshasigmaw vD, vA, ST, SIX",
+      "encoding": {
+        "format": "VX-form",
+        "binary_pattern": "4 | vD | vA | ST | 1666",
+        "hex_opcode": "0x10000682"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source" },
+        { "name": "ST", "desc": "Sigma Type (0/1)" },
+        { "name": "SIX", "desc": "Shift Index (Immediate)" }
+      ],
+      "pseudocode": "SHA256_Sigma(vA, ST)",
+      "example": "vshasigmaw v1, v2, 0, 0",
+      "example_note": "SHA-256 Acceleration.",
+      "extension": "Vector Crypto"
+    }
+  ]
+}

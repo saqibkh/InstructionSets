@@ -1,0 +1,188 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "mcrf",
+      "architecture": "PowerISA",
+      "full_name": "Move Condition Register Field",
+      "summary": "Copies the contents of one Condition Register field to another. Used to save comparison results.",
+      "syntax": "mcrf BF, BFA",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | BF | / | BFA | / | / | 16 | /",
+        "hex_opcode": "0x4C000020"
+      },
+      "operands": [
+        { "name": "BF", "desc": "Target Field (0-7)" },
+        { "name": "BFA", "desc": "Source Field (0-7)" }
+      ],
+      "pseudocode": "CR[BF] <- CR[BFA]",
+      "example": "mcrf cr0, cr7",
+      "example_note": "Copy result from CR7 to CR0.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mfcr",
+      "architecture": "PowerISA",
+      "full_name": "Move From Condition Register",
+      "summary": "Copies the entire 32-bit Condition Register into a General Purpose Register.",
+      "syntax": "mfcr RT",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RT | 00000 | 00000 | 19 | /",
+        "hex_opcode": "0x7C000026"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" }
+      ],
+      "pseudocode": "RT <- CR",
+      "example": "mfcr r3",
+      "example_note": "Save flags to r3.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mtcrf",
+      "architecture": "PowerISA",
+      "full_name": "Move To Condition Register Fields",
+      "summary": "Copies bits from a register into the Condition Register, updated only the fields specified by the mask (FXM).",
+      "syntax": "mtcrf FXM, RS",
+      "encoding": {
+        "format": "XFX-form",
+        "binary_pattern": "31 | RS | 0 | FXM | 144 | /",
+        "hex_opcode": "0x7C000120"
+      },
+      "operands": [
+        { "name": "FXM", "desc": "Field Mask (8 bits)" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "If FXM[0]=1 then CR0 <- RS[0:3]...",
+      "example": "mtcrf 0xFF, r3",
+      "example_note": "Restore all CR fields from r3.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xsaddqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Add Quad-Precision",
+      "summary": "Adds two 128-bit Quad-Precision floating-point numbers held in VSX registers (pairs).",
+      "syntax": "xsaddqp vD, vA, vB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "63 | vD | vA | vB | 4 | /",
+        "hex_opcode": "0xFC000004"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target (128-bit)" },
+        { "name": "vA", "desc": "Source A" },
+        { "name": "vB", "desc": "Source B" }
+      ],
+      "pseudocode": "vD <- vA + vB (IEEE 128-bit)",
+      "example": "xsaddqp v2, v3, v4",
+      "example_note": "Scientific Quad-Float Add.",
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xsmulqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Multiply Quad-Precision",
+      "summary": "Multiplies two 128-bit Quad-Precision floating-point numbers.",
+      "syntax": "xsmulqp vD, vA, vB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "63 | vD | vA | vB | 36 | /",
+        "hex_opcode": "0xFC000048"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source A" },
+        { "name": "vB", "desc": "Source B" }
+      ],
+      "pseudocode": "vD <- vA * vB (IEEE 128-bit)",
+      "example": "xsmulqp v2, v3, v4",
+      "example_note": "Scientific Quad-Float Multiply.",
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xscvdpqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Double to Quad-Precision",
+      "summary": "Converts a 64-bit Double to a 128-bit Quad float.",
+      "syntax": "xscvdpqp vD, vB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "63 | vD | / | vB | 340 | /",
+        "hex_opcode": "0xFC0002A8"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target (Quad)" },
+        { "name": "vB", "desc": "Source (Double)" }
+      ],
+      "pseudocode": "vD <- (float128)vB",
+      "example": "xscvdpqp v2, v3",
+      "example_note": "Promote Double to Quad.",
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "dadd",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Add",
+      "summary": "Adds two 64-bit Decimal Floating Point (DFP) numbers. Used in financial calculations to avoid rounding errors.",
+      "syntax": "dadd FRT, FRA, FRB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "59 | FRT | FRA | FRB | 2 | /",
+        "hex_opcode": "0xEC000004"
+      },
+      "operands": [
+        { "name": "FRT", "desc": "Target FPR" },
+        { "name": "FRA", "desc": "Source A" },
+        { "name": "FRB", "desc": "Source B" }
+      ],
+      "pseudocode": "FRT <- FRA + FRB (Decimal64)",
+      "example": "dadd f1, f2, f3",
+      "example_note": "Financial Add.",
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dmul",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Multiply",
+      "summary": "Multiplies two 64-bit Decimal Floating Point numbers.",
+      "syntax": "dmul FRT, FRA, FRB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "59 | FRT | FRA | FRB | 34 | /",
+        "hex_opcode": "0xEC000044"
+      },
+      "operands": [
+        { "name": "FRT", "desc": "Target FPR" },
+        { "name": "FRA", "desc": "Source A" },
+        { "name": "FRB", "desc": "Source B" }
+      ],
+      "pseudocode": "FRT <- FRA * FRB (Decimal64)",
+      "example": "dmul f1, f2, f3",
+      "example_note": "Financial Multiply.",
+      "extension": "Decimal Float"
+    },
+    {
+      "mnemonic": "dqua",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Quantize",
+      "summary": "Adjusts the exponent of a DFP number to match a reference. Critical for aligning decimal points before addition.",
+      "syntax": "dqua FRT, FRA, FRB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "63 | FRT | FRA | FRB | 66 | /",
+        "hex_opcode": "0xFC000084"
+      },
+      "operands": [
+        { "name": "FRT", "desc": "Target" },
+        { "name": "FRA", "desc": "Source Value" },
+        { "name": "FRB", "desc": "Reference Exponent" }
+      ],
+      "pseudocode": "Adjust FRA exponent to match FRB",
+      "example": "dqua f1, f2, f3",
+      "example_note": "Align decimal points.",
+      "extension": "Decimal Float"
+    }
+  ]
+}
