@@ -10,14 +10,13 @@ INPUT_DIR = 'input'
 DB_DIR = 'db'
 OUTPUT_DIR = 'docs'
 TEMPLATE_DIR = 'templates'
-SITE_URL = "https://saqibkh.github.io/InstructionSets" # Change this to your actual URL
+SITE_URL = "https://saqibkh.github.io/InstructionSets" 
 
 os.makedirs(DB_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # --- HELPERS ---
 def validate_instruction(inst):
-    """Ensures required fields exist to prevent build crashes."""
     required = ['mnemonic', 'architecture', 'summary', 'encoding']
     missing = [key for key in required if key not in inst]
     if missing:
@@ -26,15 +25,12 @@ def validate_instruction(inst):
     return True
 
 def parse_encoding(pattern):
-    """Smartly splits binary patterns based on delimiters."""
     if not pattern: return []
     if '|' in pattern: return [p.strip() for p in pattern.split('|')]
     if '+' in pattern: return [p.strip() for p in pattern.split('+')]
     return [p.strip() for p in pattern.split()]
 
 def create_linkifier(mnemonic_map):
-    """Returns a function that replaces mnemonics with HTML links."""
-    # Sort by length (longest first) to prevent partial replacement (e.g. replacing ADD inside ADDI)
     sorted_keys = sorted(mnemonic_map.keys(), key=len, reverse=True)
     pattern = re.compile(r'\b(' + '|'.join(re.escape(k) for k in sorted_keys) + r')\b')
 
@@ -42,7 +38,6 @@ def create_linkifier(mnemonic_map):
         if not text: return ""
         def replace(match):
             m = match.group(0)
-            # Don't link to self
             return f'<a href="{mnemonic_map[m]}" class="cross-link">{m}</a>'
         return pattern.sub(replace, text)
     return linkify
@@ -50,7 +45,6 @@ def create_linkifier(mnemonic_map):
 # --- CORE LOGIC ---
 def load_and_merge_data():
     master_db = {} 
-    # 1. Load existing DB
     if os.path.exists(DB_DIR):
         for filename in os.listdir(DB_DIR):
             if filename.endswith('.json'):
@@ -58,7 +52,6 @@ def load_and_merge_data():
                 with open(os.path.join(DB_DIR, filename), 'r') as f:
                     master_db[arch_name] = json.load(f)
 
-    # 2. Process new inputs
     if os.path.exists(INPUT_DIR):
         for filename in os.listdir(INPUT_DIR):
             if filename.endswith('.json'):
@@ -68,11 +61,8 @@ def load_and_merge_data():
                         new_data = json.load(f)
                         for inst in new_data.get('instructions', []):
                             if not validate_instruction(inst): continue
-                            
                             arch = inst.get('architecture', 'Unknown')
                             if arch not in master_db: master_db[arch] = []
-                            
-                            # Deduplicate
                             exists = any(i['mnemonic'] == inst['mnemonic'] for i in master_db[arch])
                             if not exists:
                                 master_db[arch].append(inst)
@@ -80,7 +70,6 @@ def load_and_merge_data():
                     except json.JSONDecodeError as e:
                         print(f"❌ Error decoding {filename}: {e}")
 
-    # 3. Save DB
     for arch, instructions in master_db.items():
         with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
             json.dump(instructions, f, indent=2)
@@ -89,20 +78,15 @@ def load_and_merge_data():
 def generate_site(master_db):
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     
-    # 1. Build Mnemonic Map for Cross-Linking & Search Index
     mnemonic_to_url = {}
     search_index = []
-    
-    # Flatten list for sitemap
     all_pages = []
 
     for arch, insts in master_db.items():
         for inst in insts:
             clean_name = inst['mnemonic'].lower().replace(' ', '_')
-            # Determine relative path from root
             rel_url = f"{arch.lower()}/{clean_name}/"
-            
-            mnemonic_to_url[inst['mnemonic']] = f"../../{rel_url}" # For sibling pages
+            mnemonic_to_url[inst['mnemonic']] = f"../../{rel_url}"
             
             search_index.append({
                 "label": f"{inst['mnemonic']} ({arch})",
@@ -110,17 +94,13 @@ def generate_site(master_db):
                 "summary": inst['summary'],
                 "arch": arch
             })
-            
             all_pages.append(rel_url)
 
-    # Linkifier function (detects mnemonics in text and links them)
     linkify = create_linkifier(mnemonic_to_url)
 
-    # 2. Generate Search Index File
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
-    # 3. Generate Sitemap.xml
     sitemap_content = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     today = datetime.now().strftime("%Y-%m-%d")
     for page in all_pages:
@@ -130,13 +110,11 @@ def generate_site(master_db):
     with open(os.path.join(OUTPUT_DIR, 'sitemap.xml'), 'w') as f:
         f.write('\n'.join(sitemap_content))
 
-    # 4. Copy Assets
     static_src = 'static'
     static_dest = os.path.join(OUTPUT_DIR, 'static')
     if os.path.exists(static_dest): shutil.rmtree(static_dest)
     if os.path.exists(static_src): shutil.copytree(static_src, static_dest)
 
-    # 5. Generate HTML Pages
     template_detail = env.get_template('instruction_detail.html')
     template_summary = env.get_template('arch_summary.html')
     template_index = env.get_template('index.html')
@@ -153,21 +131,27 @@ def generate_site(master_db):
     for arch, instructions in master_db.items():
         sorted_insts = sorted(instructions, key=lambda x: x['mnemonic'])
         
-        # Pre-process instructions
+        # --- NEW: Enhanced Pre-processing ---
         for inst in instructions:
-            # 1. Parse Encoding
+            # 1. Parse Encoding with cleanup
             if 'encoding' in inst and 'binary_pattern' in inst['encoding']:
-                inst['encoding']['visual_parts'] = parse_encoding(inst['encoding']['binary_pattern'])
+                raw_parts = parse_encoding(inst['encoding']['binary_pattern'])
+                inst['encoding']['visual_parts'] = []
+                for p in raw_parts:
+                    # Clean "imm[11:0]" -> "imm" for matching
+                    clean_name = p.split('[')[0].strip()
+                    inst['encoding']['visual_parts'].append({
+                        'raw': p, 
+                        'clean': clean_name
+                    })
             
-            # 2. Cross-Link Summary & Pseudocode
-            # We pass a modified version to the template (optional, or modify in place)
+            # 2. Cross-Link
             inst['linked_summary'] = linkify(inst['summary'])
             inst['linked_pseudocode'] = linkify(inst.get('pseudocode', ''))
 
         # ARCH SUMMARY
         arch_dir = os.path.join(OUTPUT_DIR, arch.lower())
         os.makedirs(arch_dir, exist_ok=True)
-        
         with open(os.path.join(arch_dir, 'index.html'), 'w') as f:
             f.write(template_summary.render(
                 arch=arch, 

@@ -67,8 +67,8 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 {% for part in instruction.encoding.visual_parts %}
-                                <div class="bit-box">
-                                    <span class="bit-value">{{ part }}</span>
+                                <div class="bit-box" data-op="{{ part.clean }}">
+                                    <span class="bit-value">{{ part.raw }}</span>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -90,7 +90,7 @@
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
                             {% for op in instruction.operands %}
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="{{ op.name }}" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">{{ op.name }}</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">{{ op.desc }}</span>

@@ -151,11 +151,11 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="E9">
                                     <span class="bit-value">E9</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="cd">
                                     <span class="bit-value">cd</span>
                                 </div>
                                 
@@ -178,7 +178,7 @@
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="target" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">target</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Relative Address</span>
@@ -198,8 +198,11 @@
     </footer>
 
     <script src="../../static/theme.js"></script>
-    
+
+    <script src="../../static/interactions.js"></script>
+
     <script>
+        // Mobile Sidebar Logic
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.sidebar').classList.remove('active');

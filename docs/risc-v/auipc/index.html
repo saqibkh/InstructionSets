@@ -151,15 +151,15 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="imm">
                                     <span class="bit-value">imm[31:12]</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="rd">
                                     <span class="bit-value">rd</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="0010111">
                                     <span class="bit-value">0010111</span>
                                 </div>
                                 
@@ -182,13 +182,13 @@
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="rd" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rd</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Dest</span>
                             </li>
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="imm" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">imm</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">20-bit offset</span>
@@ -208,8 +208,11 @@
     </footer>
 
     <script src="../../static/theme.js"></script>
-    
+
+    <script src="../../static/interactions.js"></script>
+
     <script>
+        // Mobile Sidebar Logic
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.sidebar').classList.remove('active');

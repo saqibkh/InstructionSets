@@ -201,3 +201,22 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
 
 .theme-toggle { background: transparent; border: 1px solid var(--border); color: var(--text-muted); width: 40px; height: 40px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .theme-toggle:hover { background: var(--bg-hover); color: var(--accent); }
+
+/* Highlighting Interaction */
+.highlight {
+    background-color: var(--accent-dim) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    cursor: default;
+    /* Optional: Subtle transform to make it pop */
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+/* Ensure the operand row handles the transform gracefully */
+.operand-row {
+    position: relative;
+    /* transition is defined inline in the template for simplicity, but cleaner here: */
+    transition: all 0.2s ease;
+}

@@ -151,35 +151,35 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="sf">
                                     <span class="bit-value">sf</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="0101010">
                                     <span class="bit-value">0101010</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="00">
                                     <span class="bit-value">00</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="Rm">
                                     <span class="bit-value">Rm</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="000000">
                                     <span class="bit-value">000000</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="Rn">
                                     <span class="bit-value">Rn</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="Rd">
                                     <span class="bit-value">Rd</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="(ORR)">
                                     <span class="bit-value">(ORR)</span>
                                 </div>
                                 
@@ -202,13 +202,13 @@
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="Xd" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Xd</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Dest</span>
                             </li>
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="Xm" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Xm</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Source</span>
@@ -228,8 +228,11 @@
     </footer>
 
     <script src="../../static/theme.js"></script>
-    
+
+    <script src="../../static/interactions.js"></script>
+
     <script>
+        // Mobile Sidebar Logic
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.sidebar').classList.remove('active');

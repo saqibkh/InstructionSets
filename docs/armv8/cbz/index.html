@@ -151,19 +151,19 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="sf">
                                     <span class="bit-value">sf</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="011010">
                                     <span class="bit-value">011010</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="imm19">
                                     <span class="bit-value">imm19</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="Rt">
                                     <span class="bit-value">Rt</span>
                                 </div>
                                 
@@ -186,13 +186,13 @@
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="Xt" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Xt</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Register to test</span>
                             </li>
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="label" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">label</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Target</span>
@@ -212,8 +212,11 @@
     </footer>
 
     <script src="../../static/theme.js"></script>
-    
+
+    <script src="../../static/interactions.js"></script>
+
     <script>
+        // Mobile Sidebar Logic
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.sidebar').classList.remove('active');

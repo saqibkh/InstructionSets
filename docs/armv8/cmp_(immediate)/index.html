@@ -151,31 +151,31 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="sf">
                                     <span class="bit-value">sf</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="110001">
                                     <span class="bit-value">110001</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="00">
                                     <span class="bit-value">00</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="imm12">
                                     <span class="bit-value">imm12</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="Rn">
                                     <span class="bit-value">Rn</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="11111">
                                     <span class="bit-value">11111</span>
                                 </div>
                                 
-                                <div class="bit-box">
+                                <div class="bit-box" data-op="(SUBS)">
                                     <span class="bit-value">(SUBS)</span>
                                 </div>
                                 
@@ -198,13 +198,13 @@
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="Xn" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Xn</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Source</span>
                             </li>
                             
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <li class="operand-row" data-op="imm" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">imm</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Value</span>
@@ -224,8 +224,11 @@
     </footer>
 
     <script src="../../static/theme.js"></script>
-    
+
+    <script src="../../static/interactions.js"></script>
+
     <script>
+        // Mobile Sidebar Logic
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.sidebar').classList.remove('active');
