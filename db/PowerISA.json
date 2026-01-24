@@ -1,0 +1,1798 @@
+[
+  {
+    "mnemonic": "add",
+    "architecture": "PowerISA",
+    "full_name": "Add",
+    "summary": "Adds the contents of two registers.",
+    "syntax": "add RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 266 | Rc",
+      "hex_opcode": "0x7C000214 (Base)"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "RT <- (RA) + (RB)",
+    "example": "add r3, r4, r5",
+    "example_note": "r3 = r4 + r5",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "addc",
+    "architecture": "PowerISA",
+    "full_name": "Add Carrying",
+    "summary": "Adds two registers and updates the Carry Architecture (CA) bit.",
+    "syntax": "addc RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 10 | Rc",
+      "hex_opcode": "0x7C000014 (Base)"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "RT <- (RA) + (RB); CA <- Carry",
+    "example": "addc r3, r4, r5",
+    "example_note": "r3 = r4 + r5 (Updates Carry)",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "adde",
+    "architecture": "PowerISA",
+    "full_name": "Add Extended",
+    "summary": "Adds two registers plus the current Carry bit.",
+    "syntax": "adde RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 138 | Rc",
+      "hex_opcode": "0x7C000114 (Base)"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "RT <- (RA) + (RB) + CA",
+    "example": "adde r3, r4, r5",
+    "example_note": "r3 = r4 + r5 + CA",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "addi",
+    "architecture": "PowerISA",
+    "full_name": "Add Immediate",
+    "summary": "Adds a 16-bit signed immediate value to a register.",
+    "syntax": "addi RT, RA, SI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "14 | RT | RA | SI",
+      "hex_opcode": "0x38000000 (Base)"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register (0 means 0)"
+      },
+      {
+        "name": "SI",
+        "desc": "Signed 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "if RA=0 then RT <- EXTS(SI) else RT <- (RA) + EXTS(SI)",
+    "example": "addi r3, r4, 10",
+    "example_note": "r3 = r4 + 10",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "addic",
+    "architecture": "PowerISA",
+    "full_name": "Add Immediate Carrying",
+    "summary": "Adds an immediate to a register and updates the Carry bit.",
+    "syntax": "addic RT, RA, SI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "12 | RT | RA | SI",
+      "hex_opcode": "0x30000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register"
+      },
+      {
+        "name": "SI",
+        "desc": "Signed 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "RT <- (RA) + EXTS(SI); CA <- Carry",
+    "example": "addic r3, r4, 10",
+    "example_note": "r3 = r4 + 10 (Updates CA)",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "addic.",
+    "architecture": "PowerISA",
+    "full_name": "Add Immediate Carrying and Record",
+    "summary": "Adds an immediate, updates Carry, and updates Condition Register Field 0 (CR0).",
+    "syntax": "addic. RT, RA, SI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "13 | RT | RA | SI",
+      "hex_opcode": "0x34000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register"
+      },
+      {
+        "name": "SI",
+        "desc": "Signed 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "RT <- (RA) + EXTS(SI); CA <- Carry; CR0 <- Compare(RT, 0)",
+    "example": "addic. r3, r4, -5",
+    "example_note": "r3 = r4 - 5 (Updates CA and CR0)",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "addis",
+    "architecture": "PowerISA",
+    "full_name": "Add Immediate Shifted",
+    "summary": "Adds a 16-bit immediate shifted left by 16 bits to a register.",
+    "syntax": "addis RT, RA, SI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "15 | RT | RA | SI",
+      "hex_opcode": "0x3C000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register (0 means 0)"
+      },
+      {
+        "name": "SI",
+        "desc": "Signed 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "if RA=0 then RT <- EXTS(SI || 0x0000) else RT <- (RA) + EXTS(SI || 0x0000)",
+    "example": "addis r3, r4, 1",
+    "example_note": "r3 = r4 + 65536 (0x10000)",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "addme",
+    "architecture": "PowerISA",
+    "full_name": "Add to Minus One Extended",
+    "summary": "Adds a register, -1, and the Carry bit.",
+    "syntax": "addme RT, RA",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | 00000 | OE | 234 | Rc",
+      "hex_opcode": "0x7C0001D4"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "RT <- (RA) + CA - 1",
+    "example": "addme r3, r4",
+    "example_note": "r3 = r4 + CA - 1",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "addze",
+    "architecture": "PowerISA",
+    "full_name": "Add to Zero Extended",
+    "summary": "Adds a register, 0, and the Carry bit.",
+    "syntax": "addze RT, RA",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | 00000 | OE | 202 | Rc",
+      "hex_opcode": "0x7C000194"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "RT <- (RA) + CA",
+    "example": "addze r3, r4",
+    "example_note": "r3 = r4 + CA",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "and",
+    "architecture": "PowerISA",
+    "full_name": "AND",
+    "summary": "Performs a bitwise AND between two registers.",
+    "syntax": "and RA, RS, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | RB | 28 | Rc",
+      "hex_opcode": "0x7C000038"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "RA <- (RS) & (RB)",
+    "example": "and r3, r4, r5",
+    "example_note": "r3 = r4 & r5",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "andc",
+    "architecture": "PowerISA",
+    "full_name": "AND with Complement",
+    "summary": "Performs a bitwise AND between RS and the one's complement of RB.",
+    "syntax": "andc RA, RS, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | RB | 60 | Rc",
+      "hex_opcode": "0x7C000078"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "RA <- (RS) & ~(RB)",
+    "example": "andc r3, r4, r5",
+    "example_note": "r3 = r4 & ~r5",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "andi.",
+    "architecture": "PowerISA",
+    "full_name": "AND Immediate",
+    "summary": "Performs a bitwise AND between a register and a 16-bit unsigned immediate (zero-extended). Always updates CR0.",
+    "syntax": "andi. RA, RS, UI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "28 | RS | RA | UI",
+      "hex_opcode": "0x70000000"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      },
+      {
+        "name": "UI",
+        "desc": "Unsigned 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "RA <- (RS) & (0x0000 || UI); CR0 <- Compare(RA, 0)",
+    "example": "andi. r3, r4, 0xF",
+    "example_note": "r3 = r4 & 0xF",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "andis.",
+    "architecture": "PowerISA",
+    "full_name": "AND Immediate Shifted",
+    "summary": "Performs a bitwise AND between a register and a 16-bit immediate shifted left by 16 bits. Always updates CR0.",
+    "syntax": "andis. RA, RS, UI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "29 | RS | RA | UI",
+      "hex_opcode": "0x74000000"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      },
+      {
+        "name": "UI",
+        "desc": "Unsigned 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "RA <- (RS) & (UI || 0x0000); CR0 <- Compare(RA, 0)",
+    "example": "andis. r3, r4, 0x1234",
+    "example_note": "r3 = r4 & 0x12340000",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "b",
+    "architecture": "PowerISA",
+    "full_name": "Branch",
+    "summary": "Unconditionally branches to a target address relative to the current instruction pointer.",
+    "syntax": "b target_addr",
+    "encoding": {
+      "format": "I-form",
+      "binary_pattern": "18 | LI | AA | LK",
+      "hex_opcode": "0x48000000"
+    },
+    "operands": [
+      {
+        "name": "LI",
+        "desc": "24-bit Signed Immediate (Displacement / 4)"
+      }
+    ],
+    "pseudocode": "NIA <- CIA + EXTS(LI || 00)",
+    "example": "b label",
+    "example_note": "Jump to 'label'.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "ba",
+    "architecture": "PowerISA",
+    "full_name": "Branch Absolute",
+    "summary": "Unconditionally branches to an absolute address.",
+    "syntax": "ba target_addr",
+    "encoding": {
+      "format": "I-form",
+      "binary_pattern": "18 | LI | 1 | LK",
+      "hex_opcode": "0x48000002"
+    },
+    "operands": [
+      {
+        "name": "LI",
+        "desc": "24-bit Signed Immediate (Address / 4)"
+      }
+    ],
+    "pseudocode": "NIA <- EXTS(LI || 00)",
+    "example": "ba 0x1000",
+    "example_note": "Jump to address 0x1000.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "bl",
+    "architecture": "PowerISA",
+    "full_name": "Branch and Link",
+    "summary": "Branches to a target address and saves the return address (CIA + 4) in the Link Register (LR). Used for function calls.",
+    "syntax": "bl target_addr",
+    "encoding": {
+      "format": "I-form",
+      "binary_pattern": "18 | LI | AA | 1",
+      "hex_opcode": "0x48000001"
+    },
+    "operands": [
+      {
+        "name": "LI",
+        "desc": "24-bit Signed Immediate"
+      }
+    ],
+    "pseudocode": "LR <- CIA + 4; NIA <- CIA + EXTS(LI || 00)",
+    "example": "bl printf",
+    "example_note": "Call 'printf' function.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "bc",
+    "architecture": "PowerISA",
+    "full_name": "Branch Conditional",
+    "summary": "Branches conditionally based on the Count Register (CTR) and/or a bit in the Condition Register (CR).",
+    "syntax": "bc BO, BI, target_addr",
+    "encoding": {
+      "format": "B-form",
+      "binary_pattern": "16 | BO | BI | BD | AA | LK",
+      "hex_opcode": "0x40000000"
+    },
+    "operands": [
+      {
+        "name": "BO",
+        "desc": "Branch Options (5 bits)"
+      },
+      {
+        "name": "BI",
+        "desc": "CR Bit Index (5 bits)"
+      },
+      {
+        "name": "BD",
+        "desc": "14-bit Signed Displacement"
+      }
+    ],
+    "pseudocode": "if (Condition(BO, BI)) NIA <- CIA + EXTS(BD || 00)",
+    "example": "bc 12, 2, label",
+    "example_note": "Branch if CR bit 2 is set (beq).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "bclr",
+    "architecture": "PowerISA",
+    "full_name": "Branch Conditional to Link Register",
+    "summary": "Branches to the address in the Link Register (LR) if the condition is met. Used for function returns.",
+    "syntax": "bclr BO, BI",
+    "encoding": {
+      "format": "XL-form",
+      "binary_pattern": "19 | BO | BI | 000 | 16 | LK",
+      "hex_opcode": "0x4C000020"
+    },
+    "operands": [
+      {
+        "name": "BO",
+        "desc": "Branch Options"
+      },
+      {
+        "name": "BI",
+        "desc": "CR Bit Index"
+      }
+    ],
+    "pseudocode": "if (Condition(BO, BI)) NIA <- LR(0:61) || 00",
+    "example": "bclr 20, 0",
+    "example_note": "Unconditional return (blr).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "bcctr",
+    "architecture": "PowerISA",
+    "full_name": "Branch Conditional to Count Register",
+    "summary": "Branches to the address in the Count Register (CTR) if the condition is met. Used for computed jumps and switch statements.",
+    "syntax": "bcctr BO, BI",
+    "encoding": {
+      "format": "XL-form",
+      "binary_pattern": "19 | BO | BI | 000 | 528 | LK",
+      "hex_opcode": "0x4C000420"
+    },
+    "operands": [
+      {
+        "name": "BO",
+        "desc": "Branch Options"
+      },
+      {
+        "name": "BI",
+        "desc": "CR Bit Index"
+      }
+    ],
+    "pseudocode": "if (Condition(BO, BI)) NIA <- CTR(0:61) || 00",
+    "example": "bcctr 20, 0",
+    "example_note": "Jump to address in CTR (bctr).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "bpermd",
+    "architecture": "PowerISA",
+    "full_name": "Bit Permute Doubleword",
+    "summary": "Permutes bits from RS based on the index values in RB. Highly optimized for bit shuffling.",
+    "syntax": "bpermd RA, RS, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | RB | 252 | /",
+      "hex_opcode": "0x7C0001F8"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register (Data)"
+      },
+      {
+        "name": "RB",
+        "desc": "Permute Control Byte Selects"
+      }
+    ],
+    "pseudocode": "For i from 0 to 7: index = RB.byte[i]; if index < 64 then RA.bit[index] = RS.bit[i] else RA.bit[i] = 0",
+    "example": "bpermd r3, r4, r5",
+    "example_note": "Complex bit permutation.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "cmp",
+    "architecture": "PowerISA",
+    "full_name": "Compare",
+    "summary": "Compares two registers as signed integers and records the result in the specified Condition Register Field.",
+    "syntax": "cmp BF, L, RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | BF | / | L | RA | RB | 0000000000 | 1",
+      "hex_opcode": "0x7C000000"
+    },
+    "operands": [
+      {
+        "name": "BF",
+        "desc": "Condition Register Field (0-7)"
+      },
+      {
+        "name": "L",
+        "desc": "Operand Size (0=32-bit, 1=64-bit)"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "if (RA) < (RB) then CR[BF] <- 0b1000 (LT)...",
+    "example": "cmp cr7, 0, r3, r4",
+    "example_note": "Compare r3 vs r4 (32-bit signed), result in cr7.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "cmpi",
+    "architecture": "PowerISA",
+    "full_name": "Compare Immediate",
+    "summary": "Compares a register to a 16-bit signed immediate.",
+    "syntax": "cmpi BF, L, RA, SI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "11 | BF | / | L | RA | SI",
+      "hex_opcode": "0x2C000000"
+    },
+    "operands": [
+      {
+        "name": "BF",
+        "desc": "Condition Register Field"
+      },
+      {
+        "name": "L",
+        "desc": "Size (0=32-bit, 1=64-bit)"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register"
+      },
+      {
+        "name": "SI",
+        "desc": "Signed 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "if (RA) < EXTS(SI) then CR[BF] <- LT...",
+    "example": "cmpi cr0, 1, r3, -5",
+    "example_note": "Compare r3 vs -5 (64-bit signed).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "cmpl",
+    "architecture": "PowerISA",
+    "full_name": "Compare Logical",
+    "summary": "Compares two registers as unsigned integers.",
+    "syntax": "cmpl BF, L, RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | BF | / | L | RA | RB | 0000100000 | 1",
+      "hex_opcode": "0x7C000040"
+    },
+    "operands": [
+      {
+        "name": "BF",
+        "desc": "Condition Register Field"
+      },
+      {
+        "name": "L",
+        "desc": "Size (0=32-bit, 1=64-bit)"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "if (RA) <u (RB) then CR[BF] <- LT...",
+    "example": "cmpl cr1, 1, r3, r4",
+    "example_note": "Unsigned compare of r3 vs r4.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "cmpli",
+    "architecture": "PowerISA",
+    "full_name": "Compare Logical Immediate",
+    "summary": "Compares a register to a 16-bit unsigned immediate.",
+    "syntax": "cmpli BF, L, RA, UI",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "10 | BF | / | L | RA | UI",
+      "hex_opcode": "0x28000000"
+    },
+    "operands": [
+      {
+        "name": "BF",
+        "desc": "Condition Register Field"
+      },
+      {
+        "name": "L",
+        "desc": "Size"
+      },
+      {
+        "name": "RA",
+        "desc": "Source Register"
+      },
+      {
+        "name": "UI",
+        "desc": "Unsigned 16-bit Immediate"
+      }
+    ],
+    "pseudocode": "if (RA) <u (00 || UI) then CR[BF] <- LT...",
+    "example": "cmpli cr0, 0, r3, 0xFF",
+    "example_note": "Check if r3 < 255 (unsigned).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "cntlzw",
+    "architecture": "PowerISA",
+    "full_name": "Count Leading Zeros Word",
+    "summary": "Counts the number of consecutive 0 bits starting from bit 32 (MSB of the low word).",
+    "syntax": "cntlzw RA, RS",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | 00000 | 000011010 | Rc",
+      "hex_opcode": "0x7C000034"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "n <- 0; while RS[32+n] = 0 do n <- n + 1; RA <- n",
+    "example": "cntlzw r3, r4",
+    "example_note": "r3 = Leading Zeros in lower 32-bits of r4.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "cntlzd",
+    "architecture": "PowerISA",
+    "full_name": "Count Leading Zeros Doubleword",
+    "summary": "Counts the number of consecutive 0 bits starting from bit 0 (MSB of 64-bit reg).",
+    "syntax": "cntlzd RA, RS",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | 00000 | 000111010 | Rc",
+      "hex_opcode": "0x7C000074"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "n <- 0; while RS[n] = 0 do n <- n + 1; RA <- n",
+    "example": "cntlzd r3, r4",
+    "example_note": "r3 = Leading Zeros in 64-bit r4.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "crand",
+    "architecture": "PowerISA",
+    "full_name": "Condition Register AND",
+    "summary": "Performs a bitwise AND between two bits in the Condition Register.",
+    "syntax": "crand BT, BA, BB",
+    "encoding": {
+      "format": "XL-form",
+      "binary_pattern": "19 | BT | BA | BB | 257 | /",
+      "hex_opcode": "0x4C000202"
+    },
+    "operands": [
+      {
+        "name": "BT",
+        "desc": "Target Bit (0-31)"
+      },
+      {
+        "name": "BA",
+        "desc": "Source Bit A"
+      },
+      {
+        "name": "BB",
+        "desc": "Source Bit B"
+      }
+    ],
+    "pseudocode": "CR[BT] <- CR[BA] & CR[BB]",
+    "example": "crand 4*cr0+eq, 4*cr1+lt, 4*cr2+gt",
+    "example_note": "If (cr1.lt AND cr2.gt), set cr0.eq.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "cror",
+    "architecture": "PowerISA",
+    "full_name": "Condition Register OR",
+    "summary": "Performs a bitwise OR between two bits in the Condition Register.",
+    "syntax": "cror BT, BA, BB",
+    "encoding": {
+      "format": "XL-form",
+      "binary_pattern": "19 | BT | BA | BB | 449 | /",
+      "hex_opcode": "0x4C000382"
+    },
+    "operands": [
+      {
+        "name": "BT",
+        "desc": "Target Bit"
+      },
+      {
+        "name": "BA",
+        "desc": "Source Bit A"
+      },
+      {
+        "name": "BB",
+        "desc": "Source Bit B"
+      }
+    ],
+    "pseudocode": "CR[BT] <- CR[BA] | CR[BB]",
+    "example": "cror 0, 1, 2",
+    "example_note": "CR[0] = CR[1] | CR[2].",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "crxor",
+    "architecture": "PowerISA",
+    "full_name": "Condition Register XOR",
+    "summary": "Performs a bitwise XOR between two bits in the Condition Register. Used to clear CR bits (crxor x,x,x).",
+    "syntax": "crxor BT, BA, BB",
+    "encoding": {
+      "format": "XL-form",
+      "binary_pattern": "19 | BT | BA | BB | 193 | /",
+      "hex_opcode": "0x4C000182"
+    },
+    "operands": [
+      {
+        "name": "BT",
+        "desc": "Target Bit"
+      },
+      {
+        "name": "BA",
+        "desc": "Source Bit A"
+      },
+      {
+        "name": "BB",
+        "desc": "Source Bit B"
+      }
+    ],
+    "pseudocode": "CR[BT] <- CR[BA] XOR CR[BB]",
+    "example": "crxor 0, 0, 0",
+    "example_note": "Clears CR bit 0 (sets it to 0).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "extsb",
+    "architecture": "PowerISA",
+    "full_name": "Extend Sign Byte",
+    "summary": "Sign-extends the low byte (8 bits) of a register to 64 bits.",
+    "syntax": "extsb RA, RS",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | 00000 | 954 | Rc",
+      "hex_opcode": "0x7C000774"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "RA <- EXTS(RS[56:63])",
+    "example": "extsb r3, r4",
+    "example_note": "r3 = (int64_t)(int8_t)r4",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "extsh",
+    "architecture": "PowerISA",
+    "full_name": "Extend Sign Halfword",
+    "summary": "Sign-extends the low halfword (16 bits) of a register to 64 bits.",
+    "syntax": "extsh RA, RS",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | 00000 | 922 | Rc",
+      "hex_opcode": "0x7C000734"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "RA <- EXTS(RS[48:63])",
+    "example": "extsh r3, r4",
+    "example_note": "r3 = (int64_t)(int16_t)r4",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "extsw",
+    "architecture": "PowerISA",
+    "full_name": "Extend Sign Word",
+    "summary": "Sign-extends the low word (32 bits) of a register to 64 bits.",
+    "syntax": "extsw RA, RS",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | 00000 | 986 | Rc",
+      "hex_opcode": "0x7C0007B4"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "RA <- EXTS(RS[32:63])",
+    "example": "extsw r3, r4",
+    "example_note": "r3 = (int64_t)(int32_t)r4",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "eqv",
+    "architecture": "PowerISA",
+    "full_name": "Equivalent",
+    "summary": "Performs a bitwise Equivalence (XNOR) operation. (RA = ~(RS ^ RB)).",
+    "syntax": "eqv RA, RS, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RS | RA | RB | 284 | Rc",
+      "hex_opcode": "0x7C000238"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Source Register 2"
+      }
+    ],
+    "pseudocode": "RA <- (RS) EQV (RB)",
+    "example": "eqv r3, r4, r5",
+    "example_note": "Bitwise XNOR.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "eieio",
+    "architecture": "PowerISA",
+    "full_name": "Enforce In-order Execution of I/O",
+    "summary": "Ensures that load/store instructions preceding the EIEIO complete before those following it. Used for Memory-Mapped I/O synchronization.",
+    "syntax": "eieio",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | 00000 | 00000 | 00000 | 854 | /",
+      "hex_opcode": "0x7C0006AC"
+    },
+    "operands": [],
+    "pseudocode": "Barrier(IO_Storage)",
+    "example": "eieio",
+    "example_note": "I/O Barrier.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "fadd",
+    "architecture": "PowerISA",
+    "full_name": "Floating Add",
+    "summary": "Adds two double-precision floating-point registers.",
+    "syntax": "fadd FRT, FRA, FRB",
+    "encoding": {
+      "format": "A-form",
+      "binary_pattern": "63 | FRT | FRA | FRB | 00000 | 21 | Rc",
+      "hex_opcode": "0xFC00002A"
+    },
+    "operands": [
+      {
+        "name": "FRT",
+        "desc": "Target FPR"
+      },
+      {
+        "name": "FRA",
+        "desc": "Source FPR A"
+      },
+      {
+        "name": "FRB",
+        "desc": "Source FPR B"
+      }
+    ],
+    "pseudocode": "FRT <- (FRA) + (FRB)",
+    "example": "fadd f1, f2, f3",
+    "example_note": "f1 = f2 + f3",
+    "extension": "Float"
+  },
+  {
+    "mnemonic": "fmul",
+    "architecture": "PowerISA",
+    "full_name": "Floating Multiply",
+    "summary": "Multiplies two double-precision floating-point registers.",
+    "syntax": "fmul FRT, FRA, FRC",
+    "encoding": {
+      "format": "A-form",
+      "binary_pattern": "63 | FRT | FRA | 00000 | FRC | 25 | Rc",
+      "hex_opcode": "0xFC000032"
+    },
+    "operands": [
+      {
+        "name": "FRT",
+        "desc": "Target FPR"
+      },
+      {
+        "name": "FRA",
+        "desc": "Source FPR A"
+      },
+      {
+        "name": "FRC",
+        "desc": "Source FPR C"
+      }
+    ],
+    "pseudocode": "FRT <- (FRA) * (FRC)",
+    "example": "fmul f1, f2, f3",
+    "example_note": "f1 = f2 * f3",
+    "extension": "Float"
+  },
+  {
+    "mnemonic": "fmadd",
+    "architecture": "PowerISA",
+    "full_name": "Floating Multiply-Add",
+    "summary": "Performs (A * C) + B with a single rounding step. (The classic FMA).",
+    "syntax": "fmadd FRT, FRA, FRC, FRB",
+    "encoding": {
+      "format": "A-form",
+      "binary_pattern": "63 | FRT | FRA | FRB | FRC | 29 | Rc",
+      "hex_opcode": "0xFC00003A"
+    },
+    "operands": [
+      {
+        "name": "FRT",
+        "desc": "Target FPR"
+      },
+      {
+        "name": "FRA",
+        "desc": "Multiplier"
+      },
+      {
+        "name": "FRC",
+        "desc": "Multiplicand"
+      },
+      {
+        "name": "FRB",
+        "desc": "Addend"
+      }
+    ],
+    "pseudocode": "FRT <- [(FRA) * (FRC)] + (FRB)",
+    "example": "fmadd f1, f2, f3, f4",
+    "example_note": "f1 = (f2 * f3) + f4",
+    "extension": "Float"
+  },
+  {
+    "mnemonic": "fcmpu",
+    "architecture": "PowerISA",
+    "full_name": "Floating Compare Unordered",
+    "summary": "Compares two floating-point registers and sets the Condition Register (CR) field. Does not trap on NaNs.",
+    "syntax": "fcmpu BF, FRA, FRB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "63 | BF | / | FRA | FRB | 0000000000 | /",
+      "hex_opcode": "0xFC000000"
+    },
+    "operands": [
+      {
+        "name": "BF",
+        "desc": "CR Field"
+      },
+      {
+        "name": "FRA",
+        "desc": "Source A"
+      },
+      {
+        "name": "FRB",
+        "desc": "Source B"
+      }
+    ],
+    "pseudocode": "if NaN(FRA) or NaN(FRB) then CR[BF] <- U; else compare...",
+    "example": "fcmpu cr0, f1, f2",
+    "example_note": "Compare f1 vs f2.",
+    "extension": "Float"
+  },
+  {
+    "mnemonic": "fctiw",
+    "architecture": "PowerISA",
+    "full_name": "Floating Convert to Integer Word",
+    "summary": "Converts a float to a 32-bit signed integer (using the current rounding mode) and stores it in the lower half of the FPR.",
+    "syntax": "fctiw FRT, FRB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "63 | FRT | / | FRB | 14 | Rc",
+      "hex_opcode": "0xFC00001C"
+    },
+    "operands": [
+      {
+        "name": "FRT",
+        "desc": "Target FPR"
+      },
+      {
+        "name": "FRB",
+        "desc": "Source FPR"
+      }
+    ],
+    "pseudocode": "FRT[32:63] <- ConvertToInt32(FRB)",
+    "example": "fctiw f1, f2",
+    "example_note": "Convert float f2 to int in f1.",
+    "extension": "Float"
+  },
+  {
+    "mnemonic": "isel",
+    "architecture": "PowerISA",
+    "full_name": "Integer Select",
+    "summary": "Conditionally copies RA or RB to RT based on a CR bit. (Equivalent to C ternary operator 'cond ? a : b').",
+    "syntax": "isel RT, RA, RB, BC",
+    "encoding": {
+      "format": "A-form",
+      "binary_pattern": "31 | RT | RA | RB | BC | 15 | /",
+      "hex_opcode": "0x7C00001E"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Source (If True) - 0 means 0"
+      },
+      {
+        "name": "RB",
+        "desc": "Source (If False)"
+      },
+      {
+        "name": "BC",
+        "desc": "CR Bit Index (Condition)"
+      }
+    ],
+    "pseudocode": "if CR[BC]=1 then RT <- (RA) else RT <- (RB)",
+    "example": "isel r3, r4, r5, 2",
+    "example_note": "r3 = (CR.eq) ? r4 : r5",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "icbi",
+    "architecture": "PowerISA",
+    "full_name": "Instruction Cache Block Invalidate",
+    "summary": "Invalidates the instruction cache block associated with the address. Critical for self-modifying code or JITs.",
+    "syntax": "icbi RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | / | RA | RB | 982 | /",
+      "hex_opcode": "0x7C0007D6"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Base Address"
+      },
+      {
+        "name": "RB",
+        "desc": "Index Address"
+      }
+    ],
+    "pseudocode": "InvalidateICache(EffectiveAddr(RA, RB))",
+    "example": "icbi 0, r3",
+    "example_note": "Invalidate instruction cache at r3.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "isync",
+    "architecture": "PowerISA",
+    "full_name": "Instruction Synchronize",
+    "summary": "Waits for all previous instructions to complete and discards any prefetched instructions. Used after modifying code or changing context.",
+    "syntax": "isync",
+    "encoding": {
+      "format": "XL-form",
+      "binary_pattern": "19 | 00000 | 00000 | 00000 | 150 | /",
+      "hex_opcode": "0x4C00012C"
+    },
+    "operands": [],
+    "pseudocode": "ContextSynchronize()",
+    "example": "isync",
+    "example_note": "Refetch instructions.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "divw",
+    "architecture": "PowerISA",
+    "full_name": "Divide Word",
+    "summary": "Divides the lower 32 bits of RA by the lower 32 bits of RB (Signed).",
+    "syntax": "divw RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 491 | Rc",
+      "hex_opcode": "0x7C0003D6"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register (Quotient)"
+      },
+      {
+        "name": "RA",
+        "desc": "Dividend"
+      },
+      {
+        "name": "RB",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "RT <- (RA)[32:63] / (RB)[32:63]",
+    "example": "divw r3, r4, r5",
+    "example_note": "r3 = r4 / r5 (32-bit Signed).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "divwu",
+    "architecture": "PowerISA",
+    "full_name": "Divide Word Unsigned",
+    "summary": "Divides the lower 32 bits of RA by the lower 32 bits of RB (Unsigned).",
+    "syntax": "divwu RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 459 | Rc",
+      "hex_opcode": "0x7C000396"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register (Quotient)"
+      },
+      {
+        "name": "RA",
+        "desc": "Dividend"
+      },
+      {
+        "name": "RB",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "RT <- (RA)[32:63] /u (RB)[32:63]",
+    "example": "divwu r3, r4, r5",
+    "example_note": "r3 = r4 / r5 (32-bit Unsigned).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "divd",
+    "architecture": "PowerISA",
+    "full_name": "Divide Doubleword",
+    "summary": "Divides the 64-bit value in RA by the 64-bit value in RB (Signed).",
+    "syntax": "divd RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 489 | Rc",
+      "hex_opcode": "0x7C0003D2"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register (Quotient)"
+      },
+      {
+        "name": "RA",
+        "desc": "Dividend"
+      },
+      {
+        "name": "RB",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "RT <- (RA) / (RB)",
+    "example": "divd r3, r4, r5",
+    "example_note": "r3 = r4 / r5 (64-bit Signed).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "divdu",
+    "architecture": "PowerISA",
+    "full_name": "Divide Doubleword Unsigned",
+    "summary": "Divides the 64-bit value in RA by the 64-bit value in RB (Unsigned).",
+    "syntax": "divdu RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 457 | Rc",
+      "hex_opcode": "0x7C000392"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register (Quotient)"
+      },
+      {
+        "name": "RA",
+        "desc": "Dividend"
+      },
+      {
+        "name": "RB",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "RT <- (RA) /u (RB)",
+    "example": "divdu r3, r4, r5",
+    "example_note": "r3 = r4 / r5 (64-bit Unsigned).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "dcbz",
+    "architecture": "PowerISA",
+    "full_name": "Data Cache Block Set to Zero",
+    "summary": "Zeros out an entire cache block (usually 128 bytes) in memory. Critical for optimizing memory clears (memset).",
+    "syntax": "dcbz RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | / | RA | RB | 1014 | /",
+      "hex_opcode": "0x7C0007EC"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Base Address"
+      },
+      {
+        "name": "RB",
+        "desc": "Index Address"
+      }
+    ],
+    "pseudocode": "memset(EffectiveAddr(RA,RB), 0, BlockSize)",
+    "example": "dcbz 0, r3",
+    "example_note": "Zero the cache line at address in r3.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "dcbt",
+    "architecture": "PowerISA",
+    "full_name": "Data Cache Block Touch",
+    "summary": "Hints to the hardware to prefetch the cache block at the specified address into the cache.",
+    "syntax": "dcbt TH, RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | TH | RA | RB | 278 | /",
+      "hex_opcode": "0x7C00022C"
+    },
+    "operands": [
+      {
+        "name": "TH",
+        "desc": "Touch Hint (Stream ID)"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Address"
+      },
+      {
+        "name": "RB",
+        "desc": "Index Address"
+      }
+    ],
+    "pseudocode": "Prefetch(EffectiveAddr(RA, RB))",
+    "example": "dcbt 0, 0, r3",
+    "example_note": "Prefetch data at r3.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "dcbf",
+    "architecture": "PowerISA",
+    "full_name": "Data Cache Block Flush",
+    "summary": "Flushes the cache block from the data cache to main memory and invalidates it. Used for DMA coherency.",
+    "syntax": "dcbf RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | / | RA | RB | 86 | /",
+      "hex_opcode": "0x7C0000AC"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Base Address"
+      },
+      {
+        "name": "RB",
+        "desc": "Index Address"
+      }
+    ],
+    "pseudocode": "Flush(EffectiveAddr(RA, RB))",
+    "example": "dcbf 0, r3",
+    "example_note": "Flush cache line at r3 to RAM.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "dcbst",
+    "architecture": "PowerISA",
+    "full_name": "Data Cache Block Store",
+    "summary": "Writes the cache block to main memory if it is modified (Clean), but keeps it in the cache.",
+    "syntax": "dcbst RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | / | RA | RB | 54 | /",
+      "hex_opcode": "0x7C00006C"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Base Address"
+      },
+      {
+        "name": "RB",
+        "desc": "Index Address"
+      }
+    ],
+    "pseudocode": "Clean(EffectiveAddr(RA, RB))",
+    "example": "dcbst 0, r3",
+    "example_note": "Ensure RAM has latest data for r3.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "lbz",
+    "architecture": "PowerISA",
+    "full_name": "Load Byte and Zero",
+    "summary": "Loads a byte from memory into the low 8 bits of a register and clears the upper 56 bits.",
+    "syntax": "lbz RT, D(RA)",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "34 | RT | RA | D",
+      "hex_opcode": "0x88000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "D",
+        "desc": "Displacement (16-bit Signed)"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      }
+    ],
+    "pseudocode": "RT <- (0x00...00) || MEM(EA, 1)",
+    "example": "lbz r3, 0(r4)",
+    "example_note": "Load byte from address in r4.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "lhz",
+    "architecture": "PowerISA",
+    "full_name": "Load Halfword and Zero",
+    "summary": "Loads a halfword (16 bits) from memory and clears the upper 48 bits.",
+    "syntax": "lhz RT, D(RA)",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "40 | RT | RA | D",
+      "hex_opcode": "0xA0000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "D",
+        "desc": "Displacement"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      }
+    ],
+    "pseudocode": "RT <- (0x00...00) || MEM(EA, 2)",
+    "example": "lhz r3, 0(r4)",
+    "example_note": "Load unsigned 16-bit value.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "lha",
+    "architecture": "PowerISA",
+    "full_name": "Load Halfword Algebraic",
+    "summary": "Loads a halfword (16 bits) from memory and sign-extends it to 64 bits.",
+    "syntax": "lha RT, D(RA)",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "42 | RT | RA | D",
+      "hex_opcode": "0xA8000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "D",
+        "desc": "Displacement"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      }
+    ],
+    "pseudocode": "RT <- EXTS(MEM(EA, 2))",
+    "example": "lha r3, 0(r4)",
+    "example_note": "Load signed 16-bit value.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "lwz",
+    "architecture": "PowerISA",
+    "full_name": "Load Word and Zero",
+    "summary": "Loads a word (32 bits) from memory and clears the upper 32 bits.",
+    "syntax": "lwz RT, D(RA)",
+    "encoding": {
+      "format": "D-form",
+      "binary_pattern": "32 | RT | RA | D",
+      "hex_opcode": "0x80000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "D",
+        "desc": "Displacement"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      }
+    ],
+    "pseudocode": "RT <- (0x00...00) || MEM(EA, 4)",
+    "example": "lwz r3, 8(r4)",
+    "example_note": "Load 32-bit int from r4+8.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "lwa",
+    "architecture": "PowerISA",
+    "full_name": "Load Word Algebraic",
+    "summary": "Loads a word (32 bits) from memory and sign-extends it to 64 bits.",
+    "syntax": "lwa RT, DS(RA)",
+    "encoding": {
+      "format": "DS-form",
+      "binary_pattern": "58 | RT | RA | DS | 2",
+      "hex_opcode": "0xE8000002"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "DS",
+        "desc": "Displacement (Aligned)"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      }
+    ],
+    "pseudocode": "RT <- EXTS(MEM(EA, 4))",
+    "example": "lwa r3, 8(r4)",
+    "example_note": "Load signed 32-bit int.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "ld",
+    "architecture": "PowerISA",
+    "full_name": "Load Doubleword",
+    "summary": "Loads a doubleword (64 bits) from memory.",
+    "syntax": "ld RT, DS(RA)",
+    "encoding": {
+      "format": "DS-form",
+      "binary_pattern": "58 | RT | RA | DS | 0",
+      "hex_opcode": "0xE8000000"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "DS",
+        "desc": "Displacement (14-bit Signed, Multiple of 4)"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      }
+    ],
+    "pseudocode": "RT <- MEM(EA, 8)",
+    "example": "ld r3, 16(r4)",
+    "example_note": "Load 64-bit value.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "lwarx",
+    "architecture": "PowerISA",
+    "full_name": "Load Word and Reserve Indexed",
+    "summary": "Loads a word and creates a reservation for use with 'stwcx.'. Critical for implementing atomic primitives (mutexes).",
+    "syntax": "lwarx RT, RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RT | RA | RB | 20 | /",
+      "hex_opcode": "0x7C000028"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      },
+      {
+        "name": "RB",
+        "desc": "Index Register"
+      }
+    ],
+    "pseudocode": "RESERVE <- 1; RESERVE_ADDR <- EA; RT <- MEM(EA, 4)",
+    "example": "lwarx r3, 0, r4",
+    "example_note": "Start atomic read-modify-write.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "ldarx",
+    "architecture": "PowerISA",
+    "full_name": "Load Doubleword and Reserve Indexed",
+    "summary": "Loads a doubleword and creates a reservation. 64-bit version of lwarx.",
+    "syntax": "ldarx RT, RA, RB",
+    "encoding": {
+      "format": "X-form",
+      "binary_pattern": "31 | RT | RA | RB | 84 | /",
+      "hex_opcode": "0x7C0000A8"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "RA",
+        "desc": "Base Register"
+      },
+      {
+        "name": "RB",
+        "desc": "Index Register"
+      }
+    ],
+    "pseudocode": "RESERVE <- 1; RESERVE_ADDR <- EA; RT <- MEM(EA, 8)",
+    "example": "ldarx r3, 0, r4",
+    "example_note": "Atomic 64-bit load.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "mtspr",
+    "architecture": "PowerISA",
+    "full_name": "Move To Special Purpose Register",
+    "summary": "Copies a value from a general-purpose register to a system SPR (e.g., CTR, LR, XER).",
+    "syntax": "mtspr SPR, RS",
+    "encoding": {
+      "format": "XFX-form",
+      "binary_pattern": "31 | RS | SPR | 467 | /",
+      "hex_opcode": "0x7C0003A6"
+    },
+    "operands": [
+      {
+        "name": "SPR",
+        "desc": "Special Purpose Register ID (Reordered bits)"
+      },
+      {
+        "name": "RS",
+        "desc": "Source Register"
+      }
+    ],
+    "pseudocode": "SPR[SPR_NUM] <- (RS)",
+    "example": "mtspr 9, r3",
+    "example_note": "Move r3 to Count Register (CTR).",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "mfspr",
+    "architecture": "PowerISA",
+    "full_name": "Move From Special Purpose Register",
+    "summary": "Copies a value from a system SPR to a general-purpose register.",
+    "syntax": "mfspr RT, SPR",
+    "encoding": {
+      "format": "XFX-form",
+      "binary_pattern": "31 | RT | SPR | 339 | /",
+      "hex_opcode": "0x7C0002A6"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target Register"
+      },
+      {
+        "name": "SPR",
+        "desc": "Special Purpose Register ID"
+      }
+    ],
+    "pseudocode": "RT <- SPR[SPR_NUM]",
+    "example": "mfspr r3, 8",
+    "example_note": "Move Link Register (LR) to r3.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "mullw",
+    "architecture": "PowerISA",
+    "full_name": "Multiply Low Word",
+    "summary": "Multiplies two 32-bit integers and stores the lower 32 bits of the 64-bit result.",
+    "syntax": "mullw RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 235 | Rc",
+      "hex_opcode": "0x7C0001D6"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target"
+      },
+      {
+        "name": "RA",
+        "desc": "Src 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Src 2"
+      }
+    ],
+    "pseudocode": "RT <- (RA)[32:63] * (RB)[32:63]",
+    "example": "mullw r3, r4, r5",
+    "example_note": "32-bit multiply.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "mulld",
+    "architecture": "PowerISA",
+    "full_name": "Multiply Low Doubleword",
+    "summary": "Multiplies two 64-bit integers and stores the lower 64 bits of the 128-bit result.",
+    "syntax": "mulld RT, RA, RB",
+    "encoding": {
+      "format": "XO-form",
+      "binary_pattern": "31 | RT | RA | RB | OE | 233 | Rc",
+      "hex_opcode": "0x7C0001D2"
+    },
+    "operands": [
+      {
+        "name": "RT",
+        "desc": "Target"
+      },
+      {
+        "name": "RA",
+        "desc": "Src 1"
+      },
+      {
+        "name": "RB",
+        "desc": "Src 2"
+      }
+    ],
+    "pseudocode": "RT <- (RA) * (RB)",
+    "example": "mulld r3, r4, r5",
+    "example_note": "64-bit multiply.",
+    "extension": "Base"
+  },
+  {
+    "mnemonic": "mr",
+    "architecture": "PowerISA",
+    "full_name": "Move Register (Pseudo)",
+    "summary": "Copies the contents of one register to another. (Encoded as OR RA, RS, RS).",
+    "syntax": "mr RA, RS",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "or RA, RS, RS",
+      "hex_opcode": "See OR"
+    },
+    "operands": [
+      {
+        "name": "RA",
+        "desc": "Target"
+      },
+      {
+        "name": "RS",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "RA <- (RS)",
+    "example": "mr r3, r4",
+    "example_note": "Copy r4 to r3.",
+    "extension": "Base"
+  }
+]

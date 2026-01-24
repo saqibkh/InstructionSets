@@ -1,0 +1,143 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "b",
+      "architecture": "PowerISA",
+      "full_name": "Branch",
+      "summary": "Unconditionally branches to a target address relative to the current instruction pointer.",
+      "syntax": "b target_addr",
+      "encoding": {
+        "format": "I-form",
+        "binary_pattern": "18 | LI | AA | LK",
+        "hex_opcode": "0x48000000"
+      },
+      "operands": [
+        { "name": "LI", "desc": "24-bit Signed Immediate (Displacement / 4)" }
+      ],
+      "pseudocode": "NIA <- CIA + EXTS(LI || 00)",
+      "example": "b label",
+      "example_note": "Jump to 'label'.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ba",
+      "architecture": "PowerISA",
+      "full_name": "Branch Absolute",
+      "summary": "Unconditionally branches to an absolute address.",
+      "syntax": "ba target_addr",
+      "encoding": {
+        "format": "I-form",
+        "binary_pattern": "18 | LI | 1 | LK",
+        "hex_opcode": "0x48000002"
+      },
+      "operands": [
+        { "name": "LI", "desc": "24-bit Signed Immediate (Address / 4)" }
+      ],
+      "pseudocode": "NIA <- EXTS(LI || 00)",
+      "example": "ba 0x1000",
+      "example_note": "Jump to address 0x1000.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bl",
+      "architecture": "PowerISA",
+      "full_name": "Branch and Link",
+      "summary": "Branches to a target address and saves the return address (CIA + 4) in the Link Register (LR). Used for function calls.",
+      "syntax": "bl target_addr",
+      "encoding": {
+        "format": "I-form",
+        "binary_pattern": "18 | LI | AA | 1",
+        "hex_opcode": "0x48000001"
+      },
+      "operands": [
+        { "name": "LI", "desc": "24-bit Signed Immediate" }
+      ],
+      "pseudocode": "LR <- CIA + 4; NIA <- CIA + EXTS(LI || 00)",
+      "example": "bl printf",
+      "example_note": "Call 'printf' function.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bc",
+      "architecture": "PowerISA",
+      "full_name": "Branch Conditional",
+      "summary": "Branches conditionally based on the Count Register (CTR) and/or a bit in the Condition Register (CR).",
+      "syntax": "bc BO, BI, target_addr",
+      "encoding": {
+        "format": "B-form",
+        "binary_pattern": "16 | BO | BI | BD | AA | LK",
+        "hex_opcode": "0x40000000"
+      },
+      "operands": [
+        { "name": "BO", "desc": "Branch Options (5 bits)" },
+        { "name": "BI", "desc": "CR Bit Index (5 bits)" },
+        { "name": "BD", "desc": "14-bit Signed Displacement" }
+      ],
+      "pseudocode": "if (Condition(BO, BI)) NIA <- CIA + EXTS(BD || 00)",
+      "example": "bc 12, 2, label",
+      "example_note": "Branch if CR bit 2 is set (beq).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bclr",
+      "architecture": "PowerISA",
+      "full_name": "Branch Conditional to Link Register",
+      "summary": "Branches to the address in the Link Register (LR) if the condition is met. Used for function returns.",
+      "syntax": "bclr BO, BI",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | BO | BI | 000 | 16 | LK",
+        "hex_opcode": "0x4C000020"
+      },
+      "operands": [
+        { "name": "BO", "desc": "Branch Options" },
+        { "name": "BI", "desc": "CR Bit Index" }
+      ],
+      "pseudocode": "if (Condition(BO, BI)) NIA <- LR(0:61) || 00",
+      "example": "bclr 20, 0",
+      "example_note": "Unconditional return (blr).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bcctr",
+      "architecture": "PowerISA",
+      "full_name": "Branch Conditional to Count Register",
+      "summary": "Branches to the address in the Count Register (CTR) if the condition is met. Used for computed jumps and switch statements.",
+      "syntax": "bcctr BO, BI",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | BO | BI | 000 | 528 | LK",
+        "hex_opcode": "0x4C000420"
+      },
+      "operands": [
+        { "name": "BO", "desc": "Branch Options" },
+        { "name": "BI", "desc": "CR Bit Index" }
+      ],
+      "pseudocode": "if (Condition(BO, BI)) NIA <- CTR(0:61) || 00",
+      "example": "bcctr 20, 0",
+      "example_note": "Jump to address in CTR (bctr).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bpermd",
+      "architecture": "PowerISA",
+      "full_name": "Bit Permute Doubleword",
+      "summary": "Permutes bits from RS based on the index values in RB. Highly optimized for bit shuffling.",
+      "syntax": "bpermd RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 252 | /",
+        "hex_opcode": "0x7C0001F8"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register (Data)" },
+        { "name": "RB", "desc": "Permute Control Byte Selects" }
+      ],
+      "pseudocode": "For i from 0 to 7: index = RB.byte[i]; if index < 64 then RA.bit[index] = RS.bit[i] else RA.bit[i] = 0",
+      "example": "bpermd r3, r4, r5",
+      "example_note": "Complex bit permutation.",
+      "extension": "Base"
+    }
+  ]
+}

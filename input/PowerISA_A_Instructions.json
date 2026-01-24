@@ -1,0 +1,275 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "add",
+      "architecture": "PowerISA",
+      "full_name": "Add",
+      "summary": "Adds the contents of two registers.",
+      "syntax": "add RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 266 | Rc",
+        "hex_opcode": "0x7C000214 (Base)"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RT <- (RA) + (RB)",
+      "example": "add r3, r4, r5",
+      "example_note": "r3 = r4 + r5",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addc",
+      "architecture": "PowerISA",
+      "full_name": "Add Carrying",
+      "summary": "Adds two registers and updates the Carry Architecture (CA) bit.",
+      "syntax": "addc RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 10 | Rc",
+        "hex_opcode": "0x7C000014 (Base)"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RT <- (RA) + (RB); CA <- Carry",
+      "example": "addc r3, r4, r5",
+      "example_note": "r3 = r4 + r5 (Updates Carry)",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "adde",
+      "architecture": "PowerISA",
+      "full_name": "Add Extended",
+      "summary": "Adds two registers plus the current Carry bit.",
+      "syntax": "adde RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 138 | Rc",
+        "hex_opcode": "0x7C000114 (Base)"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RT <- (RA) + (RB) + CA",
+      "example": "adde r3, r4, r5",
+      "example_note": "r3 = r4 + r5 + CA",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addi",
+      "architecture": "PowerISA",
+      "full_name": "Add Immediate",
+      "summary": "Adds a 16-bit signed immediate value to a register.",
+      "syntax": "addi RT, RA, SI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "14 | RT | RA | SI",
+        "hex_opcode": "0x38000000 (Base)"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register (0 means 0)" },
+        { "name": "SI", "desc": "Signed 16-bit Immediate" }
+      ],
+      "pseudocode": "if RA=0 then RT <- EXTS(SI) else RT <- (RA) + EXTS(SI)",
+      "example": "addi r3, r4, 10",
+      "example_note": "r3 = r4 + 10",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addic",
+      "architecture": "PowerISA",
+      "full_name": "Add Immediate Carrying",
+      "summary": "Adds an immediate to a register and updates the Carry bit.",
+      "syntax": "addic RT, RA, SI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "12 | RT | RA | SI",
+        "hex_opcode": "0x30000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register" },
+        { "name": "SI", "desc": "Signed 16-bit Immediate" }
+      ],
+      "pseudocode": "RT <- (RA) + EXTS(SI); CA <- Carry",
+      "example": "addic r3, r4, 10",
+      "example_note": "r3 = r4 + 10 (Updates CA)",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addic.",
+      "architecture": "PowerISA",
+      "full_name": "Add Immediate Carrying and Record",
+      "summary": "Adds an immediate, updates Carry, and updates Condition Register Field 0 (CR0).",
+      "syntax": "addic. RT, RA, SI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "13 | RT | RA | SI",
+        "hex_opcode": "0x34000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register" },
+        { "name": "SI", "desc": "Signed 16-bit Immediate" }
+      ],
+      "pseudocode": "RT <- (RA) + EXTS(SI); CA <- Carry; CR0 <- Compare(RT, 0)",
+      "example": "addic. r3, r4, -5",
+      "example_note": "r3 = r4 - 5 (Updates CA and CR0)",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addis",
+      "architecture": "PowerISA",
+      "full_name": "Add Immediate Shifted",
+      "summary": "Adds a 16-bit immediate shifted left by 16 bits to a register.",
+      "syntax": "addis RT, RA, SI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "15 | RT | RA | SI",
+        "hex_opcode": "0x3C000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register (0 means 0)" },
+        { "name": "SI", "desc": "Signed 16-bit Immediate" }
+      ],
+      "pseudocode": "if RA=0 then RT <- EXTS(SI || 0x0000) else RT <- (RA) + EXTS(SI || 0x0000)",
+      "example": "addis r3, r4, 1",
+      "example_note": "r3 = r4 + 65536 (0x10000)",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addme",
+      "architecture": "PowerISA",
+      "full_name": "Add to Minus One Extended",
+      "summary": "Adds a register, -1, and the Carry bit.",
+      "syntax": "addme RT, RA",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | 00000 | OE | 234 | Rc",
+        "hex_opcode": "0x7C0001D4"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register" }
+      ],
+      "pseudocode": "RT <- (RA) + CA - 1",
+      "example": "addme r3, r4",
+      "example_note": "r3 = r4 + CA - 1",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addze",
+      "architecture": "PowerISA",
+      "full_name": "Add to Zero Extended",
+      "summary": "Adds a register, 0, and the Carry bit.",
+      "syntax": "addze RT, RA",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | 00000 | OE | 202 | Rc",
+        "hex_opcode": "0x7C000194"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register" }
+      ],
+      "pseudocode": "RT <- (RA) + CA",
+      "example": "addze r3, r4",
+      "example_note": "r3 = r4 + CA",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "and",
+      "architecture": "PowerISA",
+      "full_name": "AND",
+      "summary": "Performs a bitwise AND between two registers.",
+      "syntax": "and RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 28 | Rc",
+        "hex_opcode": "0x7C000038"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- (RS) & (RB)",
+      "example": "and r3, r4, r5",
+      "example_note": "r3 = r4 & r5",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "andc",
+      "architecture": "PowerISA",
+      "full_name": "AND with Complement",
+      "summary": "Performs a bitwise AND between RS and the one's complement of RB.",
+      "syntax": "andc RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 60 | Rc",
+        "hex_opcode": "0x7C000078"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- (RS) & ~(RB)",
+      "example": "andc r3, r4, r5",
+      "example_note": "r3 = r4 & ~r5",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "andi.",
+      "architecture": "PowerISA",
+      "full_name": "AND Immediate",
+      "summary": "Performs a bitwise AND between a register and a 16-bit unsigned immediate (zero-extended). Always updates CR0.",
+      "syntax": "andi. RA, RS, UI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "28 | RS | RA | UI",
+        "hex_opcode": "0x70000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "UI", "desc": "Unsigned 16-bit Immediate" }
+      ],
+      "pseudocode": "RA <- (RS) & (0x0000 || UI); CR0 <- Compare(RA, 0)",
+      "example": "andi. r3, r4, 0xF",
+      "example_note": "r3 = r4 & 0xF",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "andis.",
+      "architecture": "PowerISA",
+      "full_name": "AND Immediate Shifted",
+      "summary": "Performs a bitwise AND between a register and a 16-bit immediate shifted left by 16 bits. Always updates CR0.",
+      "syntax": "andis. RA, RS, UI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "29 | RS | RA | UI",
+        "hex_opcode": "0x74000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "UI", "desc": "Unsigned 16-bit Immediate" }
+      ],
+      "pseudocode": "RA <- (RS) & (UI || 0x0000); CR0 <- Compare(RA, 0)",
+      "example": "andis. r3, r4, 0x1234",
+      "example_note": "r3 = r4 & 0x12340000",
+      "extension": "Base"
+    }
+  ]
+}

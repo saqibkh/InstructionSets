@@ -1,0 +1,169 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "divw",
+      "architecture": "PowerISA",
+      "full_name": "Divide Word",
+      "summary": "Divides the lower 32 bits of RA by the lower 32 bits of RB (Signed).",
+      "syntax": "divw RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 491 | Rc",
+        "hex_opcode": "0x7C0003D6"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register (Quotient)" },
+        { "name": "RA", "desc": "Dividend" },
+        { "name": "RB", "desc": "Divisor" }
+      ],
+      "pseudocode": "RT <- (RA)[32:63] / (RB)[32:63]",
+      "example": "divw r3, r4, r5",
+      "example_note": "r3 = r4 / r5 (32-bit Signed).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "divwu",
+      "architecture": "PowerISA",
+      "full_name": "Divide Word Unsigned",
+      "summary": "Divides the lower 32 bits of RA by the lower 32 bits of RB (Unsigned).",
+      "syntax": "divwu RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 459 | Rc",
+        "hex_opcode": "0x7C000396"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register (Quotient)" },
+        { "name": "RA", "desc": "Dividend" },
+        { "name": "RB", "desc": "Divisor" }
+      ],
+      "pseudocode": "RT <- (RA)[32:63] /u (RB)[32:63]",
+      "example": "divwu r3, r4, r5",
+      "example_note": "r3 = r4 / r5 (32-bit Unsigned).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "divd",
+      "architecture": "PowerISA",
+      "full_name": "Divide Doubleword",
+      "summary": "Divides the 64-bit value in RA by the 64-bit value in RB (Signed).",
+      "syntax": "divd RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 489 | Rc",
+        "hex_opcode": "0x7C0003D2"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register (Quotient)" },
+        { "name": "RA", "desc": "Dividend" },
+        { "name": "RB", "desc": "Divisor" }
+      ],
+      "pseudocode": "RT <- (RA) / (RB)",
+      "example": "divd r3, r4, r5",
+      "example_note": "r3 = r4 / r5 (64-bit Signed).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "divdu",
+      "architecture": "PowerISA",
+      "full_name": "Divide Doubleword Unsigned",
+      "summary": "Divides the 64-bit value in RA by the 64-bit value in RB (Unsigned).",
+      "syntax": "divdu RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 457 | Rc",
+        "hex_opcode": "0x7C000392"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register (Quotient)" },
+        { "name": "RA", "desc": "Dividend" },
+        { "name": "RB", "desc": "Divisor" }
+      ],
+      "pseudocode": "RT <- (RA) /u (RB)",
+      "example": "divdu r3, r4, r5",
+      "example_note": "r3 = r4 / r5 (64-bit Unsigned).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "dcbz",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Set to Zero",
+      "summary": "Zeros out an entire cache block (usually 128 bytes) in memory. Critical for optimizing memory clears (memset).",
+      "syntax": "dcbz RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | RA | RB | 1014 | /",
+        "hex_opcode": "0x7C0007EC"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Base Address" },
+        { "name": "RB", "desc": "Index Address" }
+      ],
+      "pseudocode": "memset(EffectiveAddr(RA,RB), 0, BlockSize)",
+      "example": "dcbz 0, r3",
+      "example_note": "Zero the cache line at address in r3.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "dcbt",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Touch",
+      "summary": "Hints to the hardware to prefetch the cache block at the specified address into the cache.",
+      "syntax": "dcbt TH, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | TH | RA | RB | 278 | /",
+        "hex_opcode": "0x7C00022C"
+      },
+      "operands": [
+        { "name": "TH", "desc": "Touch Hint (Stream ID)" },
+        { "name": "RA", "desc": "Base Address" },
+        { "name": "RB", "desc": "Index Address" }
+      ],
+      "pseudocode": "Prefetch(EffectiveAddr(RA, RB))",
+      "example": "dcbt 0, 0, r3",
+      "example_note": "Prefetch data at r3.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "dcbf",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Flush",
+      "summary": "Flushes the cache block from the data cache to main memory and invalidates it. Used for DMA coherency.",
+      "syntax": "dcbf RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | RA | RB | 86 | /",
+        "hex_opcode": "0x7C0000AC"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Base Address" },
+        { "name": "RB", "desc": "Index Address" }
+      ],
+      "pseudocode": "Flush(EffectiveAddr(RA, RB))",
+      "example": "dcbf 0, r3",
+      "example_note": "Flush cache line at r3 to RAM.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "dcbst",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Store",
+      "summary": "Writes the cache block to main memory if it is modified (Clean), but keeps it in the cache.",
+      "syntax": "dcbst RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | RA | RB | 54 | /",
+        "hex_opcode": "0x7C00006C"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Base Address" },
+        { "name": "RB", "desc": "Index Address" }
+      ],
+      "pseudocode": "Clean(EffectiveAddr(RA, RB))",
+      "example": "dcbst 0, r3",
+      "example_note": "Ensure RAM has latest data for r3.",
+      "extension": "Base"
+    }
+  ]
+}

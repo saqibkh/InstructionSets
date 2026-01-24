@@ -1,0 +1,274 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "lbz",
+      "architecture": "PowerISA",
+      "full_name": "Load Byte and Zero",
+      "summary": "Loads a byte from memory into the low 8 bits of a register and clears the upper 56 bits.",
+      "syntax": "lbz RT, D(RA)",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "34 | RT | RA | D",
+        "hex_opcode": "0x88000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "D", "desc": "Displacement (16-bit Signed)" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- (0x00...00) || MEM(EA, 1)",
+      "example": "lbz r3, 0(r4)",
+      "example_note": "Load byte from address in r4.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lhz",
+      "architecture": "PowerISA",
+      "full_name": "Load Halfword and Zero",
+      "summary": "Loads a halfword (16 bits) from memory and clears the upper 48 bits.",
+      "syntax": "lhz RT, D(RA)",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "40 | RT | RA | D",
+        "hex_opcode": "0xA0000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "D", "desc": "Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- (0x00...00) || MEM(EA, 2)",
+      "example": "lhz r3, 0(r4)",
+      "example_note": "Load unsigned 16-bit value.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lha",
+      "architecture": "PowerISA",
+      "full_name": "Load Halfword Algebraic",
+      "summary": "Loads a halfword (16 bits) from memory and sign-extends it to 64 bits.",
+      "syntax": "lha RT, D(RA)",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "42 | RT | RA | D",
+        "hex_opcode": "0xA8000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "D", "desc": "Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- EXTS(MEM(EA, 2))",
+      "example": "lha r3, 0(r4)",
+      "example_note": "Load signed 16-bit value.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lwz",
+      "architecture": "PowerISA",
+      "full_name": "Load Word and Zero",
+      "summary": "Loads a word (32 bits) from memory and clears the upper 32 bits.",
+      "syntax": "lwz RT, D(RA)",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "32 | RT | RA | D",
+        "hex_opcode": "0x80000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "D", "desc": "Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- (0x00...00) || MEM(EA, 4)",
+      "example": "lwz r3, 8(r4)",
+      "example_note": "Load 32-bit int from r4+8.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lwa",
+      "architecture": "PowerISA",
+      "full_name": "Load Word Algebraic",
+      "summary": "Loads a word (32 bits) from memory and sign-extends it to 64 bits.",
+      "syntax": "lwa RT, DS(RA)",
+      "encoding": {
+        "format": "DS-form",
+        "binary_pattern": "58 | RT | RA | DS | 2",
+        "hex_opcode": "0xE8000002"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "DS", "desc": "Displacement (Aligned)" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- EXTS(MEM(EA, 4))",
+      "example": "lwa r3, 8(r4)",
+      "example_note": "Load signed 32-bit int.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ld",
+      "architecture": "PowerISA",
+      "full_name": "Load Doubleword",
+      "summary": "Loads a doubleword (64 bits) from memory.",
+      "syntax": "ld RT, DS(RA)",
+      "encoding": {
+        "format": "DS-form",
+        "binary_pattern": "58 | RT | RA | DS | 0",
+        "hex_opcode": "0xE8000000"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "DS", "desc": "Displacement (14-bit Signed, Multiple of 4)" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- MEM(EA, 8)",
+      "example": "ld r3, 16(r4)",
+      "example_note": "Load 64-bit value.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lwarx",
+      "architecture": "PowerISA",
+      "full_name": "Load Word and Reserve Indexed",
+      "summary": "Loads a word and creates a reservation for use with 'stwcx.'. Critical for implementing atomic primitives (mutexes).",
+      "syntax": "lwarx RT, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RT | RA | RB | 20 | /",
+        "hex_opcode": "0x7C000028"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "RESERVE <- 1; RESERVE_ADDR <- EA; RT <- MEM(EA, 4)",
+      "example": "lwarx r3, 0, r4",
+      "example_note": "Start atomic read-modify-write.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldarx",
+      "architecture": "PowerISA",
+      "full_name": "Load Doubleword and Reserve Indexed",
+      "summary": "Loads a doubleword and creates a reservation. 64-bit version of lwarx.",
+      "syntax": "ldarx RT, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RT | RA | RB | 84 | /",
+        "hex_opcode": "0x7C0000A8"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "RESERVE <- 1; RESERVE_ADDR <- EA; RT <- MEM(EA, 8)",
+      "example": "ldarx r3, 0, r4",
+      "example_note": "Atomic 64-bit load.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mtspr",
+      "architecture": "PowerISA",
+      "full_name": "Move To Special Purpose Register",
+      "summary": "Copies a value from a general-purpose register to a system SPR (e.g., CTR, LR, XER).",
+      "syntax": "mtspr SPR, RS",
+      "encoding": {
+        "format": "XFX-form",
+        "binary_pattern": "31 | RS | SPR | 467 | /",
+        "hex_opcode": "0x7C0003A6"
+      },
+      "operands": [
+        { "name": "SPR", "desc": "Special Purpose Register ID (Reordered bits)" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "SPR[SPR_NUM] <- (RS)",
+      "example": "mtspr 9, r3",
+      "example_note": "Move r3 to Count Register (CTR).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mfspr",
+      "architecture": "PowerISA",
+      "full_name": "Move From Special Purpose Register",
+      "summary": "Copies a value from a system SPR to a general-purpose register.",
+      "syntax": "mfspr RT, SPR",
+      "encoding": {
+        "format": "XFX-form",
+        "binary_pattern": "31 | RT | SPR | 339 | /",
+        "hex_opcode": "0x7C0002A6"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "SPR", "desc": "Special Purpose Register ID" }
+      ],
+      "pseudocode": "RT <- SPR[SPR_NUM]",
+      "example": "mfspr r3, 8",
+      "example_note": "Move Link Register (LR) to r3.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mullw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Low Word",
+      "summary": "Multiplies two 32-bit integers and stores the lower 32 bits of the 64-bit result.",
+      "syntax": "mullw RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 235 | Rc",
+        "hex_opcode": "0x7C0001D6"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target" },
+        { "name": "RA", "desc": "Src 1" },
+        { "name": "RB", "desc": "Src 2" }
+      ],
+      "pseudocode": "RT <- (RA)[32:63] * (RB)[32:63]",
+      "example": "mullw r3, r4, r5",
+      "example_note": "32-bit multiply.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mulld",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Low Doubleword",
+      "summary": "Multiplies two 64-bit integers and stores the lower 64 bits of the 128-bit result.",
+      "syntax": "mulld RT, RA, RB",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | RB | OE | 233 | Rc",
+        "hex_opcode": "0x7C0001D2"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target" },
+        { "name": "RA", "desc": "Src 1" },
+        { "name": "RB", "desc": "Src 2" }
+      ],
+      "pseudocode": "RT <- (RA) * (RB)",
+      "example": "mulld r3, r4, r5",
+      "example_note": "64-bit multiply.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mr",
+      "architecture": "PowerISA",
+      "full_name": "Move Register (Pseudo)",
+      "summary": "Copies the contents of one register to another. (Encoded as OR RA, RS, RS).",
+      "syntax": "mr RA, RS",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "or RA, RS, RS",
+        "hex_opcode": "See OR"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target" },
+        { "name": "RS", "desc": "Source" }
+      ],
+      "pseudocode": "RA <- (RS)",
+      "example": "mr r3, r4",
+      "example_note": "Copy r4 to r3.",
+      "extension": "Base"
+    }
+  ]
+}

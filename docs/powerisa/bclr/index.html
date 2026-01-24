@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Branches to the address in the Link Register (LR) if the condition is met. Used for function returns.">
+    <title>bclr - PowerISA</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../../search.json";
+    </script>
+    
+    <script src="../../static/search.js"></script>
+
+    
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>PowerISA Reference</h3>
+        <div class="sidebar-list">
+            
+            <details open class="nav-group">
+                <summary>Base Integer</summary>
+                <div class="group-links">
+                    
+                    <a href="../add/" 
+                       class="">
+                        add
+                    </a>
+                    
+                    <a href="../addc/" 
+                       class="">
+                        addc
+                    </a>
+                    
+                    <a href="../adde/" 
+                       class="">
+                        adde
+                    </a>
+                    
+                    <a href="../addi/" 
+                       class="">
+                        addi
+                    </a>
+                    
+                    <a href="../addic/" 
+                       class="">
+                        addic
+                    </a>
+                    
+                    <a href="../addic_/" 
+                       class="">
+                        addic.
+                    </a>
+                    
+                    <a href="../addis/" 
+                       class="">
+                        addis
+                    </a>
+                    
+                    <a href="../addme/" 
+                       class="">
+                        addme
+                    </a>
+                    
+                    <a href="../addze/" 
+                       class="">
+                        addze
+                    </a>
+                    
+                    <a href="../and/" 
+                       class="">
+                        and
+                    </a>
+                    
+                    <a href="../andc/" 
+                       class="">
+                        andc
+                    </a>
+                    
+                    <a href="../andi_/" 
+                       class="">
+                        andi.
+                    </a>
+                    
+                    <a href="../andis_/" 
+                       class="">
+                        andis.
+                    </a>
+                    
+                    <a href="../b/" 
+                       class="">
+                        b
+                    </a>
+                    
+                    <a href="../ba/" 
+                       class="">
+                        ba
+                    </a>
+                    
+                    <a href="../bc/" 
+                       class="">
+                        bc
+                    </a>
+                    
+                    <a href="../bcctr/" 
+                       class="">
+                        bcctr
+                    </a>
+                    
+                    <a href="../bclr/" 
+                       class="active">
+                        bclr
+                    </a>
+                    
+                    <a href="../bl/" 
+                       class="">
+                        bl
+                    </a>
+                    
+                    <a href="../bpermd/" 
+                       class="">
+                        bpermd
+                    </a>
+                    
+                    <a href="../cmp/" 
+                       class="">
+                        cmp
+                    </a>
+                    
+                    <a href="../cmpi/" 
+                       class="">
+                        cmpi
+                    </a>
+                    
+                    <a href="../cmpl/" 
+                       class="">
+                        cmpl
+                    </a>
+                    
+                    <a href="../cmpli/" 
+                       class="">
+                        cmpli
+                    </a>
+                    
+                    <a href="../cntlzd/" 
+                       class="">
+                        cntlzd
+                    </a>
+                    
+                    <a href="../cntlzw/" 
+                       class="">
+                        cntlzw
+                    </a>
+                    
+                    <a href="../crand/" 
+                       class="">
+                        crand
+                    </a>
+                    
+                    <a href="../cror/" 
+                       class="">
+                        cror
+                    </a>
+                    
+                    <a href="../crxor/" 
+                       class="">
+                        crxor
+                    </a>
+                    
+                    <a href="../dcbf/" 
+                       class="">
+                        dcbf
+                    </a>
+                    
+                    <a href="../dcbst/" 
+                       class="">
+                        dcbst
+                    </a>
+                    
+                    <a href="../dcbt/" 
+                       class="">
+                        dcbt
+                    </a>
+                    
+                    <a href="../dcbz/" 
+                       class="">
+                        dcbz
+                    </a>
+                    
+                    <a href="../divd/" 
+                       class="">
+                        divd
+                    </a>
+                    
+                    <a href="../divdu/" 
+                       class="">
+                        divdu
+                    </a>
+                    
+                    <a href="../divw/" 
+                       class="">
+                        divw
+                    </a>
+                    
+                    <a href="../divwu/" 
+                       class="">
+                        divwu
+                    </a>
+                    
+                    <a href="../eieio/" 
+                       class="">
+                        eieio
+                    </a>
+                    
+                    <a href="../eqv/" 
+                       class="">
+                        eqv
+                    </a>
+                    
+                    <a href="../extsb/" 
+                       class="">
+                        extsb
+                    </a>
+                    
+                    <a href="../extsh/" 
+                       class="">
+                        extsh
+                    </a>
+                    
+                    <a href="../extsw/" 
+                       class="">
+                        extsw
+                    </a>
+                    
+                    <a href="../icbi/" 
+                       class="">
+                        icbi
+                    </a>
+                    
+                    <a href="../isel/" 
+                       class="">
+                        isel
+                    </a>
+                    
+                    <a href="../isync/" 
+                       class="">
+                        isync
+                    </a>
+                    
+                    <a href="../lbz/" 
+                       class="">
+                        lbz
+                    </a>
+                    
+                    <a href="../ld/" 
+                       class="">
+                        ld
+                    </a>
+                    
+                    <a href="../ldarx/" 
+                       class="">
+                        ldarx
+                    </a>
+                    
+                    <a href="../lha/" 
+                       class="">
+                        lha
+                    </a>
+                    
+                    <a href="../lhz/" 
+                       class="">
+                        lhz
+                    </a>
+                    
+                    <a href="../lwa/" 
+                       class="">
+                        lwa
+                    </a>
+                    
+                    <a href="../lwarx/" 
+                       class="">
+                        lwarx
+                    </a>
+                    
+                    <a href="../lwz/" 
+                       class="">
+                        lwz
+                    </a>
+                    
+                    <a href="../mfspr/" 
+                       class="">
+                        mfspr
+                    </a>
+                    
+                    <a href="../mr/" 
+                       class="">
+                        mr
+                    </a>
+                    
+                    <a href="../mtspr/" 
+                       class="">
+                        mtspr
+                    </a>
+                    
+                    <a href="../mulld/" 
+                       class="">
+                        mulld
+                    </a>
+                    
+                    <a href="../mullw/" 
+                       class="">
+                        mullw
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Floating Point</summary>
+                <div class="group-links">
+                    
+                    <a href="../fadd/" 
+                       class="">
+                        fadd
+                    </a>
+                    
+                    <a href="../fcmpu/" 
+                       class="">
+                        fcmpu
+                    </a>
+                    
+                    <a href="../fctiw/" 
+                       class="">
+                        fctiw
+                    </a>
+                    
+                    <a href="../fmadd/" 
+                       class="">
+                        fmadd
+                    </a>
+                    
+                    <a href="../fmul/" 
+                       class="">
+                        fmul
+                    </a>
+                    
+                </div>
+            </details>
+            
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <a href="../../powerisa/" style="color: var(--text-muted);">← All Instructions</a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div>
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../powerisa/">PowerISA</a> <span>/</span> 
+                bclr
+            </div>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">bclr</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Branch Conditional to Link Register</h2>
+            
+            <div class="syntax-box">
+                bclr BO, BI
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Branches to the address in the Link Register (LR) if the condition is met. Used for function returns.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
+                <div>
+                    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            if (Condition(BO, BI)) NIA <- LR(0:61) || 00
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel">
+                        <h3>Example</h3>
+                        <div class="code-block" style="margin-bottom: 10px;">bclr 20, 0</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Unconditional return (blr).</p>
+                    </div>
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box" data-op="19">
+                                    <span class="bit-value">19</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="BO">
+                                    <span class="bit-value">BO</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="BI">
+                                    <span class="bit-value">BI</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="000">
+                                    <span class="bit-value">000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="16">
+                                    <span class="bit-value">16</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="LK">
+                                    <span class="bit-value">LK</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">XL-form</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x4C000020</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                            <li class="operand-row" data-op="BO" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">BO</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Branch Options</span>
+                            </li>
+                            
+                            <li class="operand-row" data-op="BI" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">BI</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">CR Bit Index</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../../static/theme.js"></script>
+
+    <script src="../../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The modern, open-source reference for CPU instruction sets (RISC-V, x86, ARM).">
+    <title>ISA Database</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
+
+    
+<div class="container" style="padding-top: 40px;">
+    <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <h1>PowerISA</h1>
+            <p>Instruction Set Reference</p>
+        </div>
+        <a href="../" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Back to Home</a>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Mnemonic</th>
+                    <th style="width: 35%;">Name</th>
+                    <th style="width: 15%;">Format</th>
+                    <th style="width: 35%;">Summary</th>
+                </tr>
+            </thead>
+	    <tbody>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Adds the contents of two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='addc/';" style="cursor: pointer;">
+                    <td class="mono">addc</td>
+                    <td style="font-weight: 500;">Add Carrying</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Adds two registers and updates the Carry Architecture (CA) bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='adde/';" style="cursor: pointer;">
+                    <td class="mono">adde</td>
+                    <td style="font-weight: 500;">Add Extended</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Adds two registers plus the current Carry bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='addi/';" style="cursor: pointer;">
+                    <td class="mono">addi</td>
+                    <td style="font-weight: 500;">Add Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Adds a 16-bit signed immediate value to a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='addic/';" style="cursor: pointer;">
+                    <td class="mono">addic</td>
+                    <td style="font-weight: 500;">Add Immediate Carrying</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Adds an immediate to a register and updates the Carry bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='addic./';" style="cursor: pointer;">
+                    <td class="mono">addic.</td>
+                    <td style="font-weight: 500;">Add Immediate Carrying and Record</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Adds an immediate, updates Carry, and updates Condition Register Field 0 (CR0).</td>
+                </tr>
+                
+                <tr onclick="window.location='addis/';" style="cursor: pointer;">
+                    <td class="mono">addis</td>
+                    <td style="font-weight: 500;">Add Immediate Shifted</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Adds a 16-bit immediate shifted left by 16 bits to a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='addme/';" style="cursor: pointer;">
+                    <td class="mono">addme</td>
+                    <td style="font-weight: 500;">Add to Minus One Extended</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Adds a register, -1, and the Carry bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='addze/';" style="cursor: pointer;">
+                    <td class="mono">addze</td>
+                    <td style="font-weight: 500;">Add to Zero Extended</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Adds a register, 0, and the Carry bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">AND</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise AND between two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='andc/';" style="cursor: pointer;">
+                    <td class="mono">andc</td>
+                    <td style="font-weight: 500;">AND with Complement</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise AND between RS and the one's complement of RB.</td>
+                </tr>
+                
+                <tr onclick="window.location='andi./';" style="cursor: pointer;">
+                    <td class="mono">andi.</td>
+                    <td style="font-weight: 500;">AND Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise AND between a register and a 16-bit unsigned immediate (zero-extended). Always updates CR0.</td>
+                </tr>
+                
+                <tr onclick="window.location='andis./';" style="cursor: pointer;">
+                    <td class="mono">andis.</td>
+                    <td style="font-weight: 500;">AND Immediate Shifted</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise AND between a register and a 16-bit immediate shifted left by 16 bits. Always updates CR0.</td>
+                </tr>
+                
+                <tr onclick="window.location='b/';" style="cursor: pointer;">
+                    <td class="mono">b</td>
+                    <td style="font-weight: 500;">Branch</td>
+                    <td><span class="badge">I-form</span></td>
+                    <td style="color: var(--text-muted);">Unconditionally branches to a target address relative to the current instruction pointer.</td>
+                </tr>
+                
+                <tr onclick="window.location='ba/';" style="cursor: pointer;">
+                    <td class="mono">ba</td>
+                    <td style="font-weight: 500;">Branch Absolute</td>
+                    <td><span class="badge">I-form</span></td>
+                    <td style="color: var(--text-muted);">Unconditionally branches to an absolute address.</td>
+                </tr>
+                
+                <tr onclick="window.location='bc/';" style="cursor: pointer;">
+                    <td class="mono">bc</td>
+                    <td style="font-weight: 500;">Branch Conditional</td>
+                    <td><span class="badge">B-form</span></td>
+                    <td style="color: var(--text-muted);">Branches conditionally based on the Count Register (CTR) and/or a bit in the Condition Register (CR).</td>
+                </tr>
+                
+                <tr onclick="window.location='bcctr/';" style="cursor: pointer;">
+                    <td class="mono">bcctr</td>
+                    <td style="font-weight: 500;">Branch Conditional to Count Register</td>
+                    <td><span class="badge">XL-form</span></td>
+                    <td style="color: var(--text-muted);">Branches to the address in the Count Register (CTR) if the condition is met. Used for computed jumps and switch statements.</td>
+                </tr>
+                
+                <tr onclick="window.location='bclr/';" style="cursor: pointer;">
+                    <td class="mono">bclr</td>
+                    <td style="font-weight: 500;">Branch Conditional to Link Register</td>
+                    <td><span class="badge">XL-form</span></td>
+                    <td style="color: var(--text-muted);">Branches to the address in the Link Register (LR) if the condition is met. Used for function returns.</td>
+                </tr>
+                
+                <tr onclick="window.location='bl/';" style="cursor: pointer;">
+                    <td class="mono">bl</td>
+                    <td style="font-weight: 500;">Branch and Link</td>
+                    <td><span class="badge">I-form</span></td>
+                    <td style="color: var(--text-muted);">Branches to a target address and saves the return address (CIA + 4) in the Link Register (LR). Used for function calls.</td>
+                </tr>
+                
+                <tr onclick="window.location='bpermd/';" style="cursor: pointer;">
+                    <td class="mono">bpermd</td>
+                    <td style="font-weight: 500;">Bit Permute Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Permutes bits from RS based on the index values in RB. Highly optimized for bit shuffling.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmp/';" style="cursor: pointer;">
+                    <td class="mono">cmp</td>
+                    <td style="font-weight: 500;">Compare</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Compares two registers as signed integers and records the result in the specified Condition Register Field.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmpi/';" style="cursor: pointer;">
+                    <td class="mono">cmpi</td>
+                    <td style="font-weight: 500;">Compare Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Compares a register to a 16-bit signed immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmpl/';" style="cursor: pointer;">
+                    <td class="mono">cmpl</td>
+                    <td style="font-weight: 500;">Compare Logical</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Compares two registers as unsigned integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmpli/';" style="cursor: pointer;">
+                    <td class="mono">cmpli</td>
+                    <td style="font-weight: 500;">Compare Logical Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Compares a register to a 16-bit unsigned immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='cntlzd/';" style="cursor: pointer;">
+                    <td class="mono">cntlzd</td>
+                    <td style="font-weight: 500;">Count Leading Zeros Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Counts the number of consecutive 0 bits starting from bit 0 (MSB of 64-bit reg).</td>
+                </tr>
+                
+                <tr onclick="window.location='cntlzw/';" style="cursor: pointer;">
+                    <td class="mono">cntlzw</td>
+                    <td style="font-weight: 500;">Count Leading Zeros Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Counts the number of consecutive 0 bits starting from bit 32 (MSB of the low word).</td>
+                </tr>
+                
+                <tr onclick="window.location='crand/';" style="cursor: pointer;">
+                    <td class="mono">crand</td>
+                    <td style="font-weight: 500;">Condition Register AND</td>
+                    <td><span class="badge">XL-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise AND between two bits in the Condition Register.</td>
+                </tr>
+                
+                <tr onclick="window.location='cror/';" style="cursor: pointer;">
+                    <td class="mono">cror</td>
+                    <td style="font-weight: 500;">Condition Register OR</td>
+                    <td><span class="badge">XL-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise OR between two bits in the Condition Register.</td>
+                </tr>
+                
+                <tr onclick="window.location='crxor/';" style="cursor: pointer;">
+                    <td class="mono">crxor</td>
+                    <td style="font-weight: 500;">Condition Register XOR</td>
+                    <td><span class="badge">XL-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise XOR between two bits in the Condition Register. Used to clear CR bits (crxor x,x,x).</td>
+                </tr>
+                
+                <tr onclick="window.location='dcbf/';" style="cursor: pointer;">
+                    <td class="mono">dcbf</td>
+                    <td style="font-weight: 500;">Data Cache Block Flush</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Flushes the cache block from the data cache to main memory and invalidates it. Used for DMA coherency.</td>
+                </tr>
+                
+                <tr onclick="window.location='dcbst/';" style="cursor: pointer;">
+                    <td class="mono">dcbst</td>
+                    <td style="font-weight: 500;">Data Cache Block Store</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Writes the cache block to main memory if it is modified (Clean), but keeps it in the cache.</td>
+                </tr>
+                
+                <tr onclick="window.location='dcbt/';" style="cursor: pointer;">
+                    <td class="mono">dcbt</td>
+                    <td style="font-weight: 500;">Data Cache Block Touch</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Hints to the hardware to prefetch the cache block at the specified address into the cache.</td>
+                </tr>
+                
+                <tr onclick="window.location='dcbz/';" style="cursor: pointer;">
+                    <td class="mono">dcbz</td>
+                    <td style="font-weight: 500;">Data Cache Block Set to Zero</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Zeros out an entire cache block (usually 128 bytes) in memory. Critical for optimizing memory clears (memset).</td>
+                </tr>
+                
+                <tr onclick="window.location='divd/';" style="cursor: pointer;">
+                    <td class="mono">divd</td>
+                    <td style="font-weight: 500;">Divide Doubleword</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Divides the 64-bit value in RA by the 64-bit value in RB (Signed).</td>
+                </tr>
+                
+                <tr onclick="window.location='divdu/';" style="cursor: pointer;">
+                    <td class="mono">divdu</td>
+                    <td style="font-weight: 500;">Divide Doubleword Unsigned</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Divides the 64-bit value in RA by the 64-bit value in RB (Unsigned).</td>
+                </tr>
+                
+                <tr onclick="window.location='divw/';" style="cursor: pointer;">
+                    <td class="mono">divw</td>
+                    <td style="font-weight: 500;">Divide Word</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Divides the lower 32 bits of RA by the lower 32 bits of RB (Signed).</td>
+                </tr>
+                
+                <tr onclick="window.location='divwu/';" style="cursor: pointer;">
+                    <td class="mono">divwu</td>
+                    <td style="font-weight: 500;">Divide Word Unsigned</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Divides the lower 32 bits of RA by the lower 32 bits of RB (Unsigned).</td>
+                </tr>
+                
+                <tr onclick="window.location='eieio/';" style="cursor: pointer;">
+                    <td class="mono">eieio</td>
+                    <td style="font-weight: 500;">Enforce In-order Execution of I/O</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Ensures that load/store instructions preceding the EIEIO complete before those following it. Used for Memory-Mapped I/O synchronization.</td>
+                </tr>
+                
+                <tr onclick="window.location='eqv/';" style="cursor: pointer;">
+                    <td class="mono">eqv</td>
+                    <td style="font-weight: 500;">Equivalent</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise Equivalence (XNOR) operation. (RA = ~(RS ^ RB)).</td>
+                </tr>
+                
+                <tr onclick="window.location='extsb/';" style="cursor: pointer;">
+                    <td class="mono">extsb</td>
+                    <td style="font-weight: 500;">Extend Sign Byte</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Sign-extends the low byte (8 bits) of a register to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='extsh/';" style="cursor: pointer;">
+                    <td class="mono">extsh</td>
+                    <td style="font-weight: 500;">Extend Sign Halfword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Sign-extends the low halfword (16 bits) of a register to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='extsw/';" style="cursor: pointer;">
+                    <td class="mono">extsw</td>
+                    <td style="font-weight: 500;">Extend Sign Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Sign-extends the low word (32 bits) of a register to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='fadd/';" style="cursor: pointer;">
+                    <td class="mono">fadd</td>
+                    <td style="font-weight: 500;">Floating Add</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">Adds two double-precision floating-point registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcmpu/';" style="cursor: pointer;">
+                    <td class="mono">fcmpu</td>
+                    <td style="font-weight: 500;">Floating Compare Unordered</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Compares two floating-point registers and sets the Condition Register (CR) field. Does not trap on NaNs.</td>
+                </tr>
+                
+                <tr onclick="window.location='fctiw/';" style="cursor: pointer;">
+                    <td class="mono">fctiw</td>
+                    <td style="font-weight: 500;">Floating Convert to Integer Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts a float to a 32-bit signed integer (using the current rounding mode) and stores it in the lower half of the FPR.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmadd/';" style="cursor: pointer;">
+                    <td class="mono">fmadd</td>
+                    <td style="font-weight: 500;">Floating Multiply-Add</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">Performs (A * C) + B with a single rounding step. (The classic FMA).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmul/';" style="cursor: pointer;">
+                    <td class="mono">fmul</td>
+                    <td style="font-weight: 500;">Floating Multiply</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two double-precision floating-point registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='icbi/';" style="cursor: pointer;">
+                    <td class="mono">icbi</td>
+                    <td style="font-weight: 500;">Instruction Cache Block Invalidate</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Invalidates the instruction cache block associated with the address. Critical for self-modifying code or JITs.</td>
+                </tr>
+                
+                <tr onclick="window.location='isel/';" style="cursor: pointer;">
+                    <td class="mono">isel</td>
+                    <td style="font-weight: 500;">Integer Select</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">Conditionally copies RA or RB to RT based on a CR bit. (Equivalent to C ternary operator 'cond ? a : b').</td>
+                </tr>
+                
+                <tr onclick="window.location='isync/';" style="cursor: pointer;">
+                    <td class="mono">isync</td>
+                    <td style="font-weight: 500;">Instruction Synchronize</td>
+                    <td><span class="badge">XL-form</span></td>
+                    <td style="color: var(--text-muted);">Waits for all previous instructions to complete and discards any prefetched instructions. Used after modifying code or changing context.</td>
+                </tr>
+                
+                <tr onclick="window.location='lbz/';" style="cursor: pointer;">
+                    <td class="mono">lbz</td>
+                    <td style="font-weight: 500;">Load Byte and Zero</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte from memory into the low 8 bits of a register and clears the upper 56 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld/';" style="cursor: pointer;">
+                    <td class="mono">ld</td>
+                    <td style="font-weight: 500;">Load Doubleword</td>
+                    <td><span class="badge">DS-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a doubleword (64 bits) from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldarx/';" style="cursor: pointer;">
+                    <td class="mono">ldarx</td>
+                    <td style="font-weight: 500;">Load Doubleword and Reserve Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a doubleword and creates a reservation. 64-bit version of lwarx.</td>
+                </tr>
+                
+                <tr onclick="window.location='lha/';" style="cursor: pointer;">
+                    <td class="mono">lha</td>
+                    <td style="font-weight: 500;">Load Halfword Algebraic</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a halfword (16 bits) from memory and sign-extends it to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='lhz/';" style="cursor: pointer;">
+                    <td class="mono">lhz</td>
+                    <td style="font-weight: 500;">Load Halfword and Zero</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a halfword (16 bits) from memory and clears the upper 48 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='lwa/';" style="cursor: pointer;">
+                    <td class="mono">lwa</td>
+                    <td style="font-weight: 500;">Load Word Algebraic</td>
+                    <td><span class="badge">DS-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a word (32 bits) from memory and sign-extends it to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='lwarx/';" style="cursor: pointer;">
+                    <td class="mono">lwarx</td>
+                    <td style="font-weight: 500;">Load Word and Reserve Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a word and creates a reservation for use with 'stwcx.'. Critical for implementing atomic primitives (mutexes).</td>
+                </tr>
+                
+                <tr onclick="window.location='lwz/';" style="cursor: pointer;">
+                    <td class="mono">lwz</td>
+                    <td style="font-weight: 500;">Load Word and Zero</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a word (32 bits) from memory and clears the upper 32 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='mfspr/';" style="cursor: pointer;">
+                    <td class="mono">mfspr</td>
+                    <td style="font-weight: 500;">Move From Special Purpose Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Copies a value from a system SPR to a general-purpose register.</td>
+                </tr>
+                
+                <tr onclick="window.location='mr/';" style="cursor: pointer;">
+                    <td class="mono">mr</td>
+                    <td style="font-weight: 500;">Move Register (Pseudo)</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Copies the contents of one register to another. (Encoded as OR RA, RS, RS).</td>
+                </tr>
+                
+                <tr onclick="window.location='mtspr/';" style="cursor: pointer;">
+                    <td class="mono">mtspr</td>
+                    <td style="font-weight: 500;">Move To Special Purpose Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Copies a value from a general-purpose register to a system SPR (e.g., CTR, LR, XER).</td>
+                </tr>
+                
+                <tr onclick="window.location='mulld/';" style="cursor: pointer;">
+                    <td class="mono">mulld</td>
+                    <td style="font-weight: 500;">Multiply Low Doubleword</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two 64-bit integers and stores the lower 64 bits of the 128-bit result.</td>
+                </tr>
+                
+                <tr onclick="window.location='mullw/';" style="cursor: pointer;">
+                    <td class="mono">mullw</td>
+                    <td style="font-weight: 500;">Multiply Low Word</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two 32-bit integers and stores the lower 32 bits of the 64-bit result.</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../static/theme.js"></script>
+
+    <script src="../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

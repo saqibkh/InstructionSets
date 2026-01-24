@@ -1,0 +1,195 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "cmp",
+      "architecture": "PowerISA",
+      "full_name": "Compare",
+      "summary": "Compares two registers as signed integers and records the result in the specified Condition Register Field.",
+      "syntax": "cmp BF, L, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | BF | / | L | RA | RB | 0000000000 | 1",
+        "hex_opcode": "0x7C000000"
+      },
+      "operands": [
+        { "name": "BF", "desc": "Condition Register Field (0-7)" },
+        { "name": "L", "desc": "Operand Size (0=32-bit, 1=64-bit)" },
+        { "name": "RA", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "if (RA) < (RB) then CR[BF] <- 0b1000 (LT)...",
+      "example": "cmp cr7, 0, r3, r4",
+      "example_note": "Compare r3 vs r4 (32-bit signed), result in cr7.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmpi",
+      "architecture": "PowerISA",
+      "full_name": "Compare Immediate",
+      "summary": "Compares a register to a 16-bit signed immediate.",
+      "syntax": "cmpi BF, L, RA, SI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "11 | BF | / | L | RA | SI",
+        "hex_opcode": "0x2C000000"
+      },
+      "operands": [
+        { "name": "BF", "desc": "Condition Register Field" },
+        { "name": "L", "desc": "Size (0=32-bit, 1=64-bit)" },
+        { "name": "RA", "desc": "Source Register" },
+        { "name": "SI", "desc": "Signed 16-bit Immediate" }
+      ],
+      "pseudocode": "if (RA) < EXTS(SI) then CR[BF] <- LT...",
+      "example": "cmpi cr0, 1, r3, -5",
+      "example_note": "Compare r3 vs -5 (64-bit signed).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmpl",
+      "architecture": "PowerISA",
+      "full_name": "Compare Logical",
+      "summary": "Compares two registers as unsigned integers.",
+      "syntax": "cmpl BF, L, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | BF | / | L | RA | RB | 0000100000 | 1",
+        "hex_opcode": "0x7C000040"
+      },
+      "operands": [
+        { "name": "BF", "desc": "Condition Register Field" },
+        { "name": "L", "desc": "Size (0=32-bit, 1=64-bit)" },
+        { "name": "RA", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "if (RA) <u (RB) then CR[BF] <- LT...",
+      "example": "cmpl cr1, 1, r3, r4",
+      "example_note": "Unsigned compare of r3 vs r4.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmpli",
+      "architecture": "PowerISA",
+      "full_name": "Compare Logical Immediate",
+      "summary": "Compares a register to a 16-bit unsigned immediate.",
+      "syntax": "cmpli BF, L, RA, UI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "10 | BF | / | L | RA | UI",
+        "hex_opcode": "0x28000000"
+      },
+      "operands": [
+        { "name": "BF", "desc": "Condition Register Field" },
+        { "name": "L", "desc": "Size" },
+        { "name": "RA", "desc": "Source Register" },
+        { "name": "UI", "desc": "Unsigned 16-bit Immediate" }
+      ],
+      "pseudocode": "if (RA) <u (00 || UI) then CR[BF] <- LT...",
+      "example": "cmpli cr0, 0, r3, 0xFF",
+      "example_note": "Check if r3 < 255 (unsigned).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cntlzw",
+      "architecture": "PowerISA",
+      "full_name": "Count Leading Zeros Word",
+      "summary": "Counts the number of consecutive 0 bits starting from bit 32 (MSB of the low word).",
+      "syntax": "cntlzw RA, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | 00000 | 000011010 | Rc",
+        "hex_opcode": "0x7C000034"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "n <- 0; while RS[32+n] = 0 do n <- n + 1; RA <- n",
+      "example": "cntlzw r3, r4",
+      "example_note": "r3 = Leading Zeros in lower 32-bits of r4.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cntlzd",
+      "architecture": "PowerISA",
+      "full_name": "Count Leading Zeros Doubleword",
+      "summary": "Counts the number of consecutive 0 bits starting from bit 0 (MSB of 64-bit reg).",
+      "syntax": "cntlzd RA, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | 00000 | 000111010 | Rc",
+        "hex_opcode": "0x7C000074"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "n <- 0; while RS[n] = 0 do n <- n + 1; RA <- n",
+      "example": "cntlzd r3, r4",
+      "example_note": "r3 = Leading Zeros in 64-bit r4.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "crand",
+      "architecture": "PowerISA",
+      "full_name": "Condition Register AND",
+      "summary": "Performs a bitwise AND between two bits in the Condition Register.",
+      "syntax": "crand BT, BA, BB",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | BT | BA | BB | 257 | /",
+        "hex_opcode": "0x4C000202"
+      },
+      "operands": [
+        { "name": "BT", "desc": "Target Bit (0-31)" },
+        { "name": "BA", "desc": "Source Bit A" },
+        { "name": "BB", "desc": "Source Bit B" }
+      ],
+      "pseudocode": "CR[BT] <- CR[BA] & CR[BB]",
+      "example": "crand 4*cr0+eq, 4*cr1+lt, 4*cr2+gt",
+      "example_note": "If (cr1.lt AND cr2.gt), set cr0.eq.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cror",
+      "architecture": "PowerISA",
+      "full_name": "Condition Register OR",
+      "summary": "Performs a bitwise OR between two bits in the Condition Register.",
+      "syntax": "cror BT, BA, BB",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | BT | BA | BB | 449 | /",
+        "hex_opcode": "0x4C000382"
+      },
+      "operands": [
+        { "name": "BT", "desc": "Target Bit" },
+        { "name": "BA", "desc": "Source Bit A" },
+        { "name": "BB", "desc": "Source Bit B" }
+      ],
+      "pseudocode": "CR[BT] <- CR[BA] | CR[BB]",
+      "example": "cror 0, 1, 2",
+      "example_note": "CR[0] = CR[1] | CR[2].",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "crxor",
+      "architecture": "PowerISA",
+      "full_name": "Condition Register XOR",
+      "summary": "Performs a bitwise XOR between two bits in the Condition Register. Used to clear CR bits (crxor x,x,x).",
+      "syntax": "crxor BT, BA, BB",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | BT | BA | BB | 193 | /",
+        "hex_opcode": "0x4C000182"
+      },
+      "operands": [
+        { "name": "BT", "desc": "Target Bit" },
+        { "name": "BA", "desc": "Source Bit A" },
+        { "name": "BB", "desc": "Source Bit B" }
+      ],
+      "pseudocode": "CR[BT] <- CR[BA] XOR CR[BB]",
+      "example": "crxor 0, 0, 0",
+      "example_note": "Clears CR bit 0 (sets it to 0).",
+      "extension": "Base"
+    }
+  ]
+}

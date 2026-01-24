@@ -1,0 +1,266 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "extsb",
+      "architecture": "PowerISA",
+      "full_name": "Extend Sign Byte",
+      "summary": "Sign-extends the low byte (8 bits) of a register to 64 bits.",
+      "syntax": "extsb RA, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | 00000 | 954 | Rc",
+        "hex_opcode": "0x7C000774"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "RA <- EXTS(RS[56:63])",
+      "example": "extsb r3, r4",
+      "example_note": "r3 = (int64_t)(int8_t)r4",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "extsh",
+      "architecture": "PowerISA",
+      "full_name": "Extend Sign Halfword",
+      "summary": "Sign-extends the low halfword (16 bits) of a register to 64 bits.",
+      "syntax": "extsh RA, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | 00000 | 922 | Rc",
+        "hex_opcode": "0x7C000734"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "RA <- EXTS(RS[48:63])",
+      "example": "extsh r3, r4",
+      "example_note": "r3 = (int64_t)(int16_t)r4",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "extsw",
+      "architecture": "PowerISA",
+      "full_name": "Extend Sign Word",
+      "summary": "Sign-extends the low word (32 bits) of a register to 64 bits.",
+      "syntax": "extsw RA, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | 00000 | 986 | Rc",
+        "hex_opcode": "0x7C0007B4"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "RA <- EXTS(RS[32:63])",
+      "example": "extsw r3, r4",
+      "example_note": "r3 = (int64_t)(int32_t)r4",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "eqv",
+      "architecture": "PowerISA",
+      "full_name": "Equivalent",
+      "summary": "Performs a bitwise Equivalence (XNOR) operation. (RA = ~(RS ^ RB)).",
+      "syntax": "eqv RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 284 | Rc",
+        "hex_opcode": "0x7C000238"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- (RS) EQV (RB)",
+      "example": "eqv r3, r4, r5",
+      "example_note": "Bitwise XNOR.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "eieio",
+      "architecture": "PowerISA",
+      "full_name": "Enforce In-order Execution of I/O",
+      "summary": "Ensures that load/store instructions preceding the EIEIO complete before those following it. Used for Memory-Mapped I/O synchronization.",
+      "syntax": "eieio",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | 00000 | 00000 | 00000 | 854 | /",
+        "hex_opcode": "0x7C0006AC"
+      },
+      "operands": [],
+      "pseudocode": "Barrier(IO_Storage)",
+      "example": "eieio",
+      "example_note": "I/O Barrier.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "PowerISA",
+      "full_name": "Floating Add",
+      "summary": "Adds two double-precision floating-point registers.",
+      "syntax": "fadd FRT, FRA, FRB",
+      "encoding": {
+        "format": "A-form",
+        "binary_pattern": "63 | FRT | FRA | FRB | 00000 | 21 | Rc",
+        "hex_opcode": "0xFC00002A"
+      },
+      "operands": [
+        { "name": "FRT", "desc": "Target FPR" },
+        { "name": "FRA", "desc": "Source FPR A" },
+        { "name": "FRB", "desc": "Source FPR B" }
+      ],
+      "pseudocode": "FRT <- (FRA) + (FRB)",
+      "example": "fadd f1, f2, f3",
+      "example_note": "f1 = f2 + f3",
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "PowerISA",
+      "full_name": "Floating Multiply",
+      "summary": "Multiplies two double-precision floating-point registers.",
+      "syntax": "fmul FRT, FRA, FRC",
+      "encoding": {
+        "format": "A-form",
+        "binary_pattern": "63 | FRT | FRA | 00000 | FRC | 25 | Rc",
+        "hex_opcode": "0xFC000032"
+      },
+      "operands": [
+        { "name": "FRT", "desc": "Target FPR" },
+        { "name": "FRA", "desc": "Source FPR A" },
+        { "name": "FRC", "desc": "Source FPR C" }
+      ],
+      "pseudocode": "FRT <- (FRA) * (FRC)",
+      "example": "fmul f1, f2, f3",
+      "example_note": "f1 = f2 * f3",
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fmadd",
+      "architecture": "PowerISA",
+      "full_name": "Floating Multiply-Add",
+      "summary": "Performs (A * C) + B with a single rounding step. (The classic FMA).",
+      "syntax": "fmadd FRT, FRA, FRC, FRB",
+      "encoding": {
+        "format": "A-form",
+        "binary_pattern": "63 | FRT | FRA | FRB | FRC | 29 | Rc",
+        "hex_opcode": "0xFC00003A"
+      },
+      "operands": [
+        { "name": "FRT", "desc": "Target FPR" },
+        { "name": "FRA", "desc": "Multiplier" },
+        { "name": "FRC", "desc": "Multiplicand" },
+        { "name": "FRB", "desc": "Addend" }
+      ],
+      "pseudocode": "FRT <- [(FRA) * (FRC)] + (FRB)",
+      "example": "fmadd f1, f2, f3, f4",
+      "example_note": "f1 = (f2 * f3) + f4",
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fcmpu",
+      "architecture": "PowerISA",
+      "full_name": "Floating Compare Unordered",
+      "summary": "Compares two floating-point registers and sets the Condition Register (CR) field. Does not trap on NaNs.",
+      "syntax": "fcmpu BF, FRA, FRB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "63 | BF | / | FRA | FRB | 0000000000 | /",
+        "hex_opcode": "0xFC000000"
+      },
+      "operands": [
+        { "name": "BF", "desc": "CR Field" },
+        { "name": "FRA", "desc": "Source A" },
+        { "name": "FRB", "desc": "Source B" }
+      ],
+      "pseudocode": "if NaN(FRA) or NaN(FRB) then CR[BF] <- U; else compare...",
+      "example": "fcmpu cr0, f1, f2",
+      "example_note": "Compare f1 vs f2.",
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fctiw",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert to Integer Word",
+      "summary": "Converts a float to a 32-bit signed integer (using the current rounding mode) and stores it in the lower half of the FPR.",
+      "syntax": "fctiw FRT, FRB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "63 | FRT | / | FRB | 14 | Rc",
+        "hex_opcode": "0xFC00001C"
+      },
+      "operands": [
+        { "name": "FRT", "desc": "Target FPR" },
+        { "name": "FRB", "desc": "Source FPR" }
+      ],
+      "pseudocode": "FRT[32:63] <- ConvertToInt32(FRB)",
+      "example": "fctiw f1, f2",
+      "example_note": "Convert float f2 to int in f1.",
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "isel",
+      "architecture": "PowerISA",
+      "full_name": "Integer Select",
+      "summary": "Conditionally copies RA or RB to RT based on a CR bit. (Equivalent to C ternary operator 'cond ? a : b').",
+      "syntax": "isel RT, RA, RB, BC",
+      "encoding": {
+        "format": "A-form",
+        "binary_pattern": "31 | RT | RA | RB | BC | 15 | /",
+        "hex_opcode": "0x7C00001E"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source (If True) - 0 means 0" },
+        { "name": "RB", "desc": "Source (If False)" },
+        { "name": "BC", "desc": "CR Bit Index (Condition)" }
+      ],
+      "pseudocode": "if CR[BC]=1 then RT <- (RA) else RT <- (RB)",
+      "example": "isel r3, r4, r5, 2",
+      "example_note": "r3 = (CR.eq) ? r4 : r5",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "icbi",
+      "architecture": "PowerISA",
+      "full_name": "Instruction Cache Block Invalidate",
+      "summary": "Invalidates the instruction cache block associated with the address. Critical for self-modifying code or JITs.",
+      "syntax": "icbi RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | / | RA | RB | 982 | /",
+        "hex_opcode": "0x7C0007D6"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Base Address" },
+        { "name": "RB", "desc": "Index Address" }
+      ],
+      "pseudocode": "InvalidateICache(EffectiveAddr(RA, RB))",
+      "example": "icbi 0, r3",
+      "example_note": "Invalidate instruction cache at r3.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "isync",
+      "architecture": "PowerISA",
+      "full_name": "Instruction Synchronize",
+      "summary": "Waits for all previous instructions to complete and discards any prefetched instructions. Used after modifying code or changing context.",
+      "syntax": "isync",
+      "encoding": {
+        "format": "XL-form",
+        "binary_pattern": "19 | 00000 | 00000 | 00000 | 150 | /",
+        "hex_opcode": "0x4C00012C"
+      },
+      "operands": [],
+      "pseudocode": "ContextSynchronize()",
+      "example": "isync",
+      "example_note": "Refetch instructions.",
+      "extension": "Base"
+    }
+  ]
+}
