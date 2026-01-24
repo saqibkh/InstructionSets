@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Could not load search index:", error);
     }
 
-    // 2. Search Logic
+    // 2. Search Logic (Only runs if input exists)
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             renderResults(results);
         });
 
-        // 3. Keyboard Navigation
+        // 3. Keyboard Navigation (Arrows/Enter)
         searchInput.addEventListener('keydown', (e) => {
             const items = resultsContainer.querySelectorAll('.search-result-item');
             if (items.length === 0) return;
@@ -54,7 +54,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
         });
-    }
+    } // <--- End of if(searchInput)
+
+    // 4. Global Keyboard Shortcut (Ctrl+K) - MOVED OUTSIDE for safety
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault(); 
+            const heroInput = document.getElementById('hero-search');
+            const navInput = document.getElementById('search-input');
+
+            // Focus hero if visible (homepage), otherwise nav
+            if (heroInput && heroInput.offsetParent !== null) {
+                heroInput.focus();
+            } else if (navInput) {
+                navInput.focus();
+            }
+        }
+    });
 
     function renderResults(results) {
         resultsContainer.innerHTML = '';
