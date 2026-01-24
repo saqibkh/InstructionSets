@@ -505,11 +505,46 @@
                     <td style="color: var(--text-muted);">Loads a word (32 bits) from memory and clears the upper 32 bits.</td>
                 </tr>
                 
+                <tr onclick="window.location='lxsiwax/';" style="cursor: pointer;">
+                    <td class="mono">lxsiwax</td>
+                    <td style="font-weight: 500;">Load VSX Scalar as Integer Word Algebraic Indexed</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 32-bit signed integer into a VSX register (scalar).</td>
+                </tr>
+                
+                <tr onclick="window.location='lxsiwzx/';" style="cursor: pointer;">
+                    <td class="mono">lxsiwzx</td>
+                    <td style="font-weight: 500;">Load VSX Scalar as Integer Word Zero Indexed</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 32-bit unsigned integer into a VSX register (scalar).</td>
+                </tr>
+                
+                <tr onclick="window.location='lxv/';" style="cursor: pointer;">
+                    <td class="mono">lxv</td>
+                    <td style="font-weight: 500;">Load VSX Vector</td>
+                    <td><span class="badge">DQ-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 128-bit vector from memory (VSX aligned offset).</td>
+                </tr>
+                
                 <tr onclick="window.location='lxvd2x/';" style="cursor: pointer;">
                     <td class="mono">lxvd2x</td>
                     <td style="font-weight: 500;">Load VSX Vector Doubleword*2 Indexed</td>
                     <td><span class="badge">XX1-form</span></td>
                     <td style="color: var(--text-muted);">Loads a 128-bit vector from memory into a VSX register. Does NOT require 16-byte alignment (unlike lvx).</td>
+                </tr>
+                
+                <tr onclick="window.location='lxvdsx/';" style="cursor: pointer;">
+                    <td class="mono">lxvdsx</td>
+                    <td style="font-weight: 500;">Load VSX Vector Doubleword and Splat Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a doubleword and duplicates it to fill the vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='lxvw4x/';" style="cursor: pointer;">
+                    <td class="mono">lxvw4x</td>
+                    <td style="font-weight: 500;">Load VSX Vector Word*4 Indexed</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Loads four words into a vector (unaligned).</td>
                 </tr>
                 
                 <tr onclick="window.location='mcrf/';" style="cursor: pointer;">
@@ -533,6 +568,20 @@
                     <td style="color: var(--text-muted);">Copies a value from a system SPR to a general-purpose register.</td>
                 </tr>
                 
+                <tr onclick="window.location='mfvsrd/';" style="cursor: pointer;">
+                    <td class="mono">mfvsrd</td>
+                    <td style="font-weight: 500;">Move From VSR Doubleword</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Moves 64 bits from a VSR to a GPR.</td>
+                </tr>
+                
+                <tr onclick="window.location='mfvsrwz/';" style="cursor: pointer;">
+                    <td class="mono">mfvsrwz</td>
+                    <td style="font-weight: 500;">Move From VSR Word and Zero</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Moves low 32 bits from VSR to GPR (zero extend).</td>
+                </tr>
+                
                 <tr onclick="window.location='mr/';" style="cursor: pointer;">
                     <td class="mono">mr</td>
                     <td style="font-weight: 500;">Move Register (Pseudo)</td>
@@ -552,6 +601,20 @@
                     <td style="font-weight: 500;">Move To Special Purpose Register</td>
                     <td><span class="badge">XFX-form</span></td>
                     <td style="color: var(--text-muted);">Copies a value from a general-purpose register to a system SPR (e.g., CTR, LR, XER).</td>
+                </tr>
+                
+                <tr onclick="window.location='mtvsrd/';" style="cursor: pointer;">
+                    <td class="mono">mtvsrd</td>
+                    <td style="font-weight: 500;">Move To VSR Doubleword</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Moves 64 bits from a GPR to a VSR.</td>
+                </tr>
+                
+                <tr onclick="window.location='mtvsrwa/';" style="cursor: pointer;">
+                    <td class="mono">mtvsrwa</td>
+                    <td style="font-weight: 500;">Move To VSR Word Algebraic</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Moves low 32 bits from GPR to VSR (sign extend).</td>
                 </tr>
                 
                 <tr onclick="window.location='mulld/';" style="cursor: pointer;">
@@ -834,11 +897,32 @@
                     <td style="color: var(--text-muted);">Stores a word only if the reservation created by 'lwarx' still exists. Used for atomic operations. Sets CR0.</td>
                 </tr>
                 
+                <tr onclick="window.location='stxsiwx/';" style="cursor: pointer;">
+                    <td class="mono">stxsiwx</td>
+                    <td style="font-weight: 500;">Store VSX Scalar as Integer Word Indexed</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Stores the low 32 bits of a VSX register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='stxv/';" style="cursor: pointer;">
+                    <td class="mono">stxv</td>
+                    <td style="font-weight: 500;">Store VSX Vector</td>
+                    <td><span class="badge">DQ-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a 128-bit vector to memory (VSX aligned offset).</td>
+                </tr>
+                
                 <tr onclick="window.location='stxvd2x/';" style="cursor: pointer;">
                     <td class="mono">stxvd2x</td>
                     <td style="font-weight: 500;">Store VSX Vector Doubleword*2 Indexed</td>
                     <td><span class="badge">XX1-form</span></td>
                     <td style="color: var(--text-muted);">Stores a 128-bit VSX register to memory. Does NOT require alignment.</td>
+                </tr>
+                
+                <tr onclick="window.location='stxvw4x/';" style="cursor: pointer;">
+                    <td class="mono">stxvw4x</td>
+                    <td style="font-weight: 500;">Store VSX Vector Word*4 Indexed</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Stores four words from a vector (unaligned).</td>
                 </tr>
                 
                 <tr onclick="window.location='sync/';" style="cursor: pointer;">
@@ -888,6 +972,13 @@
                     <td style="font-weight: 500;">Trap (Pseudo)</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Unconditional trap. Forces an exception. (Encoded as tw 31, 0, 0).</td>
+                </tr>
+                
+                <tr onclick="window.location='vaddfp/';" style="cursor: pointer;">
+                    <td class="mono">vaddfp</td>
+                    <td style="font-weight: 500;">Vector Add Floating-Point</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Adds four single-precision floats (Classic VMX).</td>
                 </tr>
                 
                 <tr onclick="window.location='vaddsbs/';" style="cursor: pointer;">
@@ -1023,11 +1114,39 @@
                     <td style="color: var(--text-muted);">Computes (a+b+1)/2 for words.</td>
                 </tr>
                 
+                <tr onclick="window.location='vcfsx/';" style="cursor: pointer;">
+                    <td class="mono">vcfsx</td>
+                    <td style="font-weight: 500;">Vector Convert from Signed Fixed-Point Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 4 signed 32-bit integers to floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='vcfux/';" style="cursor: pointer;">
+                    <td class="mono">vcfux</td>
+                    <td style="font-weight: 500;">Vector Convert from Unsigned Fixed-Point Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 4 unsigned 32-bit integers to floats.</td>
+                </tr>
+                
                 <tr onclick="window.location='vcipher/';" style="cursor: pointer;">
                     <td class="mono">vcipher</td>
                     <td style="font-weight: 500;">Vector Cipher (AES)</td>
                     <td><span class="badge">VX-form</span></td>
                     <td style="color: var(--text-muted);">Performs one round of AES encryption (SubBytes, ShiftRows, MixColumns, AddRoundKey).</td>
+                </tr>
+                
+                <tr onclick="window.location='vcmpbfp/';" style="cursor: pointer;">
+                    <td class="mono">vcmpbfp</td>
+                    <td style="font-weight: 500;">Vector Compare Bounds Floating-Point</td>
+                    <td><span class="badge">VC-form</span></td>
+                    <td style="color: var(--text-muted);">Compares 4 floats to see if they are within bounds.</td>
+                </tr>
+                
+                <tr onclick="window.location='vcmpeqfp/';" style="cursor: pointer;">
+                    <td class="mono">vcmpeqfp</td>
+                    <td style="font-weight: 500;">Vector Compare Equal Floating-Point</td>
+                    <td><span class="badge">VC-form</span></td>
+                    <td style="color: var(--text-muted);">Compares 4 floats for equality.</td>
                 </tr>
                 
                 <tr onclick="window.location='vcmpequb/';" style="cursor: pointer;">
@@ -1056,6 +1175,20 @@
                     <td style="font-weight: 500;">Vector Compare Equal Word</td>
                     <td><span class="badge">VC-form</span></td>
                     <td style="color: var(--text-muted);">Compares words for equality. Sets result bits to all 1s (True) or all 0s (False).</td>
+                </tr>
+                
+                <tr onclick="window.location='vcmpgefp/';" style="cursor: pointer;">
+                    <td class="mono">vcmpgefp</td>
+                    <td style="font-weight: 500;">Vector Compare Greater Equal Floating-Point</td>
+                    <td><span class="badge">VC-form</span></td>
+                    <td style="color: var(--text-muted);">Compares 4 floats (A >= B).</td>
+                </tr>
+                
+                <tr onclick="window.location='vcmpgtfp/';" style="cursor: pointer;">
+                    <td class="mono">vcmpgtfp</td>
+                    <td style="font-weight: 500;">Vector Compare Greater Than Floating-Point</td>
+                    <td><span class="badge">VC-form</span></td>
+                    <td style="color: var(--text-muted);">Compares 4 floats (A > B).</td>
                 </tr>
                 
                 <tr onclick="window.location='vcmpgtsb/';" style="cursor: pointer;">
@@ -1112,6 +1245,20 @@
                     <td style="font-weight: 500;">Vector Compare Greater Than Unsigned Word</td>
                     <td><span class="badge">VC-form</span></td>
                     <td style="color: var(--text-muted);">Unsigned > comparison for 4 words.</td>
+                </tr>
+                
+                <tr onclick="window.location='vctsxs/';" style="cursor: pointer;">
+                    <td class="mono">vctsxs</td>
+                    <td style="font-weight: 500;">Vector Convert to Signed Fixed-Point Word Saturate</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 4 floats to 4 signed 32-bit integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='vctuxs/';" style="cursor: pointer;">
+                    <td class="mono">vctuxs</td>
+                    <td style="font-weight: 500;">Vector Convert to Unsigned Fixed-Point Word Saturate</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 4 floats to 4 unsigned 32-bit integers.</td>
                 </tr>
                 
                 <tr onclick="window.location='vmaxsb/';" style="cursor: pointer;">
@@ -1240,6 +1387,62 @@
                     <td style="color: var(--text-muted);">Interleaves low-order words.</td>
                 </tr>
                 
+                <tr onclick="window.location='vmsumshm/';" style="cursor: pointer;">
+                    <td class="mono">vmsumshm</td>
+                    <td style="font-weight: 500;">Vector Multiply-Sum Signed Halfword Modulo</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies halfwords and sums adjacent results into words.</td>
+                </tr>
+                
+                <tr onclick="window.location='vmsumshs/';" style="cursor: pointer;">
+                    <td class="mono">vmsumshs</td>
+                    <td style="font-weight: 500;">Vector Multiply-Sum Signed Halfword Saturate</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies halfwords and sums with saturation.</td>
+                </tr>
+                
+                <tr onclick="window.location='vmsumubm/';" style="cursor: pointer;">
+                    <td class="mono">vmsumubm</td>
+                    <td style="font-weight: 500;">Vector Multiply-Sum Unsigned Byte Modulo</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies bytes and sums adjacent results into words.</td>
+                </tr>
+                
+                <tr onclick="window.location='vmulesw/';" style="cursor: pointer;">
+                    <td class="mono">vmulesw</td>
+                    <td style="font-weight: 500;">Vector Multiply Even Signed Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies even words (0,2) to 64-bit signed result.</td>
+                </tr>
+                
+                <tr onclick="window.location='vmuleuw/';" style="cursor: pointer;">
+                    <td class="mono">vmuleuw</td>
+                    <td style="font-weight: 500;">Vector Multiply Even Unsigned Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies even words (0,2) to 64-bit result.</td>
+                </tr>
+                
+                <tr onclick="window.location='vmulfp/';" style="cursor: pointer;">
+                    <td class="mono">vmulfp</td>
+                    <td style="font-weight: 500;">Vector Multiply Floating-Point</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies four single-precision floats (Classic VMX).</td>
+                </tr>
+                
+                <tr onclick="window.location='vmulosw/';" style="cursor: pointer;">
+                    <td class="mono">vmulosw</td>
+                    <td style="font-weight: 500;">Vector Multiply Odd Signed Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies odd words (1,3) to 64-bit signed result.</td>
+                </tr>
+                
+                <tr onclick="window.location='vmulouw/';" style="cursor: pointer;">
+                    <td class="mono">vmulouw</td>
+                    <td style="font-weight: 500;">Vector Multiply Odd Unsigned Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies odd words (1,3) to 64-bit result.</td>
+                </tr>
+                
                 <tr onclick="window.location='vmulouw/';" style="cursor: pointer;">
                     <td class="mono">vmulouw</td>
                     <td style="font-weight: 500;">Vector Multiply Odd Unsigned Word</td>
@@ -1275,6 +1478,20 @@
                     <td style="color: var(--text-muted);">The signature AltiVec instruction. Constructs a new vector by selecting bytes from two source vectors based on a permute control vector.</td>
                 </tr>
                 
+                <tr onclick="window.location='vpermr/';" style="cursor: pointer;">
+                    <td class="mono">vpermr</td>
+                    <td style="font-weight: 500;">Vector Permute Right</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise byte shuffle similar to vperm but for little-endian access optimization.</td>
+                </tr>
+                
+                <tr onclick="window.location='vpkpx/';" style="cursor: pointer;">
+                    <td class="mono">vpkpx</td>
+                    <td style="font-weight: 500;">Vector Pack Pixel</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Packs 8 words into 8 pixels (1/5/5/5 format).</td>
+                </tr>
+                
                 <tr onclick="window.location='vpkshss/';" style="cursor: pointer;">
                     <td class="mono">vpkshss</td>
                     <td style="font-weight: 500;">Vector Pack Signed Halfword Signed Saturate</td>
@@ -1308,6 +1525,62 @@
                     <td style="font-weight: 500;">Vector Pack Unsigned Word Unsigned Modulo</td>
                     <td><span class="badge">VX-form</span></td>
                     <td style="color: var(--text-muted);">Truncates 4 words to 8 halfwords.</td>
+                </tr>
+                
+                <tr onclick="window.location='vpmsumb/';" style="cursor: pointer;">
+                    <td class="mono">vpmsumb</td>
+                    <td style="font-weight: 500;">Vector Polynomial Multiply-Sum Byte</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Performs GF(2) polynomial arithmetic (Carryless Multiply) on bytes.</td>
+                </tr>
+                
+                <tr onclick="window.location='vpmsumd/';" style="cursor: pointer;">
+                    <td class="mono">vpmsumd</td>
+                    <td style="font-weight: 500;">Vector Polynomial Multiply-Sum Doubleword</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Performs GF(2) polynomial arithmetic on doublewords.</td>
+                </tr>
+                
+                <tr onclick="window.location='vpmsumh/';" style="cursor: pointer;">
+                    <td class="mono">vpmsumh</td>
+                    <td style="font-weight: 500;">Vector Polynomial Multiply-Sum Halfword</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Performs GF(2) polynomial arithmetic on halfwords.</td>
+                </tr>
+                
+                <tr onclick="window.location='vpmsumw/';" style="cursor: pointer;">
+                    <td class="mono">vpmsumw</td>
+                    <td style="font-weight: 500;">Vector Polynomial Multiply-Sum Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Performs GF(2) polynomial arithmetic on words.</td>
+                </tr>
+                
+                <tr onclick="window.location='vrfim/';" style="cursor: pointer;">
+                    <td class="mono">vrfim</td>
+                    <td style="font-weight: 500;">Vector Round to Floating-Point Integer towards Minus Infinity</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Rounds 4 floats to integer (floor).</td>
+                </tr>
+                
+                <tr onclick="window.location='vrfin/';" style="cursor: pointer;">
+                    <td class="mono">vrfin</td>
+                    <td style="font-weight: 500;">Vector Round to Floating-Point Integer Nearest</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Rounds 4 floats to nearest integer.</td>
+                </tr>
+                
+                <tr onclick="window.location='vrfip/';" style="cursor: pointer;">
+                    <td class="mono">vrfip</td>
+                    <td style="font-weight: 500;">Vector Round to Floating-Point Integer towards Plus Infinity</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Rounds 4 floats to integer (ceil).</td>
+                </tr>
+                
+                <tr onclick="window.location='vrfiz/';" style="cursor: pointer;">
+                    <td class="mono">vrfiz</td>
+                    <td style="font-weight: 500;">Vector Round to Floating-Point Integer towards Zero</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Rounds 4 floats to integer (trunc).</td>
                 </tr>
                 
                 <tr onclick="window.location='vrlb/';" style="cursor: pointer;">
@@ -1394,6 +1667,13 @@
                     <td style="color: var(--text-muted);">Shifts vector right by byte count.</td>
                 </tr>
                 
+                <tr onclick="window.location='vsubfp/';" style="cursor: pointer;">
+                    <td class="mono">vsubfp</td>
+                    <td style="font-weight: 500;">Vector Subtract Floating-Point</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Subtracts four single-precision floats (Classic VMX).</td>
+                </tr>
+                
                 <tr onclick="window.location='vsubsbs/';" style="cursor: pointer;">
                     <td class="mono">vsubsbs</td>
                     <td style="font-weight: 500;">Vector Subtract Signed Byte Saturate</td>
@@ -1464,6 +1744,48 @@
                     <td style="color: var(--text-muted);">Subtracts 4 unsigned words with saturation.</td>
                 </tr>
                 
+                <tr onclick="window.location='vsum2sws/';" style="cursor: pointer;">
+                    <td class="mono">vsum2sws</td>
+                    <td style="font-weight: 500;">Vector Sum-across Partial (1/2) Signed Word Saturate</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Sums pairs of words into signed words.</td>
+                </tr>
+                
+                <tr onclick="window.location='vsum4sbs/';" style="cursor: pointer;">
+                    <td class="mono">vsum4sbs</td>
+                    <td style="font-weight: 500;">Vector Sum-across Partial (1/4) Signed Byte Saturate</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Sums every 4 signed bytes into a word.</td>
+                </tr>
+                
+                <tr onclick="window.location='vsum4shs/';" style="cursor: pointer;">
+                    <td class="mono">vsum4shs</td>
+                    <td style="font-weight: 500;">Vector Sum-across Partial (1/4) Signed Halfword Saturate</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Sums every 2 halfwords into a word.</td>
+                </tr>
+                
+                <tr onclick="window.location='vsum4ubs/';" style="cursor: pointer;">
+                    <td class="mono">vsum4ubs</td>
+                    <td style="font-weight: 500;">Vector Sum-across Partial (1/4) Unsigned Byte Saturate</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Sums every 4 bytes into a word.</td>
+                </tr>
+                
+                <tr onclick="window.location='vsumsws/';" style="cursor: pointer;">
+                    <td class="mono">vsumsws</td>
+                    <td style="font-weight: 500;">Vector Sum-across Signed Word Saturate</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Sums all 4 words into a single word result.</td>
+                </tr>
+                
+                <tr onclick="window.location='vupkhpx/';" style="cursor: pointer;">
+                    <td class="mono">vupkhpx</td>
+                    <td style="font-weight: 500;">Vector Unpack High Pixel</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Unpacks high 4 pixels to 4 words.</td>
+                </tr>
+                
                 <tr onclick="window.location='vupkhsb/';" style="cursor: pointer;">
                     <td class="mono">vupkhsb</td>
                     <td style="font-weight: 500;">Vector Unpack High Signed Byte</td>
@@ -1476,6 +1798,13 @@
                     <td style="font-weight: 500;">Vector Unpack High Signed Halfword</td>
                     <td><span class="badge">VX-form</span></td>
                     <td style="color: var(--text-muted);">Unpacks high 4 signed halfwords to 4 signed words.</td>
+                </tr>
+                
+                <tr onclick="window.location='vupklpx/';" style="cursor: pointer;">
+                    <td class="mono">vupklpx</td>
+                    <td style="font-weight: 500;">Vector Unpack Low Pixel</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Unpacks low 4 pixels to 4 words.</td>
                 </tr>
                 
                 <tr onclick="window.location='vupklsb/';" style="cursor: pointer;">
@@ -1576,6 +1905,34 @@
                     <td style="color: var(--text-muted);">Converts a 64-bit Double to a 128-bit Quad float.</td>
                 </tr>
                 
+                <tr onclick="window.location='xscvdpsp/';" style="cursor: pointer;">
+                    <td class="mono">xscvdpsp</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Double to Single</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Demotes a Double to a Single.</td>
+                </tr>
+                
+                <tr onclick="window.location='xscvdpsxds/';" style="cursor: pointer;">
+                    <td class="mono">xscvdpsxds</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Double to Signed Doubleword</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts scalar Double to 64-bit Signed Integer.</td>
+                </tr>
+                
+                <tr onclick="window.location='xscvdpuxds/';" style="cursor: pointer;">
+                    <td class="mono">xscvdpuxds</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Double to Unsigned Doubleword</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts scalar Double to 64-bit Unsigned Integer.</td>
+                </tr>
+                
+                <tr onclick="window.location='xscvspdp/';" style="cursor: pointer;">
+                    <td class="mono">xscvspdp</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Single to Double</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Promotes a Single to a Double.</td>
+                </tr>
+                
                 <tr onclick="window.location='xsdivsp/';" style="cursor: pointer;">
                     <td class="mono">xsdivsp</td>
                     <td style="font-weight: 500;">VSX Scalar Divide Single-Precision</td>
@@ -1632,11 +1989,137 @@
                     <td style="color: var(--text-muted);">Scalar float subtraction (32-bit).</td>
                 </tr>
                 
+                <tr onclick="window.location='xvabsdp/';" style="cursor: pointer;">
+                    <td class="mono">xvabsdp</td>
+                    <td style="font-weight: 500;">VSX Vector Absolute Value Double-Precision</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Computes absolute value for two double-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvabssp/';" style="cursor: pointer;">
+                    <td class="mono">xvabssp</td>
+                    <td style="font-weight: 500;">VSX Vector Absolute Value Single-Precision</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Computes absolute value for four single-precision floats.</td>
+                </tr>
+                
                 <tr onclick="window.location='xvadddp/';" style="cursor: pointer;">
                     <td class="mono">xvadddp</td>
                     <td style="font-weight: 500;">VSX Vector Add Double-Precision</td>
                     <td><span class="badge">XX3-form</span></td>
                     <td style="color: var(--text-muted);">Adds two pairs of double-precision floating-point numbers.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvaddsp/';" style="cursor: pointer;">
+                    <td class="mono">xvaddsp</td>
+                    <td style="font-weight: 500;">VSX Vector Add Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Adds four single-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcmpeqdp/';" style="cursor: pointer;">
+                    <td class="mono">xvcmpeqdp</td>
+                    <td style="font-weight: 500;">VSX Vector Compare Equal Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Compares doubles for equality. Sets result to all 1s or 0s.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcmpeqsp/';" style="cursor: pointer;">
+                    <td class="mono">xvcmpeqsp</td>
+                    <td style="font-weight: 500;">VSX Vector Compare Equal Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Compares four floats for equality.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcmpgedp/';" style="cursor: pointer;">
+                    <td class="mono">xvcmpgedp</td>
+                    <td style="font-weight: 500;">VSX Vector Compare Greater or Equal Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Compares doubles (A >= B).</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcmpgesp/';" style="cursor: pointer;">
+                    <td class="mono">xvcmpgesp</td>
+                    <td style="font-weight: 500;">VSX Vector Compare Greater or Equal Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Compares four floats (A >= B).</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcmpgtdp/';" style="cursor: pointer;">
+                    <td class="mono">xvcmpgtdp</td>
+                    <td style="font-weight: 500;">VSX Vector Compare Greater Than Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Compares doubles (A > B).</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcmpgtsp/';" style="cursor: pointer;">
+                    <td class="mono">xvcmpgtsp</td>
+                    <td style="font-weight: 500;">VSX Vector Compare Greater Than Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Compares four floats (A > B).</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcvdpsp/';" style="cursor: pointer;">
+                    <td class="mono">xvcvdpsp</td>
+                    <td style="font-weight: 500;">VSX Vector Convert Double to Single</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts two doubles to two floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcvdpsxds/';" style="cursor: pointer;">
+                    <td class="mono">xvcvdpsxds</td>
+                    <td style="font-weight: 500;">VSX Vector Convert Double to Signed Doubleword</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts two doubles to two 64-bit signed integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcvdpuxds/';" style="cursor: pointer;">
+                    <td class="mono">xvcvdpuxds</td>
+                    <td style="font-weight: 500;">VSX Vector Convert Double to Unsigned Doubleword</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts two doubles to two 64-bit unsigned integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcvspdp/';" style="cursor: pointer;">
+                    <td class="mono">xvcvspdp</td>
+                    <td style="font-weight: 500;">VSX Vector Convert Single to Double</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts two floats to two doubles.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcvspsxds/';" style="cursor: pointer;">
+                    <td class="mono">xvcvspsxds</td>
+                    <td style="font-weight: 500;">VSX Vector Convert Single to Signed Doubleword</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts two floats to two 64-bit signed integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcvsxwsp/';" style="cursor: pointer;">
+                    <td class="mono">xvcvsxwsp</td>
+                    <td style="font-weight: 500;">VSX Vector Convert Signed Word to Single</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts four 32-bit signed integers to four floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvcvuxwsp/';" style="cursor: pointer;">
+                    <td class="mono">xvcvuxwsp</td>
+                    <td style="font-weight: 500;">VSX Vector Convert Unsigned Word to Single</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Converts four 32-bit unsigned integers to four floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvdivdp/';" style="cursor: pointer;">
+                    <td class="mono">xvdivdp</td>
+                    <td style="font-weight: 500;">VSX Vector Divide Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Divides two pairs of double-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvdivsp/';" style="cursor: pointer;">
+                    <td class="mono">xvdivsp</td>
+                    <td style="font-weight: 500;">VSX Vector Divide Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Divides four single-precision floats.</td>
                 </tr>
                 
                 <tr onclick="window.location='xvmaddadp/';" style="cursor: pointer;">
@@ -1646,6 +2129,90 @@
                     <td style="color: var(--text-muted);">Performs (A * B) + T on vectors of doubles.</td>
                 </tr>
                 
+                <tr onclick="window.location='xvmaxdp/';" style="cursor: pointer;">
+                    <td class="mono">xvmaxdp</td>
+                    <td style="font-weight: 500;">VSX Vector Maximum Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Selects maximum value for two pairs of doubles.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvmaxsp/';" style="cursor: pointer;">
+                    <td class="mono">xvmaxsp</td>
+                    <td style="font-weight: 500;">VSX Vector Maximum Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Selects maximum value for four floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvmindp/';" style="cursor: pointer;">
+                    <td class="mono">xvmindp</td>
+                    <td style="font-weight: 500;">VSX Vector Minimum Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Selects minimum value for two pairs of doubles.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvminsp/';" style="cursor: pointer;">
+                    <td class="mono">xvminsp</td>
+                    <td style="font-weight: 500;">VSX Vector Minimum Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Selects minimum value for four floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvmuldp/';" style="cursor: pointer;">
+                    <td class="mono">xvmuldp</td>
+                    <td style="font-weight: 500;">VSX Vector Multiply Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two pairs of double-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvmulsp/';" style="cursor: pointer;">
+                    <td class="mono">xvmulsp</td>
+                    <td style="font-weight: 500;">VSX Vector Multiply Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies four single-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvnegdp/';" style="cursor: pointer;">
+                    <td class="mono">xvnegdp</td>
+                    <td style="font-weight: 500;">VSX Vector Negate Double-Precision</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Negates two double-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvnegsp/';" style="cursor: pointer;">
+                    <td class="mono">xvnegsp</td>
+                    <td style="font-weight: 500;">VSX Vector Negate Single-Precision</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Negates four single-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvsqrtdp/';" style="cursor: pointer;">
+                    <td class="mono">xvsqrtdp</td>
+                    <td style="font-weight: 500;">VSX Vector Square Root Double-Precision</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Computes square root for two double-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvsqrtsp/';" style="cursor: pointer;">
+                    <td class="mono">xvsqrtsp</td>
+                    <td style="font-weight: 500;">VSX Vector Square Root Single-Precision</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Computes square root for four single-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvsubdp/';" style="cursor: pointer;">
+                    <td class="mono">xvsubdp</td>
+                    <td style="font-weight: 500;">VSX Vector Subtract Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Subtracts two pairs of double-precision floats. (vD = vA - vB)</td>
+                </tr>
+                
+                <tr onclick="window.location='xvsubsp/';" style="cursor: pointer;">
+                    <td class="mono">xvsubsp</td>
+                    <td style="font-weight: 500;">VSX Vector Subtract Single-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Subtracts four single-precision floats.</td>
+                </tr>
+                
                 <tr onclick="window.location='xxeval/';" style="cursor: pointer;">
                     <td class="mono">xxeval</td>
                     <td style="font-weight: 500;">VSX Vector Evaluation</td>
@@ -1653,11 +2220,81 @@
                     <td style="color: var(--text-muted);">Performs an arbitrary 3-input boolean logic function (LUT3) on vectors. The 8-bit immediate 'IMM' defines the truth table.</td>
                 </tr>
                 
+                <tr onclick="window.location='xxland/';" style="cursor: pointer;">
+                    <td class="mono">xxland</td>
+                    <td style="font-weight: 500;">VSX Vector Logical AND</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxlnor/';" style="cursor: pointer;">
+                    <td class="mono">xxlnor</td>
+                    <td style="font-weight: 500;">VSX Vector Logical NOR</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise NOR.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxlor/';" style="cursor: pointer;">
+                    <td class="mono">xxlor</td>
+                    <td style="font-weight: 500;">VSX Vector Logical OR</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise OR.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxlxor/';" style="cursor: pointer;">
+                    <td class="mono">xxlxor</td>
+                    <td style="font-weight: 500;">VSX Vector Logical XOR</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise XOR.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxmrghd/';" style="cursor: pointer;">
+                    <td class="mono">xxmrghd</td>
+                    <td style="font-weight: 500;">VSX Vector Merge High Doubleword</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Merges high doublewords from XA and XB.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxmrgld/';" style="cursor: pointer;">
+                    <td class="mono">xxmrgld</td>
+                    <td style="font-weight: 500;">VSX Vector Merge Low Doubleword</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Merges low doublewords from XA and XB.</td>
+                </tr>
+                
                 <tr onclick="window.location='xxpermdi/';" style="cursor: pointer;">
                     <td class="mono">xxpermdi</td>
                     <td style="font-weight: 500;">VSX Permute Doubleword Immediate</td>
                     <td><span class="badge">XX3-form</span></td>
                     <td style="color: var(--text-muted);">Selects two doublewords from the four available in source registers XA and XB based on a 2-bit selector.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxsel/';" style="cursor: pointer;">
+                    <td class="mono">xxsel</td>
+                    <td style="font-weight: 500;">VSX Vector Select</td>
+                    <td><span class="badge">XX4-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise select between XA and XB based on XC.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxspltidp/';" style="cursor: pointer;">
+                    <td class="mono">xxspltidp</td>
+                    <td style="font-weight: 500;">VSX Vector Splat Immediate Double-Precision</td>
+                    <td><span class="badge">8RR:D-form</span></td>
+                    <td style="color: var(--text-muted);">Spatially duplicates a 32-bit immediate (converted to double) into both double elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxspltiw/';" style="cursor: pointer;">
+                    <td class="mono">xxspltiw</td>
+                    <td style="font-weight: 500;">VSX Vector Splat Immediate Word</td>
+                    <td><span class="badge">8RR:D-form</span></td>
+                    <td style="color: var(--text-muted);">Spatially duplicates a 32-bit immediate into all 4 words of the target.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxswapd/';" style="cursor: pointer;">
+                    <td class="mono">xxswapd</td>
+                    <td style="font-weight: 500;">VSX Vector Swap Doubleword</td>
+                    <td><span class="badge">XX2-form</span></td>
+                    <td style="color: var(--text-muted);">Swaps the two doublewords in the register.</td>
                 </tr>
                 
             </tbody>

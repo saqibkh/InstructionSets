@@ -1,0 +1,914 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "xvsubdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Subtract Double-Precision",
+      "summary": "Subtracts two pairs of double-precision floats. (vD = vA - vB)",
+      "syntax": "xvsubdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 104", "hex_opcode": "0xF0000068" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvmuldp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Multiply Double-Precision",
+      "summary": "Multiplies two pairs of double-precision floats.",
+      "syntax": "xvmuldp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 112", "hex_opcode": "0xF0000070" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvdivdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Divide Double-Precision",
+      "summary": "Divides two pairs of double-precision floats.",
+      "syntax": "xvdivdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 120", "hex_opcode": "0xF0000078" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvabsdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Absolute Value Double-Precision",
+      "summary": "Computes absolute value for two double-precision floats.",
+      "syntax": "xvabsdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 473", "hex_opcode": "0xF00001D9" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvnegdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Negate Double-Precision",
+      "summary": "Negates two double-precision floats.",
+      "syntax": "xvnegdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 489", "hex_opcode": "0xF00001E9" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvsqrtdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Square Root Double-Precision",
+      "summary": "Computes square root for two double-precision floats.",
+      "syntax": "xvsqrtdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 203", "hex_opcode": "0xF00000CB" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvmaxdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Maximum Double-Precision",
+      "summary": "Selects maximum value for two pairs of doubles.",
+      "syntax": "xvmaxdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 224", "hex_opcode": "0xF00000E0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvmindp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Minimum Double-Precision",
+      "summary": "Selects minimum value for two pairs of doubles.",
+      "syntax": "xvmindp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 232", "hex_opcode": "0xF00000E8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcmpeqdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Compare Equal Double-Precision",
+      "summary": "Compares doubles for equality. Sets result to all 1s or 0s.",
+      "syntax": "xvcmpeqdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 99", "hex_opcode": "0xF0000063" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcmpgtdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Compare Greater Than Double-Precision",
+      "summary": "Compares doubles (A > B).",
+      "syntax": "xvcmpgtdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 107", "hex_opcode": "0xF000006B" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcmpgedp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Compare Greater or Equal Double-Precision",
+      "summary": "Compares doubles (A >= B).",
+      "syntax": "xvcmpgedp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 115", "hex_opcode": "0xF0000073" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvaddsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Add Single-Precision",
+      "summary": "Adds four single-precision floats.",
+      "syntax": "xvaddsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 64", "hex_opcode": "0xF0000040" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvsubsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Subtract Single-Precision",
+      "summary": "Subtracts four single-precision floats.",
+      "syntax": "xvsubsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 72", "hex_opcode": "0xF0000048" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvmulsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Multiply Single-Precision",
+      "summary": "Multiplies four single-precision floats.",
+      "syntax": "xvmulsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 80", "hex_opcode": "0xF0000050" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvdivsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Divide Single-Precision",
+      "summary": "Divides four single-precision floats.",
+      "syntax": "xvdivsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 88", "hex_opcode": "0xF0000058" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvabssp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Absolute Value Single-Precision",
+      "summary": "Computes absolute value for four single-precision floats.",
+      "syntax": "xvabssp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 409", "hex_opcode": "0xF0000199" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvnegsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Negate Single-Precision",
+      "summary": "Negates four single-precision floats.",
+      "syntax": "xvnegsp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 425", "hex_opcode": "0xF00001A9" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvsqrtsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Square Root Single-Precision",
+      "summary": "Computes square root for four single-precision floats.",
+      "syntax": "xvsqrtsp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 139", "hex_opcode": "0xF000008B" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvmaxsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Maximum Single-Precision",
+      "summary": "Selects maximum value for four floats.",
+      "syntax": "xvmaxsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 192", "hex_opcode": "0xF00000C0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvminsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Minimum Single-Precision",
+      "summary": "Selects minimum value for four floats.",
+      "syntax": "xvminsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 200", "hex_opcode": "0xF00000C8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcmpeqsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Compare Equal Single-Precision",
+      "summary": "Compares four floats for equality.",
+      "syntax": "xvcmpeqsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 67", "hex_opcode": "0xF0000043" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcmpgtsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Compare Greater Than Single-Precision",
+      "summary": "Compares four floats (A > B).",
+      "syntax": "xvcmpgtsp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 75", "hex_opcode": "0xF000004B" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcmpgesp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Compare Greater or Equal Single-Precision",
+      "summary": "Compares four floats (A >= B).",
+      "syntax": "xvcmpgesp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 83", "hex_opcode": "0xF0000053" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xscvdpsxds",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Double to Signed Doubleword",
+      "summary": "Converts scalar Double to 64-bit Signed Integer.",
+      "syntax": "xscvdpsxds XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 344", "hex_opcode": "0xF0000158" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xscvdpuxds",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Double to Unsigned Doubleword",
+      "summary": "Converts scalar Double to 64-bit Unsigned Integer.",
+      "syntax": "xscvdpuxds XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 328", "hex_opcode": "0xF0000148" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xscvspdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Single to Double",
+      "summary": "Promotes a Single to a Double.",
+      "syntax": "xscvspdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 408", "hex_opcode": "0xF0000198" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xscvdpsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Double to Single",
+      "summary": "Demotes a Double to a Single.",
+      "syntax": "xscvdpsp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 264", "hex_opcode": "0xF0000108" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvdpsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Double to Single",
+      "summary": "Converts two doubles to two floats.",
+      "syntax": "xvcvdpsp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 393", "hex_opcode": "0xF0000189" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvspdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Single to Double",
+      "summary": "Converts two floats to two doubles.",
+      "syntax": "xvcvspdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 457", "hex_opcode": "0xF00001C9" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvdpsxds",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Double to Signed Doubleword",
+      "summary": "Converts two doubles to two 64-bit signed integers.",
+      "syntax": "xvcvdpsxds XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 472", "hex_opcode": "0xF00001D8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvdpuxds",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Double to Unsigned Doubleword",
+      "summary": "Converts two doubles to two 64-bit unsigned integers.",
+      "syntax": "xvcvdpuxds XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 456", "hex_opcode": "0xF00001C8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvspsxds",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Single to Signed Doubleword",
+      "summary": "Converts two floats to two 64-bit signed integers.",
+      "syntax": "xvcvspsxds XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 408", "hex_opcode": "0xF0000198" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvsxwsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Signed Word to Single",
+      "summary": "Converts four 32-bit signed integers to four floats.",
+      "syntax": "xvcvsxwsp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 168", "hex_opcode": "0xF00000A8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvuxwsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Unsigned Word to Single",
+      "summary": "Converts four 32-bit unsigned integers to four floats.",
+      "syntax": "xvcvuxwsp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 136", "hex_opcode": "0xF0000088" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxspltiw",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Splat Immediate Word",
+      "summary": "Spatially duplicates a 32-bit immediate into all 4 words of the target.",
+      "syntax": "xxspltiw XT, IMM",
+      "encoding": { "format": "8RR:D-form", "binary_pattern": "60 | XT | ...", "hex_opcode": "0xF0000000..." },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "IMM", "desc": "32-bit Value" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxspltidp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Splat Immediate Double-Precision",
+      "summary": "Spatially duplicates a 32-bit immediate (converted to double) into both double elements.",
+      "syntax": "xxspltidp XT, IMM",
+      "encoding": { "format": "8RR:D-form", "binary_pattern": "60 | XT | ...", "hex_opcode": "0xF0000000..." },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "IMM", "desc": "32-bit Value" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxmrghd",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Merge High Doubleword",
+      "summary": "Merges high doublewords from XA and XB.",
+      "syntax": "xxmrghd XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 144", "hex_opcode": "0xF0000090" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxmrgld",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Merge Low Doubleword",
+      "summary": "Merges low doublewords from XA and XB.",
+      "syntax": "xxmrgld XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 208", "hex_opcode": "0xF00000D0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxswapd",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Swap Doubleword",
+      "summary": "Swaps the two doublewords in the register.",
+      "syntax": "xxswapd XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 250", "hex_opcode": "0xF00000FA" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxsel",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Select",
+      "summary": "Bitwise select between XA and XB based on XC.",
+      "syntax": "xxsel XT, XA, XB, XC",
+      "encoding": { "format": "XX4-form", "binary_pattern": "60 | XT | XA | XB | XC | 3", "hex_opcode": "0xF0000003" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "True Src" }, { "name": "XB", "desc": "False Src" }, { "name": "XC", "desc": "Mask" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxlor",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Logical OR",
+      "summary": "Bitwise OR.",
+      "syntax": "xxlor XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 448", "hex_opcode": "0xF00001C0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxlxor",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Logical XOR",
+      "summary": "Bitwise XOR.",
+      "syntax": "xxlxor XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 456", "hex_opcode": "0xF00001C8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxland",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Logical AND",
+      "summary": "Bitwise AND.",
+      "syntax": "xxland XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 440", "hex_opcode": "0xF00001B8" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxlnor",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Logical NOR",
+      "summary": "Bitwise NOR.",
+      "syntax": "xxlnor XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 464", "hex_opcode": "0xF00001D0" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "vmulouw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Odd Unsigned Word",
+      "summary": "Multiplies odd words (1,3) to 64-bit result.",
+      "syntax": "vmulouw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 136", "hex_opcode": "0x10000088" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmulosw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Odd Signed Word",
+      "summary": "Multiplies odd words (1,3) to 64-bit signed result.",
+      "syntax": "vmulosw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 392", "hex_opcode": "0x10000188" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmuleuw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Even Unsigned Word",
+      "summary": "Multiplies even words (0,2) to 64-bit result.",
+      "syntax": "vmuleuw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 136", "hex_opcode": "0x10000088" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmulesw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Even Signed Word",
+      "summary": "Multiplies even words (0,2) to 64-bit signed result.",
+      "syntax": "vmulesw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 392", "hex_opcode": "0x10000188" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmsumubm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply-Sum Unsigned Byte Modulo",
+      "summary": "Multiplies bytes and sums adjacent results into words.",
+      "syntax": "vmsumubm vD, vA, vB, vC",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | vC | 36", "hex_opcode": "0x10000024" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }, { "name": "vC", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmsumshm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply-Sum Signed Halfword Modulo",
+      "summary": "Multiplies halfwords and sums adjacent results into words.",
+      "syntax": "vmsumshm vD, vA, vB, vC",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | vC | 40", "hex_opcode": "0x10000028" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }, { "name": "vC", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmsumshs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply-Sum Signed Halfword Saturate",
+      "summary": "Multiplies halfwords and sums with saturation.",
+      "syntax": "vmsumshs vD, vA, vB, vC",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | vC | 41", "hex_opcode": "0x10000029" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }, { "name": "vC", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsum4ubs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Sum-across Partial (1/4) Unsigned Byte Saturate",
+      "summary": "Sums every 4 bytes into a word.",
+      "syntax": "vsum4ubs vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1632", "hex_opcode": "0x10000660" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsum4sbs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Sum-across Partial (1/4) Signed Byte Saturate",
+      "summary": "Sums every 4 signed bytes into a word.",
+      "syntax": "vsum4sbs vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1888", "hex_opcode": "0x10000760" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsum4shs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Sum-across Partial (1/4) Signed Halfword Saturate",
+      "summary": "Sums every 2 halfwords into a word.",
+      "syntax": "vsum4shs vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1608", "hex_opcode": "0x10000648" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsum2sws",
+      "architecture": "PowerISA",
+      "full_name": "Vector Sum-across Partial (1/2) Signed Word Saturate",
+      "summary": "Sums pairs of words into signed words.",
+      "syntax": "vsum2sws vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1672", "hex_opcode": "0x10000688" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsumsws",
+      "architecture": "PowerISA",
+      "full_name": "Vector Sum-across Signed Word Saturate",
+      "summary": "Sums all 4 words into a single word result.",
+      "syntax": "vsumsws vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 1928", "hex_opcode": "0x10000788" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Accumulator" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddfp",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Floating-Point",
+      "summary": "Adds four single-precision floats (Classic VMX).",
+      "syntax": "vaddfp vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 10", "hex_opcode": "0x1000000A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubfp",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Floating-Point",
+      "summary": "Subtracts four single-precision floats (Classic VMX).",
+      "syntax": "vsubfp vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 74", "hex_opcode": "0x1000004A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmulfp",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Floating-Point",
+      "summary": "Multiplies four single-precision floats (Classic VMX).",
+      "syntax": "vmulfp vD, vA, vB",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | 74", "hex_opcode": "0x1000004A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vctuxs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Convert to Unsigned Fixed-Point Word Saturate",
+      "summary": "Converts 4 floats to 4 unsigned 32-bit integers.",
+      "syntax": "vctuxs vD, vB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | vB | 906", "hex_opcode": "0x1000038A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "UIM", "desc": "Fraction bits" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vctsxs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Convert to Signed Fixed-Point Word Saturate",
+      "summary": "Converts 4 floats to 4 signed 32-bit integers.",
+      "syntax": "vctsxs vD, vB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | vB | 970", "hex_opcode": "0x100003CA" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "UIM", "desc": "Fraction bits" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcfux",
+      "architecture": "PowerISA",
+      "full_name": "Vector Convert from Unsigned Fixed-Point Word",
+      "summary": "Converts 4 unsigned 32-bit integers to floats.",
+      "syntax": "vcfux vD, vB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | vB | 778", "hex_opcode": "0x1000030A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "UIM", "desc": "Fraction bits" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcfsx",
+      "architecture": "PowerISA",
+      "full_name": "Vector Convert from Signed Fixed-Point Word",
+      "summary": "Converts 4 signed 32-bit integers to floats.",
+      "syntax": "vcfsx vD, vB, UIM",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | UIM | vB | 842", "hex_opcode": "0x1000034A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "UIM", "desc": "Fraction bits" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrfim",
+      "architecture": "PowerISA",
+      "full_name": "Vector Round to Floating-Point Integer towards Minus Infinity",
+      "summary": "Rounds 4 floats to integer (floor).",
+      "syntax": "vrfim vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 714", "hex_opcode": "0x100002CA" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrfin",
+      "architecture": "PowerISA",
+      "full_name": "Vector Round to Floating-Point Integer Nearest",
+      "summary": "Rounds 4 floats to nearest integer.",
+      "syntax": "vrfin vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 522", "hex_opcode": "0x1000020A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrfip",
+      "architecture": "PowerISA",
+      "full_name": "Vector Round to Floating-Point Integer towards Plus Infinity",
+      "summary": "Rounds 4 floats to integer (ceil).",
+      "syntax": "vrfip vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 650", "hex_opcode": "0x1000028A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vrfiz",
+      "architecture": "PowerISA",
+      "full_name": "Vector Round to Floating-Point Integer towards Zero",
+      "summary": "Rounds 4 floats to integer (trunc).",
+      "syntax": "vrfiz vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 586", "hex_opcode": "0x1000024A" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpeqfp",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Equal Floating-Point",
+      "summary": "Compares 4 floats for equality.",
+      "syntax": "vcmpeqfp vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 198", "hex_opcode": "0x100000C6" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgtfp",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Than Floating-Point",
+      "summary": "Compares 4 floats (A > B).",
+      "syntax": "vcmpgtfp vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 710", "hex_opcode": "0x100002C6" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpgefp",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Greater Equal Floating-Point",
+      "summary": "Compares 4 floats (A >= B).",
+      "syntax": "vcmpgefp vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 454", "hex_opcode": "0x100001C6" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpbfp",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Bounds Floating-Point",
+      "summary": "Compares 4 floats to see if they are within bounds.",
+      "syntax": "vcmpbfp vD, vA, vB",
+      "encoding": { "format": "VC-form", "binary_pattern": "4 | vD | vA | vB | 966", "hex_opcode": "0x100003C6" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpkpx",
+      "architecture": "PowerISA",
+      "full_name": "Vector Pack Pixel",
+      "summary": "Packs 8 words into 8 pixels (1/5/5/5 format).",
+      "syntax": "vpkpx vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 782", "hex_opcode": "0x1000030E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vupkhpx",
+      "architecture": "PowerISA",
+      "full_name": "Vector Unpack High Pixel",
+      "summary": "Unpacks high 4 pixels to 4 words.",
+      "syntax": "vupkhpx vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 846", "hex_opcode": "0x1000034E" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vupklpx",
+      "architecture": "PowerISA",
+      "full_name": "Vector Unpack Low Pixel",
+      "summary": "Unpacks low 4 pixels to 4 words.",
+      "syntax": "vupklpx vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 974", "hex_opcode": "0x100003CE" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpermr",
+      "architecture": "PowerISA",
+      "full_name": "Vector Permute Right",
+      "summary": "Bitwise byte shuffle similar to vperm but for little-endian access optimization.",
+      "syntax": "vpermr vD, vA, vB, vC",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | vC | 59", "hex_opcode": "0x1000003B" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }, { "name": "vC", "desc": "Permute" }],
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vpmsumb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Polynomial Multiply-Sum Byte",
+      "summary": "Performs GF(2) polynomial arithmetic (Carryless Multiply) on bytes.",
+      "syntax": "vpmsumb vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1032", "hex_opcode": "0x10000408" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vpmsumh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Polynomial Multiply-Sum Halfword",
+      "summary": "Performs GF(2) polynomial arithmetic on halfwords.",
+      "syntax": "vpmsumh vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1096", "hex_opcode": "0x10000448" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vpmsumw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Polynomial Multiply-Sum Word",
+      "summary": "Performs GF(2) polynomial arithmetic on words.",
+      "syntax": "vpmsumw vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1160", "hex_opcode": "0x10000488" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vpmsumd",
+      "architecture": "PowerISA",
+      "full_name": "Vector Polynomial Multiply-Sum Doubleword",
+      "summary": "Performs GF(2) polynomial arithmetic on doublewords.",
+      "syntax": "vpmsumd vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1224", "hex_opcode": "0x100004C8" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "lxv",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Vector",
+      "summary": "Loads a 128-bit vector from memory (VSX aligned offset).",
+      "syntax": "lxv XT, DQ(RA)",
+      "encoding": { "format": "DQ-form", "binary_pattern": "61 | XT | RA | DQ | 1", "hex_opcode": "0xF4000001" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "DQ", "desc": "Offset" }, { "name": "RA", "desc": "Base" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "stxv",
+      "architecture": "PowerISA",
+      "full_name": "Store VSX Vector",
+      "summary": "Stores a 128-bit vector to memory (VSX aligned offset).",
+      "syntax": "stxv XS, DQ(RA)",
+      "encoding": { "format": "DQ-form", "binary_pattern": "61 | XS | RA | DQ | 5", "hex_opcode": "0xF4000005" },
+      "operands": [{ "name": "XS", "desc": "Source" }, { "name": "DQ", "desc": "Offset" }, { "name": "RA", "desc": "Base" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "lxvdsx",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Vector Doubleword and Splat Indexed",
+      "summary": "Loads a doubleword and duplicates it to fill the vector.",
+      "syntax": "lxvdsx XT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | XT | RA | RB | 332", "hex_opcode": "0x7C00014C" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "lxvw4x",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Vector Word*4 Indexed",
+      "summary": "Loads four words into a vector (unaligned).",
+      "syntax": "lxvw4x XT, RA, RB",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XT | RA | RB | 780", "hex_opcode": "0x7C00030C" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "stxvw4x",
+      "architecture": "PowerISA",
+      "full_name": "Store VSX Vector Word*4 Indexed",
+      "summary": "Stores four words from a vector (unaligned).",
+      "syntax": "stxvw4x XS, RA, RB",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XS | RA | RB | 972", "hex_opcode": "0x7C0003CC" },
+      "operands": [{ "name": "XS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "lxsiwax",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Scalar as Integer Word Algebraic Indexed",
+      "summary": "Loads a 32-bit signed integer into a VSX register (scalar).",
+      "syntax": "lxsiwax XT, RA, RB",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XT | RA | RB | 76", "hex_opcode": "0x7C00004C" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "lxsiwzx",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Scalar as Integer Word Zero Indexed",
+      "summary": "Loads a 32-bit unsigned integer into a VSX register (scalar).",
+      "syntax": "lxsiwzx XT, RA, RB",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XT | RA | RB | 12", "hex_opcode": "0x7C00000C" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "stxsiwx",
+      "architecture": "PowerISA",
+      "full_name": "Store VSX Scalar as Integer Word Indexed",
+      "summary": "Stores the low 32 bits of a VSX register to memory.",
+      "syntax": "stxsiwx XS, RA, RB",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XS | RA | RB | 140", "hex_opcode": "0x7C00008C" },
+      "operands": [{ "name": "XS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "mfvsrd",
+      "architecture": "PowerISA",
+      "full_name": "Move From VSR Doubleword",
+      "summary": "Moves 64 bits from a VSR to a GPR.",
+      "syntax": "mfvsrd RA, XS",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XS | RA | 0 | 51", "hex_opcode": "0x7C000033" },
+      "operands": [{ "name": "RA", "desc": "Target GPR" }, { "name": "XS", "desc": "Source VSR" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "mtvsrd",
+      "architecture": "PowerISA",
+      "full_name": "Move To VSR Doubleword",
+      "summary": "Moves 64 bits from a GPR to a VSR.",
+      "syntax": "mtvsrd XT, RA",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XT | RA | 0 | 179", "hex_opcode": "0x7C0000B3" },
+      "operands": [{ "name": "XT", "desc": "Target VSR" }, { "name": "RA", "desc": "Source GPR" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "mfvsrwz",
+      "architecture": "PowerISA",
+      "full_name": "Move From VSR Word and Zero",
+      "summary": "Moves low 32 bits from VSR to GPR (zero extend).",
+      "syntax": "mfvsrwz RA, XS",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XS | RA | 0 | 115", "hex_opcode": "0x7C000073" },
+      "operands": [{ "name": "RA", "desc": "Target GPR" }, { "name": "XS", "desc": "Source VSR" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "mtvsrwa",
+      "architecture": "PowerISA",
+      "full_name": "Move To VSR Word Algebraic",
+      "summary": "Moves low 32 bits from GPR to VSR (sign extend).",
+      "syntax": "mtvsrwa XT, RA",
+      "encoding": { "format": "XX1-form", "binary_pattern": "31 | XT | RA | 0 | 211", "hex_opcode": "0x7C0000D3" },
+      "operands": [{ "name": "XT", "desc": "Target VSR" }, { "name": "RA", "desc": "Source GPR" }],
+      "extension": "VSX"
+    }
+  ]
+}
