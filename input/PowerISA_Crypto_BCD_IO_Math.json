@@ -1,0 +1,504 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vcipherlast",
+      "architecture": "PowerISA",
+      "full_name": "Vector Cipher Last",
+      "summary": "Performs the final round of AES encryption (SubBytes, ShiftRows, AddRoundKey). No MixColumns.",
+      "syntax": "vcipherlast vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1289", "hex_opcode": "0x10000509" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "State" }, { "name": "vB", "desc": "Round Key" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vncipherlast",
+      "architecture": "PowerISA",
+      "full_name": "Vector Inverse Cipher Last",
+      "summary": "Performs the final round of AES decryption.",
+      "syntax": "vncipherlast vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 1353", "hex_opcode": "0x10000549" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "State" }, { "name": "vB", "desc": "Round Key" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vsbox",
+      "architecture": "PowerISA",
+      "full_name": "Vector S-Box",
+      "summary": "Performs the SubBytes operation (S-Box lookup) on a vector.",
+      "syntax": "vsbox vD, vA",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vA | 1480", "hex_opcode": "0x100005C8" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Source" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vshasigmad",
+      "architecture": "PowerISA",
+      "full_name": "Vector SHA-512 Sigma Doubleword",
+      "summary": "Performs the Sigma0/Sigma1 functions for SHA-512.",
+      "syntax": "vshasigmad vD, vA, ST, SIX",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | ST | 1730", "hex_opcode": "0x100006C2" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Source" }, { "name": "ST", "desc": "Type" }, { "name": "SIX", "desc": "Shift" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "vpermxor",
+      "architecture": "PowerISA",
+      "full_name": "Vector Permute and Exclusive-OR",
+      "summary": "Permutes bytes from vA and vB, then XORs with vC. Used for finite field arithmetic.",
+      "syntax": "vpermxor vD, vA, vB, vC",
+      "encoding": { "format": "VA-form", "binary_pattern": "4 | vD | vA | vB | vC | 45", "hex_opcode": "0x1000002D" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }, { "name": "vC", "desc": "Permute" }],
+      "extension": "Vector Crypto"
+    },
+    {
+      "mnemonic": "bcdcfn.",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert from National",
+      "summary": "Converts BCD National format to Signed Packed BCD.",
+      "syntax": "bcdcfn. vD, vB, PS",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 1 | vB | 1473", "hex_opcode": "0x102005C1" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "PS", "desc": "Sign" }],
+      "extension": "Vector BCD"
+    },
+    {
+      "mnemonic": "bcdctn.",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert to National",
+      "summary": "Converts Signed Packed BCD to National format.",
+      "syntax": "bcdctn. vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 1473", "hex_opcode": "0x100005C1" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector BCD"
+    },
+    {
+      "mnemonic": "bcdcfz.",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert from Zoned",
+      "summary": "Converts BCD Zoned format to Signed Packed BCD.",
+      "syntax": "bcdcfz. vD, vB, PS",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 1 | vB | 1217", "hex_opcode": "0x102004C1" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "PS", "desc": "Sign" }],
+      "extension": "Vector BCD"
+    },
+    {
+      "mnemonic": "bcdctz.",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert to Zoned",
+      "summary": "Converts Signed Packed BCD to Zoned format.",
+      "syntax": "bcdctz. vD, vB, PS",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 1 | vB | 1217", "hex_opcode": "0x102004C1" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "PS", "desc": "Sign" }],
+      "extension": "Vector BCD"
+    },
+    {
+      "mnemonic": "bcdcfsq.",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert from Signed Quadword",
+      "summary": "Converts a 128-bit signed integer to BCD.",
+      "syntax": "bcdcfsq. vD, vB, PS",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 1 | vB | 193", "hex_opcode": "0x102000C1" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "PS", "desc": "Sign" }],
+      "extension": "Vector BCD"
+    },
+    {
+      "mnemonic": "bcdctsq.",
+      "architecture": "PowerISA",
+      "full_name": "Decimal Convert to Signed Quadword",
+      "summary": "Converts BCD to a 128-bit signed integer.",
+      "syntax": "bcdctsq. vD, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | 0 | vB | 193", "hex_opcode": "0x100000C1" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "Vector BCD"
+    },
+    {
+      "mnemonic": "mulhd",
+      "architecture": "PowerISA",
+      "full_name": "Multiply High Doubleword",
+      "summary": "Multiplies two 64-bit integers and returns the upper 64 bits of the 128-bit result (Signed).",
+      "syntax": "mulhd RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "31 | RT | RA | RB | OE | 73 | Rc", "hex_opcode": "0x7C000092" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mulhdu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply High Doubleword Unsigned",
+      "summary": "Multiplies two 64-bit integers and returns the upper 64 bits of the 128-bit result (Unsigned).",
+      "syntax": "mulhdu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "31 | RT | RA | RB | OE | 9 | Rc", "hex_opcode": "0x7C000012" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mulhw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply High Word",
+      "summary": "Multiplies two 32-bit integers and returns the upper 32 bits (Signed).",
+      "syntax": "mulhw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "31 | RT | RA | RB | OE | 75 | Rc", "hex_opcode": "0x7C000096" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mulhwu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply High Word Unsigned",
+      "summary": "Multiplies two 32-bit integers and returns the upper 32 bits (Unsigned).",
+      "syntax": "mulhwu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "31 | RT | RA | RB | OE | 11 | Rc", "hex_opcode": "0x7C000016" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "divsq",
+      "architecture": "PowerISA",
+      "full_name": "Divide Signed Quadword",
+      "summary": "Divides a 128-bit signed integer by a 128-bit signed integer (using VSX pairs).",
+      "syntax": "divsq vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 265", "hex_opcode": "0x10000109" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Dividend" }, { "name": "vB", "desc": "Divisor" }],
+      "extension": "Base (Quad Math)"
+    },
+    {
+      "mnemonic": "divuq",
+      "architecture": "PowerISA",
+      "full_name": "Divide Unsigned Quadword",
+      "summary": "Divides a 128-bit unsigned integer by a 128-bit unsigned integer.",
+      "syntax": "divuq vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 9", "hex_opcode": "0x10000009" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Dividend" }, { "name": "vB", "desc": "Divisor" }],
+      "extension": "Base (Quad Math)"
+    },
+    {
+      "mnemonic": "modsq",
+      "architecture": "PowerISA",
+      "full_name": "Modulo Signed Quadword",
+      "summary": "Computes remainder of 128-bit signed division.",
+      "syntax": "modsq vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 267", "hex_opcode": "0x1000010B" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Dividend" }, { "name": "vB", "desc": "Divisor" }],
+      "extension": "Base (Quad Math)"
+    },
+    {
+      "mnemonic": "moduq",
+      "architecture": "PowerISA",
+      "full_name": "Modulo Unsigned Quadword",
+      "summary": "Computes remainder of 128-bit unsigned division.",
+      "syntax": "moduq vD, vA, vB",
+      "encoding": { "format": "VX-form", "binary_pattern": "4 | vD | vA | vB | 11", "hex_opcode": "0x1000000B" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Dividend" }, { "name": "vB", "desc": "Divisor" }],
+      "extension": "Base (Quad Math)"
+    },
+    {
+      "mnemonic": "lbzci",
+      "architecture": "PowerISA",
+      "full_name": "Load Byte and Zero Caching Inhibited",
+      "summary": "Loads a byte bypassing the cache. Used for memory-mapped I/O.",
+      "syntax": "lbzci RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 854 | /", "hex_opcode": "0x7C0006AA" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "lhzci",
+      "architecture": "PowerISA",
+      "full_name": "Load Halfword and Zero Caching Inhibited",
+      "summary": "Loads a halfword bypassing the cache.",
+      "syntax": "lhzci RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 886 | /", "hex_opcode": "0x7C0006EA" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "lwzci",
+      "architecture": "PowerISA",
+      "full_name": "Load Word and Zero Caching Inhibited",
+      "summary": "Loads a word bypassing the cache.",
+      "syntax": "lwzci RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 855 | /", "hex_opcode": "0x7C0006AB" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "ldci",
+      "architecture": "PowerISA",
+      "full_name": "Load Doubleword Caching Inhibited",
+      "summary": "Loads a doubleword bypassing the cache.",
+      "syntax": "ldci RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 887 | /", "hex_opcode": "0x7C0006EB" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "stbci",
+      "architecture": "PowerISA",
+      "full_name": "Store Byte Caching Inhibited",
+      "summary": "Stores a byte bypassing the cache.",
+      "syntax": "stbci RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 982 | /", "hex_opcode": "0x7C0007AE" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "sthci",
+      "architecture": "PowerISA",
+      "full_name": "Store Halfword Caching Inhibited",
+      "summary": "Stores a halfword bypassing the cache.",
+      "syntax": "sthci RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 1014 | /", "hex_opcode": "0x7C0007EE" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "stwci",
+      "architecture": "PowerISA",
+      "full_name": "Store Word Caching Inhibited",
+      "summary": "Stores a word bypassing the cache.",
+      "syntax": "stwci RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 983 | /", "hex_opcode": "0x7C0007AF" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "stdci",
+      "architecture": "PowerISA",
+      "full_name": "Store Doubleword Caching Inhibited",
+      "summary": "Stores a doubleword bypassing the cache.",
+      "syntax": "stdci RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 1015 | /", "hex_opcode": "0x7C0007EF" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (I/O)"
+    },
+    {
+      "mnemonic": "cp_abort",
+      "architecture": "PowerISA",
+      "full_name": "Copy-Paste Abort",
+      "summary": "Aborts a hardware accelerator copy-paste sequence.",
+      "syntax": "cp_abort",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | 0 | 0 | 0 | 450 | /", "hex_opcode": "0x7C000382" },
+      "operands": [],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "mcrxrx",
+      "architecture": "PowerISA",
+      "full_name": "Move to CR from XER Extended",
+      "summary": "Copies XER[OV, SO] to a Condition Register field.",
+      "syntax": "mcrxrx BF",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | BF | 0 | 0 | 512 | /", "hex_opcode": "0x7C000400" },
+      "operands": [{ "name": "BF", "desc": "Target CR Field" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "scv",
+      "architecture": "PowerISA",
+      "full_name": "System Call Vectored",
+      "summary": "Performs a system call to a fixed vector address (Faster than 'sc').",
+      "syntax": "scv LEV",
+      "encoding": { "format": "SC-form", "binary_pattern": "17 | / | / | / | LEV | / | 1", "hex_opcode": "0x44000002" },
+      "operands": [{ "name": "LEV", "desc": "Level" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rfscv",
+      "architecture": "PowerISA",
+      "full_name": "Return from System Call Vectored",
+      "summary": "Returns from a vectored system call.",
+      "syntax": "rfscv",
+      "encoding": { "format": "XL-form", "binary_pattern": "19 | / | / | / | 82 | /", "hex_opcode": "0x4C0000A4" },
+      "operands": [],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "stop",
+      "architecture": "PowerISA",
+      "full_name": "Stop",
+      "summary": "Stops instruction execution and enters a power-saving state (replaces nap/doze on P9+).",
+      "syntax": "stop",
+      "encoding": { "format": "X-form", "binary_pattern": "19 | / | / | / | 722 | /", "hex_opcode": "0x4C0005A4" },
+      "operands": [],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "urfid",
+      "architecture": "PowerISA",
+      "full_name": "Ultravisor Return from Interrupt Doubleword",
+      "summary": "Returns from an ultravisor interrupt.",
+      "syntax": "urfid",
+      "encoding": { "format": "XL-form", "binary_pattern": "19 | / | / | / | 274 | /", "hex_opcode": "0x4C000224" },
+      "operands": [],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "setbc",
+      "architecture": "PowerISA",
+      "full_name": "Set Boolean Condition",
+      "summary": "Sets RT to 1 if CR bit is set, else 0. (Branchless logic).",
+      "syntax": "setbc RT, BI",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | BI | / | 384 | /", "hex_opcode": "0x7C000300" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "BI", "desc": "CR Bit" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setbcr",
+      "architecture": "PowerISA",
+      "full_name": "Set Boolean Condition Reverse",
+      "summary": "Sets RT to 1 if CR bit is clear, else 0.",
+      "syntax": "setbcr RT, BI",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | BI | / | 416 | /", "hex_opcode": "0x7C000340" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "BI", "desc": "CR Bit" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setnbc",
+      "architecture": "PowerISA",
+      "full_name": "Set Negative Boolean Condition",
+      "summary": "Sets RT to -1 if CR bit is set, else 0.",
+      "syntax": "setnbc RT, BI",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | BI | / | 448 | /", "hex_opcode": "0x7C000380" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "BI", "desc": "CR Bit" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setnbcr",
+      "architecture": "PowerISA",
+      "full_name": "Set Negative Boolean Condition Reverse",
+      "summary": "Sets RT to -1 if CR bit is clear, else 0.",
+      "syntax": "setnbcr RT, BI",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | BI | / | 480 | /", "hex_opcode": "0x7C0003C0" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "BI", "desc": "CR Bit" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xscmpexpdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Compare Exponents Double-Precision",
+      "summary": "Compares exponents of two double-precision floats.",
+      "syntax": "xscmpexpdp BF, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | BF | / | XA | XB | 59", "hex_opcode": "0xF000003B" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsiexpdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Insert Exponent Double-Precision",
+      "summary": "Inserts exponent from one double into another.",
+      "syntax": "xsiexpdp XT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | XT | XA | XB | 219", "hex_opcode": "0xF00000DB" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XA", "desc": "Significand" }, { "name": "XB", "desc": "Exponent" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsxexpdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Extract Exponent Double-Precision",
+      "summary": "Extracts exponent from double as an integer.",
+      "syntax": "xsxexpdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 27", "hex_opcode": "0xF000001B" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsxsigdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Extract Significand Double-Precision",
+      "summary": "Extracts significand from double as an integer.",
+      "syntax": "xsxsigdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 11", "hex_opcode": "0xF000000B" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xststdcdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Test Data Class Double-Precision",
+      "summary": "Tests if a double falls into a specific class (NaN, Inf, Zero, Denormal).",
+      "syntax": "xststdcdp BF, XB, DCM",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | BF | / | DCM | XB | 362", "hex_opcode": "0xF000016A" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "XB", "desc": "Source" }, { "name": "DCM", "desc": "Data Class Mask" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "lxvp",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Vector Pair",
+      "summary": "Loads a 256-bit vector pair (two VSRs).",
+      "syntax": "lxvp XT, DQ(RA)",
+      "encoding": { "format": "DQ-form", "binary_pattern": "61 | XT | RA | DQ | 0", "hex_opcode": "0xF4000000" },
+      "operands": [{ "name": "XT", "desc": "Target Even VSR" }, { "name": "DQ", "desc": "Offset" }, { "name": "RA", "desc": "Base" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "stxvp",
+      "architecture": "PowerISA",
+      "full_name": "Store VSX Vector Pair",
+      "summary": "Stores a 256-bit vector pair.",
+      "syntax": "stxvp XS, DQ(RA)",
+      "encoding": { "format": "DQ-form", "binary_pattern": "61 | XS | RA | DQ | 4", "hex_opcode": "0xF4000004" },
+      "operands": [{ "name": "XS", "desc": "Source Even VSR" }, { "name": "DQ", "desc": "Offset" }, { "name": "RA", "desc": "Base" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "plxvp",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load VSX Vector Pair",
+      "summary": "Loads a 256-bit vector pair with 34-bit offset.",
+      "syntax": "plxvp XT, D(RA), R",
+      "encoding": { "format": "8LS:D-form", "binary_pattern": "000001 | 10 | 0 | ... | 58 | XT | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed"
+    },
+    {
+      "mnemonic": "pstxvp",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Store VSX Vector Pair",
+      "summary": "Stores a 256-bit vector pair with 34-bit offset.",
+      "syntax": "pstxvp XS, D(RA), R",
+      "encoding": { "format": "8LS:D-form", "binary_pattern": "000001 | 10 | 0 | ... | 62 | XS | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "XS", "desc": "Source" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed"
+    },
+    {
+      "mnemonic": "xscvhpdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Half-Precision to Double",
+      "summary": "Converts a 16-bit float to 64-bit double.",
+      "syntax": "xscvhpdp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 344", "hex_opcode": "0xF0000158" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xscvdphp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Double to Half-Precision",
+      "summary": "Converts a 64-bit double to 16-bit float.",
+      "syntax": "xscvdphp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 376", "hex_opcode": "0xF0000178" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvhpsp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Half-Precision to Single",
+      "summary": "Converts four 16-bit floats to four 32-bit floats.",
+      "syntax": "xvcvhpsp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 409", "hex_opcode": "0xF0000199" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvcvsphp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Convert Single to Half-Precision",
+      "summary": "Converts four 32-bit floats to four 16-bit floats.",
+      "syntax": "xvcvsphp XT, XB",
+      "encoding": { "format": "XX2-form", "binary_pattern": "60 | XT | 0 | XB | 441", "hex_opcode": "0xF00001B9" },
+      "operands": [{ "name": "XT", "desc": "Target" }, { "name": "XB", "desc": "Source" }],
+      "extension": "VSX"
+    }
+  ]
+}
