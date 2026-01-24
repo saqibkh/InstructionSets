@@ -449,11 +449,25 @@
                     <td style="color: var(--text-muted);">Returns a random number from the hardware RNG. (L=3: Raw, L=1: Conditioned, L=0: 32-bit).</td>
                 </tr>
                 
+                <tr onclick="window.location='dcba/';" style="cursor: pointer;">
+                    <td class="mono">dcba</td>
+                    <td style="font-weight: 500;">Data Cache Block Allocate</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Allocates a cache block without loading from memory (optimization for overwrite).</td>
+                </tr>
+                
                 <tr onclick="window.location='dcbf/';" style="cursor: pointer;">
                     <td class="mono">dcbf</td>
                     <td style="font-weight: 500;">Data Cache Block Flush</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Flushes the cache block from the data cache to main memory and invalidates it. Used for DMA coherency.</td>
+                </tr>
+                
+                <tr onclick="window.location='dcbi/';" style="cursor: pointer;">
+                    <td class="mono">dcbi</td>
+                    <td style="font-weight: 500;">Data Cache Block Invalidate</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Invalidates a cache block (Privileged).</td>
                 </tr>
                 
                 <tr onclick="window.location='dcblc/';" style="cursor: pointer;">
@@ -482,6 +496,13 @@
                     <td style="font-weight: 500;">Data Cache Block Touch and Lock Set</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Locks a cache line in the L1 cache.</td>
+                </tr>
+                
+                <tr onclick="window.location='dcbtst/';" style="cursor: pointer;">
+                    <td class="mono">dcbtst</td>
+                    <td style="font-weight: 500;">Data Cache Block Touch for Store</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Prefetches a cache block for writing (RFO).</td>
                 </tr>
                 
                 <tr onclick="window.location='dcbtst/';" style="cursor: pointer;">
@@ -799,6 +820,48 @@
                     <td style="color: var(--text-muted);">Shifts the coefficient of a DFP number right.</td>
                 </tr>
                 
+                <tr onclick="window.location='dss/';" style="cursor: pointer;">
+                    <td class="mono">dss</td>
+                    <td style="font-weight: 500;">Data Stream Stop</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Stops a data stream prefetch operation.</td>
+                </tr>
+                
+                <tr onclick="window.location='dssall/';" style="cursor: pointer;">
+                    <td class="mono">dssall</td>
+                    <td style="font-weight: 500;">Data Stream Stop All</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Stops all active data stream prefetch operations.</td>
+                </tr>
+                
+                <tr onclick="window.location='dst/';" style="cursor: pointer;">
+                    <td class="mono">dst</td>
+                    <td style="font-weight: 500;">Data Stream Touch</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Initiates a hardware data stream prefetch (AltiVec Legacy).</td>
+                </tr>
+                
+                <tr onclick="window.location='dstst/';" style="cursor: pointer;">
+                    <td class="mono">dstst</td>
+                    <td style="font-weight: 500;">Data Stream Touch for Store</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Initiates a prefetch for writing.</td>
+                </tr>
+                
+                <tr onclick="window.location='dststt/';" style="cursor: pointer;">
+                    <td class="mono">dststt</td>
+                    <td style="font-weight: 500;">Data Stream Touch for Store Transient</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Initiates a transient prefetch for writing.</td>
+                </tr>
+                
+                <tr onclick="window.location='dstt/';" style="cursor: pointer;">
+                    <td class="mono">dstt</td>
+                    <td style="font-weight: 500;">Data Stream Touch Transient</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Initiates a transient (non-temporal) data stream prefetch.</td>
+                </tr>
+                
                 <tr onclick="window.location='dsub/';" style="cursor: pointer;">
                     <td class="mono">dsub</td>
                     <td style="font-weight: 500;">Decimal Subtract</td>
@@ -862,6 +925,20 @@
                     <td style="color: var(--text-muted);">Adds 16-bit immediate.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_add16i/';" style="cursor: pointer;">
+                    <td class="mono">e_add16i</td>
+                    <td style="font-weight: 500;">VLE Add 16-bit Immediate</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Adds a 16-bit immediate to a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_add16is/';" style="cursor: pointer;">
+                    <td class="mono">e_add16is</td>
+                    <td style="font-weight: 500;">VLE Add 16-bit Immediate Shifted</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Adds a 16-bit immediate shifted left by 16 bits.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_addc/';" style="cursor: pointer;">
                     <td class="mono">e_addc</td>
                     <td style="font-weight: 500;">VLE Add Carrying</td>
@@ -911,6 +988,13 @@
                     <td style="color: var(--text-muted);">AND with 16-bit immediate.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_and2is/';" style="cursor: pointer;">
+                    <td class="mono">e_and2is</td>
+                    <td style="font-weight: 500;">VLE AND Immediate Shifted</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">AND with 16-bit immediate shifted left by 16 bits.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_andc/';" style="cursor: pointer;">
                     <td class="mono">e_andc</td>
                     <td style="font-weight: 500;">VLE AND with Complement</td>
@@ -932,6 +1016,48 @@
                     <td style="color: var(--text-muted);">Conditional branch.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_bdnz/';" style="cursor: pointer;">
+                    <td class="mono">e_bdnz</td>
+                    <td style="font-weight: 500;">VLE Branch Decrement Not Zero</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Decrements CTR, branches if CTR != 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_bdnzf/';" style="cursor: pointer;">
+                    <td class="mono">e_bdnzf</td>
+                    <td style="font-weight: 500;">VLE Branch Decrement Not Zero False</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Decrements CTR, branches if CTR != 0 AND CR bit is false.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_bdnzt/';" style="cursor: pointer;">
+                    <td class="mono">e_bdnzt</td>
+                    <td style="font-weight: 500;">VLE Branch Decrement Not Zero True</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Decrements CTR, branches if CTR != 0 AND CR bit is true.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_bdz/';" style="cursor: pointer;">
+                    <td class="mono">e_bdz</td>
+                    <td style="font-weight: 500;">VLE Branch Decrement Zero</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Decrements CTR, branches if CTR == 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_bdzf/';" style="cursor: pointer;">
+                    <td class="mono">e_bdzf</td>
+                    <td style="font-weight: 500;">VLE Branch Decrement Zero False</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Decrements CTR, branches if CTR == 0 AND CR bit is false.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_bdzt/';" style="cursor: pointer;">
+                    <td class="mono">e_bdzt</td>
+                    <td style="font-weight: 500;">VLE Branch Decrement Zero True</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Decrements CTR, branches if CTR == 0 AND CR bit is true.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_bl/';" style="cursor: pointer;">
                     <td class="mono">e_bl</td>
                     <td style="font-weight: 500;">VLE Branch Link</td>
@@ -944,6 +1070,13 @@
                     <td style="font-weight: 500;">VLE Compare</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Signed comparison.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_cmp16i/';" style="cursor: pointer;">
+                    <td class="mono">e_cmp16i</td>
+                    <td style="font-weight: 500;">VLE Compare 16-bit Immediate</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Compares word with 16-bit immediate.</td>
                 </tr>
                 
                 <tr onclick="window.location='e_cmph/';" style="cursor: pointer;">
@@ -986,6 +1119,13 @@
                     <td style="font-weight: 500;">VLE Compare Logical</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Unsigned comparison.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_cmpl16i/';" style="cursor: pointer;">
+                    <td class="mono">e_cmpl16i</td>
+                    <td style="font-weight: 500;">VLE Compare Logical 16-bit Immediate</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Unsigned compare word with 16-bit immediate.</td>
                 </tr>
                 
                 <tr onclick="window.location='e_cmpli/';" style="cursor: pointer;">
@@ -1072,6 +1212,41 @@
                     <td style="color: var(--text-muted);">CR bit logical XOR.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_dcbf/';" style="cursor: pointer;">
+                    <td class="mono">e_dcbf</td>
+                    <td style="font-weight: 500;">VLE Data Cache Block Flush</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Flushes a data cache block.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_dcbst/';" style="cursor: pointer;">
+                    <td class="mono">e_dcbst</td>
+                    <td style="font-weight: 500;">VLE Data Cache Block Store</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a data cache block.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_dcbt/';" style="cursor: pointer;">
+                    <td class="mono">e_dcbt</td>
+                    <td style="font-weight: 500;">VLE Data Cache Block Touch</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Prefetches a data cache block.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_dcbtst/';" style="cursor: pointer;">
+                    <td class="mono">e_dcbtst</td>
+                    <td style="font-weight: 500;">VLE Data Cache Block Touch for Store</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Prefetches a data cache block for writing.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_dcbz/';" style="cursor: pointer;">
+                    <td class="mono">e_dcbz</td>
+                    <td style="font-weight: 500;">VLE Data Cache Block Zero</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Zeros a data cache block.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_divw/';" style="cursor: pointer;">
                     <td class="mono">e_divw</td>
                     <td style="font-weight: 500;">VLE Divide Word</td>
@@ -1105,6 +1280,27 @@
                     <td style="font-weight: 500;">VLE Extend Sign Halfword</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Sign extends low halfword.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_icbi/';" style="cursor: pointer;">
+                    <td class="mono">e_icbi</td>
+                    <td style="font-weight: 500;">VLE Instruction Cache Block Invalidate</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Invalidates an instruction cache block.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_icbt/';" style="cursor: pointer;">
+                    <td class="mono">e_icbt</td>
+                    <td style="font-weight: 500;">VLE Instruction Cache Block Touch</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Prefetches an instruction cache block.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_isync/';" style="cursor: pointer;">
+                    <td class="mono">e_isync</td>
+                    <td style="font-weight: 500;">VLE Instruction Synchronize</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Waits for previous instructions to complete.</td>
                 </tr>
                 
                 <tr onclick="window.location='e_lbz/';" style="cursor: pointer;">
@@ -1142,6 +1338,55 @@
                     <td style="color: var(--text-muted);">Loads immediate into upper 16 bits.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_lmv/';" style="cursor: pointer;">
+                    <td class="mono">e_lmv</td>
+                    <td style="font-weight: 500;">VLE Load Multiple Volatile</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Loads volatile registers (R0, R3-R12) from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_lmvcsrrw/';" style="cursor: pointer;">
+                    <td class="mono">e_lmvcsrrw</td>
+                    <td style="font-weight: 500;">VLE Load Multiple Volatile CSRR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Loads volatile Critical SRRs (CSRR0, CSRR1) from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_lmvdsrrw/';" style="cursor: pointer;">
+                    <td class="mono">e_lmvdsrrw</td>
+                    <td style="font-weight: 500;">VLE Load Multiple Volatile DSRR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Loads volatile Debug SRRs (DSRR0, DSRR1) from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_lmvgprw/';" style="cursor: pointer;">
+                    <td class="mono">e_lmvgprw</td>
+                    <td style="font-weight: 500;">VLE Load Multiple Volatile GPR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Loads volatile GPRs from memory (Word aligned).</td>
+                </tr>
+                
+                <tr onclick="window.location='e_lmvsprw/';" style="cursor: pointer;">
+                    <td class="mono">e_lmvsprw</td>
+                    <td style="font-weight: 500;">VLE Load Multiple Volatile SPR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Loads volatile SPRs (CR, LR, CTR, XER) from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_lmvsrrw/';" style="cursor: pointer;">
+                    <td class="mono">e_lmvsrrw</td>
+                    <td style="font-weight: 500;">VLE Load Multiple Volatile SRR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Loads volatile Save/Restore Registers (SRR0, SRR1) from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_lmw/';" style="cursor: pointer;">
+                    <td class="mono">e_lmw</td>
+                    <td style="font-weight: 500;">VLE Load Multiple Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Loads words from memory into registers RT through R31.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_lmw/';" style="cursor: pointer;">
                     <td class="mono">e_lmw</td>
                     <td style="font-weight: 500;">VLE Load Multiple Word</td>
@@ -1163,6 +1408,13 @@
                     <td style="color: var(--text-muted);">Loads word and updates base register.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_mbar/';" style="cursor: pointer;">
+                    <td class="mono">e_mbar</td>
+                    <td style="font-weight: 500;">VLE Memory Barrier</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Ensures memory access ordering.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_mcrf/';" style="cursor: pointer;">
                     <td class="mono">e_mcrf</td>
                     <td style="font-weight: 500;">VLE Move Condition Register Field</td>
@@ -1175,6 +1427,27 @@
                     <td style="font-weight: 500;">VLE Move From Special Purpose Register</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Reads an SPR.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_mfspr/';" style="cursor: pointer;">
+                    <td class="mono">e_mfspr</td>
+                    <td style="font-weight: 500;">VLE Move From Special Purpose Register</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Reads an SPR.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_msync/';" style="cursor: pointer;">
+                    <td class="mono">e_msync</td>
+                    <td style="font-weight: 500;">VLE Memory Synchronize</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Synchronizes memory accesses.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_mtspr/';" style="cursor: pointer;">
+                    <td class="mono">e_mtspr</td>
+                    <td style="font-weight: 500;">VLE Move To Special Purpose Register</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Writes an SPR.</td>
                 </tr>
                 
                 <tr onclick="window.location='e_mtspr/';" style="cursor: pointer;">
@@ -1196,6 +1469,20 @@
                     <td style="font-weight: 500;">VLE Multiply High Word Unsigned</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Multiplies two words, keeps high 32 bits (Unsigned).</td>
+                </tr>
+                
+                <tr onclick="window.location='e_mull2i/';" style="cursor: pointer;">
+                    <td class="mono">e_mull2i</td>
+                    <td style="font-weight: 500;">VLE Multiply Low Word Immediate</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies register by immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_mull2i/';" style="cursor: pointer;">
+                    <td class="mono">e_mull2i</td>
+                    <td style="font-weight: 500;">VLE Multiply Low Word Immediate</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies word by immediate.</td>
                 </tr>
                 
                 <tr onclick="window.location='e_mull2i/';" style="cursor: pointer;">
@@ -1247,6 +1534,13 @@
                     <td style="color: var(--text-muted);">OR with 16-bit immediate.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_or2is/';" style="cursor: pointer;">
+                    <td class="mono">e_or2is</td>
+                    <td style="font-weight: 500;">VLE OR Immediate Shifted</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">OR with 16-bit immediate shifted left by 16 bits.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_orc/';" style="cursor: pointer;">
                     <td class="mono">e_orc</td>
                     <td style="font-weight: 500;">VLE OR with Complement</td>
@@ -1273,6 +1567,13 @@
                     <td style="font-weight: 500;">VLE Rotate Left Word Immediate AND Mask</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Rotate and mask.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_sc/';" style="cursor: pointer;">
+                    <td class="mono">e_sc</td>
+                    <td style="font-weight: 500;">VLE System Call</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">System call (32-bit encoding).</td>
                 </tr>
                 
                 <tr onclick="window.location='e_sc/';" style="cursor: pointer;">
@@ -1359,6 +1660,55 @@
                     <td style="color: var(--text-muted);">Stores halfword and updates base register.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_stmv/';" style="cursor: pointer;">
+                    <td class="mono">e_stmv</td>
+                    <td style="font-weight: 500;">VLE Store Multiple Volatile</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores volatile registers (R0, R3-R12) to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_stmvcsrrw/';" style="cursor: pointer;">
+                    <td class="mono">e_stmvcsrrw</td>
+                    <td style="font-weight: 500;">VLE Store Multiple Volatile CSRR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores volatile Critical SRRs (CSRR0, CSRR1) to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_stmvdsrrw/';" style="cursor: pointer;">
+                    <td class="mono">e_stmvdsrrw</td>
+                    <td style="font-weight: 500;">VLE Store Multiple Volatile DSRR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores volatile Debug SRRs (DSRR0, DSRR1) to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_stmvgprw/';" style="cursor: pointer;">
+                    <td class="mono">e_stmvgprw</td>
+                    <td style="font-weight: 500;">VLE Store Multiple Volatile GPR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores volatile GPRs to memory (Word aligned).</td>
+                </tr>
+                
+                <tr onclick="window.location='e_stmvsprw/';" style="cursor: pointer;">
+                    <td class="mono">e_stmvsprw</td>
+                    <td style="font-weight: 500;">VLE Store Multiple Volatile SPR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores volatile SPRs (CR, LR, CTR, XER) to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_stmvsrrw/';" style="cursor: pointer;">
+                    <td class="mono">e_stmvsrrw</td>
+                    <td style="font-weight: 500;">VLE Store Multiple Volatile SRR Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores volatile Save/Restore Registers (SRR0, SRR1) to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_stmw/';" style="cursor: pointer;">
+                    <td class="mono">e_stmw</td>
+                    <td style="font-weight: 500;">VLE Store Multiple Word</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Stores words from registers RT through R31 to memory.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_stmw/';" style="cursor: pointer;">
                     <td class="mono">e_stmw</td>
                     <td style="font-weight: 500;">VLE Store Multiple Word</td>
@@ -1429,11 +1779,32 @@
                     <td style="color: var(--text-muted);">Invalidates a TLB entry by address.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_tlbivax/';" style="cursor: pointer;">
+                    <td class="mono">e_tlbivax</td>
+                    <td style="font-weight: 500;">VLE TLB Invalidate Virtual Address Indexed</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Invalidates a TLB entry by address.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_tlbre/';" style="cursor: pointer;">
                     <td class="mono">e_tlbre</td>
                     <td style="font-weight: 500;">VLE TLB Read Entry</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Reads a TLB entry.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_tlbre/';" style="cursor: pointer;">
+                    <td class="mono">e_tlbre</td>
+                    <td style="font-weight: 500;">VLE TLB Read Entry</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Reads a TLB entry.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_tlbsx/';" style="cursor: pointer;">
+                    <td class="mono">e_tlbsx</td>
+                    <td style="font-weight: 500;">VLE TLB Search Indexed</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Searches for a TLB entry.</td>
                 </tr>
                 
                 <tr onclick="window.location='e_tlbsx/';" style="cursor: pointer;">
@@ -1450,11 +1821,32 @@
                     <td style="color: var(--text-muted);">Writes a TLB entry.</td>
                 </tr>
                 
+                <tr onclick="window.location='e_tlbwe/';" style="cursor: pointer;">
+                    <td class="mono">e_tlbwe</td>
+                    <td style="font-weight: 500;">VLE TLB Write Entry</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Writes a TLB entry.</td>
+                </tr>
+                
                 <tr onclick="window.location='e_trap/';" style="cursor: pointer;">
                     <td class="mono">e_trap</td>
                     <td style="font-weight: 500;">VLE Trap</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">Unconditional trap (32-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='e_trap/';" style="cursor: pointer;">
+                    <td class="mono">e_trap</td>
+                    <td style="font-weight: 500;">VLE Trap</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Unconditional trap (32-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='e_wait/';" style="cursor: pointer;">
+                    <td class="mono">e_wait</td>
+                    <td style="font-weight: 500;">VLE Wait</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">Waits for an interrupt.</td>
                 </tr>
                 
                 <tr onclick="window.location='e_xor/';" style="cursor: pointer;">
@@ -1469,6 +1861,27 @@
                     <td style="font-weight: 500;">VLE XOR Immediate</td>
                     <td><span class="badge">E-form</span></td>
                     <td style="color: var(--text-muted);">XOR with 16-bit immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='e_xor2is/';" style="cursor: pointer;">
+                    <td class="mono">e_xor2is</td>
+                    <td style="font-weight: 500;">VLE XOR Immediate Shifted</td>
+                    <td><span class="badge">E-form</span></td>
+                    <td style="color: var(--text-muted);">XOR with 16-bit immediate shifted left by 16 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='eciwx/';" style="cursor: pointer;">
+                    <td class="mono">eciwx</td>
+                    <td style="font-weight: 500;">External Control In Word Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from an external device using the EAR register.</td>
+                </tr>
+                
+                <tr onclick="window.location='ecowx/';" style="cursor: pointer;">
+                    <td class="mono">ecowx</td>
+                    <td style="font-weight: 500;">External Control Out Word Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a word to an external device using the EAR register.</td>
                 </tr>
                 
                 <tr onclick="window.location='efdabs/';" style="cursor: pointer;">
@@ -1819,6 +2232,13 @@
                     <td style="font-weight: 500;">Enforce In-order Execution of I/O</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Ensures that load/store instructions preceding the EIEIO complete before those following it. Used for Memory-Mapped I/O synchronization.</td>
+                </tr>
+                
+                <tr onclick="window.location='eqv/';" style="cursor: pointer;">
+                    <td class="mono">eqv</td>
+                    <td style="font-weight: 500;">Equivalent</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise Equivalence (XNOR). RA = ~(RS ^ RB).</td>
                 </tr>
                 
                 <tr onclick="window.location='eqv/';" style="cursor: pointer;">
@@ -2980,6 +3400,13 @@
                     <td class="mono">extsb</td>
                     <td style="font-weight: 500;">Extend Sign Byte</td>
                     <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Sign extends the low byte of a register to the full width.</td>
+                </tr>
+                
+                <tr onclick="window.location='extsb/';" style="cursor: pointer;">
+                    <td class="mono">extsb</td>
+                    <td style="font-weight: 500;">Extend Sign Byte</td>
+                    <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Sign-extends the low byte (8 bits) of a register to 64 bits.</td>
                 </tr>
                 
@@ -2987,7 +3414,21 @@
                     <td class="mono">extsh</td>
                     <td style="font-weight: 500;">Extend Sign Halfword</td>
                     <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Sign extends the low halfword.</td>
+                </tr>
+                
+                <tr onclick="window.location='extsh/';" style="cursor: pointer;">
+                    <td class="mono">extsh</td>
+                    <td style="font-weight: 500;">Extend Sign Halfword</td>
+                    <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Sign-extends the low halfword (16 bits) of a register to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='extsw/';" style="cursor: pointer;">
+                    <td class="mono">extsw</td>
+                    <td style="font-weight: 500;">Extend Sign Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Sign extends the low word (32-bit) to 64 bits.</td>
                 </tr>
                 
                 <tr onclick="window.location='extsw/';" style="cursor: pointer;">
@@ -3270,6 +3711,13 @@
                     <td style="color: var(--text-muted);">Prefetches an instruction cache block.</td>
                 </tr>
                 
+                <tr onclick="window.location='icbt/';" style="cursor: pointer;">
+                    <td class="mono">icbt</td>
+                    <td style="font-weight: 500;">Instruction Cache Block Touch</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Prefetches an instruction cache block.</td>
+                </tr>
+                
                 <tr onclick="window.location='icbtls/';" style="cursor: pointer;">
                     <td class="mono">icbtls</td>
                     <td style="font-weight: 500;">Instruction Cache Block Touch and Lock Set</td>
@@ -3368,6 +3816,20 @@
                     <td style="color: var(--text-muted);">Loads a doubleword and creates a reservation. 64-bit version of lwarx.</td>
                 </tr>
                 
+                <tr onclick="window.location='ldarx/';" style="cursor: pointer;">
+                    <td class="mono">ldarx</td>
+                    <td style="font-weight: 500;">Load Doubleword And Reserve Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Atomic Load Doubleword.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldbrx/';" style="cursor: pointer;">
+                    <td class="mono">ldbrx</td>
+                    <td style="font-weight: 500;">Load Doubleword Byte-Reverse Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads 64 bits and swaps bytes.</td>
+                </tr>
+                
                 <tr onclick="window.location='ldci/';" style="cursor: pointer;">
                     <td class="mono">ldci</td>
                     <td style="font-weight: 500;">Load Doubleword Caching Inhibited</td>
@@ -3389,6 +3851,13 @@
                     <td style="color: var(--text-muted);">Atomic Load Halfword.</td>
                 </tr>
                 
+                <tr onclick="window.location='lhbrx/';" style="cursor: pointer;">
+                    <td class="mono">lhbrx</td>
+                    <td style="font-weight: 500;">Load Halfword Byte-Reverse Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a halfword and swaps bytes (Little-Endian load).</td>
+                </tr>
+                
                 <tr onclick="window.location='lhz/';" style="cursor: pointer;">
                     <td class="mono">lhz</td>
                     <td style="font-weight: 500;">Load Halfword and Zero</td>
@@ -3408,6 +3877,20 @@
                     <td style="font-weight: 500;">Load Halfword and Zero External Process ID Indexed</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Loads a halfword using the External PID.</td>
+                </tr>
+                
+                <tr onclick="window.location='li/';" style="cursor: pointer;">
+                    <td class="mono">li</td>
+                    <td style="font-weight: 500;">Load Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 16-bit signed immediate into a register. (Alias for 'addi RT, 0, SIM').</td>
+                </tr>
+                
+                <tr onclick="window.location='lis/';" style="cursor: pointer;">
+                    <td class="mono">lis</td>
+                    <td style="font-weight: 500;">Load Immediate Shifted</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 16-bit immediate into the upper half of a 32-bit word. (Alias for 'addis RT, 0, SIM').</td>
                 </tr>
                 
                 <tr onclick="window.location='lmw/';" style="cursor: pointer;">
@@ -3464,6 +3947,20 @@
                     <td style="font-weight: 500;">Load Word and Reserve Indexed</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Loads a word and creates a reservation for use with 'stwcx.'. Critical for implementing atomic primitives (mutexes).</td>
+                </tr>
+                
+                <tr onclick="window.location='lwarx/';" style="cursor: pointer;">
+                    <td class="mono">lwarx</td>
+                    <td style="font-weight: 500;">Load Word And Reserve Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Atomic Load Word (sets reservation).</td>
+                </tr>
+                
+                <tr onclick="window.location='lwbrx/';" style="cursor: pointer;">
+                    <td class="mono">lwbrx</td>
+                    <td style="font-weight: 500;">Load Word Byte-Reverse Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a word and swaps bytes.</td>
                 </tr>
                 
                 <tr onclick="window.location='lwdi/';" style="cursor: pointer;">
@@ -3746,6 +4243,13 @@
                     <td style="color: var(--text-muted);">Copies the contents of one Condition Register field to another. Used to save comparison results.</td>
                 </tr>
                 
+                <tr onclick="window.location='mcrfs/';" style="cursor: pointer;">
+                    <td class="mono">mcrfs</td>
+                    <td style="font-weight: 500;">Move to Condition Register from FPSCR</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Copies FPSCR exception bits to the Condition Register.</td>
+                </tr>
+                
                 <tr onclick="window.location='mcrxrx/';" style="cursor: pointer;">
                     <td class="mono">mcrxrx</td>
                     <td style="font-weight: 500;">Move to CR from XER Extended</td>
@@ -3765,6 +4269,13 @@
                     <td style="font-weight: 500;">Move From Condition Register</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Copies the entire 32-bit Condition Register into a General Purpose Register.</td>
+                </tr>
+                
+                <tr onclick="window.location='mfctr/';" style="cursor: pointer;">
+                    <td class="mono">mfctr</td>
+                    <td style="font-weight: 500;">Move From Count Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Moves CTR to GPR. (Alias for 'mfspr RT, 9').</td>
                 </tr>
                 
                 <tr onclick="window.location='mfdcr/';" style="cursor: pointer;">
@@ -3788,6 +4299,20 @@
                     <td style="color: var(--text-muted);">Copies the Floating-Point Status and Control Register to a float register.</td>
                 </tr>
                 
+                <tr onclick="window.location='mflr/';" style="cursor: pointer;">
+                    <td class="mono">mflr</td>
+                    <td style="font-weight: 500;">Move From Link Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Moves LR to GPR. (Alias for 'mfspr RT, 8').</td>
+                </tr>
+                
+                <tr onclick="window.location='mfmsr/';" style="cursor: pointer;">
+                    <td class="mono">mfmsr</td>
+                    <td style="font-weight: 500;">Move From Machine State Register</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Reads the MSR (Privileged).</td>
+                </tr>
+                
                 <tr onclick="window.location='mfocrf/';" style="cursor: pointer;">
                     <td class="mono">mfocrf</td>
                     <td style="font-weight: 500;">Move From One Condition Register Field</td>
@@ -3800,6 +4325,13 @@
                     <td style="font-weight: 500;">Move From Performance Monitor Register</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Reads a performance monitor register (Embedded).</td>
+                </tr>
+                
+                <tr onclick="window.location='mfpvr/';" style="cursor: pointer;">
+                    <td class="mono">mfpvr</td>
+                    <td style="font-weight: 500;">Move From Processor Version Register</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Reads the PVR (Processor ID).</td>
                 </tr>
                 
                 <tr onclick="window.location='mfspr/';" style="cursor: pointer;">
@@ -3834,7 +4366,21 @@
                     <td class="mono">mftb</td>
                     <td style="font-weight: 500;">Move From Timebase</td>
                     <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Reads the Timebase register.</td>
+                </tr>
+                
+                <tr onclick="window.location='mftb/';" style="cursor: pointer;">
+                    <td class="mono">mftb</td>
+                    <td style="font-weight: 500;">Move From Timebase</td>
+                    <td><span class="badge">XFX-form</span></td>
                     <td style="color: var(--text-muted);">Reads the hardware timebase register (Timestamp).</td>
+                </tr>
+                
+                <tr onclick="window.location='mftbu/';" style="cursor: pointer;">
+                    <td class="mono">mftbu</td>
+                    <td style="font-weight: 500;">Move From Timebase Upper</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Reads the upper 32 bits of the Timebase (32-bit implementations).</td>
                 </tr>
                 
                 <tr onclick="window.location='mfvsrd/';" style="cursor: pointer;">
@@ -3907,6 +4453,13 @@
                     <td style="color: var(--text-muted);">Copies the contents of one register to another. (Encoded as OR RA, RS, RS).</td>
                 </tr>
                 
+                <tr onclick="window.location='mr/';" style="cursor: pointer;">
+                    <td class="mono">mr</td>
+                    <td style="font-weight: 500;">Move Register</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Copies contents of RS to RA. (Alias for 'or RA, RS, RS').</td>
+                </tr>
+                
                 <tr onclick="window.location='msgclr/';" style="cursor: pointer;">
                     <td class="mono">msgclr</td>
                     <td style="font-weight: 500;">Message Clear</td>
@@ -3963,6 +4516,13 @@
                     <td style="color: var(--text-muted);">Copies bits from a register into the Condition Register, updated only the fields specified by the mask (FXM).</td>
                 </tr>
                 
+                <tr onclick="window.location='mtctr/';" style="cursor: pointer;">
+                    <td class="mono">mtctr</td>
+                    <td style="font-weight: 500;">Move To Count Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Moves GPR to CTR. (Alias for 'mtspr 9, RS').</td>
+                </tr>
+                
                 <tr onclick="window.location='mtdcr/';" style="cursor: pointer;">
                     <td class="mono">mtdcr</td>
                     <td style="font-weight: 500;">Move To Device Control Register</td>
@@ -4003,6 +4563,27 @@
                     <td style="font-weight: 500;">Move To FPSCR Field Immediate</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Writes a 4-bit immediate to a specific FPSCR field.</td>
+                </tr>
+                
+                <tr onclick="window.location='mtlr/';" style="cursor: pointer;">
+                    <td class="mono">mtlr</td>
+                    <td style="font-weight: 500;">Move To Link Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Moves GPR to LR. (Alias for 'mtspr 8, RS').</td>
+                </tr>
+                
+                <tr onclick="window.location='mtmsr/';" style="cursor: pointer;">
+                    <td class="mono">mtmsr</td>
+                    <td style="font-weight: 500;">Move To Machine State Register</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Writes the MSR (Privileged).</td>
+                </tr>
+                
+                <tr onclick="window.location='mtmsrd/';" style="cursor: pointer;">
+                    <td class="mono">mtmsrd</td>
+                    <td style="font-weight: 500;">Move To Machine State Register Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Writes the 64-bit MSR.</td>
                 </tr>
                 
                 <tr onclick="window.location='mtocrf/';" style="cursor: pointer;">
@@ -4205,6 +4786,13 @@
                     <td class="mono">nand</td>
                     <td style="font-weight: 500;">NAND</td>
                     <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise NAND. RA = ~(RS & RB).</td>
+                </tr>
+                
+                <tr onclick="window.location='nand/';" style="cursor: pointer;">
+                    <td class="mono">nand</td>
+                    <td style="font-weight: 500;">NAND</td>
+                    <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Performs a bitwise NAND comparison. (RA <- ~(RS & RB)).</td>
                 </tr>
                 
@@ -4306,6 +4894,20 @@
                     <td style="color: var(--text-muted);">Negate product of low halfwords and add to accumulator (Signed Saturation).</td>
                 </tr>
                 
+                <tr onclick="window.location='nop/';" style="cursor: pointer;">
+                    <td class="mono">nop</td>
+                    <td style="font-weight: 500;">No Operation</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Does nothing. (Alias for 'ori 0, 0, 0').</td>
+                </tr>
+                
+                <tr onclick="window.location='nor/';" style="cursor: pointer;">
+                    <td class="mono">nor</td>
+                    <td style="font-weight: 500;">NOR</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise NOR. RA = ~(RS | RB).</td>
+                </tr>
+                
                 <tr onclick="window.location='nor/';" style="cursor: pointer;">
                     <td class="mono">nor</td>
                     <td style="font-weight: 500;">NOR</td>
@@ -4313,11 +4915,25 @@
                     <td style="color: var(--text-muted);">Performs a bitwise NOR comparison. (RA <- ~(RS | RB)). Useful for bitwise NOT (nor r3, r4, r4).</td>
                 </tr>
                 
+                <tr onclick="window.location='not/';" style="cursor: pointer;">
+                    <td class="mono">not</td>
+                    <td style="font-weight: 500;">Complement Register</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Ones' complement (Bitwise NOT). (Alias for 'nor RA, RS, RS').</td>
+                </tr>
+                
                 <tr onclick="window.location='or/';" style="cursor: pointer;">
                     <td class="mono">or</td>
                     <td style="font-weight: 500;">OR</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Performs a bitwise OR comparison.</td>
+                </tr>
+                
+                <tr onclick="window.location='orc/';" style="cursor: pointer;">
+                    <td class="mono">orc</td>
+                    <td style="font-weight: 500;">OR with Complement</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise OR with complement. RA = RS | ~RB.</td>
                 </tr>
                 
                 <tr onclick="window.location='orc/';" style="cursor: pointer;">
@@ -4465,6 +5081,20 @@
                     <td style="font-weight: 500;">Prefixed Masked VSX Vector Float64 GER</td>
                     <td><span class="badge">MMIRR-form</span></td>
                     <td style="color: var(--text-muted);">Masked version of Double-Precision MMA.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmxvi4ger8/';" style="cursor: pointer;">
+                    <td class="mono">pmxvi4ger8</td>
+                    <td style="font-weight: 500;">Prefixed Masked VSX Vector Integer 4-bit GER</td>
+                    <td><span class="badge">MMIRR-form</span></td>
+                    <td style="color: var(--text-muted);">Masked 4-bit integer matrix multiply.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmxvi4ger8pp/';" style="cursor: pointer;">
+                    <td class="mono">pmxvi4ger8pp</td>
+                    <td style="font-weight: 500;">Prefixed Masked VSX Vector Integer 4-bit GER Plus/Plus</td>
+                    <td><span class="badge">MMIRR-form</span></td>
+                    <td style="color: var(--text-muted);">Masked unsigned 4-bit integer matrix multiply.</td>
                 </tr>
                 
                 <tr onclick="window.location='pmxvi8ger4/';" style="cursor: pointer;">
@@ -4618,7 +5248,21 @@
                     <td class="mono">rldic</td>
                     <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear</td>
                     <td><span class="badge">MD-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates a 64-bit value left, then clears bits based on a mask.</td>
+                </tr>
+                
+                <tr onclick="window.location='rldic/';" style="cursor: pointer;">
+                    <td class="mono">rldic</td>
+                    <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear</td>
+                    <td><span class="badge">MD-form</span></td>
                     <td style="color: var(--text-muted);">Rotates a 64-bit register left, then clears bits based on a mask. 64-bit equivalent of rlwinm.</td>
+                </tr>
+                
+                <tr onclick="window.location='rldicl/';" style="cursor: pointer;">
+                    <td class="mono">rldicl</td>
+                    <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear Left</td>
+                    <td><span class="badge">MD-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates left and clears upper bits (Extract/Shift Right logic).</td>
                 </tr>
                 
                 <tr onclick="window.location='rldicl/';" style="cursor: pointer;">
@@ -4632,7 +5276,28 @@
                     <td class="mono">rldicr</td>
                     <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear Right</td>
                     <td><span class="badge">MD-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates left and clears lower bits (Shift Left logic).</td>
+                </tr>
+                
+                <tr onclick="window.location='rldicr/';" style="cursor: pointer;">
+                    <td class="mono">rldicr</td>
+                    <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear Right</td>
+                    <td><span class="badge">MD-form</span></td>
                     <td style="color: var(--text-muted);">Rotates 64-bit RS left by SH, then clears the low-order bits (ME+1 to 63).</td>
+                </tr>
+                
+                <tr onclick="window.location='rldimi/';" style="cursor: pointer;">
+                    <td class="mono">rldimi</td>
+                    <td style="font-weight: 500;">Rotate Left Doubleword Immediate Mask Insert</td>
+                    <td><span class="badge">MD-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates 64-bit value and inserts into target under mask.</td>
+                </tr>
+                
+                <tr onclick="window.location='rlwimi/';" style="cursor: pointer;">
+                    <td class="mono">rlwimi</td>
+                    <td style="font-weight: 500;">Rotate Left Word Immediate Then Mask Insert</td>
+                    <td><span class="badge">M-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates a word left, then inserts bits into the target under a mask. Used for inserting bitfields.</td>
                 </tr>
                 
                 <tr onclick="window.location='rlwimi/';" style="cursor: pointer;">
@@ -4646,7 +5311,28 @@
                     <td class="mono">rlwinm</td>
                     <td style="font-weight: 500;">Rotate Left Word Immediate Then AND with Mask</td>
                     <td><span class="badge">M-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates a word left, then ANDs with a mask. Used for extracting bitfields.</td>
+                </tr>
+                
+                <tr onclick="window.location='rlwinm/';" style="cursor: pointer;">
+                    <td class="mono">rlwinm</td>
+                    <td style="font-weight: 500;">Rotate Left Word Immediate Then AND with Mask</td>
+                    <td><span class="badge">M-form</span></td>
                     <td style="color: var(--text-muted);">The ultimate bit-manipulation instruction. Rotates RS left by SH, then ANDs with a mask defined by MB (Mask Begin) and ME (Mask End).</td>
+                </tr>
+                
+                <tr onclick="window.location='rlwnm/';" style="cursor: pointer;">
+                    <td class="mono">rlwnm</td>
+                    <td style="font-weight: 500;">Rotate Left Word Then AND with Mask</td>
+                    <td><span class="badge">M-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates a word left by amount in RB, then ANDs with a mask.</td>
+                </tr>
+                
+                <tr onclick="window.location='sc/';" style="cursor: pointer;">
+                    <td class="mono">sc</td>
+                    <td style="font-weight: 500;">System Call</td>
+                    <td><span class="badge">SC-form</span></td>
+                    <td style="color: var(--text-muted);">Invokes the operating system (Supervisor Call).</td>
                 </tr>
                 
                 <tr onclick="window.location='sc/';" style="cursor: pointer;">
@@ -5143,6 +5829,13 @@
                     <td class="mono">sld</td>
                     <td style="font-weight: 500;">Shift Left Doubleword</td>
                     <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Shifts a 64-bit value left by amount in RB.</td>
+                </tr>
+                
+                <tr onclick="window.location='sld/';" style="cursor: pointer;">
+                    <td class="mono">sld</td>
+                    <td style="font-weight: 500;">Shift Left Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Shifts a 64-bit register left by the amount specified in RB.</td>
                 </tr>
                 
@@ -5164,7 +5857,21 @@
                     <td class="mono">srad</td>
                     <td style="font-weight: 500;">Shift Right Algebraic Doubleword</td>
                     <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Arithmetic right shift of 64-bit value (preserves sign).</td>
+                </tr>
+                
+                <tr onclick="window.location='srad/';" style="cursor: pointer;">
+                    <td class="mono">srad</td>
+                    <td style="font-weight: 500;">Shift Right Algebraic Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Performs an arithmetic right shift on a 64-bit doubleword.</td>
+                </tr>
+                
+                <tr onclick="window.location='sradi/';" style="cursor: pointer;">
+                    <td class="mono">sradi</td>
+                    <td style="font-weight: 500;">Shift Right Algebraic Doubleword Immediate</td>
+                    <td><span class="badge">XS-form</span></td>
+                    <td style="color: var(--text-muted);">Arithmetic right shift by immediate.</td>
                 </tr>
                 
                 <tr onclick="window.location='sradi/';" style="cursor: pointer;">
@@ -5186,6 +5893,13 @@
                     <td style="font-weight: 500;">Shift Right Algebraic Word Immediate</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Performs an arithmetic right shift on a 32-bit word by a constant amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='srd/';" style="cursor: pointer;">
+                    <td class="mono">srd</td>
+                    <td style="font-weight: 500;">Shift Right Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Logical right shift of 64-bit value.</td>
                 </tr>
                 
                 <tr onclick="window.location='srw/';" style="cursor: pointer;">
@@ -5230,11 +5944,25 @@
                     <td style="color: var(--text-muted);">Stores a 64-bit doubleword to memory.</td>
                 </tr>
                 
+                <tr onclick="window.location='stdbrx/';" style="cursor: pointer;">
+                    <td class="mono">stdbrx</td>
+                    <td style="font-weight: 500;">Store Doubleword Byte-Reverse Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Swaps bytes and stores 64 bits.</td>
+                </tr>
+                
                 <tr onclick="window.location='stdci/';" style="cursor: pointer;">
                     <td class="mono">stdci</td>
                     <td style="font-weight: 500;">Store Doubleword Caching Inhibited</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Stores a doubleword bypassing the cache.</td>
+                </tr>
+                
+                <tr onclick="window.location='stdcx./';" style="cursor: pointer;">
+                    <td class="mono">stdcx.</td>
+                    <td style="font-weight: 500;">Store Doubleword Conditional Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Atomic Store Doubleword.</td>
                 </tr>
                 
                 <tr onclick="window.location='stdcx./';" style="cursor: pointer;">
@@ -5256,6 +5984,13 @@
                     <td style="font-weight: 500;">Store Halfword</td>
                     <td><span class="badge">D-form</span></td>
                     <td style="color: var(--text-muted);">Stores the low 16 bits of a register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='sthbrx/';" style="cursor: pointer;">
+                    <td class="mono">sthbrx</td>
+                    <td style="font-weight: 500;">Store Halfword Byte-Reverse Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Swaps bytes and stores a halfword.</td>
                 </tr>
                 
                 <tr onclick="window.location='sthci/';" style="cursor: pointer;">
@@ -5335,11 +6070,25 @@
                     <td style="color: var(--text-muted);">Stores the low 32 bits of a register to memory.</td>
                 </tr>
                 
+                <tr onclick="window.location='stwbrx/';" style="cursor: pointer;">
+                    <td class="mono">stwbrx</td>
+                    <td style="font-weight: 500;">Store Word Byte-Reverse Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Swaps bytes and stores a word.</td>
+                </tr>
+                
                 <tr onclick="window.location='stwci/';" style="cursor: pointer;">
                     <td class="mono">stwci</td>
                     <td style="font-weight: 500;">Store Word Caching Inhibited</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Stores a word bypassing the cache.</td>
+                </tr>
+                
+                <tr onclick="window.location='stwcx./';" style="cursor: pointer;">
+                    <td class="mono">stwcx.</td>
+                    <td style="font-weight: 500;">Store Word Conditional Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Atomic Store Word (checks reservation).</td>
                 </tr>
                 
                 <tr onclick="window.location='stwcx./';" style="cursor: pointer;">
@@ -5458,7 +6207,21 @@
                     <td class="mono">td</td>
                     <td style="font-weight: 500;">Trap Doubleword</td>
                     <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Traps if condition (comparison of doublewords) is met.</td>
+                </tr>
+                
+                <tr onclick="window.location='td/';" style="cursor: pointer;">
+                    <td class="mono">td</td>
+                    <td style="font-weight: 500;">Trap Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Traps if the condition specified by TO (Trap Options) is met between two 64-bit registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='tdi/';" style="cursor: pointer;">
+                    <td class="mono">tdi</td>
+                    <td style="font-weight: 500;">Trap Doubleword Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Traps if condition (comparison with immediate) is met.</td>
                 </tr>
                 
                 <tr onclick="window.location='tend./';" style="cursor: pointer;">
@@ -5466,6 +6229,13 @@
                     <td style="font-weight: 500;">Transaction End</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Commits the current hardware transaction. If successful, memory changes become visible atomically.</td>
+                </tr>
+                
+                <tr onclick="window.location='tlbia/';" style="cursor: pointer;">
+                    <td class="mono">tlbia</td>
+                    <td style="font-weight: 500;">TLB Invalidate All</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Invalidates the entire Translation Lookaside Buffer.</td>
                 </tr>
                 
                 <tr onclick="window.location='tlbie/';" style="cursor: pointer;">
@@ -5535,6 +6305,13 @@
                     <td class="mono">tlbsync</td>
                     <td style="font-weight: 500;">TLB Synchronize</td>
                     <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Ensures global TLB invalidation completion.</td>
+                </tr>
+                
+                <tr onclick="window.location='tlbsync/';" style="cursor: pointer;">
+                    <td class="mono">tlbsync</td>
+                    <td style="font-weight: 500;">TLB Synchronize</td>
+                    <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Ensures TLB invalidations have propagated to all processors.</td>
                 </tr>
                 
@@ -5585,6 +6362,20 @@
                     <td style="font-weight: 500;">Transaction Suspend</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Suspends the current transaction.</td>
+                </tr>
+                
+                <tr onclick="window.location='tw/';" style="cursor: pointer;">
+                    <td class="mono">tw</td>
+                    <td style="font-weight: 500;">Trap Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Traps if condition (comparison of words) is met.</td>
+                </tr>
+                
+                <tr onclick="window.location='twi/';" style="cursor: pointer;">
+                    <td class="mono">twi</td>
+                    <td style="font-weight: 500;">Trap Word Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Traps if condition (comparison with immediate) is met.</td>
                 </tr>
                 
                 <tr onclick="window.location='urfid/';" style="cursor: pointer;">
@@ -7895,6 +8686,20 @@
                     <td style="font-weight: 500;">VSX Vector Integer 16-bit GER (Rank-2 Update) Saturate</td>
                     <td><span class="badge">XX3-form</span></td>
                     <td style="color: var(--text-muted);">Performs a 16-bit integer outer product with saturation.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvi4ger8/';" style="cursor: pointer;">
+                    <td class="mono">xvi4ger8</td>
+                    <td style="font-weight: 500;">VSX Vector Integer 4-bit GER (Rank-8 Update)</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs 4-bit integer matrix multiply accumulate (AI Quantization).</td>
+                </tr>
+                
+                <tr onclick="window.location='xvi4ger8pp/';" style="cursor: pointer;">
+                    <td class="mono">xvi4ger8pp</td>
+                    <td style="font-weight: 500;">VSX Vector Integer 4-bit GER (Rank-8 Update) Plus/Plus</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Unsigned 4-bit integer matrix multiply accumulate.</td>
                 </tr>
                 
                 <tr onclick="window.location='xvi8ger4/';" style="cursor: pointer;">

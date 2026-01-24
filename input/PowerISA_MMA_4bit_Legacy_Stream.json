@@ -1,0 +1,254 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "xvi4ger8",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Integer 4-bit GER (Rank-8 Update)",
+      "summary": "Performs 4-bit integer matrix multiply accumulate (AI Quantization).",
+      "syntax": "xvi4ger8 AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 34", "hex_opcode": "0xF0000022" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A (4-bit)" }, { "name": "XB", "desc": "Src B (4-bit)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvi4ger8pp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Integer 4-bit GER (Rank-8 Update) Plus/Plus",
+      "summary": "Unsigned 4-bit integer matrix multiply accumulate.",
+      "syntax": "xvi4ger8pp AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 35", "hex_opcode": "0xF0000023" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "pmxvi4ger8",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Masked VSX Vector Integer 4-bit GER",
+      "summary": "Masked 4-bit integer matrix multiply.",
+      "syntax": "pmxvi4ger8 AT, XA, XB, XMSK, YMSK",
+      "encoding": { "format": "MMIRR-form", "binary_pattern": "000001 | 11 | ...", "hex_opcode": "0x06000000..." },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XMSK", "desc": "Mask A" }, { "name": "YMSK", "desc": "Mask B" }],
+      "extension": "Prefixed (MMA)"
+    },
+    {
+      "mnemonic": "pmxvi4ger8pp",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Masked VSX Vector Integer 4-bit GER Plus/Plus",
+      "summary": "Masked unsigned 4-bit integer matrix multiply.",
+      "syntax": "pmxvi4ger8pp AT, XA, XB, XMSK, YMSK",
+      "encoding": { "format": "MMIRR-form", "binary_pattern": "000001 | 11 | ...", "hex_opcode": "0x06000000..." },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XMSK", "desc": "Mask A" }, { "name": "YMSK", "desc": "Mask B" }],
+      "extension": "Prefixed (MMA)"
+    },
+    {
+      "mnemonic": "dst",
+      "architecture": "PowerISA",
+      "full_name": "Data Stream Touch",
+      "summary": "Initiates a hardware data stream prefetch (AltiVec Legacy).",
+      "syntax": "dst RA, RB, STRM",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | STRM | RA | RB | 342 | /", "hex_opcode": "0x7C0002A6" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }, { "name": "STRM", "desc": "Stream ID" }],
+      "extension": "Base (Legacy Stream)"
+    },
+    {
+      "mnemonic": "dstt",
+      "architecture": "PowerISA",
+      "full_name": "Data Stream Touch Transient",
+      "summary": "Initiates a transient (non-temporal) data stream prefetch.",
+      "syntax": "dstt RA, RB, STRM",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | STRM | RA | RB | 342 | /", "hex_opcode": "0x7C0002A6" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }, { "name": "STRM", "desc": "Stream ID" }],
+      "extension": "Base (Legacy Stream)"
+    },
+    {
+      "mnemonic": "dstst",
+      "architecture": "PowerISA",
+      "full_name": "Data Stream Touch for Store",
+      "summary": "Initiates a prefetch for writing.",
+      "syntax": "dstst RA, RB, STRM",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | STRM | RA | RB | 374 | /", "hex_opcode": "0x7C0002E6" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }, { "name": "STRM", "desc": "Stream ID" }],
+      "extension": "Base (Legacy Stream)"
+    },
+    {
+      "mnemonic": "dststt",
+      "architecture": "PowerISA",
+      "full_name": "Data Stream Touch for Store Transient",
+      "summary": "Initiates a transient prefetch for writing.",
+      "syntax": "dststt RA, RB, STRM",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | STRM | RA | RB | 374 | /", "hex_opcode": "0x7C0002E6" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }, { "name": "STRM", "desc": "Stream ID" }],
+      "extension": "Base (Legacy Stream)"
+    },
+    {
+      "mnemonic": "dss",
+      "architecture": "PowerISA",
+      "full_name": "Data Stream Stop",
+      "summary": "Stops a data stream prefetch operation.",
+      "syntax": "dss STRM",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | STRM | 0 | 0 | 822 | /", "hex_opcode": "0x7C000666" },
+      "operands": [{ "name": "STRM", "desc": "Stream ID" }],
+      "extension": "Base (Legacy Stream)"
+    },
+    {
+      "mnemonic": "dssall",
+      "architecture": "PowerISA",
+      "full_name": "Data Stream Stop All",
+      "summary": "Stops all active data stream prefetch operations.",
+      "syntax": "dssall",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | 0 | 0 | 0 | 822 | /", "hex_opcode": "0x7C000666" },
+      "operands": [],
+      "extension": "Base (Legacy Stream)"
+    },
+    {
+      "mnemonic": "dcba",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Allocate",
+      "summary": "Allocates a cache block without loading from memory (optimization for overwrite).",
+      "syntax": "dcba RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 758 | /", "hex_opcode": "0x7C0005E6" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Cache)"
+    },
+    {
+      "mnemonic": "dcbi",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Invalidate",
+      "summary": "Invalidates a cache block (Privileged).",
+      "syntax": "dcbi RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 470 | /", "hex_opcode": "0x7C0003AE" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "eciwx",
+      "architecture": "PowerISA",
+      "full_name": "External Control In Word Indexed",
+      "summary": "Loads a word from an external device using the EAR register.",
+      "syntax": "eciwx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 310 | /", "hex_opcode": "0x7C00026C" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (External)"
+    },
+    {
+      "mnemonic": "ecowx",
+      "architecture": "PowerISA",
+      "full_name": "External Control Out Word Indexed",
+      "summary": "Stores a word to an external device using the EAR register.",
+      "syntax": "ecowx RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 438 | /", "hex_opcode": "0x7C00036C" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (External)"
+    },
+    {
+      "mnemonic": "mcrfs",
+      "architecture": "PowerISA",
+      "full_name": "Move to Condition Register from FPSCR",
+      "summary": "Copies FPSCR exception bits to the Condition Register.",
+      "syntax": "mcrfs BF, BFA",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | BF | / | BFA | / | 64 | /", "hex_opcode": "0xFC000040" },
+      "operands": [{ "name": "BF", "desc": "Target CR" }, { "name": "BFA", "desc": "Src FPSCR" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "mfmsr",
+      "architecture": "PowerISA",
+      "full_name": "Move From Machine State Register",
+      "summary": "Reads the MSR (Privileged).",
+      "syntax": "mfmsr RT",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | / | / | 83 | /", "hex_opcode": "0x7C0000A6" },
+      "operands": [{ "name": "RT", "desc": "Target" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "mtmsr",
+      "architecture": "PowerISA",
+      "full_name": "Move To Machine State Register",
+      "summary": "Writes the MSR (Privileged).",
+      "syntax": "mtmsr RS, L",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | / | L | 146 | /", "hex_opcode": "0x7C000124" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "L", "desc": "Load (32/64)" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "mtmsrd",
+      "architecture": "PowerISA",
+      "full_name": "Move To Machine State Register Doubleword",
+      "summary": "Writes the 64-bit MSR.",
+      "syntax": "mtmsrd RS, L",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | / | L | 178 | /", "hex_opcode": "0x7C000164" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "L", "desc": "Load" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "tlbia",
+      "architecture": "PowerISA",
+      "full_name": "TLB Invalidate All",
+      "summary": "Invalidates the entire Translation Lookaside Buffer.",
+      "syntax": "tlbia",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | / | 370 | /", "hex_opcode": "0x7C0002E4" },
+      "operands": [],
+      "extension": "Privileged (Legacy)"
+    },
+    {
+      "mnemonic": "tlbsync",
+      "architecture": "PowerISA",
+      "full_name": "TLB Synchronize",
+      "summary": "Ensures global TLB invalidation completion.",
+      "syntax": "tlbsync",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | / | 566 | /", "hex_opcode": "0x7C00046C" },
+      "operands": [],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "dcbtst",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Block Touch for Store",
+      "summary": "Prefetches a cache block for writing (RFO).",
+      "syntax": "dcbtst CT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | CT | RA | RB | 246 | /", "hex_opcode": "0x7C0001EC" },
+      "operands": [{ "name": "CT", "desc": "Hint" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "icbt",
+      "architecture": "PowerISA",
+      "full_name": "Instruction Cache Block Touch",
+      "summary": "Prefetches an instruction cache block.",
+      "syntax": "icbt CT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | CT | RA | RB | 22 | /", "hex_opcode": "0x7C00002C" },
+      "operands": [{ "name": "CT", "desc": "Hint" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mfpvr",
+      "architecture": "PowerISA",
+      "full_name": "Move From Processor Version Register",
+      "summary": "Reads the PVR (Processor ID).",
+      "syntax": "mfpvr RT",
+      "encoding": { "format": "X-form", "binary_pattern": "mfspr RT, 287", "hex_opcode": "See mfspr" },
+      "operands": [{ "name": "RT", "desc": "Target" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "mftb",
+      "architecture": "PowerISA",
+      "full_name": "Move From Timebase",
+      "summary": "Reads the Timebase register.",
+      "syntax": "mftb RT",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RT | 268 | 371 | /", "hex_opcode": "0x7C0002E6" },
+      "operands": [{ "name": "RT", "desc": "Target" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mftbu",
+      "architecture": "PowerISA",
+      "full_name": "Move From Timebase Upper",
+      "summary": "Reads the upper 32 bits of the Timebase (32-bit implementations).",
+      "syntax": "mftbu RT",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RT | 269 | 371 | /", "hex_opcode": "0x7C0002E7" },
+      "operands": [{ "name": "RT", "desc": "Target" }],
+      "extension": "Base (32-bit)"
+    }
+  ]
+}

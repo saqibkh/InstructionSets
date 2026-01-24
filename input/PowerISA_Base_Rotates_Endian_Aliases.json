@@ -1,0 +1,424 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "sc",
+      "architecture": "PowerISA",
+      "full_name": "System Call",
+      "summary": "Invokes the operating system (Supervisor Call).",
+      "syntax": "sc LEV",
+      "encoding": { "format": "SC-form", "binary_pattern": "17 | / | / | / | LEV | / | 1", "hex_opcode": "0x44000002" },
+      "operands": [{ "name": "LEV", "desc": "Level (0=OS, 1=Hypervisor)" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "nop",
+      "architecture": "PowerISA",
+      "full_name": "No Operation",
+      "summary": "Does nothing. (Alias for 'ori 0, 0, 0').",
+      "syntax": "nop",
+      "encoding": { "format": "D-form", "binary_pattern": "24 | 0 | 0 | 0", "hex_opcode": "0x60000000" },
+      "operands": [],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "mr",
+      "architecture": "PowerISA",
+      "full_name": "Move Register",
+      "summary": "Copies contents of RS to RA. (Alias for 'or RA, RS, RS').",
+      "syntax": "mr RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RS | 444 | /", "hex_opcode": "0x7C000378" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "li",
+      "architecture": "PowerISA",
+      "full_name": "Load Immediate",
+      "summary": "Loads a 16-bit signed immediate into a register. (Alias for 'addi RT, 0, SIM').",
+      "syntax": "li RT, SIM",
+      "encoding": { "format": "D-form", "binary_pattern": "14 | RT | 0 | SIM", "hex_opcode": "0x38000000" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "SIM", "desc": "Immediate" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "lis",
+      "architecture": "PowerISA",
+      "full_name": "Load Immediate Shifted",
+      "summary": "Loads a 16-bit immediate into the upper half of a 32-bit word. (Alias for 'addis RT, 0, SIM').",
+      "syntax": "lis RT, SIM",
+      "encoding": { "format": "D-form", "binary_pattern": "15 | RT | 0 | SIM", "hex_opcode": "0x3C000000" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "SIM", "desc": "Immediate" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "not",
+      "architecture": "PowerISA",
+      "full_name": "Complement Register",
+      "summary": "Ones' complement (Bitwise NOT). (Alias for 'nor RA, RS, RS').",
+      "syntax": "not RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RS | 124 | /", "hex_opcode": "0x7C0000F8" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "mtctr",
+      "architecture": "PowerISA",
+      "full_name": "Move To Count Register",
+      "summary": "Moves GPR to CTR. (Alias for 'mtspr 9, RS').",
+      "syntax": "mtctr RS",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RS | 9 | 467 | /", "hex_opcode": "0x7C0903A6" },
+      "operands": [{ "name": "RS", "desc": "Source" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "mfctr",
+      "architecture": "PowerISA",
+      "full_name": "Move From Count Register",
+      "summary": "Moves CTR to GPR. (Alias for 'mfspr RT, 9').",
+      "syntax": "mfctr RT",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RT | 9 | 339 | /", "hex_opcode": "0x7C0902A6" },
+      "operands": [{ "name": "RT", "desc": "Target" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "mtlr",
+      "architecture": "PowerISA",
+      "full_name": "Move To Link Register",
+      "summary": "Moves GPR to LR. (Alias for 'mtspr 8, RS').",
+      "syntax": "mtlr RS",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RS | 8 | 467 | /", "hex_opcode": "0x7C0803A6" },
+      "operands": [{ "name": "RS", "desc": "Source" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "mflr",
+      "architecture": "PowerISA",
+      "full_name": "Move From Link Register",
+      "summary": "Moves LR to GPR. (Alias for 'mfspr RT, 8').",
+      "syntax": "mflr RT",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RT | 8 | 339 | /", "hex_opcode": "0x7C0802A6" },
+      "operands": [{ "name": "RT", "desc": "Target" }],
+      "extension": "Base (Alias)"
+    },
+    {
+      "mnemonic": "rlwinm",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Word Immediate Then AND with Mask",
+      "summary": "Rotates a word left, then ANDs with a mask. Used for extracting bitfields.",
+      "syntax": "rlwinm RA, RS, SH, MB, ME",
+      "encoding": { "format": "M-form", "binary_pattern": "21 | RS | RA | SH | MB | ME", "hex_opcode": "0x54000000" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "SH", "desc": "Shift" }, { "name": "MB", "desc": "Mask Begin" }, { "name": "ME", "desc": "Mask End" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rlwimi",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Word Immediate Then Mask Insert",
+      "summary": "Rotates a word left, then inserts bits into the target under a mask. Used for inserting bitfields.",
+      "syntax": "rlwimi RA, RS, SH, MB, ME",
+      "encoding": { "format": "M-form", "binary_pattern": "20 | RS | RA | SH | MB | ME", "hex_opcode": "0x50000000" },
+      "operands": [{ "name": "RA", "desc": "Target/Dest" }, { "name": "RS", "desc": "Source" }, { "name": "SH", "desc": "Shift" }, { "name": "MB", "desc": "Mask Begin" }, { "name": "ME", "desc": "Mask End" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rlwnm",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Word Then AND with Mask",
+      "summary": "Rotates a word left by amount in RB, then ANDs with a mask.",
+      "syntax": "rlwnm RA, RS, RB, MB, ME",
+      "encoding": { "format": "M-form", "binary_pattern": "23 | RS | RA | RB | MB | ME", "hex_opcode": "0x5C000000" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Shift Reg" }, { "name": "MB", "desc": "Mask Begin" }, { "name": "ME", "desc": "Mask End" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rldic",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Doubleword Immediate Clear",
+      "summary": "Rotates a 64-bit value left, then clears bits based on a mask.",
+      "syntax": "rldic RA, RS, SH, MB",
+      "encoding": { "format": "MD-form", "binary_pattern": "30 | RS | RA | SH | MB | 2 | SH", "hex_opcode": "0x78000004" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "SH", "desc": "Shift" }, { "name": "MB", "desc": "Mask Begin" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "rldicl",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Doubleword Immediate Clear Left",
+      "summary": "Rotates left and clears upper bits (Extract/Shift Right logic).",
+      "syntax": "rldicl RA, RS, SH, MB",
+      "encoding": { "format": "MD-form", "binary_pattern": "30 | RS | RA | SH | MB | 0 | SH", "hex_opcode": "0x78000000" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "SH", "desc": "Shift" }, { "name": "MB", "desc": "Mask Begin" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "rldicr",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Doubleword Immediate Clear Right",
+      "summary": "Rotates left and clears lower bits (Shift Left logic).",
+      "syntax": "rldicr RA, RS, SH, ME",
+      "encoding": { "format": "MD-form", "binary_pattern": "30 | RS | RA | SH | ME | 1 | SH", "hex_opcode": "0x78000002" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "SH", "desc": "Shift" }, { "name": "ME", "desc": "Mask End" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "rldimi",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Doubleword Immediate Mask Insert",
+      "summary": "Rotates 64-bit value and inserts into target under mask.",
+      "syntax": "rldimi RA, RS, SH, MB",
+      "encoding": { "format": "MD-form", "binary_pattern": "30 | RS | RA | SH | MB | 3 | SH", "hex_opcode": "0x78000006" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "SH", "desc": "Shift" }, { "name": "MB", "desc": "Mask Begin" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "sld",
+      "architecture": "PowerISA",
+      "full_name": "Shift Left Doubleword",
+      "summary": "Shifts a 64-bit value left by amount in RB.",
+      "syntax": "sld RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 27", "hex_opcode": "0x7C000036" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Shift Reg" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "srd",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Doubleword",
+      "summary": "Logical right shift of 64-bit value.",
+      "syntax": "srd RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 539", "hex_opcode": "0x7C000436" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Shift Reg" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "srad",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Algebraic Doubleword",
+      "summary": "Arithmetic right shift of 64-bit value (preserves sign).",
+      "syntax": "srad RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 794", "hex_opcode": "0x7C000634" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "RB", "desc": "Shift Reg" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "sradi",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Algebraic Doubleword Immediate",
+      "summary": "Arithmetic right shift by immediate.",
+      "syntax": "sradi RA, RS, SH",
+      "encoding": { "format": "XS-form", "binary_pattern": "31 | RS | RA | SH | 413 | SH", "hex_opcode": "0x7C000674" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }, { "name": "SH", "desc": "Shift" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "lhbrx",
+      "architecture": "PowerISA",
+      "full_name": "Load Halfword Byte-Reverse Indexed",
+      "summary": "Loads a halfword and swaps bytes (Little-Endian load).",
+      "syntax": "lhbrx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 790 | /", "hex_opcode": "0x7C00062C" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lwbrx",
+      "architecture": "PowerISA",
+      "full_name": "Load Word Byte-Reverse Indexed",
+      "summary": "Loads a word and swaps bytes.",
+      "syntax": "lwbrx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 534 | /", "hex_opcode": "0x7C00042C" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sthbrx",
+      "architecture": "PowerISA",
+      "full_name": "Store Halfword Byte-Reverse Indexed",
+      "summary": "Swaps bytes and stores a halfword.",
+      "syntax": "sthbrx RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 918 | /", "hex_opcode": "0x7C00072C" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stwbrx",
+      "architecture": "PowerISA",
+      "full_name": "Store Word Byte-Reverse Indexed",
+      "summary": "Swaps bytes and stores a word.",
+      "syntax": "stwbrx RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 662 | /", "hex_opcode": "0x7C00052C" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldbrx",
+      "architecture": "PowerISA",
+      "full_name": "Load Doubleword Byte-Reverse Indexed",
+      "summary": "Loads 64 bits and swaps bytes.",
+      "syntax": "ldbrx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 532 | /", "hex_opcode": "0x7C000428" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "stdbrx",
+      "architecture": "PowerISA",
+      "full_name": "Store Doubleword Byte-Reverse Indexed",
+      "summary": "Swaps bytes and stores 64 bits.",
+      "syntax": "stdbrx RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 660 | /", "hex_opcode": "0x7C000528" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "lwarx",
+      "architecture": "PowerISA",
+      "full_name": "Load Word And Reserve Indexed",
+      "summary": "Atomic Load Word (sets reservation).",
+      "syntax": "lwarx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 20 | /", "hex_opcode": "0x7C000028" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "stwcx.",
+      "architecture": "PowerISA",
+      "full_name": "Store Word Conditional Indexed",
+      "summary": "Atomic Store Word (checks reservation).",
+      "syntax": "stwcx. RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 150 | 1", "hex_opcode": "0x7C00012D" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "ldarx",
+      "architecture": "PowerISA",
+      "full_name": "Load Doubleword And Reserve Indexed",
+      "summary": "Atomic Load Doubleword.",
+      "syntax": "ldarx RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 84 | /", "hex_opcode": "0x7C0000A8" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "stdcx.",
+      "architecture": "PowerISA",
+      "full_name": "Store Doubleword Conditional Indexed",
+      "summary": "Atomic Store Doubleword.",
+      "syntax": "stdcx. RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 214 | 1", "hex_opcode": "0x7C0001AD" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Atomics)"
+    },
+    {
+      "mnemonic": "tw",
+      "architecture": "PowerISA",
+      "full_name": "Trap Word",
+      "summary": "Traps if condition (comparison of words) is met.",
+      "syntax": "tw TO, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | TO | RA | RB | 4", "hex_opcode": "0x7C000008" },
+      "operands": [{ "name": "TO", "desc": "Options" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "twi",
+      "architecture": "PowerISA",
+      "full_name": "Trap Word Immediate",
+      "summary": "Traps if condition (comparison with immediate) is met.",
+      "syntax": "twi TO, RA, SIM",
+      "encoding": { "format": "D-form", "binary_pattern": "3 | TO | RA | SIM", "hex_opcode": "0x0C000000" },
+      "operands": [{ "name": "TO", "desc": "Options" }, { "name": "RA", "desc": "Src" }, { "name": "SIM", "desc": "Imm" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "td",
+      "architecture": "PowerISA",
+      "full_name": "Trap Doubleword",
+      "summary": "Traps if condition (comparison of doublewords) is met.",
+      "syntax": "td TO, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | TO | RA | RB | 68", "hex_opcode": "0x7C000088" },
+      "operands": [{ "name": "TO", "desc": "Options" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "tdi",
+      "architecture": "PowerISA",
+      "full_name": "Trap Doubleword Immediate",
+      "summary": "Traps if condition (comparison with immediate) is met.",
+      "syntax": "tdi TO, RA, SIM",
+      "encoding": { "format": "D-form", "binary_pattern": "2 | TO | RA | SIM", "hex_opcode": "0x08000000" },
+      "operands": [{ "name": "TO", "desc": "Options" }, { "name": "RA", "desc": "Src" }, { "name": "SIM", "desc": "Imm" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "extsb",
+      "architecture": "PowerISA",
+      "full_name": "Extend Sign Byte",
+      "summary": "Sign extends the low byte of a register to the full width.",
+      "syntax": "extsb RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | 954 | /", "hex_opcode": "0x7C000774" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "extsh",
+      "architecture": "PowerISA",
+      "full_name": "Extend Sign Halfword",
+      "summary": "Sign extends the low halfword.",
+      "syntax": "extsh RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | 922 | /", "hex_opcode": "0x7C000734" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "extsw",
+      "architecture": "PowerISA",
+      "full_name": "Extend Sign Word",
+      "summary": "Sign extends the low word (32-bit) to 64 bits.",
+      "syntax": "extsw RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | 986 | /", "hex_opcode": "0x7C0007B4" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "eqv",
+      "architecture": "PowerISA",
+      "full_name": "Equivalent",
+      "summary": "Bitwise Equivalence (XNOR). RA = ~(RS ^ RB).",
+      "syntax": "eqv RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 284 | /", "hex_opcode": "0x7C000238" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "nand",
+      "architecture": "PowerISA",
+      "full_name": "NAND",
+      "summary": "Bitwise NAND. RA = ~(RS & RB).",
+      "syntax": "nand RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 476 | /", "hex_opcode": "0x7C0003B8" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "nor",
+      "architecture": "PowerISA",
+      "full_name": "NOR",
+      "summary": "Bitwise NOR. RA = ~(RS | RB).",
+      "syntax": "nor RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 124 | /", "hex_opcode": "0x7C0000F8" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "orc",
+      "architecture": "PowerISA",
+      "full_name": "OR with Complement",
+      "summary": "Bitwise OR with complement. RA = RS | ~RB.",
+      "syntax": "orc RA, RS, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 412 | /", "hex_opcode": "0x7C000338" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Base"
+    }
+  ]
+}
