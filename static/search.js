@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. Fetch the Search Index
     let searchIndex = [];
     try {
-        const response = await fetch('/search.json'); // Adjust path if hosted in subfolder
+        // FIX: Use the global variable defined in base.html
+        // Fallback to 'search.json' if variable is missing (safety)
+        const path = typeof SEARCH_INDEX_PATH !== 'undefined' ? SEARCH_INDEX_PATH : 'search.json';
+        
+        const response = await fetch(path); 
         searchIndex = await response.json();
     } catch (error) {
         console.error("Could not load search index:", error);

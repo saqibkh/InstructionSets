@@ -1,484 +1,5 @@
 
 ==================================================
-FILE: ./search.js
-==================================================
-document.addEventListener('DOMContentLoaded', async () => {
-    const searchInput = document.getElementById('search-input');
-    const resultsContainer = document.getElementById('search-results');
-    
-    // 1. Fetch the Search Index
-    let searchIndex = [];
-    try {
-        const response = await fetch('/search.json'); // Adjust path if hosted in subfolder
-        searchIndex = await response.json();
-    } catch (error) {
-        console.error("Could not load search index:", error);
-    }
-
-    // 2. Search Logic
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        resultsContainer.innerHTML = '';
-        
-        if (query.length < 2) {
-            resultsContainer.style.display = 'none';
-            return;
-        }
-
-        const results = searchIndex.filter(item => 
-            item.label.toLowerCase().includes(query) || 
-            item.summary.toLowerCase().includes(query)
-        );
-
-        // 3. Render Results
-        if (results.length > 0) {
-            resultsContainer.style.display = 'block';
-            results.slice(0, 8).forEach(result => {
-                const div = document.createElement('div');
-                div.className = 'search-result-item';
-                div.innerHTML = `
-                    <a href="/${result.url}">
-                        <div class="result-title">${result.label}</div>
-                        <div class="result-summary">${result.summary}</div>
-                    </a>
-                `;
-                resultsContainer.appendChild(div);
-            });
-        } else {
-            resultsContainer.style.display = 'none';
-        }
-    });
-
-    // Close search if clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-wrapper')) {
-            resultsContainer.style.display = 'none';
-        }
-    });
-});
-
-
-==================================================
-FILE: ./style.css
-==================================================
-:root {
-    /* "Zinc" Palette - refined */
-    --bg-body: #09090b;
-    --bg-card: #18181b; 
-    --bg-hover: #27272a;
-    --border: #3f3f46;
-    --border-light: #52525b;
-    
-    --text-main: #f4f4f5;
-    --text-muted: #a1a1aa;
-    
-    /* Dynamic Accent */
-    --accent: #38bdf8;        /* Sky Blue */
-    --accent-dim: rgba(56, 189, 248, 0.1);
-    --accent-glow: rgba(56, 189, 248, 0.4);
-    
-    --code-bg: #121214;
-    --sidebar-width: 280px;
-    --nav-height: 64px;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    background-color: var(--bg-body);
-    /* Engineering Grid Pattern */
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    color: var(--text-main);
-    font-family: 'Inter', -apple-system, sans-serif;
-    line-height: 1.6;
-    display: flex; flex-direction: column; min-height: 100vh;
-}
-
-a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
-a:hover { color: var(--accent); }
-
-/* --- Glassmorphism Nav --- */
-nav {
-    height: var(--nav-height);
-    border-bottom: 1px solid var(--border);
-    background: rgba(9, 9, 11, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    position: sticky; top: 0; z-index: 50;
-}
-nav .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-
-.logo { font-weight: 800; font-size: 1.4rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -1px; }
-.logo span { color: var(--accent); }
-
-/* --- Hero Section --- */
-.hero {
-    padding: 100px 0;
-    text-align: center;
-    background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 60%);
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 40px;
-}
-.hero h1 { 
-    font-size: 3.5rem; 
-    font-weight: 800; 
-    letter-spacing: -0.03em; 
-    margin-bottom: 1rem;
-    background: linear-gradient(to bottom right, #fff, #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* --- Layouts --- */
-.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; width: 100%; }
-
-.doc-layout { display: flex; gap: 40px; margin-top: 40px; align-items: flex-start; }
-
-/* Sidebar */
-.sidebar {
-    width: var(--sidebar-width);
-    position: sticky; top: 100px; 
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
-    padding-right: 16px;
-    border-right: 1px solid var(--border);
-    flex-shrink: 0;
-}
-.sidebar::-webkit-scrollbar { width: 4px; }
-.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-
-.sidebar h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 24px 0 12px 0; font-weight: 600; }
-.sidebar a {
-    display: block; padding: 8px 12px; border-radius: 6px;
-    font-size: 0.9rem; color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
-    border-left: 2px solid transparent;
-}
-.sidebar a:hover { background: var(--bg-hover); color: var(--text-main); }
-.sidebar a.active { 
-    background: var(--accent-dim); 
-    color: var(--accent); 
-    border-left-color: var(--accent);
-}
-
-.content { flex: 1; min-width: 0; padding-bottom: 80px; }
-
-/* --- Interactive Cards --- */
-.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-.arch-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 32px;
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-.arch-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
-}
-.arch-card h2 { font-size: 1.5rem; margin-bottom: 8px; }
-
-/* --- Data Tables --- */
-.table-container { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); }
-.data-table { width: 100%; border-collapse: collapse; }
-.data-table th { background: var(--bg-hover); padding: 16px; text-align: left; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
-.data-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover { background: var(--bg-hover); }
-
-/* --- Instruction Detail Components --- */
-.syntax-box {
-    background: var(--code-bg);
-    padding: 24px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.1rem;
-    color: var(--accent);
-    margin: 24px 0;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 24px;
-}
-.panel h3 { font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.5px; }
-
-/* Code Blocks */
-.code-block {
-    background: #000;
-    padding: 16px;
-    border-radius: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    border: 1px solid var(--border);
-    color: #e4e4e7;
-    overflow-x: auto;
-}
-
-/* --- THE NEW BIT GRID --- */
-.bit-grid-container { margin-bottom: 20px; }
-.bit-grid-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
-.bit-row { display: flex; gap: 2px; width: 100%; overflow-x: auto; padding-bottom: 4px; }
-.bit-box {
-    background: var(--bg-hover);
-    border: 1px solid var(--border);
-    padding: 8px 12px;
-    flex: 1; /* Auto-width */
-    text-align: center;
-    min-width: max-content;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--text-main);
-    transition: background 0.2s;
-}
-.bit-box:hover {
-    background: var(--accent-dim);
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
-/* Metadata Grid */
-.meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.meta-item { display: flex; flex-direction: column; }
-.meta-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
-
-/* Badges & Mono */
-.badge { 
-    display: inline-block; padding: 4px 8px; border-radius: 6px; 
-    font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600;
-    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); color: var(--text-muted);
-}
-.mono { font-family: 'JetBrains Mono', monospace; }
-.accent { color: var(--accent); }
-
-/* --- Search (Updated) --- */
-.search-wrapper { position: relative; max-width: 400px; width: 100%; }
-#search-input {
-    width: 100%; padding: 10px 16px; border-radius: 8px;
-    background: rgba(0,0,0,0.2); border: 1px solid var(--border);
-    color: white; font-family: inherit; outline: none;
-    transition: all 0.2s;
-}
-#search-input:focus { border-color: var(--accent); background: var(--bg-card); box-shadow: 0 0 0 3px var(--accent-dim); }
-.search-dropdown {
-    position: absolute; top: 120%; left: 0; width: 100%;
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 100; display: none;
-}
-.search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
-.search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
-
-/* --- Advanced Hero Styles --- */
-.hero-wrapper {
-    position: relative;
-    height: 90vh; /* Full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-#hero-canvas {
-    position: absolute;
-    top: 0; left: 0;
-    z-index: 0;
-    opacity: 0.6;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    width: 100%;
-    max-width: 800px;
-}
-
-.hero-text h1 {
-    font-size: 5rem;
-    line-height: 1;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
-}
-
-/* --- Command Palette Search --- */
-.cmd-palette {
-    background: rgba(20, 20, 25, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    margin: 40px auto;
-    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.cmd-palette:focus-within {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 2px var(--accent), 0 30px 60px -10px rgba(56, 189, 248, 0.2);
-}
-
-.cmd-icon {
-    font-family: 'JetBrains Mono';
-    color: var(--accent);
-    padding: 0 15px;
-    font-size: 1.2rem;
-}
-
-.cmd-palette input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.2rem;
-    width: 100%;
-    outline: none;
-    font-family: 'Inter', sans-serif;
-}
-
-.cmd-hint {
-    font-family: 'JetBrains Mono';
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    padding: 4px 8px;
-    border-radius: 6px;
-    white-space: nowrap;
-}
-
-/* --- Glass Cards --- */
-.arch-grid-hero {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 60px;
-}
-
-.arch-card-glass {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 12px;
-    width: 200px;
-    text-align: left;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 140px;
-}
-
-.arch-card-glass:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--accent);
-    transform: translateY(-10px);
-}
-
-.card-icon {
-    font-family: 'JetBrains Mono';
-    font-size: 2rem;
-    color: var(--text-muted);
-    opacity: 0.2;
-}
-
-.card-info h2 { font-size: 1.2rem; margin: 0; color: #fff; }
-.card-info span { font-size: 0.8rem; color: var(--accent); }
-
-
-==================================================
-FILE: ./animation.js
-==================================================
-const canvas = document.getElementById('hero-canvas');
-const ctx = canvas.getContext('2d');
-
-let width, height;
-let particles = [];
-
-function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-}
-
-class Particle {
-    constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 2;
-    }
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-    }
-    draw() {
-        ctx.fillStyle = 'rgba(56, 189, 248, 0.5)'; // Your accent color
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-function init() {
-    particles = [];
-    for (let i = 0; i < 50; i++) particles.push(new Particle());
-}
-
-function animate() {
-    ctx.clearRect(0, 0, width, height);
-    
-    // Draw particles
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
-
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx*dx + dy*dy);
-            
-            if (distance < 150) {
-                ctx.strokeStyle = `rgba(56, 189, 248, ${0.1 - distance/1500})`;
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.stroke();
-            }
-        }
-    }
-    requestAnimationFrame(animate);
-}
-
-window.addEventListener('resize', resize);
-resize();
-init();
-animate();
-
-
-==================================================
 FILE: ./.gitignore
 ==================================================
 full_codebase.txt
@@ -548,11 +69,20 @@ def generate_site(master_db):
         json.dump(search_index, f)
 
     # 2. Copy Assets
-    for asset in ['style.css', 'search.js', 'animation.js']:
-        if os.path.exists(asset):
-            shutil.copy(asset, os.path.join(OUTPUT_DIR, asset))
-        else:
-            print(f"Warning: {asset} not found.")
+    # Define source and destination for static files
+    static_src = 'static'
+    static_dest = os.path.join(OUTPUT_DIR, 'static')
+
+    # Remove old static folder in docs if it exists (clean build)
+    if os.path.exists(static_dest):
+        shutil.rmtree(static_dest)
+
+    # Copy the entire folder
+    if os.path.exists(static_src):
+        shutil.copytree(static_src, static_dest)
+        print(f"Copied {static_src}/ to {static_dest}/")
+    else:
+        print("Warning: 'static' folder not found in root.")
 
     # 3. Generate Pages
     template_detail = env.get_template('instruction_detail.html')
@@ -1472,7 +1002,7 @@ FILE: ./docs/armv8.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1484,6 +1014,10 @@ FILE: ./docs/armv8.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -1491,7 +1025,11 @@ FILE: ./docs/armv8.html
         </div>
     </nav>
 
-    <script src="./search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "./search.json";
+    </script>
+    
+    <script src="./static/search.js"></script>
 
     
 <div class="container" style="padding-top: 40px;">
@@ -1594,6 +1132,8 @@ FILE: ./docs/armv8.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="./static/theme.js"></script>
 </body>
 </html>
 
@@ -1611,7 +1151,7 @@ FILE: ./docs/index.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1623,6 +1163,10 @@ FILE: ./docs/index.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -1630,7 +1174,11 @@ FILE: ./docs/index.html
         </div>
     </nav>
 
-    <script src="./search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "./search.json";
+    </script>
+    
+    <script src="./static/search.js"></script>
 
     
 <div class="hero-wrapper">
@@ -1682,7 +1230,7 @@ FILE: ./docs/index.html
     </div>
 </div>
 
-<script src="animation.js"></script>
+<script src="static/animation.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -1750,6 +1298,8 @@ FILE: ./docs/index.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="./static/theme.js"></script>
 </body>
 </html>
 
@@ -1762,7 +1312,7 @@ FILE: ./docs/x86-64.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1774,6 +1324,10 @@ FILE: ./docs/x86-64.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -1781,7 +1335,11 @@ FILE: ./docs/x86-64.html
         </div>
     </nav>
 
-    <script src="./search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "./search.json";
+    </script>
+    
+    <script src="./static/search.js"></script>
 
     
 <div class="container" style="padding-top: 40px;">
@@ -1884,6 +1442,8 @@ FILE: ./docs/x86-64.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="./static/theme.js"></script>
 </body>
 </html>
 
@@ -1896,7 +1456,7 @@ FILE: ./docs/risc-v.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISA Database</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -1908,6 +1468,10 @@ FILE: ./docs/risc-v.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -1915,7 +1479,11 @@ FILE: ./docs/risc-v.html
         </div>
     </nav>
 
-    <script src="./search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "./search.json";
+    </script>
+    
+    <script src="./static/search.js"></script>
 
     
 <div class="container" style="padding-top: 40px;">
@@ -2018,6 +1586,8 @@ FILE: ./docs/risc-v.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="./static/theme.js"></script>
 </body>
 </html>
 
@@ -2030,7 +1600,7 @@ FILE: ./docs/risc-v/auipc.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUIPC - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2042,6 +1612,10 @@ FILE: ./docs/risc-v/auipc.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -2049,7 +1623,11 @@ FILE: ./docs/risc-v/auipc.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2212,6 +1790,8 @@ FILE: ./docs/risc-v/auipc.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -2224,7 +1804,7 @@ FILE: ./docs/risc-v/sub.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2236,6 +1816,10 @@ FILE: ./docs/risc-v/sub.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -2243,7 +1827,11 @@ FILE: ./docs/risc-v/sub.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2424,6 +2012,8 @@ FILE: ./docs/risc-v/sub.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -2436,7 +2026,7 @@ FILE: ./docs/risc-v/add.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2448,6 +2038,10 @@ FILE: ./docs/risc-v/add.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -2455,7 +2049,11 @@ FILE: ./docs/risc-v/add.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2636,6 +2234,8 @@ FILE: ./docs/risc-v/add.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -2648,7 +2248,7 @@ FILE: ./docs/risc-v/jal.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAL - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2660,6 +2260,10 @@ FILE: ./docs/risc-v/jal.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -2667,7 +2271,11 @@ FILE: ./docs/risc-v/jal.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -2830,6 +2438,8 @@ FILE: ./docs/risc-v/jal.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -2842,7 +2452,7 @@ FILE: ./docs/risc-v/beq.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BEQ - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -2854,6 +2464,10 @@ FILE: ./docs/risc-v/beq.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -2861,7 +2475,11 @@ FILE: ./docs/risc-v/beq.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3042,6 +2660,8 @@ FILE: ./docs/risc-v/beq.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -3054,7 +2674,7 @@ FILE: ./docs/risc-v/lw.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LW - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3066,6 +2686,10 @@ FILE: ./docs/risc-v/lw.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -3073,7 +2697,11 @@ FILE: ./docs/risc-v/lw.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3250,6 +2878,8 @@ FILE: ./docs/risc-v/lw.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -3262,7 +2892,7 @@ FILE: ./docs/risc-v/sw.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SW - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3274,6 +2904,10 @@ FILE: ./docs/risc-v/sw.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -3281,7 +2915,11 @@ FILE: ./docs/risc-v/sw.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3462,6 +3100,8 @@ FILE: ./docs/risc-v/sw.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -3474,7 +3114,7 @@ FILE: ./docs/risc-v/ecall.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECALL - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3486,6 +3126,10 @@ FILE: ./docs/risc-v/ecall.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -3493,7 +3137,11 @@ FILE: ./docs/risc-v/ecall.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3652,6 +3300,8 @@ FILE: ./docs/risc-v/ecall.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -3664,7 +3314,7 @@ FILE: ./docs/risc-v/addi.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADDI - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3676,6 +3326,10 @@ FILE: ./docs/risc-v/addi.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -3683,7 +3337,11 @@ FILE: ./docs/risc-v/addi.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -3844,6 +3502,8 @@ FILE: ./docs/risc-v/addi.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -3856,7 +3516,7 @@ FILE: ./docs/risc-v/lui.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUI - RISC-V</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -3868,6 +3528,10 @@ FILE: ./docs/risc-v/lui.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -3875,7 +3539,11 @@ FILE: ./docs/risc-v/lui.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4038,6 +3706,8 @@ FILE: ./docs/risc-v/lui.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -4050,7 +3720,7 @@ FILE: ./docs/x86-64/lea.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEA - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4062,6 +3732,10 @@ FILE: ./docs/x86-64/lea.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -4069,7 +3743,11 @@ FILE: ./docs/x86-64/lea.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4228,6 +3906,8 @@ FILE: ./docs/x86-64/lea.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -4240,7 +3920,7 @@ FILE: ./docs/x86-64/sub.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4252,6 +3932,10 @@ FILE: ./docs/x86-64/sub.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -4259,7 +3943,11 @@ FILE: ./docs/x86-64/sub.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4418,6 +4106,8 @@ FILE: ./docs/x86-64/sub.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -4430,7 +4120,7 @@ FILE: ./docs/x86-64/pop.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POP - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4442,6 +4132,10 @@ FILE: ./docs/x86-64/pop.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -4449,7 +4143,11 @@ FILE: ./docs/x86-64/pop.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4602,6 +4300,8 @@ FILE: ./docs/x86-64/pop.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -4614,7 +4314,7 @@ FILE: ./docs/x86-64/add.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4626,6 +4326,10 @@ FILE: ./docs/x86-64/add.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -4633,7 +4337,11 @@ FILE: ./docs/x86-64/add.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4792,6 +4500,8 @@ FILE: ./docs/x86-64/add.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -4804,7 +4514,7 @@ FILE: ./docs/x86-64/push.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUSH - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -4816,6 +4526,10 @@ FILE: ./docs/x86-64/push.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -4823,7 +4537,11 @@ FILE: ./docs/x86-64/push.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -4976,6 +4694,8 @@ FILE: ./docs/x86-64/push.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -4988,7 +4708,7 @@ FILE: ./docs/x86-64/ret.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RET - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5000,6 +4720,10 @@ FILE: ./docs/x86-64/ret.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -5007,7 +4731,11 @@ FILE: ./docs/x86-64/ret.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5150,6 +4878,8 @@ FILE: ./docs/x86-64/ret.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -5162,7 +4892,7 @@ FILE: ./docs/x86-64/call.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALL - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5174,6 +4904,10 @@ FILE: ./docs/x86-64/call.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -5181,7 +4915,11 @@ FILE: ./docs/x86-64/call.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5334,6 +5072,8 @@ FILE: ./docs/x86-64/call.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -5346,7 +5086,7 @@ FILE: ./docs/x86-64/mov.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOV - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5358,6 +5098,10 @@ FILE: ./docs/x86-64/mov.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -5365,7 +5109,11 @@ FILE: ./docs/x86-64/mov.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5524,6 +5272,8 @@ FILE: ./docs/x86-64/mov.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -5536,7 +5286,7 @@ FILE: ./docs/x86-64/jmp.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMP - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5548,6 +5298,10 @@ FILE: ./docs/x86-64/jmp.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -5555,7 +5309,11 @@ FILE: ./docs/x86-64/jmp.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5708,6 +5466,8 @@ FILE: ./docs/x86-64/jmp.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -5720,7 +5480,7 @@ FILE: ./docs/x86-64/je.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JE - x86-64</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5732,6 +5492,10 @@ FILE: ./docs/x86-64/je.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -5739,7 +5503,11 @@ FILE: ./docs/x86-64/je.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -5892,6 +5660,8 @@ FILE: ./docs/x86-64/je.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -5904,7 +5674,7 @@ FILE: ./docs/armv8/cmp_(immediate).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMP (immediate) - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -5916,6 +5686,10 @@ FILE: ./docs/armv8/cmp_(immediate).html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -5923,7 +5697,11 @@ FILE: ./docs/armv8/cmp_(immediate).html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6102,6 +5880,8 @@ FILE: ./docs/armv8/cmp_(immediate).html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -6114,7 +5894,7 @@ FILE: ./docs/armv8/b.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6126,6 +5906,10 @@ FILE: ./docs/armv8/b.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -6133,7 +5917,11 @@ FILE: ./docs/armv8/b.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6286,6 +6074,8 @@ FILE: ./docs/armv8/b.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -6298,7 +6088,7 @@ FILE: ./docs/armv8/add_(shifted).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD (shifted) - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6310,6 +6100,10 @@ FILE: ./docs/armv8/add_(shifted).html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -6317,7 +6111,11 @@ FILE: ./docs/armv8/add_(shifted).html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6506,6 +6304,8 @@ FILE: ./docs/armv8/add_(shifted).html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -6518,7 +6318,7 @@ FILE: ./docs/armv8/ldr_(register).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDR (register) - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6530,6 +6330,10 @@ FILE: ./docs/armv8/ldr_(register).html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -6537,7 +6341,11 @@ FILE: ./docs/armv8/ldr_(register).html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6730,6 +6538,8 @@ FILE: ./docs/armv8/ldr_(register).html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -6742,7 +6552,7 @@ FILE: ./docs/armv8/str_(immediate).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STR (immediate) - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6754,6 +6564,10 @@ FILE: ./docs/armv8/str_(immediate).html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -6761,7 +6575,11 @@ FILE: ./docs/armv8/str_(immediate).html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -6942,6 +6760,8 @@ FILE: ./docs/armv8/str_(immediate).html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -6954,7 +6774,7 @@ FILE: ./docs/armv8/adr.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADR - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -6966,6 +6786,10 @@ FILE: ./docs/armv8/adr.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -6973,7 +6797,11 @@ FILE: ./docs/armv8/adr.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7144,6 +6972,8 @@ FILE: ./docs/armv8/adr.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -7156,7 +6986,7 @@ FILE: ./docs/armv8/mov_(register).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOV (register) - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -7168,6 +6998,10 @@ FILE: ./docs/armv8/mov_(register).html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -7175,7 +7009,11 @@ FILE: ./docs/armv8/mov_(register).html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7358,6 +7196,8 @@ FILE: ./docs/armv8/mov_(register).html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -7370,7 +7210,7 @@ FILE: ./docs/armv8/sub_(extended).html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUB (extended) - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -7382,6 +7222,10 @@ FILE: ./docs/armv8/sub_(extended).html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -7389,7 +7233,11 @@ FILE: ./docs/armv8/sub_(extended).html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7578,6 +7426,8 @@ FILE: ./docs/armv8/sub_(extended).html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -7590,7 +7440,7 @@ FILE: ./docs/armv8/bl.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BL - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -7602,6 +7452,10 @@ FILE: ./docs/armv8/bl.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -7609,7 +7463,11 @@ FILE: ./docs/armv8/bl.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7762,6 +7620,8 @@ FILE: ./docs/armv8/bl.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
 
@@ -7774,7 +7634,7 @@ FILE: ./docs/armv8/cbz.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CBZ - ARMv8</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -7786,6 +7646,10 @@ FILE: ./docs/armv8/cbz.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -7793,7 +7657,11 @@ FILE: ./docs/armv8/cbz.html
         </div>
     </nav>
 
-    <script src="../search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
 
     
 <div class="container doc-layout">
@@ -7960,8 +7828,617 @@ FILE: ./docs/armv8/cbz.html
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="../static/theme.js"></script>
 </body>
 </html>
+
+==================================================
+FILE: ./docs/static/search.js
+==================================================
+document.addEventListener('DOMContentLoaded', async () => {
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+    
+    // 1. Fetch the Search Index
+    let searchIndex = [];
+    try {
+        const response = await fetch('/search.json'); // Adjust path if hosted in subfolder
+        searchIndex = await response.json();
+    } catch (error) {
+        console.error("Could not load search index:", error);
+    }
+
+    // 2. Search Logic
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        resultsContainer.innerHTML = '';
+        
+        if (query.length < 2) {
+            resultsContainer.style.display = 'none';
+            return;
+        }
+
+        const results = searchIndex.filter(item => 
+            item.label.toLowerCase().includes(query) || 
+            item.summary.toLowerCase().includes(query)
+        );
+
+        // 3. Render Results
+        if (results.length > 0) {
+            resultsContainer.style.display = 'block';
+            results.slice(0, 8).forEach(result => {
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.innerHTML = `
+                    <a href="/${result.url}">
+                        <div class="result-title">${result.label}</div>
+                        <div class="result-summary">${result.summary}</div>
+                    </a>
+                `;
+                resultsContainer.appendChild(div);
+            });
+        } else {
+            resultsContainer.style.display = 'none';
+        }
+    });
+
+    // Close search if clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-wrapper')) {
+            resultsContainer.style.display = 'none';
+        }
+    });
+});
+
+
+==================================================
+FILE: ./docs/static/style.css
+==================================================
+:root {
+    /* DEFAULT DARK THEME (Zinc) */
+    --bg-body: #09090b;
+    --bg-card: #18181b; 
+    --bg-hover: #27272a;
+    --border: #3f3f46;
+    --border-light: #52525b;
+    
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    
+    /* Dynamic Accent */
+    --accent: #38bdf8;        /* Sky Blue */
+    --accent-dim: rgba(56, 189, 248, 0.1);
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    
+    --code-bg: #121214;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    
+    /* NEW: Gradient Variable so it can swap in light mode */
+    --hero-gradient: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    
+    --sidebar-width: 280px;
+    --nav-height: 64px;
+}
+
+/* LIGHT THEME OVERRIDES (Higher Contrast) */
+[data-theme="light"] {
+    --bg-body: #f8fafc;       /* Light Slate */
+    --bg-card: #ffffff;       /* Pure White */
+    --bg-hover: #f1f5f9;      /* Very Light Grey */
+    --border: #e2e8f0;        /* Light Border */
+    --border-light: #cbd5e1;
+    
+    --text-main: #0f172a;     /* Dark Navy (High Contrast) */
+    --text-muted: #475569;    /* Darker Grey (Readable) */
+    
+    --accent: #0284c7;        /* Deep Blue */
+    --accent-dim: rgba(14, 165, 233, 0.15);
+    --accent-glow: rgba(14, 165, 233, 0.4);
+    
+    --code-bg: #f1f5f9;
+    --glass-bg: rgba(255, 255, 255, 0.6); /* Frosted glass for light mode */
+    --glass-border: rgba(0, 0, 0, 0.05);
+    
+    /* Dark gradient for light background */
+    --hero-gradient: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-body);
+    /* Engineering Grid Pattern */
+    background-image: 
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    /* Make grid extremely subtle */
+    background-blend-mode: overlay;
+    opacity: 1; 
+    
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    display: flex; flex-direction: column; min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+a:hover { color: var(--accent); }
+
+/* --- Glassmorphism Nav --- */
+nav {
+    height: var(--nav-height);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card); /* Changed from hardcoded rgba */
+    opacity: 0.95;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 50;
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+
+.logo { font-weight: 800; font-size: 1.4rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -1px; color: var(--text-main); }
+.logo span { color: var(--accent); }
+
+/* --- Hero Section --- */
+.hero {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 60%);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+}
+.hero h1 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    letter-spacing: -0.03em; 
+    margin-bottom: 1rem;
+    background: var(--hero-gradient); /* Use variable */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Layouts --- */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+.doc-layout { display: flex; gap: 40px; margin-top: 40px; align-items: flex-start; }
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    position: sticky; top: 100px; 
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 16px;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.sidebar h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 24px 0 12px 0; font-weight: 600; }
+.sidebar a {
+    display: block; padding: 8px 12px; border-radius: 6px;
+    font-size: 0.9rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    border-left: 2px solid transparent;
+}
+.sidebar a:hover { background: var(--bg-hover); color: var(--text-main); }
+.sidebar a.active { 
+    background: var(--accent-dim); 
+    color: var(--accent); 
+    border-left-color: var(--accent);
+}
+
+.content { flex: 1; min-width: 0; padding-bottom: 80px; }
+
+/* --- Interactive Cards --- */
+.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.arch-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.arch-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
+}
+.arch-card h2 { font-size: 1.5rem; margin-bottom: 8px; color: var(--text-main); }
+
+/* --- Data Tables --- */
+.table-container { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { background: var(--bg-hover); padding: 16px; text-align: left; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
+.data-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text-main); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover { background: var(--bg-hover); }
+
+/* --- Instruction Detail Components --- */
+.syntax-box {
+    background: var(--code-bg);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin: 24px 0;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.panel h3 { font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+
+/* Code Blocks */
+.code-block {
+    background: var(--code-bg); /* Changed from #000 */
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    color: var(--text-main); /* Changed from #e4e4e7 */
+    overflow-x: auto;
+}
+
+/* --- THE NEW BIT GRID --- */
+.bit-grid-container { margin-bottom: 20px; }
+.bit-grid-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
+.bit-row { display: flex; gap: 2px; width: 100%; overflow-x: auto; padding-bottom: 4px; }
+.bit-box {
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    flex: 1; /* Auto-width */
+    text-align: center;
+    min-width: max-content;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    transition: background 0.2s;
+}
+.bit-box:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Metadata Grid */
+.meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.meta-item { display: flex; flex-direction: column; }
+.meta-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+
+/* Badges & Mono */
+.badge { 
+    display: inline-block; padding: 4px 8px; border-radius: 6px; 
+    font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    background: var(--bg-hover); /* Changed from hardcoded rgba */
+    border: 1px solid var(--border); color: var(--text-muted);
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+.accent { color: var(--accent); }
+
+/* --- Search (Updated) --- */
+.search-wrapper { position: relative; max-width: 400px; width: 100%; }
+#search-input {
+    width: 100%; padding: 10px 16px; border-radius: 8px;
+    background: var(--bg-hover); /* Changed from rgba */
+    border: 1px solid var(--border);
+    color: var(--text-main); /* Changed from white */
+    font-family: inherit; outline: none;
+    transition: all 0.2s;
+}
+#search-input:focus { border-color: var(--accent); background: var(--bg-card); box-shadow: 0 0 0 3px var(--accent-dim); }
+.search-dropdown {
+    position: absolute; top: 120%; left: 0; width: 100%;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 100; display: none;
+}
+.search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
+
+/* --- Advanced Hero Styles --- */
+.hero-wrapper {
+    position: relative;
+    height: 90vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, var(--accent-dim) 0%, transparent 70%);
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.hero-text h1 {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    position: relative;
+    background: var(--hero-gradient); /* Use variable */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
+}
+
+/* --- Command Palette Search --- */
+.cmd-palette {
+    background: var(--bg-card); /* Changed from hardcoded rgba */
+    border: 1px solid var(--border); /* Changed from rgba */
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+.cmd-palette:focus-within {
+    transform: scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-dim);
+}
+
+.cmd-icon {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    padding-right: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cmd-palette input {
+    background: transparent;
+    border: none;
+    color: var(--text-main); /* Changed from #fff */
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.cmd-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+/* --- Glass Cards --- */
+.arch-grid-hero {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.arch-card-glass {
+    width: 220px;
+    height: 160px;
+    background: var(--glass-bg);          /* Changed */
+    border: 1px solid var(--glass-border); /* Changed */
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.arch-card-glass::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, var(--bg-hover) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.arch-card-glass:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px -10px var(--accent-dim);
+}
+
+.arch-card-glass:hover::before { opacity: 0.1; }
+
+.card-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.5rem;
+    color: var(--text-muted); /* Changed */
+    transition: color 0.3s;
+}
+
+.arch-card-glass:hover .card-icon { color: var(--accent); }
+
+.card-info h2 { font-size: 1.2rem; margin: 0; color: var(--text-main); /* Changed */ }
+.card-info span { font-size: 0.8rem; color: var(--text-muted); /* Changed */ }
+
+.card-arrow {
+    position: absolute;
+    top: 20px; right: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s;
+    color: var(--accent);
+}
+
+.arch-card-glass:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    margin-left: 15px;
+}
+.theme-toggle:hover {
+    background: var(--bg-hover);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+
+==================================================
+FILE: ./docs/static/theme.js
+==================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const icon = toggleBtn.querySelector('span');
+
+    // 1. Check Local Storage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        icon.textContent = '🌙'; // Moon icon for switching BACK to dark
+    } else {
+        icon.textContent = '☀️'; // Sun icon for switching TO light
+    }
+
+    // 2. Toggle Logic
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        
+        if (currentTheme === 'light') {
+            // Switch to Dark
+            root.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            icon.textContent = '☀️';
+        } else {
+            // Switch to Light
+            root.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            icon.textContent = '🌙';
+        }
+    });
+});
+
+
+==================================================
+FILE: ./docs/static/animation.js
+==================================================
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let particles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.5)'; // Your accent color
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    particles = [];
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Draw particles
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx*dx + dy*dy);
+            
+            if (distance < 150) {
+                ctx.strokeStyle = `rgba(56, 189, 248, ${0.1 - distance/1500})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resize);
+resize();
+init();
+animate();
+
 
 ==================================================
 FILE: ./templates/instruction_detail.html
@@ -8148,7 +8625,7 @@ FILE: ./templates/index.html
     </div>
 </div>
 
-<script src="animation.js"></script>
+<script src="static/animation.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -8223,7 +8700,7 @@ FILE: ./templates/base.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ISA Database{% endblock %}</title>
-    <link rel="stylesheet" href="{{ root }}/style.css">
+    <link rel="stylesheet" href="{{ root }}/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -8235,6 +8712,10 @@ FILE: ./templates/base.html
                 <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
                 <div id="search-results" class="search-dropdown"></div>
             </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
 
             <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
                 The Open Architecture Reference
@@ -8242,15 +8723,628 @@ FILE: ./templates/base.html
         </div>
     </nav>
 
-    <script src="{{ root }}/search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "{{ root }}/search.json";
+    </script>
+    
+    <script src="{{ root }}/static/search.js"></script>
 
     {% block content %}{% endblock %}
 
     <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
         <p>Generated automatically from JSON definitions.</p>
     </footer>
+
+    <script src="{{ root }}/static/theme.js"></script>
 </body>
 </html>
+
+
+==================================================
+FILE: ./static/search.js
+==================================================
+document.addEventListener('DOMContentLoaded', async () => {
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+    
+    // 1. Fetch the Search Index
+    let searchIndex = [];
+    try {
+        const response = await fetch('/search.json'); // Adjust path if hosted in subfolder
+        searchIndex = await response.json();
+    } catch (error) {
+        console.error("Could not load search index:", error);
+    }
+
+    // 2. Search Logic
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        resultsContainer.innerHTML = '';
+        
+        if (query.length < 2) {
+            resultsContainer.style.display = 'none';
+            return;
+        }
+
+        const results = searchIndex.filter(item => 
+            item.label.toLowerCase().includes(query) || 
+            item.summary.toLowerCase().includes(query)
+        );
+
+        // 3. Render Results
+        if (results.length > 0) {
+            resultsContainer.style.display = 'block';
+            results.slice(0, 8).forEach(result => {
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.innerHTML = `
+                    <a href="/${result.url}">
+                        <div class="result-title">${result.label}</div>
+                        <div class="result-summary">${result.summary}</div>
+                    </a>
+                `;
+                resultsContainer.appendChild(div);
+            });
+        } else {
+            resultsContainer.style.display = 'none';
+        }
+    });
+
+    // Close search if clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-wrapper')) {
+            resultsContainer.style.display = 'none';
+        }
+    });
+});
+
+
+==================================================
+FILE: ./static/style.css
+==================================================
+:root {
+    /* DEFAULT DARK THEME (Zinc) */
+    --bg-body: #09090b;
+    --bg-card: #18181b; 
+    --bg-hover: #27272a;
+    --border: #3f3f46;
+    --border-light: #52525b;
+    
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    
+    /* Dynamic Accent */
+    --accent: #38bdf8;        /* Sky Blue */
+    --accent-dim: rgba(56, 189, 248, 0.1);
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    
+    --code-bg: #121214;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    
+    /* NEW: Gradient Variable so it can swap in light mode */
+    --hero-gradient: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    
+    --sidebar-width: 280px;
+    --nav-height: 64px;
+}
+
+/* LIGHT THEME OVERRIDES (Higher Contrast) */
+[data-theme="light"] {
+    --bg-body: #f8fafc;       /* Light Slate */
+    --bg-card: #ffffff;       /* Pure White */
+    --bg-hover: #f1f5f9;      /* Very Light Grey */
+    --border: #e2e8f0;        /* Light Border */
+    --border-light: #cbd5e1;
+    
+    --text-main: #0f172a;     /* Dark Navy (High Contrast) */
+    --text-muted: #475569;    /* Darker Grey (Readable) */
+    
+    --accent: #0284c7;        /* Deep Blue */
+    --accent-dim: rgba(14, 165, 233, 0.15);
+    --accent-glow: rgba(14, 165, 233, 0.4);
+    
+    --code-bg: #f1f5f9;
+    --glass-bg: rgba(255, 255, 255, 0.6); /* Frosted glass for light mode */
+    --glass-border: rgba(0, 0, 0, 0.05);
+    
+    /* Dark gradient for light background */
+    --hero-gradient: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-body);
+    /* Engineering Grid Pattern */
+    background-image: 
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    /* Make grid extremely subtle */
+    background-blend-mode: overlay;
+    opacity: 1; 
+    
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    display: flex; flex-direction: column; min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+a:hover { color: var(--accent); }
+
+/* --- Glassmorphism Nav --- */
+nav {
+    height: var(--nav-height);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card); /* Changed from hardcoded rgba */
+    opacity: 0.95;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 50;
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+
+.logo { font-weight: 800; font-size: 1.4rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -1px; color: var(--text-main); }
+.logo span { color: var(--accent); }
+
+/* --- Hero Section --- */
+.hero {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 60%);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+}
+.hero h1 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    letter-spacing: -0.03em; 
+    margin-bottom: 1rem;
+    background: var(--hero-gradient); /* Use variable */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Layouts --- */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+.doc-layout { display: flex; gap: 40px; margin-top: 40px; align-items: flex-start; }
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    position: sticky; top: 100px; 
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 16px;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.sidebar h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 24px 0 12px 0; font-weight: 600; }
+.sidebar a {
+    display: block; padding: 8px 12px; border-radius: 6px;
+    font-size: 0.9rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    border-left: 2px solid transparent;
+}
+.sidebar a:hover { background: var(--bg-hover); color: var(--text-main); }
+.sidebar a.active { 
+    background: var(--accent-dim); 
+    color: var(--accent); 
+    border-left-color: var(--accent);
+}
+
+.content { flex: 1; min-width: 0; padding-bottom: 80px; }
+
+/* --- Interactive Cards --- */
+.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.arch-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.arch-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
+}
+.arch-card h2 { font-size: 1.5rem; margin-bottom: 8px; color: var(--text-main); }
+
+/* --- Data Tables --- */
+.table-container { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { background: var(--bg-hover); padding: 16px; text-align: left; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
+.data-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text-main); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover { background: var(--bg-hover); }
+
+/* --- Instruction Detail Components --- */
+.syntax-box {
+    background: var(--code-bg);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin: 24px 0;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.panel h3 { font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+
+/* Code Blocks */
+.code-block {
+    background: var(--code-bg); /* Changed from #000 */
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    color: var(--text-main); /* Changed from #e4e4e7 */
+    overflow-x: auto;
+}
+
+/* --- THE NEW BIT GRID --- */
+.bit-grid-container { margin-bottom: 20px; }
+.bit-grid-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
+.bit-row { display: flex; gap: 2px; width: 100%; overflow-x: auto; padding-bottom: 4px; }
+.bit-box {
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    flex: 1; /* Auto-width */
+    text-align: center;
+    min-width: max-content;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    transition: background 0.2s;
+}
+.bit-box:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Metadata Grid */
+.meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.meta-item { display: flex; flex-direction: column; }
+.meta-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+
+/* Badges & Mono */
+.badge { 
+    display: inline-block; padding: 4px 8px; border-radius: 6px; 
+    font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    background: var(--bg-hover); /* Changed from hardcoded rgba */
+    border: 1px solid var(--border); color: var(--text-muted);
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+.accent { color: var(--accent); }
+
+/* --- Search (Updated) --- */
+.search-wrapper { position: relative; max-width: 400px; width: 100%; }
+#search-input {
+    width: 100%; padding: 10px 16px; border-radius: 8px;
+    background: var(--bg-hover); /* Changed from rgba */
+    border: 1px solid var(--border);
+    color: var(--text-main); /* Changed from white */
+    font-family: inherit; outline: none;
+    transition: all 0.2s;
+}
+#search-input:focus { border-color: var(--accent); background: var(--bg-card); box-shadow: 0 0 0 3px var(--accent-dim); }
+.search-dropdown {
+    position: absolute; top: 120%; left: 0; width: 100%;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 100; display: none;
+}
+.search-result-item a { display: block; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.search-result-item a:hover { background: var(--bg-hover); padding-left: 20px; } /* Small animation on hover */
+
+/* --- Advanced Hero Styles --- */
+.hero-wrapper {
+    position: relative;
+    height: 90vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, var(--accent-dim) 0%, transparent 70%);
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.hero-text h1 {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    position: relative;
+    background: var(--hero-gradient); /* Use variable */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
+}
+
+/* --- Command Palette Search --- */
+.cmd-palette {
+    background: var(--bg-card); /* Changed from hardcoded rgba */
+    border: 1px solid var(--border); /* Changed from rgba */
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+.cmd-palette:focus-within {
+    transform: scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-dim);
+}
+
+.cmd-icon {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    padding-right: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cmd-palette input {
+    background: transparent;
+    border: none;
+    color: var(--text-main); /* Changed from #fff */
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.cmd-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+/* --- Glass Cards --- */
+.arch-grid-hero {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.arch-card-glass {
+    width: 220px;
+    height: 160px;
+    background: var(--glass-bg);          /* Changed */
+    border: 1px solid var(--glass-border); /* Changed */
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.arch-card-glass::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, var(--bg-hover) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.arch-card-glass:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px -10px var(--accent-dim);
+}
+
+.arch-card-glass:hover::before { opacity: 0.1; }
+
+.card-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.5rem;
+    color: var(--text-muted); /* Changed */
+    transition: color 0.3s;
+}
+
+.arch-card-glass:hover .card-icon { color: var(--accent); }
+
+.card-info h2 { font-size: 1.2rem; margin: 0; color: var(--text-main); /* Changed */ }
+.card-info span { font-size: 0.8rem; color: var(--text-muted); /* Changed */ }
+
+.card-arrow {
+    position: absolute;
+    top: 20px; right: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s;
+    color: var(--accent);
+}
+
+.arch-card-glass:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    margin-left: 15px;
+}
+.theme-toggle:hover {
+    background: var(--bg-hover);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+
+==================================================
+FILE: ./static/theme.js
+==================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const icon = toggleBtn.querySelector('span');
+
+    // 1. Check Local Storage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        icon.textContent = '🌙'; // Moon icon for switching BACK to dark
+    } else {
+        icon.textContent = '☀️'; // Sun icon for switching TO light
+    }
+
+    // 2. Toggle Logic
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        
+        if (currentTheme === 'light') {
+            // Switch to Dark
+            root.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            icon.textContent = '☀️';
+        } else {
+            // Switch to Light
+            root.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            icon.textContent = '🌙';
+        }
+    });
+});
+
+
+==================================================
+FILE: ./static/animation.js
+==================================================
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let particles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.5)'; // Your accent color
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    particles = [];
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Draw particles
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx*dx + dy*dy);
+            
+            if (distance < 150) {
+                ctx.strokeStyle = `rgba(56, 189, 248, ${0.1 - distance/1500})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resize);
+resize();
+init();
+animate();
 
 
 ==================================================
