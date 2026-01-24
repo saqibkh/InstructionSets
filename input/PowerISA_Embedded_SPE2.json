@@ -1,0 +1,1254 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "evaddw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Word",
+      "summary": "Adds two 64-bit vectors of two 32-bit words.",
+      "syntax": "evaddw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 512", "hex_opcode": "0x10000200" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsubw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Word",
+      "summary": "Subtracts two 64-bit vectors of two 32-bit words.",
+      "syntax": "evsubw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 514", "hex_opcode": "0x10000202" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evabs",
+      "architecture": "PowerISA",
+      "full_name": "Vector Absolute Value",
+      "summary": "Computes absolute value of words in a 64-bit vector.",
+      "syntax": "evabs RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 520", "hex_opcode": "0x10000208" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evneg",
+      "architecture": "PowerISA",
+      "full_name": "Vector Negate",
+      "summary": "Negates words in a 64-bit vector.",
+      "syntax": "evneg RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 521", "hex_opcode": "0x10000209" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evextsb",
+      "architecture": "PowerISA",
+      "full_name": "Vector Extend Sign Byte",
+      "summary": "Sign extends the low byte of each word to 32 bits.",
+      "syntax": "evextsb RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 522", "hex_opcode": "0x1000020A" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evextsh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Extend Sign Halfword",
+      "summary": "Sign extends the low halfword of each word to 32 bits.",
+      "syntax": "evextsh RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 523", "hex_opcode": "0x1000020B" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evrndw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Round Word",
+      "summary": "Rounds words in the vector.",
+      "syntax": "evrndw RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 524", "hex_opcode": "0x1000020C" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evcntlzw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Count Leading Zeros Word",
+      "summary": "Counts leading zeros in each word.",
+      "syntax": "evcntlzw RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 525", "hex_opcode": "0x1000020D" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evcntlsw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Count Leading Signs Word",
+      "summary": "Counts leading sign bits in each word.",
+      "syntax": "evcntlsw RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 526", "hex_opcode": "0x1000020E" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evand",
+      "architecture": "PowerISA",
+      "full_name": "Vector AND",
+      "summary": "Bitwise AND of two 64-bit vectors.",
+      "syntax": "evand RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 529", "hex_opcode": "0x10000211" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evor",
+      "architecture": "PowerISA",
+      "full_name": "Vector OR",
+      "summary": "Bitwise OR of two 64-bit vectors.",
+      "syntax": "evor RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 531", "hex_opcode": "0x10000213" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evxor",
+      "architecture": "PowerISA",
+      "full_name": "Vector XOR",
+      "summary": "Bitwise XOR of two 64-bit vectors.",
+      "syntax": "evxor RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 534", "hex_opcode": "0x10000216" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evnand",
+      "architecture": "PowerISA",
+      "full_name": "Vector NAND",
+      "summary": "Bitwise NAND of two 64-bit vectors.",
+      "syntax": "evnand RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 542", "hex_opcode": "0x1000021E" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evnor",
+      "architecture": "PowerISA",
+      "full_name": "Vector NOR",
+      "summary": "Bitwise NOR of two 64-bit vectors.",
+      "syntax": "evnor RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 536", "hex_opcode": "0x10000218" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "eveqv",
+      "architecture": "PowerISA",
+      "full_name": "Vector Equivalent",
+      "summary": "Bitwise Equivalence (XNOR).",
+      "syntax": "eveqv RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 537", "hex_opcode": "0x10000219" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evandc",
+      "architecture": "PowerISA",
+      "full_name": "Vector AND with Complement",
+      "summary": "RT = RA & ~RB.",
+      "syntax": "evandc RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 530", "hex_opcode": "0x10000212" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evorc",
+      "architecture": "PowerISA",
+      "full_name": "Vector OR with Complement",
+      "summary": "RT = RA | ~RB.",
+      "syntax": "evorc RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 533", "hex_opcode": "0x10000215" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evrlw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Rotate Left Word",
+      "summary": "Rotates words in RA left by amount in RB.",
+      "syntax": "evrlw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 552", "hex_opcode": "0x10000228" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evslw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Left Word",
+      "summary": "Shifts words in RA left by amount in RB.",
+      "syntax": "evslw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 544", "hex_opcode": "0x10000220" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsrws",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Word Signed",
+      "summary": "Arithmetic right shift of words.",
+      "syntax": "evsrws RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 545", "hex_opcode": "0x10000221" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsrwu",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Word Unsigned",
+      "summary": "Logical right shift of words.",
+      "syntax": "evsrwu RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 546", "hex_opcode": "0x10000222" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evrlwi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Rotate Left Word Immediate",
+      "summary": "Rotates words left by immediate value.",
+      "syntax": "evrlwi RT, RA, UIM",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | UIM | 554", "hex_opcode": "0x1000022A" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "UIM", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evslwi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Left Word Immediate",
+      "summary": "Shifts words left by immediate value.",
+      "syntax": "evslwi RT, RA, UIM",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | UIM | 548", "hex_opcode": "0x10000224" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "UIM", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsrwis",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Word Immediate Signed",
+      "summary": "Arithmetic right shift by immediate.",
+      "syntax": "evsrwis RT, RA, UIM",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | UIM | 549", "hex_opcode": "0x10000225" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "UIM", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsrwiu",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Right Word Immediate Unsigned",
+      "summary": "Logical right shift by immediate.",
+      "syntax": "evsrwiu RT, RA, UIM",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | UIM | 550", "hex_opcode": "0x10000226" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Data" }, { "name": "UIM", "desc": "Shift" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsplati",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Immediate",
+      "summary": "Splats a signed 5-bit immediate into both words.",
+      "syntax": "evsplati RT, SIM",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | SIM | 0 | 553", "hex_opcode": "0x10000229" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "SIM", "desc": "Imm" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsplatfi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Float Immediate",
+      "summary": "Splats a 5-bit immediate (scaled) into both words.",
+      "syntax": "evsplatfi RT, SIM",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | SIM | 0 | 555", "hex_opcode": "0x1000022B" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "SIM", "desc": "Imm" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evldd",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Doubleword into Doubleword",
+      "summary": "Loads 64 bits from memory into a vector GPR.",
+      "syntax": "evldd RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 769", "hex_opcode": "0x10000301" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evldw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Doubleword into Word",
+      "summary": "Loads two words from memory (aligned) into a vector.",
+      "syntax": "evldw RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 771", "hex_opcode": "0x10000303" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evldh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Doubleword into Halfword",
+      "summary": "Loads 4 halfwords from memory into a vector.",
+      "syntax": "evldh RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 773", "hex_opcode": "0x10000305" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evlhhesplat",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Halfword into Halfword Even and Splat",
+      "summary": "Loads a halfword and duplicates it into the even halfwords of the target.",
+      "syntax": "evlhhesplat RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 777", "hex_opcode": "0x10000309" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evlhhousplat",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Halfword into Halfword Odd Unsigned and Splat",
+      "summary": "Loads a halfword and duplicates it into the odd halfwords (zero extended).",
+      "syntax": "evlhhousplat RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 781", "hex_opcode": "0x1000030D" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evlhhossplat",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Halfword into Halfword Odd Signed and Splat",
+      "summary": "Loads a halfword and duplicates it into the odd halfwords (sign extended).",
+      "syntax": "evlhhossplat RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 783", "hex_opcode": "0x1000030F" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evlwhe",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Word into Halfword Even",
+      "summary": "Loads two words and places them in the even halfword positions.",
+      "syntax": "evlwhe RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 785", "hex_opcode": "0x10000311" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evlwhou",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Word into Halfword Odd Unsigned",
+      "summary": "Loads words into odd positions (zero extended).",
+      "syntax": "evlwhou RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 789", "hex_opcode": "0x10000315" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evlwhos",
+      "architecture": "PowerISA",
+      "full_name": "Vector Load Word into Halfword Odd Signed",
+      "summary": "Loads words into odd positions (sign extended).",
+      "syntax": "evlwhos RT, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | D | 791", "hex_opcode": "0x10000317" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evstdd",
+      "architecture": "PowerISA",
+      "full_name": "Vector Store Doubleword of Doubleword",
+      "summary": "Stores 64-bit vector to memory.",
+      "syntax": "evstdd RS, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RS | RA | D | 801", "hex_opcode": "0x10000321" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evstdw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Store Doubleword of Word",
+      "summary": "Stores two words from vector to memory.",
+      "syntax": "evstdw RS, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RS | RA | D | 803", "hex_opcode": "0x10000323" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evstdh",
+      "architecture": "PowerISA",
+      "full_name": "Vector Store Doubleword of Halfword",
+      "summary": "Stores 4 halfwords from vector to memory.",
+      "syntax": "evstdh RS, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RS | RA | D | 805", "hex_opcode": "0x10000325" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evstwhe",
+      "architecture": "PowerISA",
+      "full_name": "Vector Store Word of Halfword Even",
+      "summary": "Stores even halfwords to memory.",
+      "syntax": "evstwhe RS, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RS | RA | D | 809", "hex_opcode": "0x10000329" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evstwho",
+      "architecture": "PowerISA",
+      "full_name": "Vector Store Word of Halfword Odd",
+      "summary": "Stores odd halfwords to memory.",
+      "syntax": "evstwho RS, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RS | RA | D | 813", "hex_opcode": "0x1000032D" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evstwwe",
+      "architecture": "PowerISA",
+      "full_name": "Vector Store Word of Word Even",
+      "summary": "Stores the even word (upper 32-bits) to memory.",
+      "syntax": "evstwwe RS, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RS | RA | D | 817", "hex_opcode": "0x10000331" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evstwwo",
+      "architecture": "PowerISA",
+      "full_name": "Vector Store Word of Word Odd",
+      "summary": "Stores the odd word (lower 32-bits) to memory.",
+      "syntax": "evstwwo RS, D(RA)",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RS | RA | D | 821", "hex_opcode": "0x10000335" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhegsmfaa",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Even Guarded Signed Modulo Fractional Accumulate",
+      "summary": "Fractional multiply accumulate (DSP).",
+      "syntax": "evmhegsmfaa RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1323", "hex_opcode": "0x1000052B" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhegsmfan",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Even Guarded Signed Modulo Fractional Accumulate Negative",
+      "summary": "Fractional multiply negative accumulate.",
+      "syntax": "evmhegsmfan RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1451", "hex_opcode": "0x100005AB" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhegum",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Even Guarded Unsigned Modulo",
+      "summary": "Unsigned multiply.",
+      "syntax": "evmhegum RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1290", "hex_opcode": "0x1000050A" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhesmia",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Even Signed Modulo Integer Accumulate",
+      "summary": "Integer multiply accumulate.",
+      "syntax": "evmhesmia RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1333", "hex_opcode": "0x10000535" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhesmian",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Even Signed Modulo Integer Accumulate Negative",
+      "summary": "Integer multiply negative accumulate.",
+      "syntax": "evmhesmian RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1461", "hex_opcode": "0x100005B5" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmheumia",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Even Unsigned Modulo Integer Accumulate",
+      "summary": "Unsigned multiply accumulate.",
+      "syntax": "evmheumia RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1332", "hex_opcode": "0x10000534" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmheumian",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Even Unsigned Modulo Integer Accumulate Negative",
+      "summary": "Unsigned multiply negative accumulate.",
+      "syntax": "evmheumian RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1460", "hex_opcode": "0x100005B4" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhossf",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Odd Signed Saturate Fractional",
+      "summary": "Saturating fractional multiply.",
+      "syntax": "evmhossf RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1287", "hex_opcode": "0x10000507" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhossfa",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Odd Signed Saturate Fractional Accumulate",
+      "summary": "Saturating fractional multiply accumulate.",
+      "syntax": "evmhossfa RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1319", "hex_opcode": "0x10000527" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhosm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Odd Signed Modulo",
+      "summary": "Signed modulo multiply.",
+      "syntax": "evmhosm RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1295", "hex_opcode": "0x1000050F" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhosmi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Odd Signed Modulo Integer",
+      "summary": "Signed integer modulo multiply.",
+      "syntax": "evmhosmi RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1303", "hex_opcode": "0x10000517" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmhoumi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Halfword Odd Unsigned Modulo Integer",
+      "summary": "Unsigned integer modulo multiply.",
+      "syntax": "evmhoumi RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1302", "hex_opcode": "0x10000516" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwhsm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word High Signed Modulo",
+      "summary": "Multiplies high 16-bits of words.",
+      "syntax": "evmwhsm RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1311", "hex_opcode": "0x1000051F" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwhsmi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word High Signed Modulo Integer",
+      "summary": "Multiplies high 16-bits of words (integer).",
+      "syntax": "evmwhsmi RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1319", "hex_opcode": "0x10000527" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwhssf",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word High Signed Saturate Fractional",
+      "summary": "Fractional multiply of high words.",
+      "syntax": "evmwhssf RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1303", "hex_opcode": "0x10000517" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwhssfa",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word High Signed Saturate Fractional Accumulate",
+      "summary": "Fractional multiply accumulate of high words.",
+      "syntax": "evmwhssfa RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1335", "hex_opcode": "0x10000537" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwlumi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Low Unsigned Modulo Integer",
+      "summary": "Multiplies low 16-bits of words.",
+      "syntax": "evmwlumi RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1312", "hex_opcode": "0x10000520" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwlumia",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Low Unsigned Modulo Integer Accumulate",
+      "summary": "Multiply accumulate low words.",
+      "syntax": "evmwlumia RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1344", "hex_opcode": "0x10000540" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwlumiaa",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Low Unsigned Modulo Integer Accumulate Accumulate",
+      "summary": "Multiply and double accumulate low words.",
+      "syntax": "evmwlumiaa RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1346", "hex_opcode": "0x10000542" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwlusiaaw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Low Unsigned Signed Integer Accumulate Accumulate Word",
+      "summary": "Complex mixed-sign accumulation.",
+      "syntax": "evmwlusiaaw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1347", "hex_opcode": "0x10000543" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwsmia",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Signed Modulo Integer Accumulate",
+      "summary": "Signed integer multiply accumulate.",
+      "syntax": "evmwsmia RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1349", "hex_opcode": "0x10000545" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwsmiaa",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Signed Modulo Integer Accumulate Accumulate",
+      "summary": "Signed integer multiply double accumulate.",
+      "syntax": "evmwsmiaa RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1351", "hex_opcode": "0x10000547" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwsmiaaw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Signed Modulo Integer Accumulate Accumulate Word",
+      "summary": "Signed integer multiply accumulate word.",
+      "syntax": "evmwsmiaaw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1353", "hex_opcode": "0x10000549" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwssfaa",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Signed Saturate Fractional Accumulate Accumulate",
+      "summary": "Saturating fractional multiply double accumulate.",
+      "syntax": "evmwssfaa RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1355", "hex_opcode": "0x1000054B" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwssfaaw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Signed Saturate Fractional Accumulate Accumulate Word",
+      "summary": "Saturating fractional multiply accumulate word.",
+      "syntax": "evmwssfaaw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1357", "hex_opcode": "0x1000054D" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwumia",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Unsigned Modulo Integer Accumulate",
+      "summary": "Unsigned multiply accumulate.",
+      "syntax": "evmwumia RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1348", "hex_opcode": "0x10000544" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwumiaa",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Unsigned Modulo Integer Accumulate Accumulate",
+      "summary": "Unsigned multiply double accumulate.",
+      "syntax": "evmwumiaa RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1350", "hex_opcode": "0x10000546" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evmwumiaaw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Word Unsigned Modulo Integer Accumulate Accumulate Word",
+      "summary": "Unsigned multiply accumulate word.",
+      "syntax": "evmwumiaaw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1352", "hex_opcode": "0x10000548" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsubfsmiaaw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Signed Modulo Integer Accumulate Accumulate Word",
+      "summary": "Complex subtraction accumulate.",
+      "syntax": "evsubfsmiaaw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1225", "hex_opcode": "0x100004C9" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsubfssiaaw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Signed Saturate Integer Accumulate Accumulate Word",
+      "summary": "Complex subtraction saturate accumulate.",
+      "syntax": "evsubfssiaaw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 1227", "hex_opcode": "0x100004CB" },
+      "operands": [{ "name": "RT", "desc": "Acc" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsubfw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract From Word",
+      "summary": "Subtracts words (Alternate syntax for evsubw).",
+      "syntax": "evsubfw RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 514", "hex_opcode": "0x10000202" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "evsubifw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Immediate From Word",
+      "summary": "Subtracts immediate from word.",
+      "syntax": "evsubifw RT, UIM, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | UIM | RB | 515", "hex_opcode": "0x10000203" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "UIM", "desc": "Imm" }, { "name": "RB", "desc": "Src" }],
+      "extension": "Embedded (SPE)"
+    },
+    {
+      "mnemonic": "efsadd",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Single Add",
+      "summary": "Single precision add (SPE Float).",
+      "syntax": "efsadd RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 704", "hex_opcode": "0x100002C0" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efssub",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Single Subtract",
+      "summary": "Single precision subtract (SPE Float).",
+      "syntax": "efssub RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 705", "hex_opcode": "0x100002C1" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efsmul",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Single Multiply",
+      "summary": "Single precision multiply (SPE Float).",
+      "syntax": "efsmul RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 708", "hex_opcode": "0x100002C4" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efsdiv",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Single Divide",
+      "summary": "Single precision divide (SPE Float).",
+      "syntax": "efsdiv RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 709", "hex_opcode": "0x100002C5" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efdadd",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Double Add",
+      "summary": "Double precision add (SPE Float).",
+      "syntax": "efdadd RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 736", "hex_opcode": "0x100002E0" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efdsub",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Double Subtract",
+      "summary": "Double precision subtract (SPE Float).",
+      "syntax": "efdsub RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 737", "hex_opcode": "0x100002E1" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efdmul",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Double Multiply",
+      "summary": "Double precision multiply (SPE Float).",
+      "syntax": "efdmul RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 740", "hex_opcode": "0x100002E4" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efddiv",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Double Divide",
+      "summary": "Double precision divide (SPE Float).",
+      "syntax": "efddiv RT, RA, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | RB | 741", "hex_opcode": "0x100002E5" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efsabs",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Single Absolute Value",
+      "summary": "Single precision absolute value.",
+      "syntax": "efsabs RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 712", "hex_opcode": "0x100002C8" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efdabs",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Double Absolute Value",
+      "summary": "Double precision absolute value.",
+      "syntax": "efdabs RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 744", "hex_opcode": "0x100002E8" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efsneg",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Single Negate",
+      "summary": "Single precision negate.",
+      "syntax": "efsneg RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 713", "hex_opcode": "0x100002C9" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efdneg",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Double Negate",
+      "summary": "Double precision negate.",
+      "syntax": "efdneg RT, RA",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | RA | 0 | 745", "hex_opcode": "0x100002E9" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Source" }],
+      "extension": "Embedded (SPE Float)"
+    },
+    {
+      "mnemonic": "efscfsi",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Float Single Convert From Signed Integer",
+      "summary": "Converts vector of signed integers to floats.",
+      "syntax": "efscfsi RT, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | 0 | RB | 657", "hex_opcode": "0x10000291" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RB", "desc": "Source" }],
+      "extension": "Embedded (SPE Vector)"
+    },
+    {
+      "mnemonic": "efsctsi",
+      "architecture": "PowerISA",
+      "full_name": "Vector Float Single Convert To Signed Integer",
+      "summary": "Converts vector of floats to signed integers.",
+      "syntax": "evfsctsi RT, RB",
+      "encoding": { "format": "SPE-form", "binary_pattern": "4 | RT | 0 | RB | 661", "hex_opcode": "0x10000295" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RB", "desc": "Source" }],
+      "extension": "Embedded (SPE Vector)"
+    },
+    {
+      "mnemonic": "macchw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Cross Halfword",
+      "summary": "Multiply bottom half of RA by top half of RB, add to RT.",
+      "syntax": "macchw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 172 | 0", "hex_opcode": "0x100000AC" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "macchws",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Cross Halfword Signed",
+      "summary": "Signed Multiply Accumulate Cross Halfword with Saturation.",
+      "syntax": "macchws RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 236 | 0", "hex_opcode": "0x100000EC" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "macchwu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Cross Halfword Unsigned",
+      "summary": "Unsigned Multiply Accumulate Cross Halfword.",
+      "syntax": "macchwu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 12 | 0", "hex_opcode": "0x1000000C" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "macchwsu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Cross Halfword Signed Unsigned",
+      "summary": "Mixed Sign Multiply Accumulate Cross Halfword with Saturation.",
+      "syntax": "macchwsu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 204 | 0", "hex_opcode": "0x100000CC" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "machhw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate High Halfword",
+      "summary": "Multiply top half of RA by top half of RB, add to RT.",
+      "syntax": "machhw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 44 | 0", "hex_opcode": "0x1000002C" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "machhws",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate High Halfword Signed",
+      "summary": "Signed Multiply Accumulate High Halfword with Saturation.",
+      "syntax": "machhws RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 108 | 0", "hex_opcode": "0x1000006C" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "machhwu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate High Halfword Unsigned",
+      "summary": "Unsigned Multiply Accumulate High Halfword.",
+      "syntax": "machhwu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 12 | 0", "hex_opcode": "0x1000000C" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "machhwsu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate High Halfword Signed Unsigned",
+      "summary": "Mixed Sign Multiply Accumulate High Halfword with Saturation.",
+      "syntax": "machhwsu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 76 | 0", "hex_opcode": "0x1000004C" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "maclhw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Low Halfword",
+      "summary": "Multiply bottom half of RA by bottom half of RB, add to RT.",
+      "syntax": "maclhw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 428 | 0", "hex_opcode": "0x100001AC" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "maclhws",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Low Halfword Signed",
+      "summary": "Signed Multiply Accumulate Low Halfword with Saturation.",
+      "syntax": "maclhws RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 492 | 0", "hex_opcode": "0x100001EC" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "maclhwu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Low Halfword Unsigned",
+      "summary": "Unsigned Multiply Accumulate Low Halfword.",
+      "syntax": "maclhwu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 396 | 0", "hex_opcode": "0x1000018C" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "maclhwsu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Accumulate Low Halfword Signed Unsigned",
+      "summary": "Mixed Sign Multiply Accumulate Low Halfword with Saturation.",
+      "syntax": "maclhwsu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 460 | 0", "hex_opcode": "0x100001CC" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "mulchw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Cross Halfword",
+      "summary": "Multiply bottom half of RA by top half of RB.",
+      "syntax": "mulchw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 168 | 0", "hex_opcode": "0x100000A8" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "mulchwu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Cross Halfword Unsigned",
+      "summary": "Unsigned Multiply Cross Halfword.",
+      "syntax": "mulchwu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 136 | 0", "hex_opcode": "0x10000088" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "mulhhw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply High Halfword",
+      "summary": "Multiply top half of RA by top half of RB.",
+      "syntax": "mulhhw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 40 | 0", "hex_opcode": "0x10000028" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "mulhhwu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply High Halfword Unsigned",
+      "summary": "Unsigned Multiply High Halfword.",
+      "syntax": "mulhhwu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 8 | 0", "hex_opcode": "0x10000008" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "mullhw",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Low Halfword",
+      "summary": "Multiply bottom half of RA by bottom half of RB.",
+      "syntax": "mullhw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 424 | 0", "hex_opcode": "0x100001A8" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "mullhwu",
+      "architecture": "PowerISA",
+      "full_name": "Multiply Low Halfword Unsigned",
+      "summary": "Unsigned Multiply Low Halfword.",
+      "syntax": "mullhwu RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 392 | 0", "hex_opcode": "0x10000188" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "nmacchw",
+      "architecture": "PowerISA",
+      "full_name": "Negative Multiply Accumulate Cross Halfword",
+      "summary": "Negate product of cross halfwords and add to accumulator.",
+      "syntax": "nmacchw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 174 | 0", "hex_opcode": "0x100000AE" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "nmacchws",
+      "architecture": "PowerISA",
+      "full_name": "Negative Multiply Accumulate Cross Halfword Signed",
+      "summary": "Negate product of cross halfwords and add to accumulator (Signed Saturation).",
+      "syntax": "nmacchws RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 238 | 0", "hex_opcode": "0x100000EE" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "nmachhw",
+      "architecture": "PowerISA",
+      "full_name": "Negative Multiply Accumulate High Halfword",
+      "summary": "Negate product of high halfwords and add to accumulator.",
+      "syntax": "nmachhw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 46 | 0", "hex_opcode": "0x1000002E" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "nmachhws",
+      "architecture": "PowerISA",
+      "full_name": "Negative Multiply Accumulate High Halfword Signed",
+      "summary": "Negate product of high halfwords and add to accumulator (Signed Saturation).",
+      "syntax": "nmachhws RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 110 | 0", "hex_opcode": "0x1000006E" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "nmaclhw",
+      "architecture": "PowerISA",
+      "full_name": "Negative Multiply Accumulate Low Halfword",
+      "summary": "Negate product of low halfwords and add to accumulator.",
+      "syntax": "nmaclhw RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 430 | 0", "hex_opcode": "0x100001AE" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "nmaclhws",
+      "architecture": "PowerISA",
+      "full_name": "Negative Multiply Accumulate Low Halfword Signed",
+      "summary": "Negate product of low halfwords and add to accumulator (Signed Saturation).",
+      "syntax": "nmaclhws RT, RA, RB",
+      "encoding": { "format": "XO-form", "binary_pattern": "4 | RT | RA | RB | 494 | 0", "hex_opcode": "0x100001EE" },
+      "operands": [{ "name": "RT", "desc": "Acc/Dest" }, { "name": "RA", "desc": "Src A" }, { "name": "RB", "desc": "Src B" }],
+      "extension": "Embedded (Legacy 4xx)"
+    },
+    {
+      "mnemonic": "dccci",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Congruence Class Invalidate",
+      "summary": "Invalidates a congruence class in the data cache (Embedded).",
+      "syntax": "dccci RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 454 | /", "hex_opcode": "0x7C00038E" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (Cache)"
+    },
+    {
+      "mnemonic": "dcread",
+      "architecture": "PowerISA",
+      "full_name": "Data Cache Read",
+      "summary": "Reads a data cache tag or data (Debug).",
+      "syntax": "dcread RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 486 | /", "hex_opcode": "0x7C0003CE" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (Cache)"
+    },
+    {
+      "mnemonic": "iccci",
+      "architecture": "PowerISA",
+      "full_name": "Instruction Cache Congruence Class Invalidate",
+      "summary": "Invalidates a congruence class in the instruction cache (Embedded).",
+      "syntax": "iccci RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 966 | /", "hex_opcode": "0x7C00078E" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (Cache)"
+    },
+    {
+      "mnemonic": "icread",
+      "architecture": "PowerISA",
+      "full_name": "Instruction Cache Read",
+      "summary": "Reads an instruction cache tag or data (Debug).",
+      "syntax": "icread RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 998 | /", "hex_opcode": "0x7C0007CE" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (Cache)"
+    },
+    {
+      "mnemonic": "tlbre",
+      "architecture": "PowerISA",
+      "full_name": "TLB Read Entry",
+      "summary": "Reads a TLB entry into MAS registers.",
+      "syntax": "tlbre",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | / | 946 | /", "hex_opcode": "0x7C000762" },
+      "operands": [],
+      "extension": "Embedded (TLB)"
+    },
+    {
+      "mnemonic": "tlbwe",
+      "architecture": "PowerISA",
+      "full_name": "TLB Write Entry",
+      "summary": "Writes a TLB entry from MAS registers.",
+      "syntax": "tlbwe",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | / | 978 | /", "hex_opcode": "0x7C0007A2" },
+      "operands": [],
+      "extension": "Embedded (TLB)"
+    },
+    {
+      "mnemonic": "tlbsx",
+      "architecture": "PowerISA",
+      "full_name": "TLB Search Indexed",
+      "summary": "Searches the TLB for an address.",
+      "syntax": "tlbsx RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 914 | /", "hex_opcode": "0x7C000722" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (TLB)"
+    },
+    {
+      "mnemonic": "tlbivax",
+      "architecture": "PowerISA",
+      "full_name": "TLB Invalidate Virtual Address Indexed",
+      "summary": "Invalidates a TLB entry by virtual address.",
+      "syntax": "tlbivax RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 786 | /", "hex_opcode": "0x7C000622" },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (TLB)"
+    },
+    {
+      "mnemonic": "wrtee",
+      "architecture": "PowerISA",
+      "full_name": "Write MSR External Enable",
+      "summary": "Updates the EE bit of the MSR from a GPR.",
+      "syntax": "wrtee RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | / | / | 131 | /", "hex_opcode": "0x7C000106" },
+      "operands": [{ "name": "RS", "desc": "Source" }],
+      "extension": "Embedded (Control)"
+    },
+    {
+      "mnemonic": "wrteei",
+      "architecture": "PowerISA",
+      "full_name": "Write MSR External Enable Immediate",
+      "summary": "Updates the EE bit of the MSR from an immediate.",
+      "syntax": "wrteei E",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | E | 163 | /", "hex_opcode": "0x7C000146" },
+      "operands": [{ "name": "E", "desc": "Enable (0/1)" }],
+      "extension": "Embedded (Control)"
+    },
+    {
+      "mnemonic": "mfdcr",
+      "architecture": "PowerISA",
+      "full_name": "Move From Device Control Register",
+      "summary": "Reads an on-chip peripheral register (DCR).",
+      "syntax": "mfdcr RT, DCRN",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RT | DCRN | 323", "hex_opcode": "0x7C000286" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "DCRN", "desc": "DCR Number" }],
+      "extension": "Embedded (Device)"
+    },
+    {
+      "mnemonic": "mtdcr",
+      "architecture": "PowerISA",
+      "full_name": "Move To Device Control Register",
+      "summary": "Writes an on-chip peripheral register (DCR).",
+      "syntax": "mtdcr DCRN, RS",
+      "encoding": { "format": "XFX-form", "binary_pattern": "31 | RS | DCRN | 451", "hex_opcode": "0x7C000386" },
+      "operands": [{ "name": "DCRN", "desc": "DCR Number" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Embedded (Device)"
+    }
+  ]
+}

@@ -1,0 +1,534 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "e_crand",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register AND",
+      "summary": "CR bit logical AND.",
+      "syntax": "e_crand BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_crandc",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register AND with Complement",
+      "summary": "CR bit logical AND with complement (BT = BA & ~BB).",
+      "syntax": "e_crandc BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_creqv",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register Equivalent",
+      "summary": "CR bit logical XNOR.",
+      "syntax": "e_creqv BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_crnand",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register NAND",
+      "summary": "CR bit logical NAND.",
+      "syntax": "e_crnand BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_crnor",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register NOR",
+      "summary": "CR bit logical NOR.",
+      "syntax": "e_crnor BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_cror",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register OR",
+      "summary": "CR bit logical OR.",
+      "syntax": "e_cror BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_crorc",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register OR with Complement",
+      "summary": "CR bit logical OR with complement (BT = BA | ~BB).",
+      "syntax": "e_crorc BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_crxor",
+      "architecture": "PowerISA",
+      "full_name": "VLE Condition Register XOR",
+      "summary": "CR bit logical XOR.",
+      "syntax": "e_crxor BT, BA, BB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BT", "desc": "Target Bit" }, { "name": "BA", "desc": "Src A" }, { "name": "BB", "desc": "Src B" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_mcrf",
+      "architecture": "PowerISA",
+      "full_name": "VLE Move Condition Register Field",
+      "summary": "Copies one CR field to another.",
+      "syntax": "e_mcrf BF, BFA",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1000 | ...", "hex_opcode": "0x7800..." },
+      "operands": [{ "name": "BF", "desc": "Target" }, { "name": "BFA", "desc": "Source" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "se_mfar",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Move From Alternate Register",
+      "summary": "Moves AR to RX (16-bit).",
+      "syntax": "se_mfar RX, ARY",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1100", "hex_opcode": "0x000C" },
+      "operands": [{ "name": "RX", "desc": "Target" }, { "name": "ARY", "desc": "Source AR" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_mtar",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Move To Alternate Register",
+      "summary": "Moves RX to AR (16-bit).",
+      "syntax": "se_mtar ARX, RY",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | ARX | 1101", "hex_opcode": "0x000D" },
+      "operands": [{ "name": "ARX", "desc": "Target AR" }, { "name": "RY", "desc": "Source" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_bclri",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Bit Clear Immediate",
+      "summary": "Clears a specific bit in RX.",
+      "syntax": "se_bclri RX, UIM",
+      "encoding": { "format": "SE-form", "binary_pattern": "0110 | 001 | RX | UIM", "hex_opcode": "0x6200" },
+      "operands": [{ "name": "RX", "desc": "Target" }, { "name": "UIM", "desc": "Bit Index" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_bseti",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Bit Set Immediate",
+      "summary": "Sets a specific bit in RX.",
+      "syntax": "se_bseti RX, UIM",
+      "encoding": { "format": "SE-form", "binary_pattern": "0110 | 010 | RX | UIM", "hex_opcode": "0x6400" },
+      "operands": [{ "name": "RX", "desc": "Target" }, { "name": "UIM", "desc": "Bit Index" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_btsti",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Bit Test Immediate",
+      "summary": "Tests a bit in RX and updates CR0.",
+      "syntax": "se_btsti RX, UIM",
+      "encoding": { "format": "SE-form", "binary_pattern": "0110 | 011 | RX | UIM", "hex_opcode": "0x6600" },
+      "operands": [{ "name": "RX", "desc": "Source" }, { "name": "UIM", "desc": "Bit Index" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_rfci",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Return From Critical Interrupt",
+      "summary": "Returns from critical interrupt.",
+      "syntax": "se_rfci",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | 0000 | 0101", "hex_opcode": "0x0005" },
+      "operands": [],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_rfdi",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Return From Debug Interrupt",
+      "summary": "Returns from debug interrupt.",
+      "syntax": "se_rfdi",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | 0000 | 0111", "hex_opcode": "0x0007" },
+      "operands": [],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_rfi",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Return From Interrupt",
+      "summary": "Returns from standard interrupt.",
+      "syntax": "se_rfi",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | 0000 | 1000", "hex_opcode": "0x0008" },
+      "operands": [],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_sc",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short System Call",
+      "summary": "System call (16-bit encoding).",
+      "syntax": "se_sc",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | 0000 | 0100", "hex_opcode": "0x0004" },
+      "operands": [],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "e_sc",
+      "architecture": "PowerISA",
+      "full_name": "VLE System Call",
+      "summary": "System call (32-bit encoding).",
+      "syntax": "e_sc",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "se_trap",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Trap",
+      "summary": "Unconditional trap (16-bit).",
+      "syntax": "se_trap",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | 0000 | 1001", "hex_opcode": "0x0009" },
+      "operands": [],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "e_trap",
+      "architecture": "PowerISA",
+      "full_name": "VLE Trap",
+      "summary": "Unconditional trap (32-bit).",
+      "syntax": "e_trap",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_tlbwe",
+      "architecture": "PowerISA",
+      "full_name": "VLE TLB Write Entry",
+      "summary": "Writes a TLB entry.",
+      "syntax": "e_tlbwe",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [],
+      "extension": "VLE (Privileged)"
+    },
+    {
+      "mnemonic": "e_tlbre",
+      "architecture": "PowerISA",
+      "full_name": "VLE TLB Read Entry",
+      "summary": "Reads a TLB entry.",
+      "syntax": "e_tlbre",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [],
+      "extension": "VLE (Privileged)"
+    },
+    {
+      "mnemonic": "e_tlbivax",
+      "architecture": "PowerISA",
+      "full_name": "VLE TLB Invalidate Virtual Address Indexed",
+      "summary": "Invalidates a TLB entry by address.",
+      "syntax": "e_tlbivax RA, RB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VLE (Privileged)"
+    },
+    {
+      "mnemonic": "e_tlbsx",
+      "architecture": "PowerISA",
+      "full_name": "VLE TLB Search Indexed",
+      "summary": "Searches for a TLB entry.",
+      "syntax": "e_tlbsx RA, RB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "VLE (Privileged)"
+    },
+    {
+      "mnemonic": "e_mfspr",
+      "architecture": "PowerISA",
+      "full_name": "VLE Move From Special Purpose Register",
+      "summary": "Reads an SPR.",
+      "syntax": "e_mfspr RT, SPR",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "SPR", "desc": "Reg" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_mtspr",
+      "architecture": "PowerISA",
+      "full_name": "VLE Move To Special Purpose Register",
+      "summary": "Writes an SPR.",
+      "syntax": "e_mtspr SPR, RS",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "SPR", "desc": "Reg" }, { "name": "RS", "desc": "Source" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_rlw",
+      "architecture": "PowerISA",
+      "full_name": "VLE Rotate Left Word",
+      "summary": "Rotates word left.",
+      "syntax": "e_rlw RA, RS, RB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_slw",
+      "architecture": "PowerISA",
+      "full_name": "VLE Shift Left Word",
+      "summary": "Shifts word left.",
+      "syntax": "e_slw RA, RS, RB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_srw",
+      "architecture": "PowerISA",
+      "full_name": "VLE Shift Right Word",
+      "summary": "Shifts word right.",
+      "syntax": "e_srw RA, RS, RB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_sraw",
+      "architecture": "PowerISA",
+      "full_name": "VLE Shift Right Algebraic Word",
+      "summary": "Arithmetic right shift.",
+      "syntax": "e_sraw RA, RS, RB",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src" }, { "name": "RB", "desc": "Shift" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_srawi",
+      "architecture": "PowerISA",
+      "full_name": "VLE Shift Right Algebraic Word Immediate",
+      "summary": "Arithmetic right shift by immediate.",
+      "syntax": "e_srawi RA, RS, SH",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 1100 | ...", "hex_opcode": "0x7C00..." },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Src" }, { "name": "SH", "desc": "Shift" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "tlbilx",
+      "architecture": "PowerISA",
+      "full_name": "TLB Invalidate Local Extended",
+      "summary": "Invalidates TLB entries on the local processor based on Process ID (PID).",
+      "syntax": "tlbilx T, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | T | RA | RB | 18 | /", "hex_opcode": "0x7C000012" },
+      "operands": [{ "name": "T", "desc": "Type" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (TLB)"
+    },
+    {
+      "mnemonic": "lwdi",
+      "architecture": "PowerISA",
+      "full_name": "Load Word with Decoration Indexed",
+      "summary": "Loads a word and sends decoration sideband signals to the bus.",
+      "syntax": "lwdi RT, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RT | RA | RB | 788 | /", "hex_opcode": "0x7C00062C" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (Decorated)"
+    },
+    {
+      "mnemonic": "stdi",
+      "architecture": "PowerISA",
+      "full_name": "Store Word with Decoration Indexed",
+      "summary": "Stores a word and sends decoration sideband signals.",
+      "syntax": "stdi RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 916 | /", "hex_opcode": "0x7C00072C" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Embedded (Decorated)"
+    },
+    {
+      "mnemonic": "ehpriv",
+      "architecture": "PowerISA",
+      "full_name": "Embedded Hypervisor Privilege",
+      "summary": "Enters embedded hypervisor privileged state.",
+      "syntax": "ehpriv OC",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | 0 | 0 | OC | 270 | /", "hex_opcode": "0x7C00021E" },
+      "operands": [{ "name": "OC", "desc": "Opcode" }],
+      "extension": "Embedded (Hypervisor)"
+    },
+    {
+      "mnemonic": "mbar",
+      "architecture": "PowerISA",
+      "full_name": "Memory Barrier",
+      "summary": "Ensures memory access ordering (Embedded version of 'sync').",
+      "syntax": "mbar MO",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | 0 | 0 | MO | 854 | /", "hex_opcode": "0x7C0006AC" },
+      "operands": [{ "name": "MO", "desc": "Ordering" }],
+      "extension": "Embedded (Control)"
+    },
+    {
+      "mnemonic": "msync",
+      "architecture": "PowerISA",
+      "full_name": "Memory Synchronize",
+      "summary": "Synchronizes memory accesses (Alias for sync).",
+      "syntax": "msync",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | 0 | 0 | 0 | 598 | /", "hex_opcode": "0x7C0004AC" },
+      "operands": [],
+      "extension": "Embedded (Control)"
+    },
+    {
+      "mnemonic": "isync",
+      "architecture": "PowerISA",
+      "full_name": "Instruction Synchronize",
+      "summary": "Waits for previous instructions to complete.",
+      "syntax": "isync",
+      "encoding": { "format": "XL-form", "binary_pattern": "19 | 0 | 0 | 0 | 150 | /", "hex_opcode": "0x4C00012C" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "se_rfmci",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Return From Machine Check Interrupt",
+      "summary": "Returns from machine check.",
+      "syntax": "se_rfmci",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | 0000 | 1100", "hex_opcode": "0x000C" },
+      "operands": [],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_li",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Load Immediate",
+      "summary": "Loads small immediate.",
+      "syntax": "se_li RX, UI7",
+      "encoding": { "format": "SE-form", "binary_pattern": "0100 | 100 | RX | UI7", "hex_opcode": "0x4800" },
+      "operands": [{ "name": "RX", "desc": "Target" }, { "name": "UI7", "desc": "Imm" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_bmaski",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Bit Mask Immediate",
+      "summary": "Creates a mask.",
+      "syntax": "se_bmaski RX, UI5",
+      "encoding": { "format": "SE-form", "binary_pattern": "0010 | 110 | RX | UI5", "hex_opcode": "0x2C00" },
+      "operands": [{ "name": "RX", "desc": "Target" }, { "name": "UI5", "desc": "Mask Len" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_bgeni",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Bit Generate Immediate",
+      "summary": "Generates a single bit.",
+      "syntax": "se_bgeni RX, UI5",
+      "encoding": { "format": "SE-form", "binary_pattern": "0110 | 000 | RX | UI5", "hex_opcode": "0x6000" },
+      "operands": [{ "name": "RX", "desc": "Target" }, { "name": "UI5", "desc": "Bit" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_extsb",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Extend Sign Byte",
+      "summary": "Sign extends byte.",
+      "syntax": "se_extsb RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1101", "hex_opcode": "0x000D" },
+      "operands": [{ "name": "RX", "desc": "Target" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_extsh",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Extend Sign Halfword",
+      "summary": "Sign extends halfword.",
+      "syntax": "se_extsh RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1110", "hex_opcode": "0x000E" },
+      "operands": [{ "name": "RX", "desc": "Target" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_extzb",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Extend Zero Byte",
+      "summary": "Zero extends byte.",
+      "syntax": "se_extzb RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1111", "hex_opcode": "0x000F" },
+      "operands": [{ "name": "RX", "desc": "Target" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_extzh",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Extend Zero Halfword",
+      "summary": "Zero extends halfword.",
+      "syntax": "se_extzh RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1000", "hex_opcode": "0x0008" },
+      "operands": [{ "name": "RX", "desc": "Target" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_mfctr",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Move From CTR",
+      "summary": "Reads CTR.",
+      "syntax": "se_mfctr RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1010", "hex_opcode": "0x000A" },
+      "operands": [{ "name": "RX", "desc": "Target" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_mtctr",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Move To CTR",
+      "summary": "Writes CTR.",
+      "syntax": "se_mtctr RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1011", "hex_opcode": "0x000B" },
+      "operands": [{ "name": "RX", "desc": "Source" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_mflr",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Move From LR",
+      "summary": "Reads LR.",
+      "syntax": "se_mflr RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1000", "hex_opcode": "0x0008" },
+      "operands": [{ "name": "RX", "desc": "Target" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "se_mtlr",
+      "architecture": "PowerISA",
+      "full_name": "VLE Short Move To LR",
+      "summary": "Writes LR.",
+      "syntax": "se_mtlr RX",
+      "encoding": { "format": "SE-form", "binary_pattern": "0000 | 0000 | RX | 1001", "hex_opcode": "0x0009" },
+      "operands": [{ "name": "RX", "desc": "Source" }],
+      "extension": "VLE (16-bit)"
+    },
+    {
+      "mnemonic": "e_add16i",
+      "architecture": "PowerISA",
+      "full_name": "VLE Add 16-bit Immediate",
+      "summary": "Adds 16-bit immediate.",
+      "syntax": "e_add16i RT, RA, SI",
+      "encoding": { "format": "E-form", "binary_pattern": "0001 | 1100 | ...", "hex_opcode": "0x1C00..." },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src" }, { "name": "SI", "desc": "Imm" }],
+      "extension": "VLE (32-bit)"
+    },
+    {
+      "mnemonic": "e_mull2i",
+      "architecture": "PowerISA",
+      "full_name": "VLE Multiply Low Word Immediate",
+      "summary": "Multiplies register by immediate.",
+      "syntax": "e_mull2i RT, RA, SI",
+      "encoding": { "format": "E-form", "binary_pattern": "0111 | 0000 | ...", "hex_opcode": "0x7000..." },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src" }, { "name": "SI", "desc": "Imm" }],
+      "extension": "VLE (32-bit)"
+    }
+  ]
+}
