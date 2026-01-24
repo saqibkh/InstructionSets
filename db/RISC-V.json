@@ -4682,5 +4682,389 @@
     "pseudocode": "R[rd] = Byteswap(R[rs1]);",
     "example": "REV8 x10, x11",
     "example_note": "Converts Big-Endian to Little-Endian."
+  },
+  {
+    "mnemonic": "FCLASS.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Classify (Single)",
+    "summary": "Examines the value in a float register and generates a 10-bit bitmask indicating its class (NaN, Inf, Zero, Normal, etc.).",
+    "syntax": "FCLASS.S rd, rs1",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1110000 | 00000 | rs1 | 001 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Integer Mask)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = classify_float(F[rs1]);",
+    "example": "FCLASS.S x10, f1",
+    "example_note": "Check if f1 is NaN, Infinity, or Zero."
+  },
+  {
+    "mnemonic": "FCLASS.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Classify (Double)",
+    "summary": "Examines a double-precision register and generates a classification bitmask.",
+    "syntax": "FCLASS.D rd, rs1",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1110001 | 00000 | rs1 | 001 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Integer Mask)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Double)"
+      }
+    ],
+    "pseudocode": "R[rd] = classify_double(F[rs1]);",
+    "example": "FCLASS.D x10, f0",
+    "example_note": "Check if f0 is NaN/Inf/Zero."
+  },
+  {
+    "mnemonic": "FCVT.S.L",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Convert Long to Float",
+    "summary": "Converts a 64-bit signed integer (Long) to a single-precision float.",
+    "syntax": "FCVT.S.L rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1101000 | 00010 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Float)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Long Int)"
+      }
+    ],
+    "pseudocode": "F[rd] = i64_to_f32(R[rs1]);",
+    "example": "FCVT.S.L f1, x10",
+    "example_note": "64-bit int -> 32-bit float."
+  },
+  {
+    "mnemonic": "FCVT.S.LU",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Convert Unsigned Long to Float",
+    "summary": "Converts a 64-bit unsigned integer to a single-precision float.",
+    "syntax": "FCVT.S.LU rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1101000 | 00011 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Float)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (U-Long)"
+      }
+    ],
+    "pseudocode": "F[rd] = u64_to_f32(R[rs1]);",
+    "example": "FCVT.S.LU f1, x10",
+    "example_note": "Unsigned 64-bit int -> float."
+  },
+  {
+    "mnemonic": "FCVT.L.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Convert Float to Long",
+    "summary": "Converts a single-precision float to a 64-bit signed integer.",
+    "syntax": "FCVT.L.S rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1100000 | 00010 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Long Int)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = f32_to_i64(F[rs1]);",
+    "example": "FCVT.L.S x10, f1",
+    "example_note": "Float -> 64-bit signed int."
+  },
+  {
+    "mnemonic": "FCVT.LU.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Convert Float to Unsigned Long",
+    "summary": "Converts a single-precision float to a 64-bit unsigned integer.",
+    "syntax": "FCVT.LU.S rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1100000 | 00011 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (U-Long)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = f32_to_u64(F[rs1]);",
+    "example": "FCVT.LU.S x10, f1",
+    "example_note": "Float -> 64-bit unsigned int."
+  },
+  {
+    "mnemonic": "FCVT.D.L",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Convert Long to Double",
+    "summary": "Converts a 64-bit signed integer to a double-precision float.",
+    "syntax": "FCVT.D.L rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1101001 | 00010 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Double)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Long)"
+      }
+    ],
+    "pseudocode": "F[rd] = i64_to_f64(R[rs1]);",
+    "example": "FCVT.D.L f0, x10",
+    "example_note": "64-bit Int -> Double."
+  },
+  {
+    "mnemonic": "FCVT.D.LU",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Convert Unsigned Long to Double",
+    "summary": "Converts a 64-bit unsigned integer to a double-precision float.",
+    "syntax": "FCVT.D.LU rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1101001 | 00011 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Double)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (U-Long)"
+      }
+    ],
+    "pseudocode": "F[rd] = u64_to_f64(R[rs1]);",
+    "example": "FCVT.D.LU f0, x10",
+    "example_note": "Unsigned 64-bit Int -> Double."
+  },
+  {
+    "mnemonic": "FCVT.L.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Convert Double to Long",
+    "summary": "Converts a double-precision float to a 64-bit signed integer.",
+    "syntax": "FCVT.L.D rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1100001 | 00010 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Long)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Double)"
+      }
+    ],
+    "pseudocode": "R[rd] = f64_to_i64(F[rs1]);",
+    "example": "FCVT.L.D x10, f0",
+    "example_note": "Double -> 64-bit Int."
+  },
+  {
+    "mnemonic": "FSGNJ.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Sign Injection (Double)",
+    "summary": "Injects the sign of rs2 into rs1 (Double Precision).",
+    "syntax": "FSGNJ.D rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010001 | rs2 | rs1 | 000 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Body)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source (Sign)"
+      }
+    ],
+    "pseudocode": "F[rd] = {F[rs2][63], F[rs1][62:0]};",
+    "example": "FSGNJ.D f0, f1, f2",
+    "example_note": "Copy sign of f2 to f1."
+  },
+  {
+    "mnemonic": "FSGNJN.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Sign Injection Negate (Double)",
+    "summary": "Injects the *negated* sign of rs2 into rs1 (Double Precision).",
+    "syntax": "FSGNJN.D rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010001 | rs2 | rs1 | 001 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Body)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source (Sign)"
+      }
+    ],
+    "pseudocode": "F[rd] = {~F[rs2][63], F[rs1][62:0]};",
+    "example": "FSGNJN.D f0, f1, f1",
+    "example_note": "Negate f1 (f0 = -f1)."
+  },
+  {
+    "mnemonic": "FEQ.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Equal (Double)",
+    "summary": "Sets integer rd to 1 if double rs1 equals double rs2, else 0.",
+    "syntax": "FEQ.D rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1010001 | rs2 | rs1 | 010 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Int)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1 (Double)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2 (Double)"
+      }
+    ],
+    "pseudocode": "R[rd] = (F[rs1] == F[rs2]) ? 1 : 0;",
+    "example": "FEQ.D x10, f0, f1",
+    "example_note": "Compare equality."
+  },
+  {
+    "mnemonic": "FLT.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Less Than (Double)",
+    "summary": "Sets integer rd to 1 if double rs1 is less than double rs2, else 0.",
+    "syntax": "FLT.D rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1010001 | rs2 | rs1 | 001 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Int)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2"
+      }
+    ],
+    "pseudocode": "R[rd] = (F[rs1] < F[rs2]) ? 1 : 0;",
+    "example": "FLT.D x10, f0, f1",
+    "example_note": "Less than check."
+  },
+  {
+    "mnemonic": "FLE.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Less or Equal (Double)",
+    "summary": "Sets integer rd to 1 if double rs1 is less than or equal to double rs2, else 0.",
+    "syntax": "FLE.D rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1010001 | rs2 | rs1 | 000 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Int)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2"
+      }
+    ],
+    "pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;",
+    "example": "FLE.D x10, f0, f1",
+    "example_note": "Less equal check."
   }
 ]
