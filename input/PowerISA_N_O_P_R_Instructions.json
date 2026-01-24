@@ -1,0 +1,302 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "nand",
+      "architecture": "PowerISA",
+      "full_name": "NAND",
+      "summary": "Performs a bitwise NAND comparison. (RA <- ~(RS & RB)).",
+      "syntax": "nand RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 476 | Rc",
+        "hex_opcode": "0x7C0003B8"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- ~(RS & RB)",
+      "example": "nand r3, r4, r5",
+      "example_note": "Bitwise NAND.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "neg",
+      "architecture": "PowerISA",
+      "full_name": "Negate",
+      "summary": "Computes the two's complement negation of a register (0 - RT).",
+      "syntax": "neg RT, RA",
+      "encoding": {
+        "format": "XO-form",
+        "binary_pattern": "31 | RT | RA | 00000 | OE | 104 | Rc",
+        "hex_opcode": "0x7C0000D0"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register" }
+      ],
+      "pseudocode": "RT <- (~RA) + 1",
+      "example": "neg r3, r4",
+      "example_note": "r3 = -r4",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "nor",
+      "architecture": "PowerISA",
+      "full_name": "NOR",
+      "summary": "Performs a bitwise NOR comparison. (RA <- ~(RS | RB)). Useful for bitwise NOT (nor r3, r4, r4).",
+      "syntax": "nor RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 124 | Rc",
+        "hex_opcode": "0x7C0000F8"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- ~(RS | RB)",
+      "example": "nor r3, r4, r4",
+      "example_note": "r3 = ~r4 (Bitwise NOT).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "or",
+      "architecture": "PowerISA",
+      "full_name": "OR",
+      "summary": "Performs a bitwise OR comparison.",
+      "syntax": "or RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 444 | Rc",
+        "hex_opcode": "0x7C000378"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- RS | RB",
+      "example": "or r3, r4, r5",
+      "example_note": "r3 = r4 | r5",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "orc",
+      "architecture": "PowerISA",
+      "full_name": "OR with Complement",
+      "summary": "Performs a bitwise OR between RS and the complement of RB.",
+      "syntax": "orc RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 412 | Rc",
+        "hex_opcode": "0x7C000338"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- RS | (~RB)",
+      "example": "orc r3, r4, r5",
+      "example_note": "r3 = r4 | ~r5",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ori",
+      "architecture": "PowerISA",
+      "full_name": "OR Immediate",
+      "summary": "Performs a bitwise OR with a 16-bit unsigned immediate.",
+      "syntax": "ori RA, RS, UI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "24 | RS | RA | UI",
+        "hex_opcode": "0x60000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "UI", "desc": "Unsigned 16-bit Immediate" }
+      ],
+      "pseudocode": "RA <- RS | (0x0000 || UI)",
+      "example": "ori r3, r4, 0x1",
+      "example_note": "Set bit 0.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "oris",
+      "architecture": "PowerISA",
+      "full_name": "OR Immediate Shifted",
+      "summary": "Performs a bitwise OR with a 16-bit immediate shifted left by 16 bits.",
+      "syntax": "oris RA, RS, UI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "25 | RS | RA | UI",
+        "hex_opcode": "0x64000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "UI", "desc": "Unsigned 16-bit Immediate" }
+      ],
+      "pseudocode": "RA <- RS | (UI || 0x0000)",
+      "example": "oris r3, r4, 0xFFFF",
+      "example_note": "Set upper 16 bits.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "popcntd",
+      "architecture": "PowerISA",
+      "full_name": "Population Count Doubleword",
+      "summary": "Counts the number of set bits (1s) in a 64-bit register.",
+      "syntax": "popcntd RA, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | 00000 | 506 | /",
+        "hex_opcode": "0x7C0003F4"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "RA <- CountOnes(RS)",
+      "example": "popcntd r3, r4",
+      "example_note": "Hamming weight of r4.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "popcntw",
+      "architecture": "PowerISA",
+      "full_name": "Population Count Word",
+      "summary": "Counts the number of set bits (1s) in the lower 32 bits of a register.",
+      "syntax": "popcntw RA, RS",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | 00000 | 378 | /",
+        "hex_opcode": "0x7C0002F4"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" }
+      ],
+      "pseudocode": "RA <- CountOnes(RS[32:63])",
+      "example": "popcntw r3, r4",
+      "example_note": "Hamming weight of 32-bit word.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rlwinm",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Word Immediate Then AND with Mask",
+      "summary": "The ultimate bit-manipulation instruction. Rotates RS left by SH, then ANDs with a mask defined by MB (Mask Begin) and ME (Mask End).",
+      "syntax": "rlwinm RA, RS, SH, MB, ME",
+      "encoding": {
+        "format": "M-form",
+        "binary_pattern": "21 | RS | RA | SH | MB | ME | Rc",
+        "hex_opcode": "0x54000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target" },
+        { "name": "RS", "desc": "Source" },
+        { "name": "SH", "desc": "Shift Amount (0-31)" },
+        { "name": "MB", "desc": "Mask Begin Bit" },
+        { "name": "ME", "desc": "Mask End Bit" }
+      ],
+      "pseudocode": "rot <- ROTL32(RS, SH); mask <- GENERATE_MASK(MB, ME); RA <- rot & mask",
+      "example": "rlwinm r3, r4, 2, 0, 31",
+      "example_note": "Rotate Left by 2, no masking (simple rotate).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rlwimi",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Word Immediate Then Mask Insert",
+      "summary": "Rotates RS left by SH, then inserts bits into RA under the control of a mask. Used to merge bitfields from two registers.",
+      "syntax": "rlwimi RA, RS, SH, MB, ME",
+      "encoding": {
+        "format": "M-form",
+        "binary_pattern": "20 | RS | RA | SH | MB | ME | Rc",
+        "hex_opcode": "0x50000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target (and dest)" },
+        { "name": "RS", "desc": "Source" },
+        { "name": "SH", "desc": "Shift Amount" },
+        { "name": "MB", "desc": "Mask Begin" },
+        { "name": "ME", "desc": "Mask End" }
+      ],
+      "pseudocode": "rot <- ROTL32(RS, SH); mask <- GENERATE_MASK(MB, ME); RA <- (rot & mask) | (RA & ~mask)",
+      "example": "rlwimi r3, r4, 8, 8, 15",
+      "example_note": "Insert bits 8-15 from r4 (rotated) into r3.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rldic",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Doubleword Immediate Clear",
+      "summary": "Rotates a 64-bit register left, then clears bits based on a mask. 64-bit equivalent of rlwinm.",
+      "syntax": "rldic RA, RS, SH, MB",
+      "encoding": {
+        "format": "MD-form",
+        "binary_pattern": "30 | RS | RA | SH | MB | 00 | Rc",
+        "hex_opcode": "0x78000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target" },
+        { "name": "RS", "desc": "Source" },
+        { "name": "SH", "desc": "Shift Amount" },
+        { "name": "MB", "desc": "Mask Begin" }
+      ],
+      "pseudocode": "rot <- ROTL64(RS, SH); mask <- ONES(MB, 63); RA <- rot & mask",
+      "example": "rldic r3, r4, 4, 10",
+      "example_note": "Rotate left 4, clear bits 0-9.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rldicl",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Doubleword Immediate Clear Left",
+      "summary": "Rotates 64-bit RS left by SH, then clears the high-order bits (0 to MB-1). Often used to extract bitfields.",
+      "syntax": "rldicl RA, RS, SH, MB",
+      "encoding": {
+        "format": "MD-form",
+        "binary_pattern": "30 | RS | RA | SH | MB | 00 | Rc",
+        "hex_opcode": "0x78000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target" },
+        { "name": "RS", "desc": "Source" },
+        { "name": "SH", "desc": "Shift Amount" },
+        { "name": "MB", "desc": "Mask Begin" }
+      ],
+      "pseudocode": "rot <- ROTL64(RS, SH); mask <- MASK(MB, 63); RA <- rot & mask",
+      "example": "rldicl r3, r4, 0, 32",
+      "example_note": "Zero extend 32-bit value to 64-bit.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rldicr",
+      "architecture": "PowerISA",
+      "full_name": "Rotate Left Doubleword Immediate Clear Right",
+      "summary": "Rotates 64-bit RS left by SH, then clears the low-order bits (ME+1 to 63).",
+      "syntax": "rldicr RA, RS, SH, ME",
+      "encoding": {
+        "format": "MD-form",
+        "binary_pattern": "30 | RS | RA | SH | ME | 01 | Rc",
+        "hex_opcode": "0x78000004"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target" },
+        { "name": "RS", "desc": "Source" },
+        { "name": "SH", "desc": "Shift Amount" },
+        { "name": "ME", "desc": "Mask End" }
+      ],
+      "pseudocode": "rot <- ROTL64(RS, SH); mask <- MASK(0, ME); RA <- rot & mask",
+      "example": "rldicr r3, r4, 2, 60",
+      "example_note": "Align address to 8 bytes.",
+      "extension": "Base"
+    }
+  ]
+}

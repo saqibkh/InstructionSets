@@ -1,0 +1,397 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "slw",
+      "architecture": "PowerISA",
+      "full_name": "Shift Left Word",
+      "summary": "Shifts a 32-bit register left by the amount specified in RB.",
+      "syntax": "slw RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 24 | Rc",
+        "hex_opcode": "0x7C000018"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "RB", "desc": "Shift Amount Register" }
+      ],
+      "pseudocode": "n <- RB[58:63]; RA <- ROTL32(RS, n) & MASK(0, 31-n)",
+      "example": "slw r3, r4, r5",
+      "example_note": "r3 = r4 << r5 (32-bit).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sld",
+      "architecture": "PowerISA",
+      "full_name": "Shift Left Doubleword",
+      "summary": "Shifts a 64-bit register left by the amount specified in RB.",
+      "syntax": "sld RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 27 | Rc",
+        "hex_opcode": "0x7C00001B"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "RB", "desc": "Shift Amount Register" }
+      ],
+      "pseudocode": "n <- RB[57:63]; RA <- ROTL64(RS, n) & MASK(0, 63-n)",
+      "example": "sld r3, r4, r5",
+      "example_note": "r3 = r4 << r5 (64-bit).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "srw",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Word",
+      "summary": "Performs a logical right shift (zeros shifted in) on a 32-bit word.",
+      "syntax": "srw RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 536 | Rc",
+        "hex_opcode": "0x7C000438"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "RB", "desc": "Shift Amount Register" }
+      ],
+      "pseudocode": "n <- RB[58:63]; RA <- ROTL32(RS, 64-n) & MASK(n, 31)",
+      "example": "srw r3, r4, r5",
+      "example_note": "r3 = r4 >> r5 (Unsigned 32-bit).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sraw",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Algebraic Word",
+      "summary": "Performs an arithmetic right shift (sign bit replicated) on a 32-bit word. Updates Carry (CA) if bits are shifted out.",
+      "syntax": "sraw RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 792 | Rc",
+        "hex_opcode": "0x7C000638"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "RB", "desc": "Shift Amount Register" }
+      ],
+      "pseudocode": "n <- RB[58:63]; RA <- (RS) >>a n",
+      "example": "sraw r3, r4, r5",
+      "example_note": "r3 = r4 >> r5 (Signed 32-bit).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "srawi",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Algebraic Word Immediate",
+      "summary": "Performs an arithmetic right shift on a 32-bit word by a constant amount.",
+      "syntax": "srawi RA, RS, SH",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | SH | 824 | Rc",
+        "hex_opcode": "0x7C000670"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "SH", "desc": "Shift Amount (0-31)" }
+      ],
+      "pseudocode": "RA <- (RS) >>a SH",
+      "example": "srawi r3, r4, 5",
+      "example_note": "r3 = r4 >> 5 (Signed).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "srad",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Algebraic Doubleword",
+      "summary": "Performs an arithmetic right shift on a 64-bit doubleword.",
+      "syntax": "srad RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 794 | Rc",
+        "hex_opcode": "0x7C000634"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "RB", "desc": "Shift Amount Register" }
+      ],
+      "pseudocode": "n <- RB[57:63]; RA <- (RS) >>a n",
+      "example": "srad r3, r4, r5",
+      "example_note": "r3 = r4 >> r5 (Signed 64-bit).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sradi",
+      "architecture": "PowerISA",
+      "full_name": "Shift Right Algebraic Doubleword Immediate",
+      "summary": "Performs an arithmetic right shift on a 64-bit doubleword by a constant amount.",
+      "syntax": "sradi RA, RS, SH",
+      "encoding": {
+        "format": "XS-form",
+        "binary_pattern": "31 | RS | RA | SH | 413 | Rc",
+        "hex_opcode": "0x7C00033C"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "SH", "desc": "Shift Amount (0-63, Split field)" }
+      ],
+      "pseudocode": "RA <- (RS) >>a SH",
+      "example": "sradi r3, r4, 10",
+      "example_note": "r3 = r4 >> 10 (Signed 64-bit).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stb",
+      "architecture": "PowerISA",
+      "full_name": "Store Byte",
+      "summary": "Stores the low 8 bits of a register to memory.",
+      "syntax": "stb RS, D(RA)",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "38 | RS | RA | D",
+        "hex_opcode": "0x98000000"
+      },
+      "operands": [
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "D", "desc": "Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "MEM(EA, 1) <- RS[56:63]",
+      "example": "stb r3, 0(r4)",
+      "example_note": "Store byte from r3 to address r4.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sth",
+      "architecture": "PowerISA",
+      "full_name": "Store Halfword",
+      "summary": "Stores the low 16 bits of a register to memory.",
+      "syntax": "sth RS, D(RA)",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "44 | RS | RA | D",
+        "hex_opcode": "0xB0000000"
+      },
+      "operands": [
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "D", "desc": "Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "MEM(EA, 2) <- RS[48:63]",
+      "example": "sth r3, 0(r4)",
+      "example_note": "Store 16-bit halfword.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stw",
+      "architecture": "PowerISA",
+      "full_name": "Store Word",
+      "summary": "Stores the low 32 bits of a register to memory.",
+      "syntax": "stw RS, D(RA)",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "36 | RS | RA | D",
+        "hex_opcode": "0x90000000"
+      },
+      "operands": [
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "D", "desc": "Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "MEM(EA, 4) <- RS[32:63]",
+      "example": "stw r3, 0(r4)",
+      "example_note": "Store 32-bit word.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "std",
+      "architecture": "PowerISA",
+      "full_name": "Store Doubleword",
+      "summary": "Stores a 64-bit doubleword to memory.",
+      "syntax": "std RS, DS(RA)",
+      "encoding": {
+        "format": "DS-form",
+        "binary_pattern": "62 | RS | RA | DS | 00",
+        "hex_opcode": "0xF8000000"
+      },
+      "operands": [
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "DS", "desc": "Displacement (Multiple of 4)" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "MEM(EA, 8) <- RS",
+      "example": "std r3, 16(r4)",
+      "example_note": "Store 64-bit value.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stwcx.",
+      "architecture": "PowerISA",
+      "full_name": "Store Word Conditional Indexed",
+      "summary": "Stores a word only if the reservation created by 'lwarx' still exists. Used for atomic operations. Sets CR0.",
+      "syntax": "stwcx. RS, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 150 | 1",
+        "hex_opcode": "0x7C00012D"
+      },
+      "operands": [
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "if RESERVATION then MEM(EA, 4) <- RS; CR0[EQ] <- 1 else CR0[EQ] <- 0",
+      "example": "stwcx. r5, 0, r4",
+      "example_note": "Atomic store. Check eq bit to see if it succeeded.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stdcx.",
+      "architecture": "PowerISA",
+      "full_name": "Store Doubleword Conditional Indexed",
+      "summary": "Stores a doubleword only if the reservation exists. 64-bit version of stwcx.",
+      "syntax": "stdcx. RS, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 214 | 1",
+        "hex_opcode": "0x7C0001AD"
+      },
+      "operands": [
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "if RESERVATION then MEM(EA, 8) <- RS; CR0[EQ] <- 1 else CR0[EQ] <- 0",
+      "example": "stdcx. r5, 0, r4",
+      "example_note": "Atomic 64-bit store.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sc",
+      "architecture": "PowerISA",
+      "full_name": "System Call",
+      "summary": "Interrupts the program to request a service from the operating system (Supervisor Call).",
+      "syntax": "sc LEV",
+      "encoding": {
+        "format": "SC-form",
+        "binary_pattern": "17 | / | / | / | LEV | / | 1",
+        "hex_opcode": "0x44000002"
+      },
+      "operands": [
+        { "name": "LEV", "desc": "Level (0=System, 1=Hypervisor)" }
+      ],
+      "pseudocode": "SystemCall(LEV)",
+      "example": "sc 0",
+      "example_note": "Invoke OS Kernel.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "trap",
+      "architecture": "PowerISA",
+      "full_name": "Trap (Pseudo)",
+      "summary": "Unconditional trap. Forces an exception. (Encoded as tw 31, 0, 0).",
+      "syntax": "trap",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "tw 31, r0, r0",
+        "hex_opcode": "0x7FE00008"
+      },
+      "operands": [],
+      "pseudocode": "Trap()",
+      "example": "trap",
+      "example_note": "Crash/Breakpoint.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "td",
+      "architecture": "PowerISA",
+      "full_name": "Trap Doubleword",
+      "summary": "Traps if the condition specified by TO (Trap Options) is met between two 64-bit registers.",
+      "syntax": "td TO, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | TO | RA | RB | 68 | /",
+        "hex_opcode": "0x7C000088"
+      },
+      "operands": [
+        { "name": "TO", "desc": "Trap Options (5 bits)" },
+        { "name": "RA", "desc": "Register A" },
+        { "name": "RB", "desc": "Register B" }
+      ],
+      "pseudocode": "if Condition(TO, RA, RB) then Trap()",
+      "example": "td 16, r3, r4",
+      "example_note": "Trap if r3 < r4 (Signed).",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xor",
+      "architecture": "PowerISA",
+      "full_name": "XOR",
+      "summary": "Performs a bitwise Exclusive OR comparison.",
+      "syntax": "xor RA, RS, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | RS | RA | RB | 316 | Rc",
+        "hex_opcode": "0x7C000278"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register 1" },
+        { "name": "RB", "desc": "Source Register 2" }
+      ],
+      "pseudocode": "RA <- RS XOR RB",
+      "example": "xor r3, r4, r5",
+      "example_note": "r3 = r4 ^ r5",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xori",
+      "architecture": "PowerISA",
+      "full_name": "XOR Immediate",
+      "summary": "Performs a bitwise XOR with a 16-bit unsigned immediate.",
+      "syntax": "xori RA, RS, UI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "26 | RS | RA | UI",
+        "hex_opcode": "0x68000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "UI", "desc": "Unsigned 16-bit Immediate" }
+      ],
+      "pseudocode": "RA <- RS XOR (0x0000 || UI)",
+      "example": "xori r3, r4, 0x1",
+      "example_note": "Toggle bit 0.",
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xoris",
+      "architecture": "PowerISA",
+      "full_name": "XOR Immediate Shifted",
+      "summary": "Performs a bitwise XOR with a 16-bit immediate shifted left by 16 bits.",
+      "syntax": "xoris RA, RS, UI",
+      "encoding": {
+        "format": "D-form",
+        "binary_pattern": "27 | RS | RA | UI",
+        "hex_opcode": "0x6C000000"
+      },
+      "operands": [
+        { "name": "RA", "desc": "Target Register" },
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "UI", "desc": "Unsigned 16-bit Immediate" }
+      ],
+      "pseudocode": "RA <- RS XOR (UI || 0x0000)",
+      "example": "xoris r3, r4, 0xFFFF",
+      "example_note": "Toggle upper 16 bits.",
+      "extension": "Base"
+    }
+  ]
+}

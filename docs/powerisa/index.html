@@ -505,6 +505,237 @@
                     <td style="color: var(--text-muted);">Multiplies two 32-bit integers and stores the lower 32 bits of the 64-bit result.</td>
                 </tr>
                 
+                <tr onclick="window.location='nand/';" style="cursor: pointer;">
+                    <td class="mono">nand</td>
+                    <td style="font-weight: 500;">NAND</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise NAND comparison. (RA <- ~(RS & RB)).</td>
+                </tr>
+                
+                <tr onclick="window.location='neg/';" style="cursor: pointer;">
+                    <td class="mono">neg</td>
+                    <td style="font-weight: 500;">Negate</td>
+                    <td><span class="badge">XO-form</span></td>
+                    <td style="color: var(--text-muted);">Computes the two's complement negation of a register (0 - RT).</td>
+                </tr>
+                
+                <tr onclick="window.location='nor/';" style="cursor: pointer;">
+                    <td class="mono">nor</td>
+                    <td style="font-weight: 500;">NOR</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise NOR comparison. (RA <- ~(RS | RB)). Useful for bitwise NOT (nor r3, r4, r4).</td>
+                </tr>
+                
+                <tr onclick="window.location='or/';" style="cursor: pointer;">
+                    <td class="mono">or</td>
+                    <td style="font-weight: 500;">OR</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise OR comparison.</td>
+                </tr>
+                
+                <tr onclick="window.location='orc/';" style="cursor: pointer;">
+                    <td class="mono">orc</td>
+                    <td style="font-weight: 500;">OR with Complement</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise OR between RS and the complement of RB.</td>
+                </tr>
+                
+                <tr onclick="window.location='ori/';" style="cursor: pointer;">
+                    <td class="mono">ori</td>
+                    <td style="font-weight: 500;">OR Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise OR with a 16-bit unsigned immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='oris/';" style="cursor: pointer;">
+                    <td class="mono">oris</td>
+                    <td style="font-weight: 500;">OR Immediate Shifted</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise OR with a 16-bit immediate shifted left by 16 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='popcntd/';" style="cursor: pointer;">
+                    <td class="mono">popcntd</td>
+                    <td style="font-weight: 500;">Population Count Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Counts the number of set bits (1s) in a 64-bit register.</td>
+                </tr>
+                
+                <tr onclick="window.location='popcntw/';" style="cursor: pointer;">
+                    <td class="mono">popcntw</td>
+                    <td style="font-weight: 500;">Population Count Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Counts the number of set bits (1s) in the lower 32 bits of a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='rldic/';" style="cursor: pointer;">
+                    <td class="mono">rldic</td>
+                    <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear</td>
+                    <td><span class="badge">MD-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates a 64-bit register left, then clears bits based on a mask. 64-bit equivalent of rlwinm.</td>
+                </tr>
+                
+                <tr onclick="window.location='rldicl/';" style="cursor: pointer;">
+                    <td class="mono">rldicl</td>
+                    <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear Left</td>
+                    <td><span class="badge">MD-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates 64-bit RS left by SH, then clears the high-order bits (0 to MB-1). Often used to extract bitfields.</td>
+                </tr>
+                
+                <tr onclick="window.location='rldicr/';" style="cursor: pointer;">
+                    <td class="mono">rldicr</td>
+                    <td style="font-weight: 500;">Rotate Left Doubleword Immediate Clear Right</td>
+                    <td><span class="badge">MD-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates 64-bit RS left by SH, then clears the low-order bits (ME+1 to 63).</td>
+                </tr>
+                
+                <tr onclick="window.location='rlwimi/';" style="cursor: pointer;">
+                    <td class="mono">rlwimi</td>
+                    <td style="font-weight: 500;">Rotate Left Word Immediate Then Mask Insert</td>
+                    <td><span class="badge">M-form</span></td>
+                    <td style="color: var(--text-muted);">Rotates RS left by SH, then inserts bits into RA under the control of a mask. Used to merge bitfields from two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='rlwinm/';" style="cursor: pointer;">
+                    <td class="mono">rlwinm</td>
+                    <td style="font-weight: 500;">Rotate Left Word Immediate Then AND with Mask</td>
+                    <td><span class="badge">M-form</span></td>
+                    <td style="color: var(--text-muted);">The ultimate bit-manipulation instruction. Rotates RS left by SH, then ANDs with a mask defined by MB (Mask Begin) and ME (Mask End).</td>
+                </tr>
+                
+                <tr onclick="window.location='sc/';" style="cursor: pointer;">
+                    <td class="mono">sc</td>
+                    <td style="font-weight: 500;">System Call</td>
+                    <td><span class="badge">SC-form</span></td>
+                    <td style="color: var(--text-muted);">Interrupts the program to request a service from the operating system (Supervisor Call).</td>
+                </tr>
+                
+                <tr onclick="window.location='sld/';" style="cursor: pointer;">
+                    <td class="mono">sld</td>
+                    <td style="font-weight: 500;">Shift Left Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Shifts a 64-bit register left by the amount specified in RB.</td>
+                </tr>
+                
+                <tr onclick="window.location='slw/';" style="cursor: pointer;">
+                    <td class="mono">slw</td>
+                    <td style="font-weight: 500;">Shift Left Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Shifts a 32-bit register left by the amount specified in RB.</td>
+                </tr>
+                
+                <tr onclick="window.location='srad/';" style="cursor: pointer;">
+                    <td class="mono">srad</td>
+                    <td style="font-weight: 500;">Shift Right Algebraic Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs an arithmetic right shift on a 64-bit doubleword.</td>
+                </tr>
+                
+                <tr onclick="window.location='sradi/';" style="cursor: pointer;">
+                    <td class="mono">sradi</td>
+                    <td style="font-weight: 500;">Shift Right Algebraic Doubleword Immediate</td>
+                    <td><span class="badge">XS-form</span></td>
+                    <td style="color: var(--text-muted);">Performs an arithmetic right shift on a 64-bit doubleword by a constant amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='sraw/';" style="cursor: pointer;">
+                    <td class="mono">sraw</td>
+                    <td style="font-weight: 500;">Shift Right Algebraic Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs an arithmetic right shift (sign bit replicated) on a 32-bit word. Updates Carry (CA) if bits are shifted out.</td>
+                </tr>
+                
+                <tr onclick="window.location='srawi/';" style="cursor: pointer;">
+                    <td class="mono">srawi</td>
+                    <td style="font-weight: 500;">Shift Right Algebraic Word Immediate</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs an arithmetic right shift on a 32-bit word by a constant amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='srw/';" style="cursor: pointer;">
+                    <td class="mono">srw</td>
+                    <td style="font-weight: 500;">Shift Right Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a logical right shift (zeros shifted in) on a 32-bit word.</td>
+                </tr>
+                
+                <tr onclick="window.location='stb/';" style="cursor: pointer;">
+                    <td class="mono">stb</td>
+                    <td style="font-weight: 500;">Store Byte</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Stores the low 8 bits of a register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='std/';" style="cursor: pointer;">
+                    <td class="mono">std</td>
+                    <td style="font-weight: 500;">Store Doubleword</td>
+                    <td><span class="badge">DS-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a 64-bit doubleword to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='stdcx./';" style="cursor: pointer;">
+                    <td class="mono">stdcx.</td>
+                    <td style="font-weight: 500;">Store Doubleword Conditional Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a doubleword only if the reservation exists. 64-bit version of stwcx.</td>
+                </tr>
+                
+                <tr onclick="window.location='sth/';" style="cursor: pointer;">
+                    <td class="mono">sth</td>
+                    <td style="font-weight: 500;">Store Halfword</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Stores the low 16 bits of a register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='stw/';" style="cursor: pointer;">
+                    <td class="mono">stw</td>
+                    <td style="font-weight: 500;">Store Word</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Stores the low 32 bits of a register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='stwcx./';" style="cursor: pointer;">
+                    <td class="mono">stwcx.</td>
+                    <td style="font-weight: 500;">Store Word Conditional Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a word only if the reservation created by 'lwarx' still exists. Used for atomic operations. Sets CR0.</td>
+                </tr>
+                
+                <tr onclick="window.location='td/';" style="cursor: pointer;">
+                    <td class="mono">td</td>
+                    <td style="font-weight: 500;">Trap Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Traps if the condition specified by TO (Trap Options) is met between two 64-bit registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='trap/';" style="cursor: pointer;">
+                    <td class="mono">trap</td>
+                    <td style="font-weight: 500;">Trap (Pseudo)</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Unconditional trap. Forces an exception. (Encoded as tw 31, 0, 0).</td>
+                </tr>
+                
+                <tr onclick="window.location='xor/';" style="cursor: pointer;">
+                    <td class="mono">xor</td>
+                    <td style="font-weight: 500;">XOR</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise Exclusive OR comparison.</td>
+                </tr>
+                
+                <tr onclick="window.location='xori/';" style="cursor: pointer;">
+                    <td class="mono">xori</td>
+                    <td style="font-weight: 500;">XOR Immediate</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise XOR with a 16-bit unsigned immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='xoris/';" style="cursor: pointer;">
+                    <td class="mono">xoris</td>
+                    <td style="font-weight: 500;">XOR Immediate Shifted</td>
+                    <td><span class="badge">D-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a bitwise XOR with a 16-bit immediate shifted left by 16 bits.</td>
+                </tr>
+                
             </tbody>
         </table>
     </div>
