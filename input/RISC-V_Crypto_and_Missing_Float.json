@@ -1,0 +1,166 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "AES64ES",
+      "architecture": "RISC-V",
+      "extension": "Zk (Crypto)",
+      "full_name": "AES-64 Encryption Schedule",
+      "summary": "Performs one round of AES-128 encryption key schedule generation.",
+      "syntax": "AES64ES rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0011001 | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = aes_encrypt_schedule(R[rs1], R[rs2]);",
+      "example": "AES64ES x10, x11, x12",
+      "example_note": "AES Key Gen."
+    },
+    {
+      "mnemonic": "AES64DS",
+      "architecture": "RISC-V",
+      "extension": "Zk (Crypto)",
+      "full_name": "AES-64 Decryption Schedule",
+      "summary": "Performs one round of AES-128 decryption key schedule generation.",
+      "syntax": "AES64DS rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0011101 | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = aes_decrypt_schedule(R[rs1], R[rs2]);",
+      "example": "AES64DS x10, x11, x12",
+      "example_note": "AES Decrypt Key Gen."
+    },
+    {
+      "mnemonic": "SHA256SIG0",
+      "architecture": "RISC-V",
+      "extension": "Zk (Crypto)",
+      "full_name": "SHA-256 Sigma0",
+      "summary": "Performs the Sigma0 transformation function for SHA-256.",
+      "syntax": "SHA256SIG0 rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0001000 | 00010 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = ROTR(x, 7) ^ ROTR(x, 18) ^ (x >> 3);",
+      "example": "SHA256SIG0 x10, x11",
+      "example_note": "SHA-256 calculation."
+    },
+    {
+      "mnemonic": "SHA256SUM0",
+      "architecture": "RISC-V",
+      "extension": "Zk (Crypto)",
+      "full_name": "SHA-256 Sum0",
+      "summary": "Performs the Sum0 transformation function for SHA-256.",
+      "syntax": "SHA256SUM0 rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0001000 | 00000 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = ROTR(x, 2) ^ ROTR(x, 13) ^ ROTR(x, 22);",
+      "example": "SHA256SUM0 x10, x11",
+      "example_note": "SHA-256 calculation."
+    },
+    {
+      "mnemonic": "FCVT.WU.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Convert Float to Unsigned Word",
+      "summary": "Converts a single-precision float to a 32-bit unsigned integer.",
+      "syntax": "FCVT.WU.S rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100000 | 00001 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (UInt)" },
+        { "name": "rs1", "desc": "Source (Float)" }
+      ],
+      "pseudocode": "R[rd] = sext(f32_to_u32(F[rs1]));",
+      "example": "FCVT.WU.S x10, f1",
+      "example_note": "Float -> Unsigned Int."
+    },
+    {
+      "mnemonic": "FCVT.S.WU",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Convert Unsigned Word to Float",
+      "summary": "Converts a 32-bit unsigned integer to a single-precision float.",
+      "syntax": "FCVT.S.WU rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101000 | 00001 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Float)" },
+        { "name": "rs1", "desc": "Source (UInt)" }
+      ],
+      "pseudocode": "F[rd] = u32_to_f32(R[rs1]);",
+      "example": "FCVT.S.WU f1, x10",
+      "example_note": "Unsigned Int -> Float."
+    },
+    {
+      "mnemonic": "FCVT.W.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Convert Double to Word",
+      "summary": "Converts a double-precision float to a 32-bit signed integer.",
+      "syntax": "FCVT.W.D rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100001 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int)" },
+        { "name": "rs1", "desc": "Source (Double)" }
+      ],
+      "pseudocode": "R[rd] = sext(f64_to_i32(F[rs1]));",
+      "example": "FCVT.W.D x10, f0",
+      "example_note": "Double -> Int."
+    },
+    {
+      "mnemonic": "FCVT.D.W",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Convert Word to Double",
+      "summary": "Converts a 32-bit signed integer to a double-precision float.",
+      "syntax": "FCVT.D.W rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101001 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Double)" },
+        { "name": "rs1", "desc": "Source (Int)" }
+      ],
+      "pseudocode": "F[rd] = i32_to_f64(R[rs1]);",
+      "example": "FCVT.D.W f0, x10",
+      "example_note": "Int -> Double."
+    }
+  ]
+}

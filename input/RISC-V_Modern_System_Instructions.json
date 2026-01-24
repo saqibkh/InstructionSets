@@ -1,0 +1,196 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "CZERO.EQZ",
+      "architecture": "RISC-V",
+      "extension": "Zicond",
+      "full_name": "Conditional Zero Equal to Zero",
+      "summary": "Moves rs1 to rd if rs2 is non-zero, otherwise sets rd to zero.",
+      "syntax": "CZERO.EQZ rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000111 | rs2 | rs1 | 101 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Condition" }
+      ],
+      "pseudocode": "if (R[rs2] == 0) R[rd] = 0; else R[rd] = R[rs1];",
+      "example": "CZERO.EQZ x10, x11, x12",
+      "example_note": "If x12 is 0, x10=0. Else x10=x11."
+    },
+    {
+      "mnemonic": "CZERO.NEZ",
+      "architecture": "RISC-V",
+      "extension": "Zicond",
+      "full_name": "Conditional Zero Not Equal to Zero",
+      "summary": "Moves rs1 to rd if rs2 is zero, otherwise sets rd to zero.",
+      "syntax": "CZERO.NEZ rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000111 | rs2 | rs1 | 111 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Condition" }
+      ],
+      "pseudocode": "if (R[rs2] != 0) R[rd] = 0; else R[rd] = R[rs1];",
+      "example": "CZERO.NEZ x10, x11, x12",
+      "example_note": "If x12 != 0, x10=0. Else x10=x11."
+    },
+    {
+      "mnemonic": "PAUSE",
+      "architecture": "RISC-V",
+      "extension": "Zihintpause",
+      "full_name": "Pause",
+      "summary": "Hints that the current hart is in a spin-wait loop, allowing the hardware to reduce power consumption or yield resources.",
+      "syntax": "PAUSE",
+      "encoding": {
+        "format": "I-Type (Hint)",
+        "binary_pattern": "000000010000 | 00000 | 000 | 00000 | 0001111",
+        "hex_opcode": "0x0F"
+      },
+      "operands": [],
+      "pseudocode": "// Implementation-defined delay/yield",
+      "example": "PAUSE",
+      "example_note": "Used inside spinlocks."
+    },
+    {
+      "mnemonic": "CBO.CLEAN",
+      "architecture": "RISC-V",
+      "extension": "Zicbom",
+      "full_name": "Cache Block Operation: Clean",
+      "summary": "Performs a clean operation on the cache block containing the effective address.",
+      "syntax": "CBO.CLEAN (rs1)",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000001 | rs1 | 010 | 00000 | 0001111",
+        "hex_opcode": "0x0F"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "CacheClean(R[rs1]);",
+      "example": "CBO.CLEAN (x10)",
+      "example_note": "Write back dirty data to memory."
+    },
+    {
+      "mnemonic": "CBO.FLUSH",
+      "architecture": "RISC-V",
+      "extension": "Zicbom",
+      "full_name": "Cache Block Operation: Flush",
+      "summary": "Performs a flush (clean + invalidate) operation on the cache block.",
+      "syntax": "CBO.FLUSH (rs1)",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000010 | rs1 | 010 | 00000 | 0001111",
+        "hex_opcode": "0x0F"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "CacheFlush(R[rs1]);",
+      "example": "CBO.FLUSH (x10)",
+      "example_note": "Write back and invalidate."
+    },
+    {
+      "mnemonic": "CBO.INVAL",
+      "architecture": "RISC-V",
+      "extension": "Zicbom",
+      "full_name": "Cache Block Operation: Invalidate",
+      "summary": "Performs an invalidate operation on the cache block.",
+      "syntax": "CBO.INVAL (rs1)",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000000 | rs1 | 010 | 00000 | 0001111",
+        "hex_opcode": "0x0F"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "CacheInvalidate(R[rs1]);",
+      "example": "CBO.INVAL (x10)",
+      "example_note": "Discard cache line (data lost if dirty)."
+    },
+    {
+      "mnemonic": "CBO.ZERO",
+      "architecture": "RISC-V",
+      "extension": "Zicboz",
+      "full_name": "Cache Block Operation: Zero",
+      "summary": "Zeros a cache block specified by the address.",
+      "syntax": "CBO.ZERO (rs1)",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000100 | rs1 | 010 | 00000 | 0001111",
+        "hex_opcode": "0x0F"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "MemSet(R[rs1], BlockSize, 0);",
+      "example": "CBO.ZERO (x10)",
+      "example_note": "Fast zeroing of memory blocks."
+    },
+    {
+      "mnemonic": "RDCYCLE",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Read Cycle Counter",
+      "summary": "Reads the lower 32/64 bits of the cycle counter.",
+      "syntax": "RDCYCLE rd",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "CSRRS rd, cycle, x0",
+        "hex_opcode": "See CSRRS"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" }
+      ],
+      "pseudocode": "R[rd] = CSR[cycle];",
+      "example": "RDCYCLE x10",
+      "example_note": "Get cycle count for performance timing."
+    },
+    {
+      "mnemonic": "RDTIME",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Read Real-Time Clock",
+      "summary": "Reads the lower 32/64 bits of the real-time clock.",
+      "syntax": "RDTIME rd",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "CSRRS rd, time, x0",
+        "hex_opcode": "See CSRRS"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" }
+      ],
+      "pseudocode": "R[rd] = CSR[time];",
+      "example": "RDTIME x10",
+      "example_note": "Get wall-clock time."
+    },
+    {
+      "mnemonic": "RDINSTRET",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Read Instructions Retired",
+      "summary": "Reads the count of instructions retired (completed).",
+      "syntax": "RDINSTRET rd",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "CSRRS rd, instret, x0",
+        "hex_opcode": "See CSRRS"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" }
+      ],
+      "pseudocode": "R[rd] = CSR[instret];",
+      "example": "RDINSTRET x10",
+      "example_note": "Get instruction count."
+    }
+  ]
+}

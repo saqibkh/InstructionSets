@@ -1,0 +1,161 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "HLV.B",
+      "architecture": "RISC-V",
+      "extension": "H (Hypervisor)",
+      "full_name": "Hypervisor Load Byte",
+      "summary": "Loads a byte from Guest Physical Memory (VS-stage translation only).",
+      "syntax": "HLV.B rd, (rs1)",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0110000 | 00000 | rs1 | 100 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Guest Address" }
+      ],
+      "pseudocode": "R[rd] = sext(GuestMem[R[rs1]][7:0]);",
+      "example": "HLV.B x10, (x11)",
+      "example_note": "Read byte from guest memory."
+    },
+    {
+      "mnemonic": "HLV.W",
+      "architecture": "RISC-V",
+      "extension": "H (Hypervisor)",
+      "full_name": "Hypervisor Load Word",
+      "summary": "Loads a word from Guest Physical Memory (VS-stage translation only).",
+      "syntax": "HLV.W rd, (rs1)",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0110100 | 00000 | rs1 | 100 | rd | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Guest Address" }
+      ],
+      "pseudocode": "R[rd] = sext(GuestMem[R[rs1]][31:0]);",
+      "example": "HLV.W x10, (x11)",
+      "example_note": "Read word from guest memory."
+    },
+    {
+      "mnemonic": "HSV.B",
+      "architecture": "RISC-V",
+      "extension": "H (Hypervisor)",
+      "full_name": "Hypervisor Store Byte",
+      "summary": "Stores a byte to Guest Physical Memory.",
+      "syntax": "HSV.B rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0110001 | rs2 | rs1 | 100 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Source" },
+        { "name": "rs1", "desc": "Guest Address" }
+      ],
+      "pseudocode": "GuestMem[R[rs1]][7:0] = R[rs2][7:0];",
+      "example": "HSV.B x10, (x11)",
+      "example_note": "Write byte to guest memory."
+    },
+    {
+      "mnemonic": "HSV.W",
+      "architecture": "RISC-V",
+      "extension": "H (Hypervisor)",
+      "full_name": "Hypervisor Store Word",
+      "summary": "Stores a word to Guest Physical Memory.",
+      "syntax": "HSV.W rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0110101 | rs2 | rs1 | 100 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [
+        { "name": "rs2", "desc": "Source" },
+        { "name": "rs1", "desc": "Guest Address" }
+      ],
+      "pseudocode": "GuestMem[R[rs1]][31:0] = R[rs2][31:0];",
+      "example": "HSV.W x10, (x11)",
+      "example_note": "Write word to guest memory."
+    },
+    {
+      "mnemonic": "PREFETCH.I",
+      "architecture": "RISC-V",
+      "extension": "Zicbop (Prefetch)",
+      "full_name": "Prefetch Instruction",
+      "summary": "Hints to hardware to bring the cache block containing the instruction at the address into the instruction cache.",
+      "syntax": "PREFETCH.I offset(rs1)",
+      "encoding": {
+        "format": "S-Type (Hint)",
+        "binary_pattern": "00000 | 00000 | rs1 | 110 | imm | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "Prefetch(I-Cache, R[rs1] + offset);",
+      "example": "PREFETCH.I 0(x10)",
+      "example_note": "Prepare I-Cache for upcoming jump."
+    },
+    {
+      "mnemonic": "PREFETCH.R",
+      "architecture": "RISC-V",
+      "extension": "Zicbop (Prefetch)",
+      "full_name": "Prefetch Read",
+      "summary": "Hints to hardware to bring the cache block at the address into the data cache for reading.",
+      "syntax": "PREFETCH.R offset(rs1)",
+      "encoding": {
+        "format": "S-Type (Hint)",
+        "binary_pattern": "00000 | 00001 | rs1 | 110 | imm | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "Prefetch(D-Cache, Read, R[rs1] + offset);",
+      "example": "PREFETCH.R 64(x10)",
+      "example_note": "Prepare D-Cache for reading next cache line."
+    },
+    {
+      "mnemonic": "PREFETCH.W",
+      "architecture": "RISC-V",
+      "extension": "Zicbop (Prefetch)",
+      "full_name": "Prefetch Write",
+      "summary": "Hints to hardware to bring the cache block at the address into the data cache for writing (exclusive ownership).",
+      "syntax": "PREFETCH.W offset(rs1)",
+      "encoding": {
+        "format": "S-Type (Hint)",
+        "binary_pattern": "00000 | 00011 | rs1 | 110 | imm | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "Prefetch(D-Cache, Write, R[rs1] + offset);",
+      "example": "PREFETCH.W 0(x10)",
+      "example_note": "Prepare D-Cache for writing."
+    },
+    {
+      "mnemonic": "DRET",
+      "architecture": "RISC-V",
+      "extension": "Privileged",
+      "full_name": "Debug Return",
+      "summary": "Returns from Debug Mode to the mode defined in the 'dcsr' register.",
+      "syntax": "DRET",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0111101 | 10010 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73"
+      },
+      "operands": [],
+      "pseudocode": "PC = DPC; Priv = DCSR.prv;",
+      "example": "DRET",
+      "example_note": "Resume execution from debug break."
+    }
+  ]
+}

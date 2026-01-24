@@ -85,11 +85,32 @@
                     <td style="color: var(--text-muted);">Adds a 12-bit immediate to a register (32-bit arithmetic) and sign-extends to 64 bits.</td>
                 </tr>
                 
+                <tr onclick="window.location='adduw/';" style="cursor: pointer;">
+                    <td class="mono">ADDUW</td>
+                    <td style="font-weight: 500;">Add Unsigned Word</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Zero-extends the lower 32 bits of rs1 and adds it to rs2. Useful for 64-bit address calculations with 32-bit unsigned indices.</td>
+                </tr>
+                
                 <tr onclick="window.location='addw/';" style="cursor: pointer;">
                     <td class="mono">ADDW</td>
                     <td style="font-weight: 500;">Add Word</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Adds two 32-bit registers and sign-extends the result to 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='aes64ds/';" style="cursor: pointer;">
+                    <td class="mono">AES64DS</td>
+                    <td style="font-weight: 500;">AES-64 Decryption Schedule</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs one round of AES-128 decryption key schedule generation.</td>
+                </tr>
+                
+                <tr onclick="window.location='aes64es/';" style="cursor: pointer;">
+                    <td class="mono">AES64ES</td>
+                    <td style="font-weight: 500;">AES-64 Encryption Schedule</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs one round of AES-128 encryption key schedule generation.</td>
                 </tr>
                 
                 <tr onclick="window.location='amoadd.d/';" style="cursor: pointer;">
@@ -218,6 +239,20 @@
                     <td style="color: var(--text-muted);">Adds a 20-bit upper immediate to the Program Counter.</td>
                 </tr>
                 
+                <tr onclick="window.location='bclr/';" style="cursor: pointer;">
+                    <td class="mono">BCLR</td>
+                    <td style="font-weight: 500;">Bit Clear</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Clears a single bit in rs1 at the index specified by rs2.</td>
+                </tr>
+                
+                <tr onclick="window.location='bclri/';" style="cursor: pointer;">
+                    <td class="mono">BCLRI</td>
+                    <td style="font-weight: 500;">Bit Clear Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Clears a single bit in rs1 at the index specified by an immediate.</td>
+                </tr>
+                
                 <tr onclick="window.location='beq/';" style="cursor: pointer;">
                     <td class="mono">BEQ</td>
                     <td style="font-weight: 500;">Branch if Equal</td>
@@ -232,11 +267,39 @@
                     <td style="color: var(--text-muted);">Branches if the register is zero.</td>
                 </tr>
                 
+                <tr onclick="window.location='bext/';" style="cursor: pointer;">
+                    <td class="mono">BEXT</td>
+                    <td style="font-weight: 500;">Bit Extract</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Extracts the value of a single bit (0 or 1) at the index specified by rs2. The result is placed in the LSB of rd.</td>
+                </tr>
+                
+                <tr onclick="window.location='bexti/';" style="cursor: pointer;">
+                    <td class="mono">BEXTI</td>
+                    <td style="font-weight: 500;">Bit Extract Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Extracts the value of a single bit (0 or 1) at the index specified by an immediate.</td>
+                </tr>
+                
                 <tr onclick="window.location='bge/';" style="cursor: pointer;">
                     <td class="mono">BGE</td>
                     <td style="font-weight: 500;">Branch if Greater or Equal</td>
                     <td><span class="badge">B-Type</span></td>
                     <td style="color: var(--text-muted);">Take the branch if rs1 is greater than or equal to rs2 (signed).</td>
+                </tr>
+                
+                <tr onclick="window.location='binv/';" style="cursor: pointer;">
+                    <td class="mono">BINV</td>
+                    <td style="font-weight: 500;">Bit Invert</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Inverts (toggles) a single bit in rs1 at the index specified by rs2.</td>
+                </tr>
+                
+                <tr onclick="window.location='binvi/';" style="cursor: pointer;">
+                    <td class="mono">BINVI</td>
+                    <td style="font-weight: 500;">Bit Invert Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Inverts (toggles) a single bit in rs1 at the index specified by an immediate.</td>
                 </tr>
                 
                 <tr onclick="window.location='blt/';" style="cursor: pointer;">
@@ -258,6 +321,20 @@
                     <td style="font-weight: 500;">Branch if Not Equal to Zero</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Branches if the register is not zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='bset/';" style="cursor: pointer;">
+                    <td class="mono">BSET</td>
+                    <td style="font-weight: 500;">Bit Set</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Sets a single bit in rs1 at the index specified by rs2.</td>
+                </tr>
+                
+                <tr onclick="window.location='bseti/';" style="cursor: pointer;">
+                    <td class="mono">BSETI</td>
+                    <td style="font-weight: 500;">Bit Set Immediate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Sets a single bit in rs1 at the index specified by an immediate.</td>
                 </tr>
                 
                 <tr onclick="window.location='c.add/';" style="cursor: pointer;">
@@ -449,6 +526,41 @@
                     <td style="color: var(--text-muted);">Calls a function by jumping to an address and saving the return address.</td>
                 </tr>
                 
+                <tr onclick="window.location='cbo.clean/';" style="cursor: pointer;">
+                    <td class="mono">CBO.CLEAN</td>
+                    <td style="font-weight: 500;">Cache Block Operation: Clean</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a clean operation on the cache block containing the effective address.</td>
+                </tr>
+                
+                <tr onclick="window.location='cbo.flush/';" style="cursor: pointer;">
+                    <td class="mono">CBO.FLUSH</td>
+                    <td style="font-weight: 500;">Cache Block Operation: Flush</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs a flush (clean + invalidate) operation on the cache block.</td>
+                </tr>
+                
+                <tr onclick="window.location='cbo.inval/';" style="cursor: pointer;">
+                    <td class="mono">CBO.INVAL</td>
+                    <td style="font-weight: 500;">Cache Block Operation: Invalidate</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs an invalidate operation on the cache block.</td>
+                </tr>
+                
+                <tr onclick="window.location='cbo.zero/';" style="cursor: pointer;">
+                    <td class="mono">CBO.ZERO</td>
+                    <td style="font-weight: 500;">Cache Block Operation: Zero</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Zeros a cache block specified by the address.</td>
+                </tr>
+                
+                <tr onclick="window.location='clmul/';" style="cursor: pointer;">
+                    <td class="mono">CLMUL</td>
+                    <td style="font-weight: 500;">Carry-less Multiply</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs carry-less multiplication of the lower bits of rs1 and rs2. Used for CRC and GCM (crypto).</td>
+                </tr>
+                
                 <tr onclick="window.location='clz/';" style="cursor: pointer;">
                     <td class="mono">CLZ</td>
                     <td style="font-weight: 500;">Count Leading Zeros</td>
@@ -512,6 +624,20 @@
                     <td style="color: var(--text-muted);">Counts the number of 0 bits at the LSB end of the register.</td>
                 </tr>
                 
+                <tr onclick="window.location='czero.eqz/';" style="cursor: pointer;">
+                    <td class="mono">CZERO.EQZ</td>
+                    <td style="font-weight: 500;">Conditional Zero Equal to Zero</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Moves rs1 to rd if rs2 is non-zero, otherwise sets rd to zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='czero.nez/';" style="cursor: pointer;">
+                    <td class="mono">CZERO.NEZ</td>
+                    <td style="font-weight: 500;">Conditional Zero Not Equal to Zero</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Moves rs1 to rd if rs2 is zero, otherwise sets rd to zero.</td>
+                </tr>
+                
                 <tr onclick="window.location='div/';" style="cursor: pointer;">
                     <td class="mono">DIV</td>
                     <td style="font-weight: 500;">Divide</td>
@@ -538,6 +664,13 @@
                     <td style="font-weight: 500;">Divide Word</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Performs 32-bit signed division of rs1 by rs2, sign-extending the result.</td>
+                </tr>
+                
+                <tr onclick="window.location='dret/';" style="cursor: pointer;">
+                    <td class="mono">DRET</td>
+                    <td style="font-weight: 500;">Debug Return</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Returns from Debug Mode to the mode defined in the 'dcsr' register.</td>
                 </tr>
                 
                 <tr onclick="window.location='ebreak/';" style="cursor: pointer;">
@@ -603,6 +736,13 @@
                     <td style="color: var(--text-muted);">Converts a single-precision float to a double-precision float.</td>
                 </tr>
                 
+                <tr onclick="window.location='fcvt.d.w/';" style="cursor: pointer;">
+                    <td class="mono">FCVT.D.W</td>
+                    <td style="font-weight: 500;">Convert Word to Double</td>
+                    <td><span class="badge">I-Type (Float)</span></td>
+                    <td style="color: var(--text-muted);">Converts a 32-bit signed integer to a double-precision float.</td>
+                </tr>
+                
                 <tr onclick="window.location='fcvt.l.d/';" style="cursor: pointer;">
                     <td class="mono">FCVT.L.D</td>
                     <td style="font-weight: 500;">Convert Double to Long</td>
@@ -652,11 +792,32 @@
                     <td style="color: var(--text-muted);">Converts a signed 32-bit integer to a single-precision floating-point number.</td>
                 </tr>
                 
+                <tr onclick="window.location='fcvt.s.wu/';" style="cursor: pointer;">
+                    <td class="mono">FCVT.S.WU</td>
+                    <td style="font-weight: 500;">Convert Unsigned Word to Float</td>
+                    <td><span class="badge">I-Type (Float)</span></td>
+                    <td style="color: var(--text-muted);">Converts a 32-bit unsigned integer to a single-precision float.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvt.w.d/';" style="cursor: pointer;">
+                    <td class="mono">FCVT.W.D</td>
+                    <td style="font-weight: 500;">Convert Double to Word</td>
+                    <td><span class="badge">I-Type (Float)</span></td>
+                    <td style="color: var(--text-muted);">Converts a double-precision float to a 32-bit signed integer.</td>
+                </tr>
+                
                 <tr onclick="window.location='fcvt.w.s/';" style="cursor: pointer;">
                     <td class="mono">FCVT.W.S</td>
                     <td style="font-weight: 500;">Float Convert to Word (Single)</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Converts a single-precision floating-point number to a signed 32-bit integer.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvt.wu.s/';" style="cursor: pointer;">
+                    <td class="mono">FCVT.WU.S</td>
+                    <td style="font-weight: 500;">Convert Float to Unsigned Word</td>
+                    <td><span class="badge">I-Type (Float)</span></td>
+                    <td style="color: var(--text-muted);">Converts a single-precision float to a 32-bit unsigned integer.</td>
                 </tr>
                 
                 <tr onclick="window.location='fdiv.d/';" style="cursor: pointer;">
@@ -839,6 +1000,34 @@
                     <td style="font-weight: 500;">Hypervisor Fence Virtual Virtual Memory Address</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Synchronizes updates to VS-stage address translation data structures.</td>
+                </tr>
+                
+                <tr onclick="window.location='hlv.b/';" style="cursor: pointer;">
+                    <td class="mono">HLV.B</td>
+                    <td style="font-weight: 500;">Hypervisor Load Byte</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte from Guest Physical Memory (VS-stage translation only).</td>
+                </tr>
+                
+                <tr onclick="window.location='hlv.w/';" style="cursor: pointer;">
+                    <td class="mono">HLV.W</td>
+                    <td style="font-weight: 500;">Hypervisor Load Word</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from Guest Physical Memory (VS-stage translation only).</td>
+                </tr>
+                
+                <tr onclick="window.location='hsv.b/';" style="cursor: pointer;">
+                    <td class="mono">HSV.B</td>
+                    <td style="font-weight: 500;">Hypervisor Store Byte</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Stores a byte to Guest Physical Memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='hsv.w/';" style="cursor: pointer;">
+                    <td class="mono">HSV.W</td>
+                    <td style="font-weight: 500;">Hypervisor Store Word</td>
+                    <td><span class="badge">R-Type (System)</span></td>
+                    <td style="color: var(--text-muted);">Stores a word to Guest Physical Memory.</td>
                 </tr>
                 
                 <tr onclick="window.location='j/';" style="cursor: pointer;">
@@ -1044,6 +1233,55 @@
                     <td style="color: var(--text-muted);">Performs bitwise OR with the bitwise negation of rs2 (rs1 | ~rs2).</td>
                 </tr>
                 
+                <tr onclick="window.location='pause/';" style="cursor: pointer;">
+                    <td class="mono">PAUSE</td>
+                    <td style="font-weight: 500;">Pause</td>
+                    <td><span class="badge">I-Type (Hint)</span></td>
+                    <td style="color: var(--text-muted);">Hints that the current hart is in a spin-wait loop, allowing the hardware to reduce power consumption or yield resources.</td>
+                </tr>
+                
+                <tr onclick="window.location='prefetch.i/';" style="cursor: pointer;">
+                    <td class="mono">PREFETCH.I</td>
+                    <td style="font-weight: 500;">Prefetch Instruction</td>
+                    <td><span class="badge">S-Type (Hint)</span></td>
+                    <td style="color: var(--text-muted);">Hints to hardware to bring the cache block containing the instruction at the address into the instruction cache.</td>
+                </tr>
+                
+                <tr onclick="window.location='prefetch.r/';" style="cursor: pointer;">
+                    <td class="mono">PREFETCH.R</td>
+                    <td style="font-weight: 500;">Prefetch Read</td>
+                    <td><span class="badge">S-Type (Hint)</span></td>
+                    <td style="color: var(--text-muted);">Hints to hardware to bring the cache block at the address into the data cache for reading.</td>
+                </tr>
+                
+                <tr onclick="window.location='prefetch.w/';" style="cursor: pointer;">
+                    <td class="mono">PREFETCH.W</td>
+                    <td style="font-weight: 500;">Prefetch Write</td>
+                    <td><span class="badge">S-Type (Hint)</span></td>
+                    <td style="color: var(--text-muted);">Hints to hardware to bring the cache block at the address into the data cache for writing (exclusive ownership).</td>
+                </tr>
+                
+                <tr onclick="window.location='rdcycle/';" style="cursor: pointer;">
+                    <td class="mono">RDCYCLE</td>
+                    <td style="font-weight: 500;">Read Cycle Counter</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Reads the lower 32/64 bits of the cycle counter.</td>
+                </tr>
+                
+                <tr onclick="window.location='rdinstret/';" style="cursor: pointer;">
+                    <td class="mono">RDINSTRET</td>
+                    <td style="font-weight: 500;">Read Instructions Retired</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Reads the count of instructions retired (completed).</td>
+                </tr>
+                
+                <tr onclick="window.location='rdtime/';" style="cursor: pointer;">
+                    <td class="mono">RDTIME</td>
+                    <td style="font-weight: 500;">Read Real-Time Clock</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Reads the lower 32/64 bits of the real-time clock.</td>
+                </tr>
+                
                 <tr onclick="window.location='rem/';" style="cursor: pointer;">
                     <td class="mono">REM</td>
                     <td style="font-weight: 500;">Remainder</td>
@@ -1154,6 +1392,41 @@
                     <td style="font-weight: 500;">Store Halfword</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Stores the lowest 16 bits of a register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='sh1add/';" style="cursor: pointer;">
+                    <td class="mono">SH1ADD</td>
+                    <td style="font-weight: 500;">Shift Left 1 and Add</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Shifts rs1 left by 1 and adds rs2. Used for calculating addresses of 16-bit elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='sh2add/';" style="cursor: pointer;">
+                    <td class="mono">SH2ADD</td>
+                    <td style="font-weight: 500;">Shift Left 2 and Add</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Shifts rs1 left by 2 and adds rs2. Used for calculating addresses of 32-bit elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='sh3add/';" style="cursor: pointer;">
+                    <td class="mono">SH3ADD</td>
+                    <td style="font-weight: 500;">Shift Left 3 and Add</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Shifts rs1 left by 3 and adds rs2. Used for calculating addresses of 64-bit elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='sha256sig0/';" style="cursor: pointer;">
+                    <td class="mono">SHA256SIG0</td>
+                    <td style="font-weight: 500;">SHA-256 Sigma0</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs the Sigma0 transformation function for SHA-256.</td>
+                </tr>
+                
+                <tr onclick="window.location='sha256sum0/';" style="cursor: pointer;">
+                    <td class="mono">SHA256SUM0</td>
+                    <td style="font-weight: 500;">SHA-256 Sum0</td>
+                    <td><span class="badge">I-Type</span></td>
+                    <td style="color: var(--text-muted);">Performs the Sum0 transformation function for SHA-256.</td>
                 </tr>
                 
                 <tr onclick="window.location='sll/';" style="cursor: pointer;">

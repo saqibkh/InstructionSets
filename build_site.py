@@ -91,7 +91,8 @@ def get_instruction_category(inst):
     if 'Privileged' in ext or 'System' in ext or mnemonic in ['CSRRW', 'MRET', 'WFI', 'URET', 'SRET']: return 'System & Privileged'
     if 'RV64' in ext or mnemonic.endswith('W') or mnemonic in ['LD', 'SD', 'LWU']: return '64-bit Extensions'
     if 'M' in ext or mnemonic in ['MUL', 'DIV', 'REM']: return 'Math Extensions (M)'
-    
+    if 'Crypto' in ext or 'Zk' in ext: return 'Cryptography (Scalar)'
+
     return 'Base Integer'
 
 def generate_site(master_db):
@@ -165,7 +166,8 @@ def generate_site(master_db):
         # Define Custom Sort Order for Categories
         cat_order = [
             'Base Integer', '64-bit Extensions', 'Math Extensions (M)', 
-            'Floating Point', 'Atomics', 'Bit Manipulation', 
+            'Floating Point', 'Atomics', 'Bit Manipulation',
+            'Cryptography (Scalar)',
             'Vector Operations', 'Compressed (16-bit)', 
             'System & Privileged', 'Pseudo-Instructions'
         ]

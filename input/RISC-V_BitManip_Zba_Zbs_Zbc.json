@@ -1,0 +1,277 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "SH1ADD",
+      "architecture": "RISC-V",
+      "extension": "Zba (Address Gen)",
+      "full_name": "Shift Left 1 and Add",
+      "summary": "Shifts rs1 left by 1 and adds rs2. Used for calculating addresses of 16-bit elements.",
+      "syntax": "SH1ADD rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 010 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Index" },
+        { "name": "rs2", "desc": "Base" }
+      ],
+      "pseudocode": "R[rd] = R[rs2] + (R[rs1] << 1);",
+      "example": "SH1ADD x10, x11, x12",
+      "example_note": "Calculate address: x12 + (x11 * 2)."
+    },
+    {
+      "mnemonic": "SH2ADD",
+      "architecture": "RISC-V",
+      "extension": "Zba (Address Gen)",
+      "full_name": "Shift Left 2 and Add",
+      "summary": "Shifts rs1 left by 2 and adds rs2. Used for calculating addresses of 32-bit elements.",
+      "syntax": "SH2ADD rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 100 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Index" },
+        { "name": "rs2", "desc": "Base" }
+      ],
+      "pseudocode": "R[rd] = R[rs2] + (R[rs1] << 2);",
+      "example": "SH2ADD x10, x11, x12",
+      "example_note": "Calculate address: x12 + (x11 * 4)."
+    },
+    {
+      "mnemonic": "SH3ADD",
+      "architecture": "RISC-V",
+      "extension": "Zba (Address Gen)",
+      "full_name": "Shift Left 3 and Add",
+      "summary": "Shifts rs1 left by 3 and adds rs2. Used for calculating addresses of 64-bit elements.",
+      "syntax": "SH3ADD rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 110 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Index" },
+        { "name": "rs2", "desc": "Base" }
+      ],
+      "pseudocode": "R[rd] = R[rs2] + (R[rs1] << 3);",
+      "example": "SH3ADD x10, x11, x12",
+      "example_note": "Calculate address: x12 + (x11 * 8)."
+    },
+    {
+      "mnemonic": "ADDUW",
+      "architecture": "RISC-V",
+      "extension": "Zba (Address Gen)",
+      "full_name": "Add Unsigned Word",
+      "summary": "Zero-extends the lower 32 bits of rs1 and adds it to rs2. Useful for 64-bit address calculations with 32-bit unsigned indices.",
+      "syntax": "ADDUW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000100 | rs2 | rs1 | 000 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Index (32-bit)" },
+        { "name": "rs2", "desc": "Base" }
+      ],
+      "pseudocode": "R[rd] = R[rs2] + zext(R[rs1][31:0]);",
+      "example": "ADDUW x10, x11, x12",
+      "example_note": "x10 = x12 + (uint32_t)x11"
+    },
+    {
+      "mnemonic": "BSET",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Set",
+      "summary": "Sets a single bit in rs1 at the index specified by rs2.",
+      "syntax": "BSET rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 001 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] | (1 << (R[rs2] & (XLEN-1)));",
+      "example": "BSET x10, x11, x12",
+      "example_note": "Set the bit at index x12 in x11."
+    },
+    {
+      "mnemonic": "BSETI",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Set Immediate",
+      "summary": "Sets a single bit in rs1 at the index specified by an immediate.",
+      "syntax": "BSETI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0010100 | imm | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] | (1 << imm);",
+      "example": "BSETI x10, x11, 5",
+      "example_note": "Set bit 5."
+    },
+    {
+      "mnemonic": "BCLR",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Clear",
+      "summary": "Clears a single bit in rs1 at the index specified by rs2.",
+      "syntax": "BCLR rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100100 | rs2 | rs1 | 001 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] & ~(1 << (R[rs2] & (XLEN-1)));",
+      "example": "BCLR x10, x11, x12",
+      "example_note": "Clear the bit at index x12."
+    },
+    {
+      "mnemonic": "BCLRI",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Clear Immediate",
+      "summary": "Clears a single bit in rs1 at the index specified by an immediate.",
+      "syntax": "BCLRI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0100100 | imm | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] & ~(1 << imm);",
+      "example": "BCLRI x10, x11, 3",
+      "example_note": "Clear bit 3."
+    },
+    {
+      "mnemonic": "BINV",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Invert",
+      "summary": "Inverts (toggles) a single bit in rs1 at the index specified by rs2.",
+      "syntax": "BINV rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0110100 | rs2 | rs1 | 001 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] ^ (1 << (R[rs2] & (XLEN-1)));",
+      "example": "BINV x10, x11, x12",
+      "example_note": "Toggle the bit at index x12."
+    },
+    {
+      "mnemonic": "BINVI",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Invert Immediate",
+      "summary": "Inverts (toggles) a single bit in rs1 at the index specified by an immediate.",
+      "syntax": "BINVI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0110100 | imm | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] ^ (1 << imm);",
+      "example": "BINVI x10, x11, 7",
+      "example_note": "Toggle bit 7."
+    },
+    {
+      "mnemonic": "BEXT",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Extract",
+      "summary": "Extracts the value of a single bit (0 or 1) at the index specified by rs2. The result is placed in the LSB of rd.",
+      "syntax": "BEXT rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100100 | rs2 | rs1 | 101 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (0 or 1)" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] >> (R[rs2] & (XLEN-1))) & 1;",
+      "example": "BEXT x10, x11, x12",
+      "example_note": "x10 = (x11 >> x12) & 1"
+    },
+    {
+      "mnemonic": "BEXTI",
+      "architecture": "RISC-V",
+      "extension": "Zbs (Single Bit)",
+      "full_name": "Bit Extract Immediate",
+      "summary": "Extracts the value of a single bit (0 or 1) at the index specified by an immediate.",
+      "syntax": "BEXTI rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0100100 | imm | rs1 | 101 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (0 or 1)" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Index" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] >> imm) & 1;",
+      "example": "BEXTI x10, x11, 31",
+      "example_note": "Get sign bit (bit 31) of x11."
+    },
+    {
+      "mnemonic": "CLMUL",
+      "architecture": "RISC-V",
+      "extension": "Zbc (Carry-less)",
+      "full_name": "Carry-less Multiply",
+      "summary": "Performs carry-less multiplication of the lower bits of rs1 and rs2. Used for CRC and GCM (crypto).",
+      "syntax": "CLMUL rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000101 | rs2 | rs1 | 001 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "R[rd] = clmul(R[rs1], R[rs2]);",
+      "example": "CLMUL x10, x11, x12",
+      "example_note": "Carry-less multiply (GF(2^n))."
+    }
+  ]
+}

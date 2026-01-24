@@ -5066,5 +5066,1041 @@
     "pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;",
     "example": "FLE.D x10, f0, f1",
     "example_note": "Less equal check."
+  },
+  {
+    "mnemonic": "SH1ADD",
+    "architecture": "RISC-V",
+    "extension": "Zba (Address Gen)",
+    "full_name": "Shift Left 1 and Add",
+    "summary": "Shifts rs1 left by 1 and adds rs2. Used for calculating addresses of 16-bit elements.",
+    "syntax": "SH1ADD rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010000 | rs2 | rs1 | 010 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Index"
+      },
+      {
+        "name": "rs2",
+        "desc": "Base"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs2] + (R[rs1] << 1);",
+    "example": "SH1ADD x10, x11, x12",
+    "example_note": "Calculate address: x12 + (x11 * 2)."
+  },
+  {
+    "mnemonic": "SH2ADD",
+    "architecture": "RISC-V",
+    "extension": "Zba (Address Gen)",
+    "full_name": "Shift Left 2 and Add",
+    "summary": "Shifts rs1 left by 2 and adds rs2. Used for calculating addresses of 32-bit elements.",
+    "syntax": "SH2ADD rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010000 | rs2 | rs1 | 100 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Index"
+      },
+      {
+        "name": "rs2",
+        "desc": "Base"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs2] + (R[rs1] << 2);",
+    "example": "SH2ADD x10, x11, x12",
+    "example_note": "Calculate address: x12 + (x11 * 4)."
+  },
+  {
+    "mnemonic": "SH3ADD",
+    "architecture": "RISC-V",
+    "extension": "Zba (Address Gen)",
+    "full_name": "Shift Left 3 and Add",
+    "summary": "Shifts rs1 left by 3 and adds rs2. Used for calculating addresses of 64-bit elements.",
+    "syntax": "SH3ADD rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010000 | rs2 | rs1 | 110 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Index"
+      },
+      {
+        "name": "rs2",
+        "desc": "Base"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs2] + (R[rs1] << 3);",
+    "example": "SH3ADD x10, x11, x12",
+    "example_note": "Calculate address: x12 + (x11 * 8)."
+  },
+  {
+    "mnemonic": "ADDUW",
+    "architecture": "RISC-V",
+    "extension": "Zba (Address Gen)",
+    "full_name": "Add Unsigned Word",
+    "summary": "Zero-extends the lower 32 bits of rs1 and adds it to rs2. Useful for 64-bit address calculations with 32-bit unsigned indices.",
+    "syntax": "ADDUW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000100 | rs2 | rs1 | 000 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Index (32-bit)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Base"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs2] + zext(R[rs1][31:0]);",
+    "example": "ADDUW x10, x11, x12",
+    "example_note": "x10 = x12 + (uint32_t)x11"
+  },
+  {
+    "mnemonic": "BSET",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Set",
+    "summary": "Sets a single bit in rs1 at the index specified by rs2.",
+    "syntax": "BSET rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010100 | rs2 | rs1 | 001 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] | (1 << (R[rs2] & (XLEN-1)));",
+    "example": "BSET x10, x11, x12",
+    "example_note": "Set the bit at index x12 in x11."
+  },
+  {
+    "mnemonic": "BSETI",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Set Immediate",
+    "summary": "Sets a single bit in rs1 at the index specified by an immediate.",
+    "syntax": "BSETI rd, rs1, imm",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0010100 | imm | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "imm",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] | (1 << imm);",
+    "example": "BSETI x10, x11, 5",
+    "example_note": "Set bit 5."
+  },
+  {
+    "mnemonic": "BCLR",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Clear",
+    "summary": "Clears a single bit in rs1 at the index specified by rs2.",
+    "syntax": "BCLR rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0100100 | rs2 | rs1 | 001 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] & ~(1 << (R[rs2] & (XLEN-1)));",
+    "example": "BCLR x10, x11, x12",
+    "example_note": "Clear the bit at index x12."
+  },
+  {
+    "mnemonic": "BCLRI",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Clear Immediate",
+    "summary": "Clears a single bit in rs1 at the index specified by an immediate.",
+    "syntax": "BCLRI rd, rs1, imm",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0100100 | imm | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "imm",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] & ~(1 << imm);",
+    "example": "BCLRI x10, x11, 3",
+    "example_note": "Clear bit 3."
+  },
+  {
+    "mnemonic": "BINV",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Invert",
+    "summary": "Inverts (toggles) a single bit in rs1 at the index specified by rs2.",
+    "syntax": "BINV rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0110100 | rs2 | rs1 | 001 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] ^ (1 << (R[rs2] & (XLEN-1)));",
+    "example": "BINV x10, x11, x12",
+    "example_note": "Toggle the bit at index x12."
+  },
+  {
+    "mnemonic": "BINVI",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Invert Immediate",
+    "summary": "Inverts (toggles) a single bit in rs1 at the index specified by an immediate.",
+    "syntax": "BINVI rd, rs1, imm",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0110100 | imm | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "imm",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] ^ (1 << imm);",
+    "example": "BINVI x10, x11, 7",
+    "example_note": "Toggle bit 7."
+  },
+  {
+    "mnemonic": "BEXT",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Extract",
+    "summary": "Extracts the value of a single bit (0 or 1) at the index specified by rs2. The result is placed in the LSB of rd.",
+    "syntax": "BEXT rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0100100 | rs2 | rs1 | 101 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (0 or 1)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = (R[rs1] >> (R[rs2] & (XLEN-1))) & 1;",
+    "example": "BEXT x10, x11, x12",
+    "example_note": "x10 = (x11 >> x12) & 1"
+  },
+  {
+    "mnemonic": "BEXTI",
+    "architecture": "RISC-V",
+    "extension": "Zbs (Single Bit)",
+    "full_name": "Bit Extract Immediate",
+    "summary": "Extracts the value of a single bit (0 or 1) at the index specified by an immediate.",
+    "syntax": "BEXTI rd, rs1, imm",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0100100 | imm | rs1 | 101 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (0 or 1)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "imm",
+        "desc": "Index"
+      }
+    ],
+    "pseudocode": "R[rd] = (R[rs1] >> imm) & 1;",
+    "example": "BEXTI x10, x11, 31",
+    "example_note": "Get sign bit (bit 31) of x11."
+  },
+  {
+    "mnemonic": "CLMUL",
+    "architecture": "RISC-V",
+    "extension": "Zbc (Carry-less)",
+    "full_name": "Carry-less Multiply",
+    "summary": "Performs carry-less multiplication of the lower bits of rs1 and rs2. Used for CRC and GCM (crypto).",
+    "syntax": "CLMUL rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000101 | rs2 | rs1 | 001 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2"
+      }
+    ],
+    "pseudocode": "R[rd] = clmul(R[rs1], R[rs2]);",
+    "example": "CLMUL x10, x11, x12",
+    "example_note": "Carry-less multiply (GF(2^n))."
+  },
+  {
+    "mnemonic": "CZERO.EQZ",
+    "architecture": "RISC-V",
+    "extension": "Zicond",
+    "full_name": "Conditional Zero Equal to Zero",
+    "summary": "Moves rs1 to rd if rs2 is non-zero, otherwise sets rd to zero.",
+    "syntax": "CZERO.EQZ rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000111 | rs2 | rs1 | 101 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Condition"
+      }
+    ],
+    "pseudocode": "if (R[rs2] == 0) R[rd] = 0; else R[rd] = R[rs1];",
+    "example": "CZERO.EQZ x10, x11, x12",
+    "example_note": "If x12 is 0, x10=0. Else x10=x11."
+  },
+  {
+    "mnemonic": "CZERO.NEZ",
+    "architecture": "RISC-V",
+    "extension": "Zicond",
+    "full_name": "Conditional Zero Not Equal to Zero",
+    "summary": "Moves rs1 to rd if rs2 is zero, otherwise sets rd to zero.",
+    "syntax": "CZERO.NEZ rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000111 | rs2 | rs1 | 111 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Condition"
+      }
+    ],
+    "pseudocode": "if (R[rs2] != 0) R[rd] = 0; else R[rd] = R[rs1];",
+    "example": "CZERO.NEZ x10, x11, x12",
+    "example_note": "If x12 != 0, x10=0. Else x10=x11."
+  },
+  {
+    "mnemonic": "PAUSE",
+    "architecture": "RISC-V",
+    "extension": "Zihintpause",
+    "full_name": "Pause",
+    "summary": "Hints that the current hart is in a spin-wait loop, allowing the hardware to reduce power consumption or yield resources.",
+    "syntax": "PAUSE",
+    "encoding": {
+      "format": "I-Type (Hint)",
+      "binary_pattern": "000000010000 | 00000 | 000 | 00000 | 0001111",
+      "hex_opcode": "0x0F"
+    },
+    "operands": [],
+    "pseudocode": "// Implementation-defined delay/yield",
+    "example": "PAUSE",
+    "example_note": "Used inside spinlocks."
+  },
+  {
+    "mnemonic": "CBO.CLEAN",
+    "architecture": "RISC-V",
+    "extension": "Zicbom",
+    "full_name": "Cache Block Operation: Clean",
+    "summary": "Performs a clean operation on the cache block containing the effective address.",
+    "syntax": "CBO.CLEAN (rs1)",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "000000000001 | rs1 | 010 | 00000 | 0001111",
+      "hex_opcode": "0x0F"
+    },
+    "operands": [
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "CacheClean(R[rs1]);",
+    "example": "CBO.CLEAN (x10)",
+    "example_note": "Write back dirty data to memory."
+  },
+  {
+    "mnemonic": "CBO.FLUSH",
+    "architecture": "RISC-V",
+    "extension": "Zicbom",
+    "full_name": "Cache Block Operation: Flush",
+    "summary": "Performs a flush (clean + invalidate) operation on the cache block.",
+    "syntax": "CBO.FLUSH (rs1)",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "000000000010 | rs1 | 010 | 00000 | 0001111",
+      "hex_opcode": "0x0F"
+    },
+    "operands": [
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "CacheFlush(R[rs1]);",
+    "example": "CBO.FLUSH (x10)",
+    "example_note": "Write back and invalidate."
+  },
+  {
+    "mnemonic": "CBO.INVAL",
+    "architecture": "RISC-V",
+    "extension": "Zicbom",
+    "full_name": "Cache Block Operation: Invalidate",
+    "summary": "Performs an invalidate operation on the cache block.",
+    "syntax": "CBO.INVAL (rs1)",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "000000000000 | rs1 | 010 | 00000 | 0001111",
+      "hex_opcode": "0x0F"
+    },
+    "operands": [
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "CacheInvalidate(R[rs1]);",
+    "example": "CBO.INVAL (x10)",
+    "example_note": "Discard cache line (data lost if dirty)."
+  },
+  {
+    "mnemonic": "CBO.ZERO",
+    "architecture": "RISC-V",
+    "extension": "Zicboz",
+    "full_name": "Cache Block Operation: Zero",
+    "summary": "Zeros a cache block specified by the address.",
+    "syntax": "CBO.ZERO (rs1)",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "000000000100 | rs1 | 010 | 00000 | 0001111",
+      "hex_opcode": "0x0F"
+    },
+    "operands": [
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "MemSet(R[rs1], BlockSize, 0);",
+    "example": "CBO.ZERO (x10)",
+    "example_note": "Fast zeroing of memory blocks."
+  },
+  {
+    "mnemonic": "RDCYCLE",
+    "architecture": "RISC-V",
+    "extension": "Pseudo",
+    "full_name": "Read Cycle Counter",
+    "summary": "Reads the lower 32/64 bits of the cycle counter.",
+    "syntax": "RDCYCLE rd",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "CSRRS rd, cycle, x0",
+      "hex_opcode": "See CSRRS"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      }
+    ],
+    "pseudocode": "R[rd] = CSR[cycle];",
+    "example": "RDCYCLE x10",
+    "example_note": "Get cycle count for performance timing."
+  },
+  {
+    "mnemonic": "RDTIME",
+    "architecture": "RISC-V",
+    "extension": "Pseudo",
+    "full_name": "Read Real-Time Clock",
+    "summary": "Reads the lower 32/64 bits of the real-time clock.",
+    "syntax": "RDTIME rd",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "CSRRS rd, time, x0",
+      "hex_opcode": "See CSRRS"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      }
+    ],
+    "pseudocode": "R[rd] = CSR[time];",
+    "example": "RDTIME x10",
+    "example_note": "Get wall-clock time."
+  },
+  {
+    "mnemonic": "RDINSTRET",
+    "architecture": "RISC-V",
+    "extension": "Pseudo",
+    "full_name": "Read Instructions Retired",
+    "summary": "Reads the count of instructions retired (completed).",
+    "syntax": "RDINSTRET rd",
+    "encoding": {
+      "format": "Pseudo",
+      "binary_pattern": "CSRRS rd, instret, x0",
+      "hex_opcode": "See CSRRS"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      }
+    ],
+    "pseudocode": "R[rd] = CSR[instret];",
+    "example": "RDINSTRET x10",
+    "example_note": "Get instruction count."
+  },
+  {
+    "mnemonic": "HLV.B",
+    "architecture": "RISC-V",
+    "extension": "H (Hypervisor)",
+    "full_name": "Hypervisor Load Byte",
+    "summary": "Loads a byte from Guest Physical Memory (VS-stage translation only).",
+    "syntax": "HLV.B rd, (rs1)",
+    "encoding": {
+      "format": "R-Type (System)",
+      "binary_pattern": "0110000 | 00000 | rs1 | 100 | rd | 1110011",
+      "hex_opcode": "0x73"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Guest Address"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(GuestMem[R[rs1]][7:0]);",
+    "example": "HLV.B x10, (x11)",
+    "example_note": "Read byte from guest memory."
+  },
+  {
+    "mnemonic": "HLV.W",
+    "architecture": "RISC-V",
+    "extension": "H (Hypervisor)",
+    "full_name": "Hypervisor Load Word",
+    "summary": "Loads a word from Guest Physical Memory (VS-stage translation only).",
+    "syntax": "HLV.W rd, (rs1)",
+    "encoding": {
+      "format": "R-Type (System)",
+      "binary_pattern": "0110100 | 00000 | rs1 | 100 | rd | 1110011",
+      "hex_opcode": "0x73"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Guest Address"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(GuestMem[R[rs1]][31:0]);",
+    "example": "HLV.W x10, (x11)",
+    "example_note": "Read word from guest memory."
+  },
+  {
+    "mnemonic": "HSV.B",
+    "architecture": "RISC-V",
+    "extension": "H (Hypervisor)",
+    "full_name": "Hypervisor Store Byte",
+    "summary": "Stores a byte to Guest Physical Memory.",
+    "syntax": "HSV.B rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (System)",
+      "binary_pattern": "0110001 | rs2 | rs1 | 100 | 00000 | 1110011",
+      "hex_opcode": "0x73"
+    },
+    "operands": [
+      {
+        "name": "rs2",
+        "desc": "Source"
+      },
+      {
+        "name": "rs1",
+        "desc": "Guest Address"
+      }
+    ],
+    "pseudocode": "GuestMem[R[rs1]][7:0] = R[rs2][7:0];",
+    "example": "HSV.B x10, (x11)",
+    "example_note": "Write byte to guest memory."
+  },
+  {
+    "mnemonic": "HSV.W",
+    "architecture": "RISC-V",
+    "extension": "H (Hypervisor)",
+    "full_name": "Hypervisor Store Word",
+    "summary": "Stores a word to Guest Physical Memory.",
+    "syntax": "HSV.W rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (System)",
+      "binary_pattern": "0110101 | rs2 | rs1 | 100 | 00000 | 1110011",
+      "hex_opcode": "0x73"
+    },
+    "operands": [
+      {
+        "name": "rs2",
+        "desc": "Source"
+      },
+      {
+        "name": "rs1",
+        "desc": "Guest Address"
+      }
+    ],
+    "pseudocode": "GuestMem[R[rs1]][31:0] = R[rs2][31:0];",
+    "example": "HSV.W x10, (x11)",
+    "example_note": "Write word to guest memory."
+  },
+  {
+    "mnemonic": "PREFETCH.I",
+    "architecture": "RISC-V",
+    "extension": "Zicbop (Prefetch)",
+    "full_name": "Prefetch Instruction",
+    "summary": "Hints to hardware to bring the cache block containing the instruction at the address into the instruction cache.",
+    "syntax": "PREFETCH.I offset(rs1)",
+    "encoding": {
+      "format": "S-Type (Hint)",
+      "binary_pattern": "00000 | 00000 | rs1 | 110 | imm | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rs1",
+        "desc": "Base Address"
+      },
+      {
+        "name": "offset",
+        "desc": "Offset"
+      }
+    ],
+    "pseudocode": "Prefetch(I-Cache, R[rs1] + offset);",
+    "example": "PREFETCH.I 0(x10)",
+    "example_note": "Prepare I-Cache for upcoming jump."
+  },
+  {
+    "mnemonic": "PREFETCH.R",
+    "architecture": "RISC-V",
+    "extension": "Zicbop (Prefetch)",
+    "full_name": "Prefetch Read",
+    "summary": "Hints to hardware to bring the cache block at the address into the data cache for reading.",
+    "syntax": "PREFETCH.R offset(rs1)",
+    "encoding": {
+      "format": "S-Type (Hint)",
+      "binary_pattern": "00000 | 00001 | rs1 | 110 | imm | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rs1",
+        "desc": "Base Address"
+      },
+      {
+        "name": "offset",
+        "desc": "Offset"
+      }
+    ],
+    "pseudocode": "Prefetch(D-Cache, Read, R[rs1] + offset);",
+    "example": "PREFETCH.R 64(x10)",
+    "example_note": "Prepare D-Cache for reading next cache line."
+  },
+  {
+    "mnemonic": "PREFETCH.W",
+    "architecture": "RISC-V",
+    "extension": "Zicbop (Prefetch)",
+    "full_name": "Prefetch Write",
+    "summary": "Hints to hardware to bring the cache block at the address into the data cache for writing (exclusive ownership).",
+    "syntax": "PREFETCH.W offset(rs1)",
+    "encoding": {
+      "format": "S-Type (Hint)",
+      "binary_pattern": "00000 | 00011 | rs1 | 110 | imm | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rs1",
+        "desc": "Base Address"
+      },
+      {
+        "name": "offset",
+        "desc": "Offset"
+      }
+    ],
+    "pseudocode": "Prefetch(D-Cache, Write, R[rs1] + offset);",
+    "example": "PREFETCH.W 0(x10)",
+    "example_note": "Prepare D-Cache for writing."
+  },
+  {
+    "mnemonic": "DRET",
+    "architecture": "RISC-V",
+    "extension": "Privileged",
+    "full_name": "Debug Return",
+    "summary": "Returns from Debug Mode to the mode defined in the 'dcsr' register.",
+    "syntax": "DRET",
+    "encoding": {
+      "format": "R-Type (System)",
+      "binary_pattern": "0111101 | 10010 | 00000 | 000 | 00000 | 1110011",
+      "hex_opcode": "0x73"
+    },
+    "operands": [],
+    "pseudocode": "PC = DPC; Priv = DCSR.prv;",
+    "example": "DRET",
+    "example_note": "Resume execution from debug break."
+  },
+  {
+    "mnemonic": "AES64ES",
+    "architecture": "RISC-V",
+    "extension": "Zk (Crypto)",
+    "full_name": "AES-64 Encryption Schedule",
+    "summary": "Performs one round of AES-128 encryption key schedule generation.",
+    "syntax": "AES64ES rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0011001 | rs2 | rs1 | 000 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2"
+      }
+    ],
+    "pseudocode": "R[rd] = aes_encrypt_schedule(R[rs1], R[rs2]);",
+    "example": "AES64ES x10, x11, x12",
+    "example_note": "AES Key Gen."
+  },
+  {
+    "mnemonic": "AES64DS",
+    "architecture": "RISC-V",
+    "extension": "Zk (Crypto)",
+    "full_name": "AES-64 Decryption Schedule",
+    "summary": "Performs one round of AES-128 decryption key schedule generation.",
+    "syntax": "AES64DS rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0011101 | rs2 | rs1 | 000 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2"
+      }
+    ],
+    "pseudocode": "R[rd] = aes_decrypt_schedule(R[rs1], R[rs2]);",
+    "example": "AES64DS x10, x11, x12",
+    "example_note": "AES Decrypt Key Gen."
+  },
+  {
+    "mnemonic": "SHA256SIG0",
+    "architecture": "RISC-V",
+    "extension": "Zk (Crypto)",
+    "full_name": "SHA-256 Sigma0",
+    "summary": "Performs the Sigma0 transformation function for SHA-256.",
+    "syntax": "SHA256SIG0 rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0001000 | 00010 | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "R[rd] = ROTR(x, 7) ^ ROTR(x, 18) ^ (x >> 3);",
+    "example": "SHA256SIG0 x10, x11",
+    "example_note": "SHA-256 calculation."
+  },
+  {
+    "mnemonic": "SHA256SUM0",
+    "architecture": "RISC-V",
+    "extension": "Zk (Crypto)",
+    "full_name": "SHA-256 Sum0",
+    "summary": "Performs the Sum0 transformation function for SHA-256.",
+    "syntax": "SHA256SUM0 rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0001000 | 00000 | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "R[rd] = ROTR(x, 2) ^ ROTR(x, 13) ^ ROTR(x, 22);",
+    "example": "SHA256SUM0 x10, x11",
+    "example_note": "SHA-256 calculation."
+  },
+  {
+    "mnemonic": "FCVT.WU.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Convert Float to Unsigned Word",
+    "summary": "Converts a single-precision float to a 32-bit unsigned integer.",
+    "syntax": "FCVT.WU.S rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1100000 | 00001 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (UInt)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(f32_to_u32(F[rs1]));",
+    "example": "FCVT.WU.S x10, f1",
+    "example_note": "Float -> Unsigned Int."
+  },
+  {
+    "mnemonic": "FCVT.S.WU",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Convert Unsigned Word to Float",
+    "summary": "Converts a 32-bit unsigned integer to a single-precision float.",
+    "syntax": "FCVT.S.WU rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1101000 | 00001 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Float)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (UInt)"
+      }
+    ],
+    "pseudocode": "F[rd] = u32_to_f32(R[rs1]);",
+    "example": "FCVT.S.WU f1, x10",
+    "example_note": "Unsigned Int -> Float."
+  },
+  {
+    "mnemonic": "FCVT.W.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Convert Double to Word",
+    "summary": "Converts a double-precision float to a 32-bit signed integer.",
+    "syntax": "FCVT.W.D rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1100001 | 00000 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Int)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Double)"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(f64_to_i32(F[rs1]));",
+    "example": "FCVT.W.D x10, f0",
+    "example_note": "Double -> Int."
+  },
+  {
+    "mnemonic": "FCVT.D.W",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Convert Word to Double",
+    "summary": "Converts a 32-bit signed integer to a double-precision float.",
+    "syntax": "FCVT.D.W rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1101001 | 00000 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Double)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Int)"
+      }
+    ],
+    "pseudocode": "F[rd] = i32_to_f64(R[rs1]);",
+    "example": "FCVT.D.W f0, x10",
+    "example_note": "Int -> Double."
   }
 ]
