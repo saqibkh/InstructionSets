@@ -1,0 +1,273 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "SUBW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Subtract Word",
+      "summary": "Subtracts the lower 32 bits of rs2 from rs1 and sign-extends the result to 64 bits.",
+      "syntax": "SUBW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100000 | rs2 | rs1 | 000 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Minuend" },
+        { "name": "rs2", "desc": "Subtrahend" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1] - R[rs2])[31:0]);",
+      "example": "SUBW x10, x11, x12",
+      "example_note": "32-bit subtraction on 64-bit registers."
+    },
+    {
+      "mnemonic": "SLLW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Shift Left Logical Word",
+      "summary": "Performs a 32-bit logical left shift on rs1 by the amount in rs2 (lower 5 bits), sign-extending the result.",
+      "syntax": "SLLW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 001 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1] << (R[rs2] & 0x1F))[31:0]);",
+      "example": "SLLW x5, x6, x7",
+      "example_note": "32-bit shift."
+    },
+    {
+      "mnemonic": "SRLW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Shift Right Logical Word",
+      "summary": "Performs a 32-bit logical right shift on rs1 by the amount in rs2, sign-extending the result.",
+      "syntax": "SRLW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 101 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1][31:0] >>u (R[rs2] & 0x1F)));",
+      "example": "SRLW x5, x6, x7",
+      "example_note": "32-bit logical right shift."
+    },
+    {
+      "mnemonic": "SRAW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Shift Right Arithmetic Word",
+      "summary": "Performs a 32-bit arithmetic right shift on rs1, sign-extending the result.",
+      "syntax": "SRAW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100000 | rs2 | rs1 | 101 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1][31:0] >>s (R[rs2] & 0x1F)));",
+      "example": "SRAW x5, x6, x7",
+      "example_note": "32-bit arithmetic right shift."
+    },
+    {
+      "mnemonic": "SLLIW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Shift Left Logical Immediate Word",
+      "summary": "Shifts the lower 32 bits of rs1 left by a constant, sign-extending the result.",
+      "syntax": "SLLIW rd, rs1, shamt",
+      "encoding": {
+        "format": "I-Type (Shift)",
+        "binary_pattern": "0000000 | shamt | rs1 | 001 | rd | 0011011",
+        "hex_opcode": "0x1B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "shamt", "desc": "Shift Amount (0-31)" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1] << shamt)[31:0]);",
+      "example": "SLLIW x10, x11, 4",
+      "example_note": "Shift lower 32 bits left by 4."
+    },
+    {
+      "mnemonic": "SRLIW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Shift Right Logical Immediate Word",
+      "summary": "Logically shifts the lower 32 bits of rs1 right by a constant, sign-extending the result.",
+      "syntax": "SRLIW rd, rs1, shamt",
+      "encoding": {
+        "format": "I-Type (Shift)",
+        "binary_pattern": "0000000 | shamt | rs1 | 101 | rd | 0011011",
+        "hex_opcode": "0x1B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "shamt", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1][31:0] >>u shamt));",
+      "example": "SRLIW x10, x11, 4",
+      "example_note": "Logical right shift of lower word."
+    },
+    {
+      "mnemonic": "SRAIW",
+      "architecture": "RISC-V",
+      "extension": "RV64",
+      "full_name": "Shift Right Arithmetic Immediate Word",
+      "summary": "Arithmetically shifts the lower 32 bits of rs1 right by a constant, sign-extending the result.",
+      "syntax": "SRAIW rd, rs1, shamt",
+      "encoding": {
+        "format": "I-Type (Shift)",
+        "binary_pattern": "0100000 | shamt | rs1 | 101 | rd | 0011011",
+        "hex_opcode": "0x1B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "shamt", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1][31:0] >>s shamt));",
+      "example": "SRAIW x10, x11, 4",
+      "example_note": "Arithmetic right shift of lower word."
+    },
+    {
+      "mnemonic": "MULW",
+      "architecture": "RISC-V",
+      "extension": "M (RV64)",
+      "full_name": "Multiply Word",
+      "summary": "Performs 32-bit multiplication of rs1 and rs2, sign-extending the 32-bit result to 64 bits.",
+      "syntax": "MULW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 000 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = sext((R[rs1] * R[rs2])[31:0]);",
+      "example": "MULW x10, x11, x12",
+      "example_note": "32-bit multiplication."
+    },
+    {
+      "mnemonic": "DIVW",
+      "architecture": "RISC-V",
+      "extension": "M (RV64)",
+      "full_name": "Divide Word",
+      "summary": "Performs 32-bit signed division of rs1 by rs2, sign-extending the result.",
+      "syntax": "DIVW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 100 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Quotient" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = sext(R[rs1][31:0] /s R[rs2][31:0]);",
+      "example": "DIVW x10, x11, x12",
+      "example_note": "32-bit signed division."
+    },
+    {
+      "mnemonic": "DIVUW",
+      "architecture": "RISC-V",
+      "extension": "M (RV64)",
+      "full_name": "Divide Unsigned Word",
+      "summary": "Performs 32-bit unsigned division of rs1 by rs2, sign-extending the result.",
+      "syntax": "DIVUW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 101 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Quotient" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = sext(R[rs1][31:0] /u R[rs2][31:0]);",
+      "example": "DIVUW x10, x11, x12",
+      "example_note": "32-bit unsigned division."
+    },
+    {
+      "mnemonic": "REMW",
+      "architecture": "RISC-V",
+      "extension": "M (RV64)",
+      "full_name": "Remainder Word",
+      "summary": "Computes the remainder of 32-bit signed division, sign-extending the result.",
+      "syntax": "REMW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 110 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Remainder" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = sext(R[rs1][31:0] %s R[rs2][31:0]);",
+      "example": "REMW x10, x11, x12",
+      "example_note": "32-bit signed remainder."
+    },
+    {
+      "mnemonic": "REMUW",
+      "architecture": "RISC-V",
+      "extension": "M (RV64)",
+      "full_name": "Remainder Unsigned Word",
+      "summary": "Computes the remainder of 32-bit unsigned division, sign-extending the result.",
+      "syntax": "REMUW rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 111 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Remainder" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = sext(R[rs1][31:0] %u R[rs2][31:0]);",
+      "example": "REMUW x10, x11, x12",
+      "example_note": "32-bit unsigned remainder."
+    },
+    {
+      "mnemonic": "FENCE.I",
+      "architecture": "RISC-V",
+      "extension": "Zifencei",
+      "full_name": "Instruction Fence",
+      "summary": "Synchronizes the instruction cache with the data cache (used after self-modifying code).",
+      "syntax": "FENCE.I",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000000 | 00000 | 001 | 00000 | 0001111",
+        "hex_opcode": "0x0F"
+      },
+      "operands": [],
+      "pseudocode": "Fence(Store, Fetch);",
+      "example": "FENCE.I",
+      "example_note": "Flushes I-Cache; ensures previous writes are visible to instruction fetch."
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "FCVT.W.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Convert to Word (Single)",
+      "summary": "Converts a single-precision floating-point number to a signed 32-bit integer.",
+      "syntax": "FCVT.W.S rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100000 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Integer)" },
+        { "name": "rs1", "desc": "Source (Float)" }
+      ],
+      "pseudocode": "R[rd] = sext(f32_to_i32(F[rs1]));",
+      "example": "FCVT.W.S x10, f1",
+      "example_note": "Convert float f1 to int x10."
+    },
+    {
+      "mnemonic": "FCVT.S.W",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Convert from Word (Single)",
+      "summary": "Converts a signed 32-bit integer to a single-precision floating-point number.",
+      "syntax": "FCVT.S.W rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101000 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Float)" },
+        { "name": "rs1", "desc": "Source (Integer)" }
+      ],
+      "pseudocode": "F[rd] = i32_to_f32(R[rs1]);",
+      "example": "FCVT.S.W f1, x10",
+      "example_note": "Convert int x10 to float f1."
+    },
+    {
+      "mnemonic": "FCVT.D.S",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Convert Single to Double",
+      "summary": "Converts a single-precision float to a double-precision float.",
+      "syntax": "FCVT.D.S rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "0100001 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Double)" },
+        { "name": "rs1", "desc": "Source (Single)" }
+      ],
+      "pseudocode": "F[rd] = f32_to_f64(F[rs1]);",
+      "example": "FCVT.D.S f0, f1",
+      "example_note": "Promote float to double."
+    },
+    {
+      "mnemonic": "FCVT.S.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Convert Double to Single",
+      "summary": "Converts a double-precision float to a single-precision float.",
+      "syntax": "FCVT.S.D rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "0100000 | 00001 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Single)" },
+        { "name": "rs1", "desc": "Source (Double)" }
+      ],
+      "pseudocode": "F[rd] = f64_to_f32(F[rs1]);",
+      "example": "FCVT.S.D f1, f0",
+      "example_note": "Demote double to float."
+    },
+    {
+      "mnemonic": "FSGNJ.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Sign Injection (Single)",
+      "summary": "Injects the sign of rs2 into rs1. Used to copy values or manipulate signs.",
+      "syntax": "FSGNJ.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source (Body)" },
+        { "name": "rs2", "desc": "Source (Sign)" }
+      ],
+      "pseudocode": "F[rd] = {F[rs2][31], F[rs1][30:0]};",
+      "example": "FSGNJ.S f1, f2, f3",
+      "example_note": "f1 gets magnitude of f2 and sign of f3."
+    },
+    {
+      "mnemonic": "FSGNJN.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Sign Injection Negate (Single)",
+      "summary": "Injects the *negated* sign of rs2 into rs1. Used for negation and absolute value.",
+      "syntax": "FSGNJN.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source (Body)" },
+        { "name": "rs2", "desc": "Source (Sign)" }
+      ],
+      "pseudocode": "F[rd] = {~F[rs2][31], F[rs1][30:0]};",
+      "example": "FSGNJN.S f1, f2, f2",
+      "example_note": "Negates f2 (f1 = -f2)."
+    },
+    {
+      "mnemonic": "FSGNJX.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Sign Injection XOR (Single)",
+      "summary": "Injects the XOR of signs of rs1 and rs2. Used to copy sign.",
+      "syntax": "FSGNJX.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 010 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "F[rd] = {F[rs1][31] ^ F[rs2][31], F[rs1][30:0]};",
+      "example": "FSGNJX.S f1, f1, f2",
+      "example_note": "Logic similar to Abs(f1) if f2 is properly set."
+    },
+    {
+      "mnemonic": "FEQ.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Equal (Single)",
+      "summary": "Sets integer rd to 1 if float rs1 equals float rs2, else 0.",
+      "syntax": "FEQ.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 010 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Integer)" },
+        { "name": "rs1", "desc": "Src 1 (Float)" },
+        { "name": "rs2", "desc": "Src 2 (Float)" }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] == F[rs2]) ? 1 : 0;",
+      "example": "FEQ.S x10, f1, f2",
+      "example_note": "x10 = (f1 == f2)"
+    },
+    {
+      "mnemonic": "FLT.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Less Than (Single)",
+      "summary": "Sets integer rd to 1 if float rs1 is less than float rs2, else 0.",
+      "syntax": "FLT.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Integer)" },
+        { "name": "rs1", "desc": "Src 1 (Float)" },
+        { "name": "rs2", "desc": "Src 2 (Float)" }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] < F[rs2]) ? 1 : 0;",
+      "example": "FLT.S x10, f1, f2",
+      "example_note": "x10 = (f1 < f2)"
+    },
+    {
+      "mnemonic": "FLE.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Less or Equal (Single)",
+      "summary": "Sets integer rd to 1 if float rs1 is less than or equal to float rs2, else 0.",
+      "syntax": "FLE.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Integer)" },
+        { "name": "rs1", "desc": "Src 1 (Float)" },
+        { "name": "rs2", "desc": "Src 2 (Float)" }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;",
+      "example": "FLE.S x10, f1, f2",
+      "example_note": "x10 = (f1 <= f2)"
+    },
+    {
+      "mnemonic": "FMV.X.W",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Move Float to Integer",
+      "summary": "Moves the bit pattern of a floating-point register to an integer register.",
+      "syntax": "FMV.X.W rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1110000 | 00000 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Integer)" },
+        { "name": "rs1", "desc": "Source (Float)" }
+      ],
+      "pseudocode": "R[rd] = sext(F[rs1]);",
+      "example": "FMV.X.W x10, f1",
+      "example_note": "Copy bits from f1 to x10."
+    },
+    {
+      "mnemonic": "FMV.W.X",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Move Integer to Float",
+      "summary": "Moves the bit pattern of an integer register to a floating-point register.",
+      "syntax": "FMV.W.X rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1111000 | 00000 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Float)" },
+        { "name": "rs1", "desc": "Source (Integer)" }
+      ],
+      "pseudocode": "F[rd] = R[rs1];",
+      "example": "FMV.W.X f1, x10",
+      "example_note": "Copy bits from x10 to f1."
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "VSETVLI",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Set VL Immediate",
+      "summary": "Configures the vector length (vl) and vector type (vtype) based on application needs.",
+      "syntax": "VSETVLI rd, rs1, vtypei",
+      "encoding": {
+        "format": "V-Type",
+        "binary_pattern": "0 | zimm[10:0] | rs1 | 111 | rd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Actual VL)" },
+        { "name": "rs1", "desc": "Req VL (Avail)" },
+        { "name": "vtypei", "desc": "Config (SEW/LMUL)" }
+      ],
+      "pseudocode": "vl = set_config(rs1, vtypei); R[rd] = vl;",
+      "example": "VSETVLI t0, a0, e32, m1, ta, ma",
+      "example_note": "Request VL=a0, 32-bit elements, 1 register group."
+    },
+    {
+      "mnemonic": "VLE32.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Element (32-bit)",
+      "summary": "Loads a vector of 32-bit elements from memory into a vector register.",
+      "syntax": "VLE32.V vd, (rs1), vm",
+      "encoding": {
+        "format": "V-Load",
+        "binary_pattern": "000000 | mop | vm | rs1 | 110 | vd | 0000111",
+        "hex_opcode": "0x07"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Vector Dest" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "vm", "desc": "Mask" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = Mem[rs1 + i*4];",
+      "example": "VLE32.V v8, (a0)",
+      "example_note": "Load 32-bit integers from address in a0 to v8."
+    },
+    {
+      "mnemonic": "VSE32.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Element (32-bit)",
+      "summary": "Stores a vector of 32-bit elements from a vector register to memory.",
+      "syntax": "VSE32.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "V-Store",
+        "binary_pattern": "000000 | mop | vm | rs1 | 110 | vs3 | 0100111",
+        "hex_opcode": "0x27"
+      },
+      "operands": [
+        { "name": "vs3", "desc": "Vector Source" },
+        { "name": "rs1", "desc": "Base Address" },
+        { "name": "vm", "desc": "Mask" }
+      ],
+      "pseudocode": "foreach(i < vl): Mem[rs1 + i*4] = vs3[i];",
+      "example": "VSE32.V v8, (a0)",
+      "example_note": "Store v8 to memory at a0."
+    },
+    {
+      "mnemonic": "VADD.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Integer Add",
+      "summary": "Adds elements of two vector registers.",
+      "syntax": "VADD.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "000000 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] + vs2[i];",
+      "example": "VADD.VV v10, v8, v9",
+      "example_note": "v10[i] = v8[i] + v9[i]"
+    },
+    {
+      "mnemonic": "VMUL.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Integer Multiply",
+      "summary": "Multiplies elements of two vector registers.",
+      "syntax": "VMUL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100101 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] * vs2[i];",
+      "example": "VMUL.VV v10, v8, v9",
+      "example_note": "v10[i] = v8[i] * v9[i]"
+    }
+  ]
+}

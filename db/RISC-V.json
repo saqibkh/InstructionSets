@@ -3093,5 +3093,1594 @@
     "pseudocode": "R[rd] = R[rd] + R[rs2];",
     "example": "C.ADD x10, x11",
     "example_note": "x10 = x10 + x11"
+  },
+  {
+    "mnemonic": "SUBW",
+    "architecture": "RISC-V",
+    "extension": "RV64",
+    "full_name": "Subtract Word",
+    "summary": "Subtracts the lower 32 bits of rs2 from rs1 and sign-extends the result to 64 bits.",
+    "syntax": "SUBW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0100000 | rs2 | rs1 | 000 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Minuend"
+      },
+      {
+        "name": "rs2",
+        "desc": "Subtrahend"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1] - R[rs2])[31:0]);",
+    "example": "SUBW x10, x11, x12",
+    "example_note": "32-bit subtraction on 64-bit registers."
+  },
+  {
+    "mnemonic": "SLLW",
+    "architecture": "RISC-V",
+    "extension": "RV64",
+    "full_name": "Shift Left Logical Word",
+    "summary": "Performs a 32-bit logical left shift on rs1 by the amount in rs2 (lower 5 bits), sign-extending the result.",
+    "syntax": "SLLW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000000 | rs2 | rs1 | 001 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Shift Amount"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1] << (R[rs2] & 0x1F))[31:0]);",
+    "example": "SLLW x5, x6, x7",
+    "example_note": "32-bit shift."
+  },
+  {
+    "mnemonic": "SRLW",
+    "architecture": "RISC-V",
+    "extension": "RV64",
+    "full_name": "Shift Right Logical Word",
+    "summary": "Performs a 32-bit logical right shift on rs1 by the amount in rs2, sign-extending the result.",
+    "syntax": "SRLW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000000 | rs2 | rs1 | 101 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Shift Amount"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1][31:0] >>u (R[rs2] & 0x1F)));",
+    "example": "SRLW x5, x6, x7",
+    "example_note": "32-bit logical right shift."
+  },
+  {
+    "mnemonic": "SRAW",
+    "architecture": "RISC-V",
+    "extension": "RV64",
+    "full_name": "Shift Right Arithmetic Word",
+    "summary": "Performs a 32-bit arithmetic right shift on rs1, sign-extending the result.",
+    "syntax": "SRAW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0100000 | rs2 | rs1 | 101 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Shift Amount"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1][31:0] >>s (R[rs2] & 0x1F)));",
+    "example": "SRAW x5, x6, x7",
+    "example_note": "32-bit arithmetic right shift."
+  },
+  {
+    "mnemonic": "SLLIW",
+    "architecture": "RISC-V",
+    "extension": "RV64",
+    "full_name": "Shift Left Logical Immediate Word",
+    "summary": "Shifts the lower 32 bits of rs1 left by a constant, sign-extending the result.",
+    "syntax": "SLLIW rd, rs1, shamt",
+    "encoding": {
+      "format": "I-Type (Shift)",
+      "binary_pattern": "0000000 | shamt | rs1 | 001 | rd | 0011011",
+      "hex_opcode": "0x1B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "shamt",
+        "desc": "Shift Amount (0-31)"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1] << shamt)[31:0]);",
+    "example": "SLLIW x10, x11, 4",
+    "example_note": "Shift lower 32 bits left by 4."
+  },
+  {
+    "mnemonic": "SRLIW",
+    "architecture": "RISC-V",
+    "extension": "RV64",
+    "full_name": "Shift Right Logical Immediate Word",
+    "summary": "Logically shifts the lower 32 bits of rs1 right by a constant, sign-extending the result.",
+    "syntax": "SRLIW rd, rs1, shamt",
+    "encoding": {
+      "format": "I-Type (Shift)",
+      "binary_pattern": "0000000 | shamt | rs1 | 101 | rd | 0011011",
+      "hex_opcode": "0x1B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "shamt",
+        "desc": "Shift Amount"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1][31:0] >>u shamt));",
+    "example": "SRLIW x10, x11, 4",
+    "example_note": "Logical right shift of lower word."
+  },
+  {
+    "mnemonic": "SRAIW",
+    "architecture": "RISC-V",
+    "extension": "RV64",
+    "full_name": "Shift Right Arithmetic Immediate Word",
+    "summary": "Arithmetically shifts the lower 32 bits of rs1 right by a constant, sign-extending the result.",
+    "syntax": "SRAIW rd, rs1, shamt",
+    "encoding": {
+      "format": "I-Type (Shift)",
+      "binary_pattern": "0100000 | shamt | rs1 | 101 | rd | 0011011",
+      "hex_opcode": "0x1B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "shamt",
+        "desc": "Shift Amount"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1][31:0] >>s shamt));",
+    "example": "SRAIW x10, x11, 4",
+    "example_note": "Arithmetic right shift of lower word."
+  },
+  {
+    "mnemonic": "MULW",
+    "architecture": "RISC-V",
+    "extension": "M (RV64)",
+    "full_name": "Multiply Word",
+    "summary": "Performs 32-bit multiplication of rs1 and rs2, sign-extending the 32-bit result to 64 bits.",
+    "syntax": "MULW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000001 | rs2 | rs1 | 000 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2"
+      }
+    ],
+    "pseudocode": "R[rd] = sext((R[rs1] * R[rs2])[31:0]);",
+    "example": "MULW x10, x11, x12",
+    "example_note": "32-bit multiplication."
+  },
+  {
+    "mnemonic": "DIVW",
+    "architecture": "RISC-V",
+    "extension": "M (RV64)",
+    "full_name": "Divide Word",
+    "summary": "Performs 32-bit signed division of rs1 by rs2, sign-extending the result.",
+    "syntax": "DIVW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000001 | rs2 | rs1 | 100 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Quotient"
+      },
+      {
+        "name": "rs1",
+        "desc": "Dividend"
+      },
+      {
+        "name": "rs2",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(R[rs1][31:0] /s R[rs2][31:0]);",
+    "example": "DIVW x10, x11, x12",
+    "example_note": "32-bit signed division."
+  },
+  {
+    "mnemonic": "DIVUW",
+    "architecture": "RISC-V",
+    "extension": "M (RV64)",
+    "full_name": "Divide Unsigned Word",
+    "summary": "Performs 32-bit unsigned division of rs1 by rs2, sign-extending the result.",
+    "syntax": "DIVUW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000001 | rs2 | rs1 | 101 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Quotient"
+      },
+      {
+        "name": "rs1",
+        "desc": "Dividend"
+      },
+      {
+        "name": "rs2",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(R[rs1][31:0] /u R[rs2][31:0]);",
+    "example": "DIVUW x10, x11, x12",
+    "example_note": "32-bit unsigned division."
+  },
+  {
+    "mnemonic": "REMW",
+    "architecture": "RISC-V",
+    "extension": "M (RV64)",
+    "full_name": "Remainder Word",
+    "summary": "Computes the remainder of 32-bit signed division, sign-extending the result.",
+    "syntax": "REMW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000001 | rs2 | rs1 | 110 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Remainder"
+      },
+      {
+        "name": "rs1",
+        "desc": "Dividend"
+      },
+      {
+        "name": "rs2",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(R[rs1][31:0] %s R[rs2][31:0]);",
+    "example": "REMW x10, x11, x12",
+    "example_note": "32-bit signed remainder."
+  },
+  {
+    "mnemonic": "REMUW",
+    "architecture": "RISC-V",
+    "extension": "M (RV64)",
+    "full_name": "Remainder Unsigned Word",
+    "summary": "Computes the remainder of 32-bit unsigned division, sign-extending the result.",
+    "syntax": "REMUW rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000001 | rs2 | rs1 | 111 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Remainder"
+      },
+      {
+        "name": "rs1",
+        "desc": "Dividend"
+      },
+      {
+        "name": "rs2",
+        "desc": "Divisor"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(R[rs1][31:0] %u R[rs2][31:0]);",
+    "example": "REMUW x10, x11, x12",
+    "example_note": "32-bit unsigned remainder."
+  },
+  {
+    "mnemonic": "FENCE.I",
+    "architecture": "RISC-V",
+    "extension": "Zifencei",
+    "full_name": "Instruction Fence",
+    "summary": "Synchronizes the instruction cache with the data cache (used after self-modifying code).",
+    "syntax": "FENCE.I",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "000000000000 | 00000 | 001 | 00000 | 0001111",
+      "hex_opcode": "0x0F"
+    },
+    "operands": [],
+    "pseudocode": "Fence(Store, Fetch);",
+    "example": "FENCE.I",
+    "example_note": "Flushes I-Cache; ensures previous writes are visible to instruction fetch."
+  },
+  {
+    "mnemonic": "AMOADD.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Atomic Add Doubleword",
+    "summary": "Atomically adds a value to a 64-bit doubleword in memory.",
+    "syntax": "AMOADD.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "00000 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Old Value)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Value to Add"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp + R[rs2]; R[rd] = temp;",
+    "example": "AMOADD.D x10, x11, (x12)",
+    "example_note": "64-bit atomic add."
+  },
+  {
+    "mnemonic": "AMOSWAP.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Atomic Swap Doubleword",
+    "summary": "Atomically swaps a 64-bit value in memory with a register.",
+    "syntax": "AMOSWAP.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "00001 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Old Value)"
+      },
+      {
+        "name": "rs2",
+        "desc": "New Value"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = R[rs2]; R[rd] = temp;",
+    "example": "AMOSWAP.D x10, x11, (x12)",
+    "example_note": "64-bit atomic swap."
+  },
+  {
+    "mnemonic": "AMOAND.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Atomic AND Doubleword",
+    "summary": "Atomically performs bitwise AND on a 64-bit doubleword in memory.",
+    "syntax": "AMOAND.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "01100 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Old Value)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Operand"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp & R[rs2]; R[rd] = temp;",
+    "example": "AMOAND.D x5, x6, (x7)",
+    "example_note": "64-bit atomic AND."
+  },
+  {
+    "mnemonic": "AMOOR.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Atomic OR Doubleword",
+    "summary": "Atomically performs bitwise OR on a 64-bit doubleword in memory.",
+    "syntax": "AMOOR.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "01000 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Old Value)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Operand"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp | R[rs2]; R[rd] = temp;",
+    "example": "AMOOR.D x10, x11, (x12)",
+    "example_note": "64-bit atomic OR."
+  },
+  {
+    "mnemonic": "AMOXOR.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Atomic XOR Doubleword",
+    "summary": "Atomically performs bitwise XOR on a 64-bit doubleword in memory.",
+    "syntax": "AMOXOR.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "00100 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Old Value)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Operand"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp ^ R[rs2]; R[rd] = temp;",
+    "example": "AMOXOR.D x10, x11, (x12)",
+    "example_note": "64-bit atomic XOR."
+  },
+  {
+    "mnemonic": "AMOMAX.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Atomic Max Doubleword",
+    "summary": "Atomically updates memory with the maximum of the memory value and register value (64-bit Signed).",
+    "syntax": "AMOMAX.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "10100 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Old Value)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Operand"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = max(temp, R[rs2]); R[rd] = temp;",
+    "example": "AMOMAX.D x10, x11, (x12)",
+    "example_note": "64-bit atomic max."
+  },
+  {
+    "mnemonic": "AMOMIN.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Atomic Min Doubleword",
+    "summary": "Atomically updates memory with the minimum of the memory value and register value (64-bit Signed).",
+    "syntax": "AMOMIN.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "10000 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Old Value)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Operand"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = min(temp, R[rs2]); R[rd] = temp;",
+    "example": "AMOMIN.D x10, x11, (x12)",
+    "example_note": "64-bit atomic min."
+  },
+  {
+    "mnemonic": "SC.D",
+    "architecture": "RISC-V",
+    "extension": "A (Atomic)",
+    "full_name": "Store Conditional Doubleword",
+    "summary": "Conditionally stores a 64-bit value to memory if the reservation is valid.",
+    "syntax": "SC.D rd, rs2, (rs1)",
+    "encoding": {
+      "format": "R-Type (Atomic)",
+      "binary_pattern": "00011 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+      "hex_opcode": "0x2F"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (0=Success)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source Value"
+      },
+      {
+        "name": "rs1",
+        "desc": "Address"
+      }
+    ],
+    "pseudocode": "if (ReservationValid) { M[R[rs1]] = R[rs2]; R[rd] = 0; } else { R[rd] = 1; }",
+    "example": "SC.D x10, x11, (x12)",
+    "example_note": "64-bit conditional store."
+  },
+  {
+    "mnemonic": "FMADD.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Fused Multiply-Add (Single)",
+    "summary": "Computes (rs1 * rs2) + rs3 with a single rounding.",
+    "syntax": "FMADD.S rd, rs1, rs2, rs3",
+    "encoding": {
+      "format": "R4-Type",
+      "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1000011",
+      "hex_opcode": "0x43"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2"
+      },
+      {
+        "name": "rs3",
+        "desc": "Src 3"
+      }
+    ],
+    "pseudocode": "F[rd] = (F[rs1] * F[rs2]) + F[rs3];",
+    "example": "FMADD.S f0, f1, f2, f3",
+    "example_note": "f0 = (f1 * f2) + f3"
+  },
+  {
+    "mnemonic": "FMADD.D",
+    "architecture": "RISC-V",
+    "extension": "D (Double)",
+    "full_name": "Float Fused Multiply-Add (Double)",
+    "summary": "Computes (rs1 * rs2) + rs3 with a single rounding (64-bit).",
+    "syntax": "FMADD.D rd, rs1, rs2, rs3",
+    "encoding": {
+      "format": "R4-Type",
+      "binary_pattern": "rs3 | 01 | rs2 | rs1 | rm | rd | 1000011",
+      "hex_opcode": "0x43"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2"
+      },
+      {
+        "name": "rs3",
+        "desc": "Src 3"
+      }
+    ],
+    "pseudocode": "F[rd] = (F[rs1] * F[rs2]) + F[rs3];",
+    "example": "FMADD.D f0, f1, f2, f3",
+    "example_note": "64-bit fused multiply-add."
+  },
+  {
+    "mnemonic": "FCVT.W.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Convert to Word (Single)",
+    "summary": "Converts a single-precision floating-point number to a signed 32-bit integer.",
+    "syntax": "FCVT.W.S rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1100000 | 00000 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Integer)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(f32_to_i32(F[rs1]));",
+    "example": "FCVT.W.S x10, f1",
+    "example_note": "Convert float f1 to int x10."
+  },
+  {
+    "mnemonic": "FCVT.S.W",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Convert from Word (Single)",
+    "summary": "Converts a signed 32-bit integer to a single-precision floating-point number.",
+    "syntax": "FCVT.S.W rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1101000 | 00000 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Float)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Integer)"
+      }
+    ],
+    "pseudocode": "F[rd] = i32_to_f32(R[rs1]);",
+    "example": "FCVT.S.W f1, x10",
+    "example_note": "Convert int x10 to float f1."
+  },
+  {
+    "mnemonic": "FCVT.D.S",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Convert Single to Double",
+    "summary": "Converts a single-precision float to a double-precision float.",
+    "syntax": "FCVT.D.S rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "0100001 | 00000 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Double)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Single)"
+      }
+    ],
+    "pseudocode": "F[rd] = f32_to_f64(F[rs1]);",
+    "example": "FCVT.D.S f0, f1",
+    "example_note": "Promote float to double."
+  },
+  {
+    "mnemonic": "FCVT.S.D",
+    "architecture": "RISC-V",
+    "extension": "D",
+    "full_name": "Float Convert Double to Single",
+    "summary": "Converts a double-precision float to a single-precision float.",
+    "syntax": "FCVT.S.D rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "0100000 | 00001 | rs1 | rm | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Single)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Double)"
+      }
+    ],
+    "pseudocode": "F[rd] = f64_to_f32(F[rs1]);",
+    "example": "FCVT.S.D f1, f0",
+    "example_note": "Demote double to float."
+  },
+  {
+    "mnemonic": "FSGNJ.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Sign Injection (Single)",
+    "summary": "Injects the sign of rs2 into rs1. Used to copy values or manipulate signs.",
+    "syntax": "FSGNJ.S rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010000 | rs2 | rs1 | 000 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Body)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source (Sign)"
+      }
+    ],
+    "pseudocode": "F[rd] = {F[rs2][31], F[rs1][30:0]};",
+    "example": "FSGNJ.S f1, f2, f3",
+    "example_note": "f1 gets magnitude of f2 and sign of f3."
+  },
+  {
+    "mnemonic": "FSGNJN.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Sign Injection Negate (Single)",
+    "summary": "Injects the *negated* sign of rs2 into rs1. Used for negation and absolute value.",
+    "syntax": "FSGNJN.S rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010000 | rs2 | rs1 | 001 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Body)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source (Sign)"
+      }
+    ],
+    "pseudocode": "F[rd] = {~F[rs2][31], F[rs1][30:0]};",
+    "example": "FSGNJN.S f1, f2, f2",
+    "example_note": "Negates f2 (f1 = -f2)."
+  },
+  {
+    "mnemonic": "FSGNJX.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Sign Injection XOR (Single)",
+    "summary": "Injects the XOR of signs of rs1 and rs2. Used to copy sign.",
+    "syntax": "FSGNJX.S rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0010000 | rs2 | rs1 | 010 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2"
+      }
+    ],
+    "pseudocode": "F[rd] = {F[rs1][31] ^ F[rs2][31], F[rs1][30:0]};",
+    "example": "FSGNJX.S f1, f1, f2",
+    "example_note": "Logic similar to Abs(f1) if f2 is properly set."
+  },
+  {
+    "mnemonic": "FEQ.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Equal (Single)",
+    "summary": "Sets integer rd to 1 if float rs1 equals float rs2, else 0.",
+    "syntax": "FEQ.S rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1010000 | rs2 | rs1 | 010 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Integer)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1 (Float)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2 (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = (F[rs1] == F[rs2]) ? 1 : 0;",
+    "example": "FEQ.S x10, f1, f2",
+    "example_note": "x10 = (f1 == f2)"
+  },
+  {
+    "mnemonic": "FLT.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Less Than (Single)",
+    "summary": "Sets integer rd to 1 if float rs1 is less than float rs2, else 0.",
+    "syntax": "FLT.S rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1010000 | rs2 | rs1 | 001 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Integer)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1 (Float)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2 (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = (F[rs1] < F[rs2]) ? 1 : 0;",
+    "example": "FLT.S x10, f1, f2",
+    "example_note": "x10 = (f1 < f2)"
+  },
+  {
+    "mnemonic": "FLE.S",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Float Less or Equal (Single)",
+    "summary": "Sets integer rd to 1 if float rs1 is less than or equal to float rs2, else 0.",
+    "syntax": "FLE.S rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "1010000 | rs2 | rs1 | 000 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Integer)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Src 1 (Float)"
+      },
+      {
+        "name": "rs2",
+        "desc": "Src 2 (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;",
+    "example": "FLE.S x10, f1, f2",
+    "example_note": "x10 = (f1 <= f2)"
+  },
+  {
+    "mnemonic": "FMV.X.W",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Move Float to Integer",
+    "summary": "Moves the bit pattern of a floating-point register to an integer register.",
+    "syntax": "FMV.X.W rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1110000 | 00000 | rs1 | 000 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Integer)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Float)"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(F[rs1]);",
+    "example": "FMV.X.W x10, f1",
+    "example_note": "Copy bits from f1 to x10."
+  },
+  {
+    "mnemonic": "FMV.W.X",
+    "architecture": "RISC-V",
+    "extension": "F",
+    "full_name": "Move Integer to Float",
+    "summary": "Moves the bit pattern of an integer register to a floating-point register.",
+    "syntax": "FMV.W.X rd, rs1",
+    "encoding": {
+      "format": "I-Type (Float)",
+      "binary_pattern": "1111000 | 00000 | rs1 | 000 | rd | 1010011",
+      "hex_opcode": "0x53"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Float)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source (Integer)"
+      }
+    ],
+    "pseudocode": "F[rd] = R[rs1];",
+    "example": "FMV.W.X f1, x10",
+    "example_note": "Copy bits from x10 to f1."
+  },
+  {
+    "mnemonic": "VSETVLI",
+    "architecture": "RISC-V",
+    "extension": "V (Vector)",
+    "full_name": "Vector Set VL Immediate",
+    "summary": "Configures the vector length (vl) and vector type (vtype) based on application needs.",
+    "syntax": "VSETVLI rd, rs1, vtypei",
+    "encoding": {
+      "format": "V-Type",
+      "binary_pattern": "0 | zimm[10:0] | rs1 | 111 | rd | 1010111",
+      "hex_opcode": "0x57"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest (Actual VL)"
+      },
+      {
+        "name": "rs1",
+        "desc": "Req VL (Avail)"
+      },
+      {
+        "name": "vtypei",
+        "desc": "Config (SEW/LMUL)"
+      }
+    ],
+    "pseudocode": "vl = set_config(rs1, vtypei); R[rd] = vl;",
+    "example": "VSETVLI t0, a0, e32, m1, ta, ma",
+    "example_note": "Request VL=a0, 32-bit elements, 1 register group."
+  },
+  {
+    "mnemonic": "VLE32.V",
+    "architecture": "RISC-V",
+    "extension": "V (Vector)",
+    "full_name": "Vector Load Element (32-bit)",
+    "summary": "Loads a vector of 32-bit elements from memory into a vector register.",
+    "syntax": "VLE32.V vd, (rs1), vm",
+    "encoding": {
+      "format": "V-Load",
+      "binary_pattern": "000000 | mop | vm | rs1 | 110 | vd | 0000111",
+      "hex_opcode": "0x07"
+    },
+    "operands": [
+      {
+        "name": "vd",
+        "desc": "Vector Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Base Address"
+      },
+      {
+        "name": "vm",
+        "desc": "Mask"
+      }
+    ],
+    "pseudocode": "foreach(i < vl): vd[i] = Mem[rs1 + i*4];",
+    "example": "VLE32.V v8, (a0)",
+    "example_note": "Load 32-bit integers from address in a0 to v8."
+  },
+  {
+    "mnemonic": "VSE32.V",
+    "architecture": "RISC-V",
+    "extension": "V (Vector)",
+    "full_name": "Vector Store Element (32-bit)",
+    "summary": "Stores a vector of 32-bit elements from a vector register to memory.",
+    "syntax": "VSE32.V vs3, (rs1), vm",
+    "encoding": {
+      "format": "V-Store",
+      "binary_pattern": "000000 | mop | vm | rs1 | 110 | vs3 | 0100111",
+      "hex_opcode": "0x27"
+    },
+    "operands": [
+      {
+        "name": "vs3",
+        "desc": "Vector Source"
+      },
+      {
+        "name": "rs1",
+        "desc": "Base Address"
+      },
+      {
+        "name": "vm",
+        "desc": "Mask"
+      }
+    ],
+    "pseudocode": "foreach(i < vl): Mem[rs1 + i*4] = vs3[i];",
+    "example": "VSE32.V v8, (a0)",
+    "example_note": "Store v8 to memory at a0."
+  },
+  {
+    "mnemonic": "VADD.VV",
+    "architecture": "RISC-V",
+    "extension": "V (Vector)",
+    "full_name": "Vector Integer Add",
+    "summary": "Adds elements of two vector registers.",
+    "syntax": "VADD.VV vd, vs2, vs1, vm",
+    "encoding": {
+      "format": "OPIVV",
+      "binary_pattern": "000000 | vm | vs2 | vs1 | 000 | vd | 1010111",
+      "hex_opcode": "0x57"
+    },
+    "operands": [
+      {
+        "name": "vd",
+        "desc": "Dest"
+      },
+      {
+        "name": "vs2",
+        "desc": "Src 2"
+      },
+      {
+        "name": "vs1",
+        "desc": "Src 1"
+      }
+    ],
+    "pseudocode": "foreach(i < vl): vd[i] = vs1[i] + vs2[i];",
+    "example": "VADD.VV v10, v8, v9",
+    "example_note": "v10[i] = v8[i] + v9[i]"
+  },
+  {
+    "mnemonic": "VMUL.VV",
+    "architecture": "RISC-V",
+    "extension": "V (Vector)",
+    "full_name": "Vector Integer Multiply",
+    "summary": "Multiplies elements of two vector registers.",
+    "syntax": "VMUL.VV vd, vs2, vs1, vm",
+    "encoding": {
+      "format": "OPIVV",
+      "binary_pattern": "100101 | vm | vs2 | vs1 | 010 | vd | 1010111",
+      "hex_opcode": "0x57"
+    },
+    "operands": [
+      {
+        "name": "vd",
+        "desc": "Dest"
+      },
+      {
+        "name": "vs2",
+        "desc": "Src 2"
+      },
+      {
+        "name": "vs1",
+        "desc": "Src 1"
+      }
+    ],
+    "pseudocode": "foreach(i < vl): vd[i] = vs1[i] * vs2[i];",
+    "example": "VMUL.VV v10, v8, v9",
+    "example_note": "v10[i] = v8[i] * v9[i]"
+  },
+  {
+    "mnemonic": "CLZ",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Count Leading Zeros",
+    "summary": "Counts the number of 0 bits at the MSB end of the register.",
+    "syntax": "CLZ rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0110000 | 00000 | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "int count = 0; while(rs1[XLEN-1-count] == 0) count++; R[rd] = count;",
+    "example": "CLZ x10, x11",
+    "example_note": "Find highest set bit index."
+  },
+  {
+    "mnemonic": "CTZ",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Count Trailing Zeros",
+    "summary": "Counts the number of 0 bits at the LSB end of the register.",
+    "syntax": "CTZ rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0110000 | 00001 | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "int count = 0; while(rs1[count] == 0) count++; R[rd] = count;",
+    "example": "CTZ x10, x11",
+    "example_note": "Find lowest set bit index."
+  },
+  {
+    "mnemonic": "CPOP",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Population Count",
+    "summary": "Counts the number of set bits (1s) in the register.",
+    "syntax": "CPOP rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0110000 | 00010 | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "R[rd] = count_set_bits(R[rs1]);",
+    "example": "CPOP x10, x11",
+    "example_note": "Hamming weight calculation."
+  },
+  {
+    "mnemonic": "ANDN",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "AND Not",
+    "summary": "Performs bitwise AND with the bitwise negation of rs2 (rs1 & ~rs2).",
+    "syntax": "ANDN rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0100000 | rs2 | rs1 | 111 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2 (Inverted)"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] & ~R[rs2];",
+    "example": "ANDN x10, x11, x12",
+    "example_note": "Clear bits in x11 that are set in x12."
+  },
+  {
+    "mnemonic": "ORN",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "OR Not",
+    "summary": "Performs bitwise OR with the bitwise negation of rs2 (rs1 | ~rs2).",
+    "syntax": "ORN rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0100000 | rs2 | rs1 | 110 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2 (Inverted)"
+      }
+    ],
+    "pseudocode": "R[rd] = R[rs1] | ~R[rs2];",
+    "example": "ORN x10, x11, x12",
+    "example_note": "Set bits."
+  },
+  {
+    "mnemonic": "XNOR",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Exclusive NOR",
+    "summary": "Performs bitwise exclusive-NOR (rs1 ^ ~rs2).",
+    "syntax": "XNOR rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0100000 | rs2 | rs1 | 100 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2"
+      }
+    ],
+    "pseudocode": "R[rd] = ~(R[rs1] ^ R[rs2]);",
+    "example": "XNOR x10, x11, x12",
+    "example_note": "Logical equivalence."
+  },
+  {
+    "mnemonic": "ROL",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Rotate Left",
+    "summary": "Rotates the bits in rs1 left by the amount in rs2.",
+    "syntax": "ROL rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0110000 | rs2 | rs1 | 001 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Rotate Amount"
+      }
+    ],
+    "pseudocode": "shamt = R[rs2] & (XLEN-1); R[rd] = (R[rs1] << shamt) | (R[rs1] >> (XLEN-shamt));",
+    "example": "ROL x10, x11, x12",
+    "example_note": "Bitwise rotation."
+  },
+  {
+    "mnemonic": "ROR",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Rotate Right",
+    "summary": "Rotates the bits in rs1 right by the amount in rs2.",
+    "syntax": "ROR rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0110000 | rs2 | rs1 | 101 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      },
+      {
+        "name": "rs2",
+        "desc": "Rotate Amount"
+      }
+    ],
+    "pseudocode": "shamt = R[rs2] & (XLEN-1); R[rd] = (R[rs1] >> shamt) | (R[rs1] << (XLEN-shamt));",
+    "example": "ROR x10, x11, x12",
+    "example_note": "Bitwise rotation."
+  },
+  {
+    "mnemonic": "MAX",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Maximum",
+    "summary": "Computes the signed maximum of two registers.",
+    "syntax": "MAX rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000101 | rs2 | rs1 | 110 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2"
+      }
+    ],
+    "pseudocode": "R[rd] = (R[rs1] >s R[rs2]) ? R[rs1] : R[rs2];",
+    "example": "MAX x10, x11, x12",
+    "example_note": "Signed Max."
+  },
+  {
+    "mnemonic": "MIN",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Minimum",
+    "summary": "Computes the signed minimum of two registers.",
+    "syntax": "MIN rd, rs1, rs2",
+    "encoding": {
+      "format": "R-Type",
+      "binary_pattern": "0000101 | rs2 | rs1 | 100 | rd | 0110011",
+      "hex_opcode": "0x33"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source 1"
+      },
+      {
+        "name": "rs2",
+        "desc": "Source 2"
+      }
+    ],
+    "pseudocode": "R[rd] = (R[rs1] <s R[rs2]) ? R[rs1] : R[rs2];",
+    "example": "MIN x10, x11, x12",
+    "example_note": "Signed Min."
+  },
+  {
+    "mnemonic": "SEX.B",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Sign Extend Byte",
+    "summary": "Sign-extends the lowest byte (8 bits) to XLEN bits.",
+    "syntax": "SEX.B rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0110000 | 00100 | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(R[rs1][7:0]);",
+    "example": "SEX.B x10, x11",
+    "example_note": "Sign extend 8-bit value."
+  },
+  {
+    "mnemonic": "SEX.H",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Sign Extend Halfword",
+    "summary": "Sign-extends the lowest halfword (16 bits) to XLEN bits.",
+    "syntax": "SEX.H rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0110000 | 00101 | rs1 | 001 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "R[rd] = sext(R[rs1][15:0]);",
+    "example": "SEX.H x10, x11",
+    "example_note": "Sign extend 16-bit value."
+  },
+  {
+    "mnemonic": "ZEXT.H",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Zero Extend Halfword",
+    "summary": "Zero-extends the lowest halfword (16 bits) to XLEN bits.",
+    "syntax": "ZEXT.H rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0000100 | 00000 | rs1 | 100 | rd | 0111011",
+      "hex_opcode": "0x3B"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "R[rd] = zext(R[rs1][15:0]);",
+    "example": "ZEXT.H x10, x11",
+    "example_note": "Zero extend 16-bit value."
+  },
+  {
+    "mnemonic": "ORC.B",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Bitwise OR-Combine Byte",
+    "summary": "Sets each byte of the result to 0xFF if the corresponding byte of the source is non-zero, else 0x00.",
+    "syntax": "ORC.B rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0010100 | 00111 | rs1 | 101 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "For each byte i: R[rd].byte[i] = (R[rs1].byte[i] != 0) ? 0xFF : 0x00;",
+    "example": "ORC.B x10, x11",
+    "example_note": "Used for string processing (strlen, strcpy)."
+  },
+  {
+    "mnemonic": "REV8",
+    "architecture": "RISC-V",
+    "extension": "Zbb (BitManip)",
+    "full_name": "Byte Reverse",
+    "summary": "Reverses the order of bytes in a register (Endian swap).",
+    "syntax": "REV8 rd, rs1",
+    "encoding": {
+      "format": "I-Type",
+      "binary_pattern": "0110101 | 11000 | rs1 | 101 | rd | 0010011",
+      "hex_opcode": "0x13"
+    },
+    "operands": [
+      {
+        "name": "rd",
+        "desc": "Dest"
+      },
+      {
+        "name": "rs1",
+        "desc": "Source"
+      }
+    ],
+    "pseudocode": "R[rd] = Byteswap(R[rs1]);",
+    "example": "REV8 x10, x11",
+    "example_note": "Converts Big-Endian to Little-Endian."
   }
 ]

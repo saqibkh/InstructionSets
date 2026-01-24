@@ -1,0 +1,216 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "AMOADD.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Add Doubleword",
+      "summary": "Atomically adds a value to a 64-bit doubleword in memory.",
+      "syntax": "AMOADD.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00000 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Value to Add" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp + R[rs2]; R[rd] = temp;",
+      "example": "AMOADD.D x10, x11, (x12)",
+      "example_note": "64-bit atomic add."
+    },
+    {
+      "mnemonic": "AMOSWAP.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Swap Doubleword",
+      "summary": "Atomically swaps a 64-bit value in memory with a register.",
+      "syntax": "AMOSWAP.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00001 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "New Value" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = R[rs2]; R[rd] = temp;",
+      "example": "AMOSWAP.D x10, x11, (x12)",
+      "example_note": "64-bit atomic swap."
+    },
+    {
+      "mnemonic": "AMOAND.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic AND Doubleword",
+      "summary": "Atomically performs bitwise AND on a 64-bit doubleword in memory.",
+      "syntax": "AMOAND.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "01100 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp & R[rs2]; R[rd] = temp;",
+      "example": "AMOAND.D x5, x6, (x7)",
+      "example_note": "64-bit atomic AND."
+    },
+    {
+      "mnemonic": "AMOOR.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic OR Doubleword",
+      "summary": "Atomically performs bitwise OR on a 64-bit doubleword in memory.",
+      "syntax": "AMOOR.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "01000 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp | R[rs2]; R[rd] = temp;",
+      "example": "AMOOR.D x10, x11, (x12)",
+      "example_note": "64-bit atomic OR."
+    },
+    {
+      "mnemonic": "AMOXOR.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic XOR Doubleword",
+      "summary": "Atomically performs bitwise XOR on a 64-bit doubleword in memory.",
+      "syntax": "AMOXOR.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00100 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp ^ R[rs2]; R[rd] = temp;",
+      "example": "AMOXOR.D x10, x11, (x12)",
+      "example_note": "64-bit atomic XOR."
+    },
+    {
+      "mnemonic": "AMOMAX.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Max Doubleword",
+      "summary": "Atomically updates memory with the maximum of the memory value and register value (64-bit Signed).",
+      "syntax": "AMOMAX.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "10100 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = max(temp, R[rs2]); R[rd] = temp;",
+      "example": "AMOMAX.D x10, x11, (x12)",
+      "example_note": "64-bit atomic max."
+    },
+    {
+      "mnemonic": "AMOMIN.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Min Doubleword",
+      "summary": "Atomically updates memory with the minimum of the memory value and register value (64-bit Signed).",
+      "syntax": "AMOMIN.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "10000 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = min(temp, R[rs2]); R[rd] = temp;",
+      "example": "AMOMIN.D x10, x11, (x12)",
+      "example_note": "64-bit atomic min."
+    },
+    {
+      "mnemonic": "SC.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Store Conditional Doubleword",
+      "summary": "Conditionally stores a 64-bit value to memory if the reservation is valid.",
+      "syntax": "SC.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00011 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (0=Success)" },
+        { "name": "rs2", "desc": "Source Value" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "if (ReservationValid) { M[R[rs1]] = R[rs2]; R[rd] = 0; } else { R[rd] = 1; }",
+      "example": "SC.D x10, x11, (x12)",
+      "example_note": "64-bit conditional store."
+    },
+    {
+      "mnemonic": "FMADD.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Fused Multiply-Add (Single)",
+      "summary": "Computes (rs1 * rs2) + rs3 with a single rounding.",
+      "syntax": "FMADD.S rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1000011",
+        "hex_opcode": "0x43"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) + F[rs3];",
+      "example": "FMADD.S f0, f1, f2, f3",
+      "example_note": "f0 = (f1 * f2) + f3"
+    },
+    {
+      "mnemonic": "FMADD.D",
+      "architecture": "RISC-V",
+      "extension": "D (Double)",
+      "full_name": "Float Fused Multiply-Add (Double)",
+      "summary": "Computes (rs1 * rs2) + rs3 with a single rounding (64-bit).",
+      "syntax": "FMADD.D rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 01 | rs2 | rs1 | rm | rd | 1000011",
+        "hex_opcode": "0x43"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) + F[rs3];",
+      "example": "FMADD.D f0, f1, f2, f3",
+      "example_note": "64-bit fused multiply-add."
+    }
+  ]
+}

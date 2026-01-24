@@ -1,0 +1,311 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "CLZ",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Count Leading Zeros",
+      "summary": "Counts the number of 0 bits at the MSB end of the register.",
+      "syntax": "CLZ rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0110000 | 00000 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "int count = 0; while(rs1[XLEN-1-count] == 0) count++; R[rd] = count;",
+      "example": "CLZ x10, x11",
+      "example_note": "Find highest set bit index."
+    },
+    {
+      "mnemonic": "CTZ",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Count Trailing Zeros",
+      "summary": "Counts the number of 0 bits at the LSB end of the register.",
+      "syntax": "CTZ rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0110000 | 00001 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "int count = 0; while(rs1[count] == 0) count++; R[rd] = count;",
+      "example": "CTZ x10, x11",
+      "example_note": "Find lowest set bit index."
+    },
+    {
+      "mnemonic": "CPOP",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Population Count",
+      "summary": "Counts the number of set bits (1s) in the register.",
+      "syntax": "CPOP rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0110000 | 00010 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = count_set_bits(R[rs1]);",
+      "example": "CPOP x10, x11",
+      "example_note": "Hamming weight calculation."
+    },
+    {
+      "mnemonic": "ANDN",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "AND Not",
+      "summary": "Performs bitwise AND with the bitwise negation of rs2 (rs1 & ~rs2).",
+      "syntax": "ANDN rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100000 | rs2 | rs1 | 111 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2 (Inverted)" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] & ~R[rs2];",
+      "example": "ANDN x10, x11, x12",
+      "example_note": "Clear bits in x11 that are set in x12."
+    },
+    {
+      "mnemonic": "ORN",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "OR Not",
+      "summary": "Performs bitwise OR with the bitwise negation of rs2 (rs1 | ~rs2).",
+      "syntax": "ORN rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100000 | rs2 | rs1 | 110 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2 (Inverted)" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] | ~R[rs2];",
+      "example": "ORN x10, x11, x12",
+      "example_note": "Set bits."
+    },
+    {
+      "mnemonic": "XNOR",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Exclusive NOR",
+      "summary": "Performs bitwise exclusive-NOR (rs1 ^ ~rs2).",
+      "syntax": "XNOR rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100000 | rs2 | rs1 | 100 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = ~(R[rs1] ^ R[rs2]);",
+      "example": "XNOR x10, x11, x12",
+      "example_note": "Logical equivalence."
+    },
+    {
+      "mnemonic": "ROL",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Rotate Left",
+      "summary": "Rotates the bits in rs1 left by the amount in rs2.",
+      "syntax": "ROL rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0110000 | rs2 | rs1 | 001 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Rotate Amount" }
+      ],
+      "pseudocode": "shamt = R[rs2] & (XLEN-1); R[rd] = (R[rs1] << shamt) | (R[rs1] >> (XLEN-shamt));",
+      "example": "ROL x10, x11, x12",
+      "example_note": "Bitwise rotation."
+    },
+    {
+      "mnemonic": "ROR",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Rotate Right",
+      "summary": "Rotates the bits in rs1 right by the amount in rs2.",
+      "syntax": "ROR rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0110000 | rs2 | rs1 | 101 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "rs2", "desc": "Rotate Amount" }
+      ],
+      "pseudocode": "shamt = R[rs2] & (XLEN-1); R[rd] = (R[rs1] >> shamt) | (R[rs1] << (XLEN-shamt));",
+      "example": "ROR x10, x11, x12",
+      "example_note": "Bitwise rotation."
+    },
+    {
+      "mnemonic": "MAX",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Maximum",
+      "summary": "Computes the signed maximum of two registers.",
+      "syntax": "MAX rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000101 | rs2 | rs1 | 110 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] >s R[rs2]) ? R[rs1] : R[rs2];",
+      "example": "MAX x10, x11, x12",
+      "example_note": "Signed Max."
+    },
+    {
+      "mnemonic": "MIN",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Minimum",
+      "summary": "Computes the signed minimum of two registers.",
+      "syntax": "MIN rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000101 | rs2 | rs1 | 100 | rd | 0110011",
+        "hex_opcode": "0x33"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] <s R[rs2]) ? R[rs1] : R[rs2];",
+      "example": "MIN x10, x11, x12",
+      "example_note": "Signed Min."
+    },
+    {
+      "mnemonic": "SEX.B",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Sign Extend Byte",
+      "summary": "Sign-extends the lowest byte (8 bits) to XLEN bits.",
+      "syntax": "SEX.B rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0110000 | 00100 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = sext(R[rs1][7:0]);",
+      "example": "SEX.B x10, x11",
+      "example_note": "Sign extend 8-bit value."
+    },
+    {
+      "mnemonic": "SEX.H",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Sign Extend Halfword",
+      "summary": "Sign-extends the lowest halfword (16 bits) to XLEN bits.",
+      "syntax": "SEX.H rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0110000 | 00101 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = sext(R[rs1][15:0]);",
+      "example": "SEX.H x10, x11",
+      "example_note": "Sign extend 16-bit value."
+    },
+    {
+      "mnemonic": "ZEXT.H",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Zero Extend Halfword",
+      "summary": "Zero-extends the lowest halfword (16 bits) to XLEN bits.",
+      "syntax": "ZEXT.H rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0000100 | 00000 | rs1 | 100 | rd | 0111011",
+        "hex_opcode": "0x3B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = zext(R[rs1][15:0]);",
+      "example": "ZEXT.H x10, x11",
+      "example_note": "Zero extend 16-bit value."
+    },
+    {
+      "mnemonic": "ORC.B",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Bitwise OR-Combine Byte",
+      "summary": "Sets each byte of the result to 0xFF if the corresponding byte of the source is non-zero, else 0x00.",
+      "syntax": "ORC.B rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0010100 | 00111 | rs1 | 101 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "For each byte i: R[rd].byte[i] = (R[rs1].byte[i] != 0) ? 0xFF : 0x00;",
+      "example": "ORC.B x10, x11",
+      "example_note": "Used for string processing (strlen, strcpy)."
+    },
+    {
+      "mnemonic": "REV8",
+      "architecture": "RISC-V",
+      "extension": "Zbb (BitManip)",
+      "full_name": "Byte Reverse",
+      "summary": "Reverses the order of bytes in a register (Endian swap).",
+      "syntax": "REV8 rd, rs1",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0110101 | 11000 | rs1 | 101 | rd | 0010011",
+        "hex_opcode": "0x13"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = Byteswap(R[rs1]);",
+      "example": "REV8 x10, x11",
+      "example_note": "Converts Big-Endian to Little-Endian."
+    }
+  ]
+}
