@@ -169,6 +169,13 @@
                     <td style="color: var(--text-muted);">Branches if two registers are equal.</td>
                 </tr>
                 
+                <tr onclick="window.location='beqz/';" style="cursor: pointer;">
+                    <td class="mono">BEQZ</td>
+                    <td style="font-weight: 500;">Branch if Equal to Zero</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Branches if the register is zero.</td>
+                </tr>
+                
                 <tr onclick="window.location='bge/';" style="cursor: pointer;">
                     <td class="mono">BGE</td>
                     <td style="font-weight: 500;">Branch if Greater or Equal</td>
@@ -188,6 +195,202 @@
                     <td style="font-weight: 500;">Branch if Not Equal</td>
                     <td><span class="badge">B-Type</span></td>
                     <td style="color: var(--text-muted);">Take the branch if registers rs1 and rs2 are not equal.</td>
+                </tr>
+                
+                <tr onclick="window.location='bnez/';" style="cursor: pointer;">
+                    <td class="mono">BNEZ</td>
+                    <td style="font-weight: 500;">Branch if Not Equal to Zero</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Branches if the register is not zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.add/';" style="cursor: pointer;">
+                    <td class="mono">C.ADD</td>
+                    <td style="font-weight: 500;">Compressed Add</td>
+                    <td><span class="badge">CR</span></td>
+                    <td style="color: var(--text-muted);">Adds two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.addi/';" style="cursor: pointer;">
+                    <td class="mono">C.ADDI</td>
+                    <td style="font-weight: 500;">Compressed Add Immediate</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Adds a non-zero immediate to a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.addi16sp/';" style="cursor: pointer;">
+                    <td class="mono">C.ADDI16SP</td>
+                    <td style="font-weight: 500;">Compressed Add Immediate to Stack Pointer</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Adds a signed non-zero immediate to the stack pointer (x2).</td>
+                </tr>
+                
+                <tr onclick="window.location='c.addi4spn/';" style="cursor: pointer;">
+                    <td class="mono">C.ADDI4SPN</td>
+                    <td style="font-weight: 500;">Compressed Add Immediate to Stack Pointer (Non-zero)</td>
+                    <td><span class="badge">CIW</span></td>
+                    <td style="color: var(--text-muted);">Adds a zero-extended non-zero immediate to the stack pointer (x2) and stores the result in a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.and/';" style="cursor: pointer;">
+                    <td class="mono">C.AND</td>
+                    <td style="font-weight: 500;">Compressed AND</td>
+                    <td><span class="badge">CA</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND of two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.andi/';" style="cursor: pointer;">
+                    <td class="mono">C.ANDI</td>
+                    <td style="font-weight: 500;">Compressed AND Immediate</td>
+                    <td><span class="badge">CB</span></td>
+                    <td style="color: var(--text-muted);">Computes bitwise AND with a signed immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.beqz/';" style="cursor: pointer;">
+                    <td class="mono">C.BEQZ</td>
+                    <td style="font-weight: 500;">Compressed Branch if Equal to Zero</td>
+                    <td><span class="badge">CB</span></td>
+                    <td style="color: var(--text-muted);">Branches if the register is zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.bnez/';" style="cursor: pointer;">
+                    <td class="mono">C.BNEZ</td>
+                    <td style="font-weight: 500;">Compressed Branch if Not Equal to Zero</td>
+                    <td><span class="badge">CB</span></td>
+                    <td style="color: var(--text-muted);">Branches if the register is not zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.ebreak/';" style="cursor: pointer;">
+                    <td class="mono">C.EBREAK</td>
+                    <td style="font-weight: 500;">Compressed Environment Break</td>
+                    <td><span class="badge">CR</span></td>
+                    <td style="color: var(--text-muted);">Triggers a debugger breakpoint.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.j/';" style="cursor: pointer;">
+                    <td class="mono">C.J</td>
+                    <td style="font-weight: 500;">Compressed Jump</td>
+                    <td><span class="badge">CJ</span></td>
+                    <td style="color: var(--text-muted);">Unconditional PC-relative jump.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.jal/';" style="cursor: pointer;">
+                    <td class="mono">C.JAL</td>
+                    <td style="font-weight: 500;">Compressed Jump and Link</td>
+                    <td><span class="badge">CJ</span></td>
+                    <td style="color: var(--text-muted);">Performs a PC-relative jump and stores return address in x1 (ra). RV32 only.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.jalr/';" style="cursor: pointer;">
+                    <td class="mono">C.JALR</td>
+                    <td style="font-weight: 500;">Compressed Jump and Link Register</td>
+                    <td><span class="badge">CR</span></td>
+                    <td style="color: var(--text-muted);">Jumps to register address and links (saves PC+2 to ra).</td>
+                </tr>
+                
+                <tr onclick="window.location='c.jr/';" style="cursor: pointer;">
+                    <td class="mono">C.JR</td>
+                    <td style="font-weight: 500;">Compressed Jump Register</td>
+                    <td><span class="badge">CR</span></td>
+                    <td style="color: var(--text-muted);">Unconditionally jumps to address in register.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.li/';" style="cursor: pointer;">
+                    <td class="mono">C.LI</td>
+                    <td style="font-weight: 500;">Compressed Load Immediate</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Loads a 6-bit signed immediate into a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.lui/';" style="cursor: pointer;">
+                    <td class="mono">C.LUI</td>
+                    <td style="font-weight: 500;">Compressed Load Upper Immediate</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Loads a non-zero 6-bit immediate into bits 17-12 of the destination register, clears lower 12 bits, sign-extends bit 17.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.lw/';" style="cursor: pointer;">
+                    <td class="mono">C.LW</td>
+                    <td style="font-weight: 500;">Compressed Load Word</td>
+                    <td><span class="badge">CL</span></td>
+                    <td style="color: var(--text-muted);">Loads a 32-bit word from memory using a compressed encoding.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.lwsp/';" style="cursor: pointer;">
+                    <td class="mono">C.LWSP</td>
+                    <td style="font-weight: 500;">Compressed Load Word from Stack Pointer</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from the stack pointer (x2).</td>
+                </tr>
+                
+                <tr onclick="window.location='c.mv/';" style="cursor: pointer;">
+                    <td class="mono">C.MV</td>
+                    <td style="font-weight: 500;">Compressed Move</td>
+                    <td><span class="badge">CR</span></td>
+                    <td style="color: var(--text-muted);">Copies register rs2 to rd.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.or/';" style="cursor: pointer;">
+                    <td class="mono">C.OR</td>
+                    <td style="font-weight: 500;">Compressed OR</td>
+                    <td><span class="badge">CA</span></td>
+                    <td style="color: var(--text-muted);">Bitwise OR of two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.slli/';" style="cursor: pointer;">
+                    <td class="mono">C.SLLI</td>
+                    <td style="font-weight: 500;">Compressed Shift Left Logical Immediate</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Logically shifts a register left by immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.srai/';" style="cursor: pointer;">
+                    <td class="mono">C.SRAI</td>
+                    <td style="font-weight: 500;">Compressed Shift Right Arithmetic Immediate</td>
+                    <td><span class="badge">CB</span></td>
+                    <td style="color: var(--text-muted);">Arithmetically shifts a register right by immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.srli/';" style="cursor: pointer;">
+                    <td class="mono">C.SRLI</td>
+                    <td style="font-weight: 500;">Compressed Shift Right Logical Immediate</td>
+                    <td><span class="badge">CB</span></td>
+                    <td style="color: var(--text-muted);">Logically shifts a register right by immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.sub/';" style="cursor: pointer;">
+                    <td class="mono">C.SUB</td>
+                    <td style="font-weight: 500;">Compressed Subtract</td>
+                    <td><span class="badge">CA</span></td>
+                    <td style="color: var(--text-muted);">Subtracts two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.sw/';" style="cursor: pointer;">
+                    <td class="mono">C.SW</td>
+                    <td style="font-weight: 500;">Compressed Store Word</td>
+                    <td><span class="badge">CS</span></td>
+                    <td style="color: var(--text-muted);">Stores a 32-bit word to memory using a compressed encoding.</td>
+                </tr>
+                
+                <tr onclick="window.location='c.swsp/';" style="cursor: pointer;">
+                    <td class="mono">C.SWSP</td>
+                    <td style="font-weight: 500;">Compressed Store Word to Stack Pointer</td>
+                    <td><span class="badge">CSS</span></td>
+                    <td style="color: var(--text-muted);">Stores a word to the stack pointer (x2).</td>
+                </tr>
+                
+                <tr onclick="window.location='c.xor/';" style="cursor: pointer;">
+                    <td class="mono">C.XOR</td>
+                    <td style="font-weight: 500;">Compressed XOR</td>
+                    <td><span class="badge">CA</span></td>
+                    <td style="color: var(--text-muted);">Bitwise XOR of two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='call/';" style="cursor: pointer;">
+                    <td class="mono">CALL</td>
+                    <td style="font-weight: 500;">Call Subroutine</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Calls a function by jumping to an address and saving the return address.</td>
                 </tr>
                 
                 <tr onclick="window.location='csrrc/';" style="cursor: pointer;">
@@ -344,6 +547,13 @@
                     <td style="color: var(--text-muted);">Synchronizes updates to VS-stage address translation data structures.</td>
                 </tr>
                 
+                <tr onclick="window.location='j/';" style="cursor: pointer;">
+                    <td class="mono">J</td>
+                    <td style="font-weight: 500;">Jump</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Unconditionally jumps to a target offset.</td>
+                </tr>
+                
                 <tr onclick="window.location='jal/';" style="cursor: pointer;">
                     <td class="mono">JAL</td>
                     <td style="font-weight: 500;">Jump and Link</td>
@@ -356,6 +566,13 @@
                     <td style="font-weight: 500;">Jump and Link Register</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Jumps to address in rs1 + offset, saving return address to rd.</td>
+                </tr>
+                
+                <tr onclick="window.location='jr/';" style="cursor: pointer;">
+                    <td class="mono">JR</td>
+                    <td style="font-weight: 500;">Jump Register</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Unconditionally jumps to an address held in a register.</td>
                 </tr>
                 
                 <tr onclick="window.location='lb/';" style="cursor: pointer;">
@@ -391,6 +608,13 @@
                     <td style="font-weight: 500;">Load Halfword Unsigned</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Loads a 16-bit halfword from memory and zero-extends it.</td>
+                </tr>
+                
+                <tr onclick="window.location='li/';" style="cursor: pointer;">
+                    <td class="mono">LI</td>
+                    <td style="font-weight: 500;">Load Immediate</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Loads an arbitrary immediate value into a register.</td>
                 </tr>
                 
                 <tr onclick="window.location='lr.d/';" style="cursor: pointer;">
@@ -449,6 +673,34 @@
                     <td style="color: var(--text-muted);">Performs a signed multiplication and stores the upper bits of the result.</td>
                 </tr>
                 
+                <tr onclick="window.location='mv/';" style="cursor: pointer;">
+                    <td class="mono">MV</td>
+                    <td style="font-weight: 500;">Move</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Copies the value of one register into another.</td>
+                </tr>
+                
+                <tr onclick="window.location='neg/';" style="cursor: pointer;">
+                    <td class="mono">NEG</td>
+                    <td style="font-weight: 500;">Negate</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Computes the two's complement negation (arithmetic negative).</td>
+                </tr>
+                
+                <tr onclick="window.location='nop/';" style="cursor: pointer;">
+                    <td class="mono">NOP</td>
+                    <td style="font-weight: 500;">No Operation</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Performs no operation. Used for alignment or timing delays.</td>
+                </tr>
+                
+                <tr onclick="window.location='not/';" style="cursor: pointer;">
+                    <td class="mono">NOT</td>
+                    <td style="font-weight: 500;">Bitwise NOT</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Computes the bitwise logical negation (one's complement).</td>
+                </tr>
+                
                 <tr onclick="window.location='or/';" style="cursor: pointer;">
                     <td class="mono">OR</td>
                     <td style="font-weight: 500;">Logical OR</td>
@@ -470,6 +722,13 @@
                     <td style="color: var(--text-muted);">Computes the signed remainder of division.</td>
                 </tr>
                 
+                <tr onclick="window.location='ret/';" style="cursor: pointer;">
+                    <td class="mono">RET</td>
+                    <td style="font-weight: 500;">Return</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Returns from a subroutine call.</td>
+                </tr>
+                
                 <tr onclick="window.location='sb/';" style="cursor: pointer;">
                     <td class="mono">SB</td>
                     <td style="font-weight: 500;">Store Byte</td>
@@ -489,6 +748,13 @@
                     <td style="font-weight: 500;">Store Doubleword</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Stores a 64-bit doubleword to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='seqz/';" style="cursor: pointer;">
+                    <td class="mono">SEQZ</td>
+                    <td style="font-weight: 500;">Set if Equal to Zero</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Sets rd to 1 if rs is zero, otherwise 0.</td>
                 </tr>
                 
                 <tr onclick="window.location='sfence.vma/';" style="cursor: pointer;">
@@ -531,6 +797,13 @@
                     <td style="font-weight: 500;">Set Less Than Immediate</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Sets rd to 1 if rs1 < immediate (signed), otherwise 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='snez/';" style="cursor: pointer;">
+                    <td class="mono">SNEZ</td>
+                    <td style="font-weight: 500;">Set if Not Equal to Zero</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Sets rd to 1 if rs is not zero, otherwise 0.</td>
                 </tr>
                 
                 <tr onclick="window.location='sra/';" style="cursor: pointer;">

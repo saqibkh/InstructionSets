@@ -1,0 +1,255 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "NOP",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "No Operation",
+      "summary": "Performs no operation. Used for alignment or timing delays.",
+      "syntax": "NOP",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "ADDI x0, x0, 0",
+        "hex_opcode": "0x00000013"
+      },
+      "operands": [],
+      "pseudocode": "R[0] = R[0] + 0;",
+      "example": "NOP",
+      "example_note": "Does nothing."
+    },
+    {
+      "mnemonic": "MV",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Move",
+      "summary": "Copies the value of one register into another.",
+      "syntax": "MV rd, rs",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "ADDI rd, rs, 0",
+        "hex_opcode": "See ADDI"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination" },
+        { "name": "rs", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = R[rs];",
+      "example": "MV x10, x11",
+      "example_note": "Copies x11 to x10."
+    },
+    {
+      "mnemonic": "LI",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Load Immediate",
+      "summary": "Loads an arbitrary immediate value into a register.",
+      "syntax": "LI rd, imm",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "LUI + ADDI",
+        "hex_opcode": "Variable"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination" },
+        { "name": "imm", "desc": "Immediate Value" }
+      ],
+      "pseudocode": "R[rd] = imm;",
+      "example": "LI x5, 0x12345",
+      "example_note": "Expands to: LUI x5, 0x12; ADDI x5, x5, 0x345"
+    },
+    {
+      "mnemonic": "RET",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Return",
+      "summary": "Returns from a subroutine call.",
+      "syntax": "RET",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "JALR x0, 0(x1)",
+        "hex_opcode": "0x00008067"
+      },
+      "operands": [],
+      "pseudocode": "PC = R[1];",
+      "example": "RET",
+      "example_note": "Jumps to the address in the Return Address register (ra/x1)."
+    },
+    {
+      "mnemonic": "J",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Jump",
+      "summary": "Unconditionally jumps to a target offset.",
+      "syntax": "J offset",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "JAL x0, offset",
+        "hex_opcode": "See JAL"
+      },
+      "operands": [
+        { "name": "offset", "desc": "Jump Target" }
+      ],
+      "pseudocode": "PC += sext(offset);",
+      "example": "J label",
+      "example_note": "Unconditional jump (discarding return address)."
+    },
+    {
+      "mnemonic": "JR",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Jump Register",
+      "summary": "Unconditionally jumps to an address held in a register.",
+      "syntax": "JR rs",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "JALR x0, 0(rs)",
+        "hex_opcode": "See JALR"
+      },
+      "operands": [
+        { "name": "rs", "desc": "Address Register" }
+      ],
+      "pseudocode": "PC = R[rs];",
+      "example": "JR x10",
+      "example_note": "Jump to address stored in x10."
+    },
+    {
+      "mnemonic": "CALL",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Call Subroutine",
+      "summary": "Calls a function by jumping to an address and saving the return address.",
+      "syntax": "CALL symbol",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "AUIPC + JALR",
+        "hex_opcode": "Variable"
+      },
+      "operands": [
+        { "name": "symbol", "desc": "Function Name" }
+      ],
+      "pseudocode": "x1 = PC + 4; PC = symbol;",
+      "example": "CALL printf",
+      "example_note": "Sets up x1 (ra) and jumps to printf."
+    },
+    {
+      "mnemonic": "NOT",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Bitwise NOT",
+      "summary": "Computes the bitwise logical negation (one's complement).",
+      "syntax": "NOT rd, rs",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "XORI rd, rs, -1",
+        "hex_opcode": "See XORI"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination" },
+        { "name": "rs", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = ~R[rs];",
+      "example": "NOT x10, x11",
+      "example_note": "Inverts all bits of x11."
+    },
+    {
+      "mnemonic": "NEG",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Negate",
+      "summary": "Computes the two's complement negation (arithmetic negative).",
+      "syntax": "NEG rd, rs",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "SUB rd, x0, rs",
+        "hex_opcode": "See SUB"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Destination" },
+        { "name": "rs", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = 0 - R[rs];",
+      "example": "NEG x5, x6",
+      "example_note": "x5 = -x6"
+    },
+    {
+      "mnemonic": "BEQZ",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Branch if Equal to Zero",
+      "summary": "Branches if the register is zero.",
+      "syntax": "BEQZ rs, offset",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "BEQ rs, x0, offset",
+        "hex_opcode": "See BEQ"
+      },
+      "operands": [
+        { "name": "rs", "desc": "Source" },
+        { "name": "offset", "desc": "Label" }
+      ],
+      "pseudocode": "if (R[rs] == 0) PC += offset;",
+      "example": "BEQZ x10, exit",
+      "example_note": "Jump to exit if x10 is zero."
+    },
+    {
+      "mnemonic": "BNEZ",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Branch if Not Equal to Zero",
+      "summary": "Branches if the register is not zero.",
+      "syntax": "BNEZ rs, offset",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "BNE rs, x0, offset",
+        "hex_opcode": "See BNE"
+      },
+      "operands": [
+        { "name": "rs", "desc": "Source" },
+        { "name": "offset", "desc": "Label" }
+      ],
+      "pseudocode": "if (R[rs] != 0) PC += offset;",
+      "example": "BNEZ x10, loop",
+      "example_note": "Jump to loop if x10 is not zero."
+    },
+    {
+      "mnemonic": "SEQZ",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Set if Equal to Zero",
+      "summary": "Sets rd to 1 if rs is zero, otherwise 0.",
+      "syntax": "SEQZ rd, rs",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "SLTIU rd, rs, 1",
+        "hex_opcode": "See SLTIU"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = (R[rs] == 0) ? 1 : 0;",
+      "example": "SEQZ x5, x10",
+      "example_note": "Sets x5 to 1 if x10 is 0."
+    },
+    {
+      "mnemonic": "SNEZ",
+      "architecture": "RISC-V",
+      "extension": "Pseudo",
+      "full_name": "Set if Not Equal to Zero",
+      "summary": "Sets rd to 1 if rs is not zero, otherwise 0.",
+      "syntax": "SNEZ rd, rs",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "SLTU rd, x0, rs",
+        "hex_opcode": "See SLTU"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs", "desc": "Source" }
+      ],
+      "pseudocode": "R[rd] = (R[rs] != 0) ? 1 : 0;",
+      "example": "SNEZ x5, x10",
+      "example_note": "Sets x5 to 1 if x10 is non-zero."
+    }
+  ]
+}
