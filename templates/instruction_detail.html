@@ -7,9 +7,9 @@
     
     <aside class="sidebar">
         <h3>{{ instruction.architecture }} Instructions</h3>
-        <nav>
+	<nav>
             {% for nav_inst in sidebar_nav %}
-            <a href="{{ nav_inst.mnemonic|lower|replace(' ', '_') }}.html" 
+            <a href="../{{ nav_inst.mnemonic|lower|replace(' ', '_') }}/"
                class="{% if nav_inst.mnemonic == current_page %}active{% endif %}">
                 {{ nav_inst.mnemonic }}
             </a>

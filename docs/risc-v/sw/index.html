@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SW - RISC-V</title>
+    <link rel="stylesheet" href="../../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../../index.html" class="logo">ISA_<span>DB</span></a>
+            
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Search instructions (e.g. MOV, RISC-V)...">
+                <div id="search-results" class="search-dropdown"></div>
+            </div>
+	
+	    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    	        <span>☀️</span>
+    	    </button>
+
+            <div class="nav-links" style="font-size: 0.9rem; color: var(--text-muted);">
+                The Open Architecture Reference
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../../search.json";
+    </script>
+    
+    <script src="../../static/search.js"></script>
+
+    
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>RISC-V Instructions</h3>
+	<nav>
+            
+            <a href="../add/"
+               class="">
+                ADD
+            </a>
+            
+            <a href="../addi/"
+               class="">
+                ADDI
+            </a>
+            
+            <a href="../auipc/"
+               class="">
+                AUIPC
+            </a>
+            
+            <a href="../beq/"
+               class="">
+                BEQ
+            </a>
+            
+            <a href="../ecall/"
+               class="">
+                ECALL
+            </a>
+            
+            <a href="../jal/"
+               class="">
+                JAL
+            </a>
+            
+            <a href="../lui/"
+               class="">
+                LUI
+            </a>
+            
+            <a href="../lw/"
+               class="">
+                LW
+            </a>
+            
+            <a href="../sub/"
+               class="">
+                SUB
+            </a>
+            
+            <a href="../sw/"
+               class="active">
+                SW
+            </a>
+            
+        </nav>
+        
+        <h3>Meta</h3>
+        <a href="../risc-v.html">← Back to Overview</a>
+    </aside>
+
+    <main class="content">
+        <div>
+            <div style="margin-bottom: 10px; font-family: 'JetBrains Mono'; color: var(--accent);">
+                RISC-V / Base
+            </div>
+            <h1 class="mono" style="font-size: 3rem;">SW</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Store Word</h2>
+            
+            <div class="syntax-box">
+                SW rs2, offset(rs1)
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Stores a 32-bit word to memory.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
+                <div>
+                    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            M[R[rs1] + sext(offset)] = R[rs2][31:0];
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel">
+                        <h3>Example</h3>
+                        <div class="code-block" style="margin-bottom: 10px;">SW x5, 12(x2)</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Store x5 into stack memory at offset 12.</p>
+                    </div>
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs2</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">010</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">imm</span>
+                                </div>
+                                
+                                <div class="bit-box">
+                                    <span class="bit-value">0100011</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">S-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x23</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rs2</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Source Data</span>
+                            </li>
+                            
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rs1</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Base Address</span>
+                            </li>
+                            
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">offset</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Byte Offset</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions.</p>
+    </footer>
+
+    <script src="../../static/theme.js"></script>
+</body>
+</html>
