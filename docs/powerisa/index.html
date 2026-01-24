@@ -239,6 +239,13 @@
                     <td style="color: var(--text-muted);">Branches to the address in the Link Register (LR) if the condition is met. Used for function returns.</td>
                 </tr>
                 
+                <tr onclick="window.location='bctar/';" style="cursor: pointer;">
+                    <td class="mono">bctar</td>
+                    <td style="font-weight: 500;">Branch Conditional to Target Address Register</td>
+                    <td><span class="badge">XL-form</span></td>
+                    <td style="color: var(--text-muted);">Branches to the address in the TAR. Used for fast indirect jumps (JIT).</td>
+                </tr>
+                
                 <tr onclick="window.location='bl/';" style="cursor: pointer;">
                     <td class="mono">bl</td>
                     <td style="font-weight: 500;">Branch and Link</td>
@@ -302,6 +309,13 @@
                     <td style="color: var(--text-muted);">Compares a register to a 16-bit unsigned immediate.</td>
                 </tr>
                 
+                <tr onclick="window.location='cmprb/';" style="cursor: pointer;">
+                    <td class="mono">cmprb</td>
+                    <td style="font-weight: 500;">Compare Ranged Byte</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Compares a byte against a range of values. (Is byte in [min, max]?)</td>
+                </tr>
+                
                 <tr onclick="window.location='cntlzd/';" style="cursor: pointer;">
                     <td class="mono">cntlzd</td>
                     <td style="font-weight: 500;">Count Leading Zeros Doubleword</td>
@@ -314,6 +328,20 @@
                     <td style="font-weight: 500;">Count Leading Zeros Word</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Counts the number of consecutive 0 bits starting from bit 32 (MSB of the low word).</td>
+                </tr>
+                
+                <tr onclick="window.location='cnttzd/';" style="cursor: pointer;">
+                    <td class="mono">cnttzd</td>
+                    <td style="font-weight: 500;">Count Trailing Zeros Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Counts the number of trailing zeros in 64-bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='cnttzw/';" style="cursor: pointer;">
+                    <td class="mono">cnttzw</td>
+                    <td style="font-weight: 500;">Count Trailing Zeros Word</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Counts the number of trailing zeros in the low 32-bits.</td>
                 </tr>
                 
                 <tr onclick="window.location='copy/';" style="cursor: pointer;">
@@ -659,11 +687,46 @@
                     <td style="color: var(--text-muted);">Sign-extends the low word (32 bits) of a register to 64 bits.</td>
                 </tr>
                 
+                <tr onclick="window.location='fabs/';" style="cursor: pointer;">
+                    <td class="mono">fabs</td>
+                    <td style="font-weight: 500;">Floating Absolute Value</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Computes absolute value of a float.</td>
+                </tr>
+                
                 <tr onclick="window.location='fadd/';" style="cursor: pointer;">
                     <td class="mono">fadd</td>
                     <td style="font-weight: 500;">Floating Add</td>
                     <td><span class="badge">A-form</span></td>
                     <td style="color: var(--text-muted);">Adds two double-precision floating-point registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcfid/';" style="cursor: pointer;">
+                    <td class="mono">fcfid</td>
+                    <td style="font-weight: 500;">Floating Convert from Integer Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 64-bit Int to Double.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcfids/';" style="cursor: pointer;">
+                    <td class="mono">fcfids</td>
+                    <td style="font-weight: 500;">Floating Convert from Integer Doubleword Single</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 64-bit Int to Single.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcfidu/';" style="cursor: pointer;">
+                    <td class="mono">fcfidu</td>
+                    <td style="font-weight: 500;">Floating Convert from Unsigned Integer Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 64-bit Unsigned Int to Double.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcfidus/';" style="cursor: pointer;">
+                    <td class="mono">fcfidus</td>
+                    <td style="font-weight: 500;">Floating Convert from Unsigned Integer Doubleword Single</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 64-bit Unsigned Int to Single.</td>
                 </tr>
                 
                 <tr onclick="window.location='fcmpu/';" style="cursor: pointer;">
@@ -673,11 +736,39 @@
                     <td style="color: var(--text-muted);">Compares two floating-point registers and sets the Condition Register (CR) field. Does not trap on NaNs.</td>
                 </tr>
                 
+                <tr onclick="window.location='fcpsgn/';" style="cursor: pointer;">
+                    <td class="mono">fcpsgn</td>
+                    <td style="font-weight: 500;">Floating Copy Sign</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Copies sign from FRB to FRA.</td>
+                </tr>
+                
+                <tr onclick="window.location='fctid/';" style="cursor: pointer;">
+                    <td class="mono">fctid</td>
+                    <td style="font-weight: 500;">Floating Convert to Integer Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts Double to 64-bit Int.</td>
+                </tr>
+                
+                <tr onclick="window.location='fctidz/';" style="cursor: pointer;">
+                    <td class="mono">fctidz</td>
+                    <td style="font-weight: 500;">Floating Convert to Integer Doubleword with Round to Zero</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts Double to 64-bit Int (Truncate).</td>
+                </tr>
+                
                 <tr onclick="window.location='fctiw/';" style="cursor: pointer;">
                     <td class="mono">fctiw</td>
                     <td style="font-weight: 500;">Floating Convert to Integer Word</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Converts a float to a 32-bit signed integer (using the current rounding mode) and stores it in the lower half of the FPR.</td>
+                </tr>
+                
+                <tr onclick="window.location='fctiwz/';" style="cursor: pointer;">
+                    <td class="mono">fctiwz</td>
+                    <td style="font-weight: 500;">Floating Convert to Integer Word with Round to Zero</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts Double to 32-bit Int (Truncate).</td>
                 </tr>
                 
                 <tr onclick="window.location='fmadd/';" style="cursor: pointer;">
@@ -687,11 +778,60 @@
                     <td style="color: var(--text-muted);">Performs (A * C) + B with a single rounding step. (The classic FMA).</td>
                 </tr>
                 
+                <tr onclick="window.location='fmadd/';" style="cursor: pointer;">
+                    <td class="mono">fmadd</td>
+                    <td style="font-weight: 500;">Floating Multiply-Add</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">A*C + B</td>
+                </tr>
+                
+                <tr onclick="window.location='fmr/';" style="cursor: pointer;">
+                    <td class="mono">fmr</td>
+                    <td style="font-weight: 500;">Floating Move Register</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Copies a float register (Pseudo: for FRB).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmsub/';" style="cursor: pointer;">
+                    <td class="mono">fmsub</td>
+                    <td style="font-weight: 500;">Floating Multiply-Subtract</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">A*C - B</td>
+                </tr>
+                
                 <tr onclick="window.location='fmul/';" style="cursor: pointer;">
                     <td class="mono">fmul</td>
                     <td style="font-weight: 500;">Floating Multiply</td>
                     <td><span class="badge">A-form</span></td>
                     <td style="color: var(--text-muted);">Multiplies two double-precision floating-point registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='fnabs/';" style="cursor: pointer;">
+                    <td class="mono">fnabs</td>
+                    <td style="font-weight: 500;">Floating Negative Absolute Value</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Computes negative absolute value of a float.</td>
+                </tr>
+                
+                <tr onclick="window.location='fneg/';" style="cursor: pointer;">
+                    <td class="mono">fneg</td>
+                    <td style="font-weight: 500;">Floating Negate</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Negates a float.</td>
+                </tr>
+                
+                <tr onclick="window.location='fnmadd/';" style="cursor: pointer;">
+                    <td class="mono">fnmadd</td>
+                    <td style="font-weight: 500;">Floating Negative Multiply-Add</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">-(A*C + B)</td>
+                </tr>
+                
+                <tr onclick="window.location='fnmsub/';" style="cursor: pointer;">
+                    <td class="mono">fnmsub</td>
+                    <td style="font-weight: 500;">Floating Negative Multiply-Subtract</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">-(A*C - B)</td>
                 </tr>
                 
                 <tr onclick="window.location='fre/';" style="cursor: pointer;">
@@ -708,6 +848,13 @@
                     <td style="color: var(--text-muted);">Estimates 1/x (Single Precision).</td>
                 </tr>
                 
+                <tr onclick="window.location='frsp/';" style="cursor: pointer;">
+                    <td class="mono">frsp</td>
+                    <td style="font-weight: 500;">Floating Round to Single-Precision</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Rounds Double to Single.</td>
+                </tr>
+                
                 <tr onclick="window.location='frsqrte/';" style="cursor: pointer;">
                     <td class="mono">frsqrte</td>
                     <td style="font-weight: 500;">Floating Reciprocal Square Root Estimate</td>
@@ -720,6 +867,27 @@
                     <td style="font-weight: 500;">Floating Reciprocal Square Root Estimate Single</td>
                     <td><span class="badge">A-form</span></td>
                     <td style="color: var(--text-muted);">Estimates 1/sqrt(x) (Single Precision).</td>
+                </tr>
+                
+                <tr onclick="window.location='fsel/';" style="cursor: pointer;">
+                    <td class="mono">fsel</td>
+                    <td style="font-weight: 500;">Floating Select</td>
+                    <td><span class="badge">A-form</span></td>
+                    <td style="color: var(--text-muted);">Selects FRA if FRC >= 0, else FRB (Optional).</td>
+                </tr>
+                
+                <tr onclick="window.location='fsqrt/';" style="cursor: pointer;">
+                    <td class="mono">fsqrt</td>
+                    <td style="font-weight: 500;">Floating Square Root</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Computes square root (Double).</td>
+                </tr>
+                
+                <tr onclick="window.location='fsqrts/';" style="cursor: pointer;">
+                    <td class="mono">fsqrts</td>
+                    <td style="font-weight: 500;">Floating Square Root Single</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Computes square root (Single).</td>
                 </tr>
                 
                 <tr onclick="window.location='ftdiv/';" style="cursor: pointer;">
@@ -832,6 +1000,13 @@
                     <td style="font-weight: 500;">Load Multiple Word</td>
                     <td><span class="badge">D-form</span></td>
                     <td style="color: var(--text-muted);">Loads words from memory into registers RT through R31 (Context Switch).</td>
+                </tr>
+                
+                <tr onclick="window.location='lq/';" style="cursor: pointer;">
+                    <td class="mono">lq</td>
+                    <td style="font-weight: 500;">Load Quadword</td>
+                    <td><span class="badge">DQ-form</span></td>
+                    <td style="color: var(--text-muted);">Loads 128 bits into two adjacent GPRs (Even/Odd pair).</td>
                 </tr>
                 
                 <tr onclick="window.location='lswi/';" style="cursor: pointer;">
@@ -1002,6 +1177,13 @@
                     <td style="color: var(--text-muted);">Indirect read of segment register using RB.</td>
                 </tr>
                 
+                <tr onclick="window.location='mftar/';" style="cursor: pointer;">
+                    <td class="mono">mftar</td>
+                    <td style="font-weight: 500;">Move From Target Address Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Reads the TAR into a GPR.</td>
+                </tr>
+                
                 <tr onclick="window.location='mftb/';" style="cursor: pointer;">
                     <td class="mono">mftb</td>
                     <td style="font-weight: 500;">Move From Timebase</td>
@@ -1156,6 +1338,13 @@
                     <td style="color: var(--text-muted);">Indirect write of segment register using RB.</td>
                 </tr>
                 
+                <tr onclick="window.location='mttar/';" style="cursor: pointer;">
+                    <td class="mono">mttar</td>
+                    <td style="font-weight: 500;">Move To Target Address Register</td>
+                    <td><span class="badge">XFX-form</span></td>
+                    <td style="color: var(--text-muted);">Moves a GPR value to the TAR.</td>
+                </tr>
+                
                 <tr onclick="window.location='mtvsrd/';" style="cursor: pointer;">
                     <td class="mono">mtvsrd</td>
                     <td style="font-weight: 500;">Move To VSR Doubleword</td>
@@ -1275,11 +1464,25 @@
                     <td style="color: var(--text-muted);">Adds a 34-bit signed immediate to a register. Supports PC-relative addressing (LEA).</td>
                 </tr>
                 
+                <tr onclick="window.location='paddi/';" style="cursor: pointer;">
+                    <td class="mono">paddi</td>
+                    <td style="font-weight: 500;">Prefixed Add Immediate</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Adds 34-bit immediate.</td>
+                </tr>
+                
                 <tr onclick="window.location='paste/';" style="cursor: pointer;">
                     <td class="mono">paste</td>
                     <td style="font-weight: 500;">Paste</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Completes a hardware copy (paste) operation.</td>
+                </tr>
+                
+                <tr onclick="window.location='paste./';" style="cursor: pointer;">
+                    <td class="mono">paste.</td>
+                    <td style="font-weight: 500;">Paste and Record</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Paste operation that updates CR0 to indicate success/fail.</td>
                 </tr>
                 
                 <tr onclick="window.location='pla/';" style="cursor: pointer;">
@@ -1303,6 +1506,27 @@
                     <td style="color: var(--text-muted);">Loads a 64-bit value from memory using a 34-bit immediate offset (PC-relative or absolute).</td>
                 </tr>
                 
+                <tr onclick="window.location='plh/';" style="cursor: pointer;">
+                    <td class="mono">plh</td>
+                    <td style="font-weight: 500;">Prefixed Load Halfword</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads 16-bit halfword using 34-bit offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='plha/';" style="cursor: pointer;">
+                    <td class="mono">plha</td>
+                    <td style="font-weight: 500;">Prefixed Load Halfword Algebraic</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads 16-bit halfword (Sign Extended) using 34-bit offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='plwa/';" style="cursor: pointer;">
+                    <td class="mono">plwa</td>
+                    <td style="font-weight: 500;">Prefixed Load Word Algebraic</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads 32-bit word (Sign Extended) using 34-bit offset.</td>
+                </tr>
+                
                 <tr onclick="window.location='plwz/';" style="cursor: pointer;">
                     <td class="mono">plwz</td>
                     <td style="font-weight: 500;">Prefixed Load Word and Zero</td>
@@ -1322,6 +1546,20 @@
                     <td style="font-weight: 500;">Prefixed Masked VSX Vector BFloat16 Ger (Rank-2 Update)</td>
                     <td><span class="badge">MMIRR-form</span></td>
                     <td style="color: var(--text-muted);">Matrix Multiply Assist (MMA) instruction. Computes ACC <- ACC + (A * B) using BF16 inputs.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmxvf64ger/';" style="cursor: pointer;">
+                    <td class="mono">pmxvf64ger</td>
+                    <td style="font-weight: 500;">Prefixed Masked VSX Vector Float64 GER</td>
+                    <td><span class="badge">MMIRR-form</span></td>
+                    <td style="color: var(--text-muted);">Masked version of Double-Precision MMA.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmxvi8ger4/';" style="cursor: pointer;">
+                    <td class="mono">pmxvi8ger4</td>
+                    <td style="font-weight: 500;">Prefixed Masked VSX Vector Integer 8-bit GER</td>
+                    <td><span class="badge">MMIRR-form</span></td>
+                    <td style="color: var(--text-muted);">Masked version of 8-bit integer MMA.</td>
                 </tr>
                 
                 <tr onclick="window.location='popcntd/';" style="cursor: pointer;">
@@ -1352,11 +1590,32 @@
                     <td style="color: var(--text-muted);">Calculates parity of a word (Scalar).</td>
                 </tr>
                 
+                <tr onclick="window.location='pstb/';" style="cursor: pointer;">
+                    <td class="mono">pstb</td>
+                    <td style="font-weight: 500;">Prefixed Store Byte</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Stores byte using 34-bit offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='psth/';" style="cursor: pointer;">
+                    <td class="mono">psth</td>
+                    <td style="font-weight: 500;">Prefixed Store Halfword</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Stores halfword using 34-bit offset.</td>
+                </tr>
+                
                 <tr onclick="window.location='pststd/';" style="cursor: pointer;">
                     <td class="mono">pststd</td>
                     <td style="font-weight: 500;">Prefixed Store Doubleword</td>
                     <td><span class="badge">MLS:D-form</span></td>
                     <td style="color: var(--text-muted);">Stores a 64-bit value to memory using a 34-bit immediate offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='pstw/';" style="cursor: pointer;">
+                    <td class="mono">pstw</td>
+                    <td style="font-weight: 500;">Prefixed Store Word</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Stores word using 34-bit offset.</td>
                 </tr>
                 
                 <tr onclick="window.location='pstxvp/';" style="cursor: pointer;">
@@ -1630,6 +1889,20 @@
                     <td style="font-weight: 500;">Stop</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Stops instruction execution and enters a power-saving state (replaces nap/doze on P9+).</td>
+                </tr>
+                
+                <tr onclick="window.location='stq/';" style="cursor: pointer;">
+                    <td class="mono">stq</td>
+                    <td style="font-weight: 500;">Store Quadword</td>
+                    <td><span class="badge">DQ-form</span></td>
+                    <td style="color: var(--text-muted);">Stores 128 bits from two adjacent GPRs.</td>
+                </tr>
+                
+                <tr onclick="window.location='stqcx./';" style="cursor: pointer;">
+                    <td class="mono">stqcx.</td>
+                    <td style="font-weight: 500;">Store Quadword Conditional Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Atomic 128-bit store. Stores if reservation exists.</td>
                 </tr>
                 
                 <tr onclick="window.location='stswi/';" style="cursor: pointer;">
@@ -2969,6 +3242,13 @@
                     <td style="color: var(--text-muted);">Adds two 128-bit Quad-Precision floating-point numbers held in VSX registers (pairs).</td>
                 </tr>
                 
+                <tr onclick="window.location='xsaddqpo/';" style="cursor: pointer;">
+                    <td class="mono">xsaddqpo</td>
+                    <td style="font-weight: 500;">VSX Scalar Add Quad-Precision Odd</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Used for Quad-Precision arithmetic on hardware that splits quads.</td>
+                </tr>
+                
                 <tr onclick="window.location='xsaddsp/';" style="cursor: pointer;">
                     <td class="mono">xsaddsp</td>
                     <td style="font-weight: 500;">VSX Scalar Add Single-Precision</td>
@@ -3053,6 +3333,34 @@
                     <td style="color: var(--text-muted);">Converts a 16-bit float to 64-bit double.</td>
                 </tr>
                 
+                <tr onclick="window.location='xscvqpdp/';" style="cursor: pointer;">
+                    <td class="mono">xscvqpdp</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Quad-Precision to Double</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Demotes 128-bit Float to 64-bit Float.</td>
+                </tr>
+                
+                <tr onclick="window.location='xscvqpsd/';" style="cursor: pointer;">
+                    <td class="mono">xscvqpsd</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Quad-Precision to Signed Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 128-bit Float to 64-bit Signed Integer.</td>
+                </tr>
+                
+                <tr onclick="window.location='xscvqpud/';" style="cursor: pointer;">
+                    <td class="mono">xscvqpud</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Quad-Precision to Unsigned Doubleword</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 128-bit Float to 64-bit Unsigned Integer.</td>
+                </tr>
+                
+                <tr onclick="window.location='xscvsdqp/';" style="cursor: pointer;">
+                    <td class="mono">xscvsdqp</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Signed Doubleword to Quad-Precision</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 64-bit Signed Integer to 128-bit Float.</td>
+                </tr>
+                
                 <tr onclick="window.location='xscvspdp/';" style="cursor: pointer;">
                     <td class="mono">xscvspdp</td>
                     <td style="font-weight: 500;">VSX Scalar Convert Single to Double</td>
@@ -3060,11 +3368,25 @@
                     <td style="color: var(--text-muted);">Promotes a Single to a Double.</td>
                 </tr>
                 
+                <tr onclick="window.location='xscvudqp/';" style="cursor: pointer;">
+                    <td class="mono">xscvudqp</td>
+                    <td style="font-weight: 500;">VSX Scalar Convert Unsigned Doubleword to Quad-Precision</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Converts 64-bit Unsigned Integer to 128-bit Float.</td>
+                </tr>
+                
                 <tr onclick="window.location='xsdivqp/';" style="cursor: pointer;">
                     <td class="mono">xsdivqp</td>
                     <td style="font-weight: 500;">VSX Scalar Divide Quad-Precision</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Divides two 128-bit Quad-Precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xsdivqpo/';" style="cursor: pointer;">
+                    <td class="mono">xsdivqpo</td>
+                    <td style="font-weight: 500;">VSX Scalar Divide Quad-Precision Odd</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Used for Quad-Precision arithmetic on hardware that splits quads.</td>
                 </tr>
                 
                 <tr onclick="window.location='xsdivsp/';" style="cursor: pointer;">
@@ -3144,6 +3466,20 @@
                     <td style="color: var(--text-muted);">Rounds Quad float to nearest Integer.</td>
                 </tr>
                 
+                <tr onclick="window.location='xsrqpi/';" style="cursor: pointer;">
+                    <td class="mono">xsrqpi</td>
+                    <td style="font-weight: 500;">VSX Scalar Round Quad-Precision to Integer</td>
+                    <td><span class="badge">Z23-form</span></td>
+                    <td style="color: var(--text-muted);">Rounds a Quad float to a Quad integer.</td>
+                </tr>
+                
+                <tr onclick="window.location='xsrqpix/';" style="cursor: pointer;">
+                    <td class="mono">xsrqpix</td>
+                    <td style="font-weight: 500;">VSX Scalar Round Quad-Precision to Integer Extended</td>
+                    <td><span class="badge">Z23-form</span></td>
+                    <td style="color: var(--text-muted);">Rounds a Quad float to a Quad integer (Exact).</td>
+                </tr>
+                
                 <tr onclick="window.location='xssqrtdp/';" style="cursor: pointer;">
                     <td class="mono">xssqrtdp</td>
                     <td style="font-weight: 500;">VSX Scalar Square Root Double-Precision</td>
@@ -3158,11 +3494,25 @@
                     <td style="color: var(--text-muted);">Computes square root of a 128-bit Quad-Precision float.</td>
                 </tr>
                 
+                <tr onclick="window.location='xssqrtqpo/';" style="cursor: pointer;">
+                    <td class="mono">xssqrtqpo</td>
+                    <td style="font-weight: 500;">VSX Scalar Square Root Quad-Precision Odd</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Used for Quad-Precision arithmetic on hardware that splits quads.</td>
+                </tr>
+                
                 <tr onclick="window.location='xssubqp/';" style="cursor: pointer;">
                     <td class="mono">xssubqp</td>
                     <td style="font-weight: 500;">VSX Scalar Subtract Quad-Precision</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Subtracts two 128-bit Quad-Precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xssubqpo/';" style="cursor: pointer;">
+                    <td class="mono">xssubqpo</td>
+                    <td style="font-weight: 500;">VSX Scalar Subtract Quad-Precision Odd</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Used for Quad-Precision arithmetic on hardware that splits quads.</td>
                 </tr>
                 
                 <tr onclick="window.location='xssubsp/';" style="cursor: pointer;">
@@ -3219,6 +3569,13 @@
                     <td style="font-weight: 500;">VSX Vector Add Single-Precision</td>
                     <td><span class="badge">XX3-form</span></td>
                     <td style="color: var(--text-muted);">Adds four single-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvbf16ger2/';" style="cursor: pointer;">
+                    <td class="mono">xvbf16ger2</td>
+                    <td style="font-weight: 500;">VSX Vector BFloat16 GER (Rank-2 Update)</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs BFloat16 (Brain Float) matrix multiply accumulate.</td>
                 </tr>
                 
                 <tr onclick="window.location='xvcmpeqdp/';" style="cursor: pointer;">
@@ -3338,6 +3695,55 @@
                     <td style="font-weight: 500;">VSX Vector Divide Single-Precision</td>
                     <td><span class="badge">XX3-form</span></td>
                     <td style="color: var(--text-muted);">Divides four single-precision floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvf16ger2/';" style="cursor: pointer;">
+                    <td class="mono">xvf16ger2</td>
+                    <td style="font-weight: 500;">VSX Vector Float16 GER (Rank-2 Update)</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs IEEE Float16 matrix multiply accumulate.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvf32ger/';" style="cursor: pointer;">
+                    <td class="mono">xvf32ger</td>
+                    <td style="font-weight: 500;">VSX Vector Float32 GER (Rank-1 Update)</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs Single-Precision Float matrix multiply accumulate.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvf64ger/';" style="cursor: pointer;">
+                    <td class="mono">xvf64ger</td>
+                    <td style="font-weight: 500;">VSX Vector Float64 GER (Rank-1 Update)</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs Double-Precision Float matrix multiply accumulate.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvi16ger2/';" style="cursor: pointer;">
+                    <td class="mono">xvi16ger2</td>
+                    <td style="font-weight: 500;">VSX Vector Integer 16-bit GER (Rank-2 Update)</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a 16-bit integer outer product and accumulates.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvi16ger2s/';" style="cursor: pointer;">
+                    <td class="mono">xvi16ger2s</td>
+                    <td style="font-weight: 500;">VSX Vector Integer 16-bit GER (Rank-2 Update) Saturate</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs a 16-bit integer outer product with saturation.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvi8ger4/';" style="cursor: pointer;">
+                    <td class="mono">xvi8ger4</td>
+                    <td style="font-weight: 500;">VSX Vector Integer 8-bit GER (Rank-4 Update)</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs an 8-bit integer outer product (GER) and accumulates into a 512-bit register.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvi8ger4pp/';" style="cursor: pointer;">
+                    <td class="mono">xvi8ger4pp</td>
+                    <td style="font-weight: 500;">VSX Vector Integer 8-bit GER (Rank-4 Update) Plus/Plus</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Signed/Unsigned variations of 8-bit matrix multiply accumulate.</td>
                 </tr>
                 
                 <tr onclick="window.location='xvmaddadp/';" style="cursor: pointer;">
@@ -3480,6 +3886,13 @@
                     <td style="color: var(--text-muted);">Bitwise XOR.</td>
                 </tr>
                 
+                <tr onclick="window.location='xxmfacc/';" style="cursor: pointer;">
+                    <td class="mono">xxmfacc</td>
+                    <td style="font-weight: 500;">VSX Move from Accumulator</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Copies data from an Accumulator back to 4 adjacent VSRs.</td>
+                </tr>
+                
                 <tr onclick="window.location='xxmrghd/';" style="cursor: pointer;">
                     <td class="mono">xxmrghd</td>
                     <td style="font-weight: 500;">VSX Vector Merge High Doubleword</td>
@@ -3492,6 +3905,13 @@
                     <td style="font-weight: 500;">VSX Vector Merge Low Doubleword</td>
                     <td><span class="badge">XX3-form</span></td>
                     <td style="color: var(--text-muted);">Merges low doublewords from XA and XB.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxmtacc/';" style="cursor: pointer;">
+                    <td class="mono">xxmtacc</td>
+                    <td style="font-weight: 500;">VSX Move to Accumulator</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Copies data from 4 adjacent VSRs into an Accumulator.</td>
                 </tr>
                 
                 <tr onclick="window.location='xxperm/';" style="cursor: pointer;">
@@ -3520,6 +3940,13 @@
                     <td style="font-weight: 500;">VSX Vector Select</td>
                     <td><span class="badge">XX4-form</span></td>
                     <td style="color: var(--text-muted);">Bitwise select between XA and XB based on XC.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxsetaccz/';" style="cursor: pointer;">
+                    <td class="mono">xxsetaccz</td>
+                    <td style="font-weight: 500;">VSX Set Accumulator to Zero</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Clears a 512-bit Accumulator register (composed of 4 VSRs) to zero.</td>
                 </tr>
                 
                 <tr onclick="window.location='xxspltidp/';" style="cursor: pointer;">

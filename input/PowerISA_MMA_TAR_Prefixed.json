@@ -1,0 +1,614 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "xxsetaccz",
+      "architecture": "PowerISA",
+      "full_name": "VSX Set Accumulator to Zero",
+      "summary": "Clears a 512-bit Accumulator register (composed of 4 VSRs) to zero.",
+      "syntax": "xxsetaccz AT",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | AT | 185 | /", "hex_opcode": "0x7C000171" },
+      "operands": [{ "name": "AT", "desc": "Accumulator (0-7)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xxmtacc",
+      "architecture": "PowerISA",
+      "full_name": "VSX Move to Accumulator",
+      "summary": "Copies data from 4 adjacent VSRs into an Accumulator.",
+      "syntax": "xxmtacc AT",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | AT | 153 | /", "hex_opcode": "0x7C000131" },
+      "operands": [{ "name": "AT", "desc": "Target ACC" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xxmfacc",
+      "architecture": "PowerISA",
+      "full_name": "VSX Move from Accumulator",
+      "summary": "Copies data from an Accumulator back to 4 adjacent VSRs.",
+      "syntax": "xxmfacc AT",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | / | AT | 185 | /", "hex_opcode": "0x7C000171" },
+      "operands": [{ "name": "AT", "desc": "Source ACC" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvi8ger4",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Integer 8-bit GER (Rank-4 Update)",
+      "summary": "Performs an 8-bit integer outer product (GER) and accumulates into a 512-bit register.",
+      "syntax": "xvi8ger4 AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 34", "hex_opcode": "0xF0000022" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Vector A (8-bit)" }, { "name": "XB", "desc": "Vector B (8-bit)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvi8ger4pp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Integer 8-bit GER (Rank-4 Update) Plus/Plus",
+      "summary": "Signed/Unsigned variations of 8-bit matrix multiply accumulate.",
+      "syntax": "xvi8ger4pp AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 35", "hex_opcode": "0xF0000023" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvi16ger2",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Integer 16-bit GER (Rank-2 Update)",
+      "summary": "Performs a 16-bit integer outer product and accumulates.",
+      "syntax": "xvi16ger2 AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 75", "hex_opcode": "0xF000004B" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A (16-bit)" }, { "name": "XB", "desc": "Src B (16-bit)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvi16ger2s",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Integer 16-bit GER (Rank-2 Update) Saturate",
+      "summary": "Performs a 16-bit integer outer product with saturation.",
+      "syntax": "xvi16ger2s AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 43", "hex_opcode": "0xF000002B" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvf16ger2",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Float16 GER (Rank-2 Update)",
+      "summary": "Performs IEEE Float16 matrix multiply accumulate.",
+      "syntax": "xvf16ger2 AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 19", "hex_opcode": "0xF0000013" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A (FP16)" }, { "name": "XB", "desc": "Src B (FP16)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvbf16ger2",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector BFloat16 GER (Rank-2 Update)",
+      "summary": "Performs BFloat16 (Brain Float) matrix multiply accumulate.",
+      "syntax": "xvbf16ger2 AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 51", "hex_opcode": "0xF0000033" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A (BF16)" }, { "name": "XB", "desc": "Src B (BF16)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvf32ger",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Float32 GER (Rank-1 Update)",
+      "summary": "Performs Single-Precision Float matrix multiply accumulate.",
+      "syntax": "xvf32ger AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 27", "hex_opcode": "0xF000001B" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A (FP32)" }, { "name": "XB", "desc": "Src B (FP32)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "xvf64ger",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Float64 GER (Rank-1 Update)",
+      "summary": "Performs Double-Precision Float matrix multiply accumulate.",
+      "syntax": "xvf64ger AT, XA, XB",
+      "encoding": { "format": "XX3-form", "binary_pattern": "60 | AT | XA | XB | 59", "hex_opcode": "0xF000003B" },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A (FP64)" }, { "name": "XB", "desc": "Src B (FP64)" }],
+      "extension": "Matrix Math (MMA)"
+    },
+    {
+      "mnemonic": "pmxvi8ger4",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Masked VSX Vector Integer 8-bit GER",
+      "summary": "Masked version of 8-bit integer MMA.",
+      "syntax": "pmxvi8ger4 AT, XA, XB, XMSK, YMSK",
+      "encoding": { "format": "MMIRR-form", "binary_pattern": "000001 | 11 | ...", "hex_opcode": "0x06000000..." },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XMSK", "desc": "Mask A" }, { "name": "YMSK", "desc": "Mask B" }],
+      "extension": "Prefixed (MMA)"
+    },
+    {
+      "mnemonic": "pmxvf64ger",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Masked VSX Vector Float64 GER",
+      "summary": "Masked version of Double-Precision MMA.",
+      "syntax": "pmxvf64ger AT, XA, XB, XMSK, YMSK",
+      "encoding": { "format": "MMIRR-form", "binary_pattern": "000001 | 11 | ...", "hex_opcode": "0x06000000..." },
+      "operands": [{ "name": "AT", "desc": "Accumulator" }, { "name": "XA", "desc": "Src A" }, { "name": "XB", "desc": "Src B" }, { "name": "XMSK", "desc": "Mask A" }, { "name": "YMSK", "desc": "Mask B" }],
+      "extension": "Prefixed (MMA)"
+    },
+    {
+      "mnemonic": "cnttzw",
+      "architecture": "PowerISA",
+      "full_name": "Count Trailing Zeros Word",
+      "summary": "Counts the number of trailing zeros in the low 32-bits.",
+      "syntax": "cnttzw RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | / | 538 | /", "hex_opcode": "0x7C00043A" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cnttzd",
+      "architecture": "PowerISA",
+      "full_name": "Count Trailing Zeros Doubleword",
+      "summary": "Counts the number of trailing zeros in 64-bits.",
+      "syntax": "cnttzd RA, RS",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | / | 570 | /", "hex_opcode": "0x7C00047A" },
+      "operands": [{ "name": "RA", "desc": "Target" }, { "name": "RS", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bctar",
+      "architecture": "PowerISA",
+      "full_name": "Branch Conditional to Target Address Register",
+      "summary": "Branches to the address in the TAR. Used for fast indirect jumps (JIT).",
+      "syntax": "bctar BO, BI, BH",
+      "encoding": { "format": "XL-form", "binary_pattern": "19 | BO | BI | / | BH | 560 | /", "hex_opcode": "0x4C000460" },
+      "operands": [{ "name": "BO", "desc": "Options" }, { "name": "BI", "desc": "CR Bit" }, { "name": "BH", "desc": "Hint" }],
+      "extension": "Branch & Control"
+    },
+    {
+      "mnemonic": "mttar",
+      "architecture": "PowerISA",
+      "full_name": "Move To Target Address Register",
+      "summary": "Moves a GPR value to the TAR.",
+      "syntax": "mttar RS",
+      "encoding": { "format": "XFX-form", "binary_pattern": "mtspr 129, RS", "hex_opcode": "See mtspr" },
+      "operands": [{ "name": "RS", "desc": "Source" }],
+      "extension": "Branch & Control"
+    },
+    {
+      "mnemonic": "mftar",
+      "architecture": "PowerISA",
+      "full_name": "Move From Target Address Register",
+      "summary": "Reads the TAR into a GPR.",
+      "syntax": "mftar RT",
+      "encoding": { "format": "XFX-form", "binary_pattern": "mfspr RT, 129", "hex_opcode": "See mfspr" },
+      "operands": [{ "name": "RT", "desc": "Target" }],
+      "extension": "Branch & Control"
+    },
+    {
+      "mnemonic": "cmprb",
+      "architecture": "PowerISA",
+      "full_name": "Compare Ranged Byte",
+      "summary": "Compares a byte against a range of values. (Is byte in [min, max]?)",
+      "syntax": "cmprb BF, L, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | BF | L | RA | RB | 192 | /", "hex_opcode": "0x7C000180" },
+      "operands": [{ "name": "BF", "desc": "CR Field" }, { "name": "L", "desc": "Mode" }, { "name": "RA", "desc": "Byte" }, { "name": "RB", "desc": "Range" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "paste.",
+      "architecture": "PowerISA",
+      "full_name": "Paste and Record",
+      "summary": "Paste operation that updates CR0 to indicate success/fail.",
+      "syntax": "paste. RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | / | RA | RB | 770 | 1", "hex_opcode": "0x7C000605" },
+      "operands": [{ "name": "RA", "desc": "Dest" }, { "name": "RB", "desc": "Control" }],
+      "extension": "Privileged"
+    },
+    {
+      "mnemonic": "stqcx.",
+      "architecture": "PowerISA",
+      "full_name": "Store Quadword Conditional Indexed",
+      "summary": "Atomic 128-bit store. Stores if reservation exists.",
+      "syntax": "stqcx. RS, RA, RB",
+      "encoding": { "format": "X-form", "binary_pattern": "31 | RS | RA | RB | 182 | 1", "hex_opcode": "0x7C00016D" },
+      "operands": [{ "name": "RS", "desc": "Src Pair (Even/Odd)" }, { "name": "RA", "desc": "Base" }, { "name": "RB", "desc": "Index" }],
+      "extension": "Base (Quad Math)"
+    },
+    {
+      "mnemonic": "lq",
+      "architecture": "PowerISA",
+      "full_name": "Load Quadword",
+      "summary": "Loads 128 bits into two adjacent GPRs (Even/Odd pair).",
+      "syntax": "lq RTp, DQ(RA)",
+      "encoding": { "format": "DQ-form", "binary_pattern": "56 | RTp | RA | DQ | 0", "hex_opcode": "0xE0000000" },
+      "operands": [{ "name": "RTp", "desc": "Target Pair" }, { "name": "DQ", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Base (Quad Math)"
+    },
+    {
+      "mnemonic": "stq",
+      "architecture": "PowerISA",
+      "full_name": "Store Quadword",
+      "summary": "Stores 128 bits from two adjacent GPRs.",
+      "syntax": "stq RSp, DQ(RA)",
+      "encoding": { "format": "DQ-form", "binary_pattern": "62 | RSp | RA | DQ | 2", "hex_opcode": "0xF8000002" },
+      "operands": [{ "name": "RSp", "desc": "Src Pair" }, { "name": "DQ", "desc": "Disp" }, { "name": "RA", "desc": "Base" }],
+      "extension": "Base (Quad Math)"
+    },
+    {
+      "mnemonic": "plh",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Halfword",
+      "summary": "Loads 16-bit halfword using 34-bit offset.",
+      "syntax": "plh RT, D(RA), R",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | ... | 40 | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "plha",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Halfword Algebraic",
+      "summary": "Loads 16-bit halfword (Sign Extended) using 34-bit offset.",
+      "syntax": "plha RT, D(RA), R",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | ... | 42 | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "plwa",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Word Algebraic",
+      "summary": "Loads 32-bit word (Sign Extended) using 34-bit offset.",
+      "syntax": "plwa RT, D(RA), R",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | ... | 41 | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "pstb",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Store Byte",
+      "summary": "Stores byte using 34-bit offset.",
+      "syntax": "pstb RS, D(RA), R",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | ... | 38 | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "psth",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Store Halfword",
+      "summary": "Stores halfword using 34-bit offset.",
+      "syntax": "psth RS, D(RA), R",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | ... | 44 | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "pstw",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Store Word",
+      "summary": "Stores word using 34-bit offset.",
+      "syntax": "pstw RS, D(RA), R",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | ... | 36 | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RS", "desc": "Source" }, { "name": "D", "desc": "Offset" }, { "name": "RA", "desc": "Base" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "paddi",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Add Immediate",
+      "summary": "Adds 34-bit immediate.",
+      "syntax": "paddi RT, RA, SI, R",
+      "encoding": { "format": "MLS:D-form", "binary_pattern": "000001 | 10 | ... | 14 | ...", "hex_opcode": "0x06000000" },
+      "operands": [{ "name": "RT", "desc": "Target" }, { "name": "RA", "desc": "Src" }, { "name": "SI", "desc": "Imm" }, { "name": "R", "desc": "PC-Rel" }],
+      "extension": "Prefixed (64-bit)"
+    },
+    {
+      "mnemonic": "xscvudqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Unsigned Doubleword to Quad-Precision",
+      "summary": "Converts 64-bit Unsigned Integer to 128-bit Float.",
+      "syntax": "xscvudqp vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | / | vB | 724 | /", "hex_opcode": "0xFC0005D4" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xscvsdqp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Signed Doubleword to Quad-Precision",
+      "summary": "Converts 64-bit Signed Integer to 128-bit Float.",
+      "syntax": "xscvsdqp vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | / | vB | 756 | /", "hex_opcode": "0xFC0005F4" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xscvqpud",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Quad-Precision to Unsigned Doubleword",
+      "summary": "Converts 128-bit Float to 64-bit Unsigned Integer.",
+      "syntax": "xscvqpud vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | / | vB | 708 | /", "hex_opcode": "0xFC00058C" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xscvqpsd",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Quad-Precision to Signed Doubleword",
+      "summary": "Converts 128-bit Float to 64-bit Signed Integer.",
+      "syntax": "xscvqpsd vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | / | vB | 740 | /", "hex_opcode": "0xFC0005CC" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xscvqpdp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Convert Quad-Precision to Double",
+      "summary": "Demotes 128-bit Float to 64-bit Float.",
+      "syntax": "xscvqpdp vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | / | vB | 836 | /", "hex_opcode": "0xFC000688" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xsaddqpo",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Add Quad-Precision Odd",
+      "summary": "Used for Quad-Precision arithmetic on hardware that splits quads.",
+      "syntax": "xsaddqpo vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 4 | /", "hex_opcode": "0xFC000004" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xssubqpo",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Subtract Quad-Precision Odd",
+      "summary": "Used for Quad-Precision arithmetic on hardware that splits quads.",
+      "syntax": "xssubqpo vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 516 | /", "hex_opcode": "0xFC000404" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xsdivqpo",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Divide Quad-Precision Odd",
+      "summary": "Used for Quad-Precision arithmetic on hardware that splits quads.",
+      "syntax": "xsdivqpo vD, vA, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | vA | vB | 548 | /", "hex_opcode": "0xFC000444" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vA", "desc": "Src A" }, { "name": "vB", "desc": "Src B" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xssqrtqpo",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Square Root Quad-Precision Odd",
+      "summary": "Used for Quad-Precision arithmetic on hardware that splits quads.",
+      "syntax": "xssqrtqpo vD, vB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | vD | 0 | vB | 676 | /", "hex_opcode": "0xFC000544" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xsrqpi",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Round Quad-Precision to Integer",
+      "summary": "Rounds a Quad float to a Quad integer.",
+      "syntax": "xsrqpi vD, vB, R",
+      "encoding": { "format": "Z23-form", "binary_pattern": "63 | vD | / | vB | R | 5", "hex_opcode": "0xFC000005" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "R", "desc": "Mode" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "xsrqpix",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Round Quad-Precision to Integer Extended",
+      "summary": "Rounds a Quad float to a Quad integer (Exact).",
+      "syntax": "xsrqpix vD, vB, R",
+      "encoding": { "format": "Z23-form", "binary_pattern": "63 | vD | / | vB | R | 37", "hex_opcode": "0xFC000025" },
+      "operands": [{ "name": "vD", "desc": "Target" }, { "name": "vB", "desc": "Source" }, { "name": "R", "desc": "Mode" }],
+      "extension": "VSX (Quad)"
+    },
+    {
+      "mnemonic": "fmr",
+      "architecture": "PowerISA",
+      "full_name": "Floating Move Register",
+      "summary": "Copies a float register (Pseudo: for FRB).",
+      "syntax": "fmr FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 72 | /", "hex_opcode": "0xFC000090" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fabs",
+      "architecture": "PowerISA",
+      "full_name": "Floating Absolute Value",
+      "summary": "Computes absolute value of a float.",
+      "syntax": "fabs FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 264 | /", "hex_opcode": "0xFC000210" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fneg",
+      "architecture": "PowerISA",
+      "full_name": "Floating Negate",
+      "summary": "Negates a float.",
+      "syntax": "fneg FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 40 | /", "hex_opcode": "0xFC000050" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fnabs",
+      "architecture": "PowerISA",
+      "full_name": "Floating Negative Absolute Value",
+      "summary": "Computes negative absolute value of a float.",
+      "syntax": "fnabs FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 136 | /", "hex_opcode": "0xFC000110" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fcpsgn",
+      "architecture": "PowerISA",
+      "full_name": "Floating Copy Sign",
+      "summary": "Copies sign from FRB to FRA.",
+      "syntax": "fcpsgn FRT, FRA, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | FRA | FRB | 8 | /", "hex_opcode": "0xFC000010" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "Source" }, { "name": "FRB", "desc": "Sign Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fsel",
+      "architecture": "PowerISA",
+      "full_name": "Floating Select",
+      "summary": "Selects FRA if FRC >= 0, else FRB (Optional).",
+      "syntax": "fsel FRT, FRA, FRC, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "63 | FRT | FRA | FRB | FRC | 23 | /", "hex_opcode": "0xFC00002E" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "True" }, { "name": "FRC", "desc": "Cond" }, { "name": "FRB", "desc": "False" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "PowerISA",
+      "full_name": "Floating Square Root",
+      "summary": "Computes square root (Double).",
+      "syntax": "fsqrt FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 22 | /", "hex_opcode": "0xFC00002C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fsqrts",
+      "architecture": "PowerISA",
+      "full_name": "Floating Square Root Single",
+      "summary": "Computes square root (Single).",
+      "syntax": "fsqrts FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "59 | FRT | 0 | FRB | 22 | /", "hex_opcode": "0xEC00002C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fmadd",
+      "architecture": "PowerISA",
+      "full_name": "Floating Multiply-Add",
+      "summary": "A*C + B",
+      "syntax": "fmadd FRT, FRA, FRC, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "63 | FRT | FRA | FRB | FRC | 29 | /", "hex_opcode": "0xFC00003A" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "A" }, { "name": "FRC", "desc": "C" }, { "name": "FRB", "desc": "B" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fmsub",
+      "architecture": "PowerISA",
+      "full_name": "Floating Multiply-Subtract",
+      "summary": "A*C - B",
+      "syntax": "fmsub FRT, FRA, FRC, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "63 | FRT | FRA | FRB | FRC | 28 | /", "hex_opcode": "0xFC000038" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "A" }, { "name": "FRC", "desc": "C" }, { "name": "FRB", "desc": "B" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fnmadd",
+      "architecture": "PowerISA",
+      "full_name": "Floating Negative Multiply-Add",
+      "summary": "-(A*C + B)",
+      "syntax": "fnmadd FRT, FRA, FRC, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "63 | FRT | FRA | FRB | FRC | 31 | /", "hex_opcode": "0xFC00003E" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "A" }, { "name": "FRC", "desc": "C" }, { "name": "FRB", "desc": "B" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fnmsub",
+      "architecture": "PowerISA",
+      "full_name": "Floating Negative Multiply-Subtract",
+      "summary": "-(A*C - B)",
+      "syntax": "fnmsub FRT, FRA, FRC, FRB",
+      "encoding": { "format": "A-form", "binary_pattern": "63 | FRT | FRA | FRB | FRC | 30 | /", "hex_opcode": "0xFC00003C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRA", "desc": "A" }, { "name": "FRC", "desc": "C" }, { "name": "FRB", "desc": "B" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "frsp",
+      "architecture": "PowerISA",
+      "full_name": "Floating Round to Single-Precision",
+      "summary": "Rounds Double to Single.",
+      "syntax": "frsp FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 12 | /", "hex_opcode": "0xFC000018" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fctid",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert to Integer Doubleword",
+      "summary": "Converts Double to 64-bit Int.",
+      "syntax": "fctid FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 814 | /", "hex_opcode": "0xFC00065C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fctidz",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert to Integer Doubleword with Round to Zero",
+      "summary": "Converts Double to 64-bit Int (Truncate).",
+      "syntax": "fctidz FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 815 | /", "hex_opcode": "0xFC00065E" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fctiwz",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert to Integer Word with Round to Zero",
+      "summary": "Converts Double to 32-bit Int (Truncate).",
+      "syntax": "fctiwz FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 15 | /", "hex_opcode": "0xFC00001E" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fcfid",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert from Integer Doubleword",
+      "summary": "Converts 64-bit Int to Double.",
+      "syntax": "fcfid FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 846 | /", "hex_opcode": "0xFC00069C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fcfids",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert from Integer Doubleword Single",
+      "summary": "Converts 64-bit Int to Single.",
+      "syntax": "fcfids FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "59 | FRT | 0 | FRB | 846 | /", "hex_opcode": "0xEC00069C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fcfidu",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert from Unsigned Integer Doubleword",
+      "summary": "Converts 64-bit Unsigned Int to Double.",
+      "syntax": "fcfidu FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "63 | FRT | 0 | FRB | 974 | /", "hex_opcode": "0xFC00079C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    },
+    {
+      "mnemonic": "fcfidus",
+      "architecture": "PowerISA",
+      "full_name": "Floating Convert from Unsigned Integer Doubleword Single",
+      "summary": "Converts 64-bit Unsigned Int to Single.",
+      "syntax": "fcfidus FRT, FRB",
+      "encoding": { "format": "X-form", "binary_pattern": "59 | FRT | 0 | FRB | 974 | /", "hex_opcode": "0xEC00079C" },
+      "operands": [{ "name": "FRT", "desc": "Target" }, { "name": "FRB", "desc": "Source" }],
+      "extension": "Float"
+    }
+  ]
+}
