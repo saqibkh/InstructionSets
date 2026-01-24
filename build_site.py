@@ -59,11 +59,20 @@ def generate_site(master_db):
         json.dump(search_index, f)
 
     # 2. Copy Assets
-    for asset in ['style.css', 'search.js', 'animation.js']:
-        if os.path.exists(asset):
-            shutil.copy(asset, os.path.join(OUTPUT_DIR, asset))
-        else:
-            print(f"Warning: {asset} not found.")
+    # Define source and destination for static files
+    static_src = 'static'
+    static_dest = os.path.join(OUTPUT_DIR, 'static')
+
+    # Remove old static folder in docs if it exists (clean build)
+    if os.path.exists(static_dest):
+        shutil.rmtree(static_dest)
+
+    # Copy the entire folder
+    if os.path.exists(static_src):
+        shutil.copytree(static_src, static_dest)
+        print(f"Copied {static_src}/ to {static_dest}/")
+    else:
+        print("Warning: 'static' folder not found in root.")
 
     # 3. Generate Pages
     template_detail = env.get_template('instruction_detail.html')

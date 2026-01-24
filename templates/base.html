@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ISA Database{% endblock %}</title>
-    <link rel="stylesheet" href="{{ root }}/style.css">
+    <link rel="stylesheet" href="{{ root }}/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -23,7 +23,11 @@
         </div>
     </nav>
 
-    <script src="{{ root }}/search.js"></script>
+    <script>
+        const SEARCH_INDEX_PATH = "{{ root }}/search.json";
+    </script>
+    
+    <script src="{{ root }}/static/search.js"></script>
 
     {% block content %}{% endblock %}
 
