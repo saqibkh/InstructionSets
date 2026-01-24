@@ -232,3 +232,70 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
     /* transition is defined inline in the template for simplicity, but cleaner here: */
     transition: all 0.2s ease;
 }
+
+/* --- Sidebar Grouping --- */
+.nav-group {
+    margin-bottom: 12px;
+}
+
+.nav-group summary {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 8px 4px;
+    list-style: none; /* Hide default triangle */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.nav-group summary:hover {
+    color: var(--text-main);
+}
+
+/* Custom arrow for summary */
+.nav-group summary::after {
+    content: '›';
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+    line-height: 0;
+}
+
+.nav-group[open] summary::after {
+    transform: rotate(90deg);
+}
+
+/* Hide standard marker in Chrome/Safari */
+.nav-group summary::-webkit-details-marker {
+    display: none;
+}
+
+.group-links {
+    padding-left: 8px;
+    border-left: 1px solid var(--border);
+    margin-left: 4px;
+}
+
+.group-links a {
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    display: block;
+    color: var(--text-muted);
+    border-radius: 4px;
+}
+
+.group-links a:hover {
+    color: var(--accent);
+    background: transparent; /* Override default hover bg */
+}
+
+.group-links a.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+    font-weight: 500;
+    border-left: none; /* Remove old border style */
+}

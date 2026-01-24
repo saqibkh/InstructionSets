@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sets each byte of the result to 0xFF if the corresponding byte of the source is non-zero, else 0x00.">
+    <title>ORC.B - RISC-V</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../../search.json";
+    </script>
+    
+    <script src="../../static/search.js"></script>
+
+    
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>RISC-V Reference</h3>
+        <div class="sidebar-list">
+            
+            <details open class="nav-group">
+                <summary>Base Integer</summary>
+                <div class="group-links">
+                    
+                    <a href="../add/" 
+                       class="">
+                        ADD
+                    </a>
+                    
+                    <a href="../addi/" 
+                       class="">
+                        ADDI
+                    </a>
+                    
+                    <a href="../and/" 
+                       class="">
+                        AND
+                    </a>
+                    
+                    <a href="../andi/" 
+                       class="">
+                        ANDI
+                    </a>
+                    
+                    <a href="../auipc/" 
+                       class="">
+                        AUIPC
+                    </a>
+                    
+                    <a href="../beq/" 
+                       class="">
+                        BEQ
+                    </a>
+                    
+                    <a href="../bge/" 
+                       class="">
+                        BGE
+                    </a>
+                    
+                    <a href="../blt/" 
+                       class="">
+                        BLT
+                    </a>
+                    
+                    <a href="../bne/" 
+                       class="">
+                        BNE
+                    </a>
+                    
+                    <a href="../csrrc/" 
+                       class="">
+                        CSRRC
+                    </a>
+                    
+                    <a href="../csrrci/" 
+                       class="">
+                        CSRRCI
+                    </a>
+                    
+                    <a href="../csrrs/" 
+                       class="">
+                        CSRRS
+                    </a>
+                    
+                    <a href="../csrrsi/" 
+                       class="">
+                        CSRRSI
+                    </a>
+                    
+                    <a href="../csrrwi/" 
+                       class="">
+                        CSRRWI
+                    </a>
+                    
+                    <a href="../ebreak/" 
+                       class="">
+                        EBREAK
+                    </a>
+                    
+                    <a href="../ecall/" 
+                       class="">
+                        ECALL
+                    </a>
+                    
+                    <a href="../hfence_gvma/" 
+                       class="">
+                        HFENCE.GVMA
+                    </a>
+                    
+                    <a href="../hfence_vvma/" 
+                       class="">
+                        HFENCE.VVMA
+                    </a>
+                    
+                    <a href="../jal/" 
+                       class="">
+                        JAL
+                    </a>
+                    
+                    <a href="../jalr/" 
+                       class="">
+                        JALR
+                    </a>
+                    
+                    <a href="../lb/" 
+                       class="">
+                        LB
+                    </a>
+                    
+                    <a href="../lbu/" 
+                       class="">
+                        LBU
+                    </a>
+                    
+                    <a href="../lh/" 
+                       class="">
+                        LH
+                    </a>
+                    
+                    <a href="../lhu/" 
+                       class="">
+                        LHU
+                    </a>
+                    
+                    <a href="../lui/" 
+                       class="">
+                        LUI
+                    </a>
+                    
+                    <a href="../or/" 
+                       class="">
+                        OR
+                    </a>
+                    
+                    <a href="../ori/" 
+                       class="">
+                        ORI
+                    </a>
+                    
+                    <a href="../sb/" 
+                       class="">
+                        SB
+                    </a>
+                    
+                    <a href="../sh/" 
+                       class="">
+                        SH
+                    </a>
+                    
+                    <a href="../sll/" 
+                       class="">
+                        SLL
+                    </a>
+                    
+                    <a href="../slli/" 
+                       class="">
+                        SLLI
+                    </a>
+                    
+                    <a href="../slt/" 
+                       class="">
+                        SLT
+                    </a>
+                    
+                    <a href="../slti/" 
+                       class="">
+                        SLTI
+                    </a>
+                    
+                    <a href="../sra/" 
+                       class="">
+                        SRA
+                    </a>
+                    
+                    <a href="../srl/" 
+                       class="">
+                        SRL
+                    </a>
+                    
+                    <a href="../sub/" 
+                       class="">
+                        SUB
+                    </a>
+                    
+                    <a href="../xor/" 
+                       class="">
+                        XOR
+                    </a>
+                    
+                    <a href="../xori/" 
+                       class="">
+                        XORI
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>64-bit Extensions</summary>
+                <div class="group-links">
+                    
+                    <a href="../addiw/" 
+                       class="">
+                        ADDIW
+                    </a>
+                    
+                    <a href="../addw/" 
+                       class="">
+                        ADDW
+                    </a>
+                    
+                    <a href="../divuw/" 
+                       class="">
+                        DIVUW
+                    </a>
+                    
+                    <a href="../divw/" 
+                       class="">
+                        DIVW
+                    </a>
+                    
+                    <a href="../ld/" 
+                       class="">
+                        LD
+                    </a>
+                    
+                    <a href="../lw/" 
+                       class="">
+                        LW
+                    </a>
+                    
+                    <a href="../lwu/" 
+                       class="">
+                        LWU
+                    </a>
+                    
+                    <a href="../mulw/" 
+                       class="">
+                        MULW
+                    </a>
+                    
+                    <a href="../remuw/" 
+                       class="">
+                        REMUW
+                    </a>
+                    
+                    <a href="../remw/" 
+                       class="">
+                        REMW
+                    </a>
+                    
+                    <a href="../sd/" 
+                       class="">
+                        SD
+                    </a>
+                    
+                    <a href="../slliw/" 
+                       class="">
+                        SLLIW
+                    </a>
+                    
+                    <a href="../sllw/" 
+                       class="">
+                        SLLW
+                    </a>
+                    
+                    <a href="../sraiw/" 
+                       class="">
+                        SRAIW
+                    </a>
+                    
+                    <a href="../sraw/" 
+                       class="">
+                        SRAW
+                    </a>
+                    
+                    <a href="../srliw/" 
+                       class="">
+                        SRLIW
+                    </a>
+                    
+                    <a href="../srlw/" 
+                       class="">
+                        SRLW
+                    </a>
+                    
+                    <a href="../subw/" 
+                       class="">
+                        SUBW
+                    </a>
+                    
+                    <a href="../sw/" 
+                       class="">
+                        SW
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Math Extensions (M)</summary>
+                <div class="group-links">
+                    
+                    <a href="../div/" 
+                       class="">
+                        DIV
+                    </a>
+                    
+                    <a href="../divu/" 
+                       class="">
+                        DIVU
+                    </a>
+                    
+                    <a href="../mul/" 
+                       class="">
+                        MUL
+                    </a>
+                    
+                    <a href="../mulh/" 
+                       class="">
+                        MULH
+                    </a>
+                    
+                    <a href="../rem/" 
+                       class="">
+                        REM
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Floating Point</summary>
+                <div class="group-links">
+                    
+                    <a href="../fadd_d/" 
+                       class="">
+                        FADD.D
+                    </a>
+                    
+                    <a href="../fadd_s/" 
+                       class="">
+                        FADD.S
+                    </a>
+                    
+                    <a href="../fcvt_d_s/" 
+                       class="">
+                        FCVT.D.S
+                    </a>
+                    
+                    <a href="../fcvt_s_d/" 
+                       class="">
+                        FCVT.S.D
+                    </a>
+                    
+                    <a href="../fcvt_s_w/" 
+                       class="">
+                        FCVT.S.W
+                    </a>
+                    
+                    <a href="../fcvt_w_s/" 
+                       class="">
+                        FCVT.W.S
+                    </a>
+                    
+                    <a href="../fdiv_d/" 
+                       class="">
+                        FDIV.D
+                    </a>
+                    
+                    <a href="../fence/" 
+                       class="">
+                        FENCE
+                    </a>
+                    
+                    <a href="../fence_i/" 
+                       class="">
+                        FENCE.I
+                    </a>
+                    
+                    <a href="../feq_s/" 
+                       class="">
+                        FEQ.S
+                    </a>
+                    
+                    <a href="../fld/" 
+                       class="">
+                        FLD
+                    </a>
+                    
+                    <a href="../fle_s/" 
+                       class="">
+                        FLE.S
+                    </a>
+                    
+                    <a href="../flt_s/" 
+                       class="">
+                        FLT.S
+                    </a>
+                    
+                    <a href="../flw/" 
+                       class="">
+                        FLW
+                    </a>
+                    
+                    <a href="../fmadd_d/" 
+                       class="">
+                        FMADD.D
+                    </a>
+                    
+                    <a href="../fmadd_s/" 
+                       class="">
+                        FMADD.S
+                    </a>
+                    
+                    <a href="../fmul_d/" 
+                       class="">
+                        FMUL.D
+                    </a>
+                    
+                    <a href="../fmv_w_x/" 
+                       class="">
+                        FMV.W.X
+                    </a>
+                    
+                    <a href="../fmv_x_w/" 
+                       class="">
+                        FMV.X.W
+                    </a>
+                    
+                    <a href="../fsd/" 
+                       class="">
+                        FSD
+                    </a>
+                    
+                    <a href="../fsgnj_s/" 
+                       class="">
+                        FSGNJ.S
+                    </a>
+                    
+                    <a href="../fsgnjn_s/" 
+                       class="">
+                        FSGNJN.S
+                    </a>
+                    
+                    <a href="../fsgnjx_s/" 
+                       class="">
+                        FSGNJX.S
+                    </a>
+                    
+                    <a href="../fsub_d/" 
+                       class="">
+                        FSUB.D
+                    </a>
+                    
+                    <a href="../fsw/" 
+                       class="">
+                        FSW
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Atomics</summary>
+                <div class="group-links">
+                    
+                    <a href="../amoadd_d/" 
+                       class="">
+                        AMOADD.D
+                    </a>
+                    
+                    <a href="../amoadd_w/" 
+                       class="">
+                        AMOADD.W
+                    </a>
+                    
+                    <a href="../amoand_d/" 
+                       class="">
+                        AMOAND.D
+                    </a>
+                    
+                    <a href="../amoand_w/" 
+                       class="">
+                        AMOAND.W
+                    </a>
+                    
+                    <a href="../amomax_d/" 
+                       class="">
+                        AMOMAX.D
+                    </a>
+                    
+                    <a href="../amomax_w/" 
+                       class="">
+                        AMOMAX.W
+                    </a>
+                    
+                    <a href="../amomin_d/" 
+                       class="">
+                        AMOMIN.D
+                    </a>
+                    
+                    <a href="../amomin_w/" 
+                       class="">
+                        AMOMIN.W
+                    </a>
+                    
+                    <a href="../amoor_d/" 
+                       class="">
+                        AMOOR.D
+                    </a>
+                    
+                    <a href="../amoor_w/" 
+                       class="">
+                        AMOOR.W
+                    </a>
+                    
+                    <a href="../amoswap_d/" 
+                       class="">
+                        AMOSWAP.D
+                    </a>
+                    
+                    <a href="../amoswap_w/" 
+                       class="">
+                        AMOSWAP.W
+                    </a>
+                    
+                    <a href="../amoxor_d/" 
+                       class="">
+                        AMOXOR.D
+                    </a>
+                    
+                    <a href="../amoxor_w/" 
+                       class="">
+                        AMOXOR.W
+                    </a>
+                    
+                    <a href="../lr_d/" 
+                       class="">
+                        LR.D
+                    </a>
+                    
+                    <a href="../lr_w/" 
+                       class="">
+                        LR.W
+                    </a>
+                    
+                    <a href="../sc_d/" 
+                       class="">
+                        SC.D
+                    </a>
+                    
+                    <a href="../sc_w/" 
+                       class="">
+                        SC.W
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Bit Manipulation</summary>
+                <div class="group-links">
+                    
+                    <a href="../andn/" 
+                       class="">
+                        ANDN
+                    </a>
+                    
+                    <a href="../clz/" 
+                       class="">
+                        CLZ
+                    </a>
+                    
+                    <a href="../cpop/" 
+                       class="">
+                        CPOP
+                    </a>
+                    
+                    <a href="../ctz/" 
+                       class="">
+                        CTZ
+                    </a>
+                    
+                    <a href="../max/" 
+                       class="">
+                        MAX
+                    </a>
+                    
+                    <a href="../min/" 
+                       class="">
+                        MIN
+                    </a>
+                    
+                    <a href="../orc_b/" 
+                       class="active">
+                        ORC.B
+                    </a>
+                    
+                    <a href="../orn/" 
+                       class="">
+                        ORN
+                    </a>
+                    
+                    <a href="../rev8/" 
+                       class="">
+                        REV8
+                    </a>
+                    
+                    <a href="../rol/" 
+                       class="">
+                        ROL
+                    </a>
+                    
+                    <a href="../ror/" 
+                       class="">
+                        ROR
+                    </a>
+                    
+                    <a href="../sex_b/" 
+                       class="">
+                        SEX.B
+                    </a>
+                    
+                    <a href="../sex_h/" 
+                       class="">
+                        SEX.H
+                    </a>
+                    
+                    <a href="../xnor/" 
+                       class="">
+                        XNOR
+                    </a>
+                    
+                    <a href="../zext_h/" 
+                       class="">
+                        ZEXT.H
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Vector Operations</summary>
+                <div class="group-links">
+                    
+                    <a href="../vadd_vv/" 
+                       class="">
+                        VADD.VV
+                    </a>
+                    
+                    <a href="../vle32_v/" 
+                       class="">
+                        VLE32.V
+                    </a>
+                    
+                    <a href="../vmul_vv/" 
+                       class="">
+                        VMUL.VV
+                    </a>
+                    
+                    <a href="../vse32_v/" 
+                       class="">
+                        VSE32.V
+                    </a>
+                    
+                    <a href="../vsetvli/" 
+                       class="">
+                        VSETVLI
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Compressed (16-bit)</summary>
+                <div class="group-links">
+                    
+                    <a href="../c_add/" 
+                       class="">
+                        C.ADD
+                    </a>
+                    
+                    <a href="../c_addi/" 
+                       class="">
+                        C.ADDI
+                    </a>
+                    
+                    <a href="../c_addi16sp/" 
+                       class="">
+                        C.ADDI16SP
+                    </a>
+                    
+                    <a href="../c_addi4spn/" 
+                       class="">
+                        C.ADDI4SPN
+                    </a>
+                    
+                    <a href="../c_and/" 
+                       class="">
+                        C.AND
+                    </a>
+                    
+                    <a href="../c_andi/" 
+                       class="">
+                        C.ANDI
+                    </a>
+                    
+                    <a href="../c_beqz/" 
+                       class="">
+                        C.BEQZ
+                    </a>
+                    
+                    <a href="../c_bnez/" 
+                       class="">
+                        C.BNEZ
+                    </a>
+                    
+                    <a href="../c_ebreak/" 
+                       class="">
+                        C.EBREAK
+                    </a>
+                    
+                    <a href="../c_j/" 
+                       class="">
+                        C.J
+                    </a>
+                    
+                    <a href="../c_jal/" 
+                       class="">
+                        C.JAL
+                    </a>
+                    
+                    <a href="../c_jalr/" 
+                       class="">
+                        C.JALR
+                    </a>
+                    
+                    <a href="../c_jr/" 
+                       class="">
+                        C.JR
+                    </a>
+                    
+                    <a href="../c_li/" 
+                       class="">
+                        C.LI
+                    </a>
+                    
+                    <a href="../c_lui/" 
+                       class="">
+                        C.LUI
+                    </a>
+                    
+                    <a href="../c_lw/" 
+                       class="">
+                        C.LW
+                    </a>
+                    
+                    <a href="../c_lwsp/" 
+                       class="">
+                        C.LWSP
+                    </a>
+                    
+                    <a href="../c_mv/" 
+                       class="">
+                        C.MV
+                    </a>
+                    
+                    <a href="../c_or/" 
+                       class="">
+                        C.OR
+                    </a>
+                    
+                    <a href="../c_slli/" 
+                       class="">
+                        C.SLLI
+                    </a>
+                    
+                    <a href="../c_srai/" 
+                       class="">
+                        C.SRAI
+                    </a>
+                    
+                    <a href="../c_srli/" 
+                       class="">
+                        C.SRLI
+                    </a>
+                    
+                    <a href="../c_sub/" 
+                       class="">
+                        C.SUB
+                    </a>
+                    
+                    <a href="../c_sw/" 
+                       class="">
+                        C.SW
+                    </a>
+                    
+                    <a href="../c_swsp/" 
+                       class="">
+                        C.SWSP
+                    </a>
+                    
+                    <a href="../c_xor/" 
+                       class="">
+                        C.XOR
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>System & Privileged</summary>
+                <div class="group-links">
+                    
+                    <a href="../csrrw/" 
+                       class="">
+                        CSRRW
+                    </a>
+                    
+                    <a href="../mret/" 
+                       class="">
+                        MRET
+                    </a>
+                    
+                    <a href="../sfence_vma/" 
+                       class="">
+                        SFENCE.VMA
+                    </a>
+                    
+                    <a href="../sret/" 
+                       class="">
+                        SRET
+                    </a>
+                    
+                    <a href="../uret/" 
+                       class="">
+                        URET
+                    </a>
+                    
+                    <a href="../wfi/" 
+                       class="">
+                        WFI
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Pseudo-Instructions</summary>
+                <div class="group-links">
+                    
+                    <a href="../beqz/" 
+                       class="">
+                        BEQZ
+                    </a>
+                    
+                    <a href="../bnez/" 
+                       class="">
+                        BNEZ
+                    </a>
+                    
+                    <a href="../call/" 
+                       class="">
+                        CALL
+                    </a>
+                    
+                    <a href="../j/" 
+                       class="">
+                        J
+                    </a>
+                    
+                    <a href="../jr/" 
+                       class="">
+                        JR
+                    </a>
+                    
+                    <a href="../li/" 
+                       class="">
+                        LI
+                    </a>
+                    
+                    <a href="../mv/" 
+                       class="">
+                        MV
+                    </a>
+                    
+                    <a href="../neg/" 
+                       class="">
+                        NEG
+                    </a>
+                    
+                    <a href="../nop/" 
+                       class="">
+                        NOP
+                    </a>
+                    
+                    <a href="../not/" 
+                       class="">
+                        NOT
+                    </a>
+                    
+                    <a href="../ret/" 
+                       class="">
+                        RET
+                    </a>
+                    
+                    <a href="../seqz/" 
+                       class="">
+                        SEQZ
+                    </a>
+                    
+                    <a href="../snez/" 
+                       class="">
+                        SNEZ
+                    </a>
+                    
+                </div>
+            </details>
+            
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <a href="../../risc-v/" style="color: var(--text-muted);">← All Instructions</a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div>
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../risc-v/">RISC-V</a> <span>/</span> 
+                ORC.B
+            </div>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">ORC.B</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Bitwise OR-Combine Byte</h2>
+            
+            <div class="syntax-box">
+                ORC.B rd, rs1
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Sets each byte of the result to 0xFF if the corresponding byte of the source is non-zero, else 0x00.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
+                <div>
+                    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            For each byte i: R[rd].byte[i] = (R[rs1].byte[i] != 0) ? 0xFF : 0x00;
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel">
+                        <h3>Example</h3>
+                        <div class="code-block" style="margin-bottom: 10px;">ORC.B x10, x11</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Used for string processing (strlen, strcpy).</p>
+                    </div>
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box" data-op="0010100">
+                                    <span class="bit-value">0010100</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="00111">
+                                    <span class="bit-value">00111</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="rs1">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="101">
+                                    <span class="bit-value">101</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="rd">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="0010011">
+                                    <span class="bit-value">0010011</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">I-Type</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x13</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                            <li class="operand-row" data-op="rd" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rd</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Dest</span>
+                            </li>
+                            
+                            <li class="operand-row" data-op="rs1" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rs1</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Source</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../../static/theme.js"></script>
+
+    <script src="../../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

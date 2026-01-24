@@ -7,18 +7,26 @@
 <div class="container doc-layout">
     
     <aside class="sidebar">
-        <h3>{{ instruction.architecture }} Instructions</h3>
+        <h3>{{ instruction.architecture }} Reference</h3>
         <div class="sidebar-list">
-            {% for nav_inst in sidebar_nav %}
-            <a href="../{{ nav_inst.mnemonic|lower|replace(' ', '_') }}/" 
-               class="{% if nav_inst.mnemonic == current_page %}active{% endif %}">
-                {{ nav_inst.mnemonic }}
-            </a>
+            {% for group, insts in sidebar_groups.items() %}
+            <details open class="nav-group">
+                <summary>{{ group }}</summary>
+                <div class="group-links">
+                    {% for nav_inst in insts %}
+                    <a href="../{{ nav_inst.mnemonic|lower|replace(' ', '_')|replace('.', '_') }}/" 
+                       class="{% if nav_inst.mnemonic == current_page %}active{% endif %}">
+                        {{ nav_inst.mnemonic }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </details>
             {% endfor %}
         </div>
         
-        <h3>Meta</h3>
-        <a href="../../{{ instruction.architecture|lower }}/">← Back to {{ instruction.architecture }}</a>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <a href="../../{{ instruction.architecture|lower }}/" style="color: var(--text-muted);">← All Instructions</a>
+        </div>
     </aside>
 
     <main class="content">
