@@ -1,0 +1,178 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "paddi",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Add Immediate",
+      "summary": "Adds a 34-bit signed immediate to a register. Supports PC-relative addressing (LEA).",
+      "syntax": "paddi RT, RA, SI34, R",
+      "encoding": {
+        "format": "MLS:D-form (64-bit)",
+        "binary_pattern": "000001 | 10 | 0 | 00000 | 0000000000000000 | 14 | RT | RA | SI34",
+        "hex_opcode": "0x06000000... (Prefix)"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "RA", "desc": "Source Register (0 means 0 or PC)" },
+        { "name": "SI34", "desc": "34-bit Signed Immediate" },
+        { "name": "R", "desc": "PC-Relative Flag (0=Abs, 1=PC-Rel)" }
+      ],
+      "pseudocode": "if R=1 then RT <- PC + EXTS(SI34) else RT <- (RA|0) + EXTS(SI34)",
+      "example": "paddi r3, 0, label, 1",
+      "example_note": "Load address of 'label' (PC-relative).",
+      "extension": "Prefixed (v3.1)"
+    },
+    {
+      "mnemonic": "pla",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Address (Pseudo)",
+      "summary": "Pseudo-instruction for paddi with R=1. Loads the address of a label.",
+      "syntax": "pla RT, label",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "paddi RT, 0, label, 1",
+        "hex_opcode": "See paddi"
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "label", "desc": "Symbol Name" }
+      ],
+      "pseudocode": "RT <- PC + offset(label)",
+      "example": "pla r3, my_var",
+      "example_note": "Get address of my_var without TOC.",
+      "extension": "Prefixed (v3.1)"
+    },
+    {
+      "mnemonic": "pld",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Doubleword",
+      "summary": "Loads a 64-bit value from memory using a 34-bit immediate offset (PC-relative or absolute).",
+      "syntax": "pld RT, D34(RA), R",
+      "encoding": {
+        "format": "MLS:D-form",
+        "binary_pattern": "000001 | 10 | 0 | 00000 | ... | 57 | RT | RA | D34",
+        "hex_opcode": "0x06000000..."
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "D34", "desc": "34-bit Displacement" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "R", "desc": "PC-Relative Flag" }
+      ],
+      "pseudocode": "EA <- (R=1 ? PC : RA|0) + EXTS(D34); RT <- MEM(EA, 8)",
+      "example": "pld r3, label@pcrel(0), 1",
+      "example_note": "Load value from label.",
+      "extension": "Prefixed (v3.1)"
+    },
+    {
+      "mnemonic": "pststd",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Store Doubleword",
+      "summary": "Stores a 64-bit value to memory using a 34-bit immediate offset.",
+      "syntax": "pststd RS, D34(RA), R",
+      "encoding": {
+        "format": "MLS:D-form",
+        "binary_pattern": "000001 | 10 | 0 | 00000 | ... | 61 | RS | RA | D34",
+        "hex_opcode": "0x06000000..."
+      },
+      "operands": [
+        { "name": "RS", "desc": "Source Register" },
+        { "name": "D34", "desc": "34-bit Displacement" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "R", "desc": "PC-Relative Flag" }
+      ],
+      "pseudocode": "EA <- (R=1 ? PC : RA|0) + EXTS(D34); MEM(EA, 8) <- RS",
+      "example": "pststd r3, label@pcrel(0), 1",
+      "example_note": "Store value to label.",
+      "extension": "Prefixed (v3.1)"
+    },
+    {
+      "mnemonic": "plwz",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Word and Zero",
+      "summary": "Loads a 32-bit word and zero-extends it to 64 bits, using a 34-bit offset.",
+      "syntax": "plwz RT, D34(RA), R",
+      "encoding": {
+        "format": "MLS:D-form",
+        "binary_pattern": "000001 | 10 | 0 | 00000 | ... | 34 | RT | RA | D34",
+        "hex_opcode": "0x06000000..."
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "D34", "desc": "34-bit Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- zext(MEM(EA, 4))",
+      "example": "plwz r3, 0(r4), 0",
+      "example_note": "Load word with large offset.",
+      "extension": "Prefixed (v3.1)"
+    },
+    {
+      "mnemonic": "plbz",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Load Byte and Zero",
+      "summary": "Loads a byte and zero-extends it, using a 34-bit offset.",
+      "syntax": "plbz RT, D34(RA), R",
+      "encoding": {
+        "format": "MLS:D-form",
+        "binary_pattern": "000001 | 10 | 0 | 00000 | ... | 35 | RT | RA | D34",
+        "hex_opcode": "0x06000000..."
+      },
+      "operands": [
+        { "name": "RT", "desc": "Target Register" },
+        { "name": "D34", "desc": "34-bit Displacement" },
+        { "name": "RA", "desc": "Base Register" }
+      ],
+      "pseudocode": "RT <- zext(MEM(EA, 1))",
+      "example": "plbz r3, 0x12345678(0), 0",
+      "example_note": "Load byte from absolute address.",
+      "extension": "Prefixed (v3.1)"
+    },
+    {
+      "mnemonic": "pmxvbf16ger2",
+      "architecture": "PowerISA",
+      "full_name": "Prefixed Masked VSX Vector BFloat16 Ger (Rank-2 Update)",
+      "summary": "Matrix Multiply Assist (MMA) instruction. Computes ACC <- ACC + (A * B) using BF16 inputs.",
+      "syntax": "pmxvbf16ger2 AT, XA, XB, XMSK, YMSK",
+      "encoding": {
+        "format": "MMIRR-form",
+        "binary_pattern": "000001 | 11 | ... | 59 | ...",
+        "hex_opcode": "0x06000000..."
+      },
+      "operands": [
+        { "name": "AT", "desc": "Accumulator (0-7)" },
+        { "name": "XA", "desc": "Vector A" },
+        { "name": "XB", "desc": "Vector B" },
+        { "name": "XMSK", "desc": "Mask for A" },
+        { "name": "YMSK", "desc": "Mask for B" }
+      ],
+      "pseudocode": "Matrix Multiply Accumulate (BF16)",
+      "example": "pmxvbf16ger2 0, 1, 2, 0, 0",
+      "example_note": "AI Tensor Core operation.",
+      "extension": "Prefixed (MMA)"
+    },
+    {
+      "mnemonic": "xxeval",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Evaluation",
+      "summary": "Performs an arbitrary 3-input boolean logic function (LUT3) on vectors. The 8-bit immediate 'IMM' defines the truth table.",
+      "syntax": "xxeval XT, XA, XB, XC, IMM",
+      "encoding": {
+        "format": "8RR:XX4-form",
+        "binary_pattern": "000001 | 01 | ... | XT | XA | XB | XC | IMM",
+        "hex_opcode": "0x06000000..."
+      },
+      "operands": [
+        { "name": "XT", "desc": "Target" },
+        { "name": "XA", "desc": "Source A" },
+        { "name": "XB", "desc": "Source B" },
+        { "name": "XC", "desc": "Source C" },
+        { "name": "IMM", "desc": "Truth Table (8-bits)" }
+      ],
+      "pseudocode": "For each bit i: XT[i] = TruthTable[ (XA[i]<<2) | (XB[i]<<1) | XC[i] ]",
+      "example": "xxeval 0, 1, 2, 3, 0x96",
+      "example_note": "Custom logic function (e.g., A^B^C).",
+      "extension": "Prefixed (v3.1)"
+    }
+  ]
+}

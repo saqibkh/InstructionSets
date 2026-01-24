@@ -449,6 +449,13 @@
                     <td style="color: var(--text-muted);">Loads a halfword (16 bits) from memory and clears the upper 48 bits.</td>
                 </tr>
                 
+                <tr onclick="window.location='lvx/';" style="cursor: pointer;">
+                    <td class="mono">lvx</td>
+                    <td style="font-weight: 500;">Load Vector Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 128-bit vector from memory into a Vector Register. Address must be 16-byte aligned (bits 60-63 of effective address are ignored).</td>
+                </tr>
+                
                 <tr onclick="window.location='lwa/';" style="cursor: pointer;">
                     <td class="mono">lwa</td>
                     <td style="font-weight: 500;">Load Word Algebraic</td>
@@ -468,6 +475,13 @@
                     <td style="font-weight: 500;">Load Word and Zero</td>
                     <td><span class="badge">D-form</span></td>
                     <td style="color: var(--text-muted);">Loads a word (32 bits) from memory and clears the upper 32 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='lxvd2x/';" style="cursor: pointer;">
+                    <td class="mono">lxvd2x</td>
+                    <td style="font-weight: 500;">Load VSX Vector Doubleword*2 Indexed</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 128-bit vector from memory into a VSX register. Does NOT require 16-byte alignment (unlike lvx).</td>
                 </tr>
                 
                 <tr onclick="window.location='mfspr/';" style="cursor: pointer;">
@@ -554,6 +568,48 @@
                     <td style="color: var(--text-muted);">Performs a bitwise OR with a 16-bit immediate shifted left by 16 bits.</td>
                 </tr>
                 
+                <tr onclick="window.location='paddi/';" style="cursor: pointer;">
+                    <td class="mono">paddi</td>
+                    <td style="font-weight: 500;">Prefixed Add Immediate</td>
+                    <td><span class="badge">MLS:D-form (64-bit)</span></td>
+                    <td style="color: var(--text-muted);">Adds a 34-bit signed immediate to a register. Supports PC-relative addressing (LEA).</td>
+                </tr>
+                
+                <tr onclick="window.location='pla/';" style="cursor: pointer;">
+                    <td class="mono">pla</td>
+                    <td style="font-weight: 500;">Prefixed Load Address (Pseudo)</td>
+                    <td><span class="badge">Pseudo</span></td>
+                    <td style="color: var(--text-muted);">Pseudo-instruction for paddi with R=1. Loads the address of a label.</td>
+                </tr>
+                
+                <tr onclick="window.location='plbz/';" style="cursor: pointer;">
+                    <td class="mono">plbz</td>
+                    <td style="font-weight: 500;">Prefixed Load Byte and Zero</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte and zero-extends it, using a 34-bit offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='pld/';" style="cursor: pointer;">
+                    <td class="mono">pld</td>
+                    <td style="font-weight: 500;">Prefixed Load Doubleword</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 64-bit value from memory using a 34-bit immediate offset (PC-relative or absolute).</td>
+                </tr>
+                
+                <tr onclick="window.location='plwz/';" style="cursor: pointer;">
+                    <td class="mono">plwz</td>
+                    <td style="font-weight: 500;">Prefixed Load Word and Zero</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Loads a 32-bit word and zero-extends it to 64 bits, using a 34-bit offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmxvbf16ger2/';" style="cursor: pointer;">
+                    <td class="mono">pmxvbf16ger2</td>
+                    <td style="font-weight: 500;">Prefixed Masked VSX Vector BFloat16 Ger (Rank-2 Update)</td>
+                    <td><span class="badge">MMIRR-form</span></td>
+                    <td style="color: var(--text-muted);">Matrix Multiply Assist (MMA) instruction. Computes ACC <- ACC + (A * B) using BF16 inputs.</td>
+                </tr>
+                
                 <tr onclick="window.location='popcntd/';" style="cursor: pointer;">
                     <td class="mono">popcntd</td>
                     <td style="font-weight: 500;">Population Count Doubleword</td>
@@ -566,6 +622,13 @@
                     <td style="font-weight: 500;">Population Count Word</td>
                     <td><span class="badge">X-form</span></td>
                     <td style="color: var(--text-muted);">Counts the number of set bits (1s) in the lower 32 bits of a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='pststd/';" style="cursor: pointer;">
+                    <td class="mono">pststd</td>
+                    <td style="font-weight: 500;">Prefixed Store Doubleword</td>
+                    <td><span class="badge">MLS:D-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a 64-bit value to memory using a 34-bit immediate offset.</td>
                 </tr>
                 
                 <tr onclick="window.location='rldic/';" style="cursor: pointer;">
@@ -687,6 +750,13 @@
                     <td style="color: var(--text-muted);">Stores the low 16 bits of a register to memory.</td>
                 </tr>
                 
+                <tr onclick="window.location='stvx/';" style="cursor: pointer;">
+                    <td class="mono">stvx</td>
+                    <td style="font-weight: 500;">Store Vector Indexed</td>
+                    <td><span class="badge">X-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a 128-bit vector to memory. Address must be 16-byte aligned.</td>
+                </tr>
+                
                 <tr onclick="window.location='stw/';" style="cursor: pointer;">
                     <td class="mono">stw</td>
                     <td style="font-weight: 500;">Store Word</td>
@@ -701,6 +771,13 @@
                     <td style="color: var(--text-muted);">Stores a word only if the reservation created by 'lwarx' still exists. Used for atomic operations. Sets CR0.</td>
                 </tr>
                 
+                <tr onclick="window.location='stxvd2x/';" style="cursor: pointer;">
+                    <td class="mono">stxvd2x</td>
+                    <td style="font-weight: 500;">Store VSX Vector Doubleword*2 Indexed</td>
+                    <td><span class="badge">XX1-form</span></td>
+                    <td style="color: var(--text-muted);">Stores a 128-bit VSX register to memory. Does NOT require alignment.</td>
+                </tr>
+                
                 <tr onclick="window.location='td/';" style="cursor: pointer;">
                     <td class="mono">td</td>
                     <td style="font-weight: 500;">Trap Doubleword</td>
@@ -713,6 +790,62 @@
                     <td style="font-weight: 500;">Trap (Pseudo)</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Unconditional trap. Forces an exception. (Encoded as tw 31, 0, 0).</td>
+                </tr>
+                
+                <tr onclick="window.location='vaddubm/';" style="cursor: pointer;">
+                    <td class="mono">vaddubm</td>
+                    <td style="font-weight: 500;">Vector Add Unsigned Byte Modulo</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Adds sixteen 8-bit integers from two vectors. Arithmetic is modulo 256 (wraps around).</td>
+                </tr>
+                
+                <tr onclick="window.location='vcmpequw/';" style="cursor: pointer;">
+                    <td class="mono">vcmpequw</td>
+                    <td style="font-weight: 500;">Vector Compare Equal Word</td>
+                    <td><span class="badge">VC-form</span></td>
+                    <td style="color: var(--text-muted);">Compares words for equality. Sets result bits to all 1s (True) or all 0s (False).</td>
+                </tr>
+                
+                <tr onclick="window.location='vmulouw/';" style="cursor: pointer;">
+                    <td class="mono">vmulouw</td>
+                    <td style="font-weight: 500;">Vector Multiply Odd Unsigned Word</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Multiplies the 1st and 3rd words of the source vectors to produce two 64-bit results.</td>
+                </tr>
+                
+                <tr onclick="window.location='vperm/';" style="cursor: pointer;">
+                    <td class="mono">vperm</td>
+                    <td style="font-weight: 500;">Vector Permute</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">The signature AltiVec instruction. Constructs a new vector by selecting bytes from two source vectors based on a permute control vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='vsel/';" style="cursor: pointer;">
+                    <td class="mono">vsel</td>
+                    <td style="font-weight: 500;">Vector Select</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Bitwise selection. copies bits from vA if the corresponding bit in vC is 0, or from vB if vC is 1. (Like 'mux').</td>
+                </tr>
+                
+                <tr onclick="window.location='vslw/';" style="cursor: pointer;">
+                    <td class="mono">vslw</td>
+                    <td style="font-weight: 500;">Vector Shift Left Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Shifts each of the four words in vA left by the number of bits specified in the corresponding word of vB.</td>
+                </tr>
+                
+                <tr onclick="window.location='vspltw/';" style="cursor: pointer;">
+                    <td class="mono">vspltw</td>
+                    <td style="font-weight: 500;">Vector Splat Word</td>
+                    <td><span class="badge">VX-form</span></td>
+                    <td style="color: var(--text-muted);">Copies a single word element from the source vector into all four word elements of the destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='vsubuwm/';" style="cursor: pointer;">
+                    <td class="mono">vsubuwm</td>
+                    <td style="font-weight: 500;">Vector Subtract Unsigned Word Modulo</td>
+                    <td><span class="badge">VA-form</span></td>
+                    <td style="color: var(--text-muted);">Subtracts four 32-bit integers in parallel.</td>
                 </tr>
                 
                 <tr onclick="window.location='xor/';" style="cursor: pointer;">
@@ -734,6 +867,41 @@
                     <td style="font-weight: 500;">XOR Immediate Shifted</td>
                     <td><span class="badge">D-form</span></td>
                     <td style="color: var(--text-muted);">Performs a bitwise XOR with a 16-bit immediate shifted left by 16 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='xsadddp/';" style="cursor: pointer;">
+                    <td class="mono">xsadddp</td>
+                    <td style="font-weight: 500;">VSX Scalar Add Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Adds the low doubleword of two VSX registers (scalar operation). The high doublewords are undefined or zeroed.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvadddp/';" style="cursor: pointer;">
+                    <td class="mono">xvadddp</td>
+                    <td style="font-weight: 500;">VSX Vector Add Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Adds two pairs of double-precision floating-point numbers.</td>
+                </tr>
+                
+                <tr onclick="window.location='xvmaddadp/';" style="cursor: pointer;">
+                    <td class="mono">xvmaddadp</td>
+                    <td style="font-weight: 500;">VSX Vector Multiply-Add Double-Precision</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Performs (A * B) + T on vectors of doubles.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxeval/';" style="cursor: pointer;">
+                    <td class="mono">xxeval</td>
+                    <td style="font-weight: 500;">VSX Vector Evaluation</td>
+                    <td><span class="badge">8RR:XX4-form</span></td>
+                    <td style="color: var(--text-muted);">Performs an arbitrary 3-input boolean logic function (LUT3) on vectors. The 8-bit immediate 'IMM' defines the truth table.</td>
+                </tr>
+                
+                <tr onclick="window.location='xxpermdi/';" style="cursor: pointer;">
+                    <td class="mono">xxpermdi</td>
+                    <td style="font-weight: 500;">VSX Permute Doubleword Immediate</td>
+                    <td><span class="badge">XX3-form</span></td>
+                    <td style="color: var(--text-muted);">Selects two doublewords from the four available in source registers XA and XB based on a 2-bit selector.</td>
                 </tr>
                 
             </tbody>

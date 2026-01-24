@@ -1,0 +1,343 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "lvx",
+      "architecture": "PowerISA",
+      "full_name": "Load Vector Indexed",
+      "summary": "Loads a 128-bit vector from memory into a Vector Register. Address must be 16-byte aligned (bits 60-63 of effective address are ignored).",
+      "syntax": "lvx vD, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | vD | RA | RB | 7 | /",
+        "hex_opcode": "0x7C00000E"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target Vector Register" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "EA <- (RA + RB) & 0xFFFFFFF0; vD <- MEM(EA, 16)",
+      "example": "lvx v1, r3, r4",
+      "example_note": "Load aligned vector.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "stvx",
+      "architecture": "PowerISA",
+      "full_name": "Store Vector Indexed",
+      "summary": "Stores a 128-bit vector to memory. Address must be 16-byte aligned.",
+      "syntax": "stvx vS, RA, RB",
+      "encoding": {
+        "format": "X-form",
+        "binary_pattern": "31 | vS | RA | RB | 231 | /",
+        "hex_opcode": "0x7C0001C6"
+      },
+      "operands": [
+        { "name": "vS", "desc": "Source Vector Register" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "EA <- (RA + RB) & 0xFFFFFFF0; MEM(EA, 16) <- vS",
+      "example": "stvx v1, r3, r4",
+      "example_note": "Store aligned vector.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vaddubm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Add Unsigned Byte Modulo",
+      "summary": "Adds sixteen 8-bit integers from two vectors. Arithmetic is modulo 256 (wraps around).",
+      "syntax": "vaddubm vD, vA, vB",
+      "encoding": {
+        "format": "VA-form",
+        "binary_pattern": "4 | vD | vA | vB | 0",
+        "hex_opcode": "0x10000000"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source A" },
+        { "name": "vB", "desc": "Source B" }
+      ],
+      "pseudocode": "For i=0 to 15: vD.byte[i] <- vA.byte[i] + vB.byte[i]",
+      "example": "vaddubm v1, v2, v3",
+      "example_note": "16 parallel byte additions.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsubuwm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Subtract Unsigned Word Modulo",
+      "summary": "Subtracts four 32-bit integers in parallel.",
+      "syntax": "vsubuwm vD, vA, vB",
+      "encoding": {
+        "format": "VA-form",
+        "binary_pattern": "4 | vD | vA | vB | 1152",
+        "hex_opcode": "0x10000480"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source A" },
+        { "name": "vB", "desc": "Source B" }
+      ],
+      "pseudocode": "For i=0 to 3: vD.word[i] <- vA.word[i] - vB.word[i]",
+      "example": "vsubuwm v1, v2, v3",
+      "example_note": "4 parallel word subtractions.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vmulouw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Multiply Odd Unsigned Word",
+      "summary": "Multiplies the 1st and 3rd words of the source vectors to produce two 64-bit results.",
+      "syntax": "vmulouw vD, vA, vB",
+      "encoding": {
+        "format": "VA-form",
+        "binary_pattern": "4 | vD | vA | vB | 128",
+        "hex_opcode": "0x10000080"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source A" },
+        { "name": "vB", "desc": "Source B" }
+      ],
+      "pseudocode": "vD.dword[0] <- vA.word[1] * vB.word[1]; vD.dword[1] <- vA.word[3] * vB.word[3]",
+      "example": "vmulouw v1, v2, v3",
+      "example_note": "Widening multiply (32x32->64).",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vspltw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Splat Word",
+      "summary": "Copies a single word element from the source vector into all four word elements of the destination.",
+      "syntax": "vspltw vD, vB, UIM",
+      "encoding": {
+        "format": "VX-form",
+        "binary_pattern": "4 | vD | UIM | vB | 652",
+        "hex_opcode": "0x1000028C"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vB", "desc": "Source" },
+        { "name": "UIM", "desc": "Element Index (0-3)" }
+      ],
+      "pseudocode": "vD.word[0..3] <- vB.word[UIM]",
+      "example": "vspltw v1, v2, 0",
+      "example_note": "Broadcast word 0 to all lanes.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vperm",
+      "architecture": "PowerISA",
+      "full_name": "Vector Permute",
+      "summary": "The signature AltiVec instruction. Constructs a new vector by selecting bytes from two source vectors based on a permute control vector.",
+      "syntax": "vperm vD, vA, vB, vC",
+      "encoding": {
+        "format": "VA-form",
+        "binary_pattern": "4 | vD | vA | vB | vC | 43",
+        "hex_opcode": "0x1000002B"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source 1 (Bytes 0-15)" },
+        { "name": "vB", "desc": "Source 2 (Bytes 16-31)" },
+        { "name": "vC", "desc": "Control Vector" }
+      ],
+      "pseudocode": "For i=0 to 15: index = vC.byte[i] & 0x1F; vD.byte[i] <- (vA || vB).byte[index]",
+      "example": "vperm v1, v2, v3, v4",
+      "example_note": "Arbitrary byte shuffle/merge.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vslw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Shift Left Word",
+      "summary": "Shifts each of the four words in vA left by the number of bits specified in the corresponding word of vB.",
+      "syntax": "vslw vD, vA, vB",
+      "encoding": {
+        "format": "VX-form",
+        "binary_pattern": "4 | vD | vA | vB | 388",
+        "hex_opcode": "0x10000184"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source Data" },
+        { "name": "vB", "desc": "Shift Amounts" }
+      ],
+      "pseudocode": "vD.word[i] <- vA.word[i] << (vB.word[i] & 7)",
+      "example": "vslw v1, v2, v3",
+      "example_note": "Parallel shift.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vcmpequw",
+      "architecture": "PowerISA",
+      "full_name": "Vector Compare Equal Word",
+      "summary": "Compares words for equality. Sets result bits to all 1s (True) or all 0s (False).",
+      "syntax": "vcmpequw vD, vA, vB",
+      "encoding": {
+        "format": "VC-form",
+        "binary_pattern": "4 | vD | vA | vB | 134",
+        "hex_opcode": "0x10000086"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target (Mask)" },
+        { "name": "vA", "desc": "Source A" },
+        { "name": "vB", "desc": "Source B" }
+      ],
+      "pseudocode": "vD.word[i] <- (vA.word[i] == vB.word[i]) ? 0xFFFFFFFF : 0x00000000",
+      "example": "vcmpequw v1, v2, v3",
+      "example_note": "Generate mask for equality.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "vsel",
+      "architecture": "PowerISA",
+      "full_name": "Vector Select",
+      "summary": "Bitwise selection. copies bits from vA if the corresponding bit in vC is 0, or from vB if vC is 1. (Like 'mux').",
+      "syntax": "vsel vD, vA, vB, vC",
+      "encoding": {
+        "format": "VA-form",
+        "binary_pattern": "4 | vD | vA | vB | vC | 42",
+        "hex_opcode": "0x1000002A"
+      },
+      "operands": [
+        { "name": "vD", "desc": "Target" },
+        { "name": "vA", "desc": "Source 0" },
+        { "name": "vB", "desc": "Source 1" },
+        { "name": "vC", "desc": "Control (Selector)" }
+      ],
+      "pseudocode": "vD <- (vA & ~vC) | (vB & vC)",
+      "example": "vsel v1, v2, v3, v4",
+      "example_note": "Bitwise MUX.",
+      "extension": "VMX (AltiVec)"
+    },
+    {
+      "mnemonic": "lxvd2x",
+      "architecture": "PowerISA",
+      "full_name": "Load VSX Vector Doubleword*2 Indexed",
+      "summary": "Loads a 128-bit vector from memory into a VSX register. Does NOT require 16-byte alignment (unlike lvx).",
+      "syntax": "lxvd2x XT, RA, RB",
+      "encoding": {
+        "format": "XX1-form",
+        "binary_pattern": "31 | XT | RA | RB | 844 | 1",
+        "hex_opcode": "0x7C00034D"
+      },
+      "operands": [
+        { "name": "XT", "desc": "Target VSR (0-63)" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "XT <- MEM(RA + RB, 16)",
+      "example": "lxvd2x 32, r3, r4",
+      "example_note": "Unaligned 128-bit load to vs32 (v0).",
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "stxvd2x",
+      "architecture": "PowerISA",
+      "full_name": "Store VSX Vector Doubleword*2 Indexed",
+      "summary": "Stores a 128-bit VSX register to memory. Does NOT require alignment.",
+      "syntax": "stxvd2x XS, RA, RB",
+      "encoding": {
+        "format": "XX1-form",
+        "binary_pattern": "31 | XS | RA | RB | 972 | 1",
+        "hex_opcode": "0x7C0003CD"
+      },
+      "operands": [
+        { "name": "XS", "desc": "Source VSR" },
+        { "name": "RA", "desc": "Base Register" },
+        { "name": "RB", "desc": "Index Register" }
+      ],
+      "pseudocode": "MEM(RA + RB, 16) <- XS",
+      "example": "stxvd2x 32, r3, r4",
+      "example_note": "Unaligned 128-bit store.",
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvadddp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Add Double-Precision",
+      "summary": "Adds two pairs of double-precision floating-point numbers.",
+      "syntax": "xvadddp XT, XA, XB",
+      "encoding": {
+        "format": "XX3-form",
+        "binary_pattern": "60 | XT | XA | XB | 96",
+        "hex_opcode": "0xF0000060"
+      },
+      "operands": [
+        { "name": "XT", "desc": "Target" },
+        { "name": "XA", "desc": "Source A" },
+        { "name": "XB", "desc": "Source B" }
+      ],
+      "pseudocode": "XT.double[0] <- XA[0] + XB[0]; XT.double[1] <- XA[1] + XB[1]",
+      "example": "xvadddp 0, 1, 2",
+      "example_note": "2-way parallel double add.",
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xvmaddadp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Vector Multiply-Add Double-Precision",
+      "summary": "Performs (A * B) + T on vectors of doubles.",
+      "syntax": "xvmaddadp XT, XA, XB",
+      "encoding": {
+        "format": "XX3-form",
+        "binary_pattern": "60 | XT | XA | XB | 104",
+        "hex_opcode": "0xF0000068"
+      },
+      "operands": [
+        { "name": "XT", "desc": "Target/Addend (Accumulator)" },
+        { "name": "XA", "desc": "Multiplier" },
+        { "name": "XB", "desc": "Multiplicand" }
+      ],
+      "pseudocode": "XT <- (XA * XB) + XT",
+      "example": "xvmaddadp 0, 1, 2",
+      "example_note": "Vector FMA.",
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xxpermdi",
+      "architecture": "PowerISA",
+      "full_name": "VSX Permute Doubleword Immediate",
+      "summary": "Selects two doublewords from the four available in source registers XA and XB based on a 2-bit selector.",
+      "syntax": "xxpermdi XT, XA, XB, DM",
+      "encoding": {
+        "format": "XX3-form",
+        "binary_pattern": "60 | XT | XA | XB | 10 | DM",
+        "hex_opcode": "0xF000000A"
+      },
+      "operands": [
+        { "name": "XT", "desc": "Target" },
+        { "name": "XA", "desc": "Source A" },
+        { "name": "XB", "desc": "Source B" },
+        { "name": "DM", "desc": "Selector (2 bits)" }
+      ],
+      "pseudocode": "Select doublewords from A and B into T.",
+      "example": "xxpermdi 0, 1, 1, 2",
+      "example_note": "Swap high/low doublewords of vs1.",
+      "extension": "VSX"
+    },
+    {
+      "mnemonic": "xsadddp",
+      "architecture": "PowerISA",
+      "full_name": "VSX Scalar Add Double-Precision",
+      "summary": "Adds the low doubleword of two VSX registers (scalar operation). The high doublewords are undefined or zeroed.",
+      "syntax": "xsadddp XT, XA, XB",
+      "encoding": {
+        "format": "XX3-form",
+        "binary_pattern": "60 | XT | XA | XB | 32",
+        "hex_opcode": "0xF0000020"
+      },
+      "operands": [
+        { "name": "XT", "desc": "Target" },
+        { "name": "XA", "desc": "Source A" },
+        { "name": "XB", "desc": "Source B" }
+      ],
+      "pseudocode": "XT[0:63] <- XA[0:63] + XB[0:63]",
+      "example": "xsadddp 0, 1, 2",
+      "example_note": "Scalar float add using Vector unit.",
+      "extension": "VSX"
+    }
+  ]
+}

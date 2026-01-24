@@ -58,6 +58,16 @@
                         ADD
                     </a>
                     
+                    <a href="../add/" 
+                       class="">
+                        ADD
+                    </a>
+                    
+                    <a href="../addi/" 
+                       class="active">
+                        ADDI
+                    </a>
+                    
                     <a href="../addi/" 
                        class="active">
                         ADDI
@@ -78,6 +88,11 @@
                         AUIPC
                     </a>
                     
+                    <a href="../auipc/" 
+                       class="">
+                        AUIPC
+                    </a>
+                    
                     <a href="../bclr/" 
                        class="">
                         BCLR
@@ -86,6 +101,11 @@
                     <a href="../bclri/" 
                        class="">
                         BCLRI
+                    </a>
+                    
+                    <a href="../beq/" 
+                       class="">
+                        BEQ
                     </a>
                     
                     <a href="../beq/" 
@@ -233,6 +253,11 @@
                         JAL
                     </a>
                     
+                    <a href="../jal/" 
+                       class="">
+                        JAL
+                    </a>
+                    
                     <a href="../jalr/" 
                        class="">
                         JALR
@@ -256,6 +281,11 @@
                     <a href="../lhu/" 
                        class="">
                         LHU
+                    </a>
+                    
+                    <a href="../lui/" 
+                       class="">
+                        LUI
                     </a>
                     
                     <a href="../lui/" 
@@ -410,6 +440,11 @@
                         LW
                     </a>
                     
+                    <a href="../lw/" 
+                       class="">
+                        LW
+                    </a>
+                    
                     <a href="../lwu/" 
                        class="">
                         LWU
@@ -473,6 +508,11 @@
                     <a href="../subw/" 
                        class="">
                         SUBW
+                    </a>
+                    
+                    <a href="../sw/" 
+                       class="">
+                        SW
                     </a>
                     
                     <a href="../sw/" 
@@ -1314,7 +1354,7 @@
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Adds a register <a href="../../powerisa/and/" class="cross-link">and</a> a sign-extended 12-bit immediate value.
+                Adds a register <a href="../../powerisa/and/">and</a> a sign-extended 12-bit immediate value.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -1330,8 +1370,8 @@
                     
                     <div class="panel">
                         <h3>Example</h3>
-                        <div class="code-block" style="margin-bottom: 10px;">ADDI x5, x0, 10</div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Loads the value 10 into register x5.</p>
+                        <div class="code-block" style="margin-bottom: 10px;">ADDI x5, x6, 10</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Adds 10 to the value in x6 and stores it in x5.</p>
                     </div>
                     
                 </div>
@@ -1344,8 +1384,24 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box" data-op="...">
-                                    <span class="bit-value">...</span>
+                                <div class="bit-box" data-op="imm">
+                                    <span class="bit-value">imm[11:0]</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="rs1">
+                                    <span class="bit-value">rs1</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="000">
+                                    <span class="bit-value">000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="rd">
+                                    <span class="bit-value">rd</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="0010011">
+                                    <span class="bit-value">0010011</span>
                                 </div>
                                 
                             </div>
@@ -1370,19 +1426,19 @@
                             <li class="operand-row" data-op="rd" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rd</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Dest</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Destination Register</span>
                             </li>
                             
                             <li class="operand-row" data-op="rs1" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rs1</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Src</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Source Register</span>
                             </li>
                             
                             <li class="operand-row" data-op="imm" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">imm</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Value</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">12-bit Signed Immediate</span>
                             </li>
                             
                         </ul>

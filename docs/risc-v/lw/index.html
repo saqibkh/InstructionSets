@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Loads a 32-bit word from memory.">
+    <meta name="description" content="Loads a 32-bit word from memory and sign-extends it to 64 bits.">
     <title>LW - RISC-V</title>
     
     <meta property="og:type" content="website">
@@ -58,6 +58,16 @@
                         ADD
                     </a>
                     
+                    <a href="../add/" 
+                       class="">
+                        ADD
+                    </a>
+                    
+                    <a href="../addi/" 
+                       class="">
+                        ADDI
+                    </a>
+                    
                     <a href="../addi/" 
                        class="">
                         ADDI
@@ -78,6 +88,11 @@
                         AUIPC
                     </a>
                     
+                    <a href="../auipc/" 
+                       class="">
+                        AUIPC
+                    </a>
+                    
                     <a href="../bclr/" 
                        class="">
                         BCLR
@@ -86,6 +101,11 @@
                     <a href="../bclri/" 
                        class="">
                         BCLRI
+                    </a>
+                    
+                    <a href="../beq/" 
+                       class="">
+                        BEQ
                     </a>
                     
                     <a href="../beq/" 
@@ -233,6 +253,11 @@
                         JAL
                     </a>
                     
+                    <a href="../jal/" 
+                       class="">
+                        JAL
+                    </a>
+                    
                     <a href="../jalr/" 
                        class="">
                         JALR
@@ -256,6 +281,11 @@
                     <a href="../lhu/" 
                        class="">
                         LHU
+                    </a>
+                    
+                    <a href="../lui/" 
+                       class="">
+                        LUI
                     </a>
                     
                     <a href="../lui/" 
@@ -410,6 +440,11 @@
                         LW
                     </a>
                     
+                    <a href="../lw/" 
+                       class="active">
+                        LW
+                    </a>
+                    
                     <a href="../lwu/" 
                        class="">
                         LWU
@@ -473,6 +508,11 @@
                     <a href="../subw/" 
                        class="">
                         SUBW
+                    </a>
+                    
+                    <a href="../sw/" 
+                       class="">
+                        SW
                     </a>
                     
                     <a href="../sw/" 
@@ -1314,7 +1354,7 @@
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Loads a 32-bit word from memory.
+                Loads a 32-bit word from memory <a href="../../powerisa/and/">and</a> sign-extends it to 64 bits.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -1323,15 +1363,15 @@
                     <div class="panel">
                         <h3>Pseudocode Operation</h3>
                         <div class="code-block" style="border:none; padding:0; background: transparent;">
-                            R[rd] = M[R[rs1] + sext(offset)][31:0];
+                            R[rd] = sext(M[R[rs1] + sext(offset)][31:0]);
                         </div>
                     </div>
 
                     
                     <div class="panel">
                         <h3>Example</h3>
-                        <div class="code-block" style="margin-bottom: 10px;">LW x5, 8(x2)</div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Load value from memory at address (StackPointer + 8) into x5.</p>
+                        <div class="code-block" style="margin-bottom: 10px;">LW x6, 12(x2)</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Load 32-bit word from stack offset 12.</p>
                     </div>
                     
                 </div>
@@ -1344,8 +1384,8 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box" data-op="offset">
-                                    <span class="bit-value">offset</span>
+                                <div class="bit-box" data-op="imm">
+                                    <span class="bit-value">imm[11:0]</span>
                                 </div>
                                 
                                 <div class="bit-box" data-op="rs1">
@@ -1386,7 +1426,7 @@
                             <li class="operand-row" data-op="rd" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">rd</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Dest</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Destination Register</span>
                             </li>
                             
                             <li class="operand-row" data-op="rs1" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">

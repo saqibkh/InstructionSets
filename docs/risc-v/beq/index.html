@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Branches if two registers are equal.">
+    <meta name="description" content="Take the branch if registers rs1 and rs2 are equal.">
     <title>BEQ - RISC-V</title>
     
     <meta property="og:type" content="website">
@@ -58,6 +58,16 @@
                         ADD
                     </a>
                     
+                    <a href="../add/" 
+                       class="">
+                        ADD
+                    </a>
+                    
+                    <a href="../addi/" 
+                       class="">
+                        ADDI
+                    </a>
+                    
                     <a href="../addi/" 
                        class="">
                         ADDI
@@ -78,6 +88,11 @@
                         AUIPC
                     </a>
                     
+                    <a href="../auipc/" 
+                       class="">
+                        AUIPC
+                    </a>
+                    
                     <a href="../bclr/" 
                        class="">
                         BCLR
@@ -86,6 +101,11 @@
                     <a href="../bclri/" 
                        class="">
                         BCLRI
+                    </a>
+                    
+                    <a href="../beq/" 
+                       class="active">
+                        BEQ
                     </a>
                     
                     <a href="../beq/" 
@@ -233,6 +253,11 @@
                         JAL
                     </a>
                     
+                    <a href="../jal/" 
+                       class="">
+                        JAL
+                    </a>
+                    
                     <a href="../jalr/" 
                        class="">
                         JALR
@@ -256,6 +281,11 @@
                     <a href="../lhu/" 
                        class="">
                         LHU
+                    </a>
+                    
+                    <a href="../lui/" 
+                       class="">
+                        LUI
                     </a>
                     
                     <a href="../lui/" 
@@ -410,6 +440,11 @@
                         LW
                     </a>
                     
+                    <a href="../lw/" 
+                       class="">
+                        LW
+                    </a>
+                    
                     <a href="../lwu/" 
                        class="">
                         LWU
@@ -473,6 +508,11 @@
                     <a href="../subw/" 
                        class="">
                         SUBW
+                    </a>
+                    
+                    <a href="../sw/" 
+                       class="">
+                        SW
                     </a>
                     
                     <a href="../sw/" 
@@ -1314,7 +1354,7 @@
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Branches if two registers are equal.
+                Take the branch if registers rs1 <a href="../../powerisa/and/">and</a> rs2 are equal.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -1331,7 +1371,7 @@
                     <div class="panel">
                         <h3>Example</h3>
                         <div class="code-block" style="margin-bottom: 10px;">BEQ x5, x6, 100</div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Jump 100 bytes forward if x5 equals x6.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Jump to PC+100 if x5 == x6.</p>
                     </div>
                     
                 </div>
@@ -1345,7 +1385,11 @@
                             <div class="bit-row">
                                 
                                 <div class="bit-box" data-op="imm">
-                                    <span class="bit-value">imm</span>
+                                    <span class="bit-value">imm[12</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="10:5]">
+                                    <span class="bit-value">10:5]</span>
                                 </div>
                                 
                                 <div class="bit-box" data-op="rs2">
@@ -1361,7 +1405,11 @@
                                 </div>
                                 
                                 <div class="bit-box" data-op="imm">
-                                    <span class="bit-value">imm</span>
+                                    <span class="bit-value">imm[4:1</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="11]">
+                                    <span class="bit-value">11]</span>
                                 </div>
                                 
                                 <div class="bit-box" data-op="1100011">
@@ -1402,7 +1450,7 @@
                             <li class="operand-row" data-op="offset" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">offset</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Branch target</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">PC-relative offset</span>
                             </li>
                             
                         </ul>

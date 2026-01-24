@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jumps to an offset and saves return address.">
+    <meta name="description" content="Jumps to an offset relative to PC and saves the return address (PC+4) to rd.">
     <title>JAL - RISC-V</title>
     
     <meta property="og:type" content="website">
@@ -58,6 +58,16 @@
                         ADD
                     </a>
                     
+                    <a href="../add/" 
+                       class="">
+                        ADD
+                    </a>
+                    
+                    <a href="../addi/" 
+                       class="">
+                        ADDI
+                    </a>
+                    
                     <a href="../addi/" 
                        class="">
                         ADDI
@@ -78,6 +88,11 @@
                         AUIPC
                     </a>
                     
+                    <a href="../auipc/" 
+                       class="">
+                        AUIPC
+                    </a>
+                    
                     <a href="../bclr/" 
                        class="">
                         BCLR
@@ -86,6 +101,11 @@
                     <a href="../bclri/" 
                        class="">
                         BCLRI
+                    </a>
+                    
+                    <a href="../beq/" 
+                       class="">
+                        BEQ
                     </a>
                     
                     <a href="../beq/" 
@@ -233,6 +253,11 @@
                         JAL
                     </a>
                     
+                    <a href="../jal/" 
+                       class="active">
+                        JAL
+                    </a>
+                    
                     <a href="../jalr/" 
                        class="">
                         JALR
@@ -256,6 +281,11 @@
                     <a href="../lhu/" 
                        class="">
                         LHU
+                    </a>
+                    
+                    <a href="../lui/" 
+                       class="">
+                        LUI
                     </a>
                     
                     <a href="../lui/" 
@@ -410,6 +440,11 @@
                         LW
                     </a>
                     
+                    <a href="../lw/" 
+                       class="">
+                        LW
+                    </a>
+                    
                     <a href="../lwu/" 
                        class="">
                         LWU
@@ -473,6 +508,11 @@
                     <a href="../subw/" 
                        class="">
                         SUBW
+                    </a>
+                    
+                    <a href="../sw/" 
+                       class="">
+                        SW
                     </a>
                     
                     <a href="../sw/" 
@@ -1314,7 +1354,7 @@
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Jumps to an offset <a href="../../powerisa/and/" class="cross-link">and</a> saves return address.
+                Jumps to an offset relative to PC <a href="../../powerisa/and/">and</a> saves the return address (PC+4) to rd.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -1330,8 +1370,8 @@
                     
                     <div class="panel">
                         <h3>Example</h3>
-                        <div class="code-block" style="margin-bottom: 10px;">JAL x1, 1024</div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Calls function at PC+1024, saves return address in RA (x1).</p>
+                        <div class="code-block" style="margin-bottom: 10px;">JAL x1, loop_target</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Jump to 'loop_target' and save return address in x1 (ra).</p>
                     </div>
                     
                 </div>
@@ -1345,7 +1385,19 @@
                             <div class="bit-row">
                                 
                                 <div class="bit-box" data-op="imm">
-                                    <span class="bit-value">imm</span>
+                                    <span class="bit-value">imm[20</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="10:1">
+                                    <span class="bit-value">10:1</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="11">
+                                    <span class="bit-value">11</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="19:12]">
+                                    <span class="bit-value">19:12]</span>
                                 </div>
                                 
                                 <div class="bit-box" data-op="rd">
@@ -1384,7 +1436,7 @@
                             <li class="operand-row" data-op="offset" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">offset</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Jump Offset</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">20-bit PC-relative Offset</span>
                             </li>
                             
                         </ul>
