@@ -1,0 +1,604 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "ldff1b",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load First-Fault Contiguous Bytes",
+      "summary": "Loads bytes speculatively; suppresses faults after the first active element.",
+      "syntax": "LDFF1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 00 | 100000 | Pg | Rn | Zt", "hex_opcode": "0xA4200000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ldff1h",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load First-Fault Contiguous Halfwords",
+      "summary": "Loads halfwords speculatively; suppresses faults after the first active element.",
+      "syntax": "LDFF1H { <Zt>.H }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 01 | 100000 | Pg | Rn | Zt", "hex_opcode": "0xA4600000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ldff1w",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load First-Fault Contiguous Words",
+      "summary": "Loads words speculatively; suppresses faults after the first active element.",
+      "syntax": "LDFF1W { <Zt>.S }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 10 | 100000 | Pg | Rn | Zt", "hex_opcode": "0xA4A00000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ldff1d",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load First-Fault Contiguous Doublewords",
+      "summary": "Loads doublewords speculatively; suppresses faults after the first active element.",
+      "syntax": "LDFF1D { <Zt>.D }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 11 | 100000 | Pg | Rn | Zt", "hex_opcode": "0xA4E00000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ldnf1b",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Non-Fault Contiguous Bytes",
+      "summary": "Loads bytes without faulting; returns 0 if fault occurs.",
+      "syntax": "LDNF1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 00 | 101000 | Pg | Rn | Zt", "hex_opcode": "0xA4280000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ldnf1h",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Non-Fault Contiguous Halfwords",
+      "summary": "Loads halfwords without faulting.",
+      "syntax": "LDNF1H { <Zt>.H }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 01 | 101000 | Pg | Rn | Zt", "hex_opcode": "0xA4680000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ldnf1w",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Non-Fault Contiguous Words",
+      "summary": "Loads words without faulting.",
+      "syntax": "LDNF1W { <Zt>.S }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 10 | 101000 | Pg | Rn | Zt", "hex_opcode": "0xA4A80000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ldnf1d",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Non-Fault Contiguous Doublewords",
+      "summary": "Loads doublewords without faulting.",
+      "syntax": "LDNF1D { <Zt>.D }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 11 | 101000 | Pg | Rn | Zt", "hex_opcode": "0xA4E80000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "whilelo",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE While Lower (Unsigned)",
+      "summary": "Generates predicate for unsigned loop (while Xn < Xm).",
+      "syntax": "WHILELO <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Compare", "binary_pattern": "00100101 | 01 | 000 | 010 | 0 | Rm | Rn | Pd", "hex_opcode": "0x25420000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "Limit" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "whilels",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE While Lower or Same (Unsigned)",
+      "summary": "Generates predicate for unsigned loop (while Xn <= Xm).",
+      "syntax": "WHILELS <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Compare", "binary_pattern": "00100101 | 01 | 000 | 011 | 0 | Rm | Rn | Pd", "hex_opcode": "0x25430000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "Limit" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "whilehi",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE While Higher (Unsigned)",
+      "summary": "Generates predicate for unsigned loop (while Xn > Xm).",
+      "syntax": "WHILEHI <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Compare", "binary_pattern": "00100101 | 01 | 000 | 100 | 0 | Rm | Rn | Pd", "hex_opcode": "0x25440000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "Limit" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "whilehs",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE While Higher or Same (Unsigned)",
+      "summary": "Generates predicate for unsigned loop (while Xn >= Xm).",
+      "syntax": "WHILEHS <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Compare", "binary_pattern": "00100101 | 01 | 000 | 101 | 0 | Rm | Rn | Pd", "hex_opcode": "0x25450000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "Limit" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "cntp",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Count Active Predicates",
+      "summary": "Counts the number of true elements in a predicate.",
+      "syntax": "CNTP <Xn>, <Pg>, <Pn>.<T>",
+      "encoding": { "format": "SVE Count", "binary_pattern": "00100101 | 00 | 100000 | Pg | Pn | Rd", "hex_opcode": "0x25200000" },
+      "operands": [{ "name": "Xn", "desc": "Dest GPR" }, { "name": "Pg", "desc": "Mask" }, { "name": "Pn", "desc": "Source Pred" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ptest",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Predicate Test",
+      "summary": "Updates processor flags (NZCV) based on predicate state.",
+      "syntax": "PTEST <Pg>, <Pn>.B",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | 00 | 011000 | Pg | 00 | Pn", "hex_opcode": "0x25180000" },
+      "operands": [{ "name": "Pg", "desc": "Mask" }, { "name": "Pn", "desc": "Source Pred" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "pfirst",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Predicate First Active",
+      "summary": "Sets destination predicate to true only at the first active element.",
+      "syntax": "PFIRST <Pd>.B, <Pg>, <Pn>.B",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | 00 | 011001 | Pg | 00 | Pn", "hex_opcode": "0x25190000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Pred" }, { "name": "Pg", "desc": "Mask" }, { "name": "Pn", "desc": "Source Pred" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "clasta",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Conditional Last Element After",
+      "summary": "Extracts element after the last active element.",
+      "syntax": "CLASTA <Rdn>, <Pg>, <Rdn>, <Zm>.<T>",
+      "encoding": { "format": "SVE Extract", "binary_pattern": "00000101 | sz | 10100 | 0 | Pg | Zm | Rdn", "hex_opcode": "0x05A00000" },
+      "operands": [{ "name": "Rdn", "desc": "Dest/Fallback" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Zm", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "clastb",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Conditional Last Element Before",
+      "summary": "Extracts the last active element.",
+      "syntax": "CLASTB <Rdn>, <Pg>, <Rdn>, <Zm>.<T>",
+      "encoding": { "format": "SVE Extract", "binary_pattern": "00000101 | sz | 10100 | 1 | Pg | Zm | Rdn", "hex_opcode": "0x05A08000" },
+      "operands": [{ "name": "Rdn", "desc": "Dest/Fallback" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Zm", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "lasta",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Extract Last Element After",
+      "summary": "Extracts element after last active (SIMD scalar destination).",
+      "syntax": "LASTA <Vd>.<T>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Extract", "binary_pattern": "00000101 | sz | 10000 | 0 | Pg | Zn | Vd", "hex_opcode": "0x05800000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "lastb",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Extract Last Element Before",
+      "summary": "Extracts last active element (SIMD scalar destination).",
+      "syntax": "LASTB <Vd>.<T>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Extract", "binary_pattern": "00000101 | sz | 10000 | 1 | Pg | Zn | Vd", "hex_opcode": "0x05808000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "insr",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Insert Scalar",
+      "summary": "Inserts scalar into bottom of vector, shifting other elements up.",
+      "syntax": "INSR <Zdn>.<T>, <R><m>",
+      "encoding": { "format": "SVE Move", "binary_pattern": "00000101 | sz | 0 | 0 | 11 | 10 | 0000 | Rm | Zdn", "hex_opcode": "0x0520C000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Rm", "desc": "Scalar Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ext",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Extract Vector",
+      "summary": "Extracts a vector from a pair (sliding window) using immediate byte index.",
+      "syntax": "EXT <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>, #<imm>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | 00 | 100101 | imm8 | Zm | Zdn", "hex_opcode": "0x05250000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Low" }, { "name": "Zm", "desc": "High" }, { "name": "imm", "desc": "Index" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Reverse Vector",
+      "summary": "Reverses the order of elements in the vector.",
+      "syntax": "REV <Zd>.<T>, <Zn>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 100110 | 00 | 00000 | Zn | Zd", "hex_opcode": "0x05260000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "revb",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Reverse Bytes in Elements",
+      "summary": "Reverses bytes within 16/32/64-bit elements.",
+      "syntax": "REVB <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 00010 | 00 | Pg | Zn | Zd", "hex_opcode": "0x05080000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "revh",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Reverse Halfwords in Elements",
+      "summary": "Reverses halfwords within 32/64-bit elements.",
+      "syntax": "REVH <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 00010 | 01 | Pg | Zn | Zd", "hex_opcode": "0x05090000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "revw",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Reverse Words in Elements",
+      "summary": "Reverses words within 64-bit elements.",
+      "syntax": "REVW <Zd>.D, <Pg>/M, <Zn>.D",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | 11 | 00010 | 10 | Pg | Zn | Zd", "hex_opcode": "0x050A0000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "rbit",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Reverse Bits",
+      "summary": "Reverses bits in each element.",
+      "syntax": "RBIT <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 00010 | 11 | Pg | Zn | Zd", "hex_opcode": "0x050B0000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sunpklo",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Unpack Low",
+      "summary": "Unpacks and sign-extends lower half of vector elements.",
+      "syntax": "SUNPKLO <Zd>.<T>, <Zn>.<Tb>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 10010 | 0 | 00000 | Zn | Zd", "hex_opcode": "0x05240000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sunpkhi",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Unpack High",
+      "summary": "Unpacks and sign-extends upper half of vector elements.",
+      "syntax": "SUNPKHI <Zd>.<T>, <Zn>.<Tb>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 10010 | 0 | 00001 | Zn | Zd", "hex_opcode": "0x05242000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "uunpklo",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Unpack Low",
+      "summary": "Unpacks and zero-extends lower half of vector elements.",
+      "syntax": "UUNPKLO <Zd>.<T>, <Zn>.<Tb>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 10010 | 1 | 00000 | Zn | Zd", "hex_opcode": "0x05248000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "uunpkhi",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Unpack High",
+      "summary": "Unpacks and zero-extends upper half of vector elements.",
+      "syntax": "UUNPKHI <Zd>.<T>, <Zn>.<Tb>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 10010 | 1 | 00001 | Zn | Zd", "hex_opcode": "0x0524A000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sdot",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Dot Product",
+      "summary": "Computes dot product of signed integers (AI Acceleration).",
+      "syntax": "SDOT <Zda>.<T>, <Zn>.<Tb>, <Zm>.<Tb>",
+      "encoding": { "format": "SVE Dot Product", "binary_pattern": "01000100 | sz | 0 | 00000 | Zm | Zn | Zda", "hex_opcode": "0x44000000" },
+      "operands": [{ "name": "Zda", "desc": "Accumulator" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "udot",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Dot Product",
+      "summary": "Computes dot product of unsigned integers.",
+      "syntax": "UDOT <Zda>.<T>, <Zn>.<Tb>, <Zm>.<Tb>",
+      "encoding": { "format": "SVE Dot Product", "binary_pattern": "01000100 | sz | 0 | 00001 | Zm | Zn | Zda", "hex_opcode": "0x44004000" },
+      "operands": [{ "name": "Zda", "desc": "Accumulator" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "smax",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Maximum",
+      "summary": "Determines maximum signed value per element.",
+      "syntax": "SMAX <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 0 | 00100 | Pg | Zm | Zdn", "hex_opcode": "0x04040000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "smin",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Minimum",
+      "summary": "Determines minimum signed value per element.",
+      "syntax": "SMIN <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 0 | 00101 | Pg | Zm | Zdn", "hex_opcode": "0x04050000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "umax",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Maximum",
+      "summary": "Determines maximum unsigned value per element.",
+      "syntax": "UMAX <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 0 | 00110 | Pg | Zm | Zdn", "hex_opcode": "0x04060000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "umin",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Minimum",
+      "summary": "Determines minimum unsigned value per element.",
+      "syntax": "UMIN <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 0 | 00111 | Pg | Zm | Zdn", "hex_opcode": "0x04070000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "abs",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Absolute Value",
+      "summary": "Calculates absolute value of integers.",
+      "syntax": "ABS <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE Integer Unary", "binary_pattern": "00000100 | sz | 001010 | Pg | Zdn | Zdn", "hex_opcode": "0x042A0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "neg",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Negate",
+      "summary": "Negates integers.",
+      "syntax": "NEG <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE Integer Unary", "binary_pattern": "00000100 | sz | 001011 | Pg | Zdn | Zdn", "hex_opcode": "0x042B0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "not",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise NOT",
+      "summary": "Inverts bits.",
+      "syntax": "NOT <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE Integer Unary", "binary_pattern": "00000100 | sz | 001110 | Pg | Zdn | Zdn", "hex_opcode": "0x042E0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Divide",
+      "summary": "Divides signed integers.",
+      "syntax": "SDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 1 | 00000 | Pg | Zm | Zdn", "hex_opcode": "0x04800000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Dividend" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Divisor" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "udiv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Divide",
+      "summary": "Divides unsigned integers.",
+      "syntax": "UDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 1 | 00001 | Pg | Zm | Zdn", "hex_opcode": "0x04810000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Dividend" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Divisor" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Square Root",
+      "summary": "Calculates square root of floats.",
+      "syntax": "FSQRT <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE FP Unary", "binary_pattern": "01100101 | sz | 001010 | Pg | Zdn | Zdn", "hex_opcode": "0x652A0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fabs",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Absolute Value",
+      "summary": "Calculates absolute value of floats.",
+      "syntax": "FABS <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE FP Unary", "binary_pattern": "01100101 | sz | 001000 | Pg | Zdn | Zdn", "hex_opcode": "0x65280000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fneg",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Negate",
+      "summary": "Negates floats.",
+      "syntax": "FNEG <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE FP Unary", "binary_pattern": "01100101 | sz | 001001 | Pg | Zdn | Zdn", "hex_opcode": "0x65290000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fcadd",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Complex Add",
+      "summary": "Performs complex addition with rotation.",
+      "syntax": "FCADD <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>, #<rot>",
+      "encoding": { "format": "SVE FP Complex", "binary_pattern": "01100100 | sz | 0 | 00000 | Pg | Zm | rot | Zdn", "hex_opcode": "0x64000000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }, { "name": "rot", "desc": "Rotation (90, 270)" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fcmla",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Complex Multiply-Add",
+      "summary": "Performs complex multiply-accumulate.",
+      "syntax": "FCMLA <Zda>.<T>, <Pg>/M, <Zn>.<T>, <Zm>.<T>, #<rot>",
+      "encoding": { "format": "SVE FP Complex", "binary_pattern": "01100100 | sz | 0 | 00001 | Pg | Zm | rot | Zn | Zda", "hex_opcode": "0x64200000" },
+      "operands": [{ "name": "Zda", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }, { "name": "rot", "desc": "Rot" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "saddv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Integer Add Reduction",
+      "summary": "Sums all active signed elements into a scalar result.",
+      "syntax": "SADDV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000000 | Pg | Zn | Vd", "hex_opcode": "0x04000000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "smaxv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Maximum Reduction",
+      "summary": "Finds max signed element in vector.",
+      "syntax": "SMAXV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000001 | Pg | Zn | Vd", "hex_opcode": "0x04010000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "umaxv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Maximum Reduction",
+      "summary": "Finds max unsigned element in vector.",
+      "syntax": "UMAXV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000010 | Pg | Zn | Vd", "hex_opcode": "0x04020000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sminv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Minimum Reduction",
+      "summary": "Finds min signed element in vector.",
+      "syntax": "SMINV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000011 | Pg | Zn | Vd", "hex_opcode": "0x04030000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "uminv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Minimum Reduction",
+      "summary": "Finds min unsigned element in vector.",
+      "syntax": "UMINV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000100 | Pg | Zn | Vd", "hex_opcode": "0x04040000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fmaxv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Maximum Reduction",
+      "summary": "Finds max float in vector.",
+      "syntax": "FMAXV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "01100101 | sz | 000001 | Pg | Zn | Vd", "hex_opcode": "0x65010000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fminv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Minimum Reduction",
+      "summary": "Finds min float in vector.",
+      "syntax": "FMINV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "01100101 | sz | 000010 | Pg | Zn | Vd", "hex_opcode": "0x65020000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "andv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise AND Reduction",
+      "summary": "ANDs all active elements into a scalar.",
+      "syntax": "ANDV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000101 | Pg | Zn | Vd", "hex_opcode": "0x04050000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "orv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise OR Reduction",
+      "summary": "ORs all active elements into a scalar.",
+      "syntax": "ORV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000110 | Pg | Zn | Vd", "hex_opcode": "0x04060000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "eorv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise EOR Reduction",
+      "summary": "XORs all active elements into a scalar.",
+      "syntax": "EORV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 000111 | Pg | Zn | Vd", "hex_opcode": "0x04070000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "scvtf",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Signed Integer Convert to Floating-Point",
+      "summary": "Converts signed integers to floats.",
+      "syntax": "SCVTF <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE Conversion", "binary_pattern": "01100101 | sz | 010110 | Pg | Zdn | Zdn", "hex_opcode": "0x65560000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ucvtf",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Integer Convert to Floating-Point",
+      "summary": "Converts unsigned integers to floats.",
+      "syntax": "UCVTF <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE Conversion", "binary_pattern": "01100101 | sz | 010111 | Pg | Zdn | Zdn", "hex_opcode": "0x65570000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fcvtzs",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Convert to Signed Integer",
+      "summary": "Converts floats to signed integers (Truncate).",
+      "syntax": "FCVTZS <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE Conversion", "binary_pattern": "01100101 | sz | 011010 | Pg | Zdn | Zdn", "hex_opcode": "0x655A0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fcvtzu",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Convert to Unsigned Integer",
+      "summary": "Converts floats to unsigned integers (Truncate).",
+      "syntax": "FCVTZU <Zdn>.<T>, <Pg>/M, <Zdn>.<T>",
+      "encoding": { "format": "SVE Conversion", "binary_pattern": "01100101 | sz | 011011 | Pg | Zdn | Zdn", "hex_opcode": "0x655B0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }],
+      "extension": "SVE"
+    }
+  ]
+}

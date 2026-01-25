@@ -66,6 +66,13 @@
                 
                 <tr onclick="window.location='abs/';" style="cursor: pointer;">
                     <td class="mono">abs</td>
+                    <td style="font-weight: 500;">SVE Absolute Value</td>
+                    <td><span class="badge">SVE Integer Unary</span></td>
+                    <td style="color: var(--text-muted);">Calculates absolute value of integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='abs/';" style="cursor: pointer;">
+                    <td class="mono">abs</td>
                     <td style="font-weight: 500;">Vector Absolute Value</td>
                     <td><span class="badge">SIMD Two Register</span></td>
                     <td style="color: var(--text-muted);">Calculates absolute value of integer elements.</td>
@@ -146,6 +153,13 @@
                     <td style="font-weight: 500;">Vector Add (Integer)</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Adds corresponding elements in two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">SVE Integer Add (Predicated)</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Adds two vectors under predicate control.</td>
                 </tr>
                 
                 <tr onclick="window.location='addp/';" style="cursor: pointer;">
@@ -281,6 +295,13 @@
                     <td style="color: var(--text-muted);">Bitwise AND of two vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">SVE Bitwise AND (Predicated)</td>
+                    <td><span class="badge">SVE Logic</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND of two vectors under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='ands/';" style="cursor: pointer;">
                     <td class="mono">ands</td>
                     <td style="font-weight: 500;">Bitwise AND and Set Flags (Immediate)</td>
@@ -309,6 +330,13 @@
                     <td style="color: var(--text-muted);">Bitwise AND shifted register, updates flags (64-bit).</td>
                 </tr>
                 
+                <tr onclick="window.location='andv/';" style="cursor: pointer;">
+                    <td class="mono">andv</td>
+                    <td style="font-weight: 500;">SVE Bitwise AND Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">ANDs all active elements into a scalar.</td>
+                </tr>
+                
                 <tr onclick="window.location='asr/';" style="cursor: pointer;">
                     <td class="mono">asr</td>
                     <td style="font-weight: 500;">Arithmetic Shift Right (Immediate)</td>
@@ -335,6 +363,13 @@
                     <td style="font-weight: 500;">Arithmetic Shift Right (Register 64-bit)</td>
                     <td><span class="badge">Data Processing (Register)</span></td>
                     <td style="color: var(--text-muted);">Arithmetic shift right by register value (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='asr/';" style="cursor: pointer;">
+                    <td class="mono">asr</td>
+                    <td style="font-weight: 500;">SVE Arithmetic Shift Right (Predicated)</td>
+                    <td><span class="badge">SVE Shift</span></td>
+                    <td style="color: var(--text-muted);">Shifts elements right arithmetically under predicate.</td>
                 </tr>
                 
                 <tr onclick="window.location='b/';" style="cursor: pointer;">
@@ -384,6 +419,13 @@
                     <td style="font-weight: 500;">Vector Bitwise Bit Clear</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">ANDs Vd with NOT of Vm.</td>
+                </tr>
+                
+                <tr onclick="window.location='bic/';" style="cursor: pointer;">
+                    <td class="mono">bic</td>
+                    <td style="font-weight: 500;">SVE Bitwise Bit Clear (Predicated)</td>
+                    <td><span class="badge">SVE Logic</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND NOT of two vectors under predicate.</td>
                 </tr>
                 
                 <tr onclick="window.location='bics/';" style="cursor: pointer;">
@@ -440,6 +482,20 @@
                     <td style="font-weight: 500;">Breakpoint</td>
                     <td><span class="badge">Exception</span></td>
                     <td style="color: var(--text-muted);">Generates a Breakpoint instruction exception.</td>
+                </tr>
+                
+                <tr onclick="window.location='brka/';" style="cursor: pointer;">
+                    <td class="mono">brka</td>
+                    <td style="font-weight: 500;">SVE Break After First True</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Sets predicates up to and including the first active element.</td>
+                </tr>
+                
+                <tr onclick="window.location='brkb/';" style="cursor: pointer;">
+                    <td class="mono">brkb</td>
+                    <td style="font-weight: 500;">SVE Break Before First True</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Sets predicates up to (but excluding) the first active element.</td>
                 </tr>
                 
                 <tr onclick="window.location='bsl/';" style="cursor: pointer;">
@@ -526,6 +582,20 @@
                     <td style="color: var(--text-muted);">Invert register bits if condition is true, else copy. (Alias for CSINV)</td>
                 </tr>
                 
+                <tr onclick="window.location='clasta/';" style="cursor: pointer;">
+                    <td class="mono">clasta</td>
+                    <td style="font-weight: 500;">SVE Conditional Last Element After</td>
+                    <td><span class="badge">SVE Extract</span></td>
+                    <td style="color: var(--text-muted);">Extracts element after the last active element.</td>
+                </tr>
+                
+                <tr onclick="window.location='clastb/';" style="cursor: pointer;">
+                    <td class="mono">clastb</td>
+                    <td style="font-weight: 500;">SVE Conditional Last Element Before</td>
+                    <td><span class="badge">SVE Extract</span></td>
+                    <td style="color: var(--text-muted);">Extracts the last active element.</td>
+                </tr>
+                
                 <tr onclick="window.location='cls/';" style="cursor: pointer;">
                     <td class="mono">cls</td>
                     <td style="font-weight: 500;">Count Leading Sign Bits</td>
@@ -582,6 +652,20 @@
                     <td style="color: var(--text-muted);">Subtracts immediate from register, updates flags (discard result). (Alias for SUBS)</td>
                 </tr>
                 
+                <tr onclick="window.location='cmpeq/';" style="cursor: pointer;">
+                    <td class="mono">cmpeq</td>
+                    <td style="font-weight: 500;">SVE Compare Equal (Integer)</td>
+                    <td><span class="badge">SVE Compare</span></td>
+                    <td style="color: var(--text-muted);">Sets predicate bits where elements are equal.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmpgt/';" style="cursor: pointer;">
+                    <td class="mono">cmpgt</td>
+                    <td style="font-weight: 500;">SVE Compare Greater Than (Signed)</td>
+                    <td><span class="badge">SVE Compare</span></td>
+                    <td style="color: var(--text-muted);">Sets predicate bits where Zn > Zm.</td>
+                </tr>
+                
                 <tr onclick="window.location='cmtst/';" style="cursor: pointer;">
                     <td class="mono">cmtst</td>
                     <td style="font-weight: 500;">Vector Compare Test</td>
@@ -601,6 +685,27 @@
                     <td style="font-weight: 500;">Vector Population Count</td>
                     <td><span class="badge">SIMD Two Register</span></td>
                     <td style="color: var(--text-muted);">Counts set bits (population count) per byte.</td>
+                </tr>
+                
+                <tr onclick="window.location='cntp/';" style="cursor: pointer;">
+                    <td class="mono">cntp</td>
+                    <td style="font-weight: 500;">SVE Count Active Predicates</td>
+                    <td><span class="badge">SVE Count</span></td>
+                    <td style="color: var(--text-muted);">Counts the number of true elements in a predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='compact/';" style="cursor: pointer;">
+                    <td class="mono">compact</td>
+                    <td style="font-weight: 500;">SVE Compact Vector</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Packs active elements to the bottom of the vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='cpy/';" style="cursor: pointer;">
+                    <td class="mono">cpy</td>
+                    <td style="font-weight: 500;">SVE Copy (Predicated)</td>
+                    <td><span class="badge">SVE Move</span></td>
+                    <td style="color: var(--text-muted);">Copies scalar value to active vector elements (Alias for DUP predicated).</td>
                 </tr>
                 
                 <tr onclick="window.location='crc32b/';" style="cursor: pointer;">
@@ -687,6 +792,27 @@
                     <td style="color: var(--text-muted);">Switch to Exception Level 3 (Debug).</td>
                 </tr>
                 
+                <tr onclick="window.location='decb/';" style="cursor: pointer;">
+                    <td class="mono">decb</td>
+                    <td style="font-weight: 500;">SVE Decrement Scalar by Byte Count</td>
+                    <td><span class="badge">SVE Inc/Dec</span></td>
+                    <td style="color: var(--text-muted);">Decrements a register by the number of active bytes.</td>
+                </tr>
+                
+                <tr onclick="window.location='decd/';" style="cursor: pointer;">
+                    <td class="mono">decd</td>
+                    <td style="font-weight: 500;">SVE Decrement Scalar by Doubleword Count</td>
+                    <td><span class="badge">SVE Inc/Dec</span></td>
+                    <td style="color: var(--text-muted);">Decrements a register by the number of active doublewords.</td>
+                </tr>
+                
+                <tr onclick="window.location='decw/';" style="cursor: pointer;">
+                    <td class="mono">decw</td>
+                    <td style="font-weight: 500;">SVE Decrement Scalar by Word Count</td>
+                    <td><span class="badge">SVE Inc/Dec</span></td>
+                    <td style="color: var(--text-muted);">Decrements a register by the number of active words.</td>
+                </tr>
+                
                 <tr onclick="window.location='dmb/';" style="cursor: pointer;">
                     <td class="mono">dmb</td>
                     <td style="font-weight: 500;">Data Memory Barrier</td>
@@ -720,6 +846,13 @@
                     <td style="font-weight: 500;">Duplicate Vector Element (Element)</td>
                     <td><span class="badge">SIMD Copy</span></td>
                     <td style="color: var(--text-muted);">Duplicates a vector element to all elements in destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='dup/';" style="cursor: pointer;">
+                    <td class="mono">dup</td>
+                    <td style="font-weight: 500;">SVE Duplicate Scalar</td>
+                    <td><span class="badge">SVE Move</span></td>
+                    <td style="color: var(--text-muted);">Broadcasts a scalar register or immediate to all active vector elements.</td>
                 </tr>
                 
                 <tr onclick="window.location='eon/';" style="cursor: pointer;">
@@ -757,11 +890,32 @@
                     <td style="color: var(--text-muted);">Bitwise XOR of two vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='eor/';" style="cursor: pointer;">
+                    <td class="mono">eor</td>
+                    <td style="font-weight: 500;">SVE Bitwise Exclusive OR (Predicated)</td>
+                    <td><span class="badge">SVE Logic</span></td>
+                    <td style="color: var(--text-muted);">Bitwise XOR of two vectors under predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='eorv/';" style="cursor: pointer;">
+                    <td class="mono">eorv</td>
+                    <td style="font-weight: 500;">SVE Bitwise EOR Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">XORs all active elements into a scalar.</td>
+                </tr>
+                
                 <tr onclick="window.location='eret/';" style="cursor: pointer;">
                     <td class="mono">eret</td>
                     <td style="font-weight: 500;">Exception Return</td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Returns from an exception.</td>
+                </tr>
+                
+                <tr onclick="window.location='ext/';" style="cursor: pointer;">
+                    <td class="mono">ext</td>
+                    <td style="font-weight: 500;">SVE Extract Vector</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Extracts a vector from a pair (sliding window) using immediate byte index.</td>
                 </tr>
                 
                 <tr onclick="window.location='ext/';" style="cursor: pointer;">
@@ -783,6 +937,13 @@
                     <td style="font-weight: 500;">Extract (64-bit)</td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Extracts a 64-bit register from a pair.</td>
+                </tr>
+                
+                <tr onclick="window.location='fabs/';" style="cursor: pointer;">
+                    <td class="mono">fabs</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Absolute Value</td>
+                    <td><span class="badge">SVE FP Unary</span></td>
+                    <td style="color: var(--text-muted);">Calculates absolute value of floats.</td>
                 </tr>
                 
                 <tr onclick="window.location='fabs/';" style="cursor: pointer;">
@@ -813,11 +974,32 @@
                     <td style="color: var(--text-muted);">Adds elements of two floating-point vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='fadd/';" style="cursor: pointer;">
+                    <td class="mono">fadd</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Add</td>
+                    <td><span class="badge">SVE FP Binary</span></td>
+                    <td style="color: var(--text-muted);">Adds floating-point elements under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='faddp/';" style="cursor: pointer;">
                     <td class="mono">faddp</td>
                     <td style="font-weight: 500;">Vector Floating-Point Add Pairwise</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Adds adjacent pairs of float elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='faddv/';" style="cursor: pointer;">
+                    <td class="mono">faddv</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Add Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Sums all active floating-point elements into a scalar result.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcadd/';" style="cursor: pointer;">
+                    <td class="mono">fcadd</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Complex Add</td>
+                    <td><span class="badge">SVE FP Complex</span></td>
+                    <td style="color: var(--text-muted);">Performs complex addition with rotation.</td>
                 </tr>
                 
                 <tr onclick="window.location='fccmp/';" style="cursor: pointer;">
@@ -827,11 +1009,32 @@
                     <td style="color: var(--text-muted);">Compares floats only if condition is met, else sets flags to immediate.</td>
                 </tr>
                 
+                <tr onclick="window.location='fcmla/';" style="cursor: pointer;">
+                    <td class="mono">fcmla</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Complex Multiply-Add</td>
+                    <td><span class="badge">SVE FP Complex</span></td>
+                    <td style="color: var(--text-muted);">Performs complex multiply-accumulate.</td>
+                </tr>
+                
                 <tr onclick="window.location='fcmp/';" style="cursor: pointer;">
                     <td class="mono">fcmp</td>
                     <td style="font-weight: 500;">Floating-Point Compare (Scalar)</td>
                     <td><span class="badge">FP Compare</span></td>
                     <td style="color: var(--text-muted);">Compares two floating-point values and updates process flags (NZCV).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcmpeq/';" style="cursor: pointer;">
+                    <td class="mono">fcmpeq</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Compare Equal</td>
+                    <td><span class="badge">SVE FP Compare</span></td>
+                    <td style="color: var(--text-muted);">Sets predicate bits where float elements are equal.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcmpgt/';" style="cursor: pointer;">
+                    <td class="mono">fcmpgt</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Compare Greater Than</td>
+                    <td><span class="badge">SVE FP Compare</span></td>
+                    <td style="color: var(--text-muted);">Sets predicate bits where float Zn > Zm.</td>
                 </tr>
                 
                 <tr onclick="window.location='fcsel/';" style="cursor: pointer;">
@@ -920,6 +1123,13 @@
                 
                 <tr onclick="window.location='fcvtzs/';" style="cursor: pointer;">
                     <td class="mono">fcvtzs</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Convert to Signed Integer</td>
+                    <td><span class="badge">SVE Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts floats to signed integers (Truncate).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtzs/';" style="cursor: pointer;">
+                    <td class="mono">fcvtzs</td>
                     <td style="font-weight: 500;">Floating-Point Convert to Signed Integer (Zero)</td>
                     <td><span class="badge">FP Conversion</span></td>
                     <td style="color: var(--text-muted);">Converts float to signed integer, rounding towards zero (Truncate).</td>
@@ -930,6 +1140,13 @@
                     <td style="font-weight: 500;">Vector Floating-Point Convert to Signed Integer</td>
                     <td><span class="badge">SIMD Two Register</span></td>
                     <td style="color: var(--text-muted);">Converts floats to signed integers (Truncate).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtzu/';" style="cursor: pointer;">
+                    <td class="mono">fcvtzu</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Convert to Unsigned Integer</td>
+                    <td><span class="badge">SVE Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts floats to unsigned integers (Truncate).</td>
                 </tr>
                 
                 <tr onclick="window.location='fcvtzu/';" style="cursor: pointer;">
@@ -960,6 +1177,13 @@
                     <td style="color: var(--text-muted);">Divides elements of floating-point vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='fdiv/';" style="cursor: pointer;">
+                    <td class="mono">fdiv</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Divide</td>
+                    <td><span class="badge">SVE FP Binary</span></td>
+                    <td style="color: var(--text-muted);">Divides floating-point elements under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='fmadd/';" style="cursor: pointer;">
                     <td class="mono">fmadd</td>
                     <td style="font-weight: 500;">Floating-Point Fused Multiply-Add (Scalar)</td>
@@ -981,6 +1205,13 @@
                     <td style="color: var(--text-muted);">Compares and returns the larger value per element.</td>
                 </tr>
                 
+                <tr onclick="window.location='fmax/';" style="cursor: pointer;">
+                    <td class="mono">fmax</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Maximum</td>
+                    <td><span class="badge">SVE FP Binary</span></td>
+                    <td style="color: var(--text-muted);">Determines maximum value of active float elements.</td>
+                </tr>
+                
                 <tr onclick="window.location='fmaxnm/';" style="cursor: pointer;">
                     <td class="mono">fmaxnm</td>
                     <td style="font-weight: 500;">Floating-Point Max Number (Scalar)</td>
@@ -993,6 +1224,13 @@
                     <td style="font-weight: 500;">Vector Floating-Point Max Pairwise</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Max of adjacent float elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmaxv/';" style="cursor: pointer;">
+                    <td class="mono">fmaxv</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Maximum Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Finds max float in vector.</td>
                 </tr>
                 
                 <tr onclick="window.location='fmin/';" style="cursor: pointer;">
@@ -1009,6 +1247,13 @@
                     <td style="color: var(--text-muted);">Compares and returns the smaller value per element.</td>
                 </tr>
                 
+                <tr onclick="window.location='fmin/';" style="cursor: pointer;">
+                    <td class="mono">fmin</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Minimum</td>
+                    <td><span class="badge">SVE FP Binary</span></td>
+                    <td style="color: var(--text-muted);">Determines minimum value of active float elements.</td>
+                </tr>
+                
                 <tr onclick="window.location='fminnm/';" style="cursor: pointer;">
                     <td class="mono">fminnm</td>
                     <td style="font-weight: 500;">Floating-Point Min Number (Scalar)</td>
@@ -1023,6 +1268,13 @@
                     <td style="color: var(--text-muted);">Min of adjacent float elements.</td>
                 </tr>
                 
+                <tr onclick="window.location='fminv/';" style="cursor: pointer;">
+                    <td class="mono">fminv</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Minimum Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Finds min float in vector.</td>
+                </tr>
+                
                 <tr onclick="window.location='fmla/';" style="cursor: pointer;">
                     <td class="mono">fmla</td>
                     <td style="font-weight: 500;">Vector Floating-Point Multiply-Accumulate</td>
@@ -1030,11 +1282,25 @@
                     <td style="color: var(--text-muted);">Multiplies and adds to destination (Vd = Vd + Vn * Vm).</td>
                 </tr>
                 
+                <tr onclick="window.location='fmla/';" style="cursor: pointer;">
+                    <td class="mono">fmla</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Fused Multiply-Add</td>
+                    <td><span class="badge">SVE FP Ternary</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Zda + Zn * Zm) under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='fmls/';" style="cursor: pointer;">
                     <td class="mono">fmls</td>
                     <td style="font-weight: 500;">Vector Floating-Point Multiply-Subtract</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Multiplies and subtracts from destination (Vd = Vd - Vn * Vm).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmls/';" style="cursor: pointer;">
+                    <td class="mono">fmls</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Fused Multiply-Subtract</td>
+                    <td><span class="badge">SVE FP Ternary</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Zda - Zn * Zm) under predicate.</td>
                 </tr>
                 
                 <tr onclick="window.location='fmov/';" style="cursor: pointer;">
@@ -1084,6 +1350,20 @@
                     <td style="font-weight: 500;">Vector Floating-Point Multiply</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Multiplies elements of floating-point vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmul/';" style="cursor: pointer;">
+                    <td class="mono">fmul</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Multiply</td>
+                    <td><span class="badge">SVE FP Binary</span></td>
+                    <td style="color: var(--text-muted);">Multiplies floating-point elements under predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='fneg/';" style="cursor: pointer;">
+                    <td class="mono">fneg</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Negate</td>
+                    <td><span class="badge">SVE FP Unary</span></td>
+                    <td style="color: var(--text-muted);">Negates floats.</td>
                 </tr>
                 
                 <tr onclick="window.location='fneg/';" style="cursor: pointer;">
@@ -1200,6 +1480,13 @@
                 
                 <tr onclick="window.location='fsqrt/';" style="cursor: pointer;">
                     <td class="mono">fsqrt</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Square Root</td>
+                    <td><span class="badge">SVE FP Unary</span></td>
+                    <td style="color: var(--text-muted);">Calculates square root of floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsqrt/';" style="cursor: pointer;">
+                    <td class="mono">fsqrt</td>
                     <td style="font-weight: 500;">Floating-Point Square Root (Scalar)</td>
                     <td><span class="badge">FP Data Processing</span></td>
                     <td style="color: var(--text-muted);">Calculates square root.</td>
@@ -1226,6 +1513,13 @@
                     <td style="color: var(--text-muted);">Subtracts elements of floating-point vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='fsub/';" style="cursor: pointer;">
+                    <td class="mono">fsub</td>
+                    <td style="font-weight: 500;">SVE Floating-Point Subtract</td>
+                    <td><span class="badge">SVE FP Binary</span></td>
+                    <td style="color: var(--text-muted);">Subtracts floating-point elements under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='hint/';" style="cursor: pointer;">
                     <td class="mono">hint</td>
                     <td style="font-weight: 500;">Hint</td>
@@ -1247,11 +1541,46 @@
                     <td style="color: var(--text-muted);">Generates a Hypervisor Call exception to EL2.</td>
                 </tr>
                 
+                <tr onclick="window.location='incb/';" style="cursor: pointer;">
+                    <td class="mono">incb</td>
+                    <td style="font-weight: 500;">SVE Increment Scalar by Byte Count</td>
+                    <td><span class="badge">SVE Inc/Dec</span></td>
+                    <td style="color: var(--text-muted);">Increments a general-purpose register by the number of active bytes in the pattern.</td>
+                </tr>
+                
+                <tr onclick="window.location='incd/';" style="cursor: pointer;">
+                    <td class="mono">incd</td>
+                    <td style="font-weight: 500;">SVE Increment Scalar by Doubleword Count</td>
+                    <td><span class="badge">SVE Inc/Dec</span></td>
+                    <td style="color: var(--text-muted);">Increments a register by the number of active doublewords.</td>
+                </tr>
+                
+                <tr onclick="window.location='incw/';" style="cursor: pointer;">
+                    <td class="mono">incw</td>
+                    <td style="font-weight: 500;">SVE Increment Scalar by Word Count</td>
+                    <td><span class="badge">SVE Inc/Dec</span></td>
+                    <td style="color: var(--text-muted);">Increments a register by the number of active words.</td>
+                </tr>
+                
+                <tr onclick="window.location='index/';" style="cursor: pointer;">
+                    <td class="mono">index</td>
+                    <td style="font-weight: 500;">SVE Create Index Vector</td>
+                    <td><span class="badge">SVE Index</span></td>
+                    <td style="color: var(--text-muted);">Generates a vector of indices: V[i] = Start + i * Step.</td>
+                </tr>
+                
                 <tr onclick="window.location='ins/';" style="cursor: pointer;">
                     <td class="mono">ins</td>
                     <td style="font-weight: 500;">Insert Vector Element (General)</td>
                     <td><span class="badge">SIMD Copy</span></td>
                     <td style="color: var(--text-muted);">Moves data from a GPR to a specific vector element.</td>
+                </tr>
+                
+                <tr onclick="window.location='insr/';" style="cursor: pointer;">
+                    <td class="mono">insr</td>
+                    <td style="font-weight: 500;">SVE Insert Scalar</td>
+                    <td><span class="badge">SVE Move</span></td>
+                    <td style="color: var(--text-muted);">Inserts scalar into bottom of vector, shifting other elements up.</td>
                 </tr>
                 
                 <tr onclick="window.location='isb/';" style="cursor: pointer;">
@@ -1261,6 +1590,20 @@
                     <td style="color: var(--text-muted);">Flushes the pipeline and prefetches.</td>
                 </tr>
                 
+                <tr onclick="window.location='lasta/';" style="cursor: pointer;">
+                    <td class="mono">lasta</td>
+                    <td style="font-weight: 500;">SVE Extract Last Element After</td>
+                    <td><span class="badge">SVE Extract</span></td>
+                    <td style="color: var(--text-muted);">Extracts element after last active (SIMD scalar destination).</td>
+                </tr>
+                
+                <tr onclick="window.location='lastb/';" style="cursor: pointer;">
+                    <td class="mono">lastb</td>
+                    <td style="font-weight: 500;">SVE Extract Last Element Before</td>
+                    <td><span class="badge">SVE Extract</span></td>
+                    <td style="color: var(--text-muted);">Extracts last active element (SIMD scalar destination).</td>
+                </tr>
+                
                 <tr onclick="window.location='ld1/';" style="cursor: pointer;">
                     <td class="mono">ld1</td>
                     <td style="font-weight: 500;">Load Multiple Single Elements</td>
@@ -1268,11 +1611,46 @@
                     <td style="color: var(--text-muted);">Loads one element structure from memory into 1-4 registers.</td>
                 </tr>
                 
+                <tr onclick="window.location='ld1b/';" style="cursor: pointer;">
+                    <td class="mono">ld1b</td>
+                    <td style="font-weight: 500;">SVE Load Contiguous Bytes</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads bytes from memory into a vector under predicate control.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1d/';" style="cursor: pointer;">
+                    <td class="mono">ld1d</td>
+                    <td style="font-weight: 500;">SVE Load Contiguous Doublewords</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads doublewords from memory into a vector under predicate control.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1h/';" style="cursor: pointer;">
+                    <td class="mono">ld1h</td>
+                    <td style="font-weight: 500;">SVE Load Contiguous Halfwords</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads halfwords from memory into a vector under predicate control.</td>
+                </tr>
+                
                 <tr onclick="window.location='ld1r/';" style="cursor: pointer;">
                     <td class="mono">ld1r</td>
                     <td style="font-weight: 500;">Load Single Element Replicate</td>
                     <td><span class="badge">SIMD Load/Store</span></td>
                     <td style="color: var(--text-muted);">Loads one element and replicates it to all lanes of the vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
+                    <td class="mono">ld1w</td>
+                    <td style="font-weight: 500;">SVE Load Contiguous Words</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads words from memory into a vector under predicate control.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
+                    <td class="mono">ld1w</td>
+                    <td style="font-weight: 500;">SVE Gather Load Words (Vector Index)</td>
+                    <td><span class="badge">SVE Gather</span></td>
+                    <td style="color: var(--text-muted);">Loads words from non-contiguous addresses (Scatter-Gather).</td>
                 </tr>
                 
                 <tr onclick="window.location='ld2/';" style="cursor: pointer;">
@@ -1343,6 +1721,62 @@
                     <td style="font-weight: 500;">Load-Acquire Exclusive Register Halfword</td>
                     <td><span class="badge">Load/Store Excl</span></td>
                     <td style="color: var(--text-muted);">Loads a halfword with Acquire Exclusive semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldff1b/';" style="cursor: pointer;">
+                    <td class="mono">ldff1b</td>
+                    <td style="font-weight: 500;">SVE Load First-Fault Contiguous Bytes</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads bytes speculatively; suppresses faults after the first active element.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldff1d/';" style="cursor: pointer;">
+                    <td class="mono">ldff1d</td>
+                    <td style="font-weight: 500;">SVE Load First-Fault Contiguous Doublewords</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads doublewords speculatively; suppresses faults after the first active element.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldff1h/';" style="cursor: pointer;">
+                    <td class="mono">ldff1h</td>
+                    <td style="font-weight: 500;">SVE Load First-Fault Contiguous Halfwords</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads halfwords speculatively; suppresses faults after the first active element.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldff1w/';" style="cursor: pointer;">
+                    <td class="mono">ldff1w</td>
+                    <td style="font-weight: 500;">SVE Load First-Fault Contiguous Words</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads words speculatively; suppresses faults after the first active element.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldnf1b/';" style="cursor: pointer;">
+                    <td class="mono">ldnf1b</td>
+                    <td style="font-weight: 500;">SVE Load Non-Fault Contiguous Bytes</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads bytes without faulting; returns 0 if fault occurs.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldnf1d/';" style="cursor: pointer;">
+                    <td class="mono">ldnf1d</td>
+                    <td style="font-weight: 500;">SVE Load Non-Fault Contiguous Doublewords</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads doublewords without faulting.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldnf1h/';" style="cursor: pointer;">
+                    <td class="mono">ldnf1h</td>
+                    <td style="font-weight: 500;">SVE Load Non-Fault Contiguous Halfwords</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads halfwords without faulting.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldnf1w/';" style="cursor: pointer;">
+                    <td class="mono">ldnf1w</td>
+                    <td style="font-weight: 500;">SVE Load Non-Fault Contiguous Words</td>
+                    <td><span class="badge">SVE Load</span></td>
+                    <td style="color: var(--text-muted);">Loads words without faulting.</td>
                 </tr>
                 
                 <tr onclick="window.location='ldnp/';" style="cursor: pointer;">
@@ -1499,11 +1933,25 @@
                     <td style="color: var(--text-muted);">Shifts register left by variable amount.</td>
                 </tr>
                 
+                <tr onclick="window.location='lsl/';" style="cursor: pointer;">
+                    <td class="mono">lsl</td>
+                    <td style="font-weight: 500;">SVE Shift Left (Predicated)</td>
+                    <td><span class="badge">SVE Shift</span></td>
+                    <td style="color: var(--text-muted);">Shifts elements left under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='lsr/';" style="cursor: pointer;">
                     <td class="mono">lsr</td>
                     <td style="font-weight: 500;">Logical Shift Right (Register)</td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Shifts register right by variable amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='lsr/';" style="cursor: pointer;">
+                    <td class="mono">lsr</td>
+                    <td style="font-weight: 500;">SVE Logical Shift Right (Predicated)</td>
+                    <td><span class="badge">SVE Shift</span></td>
+                    <td style="color: var(--text-muted);">Shifts elements right logically under predicate.</td>
                 </tr>
                 
                 <tr onclick="window.location='madd/';" style="cursor: pointer;">
@@ -1604,6 +2052,13 @@
                     <td style="color: var(--text-muted);">Multiplies corresponding elements in two vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='mul/';" style="cursor: pointer;">
+                    <td class="mono">mul</td>
+                    <td style="font-weight: 500;">SVE Integer Multiply (Predicated)</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two vectors under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='mvn/';" style="cursor: pointer;">
                     <td class="mono">mvn</td>
                     <td style="font-weight: 500;">Vector Bitwise NOT</td>
@@ -1620,9 +2075,23 @@
                 
                 <tr onclick="window.location='neg/';" style="cursor: pointer;">
                     <td class="mono">neg</td>
+                    <td style="font-weight: 500;">SVE Negate</td>
+                    <td><span class="badge">SVE Integer Unary</span></td>
+                    <td style="color: var(--text-muted);">Negates integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='neg/';" style="cursor: pointer;">
+                    <td class="mono">neg</td>
                     <td style="font-weight: 500;">Vector Negate</td>
                     <td><span class="badge">SIMD Two Register</span></td>
                     <td style="color: var(--text-muted);">Negates integer elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='not/';" style="cursor: pointer;">
+                    <td class="mono">not</td>
+                    <td style="font-weight: 500;">SVE Bitwise NOT</td>
+                    <td><span class="badge">SVE Integer Unary</span></td>
+                    <td style="color: var(--text-muted);">Inverts bits.</td>
                 </tr>
                 
                 <tr onclick="window.location='not/';" style="cursor: pointer;">
@@ -1667,6 +2136,34 @@
                     <td style="color: var(--text-muted);">Bitwise OR of two vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='orr/';" style="cursor: pointer;">
+                    <td class="mono">orr</td>
+                    <td style="font-weight: 500;">SVE Bitwise OR (Predicated)</td>
+                    <td><span class="badge">SVE Logic</span></td>
+                    <td style="color: var(--text-muted);">Bitwise OR of two vectors under predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='orv/';" style="cursor: pointer;">
+                    <td class="mono">orv</td>
+                    <td style="font-weight: 500;">SVE Bitwise OR Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">ORs all active elements into a scalar.</td>
+                </tr>
+                
+                <tr onclick="window.location='pfalse/';" style="cursor: pointer;">
+                    <td class="mono">pfalse</td>
+                    <td style="font-weight: 500;">SVE Initialize Predicate to False</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Clears all elements of the predicate register.</td>
+                </tr>
+                
+                <tr onclick="window.location='pfirst/';" style="cursor: pointer;">
+                    <td class="mono">pfirst</td>
+                    <td style="font-weight: 500;">SVE Predicate First Active</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Sets destination predicate to true only at the first active element.</td>
+                </tr>
+                
                 <tr onclick="window.location='pmul/';" style="cursor: pointer;">
                     <td class="mono">pmul</td>
                     <td style="font-weight: 500;">Vector Polynomial Multiply</td>
@@ -1681,6 +2178,34 @@
                     <td style="color: var(--text-muted);">Performs polynomial multiplication over {0,1} producing wide result (Used for GCM).</td>
                 </tr>
                 
+                <tr onclick="window.location='pnext/';" style="cursor: pointer;">
+                    <td class="mono">pnext</td>
+                    <td style="font-weight: 500;">SVE Find Next Active Predicate</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Finds the next active predicate bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='ptest/';" style="cursor: pointer;">
+                    <td class="mono">ptest</td>
+                    <td style="font-weight: 500;">SVE Predicate Test</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Updates processor flags (NZCV) based on predicate state.</td>
+                </tr>
+                
+                <tr onclick="window.location='ptrue/';" style="cursor: pointer;">
+                    <td class="mono">ptrue</td>
+                    <td style="font-weight: 500;">SVE Initialize Predicate to True</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Sets elements of the predicate register to true (all active).</td>
+                </tr>
+                
+                <tr onclick="window.location='rbit/';" style="cursor: pointer;">
+                    <td class="mono">rbit</td>
+                    <td style="font-weight: 500;">SVE Reverse Bits</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Reverses bits in each element.</td>
+                </tr>
+                
                 <tr onclick="window.location='rbit/';" style="cursor: pointer;">
                     <td class="mono">rbit</td>
                     <td style="font-weight: 500;">Reverse Bits</td>
@@ -1693,6 +2218,13 @@
                     <td style="font-weight: 500;">Return from Subroutine</td>
                     <td><span class="badge">Branch</span></td>
                     <td style="color: var(--text-muted);">Branches to address in LR (or specified register).</td>
+                </tr>
+                
+                <tr onclick="window.location='rev/';" style="cursor: pointer;">
+                    <td class="mono">rev</td>
+                    <td style="font-weight: 500;">SVE Reverse Vector</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Reverses the order of elements in the vector.</td>
                 </tr>
                 
                 <tr onclick="window.location='rev/';" style="cursor: pointer;">
@@ -1723,6 +2255,27 @@
                     <td style="color: var(--text-muted);">Reverses bytes in each 32-bit word (64-bit op).</td>
                 </tr>
                 
+                <tr onclick="window.location='revb/';" style="cursor: pointer;">
+                    <td class="mono">revb</td>
+                    <td style="font-weight: 500;">SVE Reverse Bytes in Elements</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Reverses bytes within 16/32/64-bit elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='revh/';" style="cursor: pointer;">
+                    <td class="mono">revh</td>
+                    <td style="font-weight: 500;">SVE Reverse Halfwords in Elements</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Reverses halfwords within 32/64-bit elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='revw/';" style="cursor: pointer;">
+                    <td class="mono">revw</td>
+                    <td style="font-weight: 500;">SVE Reverse Words in Elements</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Reverses words within 64-bit elements.</td>
+                </tr>
+                
                 <tr onclick="window.location='rorv/';" style="cursor: pointer;">
                     <td class="mono">rorv</td>
                     <td style="font-weight: 500;">Rotate Right (Register)</td>
@@ -1735,6 +2288,13 @@
                     <td style="font-weight: 500;">Signed Add Long</td>
                     <td><span class="badge">SIMD Three Register Diff</span></td>
                     <td style="color: var(--text-muted);">Adds lower/upper halves of signed vectors, producing wider result (Widening).</td>
+                </tr>
+                
+                <tr onclick="window.location='saddv/';" style="cursor: pointer;">
+                    <td class="mono">saddv</td>
+                    <td style="font-weight: 500;">SVE Signed Integer Add Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Sums all active signed elements into a scalar result.</td>
                 </tr>
                 
                 <tr onclick="window.location='saddw/';" style="cursor: pointer;">
@@ -1767,6 +2327,13 @@
                 
                 <tr onclick="window.location='scvtf/';" style="cursor: pointer;">
                     <td class="mono">scvtf</td>
+                    <td style="font-weight: 500;">SVE Signed Integer Convert to Floating-Point</td>
+                    <td><span class="badge">SVE Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts signed integers to floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='scvtf/';" style="cursor: pointer;">
+                    <td class="mono">scvtf</td>
                     <td style="font-weight: 500;">Signed Integer Convert to Floating-Point</td>
                     <td><span class="badge">FP Conversion</span></td>
                     <td style="color: var(--text-muted);">Converts signed integer (GPR) to floating-point.</td>
@@ -1774,9 +2341,30 @@
                 
                 <tr onclick="window.location='sdiv/';" style="cursor: pointer;">
                     <td class="mono">sdiv</td>
+                    <td style="font-weight: 500;">SVE Signed Divide</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Divides signed integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='sdiv/';" style="cursor: pointer;">
+                    <td class="mono">sdiv</td>
                     <td style="font-weight: 500;">Signed Divide</td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Divides two signed registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='sdot/';" style="cursor: pointer;">
+                    <td class="mono">sdot</td>
+                    <td style="font-weight: 500;">SVE Signed Dot Product</td>
+                    <td><span class="badge">SVE Dot Product</span></td>
+                    <td style="color: var(--text-muted);">Computes dot product of signed integers (AI Acceleration).</td>
+                </tr>
+                
+                <tr onclick="window.location='sel/';" style="cursor: pointer;">
+                    <td class="mono">sel</td>
+                    <td style="font-weight: 500;">SVE Select Elements</td>
+                    <td><span class="badge">SVE Select</span></td>
+                    <td style="color: var(--text-muted);">Selects elements from Zn or Zm based on predicate.</td>
                 </tr>
                 
                 <tr onclick="window.location='sha1c/';" style="cursor: pointer;">
@@ -1858,9 +2446,23 @@
                 
                 <tr onclick="window.location='smax/';" style="cursor: pointer;">
                     <td class="mono">smax</td>
+                    <td style="font-weight: 500;">SVE Signed Maximum</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Determines maximum signed value per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='smax/';" style="cursor: pointer;">
+                    <td class="mono">smax</td>
                     <td style="font-weight: 500;">Vector Signed Maximum</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Returns larger signed integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='smaxv/';" style="cursor: pointer;">
+                    <td class="mono">smaxv</td>
+                    <td style="font-weight: 500;">SVE Signed Maximum Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Finds max signed element in vector.</td>
                 </tr>
                 
                 <tr onclick="window.location='smaxv/';" style="cursor: pointer;">
@@ -1872,9 +2474,23 @@
                 
                 <tr onclick="window.location='smin/';" style="cursor: pointer;">
                     <td class="mono">smin</td>
+                    <td style="font-weight: 500;">SVE Signed Minimum</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Determines minimum signed value per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='smin/';" style="cursor: pointer;">
+                    <td class="mono">smin</td>
                     <td style="font-weight: 500;">Vector Signed Minimum</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Returns smaller signed integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='sminv/';" style="cursor: pointer;">
+                    <td class="mono">sminv</td>
+                    <td style="font-weight: 500;">SVE Signed Minimum Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Finds min signed element in vector.</td>
                 </tr>
                 
                 <tr onclick="window.location='smlal/';" style="cursor: pointer;">
@@ -1903,6 +2519,13 @@
                     <td style="font-weight: 500;">Signed Multiply Long</td>
                     <td><span class="badge">SIMD Three Register Diff</span></td>
                     <td style="color: var(--text-muted);">Multiplies signed narrow vectors, producing wider result.</td>
+                </tr>
+                
+                <tr onclick="window.location='splice/';" style="cursor: pointer;">
+                    <td class="mono">splice</td>
+                    <td style="font-weight: 500;">SVE Splice Vectors</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Splices two vectors based on the last active element of the first.</td>
                 </tr>
                 
                 <tr onclick="window.location='sqadd/';" style="cursor: pointer;">
@@ -1959,6 +2582,41 @@
                     <td style="font-weight: 500;">Store Multiple Single Elements</td>
                     <td><span class="badge">SIMD Load/Store</span></td>
                     <td style="color: var(--text-muted);">Stores one element structure from 1-4 registers to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1b/';" style="cursor: pointer;">
+                    <td class="mono">st1b</td>
+                    <td style="font-weight: 500;">SVE Store Contiguous Bytes</td>
+                    <td><span class="badge">SVE Store</span></td>
+                    <td style="color: var(--text-muted);">Stores active bytes from vector to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1d/';" style="cursor: pointer;">
+                    <td class="mono">st1d</td>
+                    <td style="font-weight: 500;">SVE Store Contiguous Doublewords</td>
+                    <td><span class="badge">SVE Store</span></td>
+                    <td style="color: var(--text-muted);">Stores active doublewords from vector to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1h/';" style="cursor: pointer;">
+                    <td class="mono">st1h</td>
+                    <td style="font-weight: 500;">SVE Store Contiguous Halfwords</td>
+                    <td><span class="badge">SVE Store</span></td>
+                    <td style="color: var(--text-muted);">Stores active halfwords from vector to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1w/';" style="cursor: pointer;">
+                    <td class="mono">st1w</td>
+                    <td style="font-weight: 500;">SVE Store Contiguous Words</td>
+                    <td><span class="badge">SVE Store</span></td>
+                    <td style="color: var(--text-muted);">Stores active words from vector to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1w/';" style="cursor: pointer;">
+                    <td class="mono">st1w</td>
+                    <td style="font-weight: 500;">SVE Scatter Store Words (Vector Index)</td>
+                    <td><span class="badge">SVE Scatter</span></td>
+                    <td style="color: var(--text-muted);">Stores words to non-contiguous addresses.</td>
                 </tr>
                 
                 <tr onclick="window.location='st2/';" style="cursor: pointer;">
@@ -2199,6 +2857,13 @@
                     <td style="color: var(--text-muted);">Subtracts elements of Vm from Vn.</td>
                 </tr>
                 
+                <tr onclick="window.location='sub/';" style="cursor: pointer;">
+                    <td class="mono">sub</td>
+                    <td style="font-weight: 500;">SVE Integer Subtract (Predicated)</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Subtracts vector Zm from Zdn under predicate.</td>
+                </tr>
+                
                 <tr onclick="window.location='subs/';" style="cursor: pointer;">
                     <td class="mono">subs</td>
                     <td style="font-weight: 500;">Subtract and Set Flags (Extended)</td>
@@ -2218,6 +2883,20 @@
                     <td style="font-weight: 500;">Subtract and Set Flags (Shifted)</td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Subtracts shifted register and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='sunpkhi/';" style="cursor: pointer;">
+                    <td class="mono">sunpkhi</td>
+                    <td style="font-weight: 500;">SVE Signed Unpack High</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Unpacks and sign-extends upper half of vector elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='sunpklo/';" style="cursor: pointer;">
+                    <td class="mono">sunpklo</td>
+                    <td style="font-weight: 500;">SVE Signed Unpack Low</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Unpacks and sign-extends lower half of vector elements.</td>
                 </tr>
                 
                 <tr onclick="window.location='svc/';" style="cursor: pointer;">
@@ -2241,6 +2920,13 @@
                     <td style="color: var(--text-muted);">Look up elements in a table of vectors using indices.</td>
                 </tr>
                 
+                <tr onclick="window.location='tbl/';" style="cursor: pointer;">
+                    <td class="mono">tbl</td>
+                    <td style="font-weight: 500;">SVE Table Lookup</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Looks up elements in a vector table using indices.</td>
+                </tr>
+                
                 <tr onclick="window.location='tbnz/';" style="cursor: pointer;">
                     <td class="mono">tbnz</td>
                     <td style="font-weight: 500;">Test Bit Not Zero</td>
@@ -2262,6 +2948,13 @@
                     <td style="color: var(--text-muted);">Transposes elements (Lower).</td>
                 </tr>
                 
+                <tr onclick="window.location='trn1/';" style="cursor: pointer;">
+                    <td class="mono">trn1</td>
+                    <td style="font-weight: 500;">SVE Transpose 1</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Interleaves even elements from two vectors.</td>
+                </tr>
+                
                 <tr onclick="window.location='trn2/';" style="cursor: pointer;">
                     <td class="mono">trn2</td>
                     <td style="font-weight: 500;">Vector Transpose 2</td>
@@ -2269,11 +2962,25 @@
                     <td style="color: var(--text-muted);">Transposes elements (Upper).</td>
                 </tr>
                 
+                <tr onclick="window.location='trn2/';" style="cursor: pointer;">
+                    <td class="mono">trn2</td>
+                    <td style="font-weight: 500;">SVE Transpose 2</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Interleaves odd elements from two vectors.</td>
+                </tr>
+                
                 <tr onclick="window.location='uaddl/';" style="cursor: pointer;">
                     <td class="mono">uaddl</td>
                     <td style="font-weight: 500;">Unsigned Add Long</td>
                     <td><span class="badge">SIMD Three Register Diff</span></td>
                     <td style="color: var(--text-muted);">Adds lower/upper halves of unsigned vectors, producing wider result.</td>
+                </tr>
+                
+                <tr onclick="window.location='uaddv/';" style="cursor: pointer;">
+                    <td class="mono">uaddv</td>
+                    <td style="font-weight: 500;">SVE Unsigned Integer Add Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Sums all active unsigned elements into a scalar result.</td>
                 </tr>
                 
                 <tr onclick="window.location='uaddw/';" style="cursor: pointer;">
@@ -2292,6 +2999,13 @@
                 
                 <tr onclick="window.location='ucvtf/';" style="cursor: pointer;">
                     <td class="mono">ucvtf</td>
+                    <td style="font-weight: 500;">SVE Unsigned Integer Convert to Floating-Point</td>
+                    <td><span class="badge">SVE Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts unsigned integers to floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='ucvtf/';" style="cursor: pointer;">
+                    <td class="mono">ucvtf</td>
                     <td style="font-weight: 500;">Unsigned Integer Convert to Floating-Point</td>
                     <td><span class="badge">FP Conversion</span></td>
                     <td style="color: var(--text-muted);">Converts unsigned integer (GPR) to floating-point.</td>
@@ -2299,9 +3013,23 @@
                 
                 <tr onclick="window.location='udiv/';" style="cursor: pointer;">
                     <td class="mono">udiv</td>
+                    <td style="font-weight: 500;">SVE Unsigned Divide</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Divides unsigned integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='udiv/';" style="cursor: pointer;">
+                    <td class="mono">udiv</td>
                     <td style="font-weight: 500;">Unsigned Divide</td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Divides two unsigned registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='udot/';" style="cursor: pointer;">
+                    <td class="mono">udot</td>
+                    <td style="font-weight: 500;">SVE Unsigned Dot Product</td>
+                    <td><span class="badge">SVE Dot Product</span></td>
+                    <td style="color: var(--text-muted);">Computes dot product of unsigned integers.</td>
                 </tr>
                 
                 <tr onclick="window.location='umaddl/';" style="cursor: pointer;">
@@ -2313,9 +3041,30 @@
                 
                 <tr onclick="window.location='umax/';" style="cursor: pointer;">
                     <td class="mono">umax</td>
+                    <td style="font-weight: 500;">SVE Unsigned Maximum</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Determines maximum unsigned value per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='umax/';" style="cursor: pointer;">
+                    <td class="mono">umax</td>
                     <td style="font-weight: 500;">Vector Unsigned Maximum</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Returns larger unsigned integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='umaxv/';" style="cursor: pointer;">
+                    <td class="mono">umaxv</td>
+                    <td style="font-weight: 500;">SVE Unsigned Maximum Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Finds max unsigned element in vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='umin/';" style="cursor: pointer;">
+                    <td class="mono">umin</td>
+                    <td style="font-weight: 500;">SVE Unsigned Minimum</td>
+                    <td><span class="badge">SVE Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Determines minimum unsigned value per element.</td>
                 </tr>
                 
                 <tr onclick="window.location='umin/';" style="cursor: pointer;">
@@ -2323,6 +3072,13 @@
                     <td style="font-weight: 500;">Vector Unsigned Minimum</td>
                     <td><span class="badge">SIMD Three Register</span></td>
                     <td style="color: var(--text-muted);">Returns smaller unsigned integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='uminv/';" style="cursor: pointer;">
+                    <td class="mono">uminv</td>
+                    <td style="font-weight: 500;">SVE Unsigned Minimum Reduction</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Finds min unsigned element in vector.</td>
                 </tr>
                 
                 <tr onclick="window.location='uminv/';" style="cursor: pointer;">
@@ -2409,6 +3165,20 @@
                     <td style="color: var(--text-muted);">Subtracts unsigned narrow vectors, producing wider result.</td>
                 </tr>
                 
+                <tr onclick="window.location='uunpkhi/';" style="cursor: pointer;">
+                    <td class="mono">uunpkhi</td>
+                    <td style="font-weight: 500;">SVE Unsigned Unpack High</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Unpacks and zero-extends upper half of vector elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='uunpklo/';" style="cursor: pointer;">
+                    <td class="mono">uunpklo</td>
+                    <td style="font-weight: 500;">SVE Unsigned Unpack Low</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Unpacks and zero-extends lower half of vector elements.</td>
+                </tr>
+                
                 <tr onclick="window.location='uzp1/';" style="cursor: pointer;">
                     <td class="mono">uzp1</td>
                     <td style="font-weight: 500;">Vector Unzip 1</td>
@@ -2416,11 +3186,67 @@
                     <td style="color: var(--text-muted);">De-interleaves lower halves (Selects odd elements).</td>
                 </tr>
                 
+                <tr onclick="window.location='uzp1/';" style="cursor: pointer;">
+                    <td class="mono">uzp1</td>
+                    <td style="font-weight: 500;">SVE Unzip 1</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Selects even elements from concatenated vectors.</td>
+                </tr>
+                
                 <tr onclick="window.location='uzp2/';" style="cursor: pointer;">
                     <td class="mono">uzp2</td>
                     <td style="font-weight: 500;">Vector Unzip 2</td>
                     <td><span class="badge">SIMD Permute</span></td>
                     <td style="color: var(--text-muted);">De-interleaves upper halves (Selects even elements).</td>
+                </tr>
+                
+                <tr onclick="window.location='uzp2/';" style="cursor: pointer;">
+                    <td class="mono">uzp2</td>
+                    <td style="font-weight: 500;">SVE Unzip 2</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Selects odd elements from concatenated vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='whilehi/';" style="cursor: pointer;">
+                    <td class="mono">whilehi</td>
+                    <td style="font-weight: 500;">SVE While Higher (Unsigned)</td>
+                    <td><span class="badge">SVE Compare</span></td>
+                    <td style="color: var(--text-muted);">Generates predicate for unsigned loop (while Xn > Xm).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilehs/';" style="cursor: pointer;">
+                    <td class="mono">whilehs</td>
+                    <td style="font-weight: 500;">SVE While Higher or Same (Unsigned)</td>
+                    <td><span class="badge">SVE Compare</span></td>
+                    <td style="color: var(--text-muted);">Generates predicate for unsigned loop (while Xn >= Xm).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilele/';" style="cursor: pointer;">
+                    <td class="mono">whilele</td>
+                    <td style="font-weight: 500;">SVE While Less Than or Equal</td>
+                    <td><span class="badge">SVE Compare Scalar</span></td>
+                    <td style="color: var(--text-muted);">Generates a predicate based on loop counter (while Xn <= Xm).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilelo/';" style="cursor: pointer;">
+                    <td class="mono">whilelo</td>
+                    <td style="font-weight: 500;">SVE While Lower (Unsigned)</td>
+                    <td><span class="badge">SVE Compare</span></td>
+                    <td style="color: var(--text-muted);">Generates predicate for unsigned loop (while Xn < Xm).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilels/';" style="cursor: pointer;">
+                    <td class="mono">whilels</td>
+                    <td style="font-weight: 500;">SVE While Lower or Same (Unsigned)</td>
+                    <td><span class="badge">SVE Compare</span></td>
+                    <td style="color: var(--text-muted);">Generates predicate for unsigned loop (while Xn <= Xm).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilelt/';" style="cursor: pointer;">
+                    <td class="mono">whilelt</td>
+                    <td style="font-weight: 500;">SVE While Less Than</td>
+                    <td><span class="badge">SVE Compare Scalar</span></td>
+                    <td style="color: var(--text-muted);">Generates a predicate based on a loop counter (while Xn < Xm).</td>
                 </tr>
                 
                 <tr onclick="window.location='xtn/';" style="cursor: pointer;">
@@ -2437,11 +3263,25 @@
                     <td style="color: var(--text-muted);">Interleaves the lower halves of two vectors.</td>
                 </tr>
                 
+                <tr onclick="window.location='zip1/';" style="cursor: pointer;">
+                    <td class="mono">zip1</td>
+                    <td style="font-weight: 500;">SVE Zip 1</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Interleaves elements from the lower halves.</td>
+                </tr>
+                
                 <tr onclick="window.location='zip2/';" style="cursor: pointer;">
                     <td class="mono">zip2</td>
                     <td style="font-weight: 500;">Vector Zip 2 (Interleave)</td>
                     <td><span class="badge">SIMD Permute</span></td>
                     <td style="color: var(--text-muted);">Interleaves the upper halves of two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='zip2/';" style="cursor: pointer;">
+                    <td class="mono">zip2</td>
+                    <td style="font-weight: 500;">SVE Zip 2</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Interleaves elements from the upper halves.</td>
                 </tr>
                 
             </tbody>

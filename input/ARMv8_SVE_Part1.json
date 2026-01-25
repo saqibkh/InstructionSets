@@ -1,0 +1,604 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "ptrue",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Initialize Predicate to True",
+      "summary": "Sets elements of the predicate register to true (all active).",
+      "syntax": "PTRUE <Pd>.<T> {, <pattern>}",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | 00 | 011000 | pattern | 00 | Pd", "hex_opcode": "0x25180000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }, { "name": "pattern", "desc": "Pattern (e.g., VL1, VL2)" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "pfalse",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Initialize Predicate to False",
+      "summary": "Clears all elements of the predicate register.",
+      "syntax": "PFALSE <Pd>.B",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | 00 | 011000 | 11100 | 00 | Pd", "hex_opcode": "0x2518E000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1b",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Contiguous Bytes",
+      "summary": "Loads bytes from memory into a vector under predicate control.",
+      "syntax": "LD1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 00 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xA4000000" },
+      "operands": [{ "name": "Zt", "desc": "Dest Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1h",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Contiguous Halfwords",
+      "summary": "Loads halfwords from memory into a vector under predicate control.",
+      "syntax": "LD1H { <Zt>.H }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 01 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xA4400000" },
+      "operands": [{ "name": "Zt", "desc": "Dest Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1w",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Contiguous Words",
+      "summary": "Loads words from memory into a vector under predicate control.",
+      "syntax": "LD1W { <Zt>.S }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 10 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xA4800000" },
+      "operands": [{ "name": "Zt", "desc": "Dest Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1d",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Load Contiguous Doublewords",
+      "summary": "Loads doublewords from memory into a vector under predicate control.",
+      "syntax": "LD1D { <Zt>.D }, <Pg>/Z, [<Xn|SP>]",
+      "encoding": { "format": "SVE Load", "binary_pattern": "10100100 | 11 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xA4C00000" },
+      "operands": [{ "name": "Zt", "desc": "Dest Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1b",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Store Contiguous Bytes",
+      "summary": "Stores active bytes from vector to memory.",
+      "syntax": "ST1B { <Zt>.B }, <Pg>, [<Xn|SP>]",
+      "encoding": { "format": "SVE Store", "binary_pattern": "11100100 | 00 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xE4000000" },
+      "operands": [{ "name": "Zt", "desc": "Src Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1h",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Store Contiguous Halfwords",
+      "summary": "Stores active halfwords from vector to memory.",
+      "syntax": "ST1H { <Zt>.H }, <Pg>, [<Xn|SP>]",
+      "encoding": { "format": "SVE Store", "binary_pattern": "11100100 | 01 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xE4400000" },
+      "operands": [{ "name": "Zt", "desc": "Src Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1w",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Store Contiguous Words",
+      "summary": "Stores active words from vector to memory.",
+      "syntax": "ST1W { <Zt>.S }, <Pg>, [<Xn|SP>]",
+      "encoding": { "format": "SVE Store", "binary_pattern": "11100100 | 10 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xE4800000" },
+      "operands": [{ "name": "Zt", "desc": "Src Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1d",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Store Contiguous Doublewords",
+      "summary": "Stores active doublewords from vector to memory.",
+      "syntax": "ST1D { <Zt>.D }, <Pg>, [<Xn|SP>]",
+      "encoding": { "format": "SVE Store", "binary_pattern": "11100100 | 11 | 000000 | Pg | Rn | Zt", "hex_opcode": "0xE4C00000" },
+      "operands": [{ "name": "Zt", "desc": "Src Vector" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Xn", "desc": "Base Addr" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "whilelt",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE While Less Than",
+      "summary": "Generates a predicate based on a loop counter (while Xn < Xm).",
+      "syntax": "WHILELT <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Compare Scalar", "binary_pattern": "00100101 | 01 | 000 | 000 | 0 | Rm | Rn | Pd", "hex_opcode": "0x25400000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "Limit" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "whilele",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE While Less Than or Equal",
+      "summary": "Generates a predicate based on loop counter (while Xn <= Xm).",
+      "syntax": "WHILELE <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Compare Scalar", "binary_pattern": "00100101 | 01 | 000 | 001 | 0 | Rm | Rn | Pd", "hex_opcode": "0x25402000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Predicate" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "Limit" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "add",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Integer Add (Predicated)",
+      "summary": "Adds two vectors under predicate control.",
+      "syntax": "ADD <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 0 | 00000 | Pg | Zm | Zdn", "hex_opcode": "0x04000000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src1" }, { "name": "Pg", "desc": "Merge Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Integer Subtract (Predicated)",
+      "summary": "Subtracts vector Zm from Zdn under predicate.",
+      "syntax": "SUB <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 0 | 00001 | Pg | Zm | Zdn", "hex_opcode": "0x04004000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src1" }, { "name": "Pg", "desc": "Merge Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "mul",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Integer Multiply (Predicated)",
+      "summary": "Multiplies two vectors under predicate.",
+      "syntax": "MUL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Integer Binary", "binary_pattern": "00000100 | sz | 0 | 00010 | Pg | Zm | Zdn", "hex_opcode": "0x04008000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src1" }, { "name": "Pg", "desc": "Merge Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sel",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Select Elements",
+      "summary": "Selects elements from Zn or Zm based on predicate.",
+      "syntax": "SEL <Zd>.<T>, <Pg>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Select", "binary_pattern": "00000101 | sz | 0 | 0 | 00 | 00 | Pg | Zm | Zn | Zd", "hex_opcode": "0x05000000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Selector" }, { "name": "Zn", "desc": "True Src" }, { "name": "Zm", "desc": "False Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "index",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Create Index Vector",
+      "summary": "Generates a vector of indices: V[i] = Start + i * Step.",
+      "syntax": "INDEX <Zd>.<T>, <Start>, <Step>",
+      "encoding": { "format": "SVE Index", "binary_pattern": "00000100 | sz | 0 | 1 | 01 | imm5 | imm5 | Zd", "hex_opcode": "0x04400000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Start", "desc": "Scalar/Imm" }, { "name": "Step", "desc": "Scalar/Imm" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "dup",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Duplicate Scalar",
+      "summary": "Broadcasts a scalar register or immediate to all active vector elements.",
+      "syntax": "DUP <Zd>.<T>, <R><n|m>",
+      "encoding": { "format": "SVE Move", "binary_pattern": "00000101 | sz | 0 | 0 | 00 | 11 | Pg | Rn | 00000 | Zd", "hex_opcode": "0x05203000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Rn", "desc": "Source GPR" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "cpy",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Copy (Predicated)",
+      "summary": "Copies scalar value to active vector elements (Alias for DUP predicated).",
+      "syntax": "CPY <Zd>.<T>, <Pg>/M, <R><n>",
+      "encoding": { "format": "SVE Move", "binary_pattern": "00000101 | sz | 0 | 0 | 00 | 01 | Pg | Rn | 00000 | Zd", "hex_opcode": "0x05201000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Rn", "desc": "Source" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "incb",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Increment Scalar by Byte Count",
+      "summary": "Increments a general-purpose register by the number of active bytes in the pattern.",
+      "syntax": "INCB <Xdn>, <pattern> {, MUL #<imm>}",
+      "encoding": { "format": "SVE Inc/Dec", "binary_pattern": "00000100 | 00 | 1 | 10000 | pat | imm4 | Xdn", "hex_opcode": "0x04300000" },
+      "operands": [{ "name": "Xdn", "desc": "Register" }, { "name": "pattern", "desc": "Predicate Pattern" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "incw",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Increment Scalar by Word Count",
+      "summary": "Increments a register by the number of active words.",
+      "syntax": "INCW <Xdn>, <pattern> {, MUL #<imm>}",
+      "encoding": { "format": "SVE Inc/Dec", "binary_pattern": "00000100 | 10 | 1 | 10000 | pat | imm4 | Xdn", "hex_opcode": "0x04B00000" },
+      "operands": [{ "name": "Xdn", "desc": "Register" }, { "name": "pattern", "desc": "Predicate Pattern" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "incd",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Increment Scalar by Doubleword Count",
+      "summary": "Increments a register by the number of active doublewords.",
+      "syntax": "INCD <Xdn>, <pattern> {, MUL #<imm>}",
+      "encoding": { "format": "SVE Inc/Dec", "binary_pattern": "00000100 | 11 | 1 | 10000 | pat | imm4 | Xdn", "hex_opcode": "0x04F00000" },
+      "operands": [{ "name": "Xdn", "desc": "Register" }, { "name": "pattern", "desc": "Predicate Pattern" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "decb",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Decrement Scalar by Byte Count",
+      "summary": "Decrements a register by the number of active bytes.",
+      "syntax": "DECB <Xdn>, <pattern> {, MUL #<imm>}",
+      "encoding": { "format": "SVE Inc/Dec", "binary_pattern": "00000100 | 00 | 1 | 10001 | pat | imm4 | Xdn", "hex_opcode": "0x04310000" },
+      "operands": [{ "name": "Xdn", "desc": "Register" }, { "name": "pattern", "desc": "Predicate Pattern" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "decw",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Decrement Scalar by Word Count",
+      "summary": "Decrements a register by the number of active words.",
+      "syntax": "DECW <Xdn>, <pattern> {, MUL #<imm>}",
+      "encoding": { "format": "SVE Inc/Dec", "binary_pattern": "00000100 | 10 | 1 | 10001 | pat | imm4 | Xdn", "hex_opcode": "0x04B10000" },
+      "operands": [{ "name": "Xdn", "desc": "Register" }, { "name": "pattern", "desc": "Predicate Pattern" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "decd",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Decrement Scalar by Doubleword Count",
+      "summary": "Decrements a register by the number of active doublewords.",
+      "syntax": "DECD <Xdn>, <pattern> {, MUL #<imm>}",
+      "encoding": { "format": "SVE Inc/Dec", "binary_pattern": "00000100 | 11 | 1 | 10001 | pat | imm4 | Xdn", "hex_opcode": "0x04F10000" },
+      "operands": [{ "name": "Xdn", "desc": "Register" }, { "name": "pattern", "desc": "Predicate Pattern" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "and",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise AND (Predicated)",
+      "summary": "Bitwise AND of two vectors under predicate.",
+      "syntax": "AND <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Logic", "binary_pattern": "00000100 | sz | 0 | 01100 | Pg | Zm | Zdn", "hex_opcode": "0x040C0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "orr",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise OR (Predicated)",
+      "summary": "Bitwise OR of two vectors under predicate.",
+      "syntax": "ORR <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Logic", "binary_pattern": "00000100 | sz | 0 | 01101 | Pg | Zm | Zdn", "hex_opcode": "0x040D0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "eor",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise Exclusive OR (Predicated)",
+      "summary": "Bitwise XOR of two vectors under predicate.",
+      "syntax": "EOR <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Logic", "binary_pattern": "00000100 | sz | 0 | 01110 | Pg | Zm | Zdn", "hex_opcode": "0x040E0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "bic",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Bitwise Bit Clear (Predicated)",
+      "summary": "Bitwise AND NOT of two vectors under predicate.",
+      "syntax": "BIC <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Logic", "binary_pattern": "00000100 | sz | 0 | 01111 | Pg | Zm | Zdn", "hex_opcode": "0x040F0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Add",
+      "summary": "Adds floating-point elements under predicate.",
+      "syntax": "FADD <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Binary", "binary_pattern": "01100101 | 00 | 0 | 00000 | Pg | Zm | Zdn", "hex_opcode": "0x65000000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Subtract",
+      "summary": "Subtracts floating-point elements under predicate.",
+      "syntax": "FSUB <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Binary", "binary_pattern": "01100101 | 00 | 0 | 00001 | Pg | Zm | Zdn", "hex_opcode": "0x65002000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Multiply",
+      "summary": "Multiplies floating-point elements under predicate.",
+      "syntax": "FMUL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Binary", "binary_pattern": "01100101 | 00 | 0 | 00010 | Pg | Zm | Zdn", "hex_opcode": "0x65004000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Divide",
+      "summary": "Divides floating-point elements under predicate.",
+      "syntax": "FDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Binary", "binary_pattern": "01100101 | 00 | 0 | 00110 | Pg | Zm | Zdn", "hex_opcode": "0x6500C000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fmax",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Maximum",
+      "summary": "Determines maximum value of active float elements.",
+      "syntax": "FMAX <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Binary", "binary_pattern": "01100101 | 00 | 0 | 00100 | Pg | Zm | Zdn", "hex_opcode": "0x65008000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fmin",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Minimum",
+      "summary": "Determines minimum value of active float elements.",
+      "syntax": "FMIN <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Binary", "binary_pattern": "01100101 | 00 | 0 | 00101 | Pg | Zm | Zdn", "hex_opcode": "0x6500A000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fmla",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Fused Multiply-Add",
+      "summary": "Calculates (Zda + Zn * Zm) under predicate.",
+      "syntax": "FMLA <Zda>.<T>, <Pg>/M, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Ternary", "binary_pattern": "01100101 | 00 | 1 | 00000 | Pg | Zm | Zn | Zda", "hex_opcode": "0x65200000" },
+      "operands": [{ "name": "Zda", "desc": "Dest/Addend" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fmls",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Fused Multiply-Subtract",
+      "summary": "Calculates (Zda - Zn * Zm) under predicate.",
+      "syntax": "FMLS <Zda>.<T>, <Pg>/M, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Ternary", "binary_pattern": "01100101 | 00 | 1 | 00001 | Pg | Zm | Zn | Zda", "hex_opcode": "0x65202000" },
+      "operands": [{ "name": "Zda", "desc": "Dest/Minuend" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "uaddv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unsigned Integer Add Reduction",
+      "summary": "Sums all active unsigned elements into a scalar result.",
+      "syntax": "UADDV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000100 | sz | 001000 | Pg | Zn | Vd", "hex_opcode": "0x04200000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "faddv",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Add Reduction",
+      "summary": "Sums all active floating-point elements into a scalar result.",
+      "syntax": "FADDV <Vd>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "01100101 | sz | 001000 | Pg | Zn | Vd", "hex_opcode": "0x65200000" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Vector" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "pnext",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Find Next Active Predicate",
+      "summary": "Finds the next active predicate bit.",
+      "syntax": "PNEXT <Pdn>.<T>, <Pg>, <Pdn>.<T>",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | 00 | 011011 | Pg | 00 | Pdn", "hex_opcode": "0x251B0000" },
+      "operands": [{ "name": "Pdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Governing Pred" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "brka",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Break After First True",
+      "summary": "Sets predicates up to and including the first active element.",
+      "syntax": "BRKA <Pd>.B, <Pg>/Z, <Pn>.B",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | 01 | 000000 | Pg | Pn | Pd", "hex_opcode": "0x25400000" },
+      "operands": [{ "name": "Pd", "desc": "Dest" }, { "name": "Pg", "desc": "Limit" }, { "name": "Pn", "desc": "Source" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "brkb",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Break Before First True",
+      "summary": "Sets predicates up to (but excluding) the first active element.",
+      "syntax": "BRKB <Pd>.B, <Pg>/Z, <Pn>.B",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | 01 | 000001 | Pg | Pn | Pd", "hex_opcode": "0x25410000" },
+      "operands": [{ "name": "Pd", "desc": "Dest" }, { "name": "Pg", "desc": "Limit" }, { "name": "Pn", "desc": "Source" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "compact",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Compact Vector",
+      "summary": "Packs active elements to the bottom of the vector.",
+      "syntax": "COMPACT <Zd>.<T>, <Pg>, <Zn>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 100001 | Pg | Zn | Zd", "hex_opcode": "0x05610000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "splice",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Splice Vectors",
+      "summary": "Splices two vectors based on the last active element of the first.",
+      "syntax": "SPLICE <Zdn>.<T>, <Pg>, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 101101 | Pg | Zm | Zdn", "hex_opcode": "0x05AD0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/First" }, { "name": "Pg", "desc": "Predicate" }, { "name": "Zm", "desc": "Second" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "tbl",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Table Lookup",
+      "summary": "Looks up elements in a vector table using indices.",
+      "syntax": "TBL <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 100000 | 00 | Zm | Zn | Zd", "hex_opcode": "0x05200000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Table" }, { "name": "Zm", "desc": "Indices" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "trn1",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Transpose 1",
+      "summary": "Interleaves even elements from two vectors.",
+      "syntax": "TRN1 <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 110000 | 00 | Zm | Zn | Zd", "hex_opcode": "0x05300000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "trn2",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Transpose 2",
+      "summary": "Interleaves odd elements from two vectors.",
+      "syntax": "TRN2 <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 110001 | 00 | Zm | Zn | Zd", "hex_opcode": "0x05310000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "uzp1",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unzip 1",
+      "summary": "Selects even elements from concatenated vectors.",
+      "syntax": "UZP1 <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 110010 | 00 | Zm | Zn | Zd", "hex_opcode": "0x05320000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "uzp2",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Unzip 2",
+      "summary": "Selects odd elements from concatenated vectors.",
+      "syntax": "UZP2 <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 110011 | 00 | Zm | Zn | Zd", "hex_opcode": "0x05330000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "zip1",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Zip 1",
+      "summary": "Interleaves elements from the lower halves.",
+      "syntax": "ZIP1 <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 110100 | 00 | Zm | Zn | Zd", "hex_opcode": "0x05340000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "zip2",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Zip 2",
+      "summary": "Interleaves elements from the upper halves.",
+      "syntax": "ZIP2 <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 110101 | 00 | Zm | Zn | Zd", "hex_opcode": "0x05350000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "lsl",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Shift Left (Predicated)",
+      "summary": "Shifts elements left under predicate.",
+      "syntax": "LSL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Shift", "binary_pattern": "00000100 | sz | 0 | 01000 | Pg | Zm | Zdn", "hex_opcode": "0x04080000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Shift" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "lsr",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Logical Shift Right (Predicated)",
+      "summary": "Shifts elements right logically under predicate.",
+      "syntax": "LSR <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Shift", "binary_pattern": "00000100 | sz | 0 | 01001 | Pg | Zm | Zdn", "hex_opcode": "0x04090000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Shift" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "asr",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Arithmetic Shift Right (Predicated)",
+      "summary": "Shifts elements right arithmetically under predicate.",
+      "syntax": "ASR <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Shift", "binary_pattern": "00000100 | sz | 0 | 01010 | Pg | Zm | Zdn", "hex_opcode": "0x040A0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Shift" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1w",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Gather Load Words (Vector Index)",
+      "summary": "Loads words from non-contiguous addresses (Scatter-Gather).",
+      "syntax": "LD1W { <Zt>.S }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW #<shift>]",
+      "encoding": { "format": "SVE Gather", "binary_pattern": "10000100 | 10 | 0 | msz | 00 | 1 | Pg | Zn | Zt", "hex_opcode": "0x84800000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Indices" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1w",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Scatter Store Words (Vector Index)",
+      "summary": "Stores words to non-contiguous addresses.",
+      "syntax": "ST1W { <Zt>.S }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW #<shift>]",
+      "encoding": { "format": "SVE Scatter", "binary_pattern": "11100100 | 10 | 0 | msz | 00 | 1 | Pg | Zn | Zt", "hex_opcode": "0xE4800000" },
+      "operands": [{ "name": "Zt", "desc": "Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Indices" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "cmpeq",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Compare Equal (Integer)",
+      "summary": "Sets predicate bits where elements are equal.",
+      "syntax": "CMPEQ <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Compare", "binary_pattern": "00100100 | sz | 0 | 00000 | Pg | Zm | Zn | Pd", "hex_opcode": "0x24000000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Pred" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "cmpgt",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Compare Greater Than (Signed)",
+      "summary": "Sets predicate bits where Zn > Zm.",
+      "syntax": "CMPGT <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Compare", "binary_pattern": "00100100 | sz | 0 | 00011 | Pg | Zm | Zn | Pd", "hex_opcode": "0x24030000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Pred" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fcmpeq",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Compare Equal",
+      "summary": "Sets predicate bits where float elements are equal.",
+      "syntax": "FCMPEQ <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Compare", "binary_pattern": "01100100 | sz | 0 | 00000 | Pg | Zm | Zn | Pd", "hex_opcode": "0x64000000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Pred" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fcmpgt",
+      "architecture": "ARMv8-A",
+      "full_name": "SVE Floating-Point Compare Greater Than",
+      "summary": "Sets predicate bits where float Zn > Zm.",
+      "syntax": "FCMPGT <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE FP Compare", "binary_pattern": "01100100 | sz | 0 | 00011 | Pg | Zm | Zn | Pd", "hex_opcode": "0x64030000" },
+      "operands": [{ "name": "Pd", "desc": "Dest Pred" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src1" }, { "name": "Zm", "desc": "Src2" }],
+      "extension": "SVE"
+    }
+  ]
+}
