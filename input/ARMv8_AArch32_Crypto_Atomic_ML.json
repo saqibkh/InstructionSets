@@ -1,0 +1,314 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "sha512h",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA512 Hash Part 1 (A32)",
+      "summary": "SHA512 hash update part 1.",
+      "syntax": "SHA512H.64 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 10 | Vn | Vd | 1100 | N | Q | M | 0 | Vm", "hex_opcode": "0xF3200C00" },
+      "operands": [{ "name": "Qd", "desc": "State" }, { "name": "Qn", "desc": "Hash" }, { "name": "Qm", "desc": "Data" }],
+      "extension": "Crypto (SHA512)"
+    },
+    {
+      "mnemonic": "sha512h2",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA512 Hash Part 2 (A32)",
+      "summary": "SHA512 hash update part 2.",
+      "syntax": "SHA512H2.64 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 10 | Vn | Vd | 1100 | N | Q | M | 1 | Vm", "hex_opcode": "0xF3200C10" },
+      "operands": [{ "name": "Qd", "desc": "State" }, { "name": "Qn", "desc": "Hash" }, { "name": "Qm", "desc": "Data" }],
+      "extension": "Crypto (SHA512)"
+    },
+    {
+      "mnemonic": "sha512su0",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA512 Schedule Update 0 (A32)",
+      "summary": "SHA512 schedule update instruction 0.",
+      "syntax": "SHA512SU0.64 <Qd>, <Qm>",
+      "encoding": { "format": "Crypto 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | 10 | 10 | Vd | 00110 | Q | M | 0 | Vm", "hex_opcode": "0xF3BA0600" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "Crypto (SHA512)"
+    },
+    {
+      "mnemonic": "sha512su1",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA512 Schedule Update 1 (A32)",
+      "summary": "SHA512 schedule update instruction 1.",
+      "syntax": "SHA512SU1.64 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 10 | Vn | Vd | 1101 | N | Q | M | 0 | Vm", "hex_opcode": "0xF3200D00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src1" }, { "name": "Qm", "desc": "Src2" }],
+      "extension": "Crypto (SHA512)"
+    },
+    {
+      "mnemonic": "sm3ss1",
+      "architecture": "ARMv8-A",
+      "full_name": "SM3 Step 1 (A32)",
+      "summary": "SM3 cryptographic hash step 1.",
+      "syntax": "SM3SS1.32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110010 | 0 | 0 | 10 | Vn | Vd | 1100 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2200C00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "Crypto (SM3)"
+    },
+    {
+      "mnemonic": "sm3tt1a",
+      "architecture": "ARMv8-A",
+      "full_name": "SM3 Step 2A (A32)",
+      "summary": "SM3 cryptographic hash step 2A.",
+      "syntax": "SM3TT1A.32 <Qd>, <Dn>, <Dm>, #<imm>",
+      "encoding": { "format": "Crypto Imm", "binary_pattern": "11111110 | 10 | imm2 | Vn | Vd | 1000 | N | Q | M | 0 | Vm", "hex_opcode": "0xFE800800" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }, { "name": "imm", "desc": "Rot" }],
+      "extension": "Crypto (SM3)"
+    },
+    {
+      "mnemonic": "sm3tt1b",
+      "architecture": "ARMv8-A",
+      "full_name": "SM3 Step 2B (A32)",
+      "summary": "SM3 cryptographic hash step 2B.",
+      "syntax": "SM3TT1B.32 <Qd>, <Dn>, <Dm>, #<imm>",
+      "encoding": { "format": "Crypto Imm", "binary_pattern": "11111110 | 10 | imm2 | Vn | Vd | 1000 | N | Q | M | 1 | Vm", "hex_opcode": "0xFE800810" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }, { "name": "imm", "desc": "Rot" }],
+      "extension": "Crypto (SM3)"
+    },
+    {
+      "mnemonic": "sm3tt2a",
+      "architecture": "ARMv8-A",
+      "full_name": "SM3 Step 3A (A32)",
+      "summary": "SM3 cryptographic hash step 3A.",
+      "syntax": "SM3TT2A.32 <Qd>, <Dn>, <Dm>, #<imm>",
+      "encoding": { "format": "Crypto Imm", "binary_pattern": "11111110 | 10 | imm2 | Vn | Vd | 1001 | N | Q | M | 0 | Vm", "hex_opcode": "0xFE900800" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }, { "name": "imm", "desc": "Rot" }],
+      "extension": "Crypto (SM3)"
+    },
+    {
+      "mnemonic": "sm3tt2b",
+      "architecture": "ARMv8-A",
+      "full_name": "SM3 Step 3B (A32)",
+      "summary": "SM3 cryptographic hash step 3B.",
+      "syntax": "SM3TT2B.32 <Qd>, <Dn>, <Dm>, #<imm>",
+      "encoding": { "format": "Crypto Imm", "binary_pattern": "11111110 | 10 | imm2 | Vn | Vd | 1001 | N | Q | M | 1 | Vm", "hex_opcode": "0xFE900810" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }, { "name": "imm", "desc": "Rot" }],
+      "extension": "Crypto (SM3)"
+    },
+    {
+      "mnemonic": "sm3partw1",
+      "architecture": "ARMv8-A",
+      "full_name": "SM3 Part Word 1 (A32)",
+      "summary": "SM3 schedule update part 1.",
+      "syntax": "SM3PARTW1.32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110010 | 0 | 0 | 10 | Vn | Vd | 1100 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2200C10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "Crypto (SM3)"
+    },
+    {
+      "mnemonic": "sm3partw2",
+      "architecture": "ARMv8-A",
+      "full_name": "SM3 Part Word 2 (A32)",
+      "summary": "SM3 schedule update part 2.",
+      "syntax": "SM3PARTW2.32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110010 | 0 | 0 | 10 | Vn | Vd | 1101 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2200D10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "Crypto (SM3)"
+    },
+    {
+      "mnemonic": "sm4e",
+      "architecture": "ARMv8-A",
+      "full_name": "SM4 Encrypt (A32)",
+      "summary": "SM4 encryption step.",
+      "syntax": "SM4E.32 <Qd>, <Qm>",
+      "encoding": { "format": "Crypto 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | 10 | 10 | Vd | 00100 | Q | M | 1 | Vm", "hex_opcode": "0xF3BA0480" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Key" }],
+      "extension": "Crypto (SM4)"
+    },
+    {
+      "mnemonic": "sm4ekey",
+      "architecture": "ARMv8-A",
+      "full_name": "SM4 Key (A32)",
+      "summary": "SM4 key schedule step.",
+      "syntax": "SM4EKEY.32 <Qd>, <Qm>",
+      "encoding": { "format": "Crypto 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | 10 | 10 | Vd | 00101 | Q | M | 1 | Vm", "hex_opcode": "0xF3BA0580" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Key" }],
+      "extension": "Crypto (SM4)"
+    },
+    {
+      "mnemonic": "ldaexb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Acquire Exclusive Byte (A32)",
+      "summary": "Loads a byte, acquires semantics, marks exclusive.",
+      "syntax": "LDAEXB<c> <Rt>, [<Rn>]",
+      "encoding": { "format": "Load Excl", "binary_pattern": "cond | 0001 | 1101 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01D00F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldaexh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Acquire Exclusive Halfword (A32)",
+      "summary": "Loads a halfword, acquires semantics, marks exclusive.",
+      "syntax": "LDAEXH<c> <Rt>, [<Rn>]",
+      "encoding": { "format": "Load Excl", "binary_pattern": "cond | 0001 | 1111 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01F00F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldaexd",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Acquire Exclusive Double (A32)",
+      "summary": "Loads a doubleword, acquires semantics, marks exclusive.",
+      "syntax": "LDAEXD<c> <Rt>, <Rt2>, [<Rn>]",
+      "encoding": { "format": "Load Excl", "binary_pattern": "cond | 0001 | 1011 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01B00F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest 1" }, { "name": "Rt2", "desc": "Dest 2" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "stlexb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Release Exclusive Byte (A32)",
+      "summary": "Stores a byte with Release semantics if exclusive.",
+      "syntax": "STLEXB<c> <Rd>, <Rt>, [<Rn>]",
+      "encoding": { "format": "Store Excl", "binary_pattern": "cond | 0001 | 1100 | Rn | Rd | 1111 | 1001 | Rt", "hex_opcode": "0x01C00F90" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "stlexh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Release Exclusive Halfword (A32)",
+      "summary": "Stores a halfword with Release semantics if exclusive.",
+      "syntax": "STLEXH<c> <Rd>, <Rt>, [<Rn>]",
+      "encoding": { "format": "Store Excl", "binary_pattern": "cond | 0001 | 1110 | Rn | Rd | 1111 | 1001 | Rt", "hex_opcode": "0x01E00F90" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "stlexd",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Release Exclusive Double (A32)",
+      "summary": "Stores a doubleword with Release semantics if exclusive.",
+      "syntax": "STLEXD<c> <Rd>, <Rt>, <Rt2>, [<Rn>]",
+      "encoding": { "format": "Store Excl", "binary_pattern": "cond | 0001 | 1010 | Rn | Rd | 1111 | 1001 | Rt", "hex_opcode": "0x01A00F90" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src 1" }, { "name": "Rt2", "desc": "Src 2" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "vcadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Complex Add (A32)",
+      "summary": "Complex integer addition with rotation (NEON).",
+      "syntax": "VCADD<c>.I<size> <Qd>, <Qn>, <Qm>, #<rot>",
+      "encoding": { "format": "NEON Complex", "binary_pattern": "11111100 | 1 | sz | 0 | Vn | Vd | 1000 | 0 | 1 | M | rot | Vm", "hex_opcode": "0xFC800840" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }, { "name": "rot", "desc": "Rot" }],
+      "extension": "NEON (Complex)"
+    },
+    {
+      "mnemonic": "vcmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Complex Multiply Accumulate (A32)",
+      "summary": "Complex integer multiply-accumulate with rotation.",
+      "syntax": "VCMLA<c>.I<size> <Qd>, <Qn>, <Qm>, #<rot>",
+      "encoding": { "format": "NEON Complex", "binary_pattern": "11111100 | 1 | sz | 0 | Vn | Vd | 1000 | N | 1 | M | rot | Vm", "hex_opcode": "0xFC800840" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }, { "name": "rot", "desc": "Rot" }],
+      "extension": "NEON (Complex)"
+    },
+    {
+      "mnemonic": "vbfdot",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector BFloat16 Dot Product (A32)",
+      "summary": "BFloat16 dot product to float32 accumulator.",
+      "syntax": "VBFDOT<c>.BF16 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON BFloat16", "binary_pattern": "11111100 | 0 | 0 | 00 | Vn | Vd | 1101 | N | Q | M | 1 | Vm", "hex_opcode": "0xFC000D10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (BFloat16)"
+    },
+    {
+      "mnemonic": "vbfmmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector BFloat16 Matrix Multiply (A32)",
+      "summary": "BFloat16 matrix multiply-accumulate.",
+      "syntax": "VBFMMLA<c>.BF16 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON BFloat16", "binary_pattern": "11111100 | 0 | 0 | 11 | Vn | Vd | 1100 | N | Q | M | 1 | Vm", "hex_opcode": "0xFC300C10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (BFloat16)"
+    },
+    {
+      "mnemonic": "vbfcvt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Convert BFloat16 (A32)",
+      "summary": "Converts Float32 to BFloat16.",
+      "syntax": "VBFCVT<c>.BF16.F32 <Qd>, <Qm>",
+      "encoding": { "format": "NEON BFloat16", "binary_pattern": "11110011 | 1 | D | 11 | 01 | 10 | Vd | 00110 | Q | M | 0 | Vm", "hex_opcode": "0xF3B60600" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (BFloat16)"
+    },
+    {
+      "mnemonic": "vusdot",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned-Signed Dot Product (A32)",
+      "summary": "Dot product of unsigned (src1) and signed (src2) bytes.",
+      "syntax": "VUSDOT<c>.S8 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON DotProd", "binary_pattern": "11111100 | 1 | 0 | 00 | Vn | Vd | 1101 | N | Q | M | 0 | Vm", "hex_opcode": "0xFC800D00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Unsigned" }, { "name": "Qm", "desc": "Signed" }],
+      "extension": "NEON (DotProd)"
+    },
+    {
+      "mnemonic": "vsmmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Signed Int8 Matrix Multiply (A32)",
+      "summary": "Matrix multiply-accumulate (Signed Int8).",
+      "syntax": "VSMMLA<c>.S8 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON MatMul", "binary_pattern": "11111100 | 0 | 0 | 10 | Vn | Vd | 1100 | N | Q | M | 0 | Vm", "hex_opcode": "0xFC200C00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (MatMul)"
+    },
+    {
+      "mnemonic": "vusmmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned-Signed Matrix Multiply (A32)",
+      "summary": "Matrix multiply-accumulate (Unsigned x Signed Int8).",
+      "syntax": "VUSMMLA<c>.S8 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON MatMul", "binary_pattern": "11111100 | 1 | 0 | 10 | Vn | Vd | 1100 | N | Q | M | 0 | Vm", "hex_opcode": "0xFCA00C00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Unsigned" }, { "name": "Qm", "desc": "Signed" }],
+      "extension": "NEON (MatMul)"
+    },
+    {
+      "mnemonic": "vummla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned Matrix Multiply (A32)",
+      "summary": "Matrix multiply-accumulate (Unsigned Int8).",
+      "syntax": "VUMMLA<c>.U8 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON MatMul", "binary_pattern": "11111100 | 0 | 0 | 10 | Vn | Vd | 1100 | N | Q | M | 1 | Vm", "hex_opcode": "0xFC200C10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (MatMul)"
+    },
+    {
+      "mnemonic": "vjcvt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Javascript Convert (A32)",
+      "summary": "Converts double to signed 32-bit integer (JS semantics).",
+      "syntax": "VJCVT<c>.S32.F64 <Sd>, <Dm>",
+      "encoding": { "format": "VFP Convert", "binary_pattern": "11101110 | 1 | D | 11 | 11 | 01 | Vd | 1011 | 1 | M | 0 | Vm", "hex_opcode": "0xEEBE0B40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Dm", "desc": "Src" }],
+      "extension": "VFP (JS)"
+    },
+    {
+      "mnemonic": "pldw",
+      "architecture": "ARMv8-A",
+      "full_name": "Preload Data for Write (A32)",
+      "summary": "Hints memory system to bring data into cache for writing.",
+      "syntax": "PLDW [<Rn>, #<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11110101 | U | 001 | Rn | 1111 | imm12", "hex_opcode": "0xF510F000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "pldw",
+      "architecture": "ARMv8-A",
+      "full_name": "Preload Data for Write (Thumb)",
+      "summary": "Hints memory system to bring data into cache for writing (Thumb).",
+      "syntax": "PLDW [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Load/Store", "binary_pattern": "111110001001 | Rn | 1111 | imm12", "hex_opcode": "0xF890F000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    }
+  ]
+}

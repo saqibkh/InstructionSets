@@ -1,0 +1,414 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "adc.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Add with Carry (Wide)",
+      "summary": "Thumb-2 32-bit add with carry (Access high registers/large constants).",
+      "syntax": "ADC.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101011010 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEB400000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "add.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Add (Wide)",
+      "summary": "Thumb-2 32-bit add.",
+      "syntax": "ADD.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101011000 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEB000000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "sub.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract (Wide)",
+      "summary": "Thumb-2 32-bit subtract.",
+      "syntax": "SUB.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101011101 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEBA00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "sbc.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract with Carry (Wide)",
+      "summary": "Thumb-2 32-bit subtract with carry.",
+      "syntax": "SBC.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101011011 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEB600000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "rsb.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Subtract (Wide)",
+      "summary": "Thumb-2 32-bit reverse subtract.",
+      "syntax": "RSB.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101011110 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEBC00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "and.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise AND (Wide)",
+      "summary": "Thumb-2 32-bit AND.",
+      "syntax": "AND.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101010000 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEA000000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "orr.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise OR (Wide)",
+      "summary": "Thumb-2 32-bit OR.",
+      "syntax": "ORR.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101010010 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEA400000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "eor.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise Exclusive OR (Wide)",
+      "summary": "Thumb-2 32-bit XOR.",
+      "syntax": "EOR.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101010100 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEA800000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "bic.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise Bit Clear (Wide)",
+      "summary": "Thumb-2 32-bit AND NOT.",
+      "syntax": "BIC.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101010001 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEA200000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "orn.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise OR NOT (Wide)",
+      "summary": "Thumb-2 32-bit OR NOT.",
+      "syntax": "ORN.W <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101010011 | S | Rn | 0 | imm3 | Rd | imm8", "hex_opcode": "0xEA600000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "mov.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Move (Wide)",
+      "summary": "Thumb-2 32-bit Move.",
+      "syntax": "MOV.W <Rd>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101010010011110 | imm3 | Rd | imm8", "hex_opcode": "0xEA4F0000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Operand2", "desc": "Src" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "mvn.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Move NOT (Wide)",
+      "summary": "Thumb-2 32-bit Move Inverse.",
+      "syntax": "MVN.W <Rd>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "11101010011011110 | imm3 | Rd | imm8", "hex_opcode": "0xEA6F0000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Operand2", "desc": "Src" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "tst.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Test (Wide)",
+      "summary": "Thumb-2 32-bit Test (AND and update flags).",
+      "syntax": "TST.W <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "111010100001 | Rn | 0 | imm3 | 1111 | imm8", "hex_opcode": "0xEA100F00" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "teq.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Test Equivalence (Wide)",
+      "summary": "Thumb-2 32-bit Test Equivalence (XOR and update flags).",
+      "syntax": "TEQ.W <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "111010101001 | Rn | 0 | imm3 | 1111 | imm8", "hex_opcode": "0xEA900F00" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "cmp.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare (Wide)",
+      "summary": "Thumb-2 32-bit Compare (Subtract and update flags).",
+      "syntax": "CMP.W <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "111010111011 | Rn | 0 | imm3 | 1111 | imm8", "hex_opcode": "0xEBB00F00" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "cmn.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare Negative (Wide)",
+      "summary": "Thumb-2 32-bit Compare Negative (Add and update flags).",
+      "syntax": "CMN.W <Rn>, <Operand2>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "111010110001 | Rn | 0 | imm3 | 1111 | imm8", "hex_opcode": "0xEB100F00" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "cdp",
+      "architecture": "ARMv8-A",
+      "full_name": "Coprocessor Data Processing (A32)",
+      "summary": "Initiates a coprocessor data processing operation.",
+      "syntax": "CDP<c> <coproc>, <opc1>, <CRd>, <CRn>, <CRm>, <opc2>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 1110 | opc1 | CRn | CRd | coproc | opc2 | 0 | CRm", "hex_opcode": "0x0E000000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "CRd", "desc": "Dest" }, { "name": "CRn", "desc": "Src 1" }, { "name": "CRm", "desc": "Src 2" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "cdp2",
+      "architecture": "ARMv8-A",
+      "full_name": "Coprocessor Data Processing 2 (A32)",
+      "summary": "Initiates a coprocessor operation (Extension encoding).",
+      "syntax": "CDP2<c> <coproc>, <opc1>, <CRd>, <CRn>, <CRm>, <opc2>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "11111110 | opc1 | CRn | CRd | coproc | opc2 | 0 | CRm", "hex_opcode": "0xFE000000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "CRd", "desc": "Dest" }, { "name": "CRn", "desc": "Src 1" }, { "name": "CRm", "desc": "Src 2" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mcr2",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Coprocessor from Register 2 (A32)",
+      "summary": "Writes a general-purpose register to a coprocessor (Extension encoding).",
+      "syntax": "MCR2<c> <coproc>, <opc1>, <Rt>, <CRn>, <CRm>{, <opc2>}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "11111110 | opc1 | 0 | CRn | Rt | coproc | opc2 | 1 | CRm", "hex_opcode": "0xFE000010" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Src" }, { "name": "CRn", "desc": "Dest CP Reg" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mrc2",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Register from Coprocessor 2 (A32)",
+      "summary": "Reads a coprocessor register into a general-purpose register (Extension encoding).",
+      "syntax": "MRC2<c> <coproc>, <opc1>, <Rt>, <CRn>, <CRm>{, <opc2>}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "11111110 | opc1 | 1 | CRn | Rt | coproc | opc2 | 1 | CRm", "hex_opcode": "0xFE100010" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Dest" }, { "name": "CRn", "desc": "Src CP Reg" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mcrr2",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Coprocessor from Two Registers 2 (A32)",
+      "summary": "Writes two registers to a coprocessor (Extension encoding).",
+      "syntax": "MCRR2<c> <coproc>, <opc1>, <Rt>, <Rt2>, <CRm>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "111111000100 | Rt2 | Rt | coproc | opc1 | CRm", "hex_opcode": "0xFC400000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Src 1" }, { "name": "Rt2", "desc": "Src 2" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mrrc2",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Two Registers from Coprocessor 2 (A32)",
+      "summary": "Reads a coprocessor register into two registers (Extension encoding).",
+      "syntax": "MRRC2<c> <coproc>, <opc1>, <Rt>, <Rt2>, <CRm>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "111111000101 | Rt2 | Rt | coproc | opc1 | CRm", "hex_opcode": "0xFC500000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Dest 1" }, { "name": "Rt2", "desc": "Dest 2" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "ldc2",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Coprocessor 2 (A32)",
+      "summary": "Loads memory into a coprocessor (Extension encoding).",
+      "syntax": "LDC2{L}<c> <coproc>, <CRd>, [<Rn>, #+/-<imm>]{!}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "1111110 | P | U | N | W | 1 | Rn | CRd | coproc | imm8", "hex_opcode": "0xFD100000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "CRd", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "stc2",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Coprocessor 2 (A32)",
+      "summary": "Stores coprocessor contents to memory (Extension encoding).",
+      "syntax": "STC2{L}<c> <coproc>, <CRd>, [<Rn>, #+/-<imm>]{!}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "1111110 | P | U | N | W | 0 | Rn | CRd | coproc | imm8", "hex_opcode": "0xFD000000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "CRd", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "rrx",
+      "architecture": "ARMv8-A",
+      "full_name": "Rotate Right with Extend (A32)",
+      "summary": "Shifts register right by 1, inserting Carry flag into MSB.",
+      "syntax": "RRX{S}<c> <Rd>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1101 | S | 0000 | Rd | 0000 | 0110 | Rm", "hex_opcode": "0x01A00060" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rrx",
+      "architecture": "ARMv8-A",
+      "full_name": "Rotate Right with Extend (Thumb)",
+      "summary": "Thumb-2 32-bit Rotate Right with Extend.",
+      "syntax": "RRX{S}.W <Rd>, <Rm>",
+      "encoding": { "format": "Thumb2 Data Proc", "binary_pattern": "111010100101 | 1111 | 0 | imm3 | Rd | 00 | 00 | Rm", "hex_opcode": "0xEA5F0000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "b.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch (Wide)",
+      "summary": "Thumb-2 32-bit Unconditional Branch (large range).",
+      "syntax": "B.W <label>",
+      "encoding": { "format": "Thumb Branch", "binary_pattern": "11110 | S | imm10 | 10 | J1 | 1 | J2 | imm11", "hex_opcode": "0xF0009000" },
+      "operands": [{ "name": "label", "desc": "Label" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "bl.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch with Link (Wide)",
+      "summary": "Thumb-2 32-bit Branch with Link.",
+      "syntax": "BL.W <label>",
+      "encoding": { "format": "Thumb Branch", "binary_pattern": "11110 | S | imm10 | 11 | J1 | 1 | J2 | imm11", "hex_opcode": "0xF000D000" },
+      "operands": [{ "name": "label", "desc": "Label" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "adr.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Form PC-relative Address (Wide)",
+      "summary": "Thumb-2 32-bit ADR.",
+      "syntax": "ADR.W <Rd>, <label>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "11110 | i | 100000 | 1111 | 0 | imm3 | Rd | imm8", "hex_opcode": "0xF20F0000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "label", "desc": "Label" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "ldr.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register (Wide)",
+      "summary": "Thumb-2 32-bit Load Word.",
+      "syntax": "LDR.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Load", "binary_pattern": "111110001101 | Rn | Rt | imm12", "hex_opcode": "0xF8D00000" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "ldrb.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Byte (Wide)",
+      "summary": "Thumb-2 32-bit Load Byte.",
+      "syntax": "LDRB.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Load", "binary_pattern": "111110001001 | Rn | Rt | imm12", "hex_opcode": "0xF8900000" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "ldrh.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Halfword (Wide)",
+      "summary": "Thumb-2 32-bit Load Halfword.",
+      "syntax": "LDRH.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Load", "binary_pattern": "111110001011 | Rn | Rt | imm12", "hex_opcode": "0xF8B00000" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "ldrsb.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Byte (Wide)",
+      "summary": "Thumb-2 32-bit Load Signed Byte.",
+      "syntax": "LDRSB.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Load", "binary_pattern": "111110011001 | Rn | Rt | imm12", "hex_opcode": "0xF9900000" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "ldrsh.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Halfword (Wide)",
+      "summary": "Thumb-2 32-bit Load Signed Halfword.",
+      "syntax": "LDRSH.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Load", "binary_pattern": "111110011011 | Rn | Rt | imm12", "hex_opcode": "0xF9B00000" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "str.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register (Wide)",
+      "summary": "Thumb-2 32-bit Store Word.",
+      "syntax": "STR.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Store", "binary_pattern": "111110001100 | Rn | Rt | imm12", "hex_opcode": "0xF8C00000" },
+      "operands": [{ "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "strb.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Byte (Wide)",
+      "summary": "Thumb-2 32-bit Store Byte.",
+      "syntax": "STRB.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Store", "binary_pattern": "111110001000 | Rn | Rt | imm12", "hex_opcode": "0xF8800000" },
+      "operands": [{ "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "strh.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Halfword (Wide)",
+      "summary": "Thumb-2 32-bit Store Halfword.",
+      "syntax": "STRH.W <Rt>, [<Rn>, #<imm>]",
+      "encoding": { "format": "Thumb Store", "binary_pattern": "111110001010 | Rn | Rt | imm12", "hex_opcode": "0xF8A00000" },
+      "operands": [{ "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "ldm.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Multiple (Wide)",
+      "summary": "Thumb-2 32-bit Load Multiple.",
+      "syntax": "LDM.W <Rn>{!}, <registers>",
+      "encoding": { "format": "Thumb Load Multiple", "binary_pattern": "1110100010 | W | 1 | Rn | register_list", "hex_opcode": "0xE8900000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "registers", "desc": "List" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "stm.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Multiple (Wide)",
+      "summary": "Thumb-2 32-bit Store Multiple.",
+      "syntax": "STM.W <Rn>{!}, <registers>",
+      "encoding": { "format": "Thumb Store Multiple", "binary_pattern": "1110100010 | W | 0 | Rn | register_list", "hex_opcode": "0xE8800000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "registers", "desc": "List" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "pop.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Pop (Wide)",
+      "summary": "Thumb-2 32-bit Pop.",
+      "syntax": "POP.W <registers>",
+      "encoding": { "format": "Thumb Load Multiple", "binary_pattern": "1110100010111101 | registers", "hex_opcode": "0xE8BD0000" },
+      "operands": [{ "name": "registers", "desc": "List" }],
+      "extension": "T32 (Thumb2)"
+    },
+    {
+      "mnemonic": "push.w",
+      "architecture": "ARMv8-A",
+      "full_name": "Push (Wide)",
+      "summary": "Thumb-2 32-bit Push.",
+      "syntax": "PUSH.W <registers>",
+      "encoding": { "format": "Thumb Store Multiple", "binary_pattern": "1110100100101101 | registers", "hex_opcode": "0xE92D0000" },
+      "operands": [{ "name": "registers", "desc": "List" }],
+      "extension": "T32 (Thumb2)"
+    }
+  ]
+}

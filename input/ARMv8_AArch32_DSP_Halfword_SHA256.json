@@ -1,0 +1,334 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "smulbb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply (Bottom x Bottom)",
+      "summary": "Multiplies bottom 16 bits of Rn and Rm.",
+      "syntax": "SMULBB<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010110 | Rd | 0000 | Rm | 1000 | Rn", "hex_opcode": "0x01600080" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1 (Bot)" }, { "name": "Rm", "desc": "Src 2 (Bot)" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smulbt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply (Bottom x Top)",
+      "summary": "Multiplies bottom 16 bits of Rn and top 16 bits of Rm.",
+      "syntax": "SMULBT<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010110 | Rd | 0000 | Rm | 1100 | Rn", "hex_opcode": "0x016000C0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1 (Bot)" }, { "name": "Rm", "desc": "Src 2 (Top)" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smultb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply (Top x Bottom)",
+      "summary": "Multiplies top 16 bits of Rn and bottom 16 bits of Rm.",
+      "syntax": "SMULTB<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010110 | Rd | 0000 | Rm | 1010 | Rn", "hex_opcode": "0x016000A0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1 (Top)" }, { "name": "Rm", "desc": "Src 2 (Bot)" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smultt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply (Top x Top)",
+      "summary": "Multiplies top 16 bits of Rn and top 16 bits of Rm.",
+      "syntax": "SMULTT<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010110 | Rd | 0000 | Rm | 1110 | Rn", "hex_opcode": "0x016000E0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1 (Top)" }, { "name": "Rm", "desc": "Src 2 (Top)" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlabb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate (Bottom x Bottom)",
+      "summary": "Accumulates (Rn.B * Rm.B) into Ra.",
+      "syntax": "SMLABB<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010000 | Rd | Ra | Rm | 1000 | Rn", "hex_opcode": "0x01000080" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlabt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate (Bottom x Top)",
+      "summary": "Accumulates (Rn.B * Rm.T) into Ra.",
+      "syntax": "SMLABT<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010000 | Rd | Ra | Rm | 1100 | Rn", "hex_opcode": "0x010000C0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlatb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate (Top x Bottom)",
+      "summary": "Accumulates (Rn.T * Rm.B) into Ra.",
+      "syntax": "SMLATB<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010000 | Rd | Ra | Rm | 1010 | Rn", "hex_opcode": "0x010000A0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlatt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate (Top x Top)",
+      "summary": "Accumulates (Rn.T * Rm.T) into Ra.",
+      "syntax": "SMLATT<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010000 | Rd | Ra | Rm | 1110 | Rn", "hex_opcode": "0x010000E0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smulwb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply (Word x Bottom)",
+      "summary": "Multiplies 32-bit Rn by bottom 16-bits of Rm, takes top 32-bits of result.",
+      "syntax": "SMULWB<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010010 | Rd | 0000 | Rm | 1010 | Rn", "hex_opcode": "0x012000A0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Word Src" }, { "name": "Rm", "desc": "Half Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smulwt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply (Word x Top)",
+      "summary": "Multiplies 32-bit Rn by top 16-bits of Rm, takes top 32-bits of result.",
+      "syntax": "SMULWT<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010010 | Rd | 0000 | Rm | 1110 | Rn", "hex_opcode": "0x012000E0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Word Src" }, { "name": "Rm", "desc": "Half Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlawb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate (Word x Bottom)",
+      "summary": "Performs SMULWB and adds to accumulator.",
+      "syntax": "SMLAWB<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010010 | Rd | Ra | Rm | 1000 | Rn", "hex_opcode": "0x01200080" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Word" }, { "name": "Rm", "desc": "Half" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlawt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate (Word x Top)",
+      "summary": "Performs SMULWT and adds to accumulator.",
+      "syntax": "SMLAWT<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010010 | Rd | Ra | Rm | 1100 | Rn", "hex_opcode": "0x012000C0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Word" }, { "name": "Rm", "desc": "Half" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlalbb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate Long (Bottom x Bottom)",
+      "summary": "Accumulates (Rn.B * Rm.B) into 64-bit pair.",
+      "syntax": "SMLALBB<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010100 | RdHi | RdLo | Rm | 1000 | Rn", "hex_opcode": "0x01400080" },
+      "operands": [{ "name": "RdLo", "desc": "Lo" }, { "name": "RdHi", "desc": "Hi" }, { "name": "Rn", "desc": "Src1" }, { "name": "Rm", "desc": "Src2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlalbt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate Long (Bottom x Top)",
+      "summary": "Accumulates (Rn.B * Rm.T) into 64-bit pair.",
+      "syntax": "SMLALBT<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010100 | RdHi | RdLo | Rm | 1100 | Rn", "hex_opcode": "0x014000C0" },
+      "operands": [{ "name": "RdLo", "desc": "Lo" }, { "name": "RdHi", "desc": "Hi" }, { "name": "Rn", "desc": "Src1" }, { "name": "Rm", "desc": "Src2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlaltb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate Long (Top x Bottom)",
+      "summary": "Accumulates (Rn.T * Rm.B) into 64-bit pair.",
+      "syntax": "SMLALTB<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010100 | RdHi | RdLo | Rm | 1010 | Rn", "hex_opcode": "0x014000A0" },
+      "operands": [{ "name": "RdLo", "desc": "Lo" }, { "name": "RdHi", "desc": "Hi" }, { "name": "Rn", "desc": "Src1" }, { "name": "Rm", "desc": "Src2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlaltt",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate Long (Top x Top)",
+      "summary": "Accumulates (Rn.T * Rm.T) into 64-bit pair.",
+      "syntax": "SMLALTT<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00010100 | RdHi | RdLo | Rm | 1110 | Rn", "hex_opcode": "0x014000E0" },
+      "operands": [{ "name": "RdLo", "desc": "Lo" }, { "name": "RdHi", "desc": "Hi" }, { "name": "Rn", "desc": "Src1" }, { "name": "Rm", "desc": "Src2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "mia",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply with Internal Accumulate",
+      "summary": "Multiplies two 32-bit values and adds to 40-bit internal acc (XScale Legacy).",
+      "syntax": "MIA<c> <Acc>, <Rn>, <Rm>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 11100010 | 0000 | Rn | Acc | 0000 | 0001 | Rm", "hex_opcode": "0x0E200010" },
+      "operands": [{ "name": "Acc", "desc": "Accumulator" }, { "name": "Rn", "desc": "Src1" }, { "name": "Rm", "desc": "Src2" }],
+      "extension": "A32 (XScale)"
+    },
+    {
+      "mnemonic": "miaph",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply with Internal Accumulate Packed Halfwords",
+      "summary": "SIMD multiply of packed halfwords to internal acc (XScale Legacy).",
+      "syntax": "MIAPH<c> <Acc>, <Rn>, <Rm>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 11100010 | 1000 | Rn | Acc | 0000 | 0001 | Rm", "hex_opcode": "0x0E280010" },
+      "operands": [{ "name": "Acc", "desc": "Accumulator" }, { "name": "Rn", "desc": "Src1" }, { "name": "Rm", "desc": "Src2" }],
+      "extension": "A32 (XScale)"
+    },
+    {
+      "mnemonic": "sha256h",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA256 Hash Part 1 (A32)",
+      "summary": "SHA256 hash update (part 1).",
+      "syntax": "SHA256H.32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 0 | Vn | Vd | 1100 | N | Q | M | 0 | Vm", "hex_opcode": "0xF3000C00" },
+      "operands": [{ "name": "Qd", "desc": "State" }, { "name": "Qn", "desc": "Hash" }, { "name": "Qm", "desc": "Data" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sha256h2",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA256 Hash Part 2 (A32)",
+      "summary": "SHA256 hash update (part 2).",
+      "syntax": "SHA256H2.32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 0 | Vn | Vd | 1100 | N | Q | M | 1 | Vm", "hex_opcode": "0xF3000C10" },
+      "operands": [{ "name": "Qd", "desc": "State" }, { "name": "Qn", "desc": "Hash" }, { "name": "Qm", "desc": "Data" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sha256su0",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA256 Schedule Update 0 (A32)",
+      "summary": "SHA256 schedule update instruction 0.",
+      "syntax": "SHA256SU0.32 <Qd>, <Qm>",
+      "encoding": { "format": "Crypto 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | 10 | 10 | Vd | 00100 | Q | M | 0 | Vm", "hex_opcode": "0xF3BA0400" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sha256su1",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA256 Schedule Update 1 (A32)",
+      "summary": "SHA256 schedule update instruction 1.",
+      "syntax": "SHA256SU1.32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "Crypto 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 0 | Vn | Vd | 1101 | N | Q | M | 0 | Vm", "hex_opcode": "0xF3000C00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src1" }, { "name": "Qm", "desc": "Src2" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sdot",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Dot Product (A32)",
+      "summary": "Signed Dot Product (vector by vector).",
+      "syntax": "SDOT<c>.S8 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11111100 | 0 | 0 | 10 | Vn | Vd | 1101 | N | Q | M | 0 | Vm", "hex_opcode": "0xFC200D00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (DotProd)"
+    },
+    {
+      "mnemonic": "udot",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Dot Product (A32)",
+      "summary": "Unsigned Dot Product (vector by vector).",
+      "syntax": "UDOT<c>.U8 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11111100 | 0 | 0 | 10 | Vn | Vd | 1101 | N | Q | M | 1 | Vm", "hex_opcode": "0xFC200D10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (DotProd)"
+    },
+    {
+      "mnemonic": "vmmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Matrix Multiply Accumulate (A32)",
+      "summary": "Matrix multiply-accumulate (BFloat16/Int8).",
+      "syntax": "VMMLA<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11111100 | 0 | sz | 10 | Vn | Vd | 1100 | N | Q | M | 0 | Vm", "hex_opcode": "0xFC200C00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (MatMul)"
+    },
+    {
+      "mnemonic": "usdot",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Signed Dot Product (A32)",
+      "summary": "Dot product of unsigned and signed integers.",
+      "syntax": "USDOT<c>.S8 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11111100 | 1 | 0 | 00 | Vn | Vd | 1101 | N | Q | M | 0 | Vm", "hex_opcode": "0xFC800D00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Unsigned" }, { "name": "Qm", "desc": "Signed" }],
+      "extension": "NEON (DotProd)"
+    },
+    {
+      "mnemonic": "sxtb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend Byte (Thumb)",
+      "summary": "Sign-extends byte to word (Thumb).",
+      "syntax": "SXTB <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "1011001001 | Rm | Rd", "hex_opcode": "0xB240" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "sxth",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend Halfword (Thumb)",
+      "summary": "Sign-extends halfword to word (Thumb).",
+      "syntax": "SXTH <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "1011001000 | Rm | Rd", "hex_opcode": "0xB200" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "uxtb",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend Byte (Thumb)",
+      "summary": "Zero-extends byte to word (Thumb).",
+      "syntax": "UXTB <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "1011001011 | Rm | Rd", "hex_opcode": "0xB2C0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "uxth",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend Halfword (Thumb)",
+      "summary": "Zero-extends halfword to word (Thumb).",
+      "syntax": "UXTH <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "1011001010 | Rm | Rd", "hex_opcode": "0xB280" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes (Thumb)",
+      "summary": "Endian swap (Thumb).",
+      "syntax": "REV <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "1011101000 | Rm | Rd", "hex_opcode": "0xBA00" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "rev16",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes Halfword (Thumb)",
+      "summary": "Reverse bytes in halfwords (Thumb).",
+      "syntax": "REV16 <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "1011101001 | Rm | Rd", "hex_opcode": "0xBA40" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "revsh",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Signed Halfword (Thumb)",
+      "summary": "Reverse bytes in low halfword, sign extend (Thumb).",
+      "syntax": "REVSH <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "1011101011 | Rm | Rd", "hex_opcode": "0xBAC0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "T32 (Thumb)"
+    }
+  ]
+}
