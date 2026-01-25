@@ -71,20 +71,6 @@
                     <td style="color: var(--text-muted);">Adds the contents of two registers.</td>
                 </tr>
                 
-                <tr onclick="window.location='add/';" style="cursor: pointer;">
-                    <td class="mono">ADD</td>
-                    <td style="font-weight: 500;">Add</td>
-                    <td><span class="badge">R-Type</span></td>
-                    <td style="color: var(--text-muted);">Adds the contents of two registers.</td>
-                </tr>
-                
-                <tr onclick="window.location='addi/';" style="cursor: pointer;">
-                    <td class="mono">ADDI</td>
-                    <td style="font-weight: 500;">Add Immediate</td>
-                    <td><span class="badge">I-Type</span></td>
-                    <td style="color: var(--text-muted);">Adds a sign-extended 12-bit immediate to a register.</td>
-                </tr>
-                
                 <tr onclick="window.location='addi/';" style="cursor: pointer;">
                     <td class="mono">ADDI</td>
                     <td style="font-weight: 500;">Add Immediate</td>
@@ -250,13 +236,6 @@
                     <td class="mono">AUIPC</td>
                     <td style="font-weight: 500;">Add Upper Immediate to PC</td>
                     <td><span class="badge">U-Type</span></td>
-                    <td style="color: var(--text-muted);">Adds a 20-bit upper immediate to the Program Counter.</td>
-                </tr>
-                
-                <tr onclick="window.location='auipc/';" style="cursor: pointer;">
-                    <td class="mono">AUIPC</td>
-                    <td style="font-weight: 500;">Add Upper Immediate to PC</td>
-                    <td><span class="badge">U-Type</span></td>
                     <td style="color: var(--text-muted);">Adds a 20-bit upper immediate to the Program Counter, used for PC-relative addressing.</td>
                 </tr>
                 
@@ -272,13 +251,6 @@
                     <td style="font-weight: 500;">Bit Clear Immediate</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Clears a single bit in rs1 at the index specified by an immediate.</td>
-                </tr>
-                
-                <tr onclick="window.location='beq/';" style="cursor: pointer;">
-                    <td class="mono">BEQ</td>
-                    <td style="font-weight: 500;">Branch if Equal</td>
-                    <td><span class="badge">B-Type</span></td>
-                    <td style="color: var(--text-muted);">Branches if two registers are equal.</td>
                 </tr>
                 
                 <tr onclick="window.location='beq/';" style="cursor: pointer;">
@@ -736,13 +708,6 @@
                     <td style="color: var(--text-muted);">Used by debuggers to cause control to be transferred back to a debugging environment.</td>
                 </tr>
                 
-                <tr onclick="window.location='ecall/';" style="cursor: pointer;">
-                    <td class="mono">ECALL</td>
-                    <td style="font-weight: 500;">Environment Call</td>
-                    <td><span class="badge">I-Type</span></td>
-                    <td style="color: var(--text-muted);">Triggers a service request to the execution environment (OS).</td>
-                </tr>
-                
                 <tr onclick="window.location='fadd.d/';" style="cursor: pointer;">
                     <td class="mono">FADD.D</td>
                     <td style="font-weight: 500;">Float Add Double</td>
@@ -1139,13 +1104,6 @@
                     <td class="mono">JAL</td>
                     <td style="font-weight: 500;">Jump and Link</td>
                     <td><span class="badge">J-Type</span></td>
-                    <td style="color: var(--text-muted);">Jumps to an offset and saves return address.</td>
-                </tr>
-                
-                <tr onclick="window.location='jal/';" style="cursor: pointer;">
-                    <td class="mono">JAL</td>
-                    <td style="font-weight: 500;">Jump and Link</td>
-                    <td><span class="badge">J-Type</span></td>
                     <td style="color: var(--text-muted);">Jumps to an offset relative to PC and saves the return address (PC+4) to rd.</td>
                 </tr>
                 
@@ -1223,21 +1181,7 @@
                     <td class="mono">LUI</td>
                     <td style="font-weight: 500;">Load Upper Immediate</td>
                     <td><span class="badge">U-Type</span></td>
-                    <td style="color: var(--text-muted);">Loads the 20-bit immediate into the upper 20 bits of the register.</td>
-                </tr>
-                
-                <tr onclick="window.location='lui/';" style="cursor: pointer;">
-                    <td class="mono">LUI</td>
-                    <td style="font-weight: 500;">Load Upper Immediate</td>
-                    <td><span class="badge">U-Type</span></td>
                     <td style="color: var(--text-muted);">Loads the 20-bit immediate into the upper 20 bits of the register (lower 12 bits are zero).</td>
-                </tr>
-                
-                <tr onclick="window.location='lw/';" style="cursor: pointer;">
-                    <td class="mono">LW</td>
-                    <td style="font-weight: 500;">Load Word</td>
-                    <td><span class="badge">I-Type</span></td>
-                    <td style="color: var(--text-muted);">Loads a 32-bit word from memory.</td>
                 </tr>
                 
                 <tr onclick="window.location='lw/';" style="cursor: pointer;">
@@ -1646,25 +1590,11 @@
                     <td style="color: var(--text-muted);">Performs a 32-bit logical right shift on rs1 by the amount in rs2, sign-extending the result.</td>
                 </tr>
                 
-                <tr onclick="window.location='sub/';" style="cursor: pointer;">
-                    <td class="mono">SUB</td>
-                    <td style="font-weight: 500;">Subtract</td>
-                    <td><span class="badge">R-Type</span></td>
-                    <td style="color: var(--text-muted);">Subtracts rs2 from rs1.</td>
-                </tr>
-                
                 <tr onclick="window.location='subw/';" style="cursor: pointer;">
                     <td class="mono">SUBW</td>
                     <td style="font-weight: 500;">Subtract Word</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Subtracts the lower 32 bits of rs2 from rs1 and sign-extends the result to 64 bits.</td>
-                </tr>
-                
-                <tr onclick="window.location='sw/';" style="cursor: pointer;">
-                    <td class="mono">SW</td>
-                    <td style="font-weight: 500;">Store Word</td>
-                    <td><span class="badge">S-Type</span></td>
-                    <td style="color: var(--text-muted);">Stores a 32-bit word to memory.</td>
                 </tr>
                 
                 <tr onclick="window.location='sw/';" style="cursor: pointer;">
