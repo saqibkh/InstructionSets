@@ -1,0 +1,554 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vsra",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Shift Right and Accumulate",
+      "summary": "Shifts elements right and adds to the destination accumulator.",
+      "syntax": "VSRA<c>.<dt> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0001 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800110" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Acc" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrsra",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Rounding Shift Right and Accumulate",
+      "summary": "Shifts right with rounding and adds to accumulator.",
+      "syntax": "VRSRA<c>.<dt> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0011 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800310" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Acc" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vsli",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Shift Left and Insert",
+      "summary": "Shifts bits left and inserts into destination (merging).",
+      "syntax": "VSLI<c>.<size> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0101 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800510" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vsri",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Shift Right and Insert",
+      "summary": "Shifts bits right and inserts into destination.",
+      "syntax": "VSRI<c>.<size> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0100 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800410" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrshl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Rounding Shift Left",
+      "summary": "Shifts left with rounding based on a register value.",
+      "syntax": "VRSHL<c>.<dt> <Qd>, <Qm>, <Qn>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0101 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000500" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "Qn", "desc": "Shift Reg" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrshr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Rounding Shift Right",
+      "summary": "Shifts right with rounding based on immediate.",
+      "syntax": "VRSHR<c>.<dt> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0010 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800210" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrshrn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Rounding Shift Right Narrow",
+      "summary": "Shifts right, rounds, and narrows (2N -> N bits).",
+      "syntax": "VRSHRN<c>.<dt> <Dd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 1000 | 0 | 1 | M | 1 | Vm", "hex_opcode": "0xF2800810" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qm", "desc": "Src Wide" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqshl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Shift Left (Register)",
+      "summary": "Shifts left with saturation based on register.",
+      "syntax": "VQSHL<c>.<dt> <Qd>, <Qm>, <Qn>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0100 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000400" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "Qn", "desc": "Shift Reg" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqshl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Shift Left (Immediate)",
+      "summary": "Shifts left with saturation based on immediate.",
+      "syntax": "VQSHL<c>.<dt> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0111 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800710" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqshr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Shift Right (Unsigned)",
+      "summary": "Shifts right with saturation (Unsigned).",
+      "syntax": "VQSHR<c>.U<size> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 1101 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800D10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqshrn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Shift Right Narrow",
+      "summary": "Shifts right, saturates, and narrows.",
+      "syntax": "VQSHRN<c>.<dt> <Dd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 1001 | 0 | 0 | M | 1 | Vm", "hex_opcode": "0xF2800910" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qm", "desc": "Src Wide" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqshlu",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Shift Left Unsigned",
+      "summary": "Shifts signed elements left, saturating to unsigned result.",
+      "syntax": "VQSHLU<c>.<dt> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0110 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800610" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqrshl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Rounding Shift Left",
+      "summary": "Shifts left with saturation and rounding.",
+      "syntax": "VQRSHL<c>.<dt> <Qd>, <Qm>, <Qn>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0101 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000510" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "Qn", "desc": "Shift Reg" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqrshrn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Rounding Shift Right Narrow",
+      "summary": "Shifts right, saturates, rounds, and narrows.",
+      "syntax": "VQRSHRN<c>.<dt> <Dd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 1001 | 0 | 1 | M | 1 | Vm", "hex_opcode": "0xF2800910" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qm", "desc": "Src Wide" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vacge",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Compare Greater or Equal",
+      "summary": "Compares absolute values (|Vn| >= |Vm|).",
+      "syntax": "VACGE<c>.F32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 0 | Vn | Vd | 1110 | N | Q | M | 1 | Vm", "hex_opcode": "0xF3000E10" },
+      "operands": [{ "name": "Qd", "desc": "Dest Mask" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vacgt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Compare Greater Than",
+      "summary": "Compares absolute values (|Vn| > |Vm|).",
+      "syntax": "VACGT<c>.F32 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110011 | 0 | 0 | 0 | Vn | Vd | 1110 | N | Q | M | 0 | Vm", "hex_opcode": "0xF3000E00" },
+      "operands": [{ "name": "Qd", "desc": "Dest Mask" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vabal",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Difference and Accumulate Long",
+      "summary": "Computes absolute difference of narrow elements and adds to wide acc.",
+      "syntax": "VABAL<c>.<dt> <Qd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0101 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800500" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vabdl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Difference Long",
+      "summary": "Computes absolute difference of narrow elements to wide result.",
+      "syntax": "VABDL<c>.<dt> <Qd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0111 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800700" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vraddhn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Rounding Add High Narrow",
+      "summary": "Adds wide elements, rounds, and returns high narrow half.",
+      "syntax": "VRADDHN<c>.<dt> <Dd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0100 | N | 0 | M | 1 | Vm", "hex_opcode": "0xF2800410" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vsubhn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Subtract High Narrow",
+      "summary": "Subtracts wide elements and returns high narrow half.",
+      "syntax": "VSUBHN<c>.<dt> <Dd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0110 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800600" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrsubhn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Rounding Subtract High Narrow",
+      "summary": "Subtracts wide elements, rounds, and returns high narrow half.",
+      "syntax": "VRSUBHN<c>.<dt> <Dd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0110 | N | 0 | M | 1 | Vm", "hex_opcode": "0xF2800610" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqdmlal",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Doubling Multiply Accumulate Long",
+      "summary": "Multiplies, doubles, saturates, and adds to accumulator (High precision DSP).",
+      "syntax": "VQDMLAL<c>.<dt> <Qd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 1001 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800900" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqdmlsl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Doubling Multiply Subtract Long",
+      "summary": "Multiplies, doubles, saturates, and subtracts from accumulator.",
+      "syntax": "VQDMLSL<c>.<dt> <Qd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 1011 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800B00" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqdmulh",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Doubling Multiply High",
+      "summary": "Multiplies, doubles, saturates, and keeps high half.",
+      "syntax": "VQDMULH<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1011 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000B00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqrdmulh",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Rounding Doubling Multiply High",
+      "summary": "Fixed-point multiply with rounding and saturation.",
+      "syntax": "VQRDMULH<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1011 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000B10" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqdmull",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Doubling Multiply Long",
+      "summary": "Multiplies narrow elements, doubles, and saturates into wide elements.",
+      "syntax": "VQDMULL<c>.<dt> <Qd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 1101 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800D00" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "sxtab",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend and Add Byte",
+      "summary": "Sign-extends a byte from Rm and adds to Rn.",
+      "syntax": "SXTAB<c> <Rd>, <Rn>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101010 | Rn | Rd | rot | 0111 | Rm", "hex_opcode": "0x06A00070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Accumulator" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "sxtab16",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend and Add Byte 16",
+      "summary": "Sign-extends two bytes and adds to two halfwords.",
+      "syntax": "SXTAB16<c> <Rd>, <Rn>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101000 | Rn | Rd | rot | 0111 | Rm", "hex_opcode": "0x06800070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Accumulator" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "sxtah",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend and Add Halfword",
+      "summary": "Sign-extends a halfword and adds to Rn.",
+      "syntax": "SXTAH<c> <Rd>, <Rn>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101011 | Rn | Rd | rot | 0111 | Rm", "hex_opcode": "0x06B00070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Accumulator" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uxtab",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend and Add Byte",
+      "summary": "Zero-extends a byte and adds to Rn.",
+      "syntax": "UXTAB<c> <Rd>, <Rn>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101110 | Rn | Rd | rot | 0111 | Rm", "hex_opcode": "0x06E00070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Accumulator" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uxtab16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend and Add Byte 16",
+      "summary": "Zero-extends two bytes and adds to two halfwords.",
+      "syntax": "UXTAB16<c> <Rd>, <Rn>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101100 | Rn | Rd | rot | 0111 | Rm", "hex_opcode": "0x06C00070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Accumulator" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uxtah",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend and Add Halfword",
+      "summary": "Zero-extends a halfword and adds to Rn.",
+      "syntax": "UXTAH<c> <Rd>, <Rn>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101111 | Rn | Rd | rot | 0111 | Rm", "hex_opcode": "0x06F00070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Accumulator" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smuad",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Add Dual",
+      "summary": "Performs two 16x16 multiplies and adds results (Top*Top + Bot*Bot).",
+      "syntax": "SMUAD{X}<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110000 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x0700F010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smusd",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Subtract Dual",
+      "summary": "Performs two 16x16 multiplies and subtracts results.",
+      "syntax": "SMUSD{X}<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110000 | Rn | Rd | 1111 | 0101 | Rm", "hex_opcode": "0x0700F050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlad",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate Dual",
+      "summary": "Dual multiply add + accumulate.",
+      "syntax": "SMLAD{X}<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110000 | Rn | Rd | Ra | 0001 | Rm", "hex_opcode": "0x07000010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlsd",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Subtract Dual",
+      "summary": "Dual multiply subtract + accumulate.",
+      "syntax": "SMLSD{X}<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110000 | Rn | Rd | Ra | 0101 | Rm", "hex_opcode": "0x07000050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlald",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate Long Dual",
+      "summary": "Dual multiply add + 64-bit accumulate.",
+      "syntax": "SMLALD{X}<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110100 | Rn | RdLo | RdHi | 0001 | Rm", "hex_opcode": "0x07400010" },
+      "operands": [{ "name": "RdLo", "desc": "Dest Lo" }, { "name": "RdHi", "desc": "Dest Hi" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smlsld",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Subtract Long Dual",
+      "summary": "Dual multiply subtract + 64-bit accumulate.",
+      "syntax": "SMLSLD{X}<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110100 | Rn | RdLo | RdHi | 0101 | Rm", "hex_opcode": "0x07400050" },
+      "operands": [{ "name": "RdLo", "desc": "Dest Lo" }, { "name": "RdHi", "desc": "Dest Hi" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "qadd8",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Add 8",
+      "summary": "Parallel saturating add of 4 signed bytes.",
+      "syntax": "QADD8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100010 | Rn | Rd | 1111 | 1001 | Rm", "hex_opcode": "0x06200F90" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "qadd16",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Add 16",
+      "summary": "Parallel saturating add of 2 signed halfwords.",
+      "syntax": "QADD16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100010 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x06200F10" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "qsub8",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Subtract 8",
+      "summary": "Parallel saturating subtract of 4 signed bytes.",
+      "syntax": "QSUB8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100010 | Rn | Rd | 1111 | 1111 | Rm", "hex_opcode": "0x06200FF0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "qsub16",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Subtract 16",
+      "summary": "Parallel saturating subtract of 2 signed halfwords.",
+      "syntax": "QSUB16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100010 | Rn | Rd | 1111 | 0111 | Rm", "hex_opcode": "0x06200F70" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "shadd8",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Halving Add 8",
+      "summary": "Signed add and halving (average) of 4 bytes.",
+      "syntax": "SHADD8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100011 | Rn | Rd | 1111 | 1001 | Rm", "hex_opcode": "0x06300F90" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "shadd16",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Halving Add 16",
+      "summary": "Signed add and halving (average) of 2 halfwords.",
+      "syntax": "SHADD16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100011 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x06300F10" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "shsub8",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Halving Subtract 8",
+      "summary": "Signed subtract and halving of 4 bytes.",
+      "syntax": "SHSUB8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100011 | Rn | Rd | 1111 | 1111 | Rm", "hex_opcode": "0x06300FF0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "shsub16",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Halving Subtract 16",
+      "summary": "Signed subtract and halving of 2 halfwords.",
+      "syntax": "SHSUB16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100011 | Rn | Rd | 1111 | 0111 | Rm", "hex_opcode": "0x06300F70" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uqadd8",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Saturating Add 8",
+      "summary": "Unsigned saturating add of 4 bytes.",
+      "syntax": "UQADD8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100110 | Rn | Rd | 1111 | 1001 | Rm", "hex_opcode": "0x06600F90" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uqadd16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Saturating Add 16",
+      "summary": "Unsigned saturating add of 2 halfwords.",
+      "syntax": "UQADD16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100110 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x06600F10" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uqsub8",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Saturating Subtract 8",
+      "summary": "Unsigned saturating subtract of 4 bytes.",
+      "syntax": "UQSUB8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100110 | Rn | Rd | 1111 | 1111 | Rm", "hex_opcode": "0x06600FF0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uqsub16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Saturating Subtract 16",
+      "summary": "Unsigned saturating subtract of 2 halfwords.",
+      "syntax": "UQSUB16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100110 | Rn | Rd | 1111 | 0111 | Rm", "hex_opcode": "0x06600F70" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uhadd8",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Halving Add 8",
+      "summary": "Unsigned average of 4 bytes.",
+      "syntax": "UHADD8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100111 | Rn | Rd | 1111 | 1001 | Rm", "hex_opcode": "0x06700F90" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uhadd16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Halving Add 16",
+      "summary": "Unsigned average of 2 halfwords.",
+      "syntax": "UHADD16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100111 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x06700F10" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uhsub8",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Halving Subtract 8",
+      "summary": "Unsigned halving subtract of 4 bytes.",
+      "syntax": "UHSUB8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100111 | Rn | Rd | 1111 | 1111 | Rm", "hex_opcode": "0x06700FF0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uhsub16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Halving Subtract 16",
+      "summary": "Unsigned halving subtract of 2 halfwords.",
+      "syntax": "UHSUB16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100111 | Rn | Rd | 1111 | 0111 | Rm", "hex_opcode": "0x06700F70" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "sel",
+      "architecture": "ARMv8-A",
+      "full_name": "Select Bytes",
+      "summary": "Selects bytes from Rn or Rm based on GE flags.",
+      "syntax": "SEL<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101000 | Rn | Rd | 1111 | 1011 | Rm", "hex_opcode": "0x068000B0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    }
+  ]
+}

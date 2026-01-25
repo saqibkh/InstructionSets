@@ -1,0 +1,484 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "hvc",
+      "architecture": "ARMv8-A",
+      "full_name": "Hypervisor Call (Thumb)",
+      "summary": "Calls the Hypervisor (EL2) from Thumb state.",
+      "syntax": "HVC #<imm>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1111011111100000 | 1000 | imm4", "hex_opcode": "0xF7E08000" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "A32 (Virtualization)"
+    },
+    {
+      "mnemonic": "smc",
+      "architecture": "ARMv8-A",
+      "full_name": "Secure Monitor Call (Thumb)",
+      "summary": "Calls the Secure Monitor (EL3) from Thumb state.",
+      "syntax": "SMC #<imm>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1111011111110000 | 1000 | imm4", "hex_opcode": "0xF7F08000" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "A32 (Security)"
+    },
+    {
+      "mnemonic": "eret",
+      "architecture": "ARMv8-A",
+      "full_name": "Exception Return (Thumb)",
+      "summary": "Returns from an exception (Thumb state).",
+      "syntax": "ERET",
+      "encoding": { "format": "Thumb System", "binary_pattern": "11110011110111101000111100000000", "hex_opcode": "0xF3DE8F00" },
+      "operands": [],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "subs",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract and Return (Thumb)",
+      "summary": "Subs PC, LR, #imm (Exception return mechanism).",
+      "syntax": "SUBS PC, LR, #<imm>",
+      "encoding": { "format": "Thumb Data Proc", "binary_pattern": "11110011110111101000111100000000", "hex_opcode": "0xF3DE8F00" },
+      "operands": [{ "name": "imm", "desc": "Offset" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bfc",
+      "architecture": "ARMv8-A",
+      "full_name": "Bit Field Clear (Thumb)",
+      "summary": "Clears a bitfield in a register.",
+      "syntax": "BFC <Rd>, #<lsb>, #<width>",
+      "encoding": { "format": "Thumb Bitfield", "binary_pattern": "11110011011011110000 | Rd | 0 | imm3 | imm2", "hex_opcode": "0xF36F0000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "lsb", "desc": "Start" }, { "name": "width", "desc": "Width" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bfi",
+      "architecture": "ARMv8-A",
+      "full_name": "Bit Field Insert (Thumb)",
+      "summary": "Inserts a bitfield into a register.",
+      "syntax": "BFI <Rd>, <Rn>, #<lsb>, #<width>",
+      "encoding": { "format": "Thumb Bitfield", "binary_pattern": "111100110110 | Rn | 0 | imm3 | Rd | imm2", "hex_opcode": "0xF3600000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }, { "name": "lsb", "desc": "Start" }, { "name": "width", "desc": "Width" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sbfx",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Bit Field Extract (Thumb)",
+      "summary": "Extracts and sign-extends bits.",
+      "syntax": "SBFX <Rd>, <Rn>, #<lsb>, #<width>",
+      "encoding": { "format": "Thumb Bitfield", "binary_pattern": "111100110100 | Rn | 0 | imm3 | Rd | imm2", "hex_opcode": "0xF3400000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ubfx",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Bit Field Extract (Thumb)",
+      "summary": "Extracts and zero-extends bits.",
+      "syntax": "UBFX <Rd>, <Rn>, #<lsb>, #<width>",
+      "encoding": { "format": "Thumb Bitfield", "binary_pattern": "111100111100 | Rn | 0 | imm3 | Rd | imm2", "hex_opcode": "0xF3C00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rbit",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bits (Thumb)",
+      "summary": "Reverses bits in a 32-bit register.",
+      "syntax": "RBIT <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Misc", "binary_pattern": "111110101001 | Rm | 1111 | Rd | 1010", "hex_opcode": "0xFA90F0A0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes (Thumb)",
+      "summary": "Reverses bytes (Endian swap).",
+      "syntax": "REV <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Misc", "binary_pattern": "111110101001 | Rm | 1111 | Rd | 1000", "hex_opcode": "0xFA90F080" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rev16",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes in Halfwords (Thumb)",
+      "summary": "Reverses bytes in each 16-bit halfword.",
+      "syntax": "REV16 <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Misc", "binary_pattern": "111110101001 | Rm | 1111 | Rd | 1001", "hex_opcode": "0xFA90F090" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "revsh",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Signed Halfword (Thumb)",
+      "summary": "Reverses bytes in low halfword and sign-extends.",
+      "syntax": "REVSH <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Misc", "binary_pattern": "111110101001 | Rm | 1111 | Rd | 1011", "hex_opcode": "0xFA90F0B0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "clz",
+      "architecture": "ARMv8-A",
+      "full_name": "Count Leading Zeros (Thumb)",
+      "summary": "Counts consecutive zeros.",
+      "syntax": "CLZ <Rd>, <Rm>",
+      "encoding": { "format": "Thumb Misc", "binary_pattern": "111110101011 | Rm | 1111 | Rd | 1000", "hex_opcode": "0xFAB0F080" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Divide (Thumb)",
+      "summary": "Signed integer division.",
+      "syntax": "SDIV <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Thumb Div", "binary_pattern": "111110111001 | Rn | 1111 | Rd | 1111 | Rm", "hex_opcode": "0xFB90F0F0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Dividend" }, { "name": "Rm", "desc": "Divisor" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "udiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Divide (Thumb)",
+      "summary": "Unsigned integer division.",
+      "syntax": "UDIV <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Thumb Div", "binary_pattern": "111110111011 | Rn | 1111 | Rd | 1111 | Rm", "hex_opcode": "0xFBB0F0F0" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Dividend" }, { "name": "Rm", "desc": "Divisor" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mla",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply Accumulate (Thumb)",
+      "summary": "Rd = Rn + (Rm * Ra).",
+      "syntax": "MLA <Rd>, <Rm>, <Ra>, <Rn>",
+      "encoding": { "format": "Thumb Mul", "binary_pattern": "111110110000 | Rm | Ra | Rd | 00 | Rn", "hex_opcode": "0xFB000000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src 1" }, { "name": "Ra", "desc": "Src 2" }, { "name": "Rn", "desc": "Acc" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mls",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply Subtract (Thumb)",
+      "summary": "Rd = Rn - (Rm * Ra).",
+      "syntax": "MLS <Rd>, <Rm>, <Ra>, <Rn>",
+      "encoding": { "format": "Thumb Mul", "binary_pattern": "111110110000 | Rm | Ra | Rd | 01 | Rn", "hex_opcode": "0xFB000010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src 1" }, { "name": "Ra", "desc": "Src 2" }, { "name": "Rn", "desc": "Acc" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "umull",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Multiply Long (Thumb)",
+      "summary": "Unsigned Multiply (64-bit result).",
+      "syntax": "UMULL <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Thumb Mul", "binary_pattern": "111110111010 | Rn | RdLo | RdHi | 0000 | Rm", "hex_opcode": "0xFBA00000" },
+      "operands": [{ "name": "RdLo", "desc": "Low" }, { "name": "RdHi", "desc": "High" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "umlal",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Multiply Accumulate Long (Thumb)",
+      "summary": "Unsigned Multiply Accumulate (64-bit result).",
+      "syntax": "UMLAL <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Thumb Mul", "binary_pattern": "111110111110 | Rn | RdLo | RdHi | 0000 | Rm", "hex_opcode": "0xFBE00000" },
+      "operands": [{ "name": "RdLo", "desc": "Low" }, { "name": "RdHi", "desc": "High" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "smull",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Long (Thumb)",
+      "summary": "Signed Multiply (64-bit result).",
+      "syntax": "SMULL <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Thumb Mul", "binary_pattern": "111110111000 | Rn | RdLo | RdHi | 0000 | Rm", "hex_opcode": "0xFB800000" },
+      "operands": [{ "name": "RdLo", "desc": "Low" }, { "name": "RdHi", "desc": "High" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "smlal",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply Accumulate Long (Thumb)",
+      "summary": "Signed Multiply Accumulate (64-bit result).",
+      "syntax": "SMLAL <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Thumb Mul", "binary_pattern": "111110111100 | Rn | RdLo | RdHi | 0000 | Rm", "hex_opcode": "0xFBC00000" },
+      "operands": [{ "name": "RdLo", "desc": "Low" }, { "name": "RdHi", "desc": "High" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldrd",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Dual (Thumb)",
+      "summary": "Loads two words from memory (Thumb).",
+      "syntax": "LDRD <Rt>, <Rt2>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "Thumb Load", "binary_pattern": "111010011101 | Rn | Rt | Rt2 | imm8", "hex_opcode": "0xE9D00000" },
+      "operands": [{ "name": "Rt", "desc": "Dest 1" }, { "name": "Rt2", "desc": "Dest 2" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "strd",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Dual (Thumb)",
+      "summary": "Stores two words to memory (Thumb).",
+      "syntax": "STRD <Rt>, <Rt2>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "Thumb Store", "binary_pattern": "111010011100 | Rn | Rt | Rt2 | imm8", "hex_opcode": "0xE9C00000" },
+      "operands": [{ "name": "Rt", "desc": "Src 1" }, { "name": "Rt2", "desc": "Src 2" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "strex",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Exclusive (Thumb)",
+      "summary": "Stores word if exclusive monitor is open (Thumb).",
+      "syntax": "STREX <Rd>, <Rt>, [<Rn>]",
+      "encoding": { "format": "Thumb Store Excl", "binary_pattern": "111010000100 | Rn | Rt | Rd | imm8", "hex_opcode": "0xE8400000" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldrex",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Exclusive (Thumb)",
+      "summary": "Loads word and sets exclusive monitor (Thumb).",
+      "syntax": "LDREX <Rt>, [<Rn>]",
+      "encoding": { "format": "Thumb Load Excl", "binary_pattern": "111010000101 | Rn | Rt | imm8", "hex_opcode": "0xE8500F00" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "strexb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Exclusive Byte (Thumb)",
+      "summary": "Stores byte exclusively (Thumb).",
+      "syntax": "STREXB <Rd>, <Rt>, [<Rn>]",
+      "encoding": { "format": "Thumb Store Excl", "binary_pattern": "111010001100 | Rn | Rt | 1111 | 0100 | Rd", "hex_opcode": "0xE8C00F40" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldrexb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Exclusive Byte (Thumb)",
+      "summary": "Loads byte exclusively (Thumb).",
+      "syntax": "LDREXB <Rt>, [<Rn>]",
+      "encoding": { "format": "Thumb Load Excl", "binary_pattern": "111010001101 | Rn | Rt | 1111 | 0100 | 1111", "hex_opcode": "0xE8D00F4F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "strexh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Exclusive Halfword (Thumb)",
+      "summary": "Stores halfword exclusively (Thumb).",
+      "syntax": "STREXH <Rd>, <Rt>, [<Rn>]",
+      "encoding": { "format": "Thumb Store Excl", "binary_pattern": "111010001100 | Rn | Rt | 1111 | 0101 | Rd", "hex_opcode": "0xE8C00F50" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldrexh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Exclusive Halfword (Thumb)",
+      "summary": "Loads halfword exclusively (Thumb).",
+      "syntax": "LDREXH <Rt>, [<Rn>]",
+      "encoding": { "format": "Thumb Load Excl", "binary_pattern": "111010001101 | Rn | Rt | 1111 | 0101 | 1111", "hex_opcode": "0xE8D00F5F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "clrex",
+      "architecture": "ARMv8-A",
+      "full_name": "Clear Exclusive (Thumb)",
+      "summary": "Clears exclusive monitor (Thumb).",
+      "syntax": "CLREX",
+      "encoding": { "format": "Thumb System", "binary_pattern": "11110011101111111000111100101111", "hex_opcode": "0xF3BF8F2F" },
+      "operands": [],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "dmb",
+      "architecture": "ARMv8-A",
+      "full_name": "Data Memory Barrier (Thumb)",
+      "summary": "Memory barrier (Thumb).",
+      "syntax": "DMB <option>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1111001110111111100011110101 | option", "hex_opcode": "0xF3BF8F50" },
+      "operands": [{ "name": "option", "desc": "SY/ISH" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "dsb",
+      "architecture": "ARMv8-A",
+      "full_name": "Data Synchronization Barrier (Thumb)",
+      "summary": "Sync barrier (Thumb).",
+      "syntax": "DSB <option>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1111001110111111100011110100 | option", "hex_opcode": "0xF3BF8F40" },
+      "operands": [{ "name": "option", "desc": "SY/ISH" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "isb",
+      "architecture": "ARMv8-A",
+      "full_name": "Instruction Synchronization Barrier (Thumb)",
+      "summary": "Instruction barrier (Thumb).",
+      "syntax": "ISB <option>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1111001110111111100011110110 | option", "hex_opcode": "0xF3BF8F60" },
+      "operands": [{ "name": "option", "desc": "SY" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "nop",
+      "architecture": "ARMv8-A",
+      "full_name": "No Operation (Thumb)",
+      "summary": "No op (Thumb 16-bit).",
+      "syntax": "NOP",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011111100000000", "hex_opcode": "0xBF00" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "yield",
+      "architecture": "ARMv8-A",
+      "full_name": "Yield (Thumb)",
+      "summary": "Yield hint (Thumb).",
+      "syntax": "YIELD",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011111100010000", "hex_opcode": "0xBF10" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "wfe",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Event (Thumb)",
+      "summary": "Wait for event (Thumb).",
+      "syntax": "WFE",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011111100100000", "hex_opcode": "0xBF20" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "wfi",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Interrupt (Thumb)",
+      "summary": "Wait for interrupt (Thumb).",
+      "syntax": "WFI",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011111100110000", "hex_opcode": "0xBF30" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sev",
+      "architecture": "ARMv8-A",
+      "full_name": "Send Event (Thumb)",
+      "summary": "Send event (Thumb).",
+      "syntax": "SEV",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011111101000000", "hex_opcode": "0xBF40" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sevl",
+      "architecture": "ARMv8-A",
+      "full_name": "Send Event Local (Thumb)",
+      "summary": "Send local event (Thumb).",
+      "syntax": "SEVL",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011111101010000", "hex_opcode": "0xBF50" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Special Register to Register (Thumb)",
+      "summary": "Read special register (Thumb).",
+      "syntax": "MRS <Rd>, <spec_reg>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "11110011111011111000 | Rd | 00000000", "hex_opcode": "0xF3EF8000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "spec_reg", "desc": "Reg" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "msr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Register to Special Register (Thumb)",
+      "summary": "Write special register (Thumb).",
+      "syntax": "MSR <spec_reg>, <Rn>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "111100111000 | Rn | 1000100000000000", "hex_opcode": "0xF3808800" },
+      "operands": [{ "name": "spec_reg", "desc": "Reg" }, { "name": "Rn", "desc": "Src" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "cps",
+      "architecture": "ARMv8-A",
+      "full_name": "Change Processor State (Thumb)",
+      "summary": "Change mode/state (Thumb).",
+      "syntax": "CPS<effect> <iflags> {, #<mode>}",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011011001100000 | imod | m | 0 | mode", "hex_opcode": "0xB660" },
+      "operands": [{ "name": "effect", "desc": "IE/ID" }, { "name": "mode", "desc": "Mode" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "setend",
+      "architecture": "ARMv8-A",
+      "full_name": "Set Endianness (Thumb)",
+      "summary": "Set endianness (Thumb).",
+      "syntax": "SETEND <endian>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011011001010 | E | 00", "hex_opcode": "0xB650" },
+      "operands": [{ "name": "endian", "desc": "BE/LE" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "dbg",
+      "architecture": "ARMv8-A",
+      "full_name": "Debug Hint (Thumb)",
+      "summary": "Debug hint (Thumb).",
+      "syntax": "DBG #<option>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "001110101010 | option", "hex_opcode": "0x3AA0" },
+      "operands": [{ "name": "option", "desc": "Opt" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "pop",
+      "architecture": "ARMv8-A",
+      "full_name": "Pop (Thumb)",
+      "summary": "Pop registers from stack (Thumb 16-bit).",
+      "syntax": "POP <registers>",
+      "encoding": { "format": "Thumb Load Multiple", "binary_pattern": "1011110 | P | register_list", "hex_opcode": "0xBC00" },
+      "operands": [{ "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "push",
+      "architecture": "ARMv8-A",
+      "full_name": "Push (Thumb)",
+      "summary": "Push registers to stack (Thumb 16-bit).",
+      "syntax": "PUSH <registers>",
+      "encoding": { "format": "Thumb Store Multiple", "binary_pattern": "1011010 | M | register_list", "hex_opcode": "0xB400" },
+      "operands": [{ "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldm",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Multiple (Thumb)",
+      "summary": "Load multiple registers (Thumb 16-bit).",
+      "syntax": "LDM <Rn>!, <registers>",
+      "encoding": { "format": "Thumb Load Multiple", "binary_pattern": "11001 | Rn | register_list", "hex_opcode": "0xC800" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "stm",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Multiple (Thumb)",
+      "summary": "Store multiple registers (Thumb 16-bit).",
+      "syntax": "STM <Rn>!, <registers>",
+      "encoding": { "format": "Thumb Store Multiple", "binary_pattern": "11000 | Rn | register_list", "hex_opcode": "0xC000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    }
+  ]
+}
