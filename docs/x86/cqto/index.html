@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Logical left shift, count in register. No flags update.">
-    <title>shlx - x86</title>
+    <meta name="description" content="Sign-extends RAX into RDX:RAX (also CQO).">
+    <title>cqto - x86</title>
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="ISA Database">
@@ -259,7 +259,7 @@
                     </a>
                     
                     <a href="../cqto/" 
-                       class="">
+                       class="active">
                         cqto
                     </a>
                     
@@ -1501,7 +1501,7 @@
                     </a>
                     
                     <a href="../shlx/" 
-                       class="active">
+                       class="">
                         shlx
                     </a>
                     
@@ -1707,18 +1707,18 @@
             <div class="breadcrumb">
                 <a href="../../">Home</a> <span>/</span> 
                 <a href="../../x86/">x86</a> <span>/</span> 
-                shlx
+                cqto
             </div>
 
-            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">shlx</h1>
-            <h2 style="font-weight: 400; color: var(--text-muted);">Shift Logical Left Without Affecting Flags</h2>
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">cqto</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Convert Quadword to Octoword</h2>
             
             <div class="syntax-box">
-                SHLX r32, r/m32, r32
+                CQTO
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Logical left shift, count in register. No flags update.
+                Sign-extends RAX into RDX:RAX (also CQO).
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -1748,11 +1748,11 @@
                         <div class="meta-grid">
                             <div class="meta-item">
                                 <span class="meta-label">Format</span>
-                                <span class="badge">VEX</span>
+                                <span class="badge">Legacy</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Opcode</span>
-                                <span class="mono accent">C4 ... F7</span>
+                                <span class="mono accent">0x48 99</span>
                             </div>
                         </div>
                     </div>
@@ -1760,24 +1760,6 @@
                     <div class="panel">
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
-                            
-                            <li class="operand-row" data-op="dest" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">dest</span>
-                                <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Reg</span>
-                            </li>
-                            
-                            <li class="operand-row" data-op="src" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">src</span>
-                                <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Reg/Mem</span>
-                            </li>
-                            
-                            <li class="operand-row" data-op="cnt" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">cnt</span>
-                                <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Reg</span>
-                            </li>
                             
                         </ul>
                     </div>
