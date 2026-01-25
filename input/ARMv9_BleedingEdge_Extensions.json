@@ -1,0 +1,274 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "rcw",
+      "architecture": "ARMv8-A",
+      "full_name": "Read Check Write",
+      "summary": "Atomically reads, checks, and updates a 128-bit descriptor in memory (Translation Hardening).",
+      "syntax": "RCW <Xt>, <Xt+1>, [<Xn>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "00111000 | 001 | 11111 | 00000 | Rn | Rt", "hex_opcode": "0x38200000" },
+      "operands": [{ "name": "Xt", "desc": "Data/Status" }, { "name": "Xn", "desc": "Address" }],
+      "extension": "FEAT_THE (Hardening)"
+    },
+    {
+      "mnemonic": "rcws",
+      "architecture": "ARMv8-A",
+      "full_name": "Read Check Write (Soft)",
+      "summary": "Read Check Write with soft failure reporting (Translation Hardening).",
+      "syntax": "RCWS <Xt>, <Xt+1>, [<Xn>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "00111000 | 001 | 11111 | 00100 | Rn | Rt", "hex_opcode": "0x38204000" },
+      "operands": [{ "name": "Xt", "desc": "Data/Status" }, { "name": "Xn", "desc": "Address" }],
+      "extension": "FEAT_THE (Hardening)"
+    },
+    {
+      "mnemonic": "rcwa",
+      "architecture": "ARMv8-A",
+      "full_name": "Read Check Write (Acquire)",
+      "summary": "Read Check Write with Acquire semantics.",
+      "syntax": "RCWA <Xt>, <Xt+1>, [<Xn>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "00111000 | 001 | 11111 | 10000 | Rn | Rt", "hex_opcode": "0x38A00000" },
+      "operands": [{ "name": "Xt", "desc": "Data/Status" }, { "name": "Xn", "desc": "Address" }],
+      "extension": "FEAT_THE (Hardening)"
+    },
+    {
+      "mnemonic": "rcwal",
+      "architecture": "ARMv8-A",
+      "full_name": "Read Check Write (Acquire-Release)",
+      "summary": "Read Check Write with Acquire and Release semantics.",
+      "syntax": "RCWAL <Xt>, <Xt+1>, [<Xn>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "00111000 | 001 | 11111 | 10100 | Rn | Rt", "hex_opcode": "0x38A04000" },
+      "operands": [{ "name": "Xt", "desc": "Data/Status" }, { "name": "Xn", "desc": "Address" }],
+      "extension": "FEAT_THE (Hardening)"
+    },
+    {
+      "mnemonic": "brb",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch Record Buffer Injection",
+      "summary": "Injects an entry into the Branch Record Buffer (Debug).",
+      "syntax": "BRB <op>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 001 | op | 11111", "hex_opcode": "0xD503201F" },
+      "operands": [{ "name": "op", "desc": "IALL/INJ" }],
+      "extension": "FEAT_BRBE (Debug)"
+    },
+    {
+      "mnemonic": "brbtsy",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch Record Buffer Timestamp Synchronize",
+      "summary": "Synchronizes the BRBE timestamp.",
+      "syntax": "BRBTSY",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00100 | 11111", "hex_opcode": "0xD503225F" },
+      "operands": [],
+      "extension": "FEAT_BRBE (Debug)"
+    },
+    {
+      "mnemonic": "cosp",
+      "architecture": "ARMv8-A",
+      "full_name": "Call Out Speculation",
+      "summary": "Prevents speculation from determining that the instruction is executed.",
+      "syntax": "COSP <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0011 | 0100 | 001 | Rt", "hex_opcode": "0xD503321F" },
+      "operands": [{ "name": "Xt", "desc": "Reg" }],
+      "extension": "FEAT_CSV3 (Speculation)"
+    },
+    {
+      "mnemonic": "gcspopm",
+      "architecture": "ARMv8-A",
+      "full_name": "Guarded Control Stack Pop",
+      "summary": "Pops the value from the Guarded Control Stack into LR.",
+      "syntax": "GCSPOPM",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 00011 | 0010 | 0100 | 01 | 11111", "hex_opcode": "0xD52B245F" },
+      "operands": [],
+      "extension": "FEAT_GCS (Security)"
+    },
+    {
+      "mnemonic": "gcsss1",
+      "architecture": "ARMv8-A",
+      "full_name": "Guarded Control Stack Switch Stack 1",
+      "summary": "First step to switch the GCS pointer.",
+      "syntax": "GCSSS1 <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 00011 | 0010 | 0111 | 000 | Rt", "hex_opcode": "0xD52B2700" },
+      "operands": [{ "name": "Xt", "desc": "New Stack Ptr" }],
+      "extension": "FEAT_GCS (Security)"
+    },
+    {
+      "mnemonic": "gcsss2",
+      "architecture": "ARMv8-A",
+      "full_name": "Guarded Control Stack Switch Stack 2",
+      "summary": "Second step to switch the GCS pointer.",
+      "syntax": "GCSSS2 <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 00011 | 0010 | 0111 | 001 | Rt", "hex_opcode": "0xD52B2720" },
+      "operands": [{ "name": "Xt", "desc": "New Stack Ptr" }],
+      "extension": "FEAT_GCS (Security)"
+    },
+    {
+      "mnemonic": "cpy",
+      "architecture": "ARMv8-A",
+      "full_name": "Memory Copy (SVE2)",
+      "summary": "Copies data from source to destination using SVE vector length.",
+      "syntax": "CPY <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SVE2 Move", "binary_pattern": "00000101 | sz | 1 | 00001 | Pg | Zn | Zd", "hex_opcode": "0x05210000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "udot",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Dot Product (Multi-vector)",
+      "summary": "Multi-vector unsigned dot product (SME2).",
+      "syntax": "UDOT { <Zd1>.S-<Zd2>.S }, <Zn>.B, <Zm>.B",
+      "encoding": { "format": "SME2 DotProd", "binary_pattern": "11000001 | 10 | 0 | 01110 | Zm | Zn | 10 | Zd", "hex_opcode": "0xC18E8000" },
+      "operands": [{ "name": "Zd", "desc": "Dest Pair" }, { "name": "Zn", "desc": "Src 1" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "sdot",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Dot Product (Multi-vector)",
+      "summary": "Multi-vector signed dot product (SME2).",
+      "syntax": "SDOT { <Zd1>.S-<Zd2>.S }, <Zn>.B, <Zm>.B",
+      "encoding": { "format": "SME2 DotProd", "binary_pattern": "11000001 | 10 | 0 | 01110 | Zm | Zn | 00 | Zd", "hex_opcode": "0xC18E0000" },
+      "operands": [{ "name": "Zd", "desc": "Dest Pair" }, { "name": "Zn", "desc": "Src 1" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "bfadd",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Add",
+      "summary": "Adds BFloat16 elements.",
+      "syntax": "BFADD <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE BFloat16", "binary_pattern": "01100101 | 00 | 0 | 00000 | Pg | Zm | Zdn", "hex_opcode": "0x65000000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "FEAT_SVE_B16B16"
+    },
+    {
+      "mnemonic": "bfsub",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Subtract",
+      "summary": "Subtracts BFloat16 elements.",
+      "syntax": "BFSUB <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE BFloat16", "binary_pattern": "01100101 | 00 | 0 | 00001 | Pg | Zm | Zdn", "hex_opcode": "0x65002000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "FEAT_SVE_B16B16"
+    },
+    {
+      "mnemonic": "bfmul",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Multiply",
+      "summary": "Multiplies BFloat16 elements.",
+      "syntax": "BFMUL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE BFloat16", "binary_pattern": "01100101 | 00 | 0 | 00010 | Pg | Zm | Zdn", "hex_opcode": "0x65004000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "FEAT_SVE_B16B16"
+    },
+    {
+      "mnemonic": "bfmax",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Maximum",
+      "summary": "Calculates maximum of BFloat16 elements.",
+      "syntax": "BFMAX <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE BFloat16", "binary_pattern": "01100101 | 00 | 0 | 00100 | Pg | Zm | Zdn", "hex_opcode": "0x65008000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "FEAT_SVE_B16B16"
+    },
+    {
+      "mnemonic": "bfmin",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Minimum",
+      "summary": "Calculates minimum of BFloat16 elements.",
+      "syntax": "BFMIN <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE BFloat16", "binary_pattern": "01100101 | 00 | 0 | 00101 | Pg | Zm | Zdn", "hex_opcode": "0x6500A000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "FEAT_SVE_B16B16"
+    },
+    {
+      "mnemonic": "addp",
+      "architecture": "ARMv8-A",
+      "full_name": "Scalar Add Pairwise",
+      "summary": "Adds two 64-bit values to a 64-bit result (Scalar NEON).",
+      "syntax": "ADDP <Dd>, <Vn>.<T>",
+      "encoding": { "format": "NEON Scalar", "binary_pattern": "01011110 | 11110001 | 101110 | Rn | Rd", "hex_opcode": "0x5EF1B800" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (Scalar)"
+    },
+    {
+      "mnemonic": "fmaxv",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Maximum Reduction (NEON)",
+      "summary": "Finds max float in a vector.",
+      "syntax": "FMAXV <Sd>, <Vn>.<T>",
+      "encoding": { "format": "NEON Reduction", "binary_pattern": "01101110 | 00110000 | 111110 | Rn | Rd", "hex_opcode": "0x6E30F800" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (v8.0)"
+    },
+    {
+      "mnemonic": "fminv",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Minimum Reduction (NEON)",
+      "summary": "Finds min float in a vector.",
+      "syntax": "FMINV <Sd>, <Vn>.<T>",
+      "encoding": { "format": "NEON Reduction", "binary_pattern": "01101110 | 10110000 | 111110 | Rn | Rd", "hex_opcode": "0x6EB0F800" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (v8.0)"
+    },
+    {
+      "mnemonic": "frint32x",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to 32-bit Integer (Exact)",
+      "summary": "Rounds to 32-bit integer, exact exception.",
+      "syntax": "FRINT32X <Sd>, <Sn>",
+      "encoding": { "format": "Float Conversion", "binary_pattern": "00011110 | 00101000 | 111000 | Rn | Rd", "hex_opcode": "0x1E28E000" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src" }],
+      "extension": "FEAT_FRINTTS"
+    },
+    {
+      "mnemonic": "frint32z",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to 32-bit Integer (Zero)",
+      "summary": "Rounds to 32-bit integer towards zero.",
+      "syntax": "FRINT32Z <Sd>, <Sn>",
+      "encoding": { "format": "Float Conversion", "binary_pattern": "00011110 | 00101001 | 111000 | Rn | Rd", "hex_opcode": "0x1E29E000" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src" }],
+      "extension": "FEAT_FRINTTS"
+    },
+    {
+      "mnemonic": "frint64x",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to 64-bit Integer (Exact)",
+      "summary": "Rounds to 64-bit integer, exact exception.",
+      "syntax": "FRINT64X <Sd>, <Sn>",
+      "encoding": { "format": "Float Conversion", "binary_pattern": "00011110 | 00101010 | 111000 | Rn | Rd", "hex_opcode": "0x1E2AE000" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src" }],
+      "extension": "FEAT_FRINTTS"
+    },
+    {
+      "mnemonic": "frint64z",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to 64-bit Integer (Zero)",
+      "summary": "Rounds to 64-bit integer towards zero.",
+      "syntax": "FRINT64Z <Sd>, <Sn>",
+      "encoding": { "format": "Float Conversion", "binary_pattern": "00011110 | 00101011 | 111000 | Rn | Rd", "hex_opcode": "0x1E2BE000" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src" }],
+      "extension": "FEAT_FRINTTS"
+    },
+    {
+      "mnemonic": "chk",
+      "architecture": "ARMv8-A",
+      "full_name": "Check",
+      "summary": "Check feature status (FEAT_CHK).",
+      "syntax": "CHK <#imm>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 00000011 | 00100000 | 010 | imm5", "hex_opcode": "0xD5032040" },
+      "operands": [{ "name": "imm", "desc": "Feature ID" }],
+      "extension": "FEAT_CHK"
+    },
+    {
+      "mnemonic": "clrex",
+      "architecture": "ARMv8-A",
+      "full_name": "Clear Exclusive (System)",
+      "summary": "Clears the local monitor state (AArch64 variant).",
+      "syntax": "CLREX {#<imm>}",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0011 | 0000 | 010 | 11111", "hex_opcode": "0xD503305F" },
+      "operands": [{ "name": "imm", "desc": "Optional" }],
+      "extension": "Base (Atomic)"
+    }
+  ]
+}

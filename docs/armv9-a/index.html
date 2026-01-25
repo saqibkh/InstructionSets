@@ -64,6 +64,13 @@
             </thead>
 	    <tbody>
                 
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Multi-vector Add</td>
+                    <td><span class="badge">SME2 Multi-vector</span></td>
+                    <td style="color: var(--text-muted);">Adds two or four vectors to two or four accumulators (SME2).</td>
+                </tr>
+                
                 <tr onclick="window.location='addhnb/';" style="cursor: pointer;">
                     <td class="mono">addhnb</td>
                     <td style="font-weight: 500;">SVE Add Narrow (Bottom)</td>
@@ -90,6 +97,13 @@
                     <td style="font-weight: 500;">SVE Bit Extract</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Gathers bits from source based on mask positions to LSBs.</td>
+                </tr>
+                
+                <tr onclick="window.location='bfmopa/';" style="cursor: pointer;">
+                    <td class="mono">bfmopa</td>
+                    <td style="font-weight: 500;">BFloat16 Sum of Outer Products Accumulate</td>
+                    <td><span class="badge">SME2 Matrix</span></td>
+                    <td style="color: var(--text-muted);">BFloat16 outer product accumulate (SME2).</td>
                 </tr>
                 
                 <tr onclick="window.location='bgrp/';" style="cursor: pointer;">
@@ -132,6 +146,20 @@
                     <td style="font-weight: 500;">Memory Copy Forward (Prologue)</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">First step of a hardware-accelerated memcpy (Forward direction).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmla/';" style="cursor: pointer;">
+                    <td class="mono">fmla</td>
+                    <td style="font-weight: 500;">Multi-vector Floating-point Multiply-Accumulate</td>
+                    <td><span class="badge">SME2 Multi-vector</span></td>
+                    <td style="color: var(--text-muted);">Fused multiply-add on 2 or 4 vectors (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmls/';" style="cursor: pointer;">
+                    <td class="mono">fmls</td>
+                    <td style="font-weight: 500;">Multi-vector Floating-point Multiply-Subtract</td>
+                    <td><span class="badge">SME2 Multi-vector</span></td>
+                    <td style="color: var(--text-muted);">Fused multiply-subtract on 2 or 4 vectors (SME2).</td>
                 </tr>
                 
                 <tr onclick="window.location='fmopa/';" style="cursor: pointer;">
@@ -178,6 +206,13 @@
                 
                 <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
                     <td class="mono">ld1w</td>
+                    <td style="font-weight: 500;">Multi-vector Load Words</td>
+                    <td><span class="badge">SME2 Load</span></td>
+                    <td style="color: var(--text-muted);">Loads multiple vectors (2 or 4) from memory (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
+                    <td class="mono">ld1w</td>
                     <td style="font-weight: 500;">Load Matrix Tile Slice (Horizontal)</td>
                     <td><span class="badge">SME Load</span></td>
                     <td style="color: var(--text-muted);">Loads a horizontal slice (row) of a tile from memory.</td>
@@ -190,11 +225,32 @@
                     <td style="color: var(--text-muted);">Loads a vertical slice (column) of a tile from memory.</td>
                 </tr>
                 
+                <tr onclick="window.location='luti2/';" style="cursor: pointer;">
+                    <td class="mono">luti2</td>
+                    <td style="font-weight: 500;">Lookup Table Index (2-bit)</td>
+                    <td><span class="badge">SME2 LUT</span></td>
+                    <td style="color: var(--text-muted);">Looks up values in ZT0 table using 2-bit indices (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='luti4/';" style="cursor: pointer;">
+                    <td class="mono">luti4</td>
+                    <td style="font-weight: 500;">Lookup Table Index (4-bit)</td>
+                    <td><span class="badge">SME2 LUT</span></td>
+                    <td style="color: var(--text-muted);">Looks up values in ZT0 table using 4-bit indices (SME2).</td>
+                </tr>
+                
                 <tr onclick="window.location='match/';" style="cursor: pointer;">
                     <td class="mono">match</td>
                     <td style="font-weight: 500;">SVE Match</td>
                     <td><span class="badge">SVE2 Match</span></td>
                     <td style="color: var(--text-muted);">Detects if elements in Zn match any element in Zm (String matching).</td>
+                </tr>
+                
+                <tr onclick="window.location='movt/';" style="cursor: pointer;">
+                    <td class="mono">movt</td>
+                    <td style="font-weight: 500;">Multi-vector Move (Transpose)</td>
+                    <td><span class="badge">SME2 Move</span></td>
+                    <td style="color: var(--text-muted);">Moves and transposes data between 2/4 vectors (SME2).</td>
                 </tr>
                 
                 <tr onclick="window.location='nmatch/';" style="cursor: pointer;">
@@ -290,6 +346,13 @@
                 
                 <tr onclick="window.location='st1w/';" style="cursor: pointer;">
                     <td class="mono">st1w</td>
+                    <td style="font-weight: 500;">Multi-vector Store Words</td>
+                    <td><span class="badge">SME2 Store</span></td>
+                    <td style="color: var(--text-muted);">Stores multiple vectors (2 or 4) to memory (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='st1w/';" style="cursor: pointer;">
+                    <td class="mono">st1w</td>
                     <td style="font-weight: 500;">Store Matrix Tile Slice (Horizontal)</td>
                     <td><span class="badge">SME Store</span></td>
                     <td style="color: var(--text-muted);">Stores a horizontal slice (row) of a tile to memory.</td>
@@ -300,6 +363,13 @@
                     <td style="font-weight: 500;">Store Matrix Tile Slice (Vertical)</td>
                     <td><span class="badge">SME Store</span></td>
                     <td style="color: var(--text-muted);">Stores a vertical slice (column) of a tile to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='sub/';" style="cursor: pointer;">
+                    <td class="mono">sub</td>
+                    <td style="font-weight: 500;">Multi-vector Subtract</td>
+                    <td><span class="badge">SME2 Multi-vector</span></td>
+                    <td style="color: var(--text-muted);">Subtracts two or four vectors from accumulators (SME2).</td>
                 </tr>
                 
                 <tr onclick="window.location='umopa/';" style="cursor: pointer;">
@@ -328,6 +398,13 @@
                     <td style="font-weight: 500;">SVE Exclusive OR and Rotate</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Performs XOR followed by a right rotation (used in SHA-3/SM3).</td>
+                </tr>
+                
+                <tr onclick="window.location='zero/';" style="cursor: pointer;">
+                    <td class="mono">zero</td>
+                    <td style="font-weight: 500;">Zero ZT0</td>
+                    <td><span class="badge">SME2 Control</span></td>
+                    <td style="color: var(--text-muted);">Zeros the ZT0 lookup table register (SME2).</td>
                 </tr>
                 
                 <tr onclick="window.location='zero/';" style="cursor: pointer;">

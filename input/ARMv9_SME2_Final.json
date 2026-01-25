@@ -1,0 +1,154 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "add",
+      "architecture": "ARMv9-A",
+      "full_name": "Multi-vector Add",
+      "summary": "Adds two or four vectors to two or four accumulators (SME2).",
+      "syntax": "ADD { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+      "encoding": { "format": "SME2 Multi-vector", "binary_pattern": "11000001 | 00 | 1 | Zm | 000 | Zn | 00 | Zd", "hex_opcode": "0xC1800000" },
+      "operands": [{ "name": "Zd", "desc": "Dest List" }, { "name": "Zn", "desc": "Src1 List" }, { "name": "Zm", "desc": "Src2 List" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "ARMv9-A",
+      "full_name": "Multi-vector Subtract",
+      "summary": "Subtracts two or four vectors from accumulators (SME2).",
+      "syntax": "SUB { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+      "encoding": { "format": "SME2 Multi-vector", "binary_pattern": "11000001 | 00 | 1 | Zm | 000 | Zn | 01 | Zd", "hex_opcode": "0xC1804000" },
+      "operands": [{ "name": "Zd", "desc": "Dest List" }, { "name": "Zn", "desc": "Src1 List" }, { "name": "Zm", "desc": "Src2 List" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "fmla",
+      "architecture": "ARMv9-A",
+      "full_name": "Multi-vector Floating-point Multiply-Accumulate",
+      "summary": "Fused multiply-add on 2 or 4 vectors (SME2).",
+      "syntax": "FMLA { <Zd1>.S-<Zd4>.S }, { <Zn1>.S-<Zn4>.S }, { <Zm1>.S-<Zm4>.S }",
+      "encoding": { "format": "SME2 Multi-vector", "binary_pattern": "11000001 | 00 | 1 | Zm | 010 | Zn | 00 | Zd", "hex_opcode": "0xC1A00000" },
+      "operands": [{ "name": "Zd", "desc": "Dest List" }, { "name": "Zn", "desc": "Src1 List" }, { "name": "Zm", "desc": "Src2 List" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "fmls",
+      "architecture": "ARMv9-A",
+      "full_name": "Multi-vector Floating-point Multiply-Subtract",
+      "summary": "Fused multiply-subtract on 2 or 4 vectors (SME2).",
+      "syntax": "FMLS { <Zd1>.S-<Zd4>.S }, { <Zn1>.S-<Zn4>.S }, { <Zm1>.S-<Zm4>.S }",
+      "encoding": { "format": "SME2 Multi-vector", "binary_pattern": "11000001 | 00 | 1 | Zm | 010 | Zn | 01 | Zd", "hex_opcode": "0xC1A04000" },
+      "operands": [{ "name": "Zd", "desc": "Dest List" }, { "name": "Zn", "desc": "Src1 List" }, { "name": "Zm", "desc": "Src2 List" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "luti2",
+      "architecture": "ARMv9-A",
+      "full_name": "Lookup Table Index (2-bit)",
+      "summary": "Looks up values in ZT0 table using 2-bit indices (SME2).",
+      "syntax": "LUTI2 <Zd>.B, ZT0, <Zn>.B[<index>]",
+      "encoding": { "format": "SME2 LUT", "binary_pattern": "11000000 | 10 | 00 | 00 | 00 | Zn | Zd", "hex_opcode": "0xC0800000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "ZT0", "desc": "Table" }, { "name": "Zn", "desc": "Indices" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "luti4",
+      "architecture": "ARMv9-A",
+      "full_name": "Lookup Table Index (4-bit)",
+      "summary": "Looks up values in ZT0 table using 4-bit indices (SME2).",
+      "syntax": "LUTI4 <Zd>.B, ZT0, <Zn>.B[<index>]",
+      "encoding": { "format": "SME2 LUT", "binary_pattern": "11000000 | 10 | 00 | 00 | 01 | Zn | Zd", "hex_opcode": "0xC0804000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "ZT0", "desc": "Table" }, { "name": "Zn", "desc": "Indices" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "ld1w",
+      "architecture": "ARMv9-A",
+      "full_name": "Multi-vector Load Words",
+      "summary": "Loads multiple vectors (2 or 4) from memory (SME2).",
+      "syntax": "LD1W { <Zd1>.S-<Zd4>.S }, [<Xn|SP>]",
+      "encoding": { "format": "SME2 Load", "binary_pattern": "11100001 | 00 | 10 | 000 | Rn | Zd", "hex_opcode": "0xE1400000" },
+      "operands": [{ "name": "Zd", "desc": "Dest List" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "st1w",
+      "architecture": "ARMv9-A",
+      "full_name": "Multi-vector Store Words",
+      "summary": "Stores multiple vectors (2 or 4) to memory (SME2).",
+      "syntax": "ST1W { <Zd1>.S-<Zd4>.S }, [<Xn|SP>]",
+      "encoding": { "format": "SME2 Store", "binary_pattern": "11100001 | 00 | 11 | 000 | Rn | Zd", "hex_opcode": "0xE1600000" },
+      "operands": [{ "name": "Zd", "desc": "Src List" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "movt",
+      "architecture": "ARMv9-A",
+      "full_name": "Multi-vector Move (Transpose)",
+      "summary": "Moves and transposes data between 2/4 vectors (SME2).",
+      "syntax": "MOVT { <Zd1>.H-<Zd2>.H }, { <Zn1>.H-<Zn2>.H }",
+      "encoding": { "format": "SME2 Move", "binary_pattern": "11000000 | 00 | 10 | 0000 | Zn | Zd", "hex_opcode": "0xC0200000" },
+      "operands": [{ "name": "Zd", "desc": "Dest List" }, { "name": "Zn", "desc": "Src List" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "zero",
+      "architecture": "ARMv9-A",
+      "full_name": "Zero ZT0",
+      "summary": "Zeros the ZT0 lookup table register (SME2).",
+      "syntax": "ZERO ZT0",
+      "encoding": { "format": "SME2 Control", "binary_pattern": "11000000 | 00001000 | 00000000 | 01111111", "hex_opcode": "0xC008007F" },
+      "operands": [{ "name": "ZT0", "desc": "Table" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "bfmopa",
+      "architecture": "ARMv9-A",
+      "full_name": "BFloat16 Sum of Outer Products Accumulate",
+      "summary": "BFloat16 outer product accumulate (SME2).",
+      "syntax": "BFMOPA <ZAda>.S, <Zn>.H, <Zm>.H",
+      "encoding": { "format": "SME2 Matrix", "binary_pattern": "10000001 | 10 | 0 | 00000 | Zm | Zn | ZAda", "hex_opcode": "0x81800000" },
+      "operands": [{ "name": "ZAda", "desc": "Tile" }, { "name": "Zn", "desc": "Col" }, { "name": "Zm", "desc": "Row" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "at",
+      "architecture": "ARMv8-A",
+      "full_name": "Address Translate (Stage 1 Current)",
+      "summary": "Performs stage 1 address translation for current EL.",
+      "syntax": "AT S1E1R, <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 01 | 000 | 0111 | 1000 | 000 | Rt", "hex_opcode": "0xD5087800" },
+      "operands": [{ "name": "op", "desc": "S1E1R" }, { "name": "Xt", "desc": "Virt Addr" }],
+      "extension": "Base (System)"
+    },
+    {
+      "mnemonic": "at",
+      "architecture": "ARMv8-A",
+      "full_name": "Address Translate (Stage 1 Write)",
+      "summary": "Performs stage 1 address translation for write permission.",
+      "syntax": "AT S1E1W, <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 01 | 000 | 0111 | 1000 | 001 | Rt", "hex_opcode": "0xD5087820" },
+      "operands": [{ "name": "op", "desc": "S1E1W" }, { "name": "Xt", "desc": "Virt Addr" }],
+      "extension": "Base (System)"
+    },
+    {
+      "mnemonic": "tlbi",
+      "architecture": "ARMv8-A",
+      "full_name": "TLB Invalidate (All)",
+      "summary": "Invalidates all TLB entries in the inner shareable domain.",
+      "syntax": "TLBI VMALLE1IS",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 01 | 000 | 1000 | 0011 | 000 | 11111", "hex_opcode": "0xD508831F" },
+      "operands": [],
+      "extension": "Base (System)"
+    },
+    {
+      "mnemonic": "tlbi",
+      "architecture": "ARMv8-A",
+      "full_name": "TLB Invalidate (VA)",
+      "summary": "Invalidates TLB entries by Virtual Address.",
+      "syntax": "TLBI VAE1, <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 01 | 000 | 1000 | 0111 | 001 | Rt", "hex_opcode": "0xD5088720" },
+      "operands": [{ "name": "Xt", "desc": "VA" }],
+      "extension": "Base (System)"
+    }
+  ]
+}
