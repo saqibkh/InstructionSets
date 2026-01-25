@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loads a vertical slice (column) of a tile from memory.">
+    <title>ld1w - ARMv9-A</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../../search.json";
+    </script>
+    
+    <script src="../../static/search.js"></script>
+
+    
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>ARMv9-A Reference</h3>
+        <div class="sidebar-list">
+            
+            <details open class="nav-group">
+                <summary>Base Integer</summary>
+                <div class="group-links">
+                    
+                    <a href="../addhnb/" 
+                       class="">
+                        addhnb
+                    </a>
+                    
+                    <a href="../addhnt/" 
+                       class="">
+                        addhnt
+                    </a>
+                    
+                    <a href="../bdep/" 
+                       class="">
+                        bdep
+                    </a>
+                    
+                    <a href="../bext/" 
+                       class="">
+                        bext
+                    </a>
+                    
+                    <a href="../bgrp/" 
+                       class="">
+                        bgrp
+                    </a>
+                    
+                    <a href="../cadd/" 
+                       class="">
+                        cadd
+                    </a>
+                    
+                    <a href="../cmla/" 
+                       class="">
+                        cmla
+                    </a>
+                    
+                    <a href="../histcnt/" 
+                       class="">
+                        histcnt
+                    </a>
+                    
+                    <a href="../histseg/" 
+                       class="">
+                        histseg
+                    </a>
+                    
+                    <a href="../match/" 
+                       class="">
+                        match
+                    </a>
+                    
+                    <a href="../nmatch/" 
+                       class="">
+                        nmatch
+                    </a>
+                    
+                    <a href="../pmullb/" 
+                       class="">
+                        pmullb
+                    </a>
+                    
+                    <a href="../pmullt/" 
+                       class="">
+                        pmullt
+                    </a>
+                    
+                    <a href="../rsubhnb/" 
+                       class="">
+                        rsubhnb
+                    </a>
+                    
+                    <a href="../rsubhnt/" 
+                       class="">
+                        rsubhnt
+                    </a>
+                    
+                    <a href="../sqrdmulh/" 
+                       class="">
+                        sqrdmulh
+                    </a>
+                    
+                    <a href="../whilerw/" 
+                       class="">
+                        whilerw
+                    </a>
+                    
+                    <a href="../whilewr/" 
+                       class="">
+                        whilewr
+                    </a>
+                    
+                    <a href="../xar/" 
+                       class="">
+                        xar
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Math Extensions (M)</summary>
+                <div class="group-links">
+                    
+                    <a href="../fmopa/" 
+                       class="">
+                        fmopa
+                    </a>
+                    
+                    <a href="../fmops/" 
+                       class="">
+                        fmops
+                    </a>
+                    
+                    <a href="../ld1w/" 
+                       class="active">
+                        ld1w
+                    </a>
+                    
+                    <a href="../ld1w/" 
+                       class="active">
+                        ld1w
+                    </a>
+                    
+                    <a href="../rdsvl/" 
+                       class="">
+                        rdsvl
+                    </a>
+                    
+                    <a href="../smopa/" 
+                       class="">
+                        smopa
+                    </a>
+                    
+                    <a href="../smstart/" 
+                       class="">
+                        smstart
+                    </a>
+                    
+                    <a href="../smstop/" 
+                       class="">
+                        smstop
+                    </a>
+                    
+                    <a href="../st1w/" 
+                       class="">
+                        st1w
+                    </a>
+                    
+                    <a href="../st1w/" 
+                       class="">
+                        st1w
+                    </a>
+                    
+                    <a href="../umopa/" 
+                       class="">
+                        umopa
+                    </a>
+                    
+                    <a href="../zero/" 
+                       class="">
+                        zero
+                    </a>
+                    
+                </div>
+            </details>
+            
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <a href="../../armv9-a/" style="color: var(--text-muted);">← All Instructions</a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div>
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../armv9-a/">ARMv9-A</a> <span>/</span> 
+                ld1w
+            </div>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">ld1w</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Load Matrix Tile Slice (Vertical)</h2>
+            
+            <div class="syntax-box">
+                LD1W { <ZAdaV>.S[<slice>, #<imm>] }, <Pg>/Z, [<Xn|SP>]
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Loads a vertical slice (column) of a tile from memory.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
+                <div>
+                    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box" data-op="11100000">
+                                    <span class="bit-value">11100000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="00">
+                                    <span class="bit-value">00</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="000001">
+                                    <span class="bit-value">000001</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="Pg">
+                                    <span class="bit-value">Pg</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="Rn">
+                                    <span class="bit-value">Rn</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="0000">
+                                    <span class="bit-value">0000</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">SME Load</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0xE0010000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                            <li class="operand-row" data-op="ZAdaV" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">ZAdaV</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Tile Col</span>
+                            </li>
+                            
+                            <li class="operand-row" data-op="Pg" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Pg</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Predicate</span>
+                            </li>
+                            
+                            <li class="operand-row" data-op="Xn" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Xn</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Base</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../../static/theme.js"></script>
+
+    <script src="../../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

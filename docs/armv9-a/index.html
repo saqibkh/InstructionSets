@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The modern, open-source reference for CPU instruction sets (RISC-V, x86, ARM).">
+    <title>ISA Database</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
+
+    
+<div class="container" style="padding-top: 40px;">
+    <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <h1>ARMv9-A</h1>
+            <p>Instruction Set Reference</p>
+        </div>
+        <a href="../" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Back to Home</a>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Mnemonic</th>
+                    <th style="width: 35%;">Name</th>
+                    <th style="width: 15%;">Format</th>
+                    <th style="width: 35%;">Summary</th>
+                </tr>
+            </thead>
+	    <tbody>
+                
+                <tr onclick="window.location='addhnb/';" style="cursor: pointer;">
+                    <td class="mono">addhnb</td>
+                    <td style="font-weight: 500;">SVE Add Narrow (Bottom)</td>
+                    <td><span class="badge">SVE2 Narrowing</span></td>
+                    <td style="color: var(--text-muted);">Adds wide elements, narrows result to bottom half.</td>
+                </tr>
+                
+                <tr onclick="window.location='addhnt/';" style="cursor: pointer;">
+                    <td class="mono">addhnt</td>
+                    <td style="font-weight: 500;">SVE Add Narrow (Top)</td>
+                    <td><span class="badge">SVE2 Narrowing</span></td>
+                    <td style="color: var(--text-muted);">Adds wide elements, narrows result to top half.</td>
+                </tr>
+                
+                <tr onclick="window.location='bdep/';" style="cursor: pointer;">
+                    <td class="mono">bdep</td>
+                    <td style="font-weight: 500;">SVE Bit Deposit</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Scatters bits from LSBs of source to positions specified by mask.</td>
+                </tr>
+                
+                <tr onclick="window.location='bext/';" style="cursor: pointer;">
+                    <td class="mono">bext</td>
+                    <td style="font-weight: 500;">SVE Bit Extract</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Gathers bits from source based on mask positions to LSBs.</td>
+                </tr>
+                
+                <tr onclick="window.location='bgrp/';" style="cursor: pointer;">
+                    <td class="mono">bgrp</td>
+                    <td style="font-weight: 500;">SVE Bit Group</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Groups bits from source based on mask (0s to left, 1s to right).</td>
+                </tr>
+                
+                <tr onclick="window.location='cadd/';" style="cursor: pointer;">
+                    <td class="mono">cadd</td>
+                    <td style="font-weight: 500;">SVE Complex Integer Add</td>
+                    <td><span class="badge">SVE2 Complex</span></td>
+                    <td style="color: var(--text-muted);">Performs complex integer addition with rotation.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmla/';" style="cursor: pointer;">
+                    <td class="mono">cmla</td>
+                    <td style="font-weight: 500;">SVE Complex Integer Multiply-Accumulate</td>
+                    <td><span class="badge">SVE2 Complex</span></td>
+                    <td style="color: var(--text-muted);">Performs complex integer multiply-accumulate with rotation.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmopa/';" style="cursor: pointer;">
+                    <td class="mono">fmopa</td>
+                    <td style="font-weight: 500;">Floating-Point Matrix Outer Product Accumulate</td>
+                    <td><span class="badge">SME Arithmetic</span></td>
+                    <td style="color: var(--text-muted);">Computes (Zn x Zm) + ZA (Outer Product) for floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmops/';" style="cursor: pointer;">
+                    <td class="mono">fmops</td>
+                    <td style="font-weight: 500;">Floating-Point Matrix Outer Product Subtract</td>
+                    <td><span class="badge">SME Arithmetic</span></td>
+                    <td style="color: var(--text-muted);">Computes ZA - (Zn x Zm) (Outer Product).</td>
+                </tr>
+                
+                <tr onclick="window.location='histcnt/';" style="cursor: pointer;">
+                    <td class="mono">histcnt</td>
+                    <td style="font-weight: 500;">SVE Histogram Count</td>
+                    <td><span class="badge">SVE2 Histogram</span></td>
+                    <td style="color: var(--text-muted);">Counts active elements that match specific bit patterns (Histogram acceleration).</td>
+                </tr>
+                
+                <tr onclick="window.location='histseg/';" style="cursor: pointer;">
+                    <td class="mono">histseg</td>
+                    <td style="font-weight: 500;">SVE Histogram Segment</td>
+                    <td><span class="badge">SVE2 Histogram</span></td>
+                    <td style="color: var(--text-muted);">Counts matching elements in segments.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
+                    <td class="mono">ld1w</td>
+                    <td style="font-weight: 500;">Load Matrix Tile Slice (Horizontal)</td>
+                    <td><span class="badge">SME Load</span></td>
+                    <td style="color: var(--text-muted);">Loads a horizontal slice (row) of a tile from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
+                    <td class="mono">ld1w</td>
+                    <td style="font-weight: 500;">Load Matrix Tile Slice (Vertical)</td>
+                    <td><span class="badge">SME Load</span></td>
+                    <td style="color: var(--text-muted);">Loads a vertical slice (column) of a tile from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='match/';" style="cursor: pointer;">
+                    <td class="mono">match</td>
+                    <td style="font-weight: 500;">SVE Match</td>
+                    <td><span class="badge">SVE2 Match</span></td>
+                    <td style="color: var(--text-muted);">Detects if elements in Zn match any element in Zm (String matching).</td>
+                </tr>
+                
+                <tr onclick="window.location='nmatch/';" style="cursor: pointer;">
+                    <td class="mono">nmatch</td>
+                    <td style="font-weight: 500;">SVE No Match</td>
+                    <td><span class="badge">SVE2 Match</span></td>
+                    <td style="color: var(--text-muted);">Detects if elements in Zn match *none* of the elements in Zm.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmullb/';" style="cursor: pointer;">
+                    <td class="mono">pmullb</td>
+                    <td style="font-weight: 500;">SVE Polynomial Multiply Long (Bottom)</td>
+                    <td><span class="badge">SVE2 Poly</span></td>
+                    <td style="color: var(--text-muted);">Polynomial multiply of even elements producing wide result.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmullt/';" style="cursor: pointer;">
+                    <td class="mono">pmullt</td>
+                    <td style="font-weight: 500;">SVE Polynomial Multiply Long (Top)</td>
+                    <td><span class="badge">SVE2 Poly</span></td>
+                    <td style="color: var(--text-muted);">Polynomial multiply of odd elements producing wide result.</td>
+                </tr>
+                
+                <tr onclick="window.location='rdsvl/';" style="cursor: pointer;">
+                    <td class="mono">rdsvl</td>
+                    <td style="font-weight: 500;">Read Streaming Vector Length</td>
+                    <td><span class="badge">SME General</span></td>
+                    <td style="color: var(--text-muted);">Reads the current vector length in streaming mode.</td>
+                </tr>
+                
+                <tr onclick="window.location='rsubhnb/';" style="cursor: pointer;">
+                    <td class="mono">rsubhnb</td>
+                    <td style="font-weight: 500;">SVE Rounding Subtract Narrow (Bottom)</td>
+                    <td><span class="badge">SVE2 Narrowing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts, rounds, and narrows (Bottom half).</td>
+                </tr>
+                
+                <tr onclick="window.location='rsubhnt/';" style="cursor: pointer;">
+                    <td class="mono">rsubhnt</td>
+                    <td style="font-weight: 500;">SVE Rounding Subtract Narrow (Top)</td>
+                    <td><span class="badge">SVE2 Narrowing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts, rounds, and narrows (Top half).</td>
+                </tr>
+                
+                <tr onclick="window.location='smopa/';" style="cursor: pointer;">
+                    <td class="mono">smopa</td>
+                    <td style="font-weight: 500;">Signed Integer Matrix Outer Product Accumulate</td>
+                    <td><span class="badge">SME Arithmetic</span></td>
+                    <td style="color: var(--text-muted);">Computes outer product for signed integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='smstart/';" style="cursor: pointer;">
+                    <td class="mono">smstart</td>
+                    <td style="font-weight: 500;">Streaming Mode Start</td>
+                    <td><span class="badge">SME Control</span></td>
+                    <td style="color: var(--text-muted);">Enables Streaming SVE (SS) and ZA storage (Matrix mode).</td>
+                </tr>
+                
+                <tr onclick="window.location='smstop/';" style="cursor: pointer;">
+                    <td class="mono">smstop</td>
+                    <td style="font-weight: 500;">Streaming Mode Stop</td>
+                    <td><span class="badge">SME Control</span></td>
+                    <td style="color: var(--text-muted);">Disables Streaming SVE and/or ZA storage.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqrdmulh/';" style="cursor: pointer;">
+                    <td class="mono">sqrdmulh</td>
+                    <td style="font-weight: 500;">SVE Signed Saturating Rounding Doubling Multiply High</td>
+                    <td><span class="badge">SVE2 Integer Binary</span></td>
+                    <td style="color: var(--text-muted);">Multiplies, doubles, rounds, and returns high half (Fixed point math).</td>
+                </tr>
+                
+                <tr onclick="window.location='st1w/';" style="cursor: pointer;">
+                    <td class="mono">st1w</td>
+                    <td style="font-weight: 500;">Store Matrix Tile Slice (Horizontal)</td>
+                    <td><span class="badge">SME Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a horizontal slice (row) of a tile to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1w/';" style="cursor: pointer;">
+                    <td class="mono">st1w</td>
+                    <td style="font-weight: 500;">Store Matrix Tile Slice (Vertical)</td>
+                    <td><span class="badge">SME Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a vertical slice (column) of a tile to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='umopa/';" style="cursor: pointer;">
+                    <td class="mono">umopa</td>
+                    <td style="font-weight: 500;">Unsigned Integer Matrix Outer Product Accumulate</td>
+                    <td><span class="badge">SME Arithmetic</span></td>
+                    <td style="color: var(--text-muted);">Computes outer product for unsigned integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='whilerw/';" style="cursor: pointer;">
+                    <td class="mono">whilerw</td>
+                    <td style="font-weight: 500;">SVE While Read/Write</td>
+                    <td><span class="badge">SVE2 Loop</span></td>
+                    <td style="color: var(--text-muted);">Generates predicates to avoid data races (Memory Consistency).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilewr/';" style="cursor: pointer;">
+                    <td class="mono">whilewr</td>
+                    <td style="font-weight: 500;">SVE While Write/Read</td>
+                    <td><span class="badge">SVE2 Loop</span></td>
+                    <td style="color: var(--text-muted);">Generates predicates to avoid write-after-read hazards.</td>
+                </tr>
+                
+                <tr onclick="window.location='xar/';" style="cursor: pointer;">
+                    <td class="mono">xar</td>
+                    <td style="font-weight: 500;">SVE Exclusive OR and Rotate</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Performs XOR followed by a right rotation (used in SHA-3/SM3).</td>
+                </tr>
+                
+                <tr onclick="window.location='zero/';" style="cursor: pointer;">
+                    <td class="mono">zero</td>
+                    <td style="font-weight: 500;">Zero Matrix Tile</td>
+                    <td><span class="badge">SME Control</span></td>
+                    <td style="color: var(--text-muted);">Zeros the entire ZA matrix array or specific tiles.</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../static/theme.js"></script>
+
+    <script src="../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

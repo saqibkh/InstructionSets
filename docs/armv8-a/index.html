@@ -372,6 +372,34 @@
                     <td style="color: var(--text-muted);">Shifts elements right arithmetically under predicate.</td>
                 </tr>
                 
+                <tr onclick="window.location='autda/';" style="cursor: pointer;">
+                    <td class="mono">autda</td>
+                    <td style="font-weight: 500;">Authenticate Data Address (Key A)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Authenticates a data address signed with Key A.</td>
+                </tr>
+                
+                <tr onclick="window.location='autdb/';" style="cursor: pointer;">
+                    <td class="mono">autdb</td>
+                    <td style="font-weight: 500;">Authenticate Data Address (Key B)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Authenticates a data address signed with Key B.</td>
+                </tr>
+                
+                <tr onclick="window.location='autia/';" style="cursor: pointer;">
+                    <td class="mono">autia</td>
+                    <td style="font-weight: 500;">Authenticate Instruction Address (Key A)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Authenticates an instruction address signed with Key A.</td>
+                </tr>
+                
+                <tr onclick="window.location='autib/';" style="cursor: pointer;">
+                    <td class="mono">autib</td>
+                    <td style="font-weight: 500;">Authenticate Instruction Address (Key B)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Authenticates an instruction address signed with Key B.</td>
+                </tr>
+                
                 <tr onclick="window.location='b/';" style="cursor: pointer;">
                     <td class="mono">b</td>
                     <td style="font-weight: 500;">Branch</td>
@@ -505,6 +533,55 @@
                     <td style="color: var(--text-muted);">Selects bits from Vn or Vm based on Vd (mask). (Vd = (Vd & Vn) | (~Vd & Vm)).</td>
                 </tr>
                 
+                <tr onclick="window.location='bti/';" style="cursor: pointer;">
+                    <td class="mono">bti</td>
+                    <td style="font-weight: 500;">Branch Target Identification</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Mark a valid target for an indirect branch (Control Flow Integrity).</td>
+                </tr>
+                
+                <tr onclick="window.location='cas/';" style="cursor: pointer;">
+                    <td class="mono">cas</td>
+                    <td style="font-weight: 500;">Compare and Swap Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic Compare and Swap (32-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='cas/';" style="cursor: pointer;">
+                    <td class="mono">cas</td>
+                    <td style="font-weight: 500;">Compare and Swap Doubleword</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic Compare and Swap (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='casa/';" style="cursor: pointer;">
+                    <td class="mono">casa</td>
+                    <td style="font-weight: 500;">Compare and Swap Word (Acquire)</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic CAS with Acquire semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='casal/';" style="cursor: pointer;">
+                    <td class="mono">casal</td>
+                    <td style="font-weight: 500;">Compare and Swap Word (Acquire-Release)</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic CAS with Acquire and Release semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='casl/';" style="cursor: pointer;">
+                    <td class="mono">casl</td>
+                    <td style="font-weight: 500;">Compare and Swap Word (Release)</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic CAS with Release semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='casp/';" style="cursor: pointer;">
+                    <td class="mono">casp</td>
+                    <td style="font-weight: 500;">Compare and Swap Pair</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic CAS of a pair of registers (128-bit or 64-bit pair).</td>
+                </tr>
+                
                 <tr onclick="window.location='cbnz/';" style="cursor: pointer;">
                     <td class="mono">cbnz</td>
                     <td style="font-weight: 500;">Compare and Branch Not Zero</td>
@@ -566,6 +643,13 @@
                     <td style="font-weight: 500;">Conditional Compare (Register)</td>
                     <td><span class="badge">Cond Comp</span></td>
                     <td style="color: var(--text-muted);">Compares two registers if condition is true.</td>
+                </tr>
+                
+                <tr onclick="window.location='cfinv/';" style="cursor: pointer;">
+                    <td class="mono">cfinv</td>
+                    <td style="font-weight: 500;">Condition Flags Invert</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Inverts the Carry (C) flag.</td>
                 </tr>
                 
                 <tr onclick="window.location='cinc/';" style="cursor: pointer;">
@@ -1184,6 +1268,13 @@
                     <td style="color: var(--text-muted);">Divides floating-point elements under predicate.</td>
                 </tr>
                 
+                <tr onclick="window.location='fjcvtzs/';" style="cursor: pointer;">
+                    <td class="mono">fjcvtzs</td>
+                    <td style="font-weight: 500;">Floating-Point Javascript Convert to Signed Fixed-Point, Rounding toward Zero</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts double to 32-bit integer with specific JS semantics (checks ranges).</td>
+                </tr>
+                
                 <tr onclick="window.location='fmadd/';" style="cursor: pointer;">
                     <td class="mono">fmadd</td>
                     <td style="font-weight: 500;">Floating-Point Fused Multiply-Add (Scalar)</td>
@@ -1520,6 +1611,13 @@
                     <td style="color: var(--text-muted);">Subtracts floating-point elements under predicate.</td>
                 </tr>
                 
+                <tr onclick="window.location='gmi/';" style="cursor: pointer;">
+                    <td class="mono">gmi</td>
+                    <td style="font-weight: 500;">Generate Mask from Insert</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates the mask of excluded tags.</td>
+                </tr>
+                
                 <tr onclick="window.location='hint/';" style="cursor: pointer;">
                     <td class="mono">hint</td>
                     <td style="font-weight: 500;">Hint</td>
@@ -1581,6 +1679,13 @@
                     <td style="font-weight: 500;">SVE Insert Scalar</td>
                     <td><span class="badge">SVE Move</span></td>
                     <td style="color: var(--text-muted);">Inserts scalar into bottom of vector, shifting other elements up.</td>
+                </tr>
+                
+                <tr onclick="window.location='irg/';" style="cursor: pointer;">
+                    <td class="mono">irg</td>
+                    <td style="font-weight: 500;">Insert Random Tag</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Inserts a random Tag into a pointer (MTE).</td>
                 </tr>
                 
                 <tr onclick="window.location='isb/';" style="cursor: pointer;">
@@ -1681,6 +1786,13 @@
                     <td style="color: var(--text-muted);">Loads four-element structures (e.g., RGBA) into four registers.</td>
                 </tr>
                 
+                <tr onclick="window.location='ldadd/';" style="cursor: pointer;">
+                    <td class="mono">ldadd</td>
+                    <td style="font-weight: 500;">Atomic Load-Add Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic add to memory, return old value.</td>
+                </tr>
+                
                 <tr onclick="window.location='ldar/';" style="cursor: pointer;">
                     <td class="mono">ldar</td>
                     <td style="font-weight: 500;">Load-Acquire Register</td>
@@ -1723,6 +1835,20 @@
                     <td style="color: var(--text-muted);">Loads a halfword with Acquire Exclusive semantics.</td>
                 </tr>
                 
+                <tr onclick="window.location='ldclr/';" style="cursor: pointer;">
+                    <td class="mono">ldclr</td>
+                    <td style="font-weight: 500;">Atomic Load-Clear Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic bit clear (AND NOT) to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldeor/';" style="cursor: pointer;">
+                    <td class="mono">ldeor</td>
+                    <td style="font-weight: 500;">Atomic Load-Exclusive OR Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic XOR to memory.</td>
+                </tr>
+                
                 <tr onclick="window.location='ldff1b/';" style="cursor: pointer;">
                     <td class="mono">ldff1b</td>
                     <td style="font-weight: 500;">SVE Load First-Fault Contiguous Bytes</td>
@@ -1749,6 +1875,13 @@
                     <td style="font-weight: 500;">SVE Load First-Fault Contiguous Words</td>
                     <td><span class="badge">SVE Load</span></td>
                     <td style="color: var(--text-muted);">Loads words speculatively; suppresses faults after the first active element.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldg/';" style="cursor: pointer;">
+                    <td class="mono">ldg</td>
+                    <td style="font-weight: 500;">Load Allocation Tag</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads the Allocation Tag from memory.</td>
                 </tr>
                 
                 <tr onclick="window.location='ldnf1b/';" style="cursor: pointer;">
@@ -1898,11 +2031,46 @@
                     <td style="color: var(--text-muted);">Loads a word from PC-relative address and sign-extends to 64-bits.</td>
                 </tr>
                 
+                <tr onclick="window.location='ldset/';" style="cursor: pointer;">
+                    <td class="mono">ldset</td>
+                    <td style="font-weight: 500;">Atomic Load-Set Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic bit set (OR) to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldsmax/';" style="cursor: pointer;">
+                    <td class="mono">ldsmax</td>
+                    <td style="font-weight: 500;">Atomic Load-Signed Maximum Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic signed max to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldsmin/';" style="cursor: pointer;">
+                    <td class="mono">ldsmin</td>
+                    <td style="font-weight: 500;">Atomic Load-Signed Minimum Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic signed min to memory.</td>
+                </tr>
+                
                 <tr onclick="window.location='ldtr/';" style="cursor: pointer;">
                     <td class="mono">ldtr</td>
                     <td style="font-weight: 500;">Load Register (Unprivileged)</td>
                     <td><span class="badge">Load/Store</span></td>
                     <td style="color: var(--text-muted);">Loads a word as if in EL0 (User mode).</td>
+                </tr>
+                
+                <tr onclick="window.location='ldumax/';" style="cursor: pointer;">
+                    <td class="mono">ldumax</td>
+                    <td style="font-weight: 500;">Atomic Load-Unsigned Maximum Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic unsigned max to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldumin/';" style="cursor: pointer;">
+                    <td class="mono">ldumin</td>
+                    <td style="font-weight: 500;">Atomic Load-Unsigned Minimum Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic unsigned min to memory.</td>
                 </tr>
                 
                 <tr onclick="window.location='ldur/';" style="cursor: pointer;">
@@ -2150,6 +2318,41 @@
                     <td style="color: var(--text-muted);">ORs all active elements into a scalar.</td>
                 </tr>
                 
+                <tr onclick="window.location='pacda/';" style="cursor: pointer;">
+                    <td class="mono">pacda</td>
+                    <td style="font-weight: 500;">Pointer Authentication Code for Data Address (Key A)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Signs a data address using Key A.</td>
+                </tr>
+                
+                <tr onclick="window.location='pacdb/';" style="cursor: pointer;">
+                    <td class="mono">pacdb</td>
+                    <td style="font-weight: 500;">Pointer Authentication Code for Data Address (Key B)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Signs a data address using Key B.</td>
+                </tr>
+                
+                <tr onclick="window.location='pacga/';" style="cursor: pointer;">
+                    <td class="mono">pacga</td>
+                    <td style="font-weight: 500;">Pointer Authentication Code Generic Address</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Computes a pointer authentication code for an address and modifier.</td>
+                </tr>
+                
+                <tr onclick="window.location='pacia/';" style="cursor: pointer;">
+                    <td class="mono">pacia</td>
+                    <td style="font-weight: 500;">Pointer Authentication Code for Instruction Address (Key A)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Signs an instruction address using Key A.</td>
+                </tr>
+                
+                <tr onclick="window.location='pacib/';" style="cursor: pointer;">
+                    <td class="mono">pacib</td>
+                    <td style="font-weight: 500;">Pointer Authentication Code for Instruction Address (Key B)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Signs an instruction address using Key B.</td>
+                </tr>
+                
                 <tr onclick="window.location='pfalse/';" style="cursor: pointer;">
                     <td class="mono">pfalse</td>
                     <td style="font-weight: 500;">SVE Initialize Predicate to False</td>
@@ -2276,6 +2479,13 @@
                     <td style="color: var(--text-muted);">Reverses words within 64-bit elements.</td>
                 </tr>
                 
+                <tr onclick="window.location='rmif/';" style="cursor: pointer;">
+                    <td class="mono">rmif</td>
+                    <td style="font-weight: 500;">Rotate Mask Insert Flags</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Rotates a GPR and inserts bits into the flags (NZCV).</td>
+                </tr>
+                
                 <tr onclick="window.location='rorv/';" style="cursor: pointer;">
                     <td class="mono">rorv</td>
                     <td style="font-weight: 500;">Rotate Right (Register)</td>
@@ -2365,6 +2575,20 @@
                     <td style="font-weight: 500;">SVE Select Elements</td>
                     <td><span class="badge">SVE Select</span></td>
                     <td style="color: var(--text-muted);">Selects elements from Zn or Zm based on predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='setf16/';" style="cursor: pointer;">
+                    <td class="mono">setf16</td>
+                    <td style="font-weight: 500;">Set Flags 16-bit</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Sets flags based on a 16-bit value.</td>
+                </tr>
+                
+                <tr onclick="window.location='setf8/';" style="cursor: pointer;">
+                    <td class="mono">setf8</td>
+                    <td style="font-weight: 500;">Set Flags 8-bit</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Sets flags based on an 8-bit value.</td>
                 </tr>
                 
                 <tr onclick="window.location='sha1c/';" style="cursor: pointer;">
@@ -2626,6 +2850,13 @@
                     <td style="color: var(--text-muted);">Stores two-element structures from two registers to memory (Interleave).</td>
                 </tr>
                 
+                <tr onclick="window.location='st2g/';" style="cursor: pointer;">
+                    <td class="mono">st2g</td>
+                    <td style="font-weight: 500;">Store Allocation Tag (Two Granules)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores the Allocation Tag to two memory granules.</td>
+                </tr>
+                
                 <tr onclick="window.location='st3/';" style="cursor: pointer;">
                     <td class="mono">st3</td>
                     <td style="font-weight: 500;">Store Multiple 3-Element Structures</td>
@@ -2638,6 +2869,13 @@
                     <td style="font-weight: 500;">Store Multiple 4-Element Structures</td>
                     <td><span class="badge">SIMD Load/Store</span></td>
                     <td style="color: var(--text-muted);">Stores four-element structures from four registers (Interleave RGBA).</td>
+                </tr>
+                
+                <tr onclick="window.location='stg/';" style="cursor: pointer;">
+                    <td class="mono">stg</td>
+                    <td style="font-weight: 500;">Store Allocation Tag</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores the Allocation Tag to memory.</td>
                 </tr>
                 
                 <tr onclick="window.location='stlr/';" style="cursor: pointer;">
@@ -2829,6 +3067,13 @@
                     <td style="color: var(--text-muted);">Stores a halfword if exclusive monitor matches.</td>
                 </tr>
                 
+                <tr onclick="window.location='stz2g/';" style="cursor: pointer;">
+                    <td class="mono">stz2g</td>
+                    <td style="font-weight: 500;">Store Allocation Tag and Zero (Two Granules)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores Tag and zeros memory for two granules.</td>
+                </tr>
+                
                 <tr onclick="window.location='sub/';" style="cursor: pointer;">
                     <td class="mono">sub</td>
                     <td style="font-weight: 500;">Subtract (Extended Register)</td>
@@ -2862,6 +3107,13 @@
                     <td style="font-weight: 500;">SVE Integer Subtract (Predicated)</td>
                     <td><span class="badge">SVE Integer Binary</span></td>
                     <td style="color: var(--text-muted);">Subtracts vector Zm from Zdn under predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='subp/';" style="cursor: pointer;">
+                    <td class="mono">subp</td>
+                    <td style="font-weight: 500;">Subtract Pointer</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts pointers (ignoring tags) to get difference.</td>
                 </tr>
                 
                 <tr onclick="window.location='subs/';" style="cursor: pointer;">
@@ -2906,6 +3158,13 @@
                     <td style="color: var(--text-muted);">Causes a Supervisor Call exception (to EL1).</td>
                 </tr>
                 
+                <tr onclick="window.location='swp/';" style="cursor: pointer;">
+                    <td class="mono">swp</td>
+                    <td style="font-weight: 500;">Swap Word</td>
+                    <td><span class="badge">Atomic</span></td>
+                    <td style="color: var(--text-muted);">Atomic swap of a word.</td>
+                </tr>
+                
                 <tr onclick="window.location='sys/';" style="cursor: pointer;">
                     <td class="mono">sys</td>
                     <td style="font-weight: 500;">System Instruction</td>
@@ -2941,6 +3200,20 @@
                     <td style="color: var(--text-muted);">Branches if specified bit is 0.</td>
                 </tr>
                 
+                <tr onclick="window.location='tcancel/';" style="cursor: pointer;">
+                    <td class="mono">tcancel</td>
+                    <td style="font-weight: 500;">Transaction Cancel</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Cancels the current transaction with an immediate reason code.</td>
+                </tr>
+                
+                <tr onclick="window.location='tcommit/';" style="cursor: pointer;">
+                    <td class="mono">tcommit</td>
+                    <td style="font-weight: 500;">Transaction Commit</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Commits the current transaction.</td>
+                </tr>
+                
                 <tr onclick="window.location='trn1/';" style="cursor: pointer;">
                     <td class="mono">trn1</td>
                     <td style="font-weight: 500;">Vector Transpose 1</td>
@@ -2967,6 +3240,20 @@
                     <td style="font-weight: 500;">SVE Transpose 2</td>
                     <td><span class="badge">SVE Permute</span></td>
                     <td style="color: var(--text-muted);">Interleaves odd elements from two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='tstart/';" style="cursor: pointer;">
+                    <td class="mono">tstart</td>
+                    <td style="font-weight: 500;">Transaction Start</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Starts a memory transaction. Returns 0 if successful.</td>
+                </tr>
+                
+                <tr onclick="window.location='ttest/';" style="cursor: pointer;">
+                    <td class="mono">ttest</td>
+                    <td style="font-weight: 500;">Transaction Test</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Tests the transaction nesting depth.</td>
                 </tr>
                 
                 <tr onclick="window.location='uaddl/';" style="cursor: pointer;">
@@ -3247,6 +3534,13 @@
                     <td style="font-weight: 500;">SVE While Less Than</td>
                     <td><span class="badge">SVE Compare Scalar</span></td>
                     <td style="color: var(--text-muted);">Generates a predicate based on a loop counter (while Xn < Xm).</td>
+                </tr>
+                
+                <tr onclick="window.location='xpaclri/';" style="cursor: pointer;">
+                    <td class="mono">xpaclri</td>
+                    <td style="font-weight: 500;">Strip PAC from Instruction Address</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Removes the pointer authentication code from an instruction address.</td>
                 </tr>
                 
                 <tr onclick="window.location='xtn/';" style="cursor: pointer;">

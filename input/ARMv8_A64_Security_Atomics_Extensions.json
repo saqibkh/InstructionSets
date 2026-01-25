@@ -1,0 +1,424 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "pacga",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code Generic Address",
+      "summary": "Computes a pointer authentication code for an address and modifier.",
+      "syntax": "PACGA <Xd>, <Xn>, <Xm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011010 | 110 | Xm | 001100 | Xn | Xd", "hex_opcode": "0x9AC03000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Address" }, { "name": "Xm", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "pacia",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code for Instruction Address (Key A)",
+      "summary": "Signs an instruction address using Key A.",
+      "syntax": "PACIA <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000000 | 11111 | Xd", "hex_opcode": "0xDAC10000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "pacib",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code for Instruction Address (Key B)",
+      "summary": "Signs an instruction address using Key B.",
+      "syntax": "PACIB <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000001 | 11111 | Xd", "hex_opcode": "0xDAC10400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "pacda",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code for Data Address (Key A)",
+      "summary": "Signs a data address using Key A.",
+      "syntax": "PACDA <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000010 | 11111 | Xd", "hex_opcode": "0xDAC10800" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "pacdb",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code for Data Address (Key B)",
+      "summary": "Signs a data address using Key B.",
+      "syntax": "PACDB <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000011 | 11111 | Xd", "hex_opcode": "0xDAC10C00" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "autia",
+      "architecture": "ARMv8-A",
+      "full_name": "Authenticate Instruction Address (Key A)",
+      "summary": "Authenticates an instruction address signed with Key A.",
+      "syntax": "AUTIA <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000100 | 11111 | Xd", "hex_opcode": "0xDAC11000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "autib",
+      "architecture": "ARMv8-A",
+      "full_name": "Authenticate Instruction Address (Key B)",
+      "summary": "Authenticates an instruction address signed with Key B.",
+      "syntax": "AUTIB <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000101 | 11111 | Xd", "hex_opcode": "0xDAC11400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "autda",
+      "architecture": "ARMv8-A",
+      "full_name": "Authenticate Data Address (Key A)",
+      "summary": "Authenticates a data address signed with Key A.",
+      "syntax": "AUTDA <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000110 | 11111 | Xd", "hex_opcode": "0xDAC11800" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "autdb",
+      "architecture": "ARMv8-A",
+      "full_name": "Authenticate Data Address (Key B)",
+      "summary": "Authenticates a data address signed with Key B.",
+      "syntax": "AUTDB <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | Xn | 000111 | 11111 | Xd", "hex_opcode": "0xDAC11C00" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "xpaclri",
+      "architecture": "ARMv8-A",
+      "full_name": "Strip PAC from Instruction Address",
+      "summary": "Removes the pointer authentication code from an instruction address.",
+      "syntax": "XPACLRI",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00001 | 11111", "hex_opcode": "0xD50320FF" },
+      "operands": [],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "bti",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch Target Identification",
+      "summary": "Mark a valid target for an indirect branch (Control Flow Integrity).",
+      "syntax": "BTI {<target>}",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 0100 | target | 11111", "hex_opcode": "0xD503241F" },
+      "operands": [{ "name": "target", "desc": "Type (c, j, jc)" }],
+      "extension": "BTI (Security)"
+    },
+    {
+      "mnemonic": "irg",
+      "architecture": "ARMv8-A",
+      "full_name": "Insert Random Tag",
+      "summary": "Inserts a random Tag into a pointer (MTE).",
+      "syntax": "IRG <Xd|SP>, <Xn|SP> {, <Xm>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011010 | 110 | Xm | 000100 | Xn | Xd", "hex_opcode": "0x9AC01000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Addr" }, { "name": "Xm", "desc": "Exclude Mask" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "gmi",
+      "architecture": "ARMv8-A",
+      "full_name": "Generate Mask from Insert",
+      "summary": "Calculates the mask of excluded tags.",
+      "syntax": "GMI <Xd>, <Xn|SP>, <Xm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011010 | 110 | Xm | 000101 | Xn | Xd", "hex_opcode": "0x9AC01400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Addr" }, { "name": "Xm", "desc": "Excluded" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "ldg",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Allocation Tag",
+      "summary": "Loads the Allocation Tag from memory.",
+      "syntax": "LDG <Xt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001 | 001 | imm9 | 00 | Rn | Rt", "hex_opcode": "0xD9200000" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "stg",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag",
+      "summary": "Stores the Allocation Tag to memory.",
+      "syntax": "STG <Xt|SP>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001 | 001 | imm9 | 01 | Rn | Rt", "hex_opcode": "0xD9200000" },
+      "operands": [{ "name": "Xt", "desc": "Source Tag" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "st2g",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag (Two Granules)",
+      "summary": "Stores the Allocation Tag to two memory granules.",
+      "syntax": "ST2G <Xt|SP>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001 | 001 | imm9 | 11 | Rn | Rt", "hex_opcode": "0xD9600000" },
+      "operands": [{ "name": "Xt", "desc": "Source Tag" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "stz2g",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag and Zero (Two Granules)",
+      "summary": "Stores Tag and zeros memory for two granules.",
+      "syntax": "STZ2G <Xt|SP>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001 | 001 | imm9 | 10 | Rn | Rt", "hex_opcode": "0xD9400000" },
+      "operands": [{ "name": "Xt", "desc": "Source Tag" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "subp",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract Pointer",
+      "summary": "Subtracts pointers (ignoring tags) to get difference.",
+      "syntax": "SUBP <Xd>, <Xn|SP>, <Xm|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011010 | 110 | Xm | 000000 | Xn | Xd", "hex_opcode": "0x9AC00000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Addr 1" }, { "name": "Xm", "desc": "Addr 2" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "cas",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Word",
+      "summary": "Atomic Compare and Swap (32-bit).",
+      "syntax": "CAS <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10001000 | 1 | 0 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0x88A07C00" },
+      "operands": [{ "name": "Ws", "desc": "Compare" }, { "name": "Wt", "desc": "Swap" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "cas",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Doubleword",
+      "summary": "Atomic Compare and Swap (64-bit).",
+      "syntax": "CAS <Xs>, <Xt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "11001000 | 1 | 0 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0xC8A07C00" },
+      "operands": [{ "name": "Xs", "desc": "Compare" }, { "name": "Xt", "desc": "Swap" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "casa",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Word (Acquire)",
+      "summary": "Atomic CAS with Acquire semantics.",
+      "syntax": "CASA <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10001000 | 1 | 1 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0x88E07C00" },
+      "operands": [{ "name": "Ws", "desc": "Compare" }, { "name": "Wt", "desc": "Swap" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "casl",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Word (Release)",
+      "summary": "Atomic CAS with Release semantics.",
+      "syntax": "CASL <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10001000 | 1 | 0 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0x88A0FC00" },
+      "operands": [{ "name": "Ws", "desc": "Compare" }, { "name": "Wt", "desc": "Swap" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "casal",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Word (Acquire-Release)",
+      "summary": "Atomic CAS with Acquire and Release semantics.",
+      "syntax": "CASAL <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10001000 | 1 | 1 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0x88E0FC00" },
+      "operands": [{ "name": "Ws", "desc": "Compare" }, { "name": "Wt", "desc": "Swap" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "casp",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Pair",
+      "summary": "Atomic CAS of a pair of registers (128-bit or 64-bit pair).",
+      "syntax": "CASP <Ws>, <W(s+1)>, <Wt>, <W(t+1)>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "00001000 | 1 | 0 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0x48207C00" },
+      "operands": [{ "name": "Ws", "desc": "Cmp 1" }, { "name": "Wt", "desc": "Swap 1" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "swp",
+      "architecture": "ARMv8-A",
+      "full_name": "Swap Word",
+      "summary": "Atomic swap of a word.",
+      "syntax": "SWP <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0xB8208000" },
+      "operands": [{ "name": "Ws", "desc": "Src" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Add Word",
+      "summary": "Atomic add to memory, return old value.",
+      "syntax": "LDADD <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00000 | 11111 | Rn | Rt", "hex_opcode": "0xB8200000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldclr",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Clear Word",
+      "summary": "Atomic bit clear (AND NOT) to memory.",
+      "syntax": "LDCLR <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00001 | 11111 | Rn | Rt", "hex_opcode": "0xB8201000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldeor",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Exclusive OR Word",
+      "summary": "Atomic XOR to memory.",
+      "syntax": "LDEOR <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00010 | 11111 | Rn | Rt", "hex_opcode": "0xB8202000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldset",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Set Word",
+      "summary": "Atomic bit set (OR) to memory.",
+      "syntax": "LDSET <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00011 | 11111 | Rn | Rt", "hex_opcode": "0xB8203000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldsmax",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Signed Maximum Word",
+      "summary": "Atomic signed max to memory.",
+      "syntax": "LDSMAX <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00100 | 11111 | Rn | Rt", "hex_opcode": "0xB8204000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldsmin",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Signed Minimum Word",
+      "summary": "Atomic signed min to memory.",
+      "syntax": "LDSMIN <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00101 | 11111 | Rn | Rt", "hex_opcode": "0xB8205000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldumax",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Unsigned Maximum Word",
+      "summary": "Atomic unsigned max to memory.",
+      "syntax": "LDUMAX <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00110 | 11111 | Rn | Rt", "hex_opcode": "0xB8206000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "ldumin",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Load-Unsigned Minimum Word",
+      "summary": "Atomic unsigned min to memory.",
+      "syntax": "LDUMIN <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 0 | 0 | 1 | 00111 | 11111 | Rn | Rt", "hex_opcode": "0xB8207000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "tstart",
+      "architecture": "ARMv8-A",
+      "full_name": "Transaction Start",
+      "summary": "Starts a memory transaction. Returns 0 if successful.",
+      "syntax": "TSTART <Xd>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 00011 | 0011 | 0011 | 011 | Rt", "hex_opcode": "0xD52B33??" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }],
+      "extension": "TME (Transactional)"
+    },
+    {
+      "mnemonic": "tcommit",
+      "architecture": "ARMv8-A",
+      "full_name": "Transaction Commit",
+      "summary": "Commits the current transaction.",
+      "syntax": "TCOMMIT",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0011 | 0011 | 011 | 11111", "hex_opcode": "0xD503337F" },
+      "operands": [],
+      "extension": "TME (Transactional)"
+    },
+    {
+      "mnemonic": "tcancel",
+      "architecture": "ARMv8-A",
+      "full_name": "Transaction Cancel",
+      "summary": "Cancels the current transaction with an immediate reason code.",
+      "syntax": "TCANCEL #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "11010100 | 010 | imm16 | 00000", "hex_opcode": "0xD4400000" },
+      "operands": [{ "name": "imm", "desc": "Reason" }],
+      "extension": "TME (Transactional)"
+    },
+    {
+      "mnemonic": "ttest",
+      "architecture": "ARMv8-A",
+      "full_name": "Transaction Test",
+      "summary": "Tests the transaction nesting depth.",
+      "syntax": "TTEST <Xd>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 00011 | 0011 | 0011 | 100 | Rt", "hex_opcode": "0xD52B33??" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }],
+      "extension": "TME (Transactional)"
+    },
+    {
+      "mnemonic": "fjcvtzs",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Javascript Convert to Signed Fixed-Point, Rounding toward Zero",
+      "summary": "Converts double to 32-bit integer with specific JS semantics (checks ranges).",
+      "syntax": "FJCVTZS <Wd>, <Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | 01111110 | 000000 | Rn | Rd", "hex_opcode": "0x1E7E0000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Dn", "desc": "Src" }],
+      "extension": "JSCVT (Javascript)"
+    },
+    {
+      "mnemonic": "cfinv",
+      "architecture": "ARMv8-A",
+      "full_name": "Condition Flags Invert",
+      "summary": "Inverts the Carry (C) flag.",
+      "syntax": "CFINV",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00000 | 0100 | 0000 | 000 | 11111", "hex_opcode": "0xD500401F" },
+      "operands": [],
+      "extension": "Flag Manip"
+    },
+    {
+      "mnemonic": "rmif",
+      "architecture": "ARMv8-A",
+      "full_name": "Rotate Mask Insert Flags",
+      "summary": "Rotates a GPR and inserts bits into the flags (NZCV).",
+      "syntax": "RMIF <Xn>, #<shift>, #<mask>",
+      "encoding": { "format": "System", "binary_pattern": "10111010 | 00 | 0 | mask | 0 | shift | Rn | 00000", "hex_opcode": "0xBA000000" },
+      "operands": [{ "name": "Xn", "desc": "Src" }, { "name": "shift", "desc": "Shift" }, { "name": "mask", "desc": "Mask" }],
+      "extension": "Flag Manip"
+    },
+    {
+      "mnemonic": "setf8",
+      "architecture": "ARMv8-A",
+      "full_name": "Set Flags 8-bit",
+      "summary": "Sets flags based on an 8-bit value.",
+      "syntax": "SETF8 <Wn>",
+      "encoding": { "format": "System", "binary_pattern": "00111010 | 00 | 0 | 00000 | 0 | 000000 | Rn | 01101", "hex_opcode": "0x3A00080D" },
+      "operands": [{ "name": "Wn", "desc": "Src" }],
+      "extension": "Flag Manip"
+    },
+    {
+      "mnemonic": "setf16",
+      "architecture": "ARMv8-A",
+      "full_name": "Set Flags 16-bit",
+      "summary": "Sets flags based on a 16-bit value.",
+      "syntax": "SETF16 <Wn>",
+      "encoding": { "format": "System", "binary_pattern": "00111010 | 00 | 0 | 00000 | 0 | 000100 | Rn | 01101", "hex_opcode": "0x3A00480D" },
+      "operands": [{ "name": "Wn", "desc": "Src" }],
+      "extension": "Flag Manip"
+    }
+  ]
+}
