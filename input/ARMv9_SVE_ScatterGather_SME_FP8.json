@@ -1,0 +1,404 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "ld1b",
+      "architecture": "ARMv9-A",
+      "full_name": "Gather Load Bytes (SVE)",
+      "summary": "Loads bytes from non-contiguous memory addresses specified by a vector index.",
+      "syntax": "LD1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW]",
+      "encoding": { "format": "SVE Gather", "binary_pattern": "10000100 | 00 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0x84000000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1h",
+      "architecture": "ARMv9-A",
+      "full_name": "Gather Load Halfwords (SVE)",
+      "summary": "Loads halfwords from non-contiguous memory addresses.",
+      "syntax": "LD1H { <Zt>.H }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW #1]",
+      "encoding": { "format": "SVE Gather", "binary_pattern": "10000100 | 01 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0x84200000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1w",
+      "architecture": "ARMv9-A",
+      "full_name": "Gather Load Words (SVE)",
+      "summary": "Loads words from non-contiguous memory addresses.",
+      "syntax": "LD1W { <Zt>.S }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW #2]",
+      "encoding": { "format": "SVE Gather", "binary_pattern": "10000100 | 10 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0x84400000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "ld1d",
+      "architecture": "ARMv9-A",
+      "full_name": "Gather Load Doublewords (SVE)",
+      "summary": "Loads doublewords from non-contiguous memory addresses.",
+      "syntax": "LD1D { <Zt>.D }, <Pg>/Z, [<Xn|SP>, <Zm>.D, LSL #3]",
+      "encoding": { "format": "SVE Gather", "binary_pattern": "11000100 | 11 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0xC4600000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1b",
+      "architecture": "ARMv9-A",
+      "full_name": "Scatter Store Bytes (SVE)",
+      "summary": "Stores bytes to non-contiguous memory addresses.",
+      "syntax": "ST1B { <Zt>.B }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW]",
+      "encoding": { "format": "SVE Scatter", "binary_pattern": "11100100 | 00 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0xE4000000" },
+      "operands": [{ "name": "Zt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1h",
+      "architecture": "ARMv9-A",
+      "full_name": "Scatter Store Halfwords (SVE)",
+      "summary": "Stores halfwords to non-contiguous memory addresses.",
+      "syntax": "ST1H { <Zt>.H }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW #1]",
+      "encoding": { "format": "SVE Scatter", "binary_pattern": "11100100 | 01 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0xE4200000" },
+      "operands": [{ "name": "Zt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1w",
+      "architecture": "ARMv9-A",
+      "full_name": "Scatter Store Words (SVE)",
+      "summary": "Stores words to non-contiguous memory addresses.",
+      "syntax": "ST1W { <Zt>.S }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW #2]",
+      "encoding": { "format": "SVE Scatter", "binary_pattern": "11100100 | 10 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0xE4400000" },
+      "operands": [{ "name": "Zt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "st1d",
+      "architecture": "ARMv9-A",
+      "full_name": "Scatter Store Doublewords (SVE)",
+      "summary": "Stores doublewords to non-contiguous memory addresses.",
+      "syntax": "ST1D { <Zt>.D }, <Pg>, [<Xn|SP>, <Zm>.D, LSL #3]",
+      "encoding": { "format": "SVE Scatter", "binary_pattern": "11100100 | 11 | 1 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0xE4600000" },
+      "operands": [{ "name": "Zt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offsets" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "mova",
+      "architecture": "ARMv9-A",
+      "full_name": "Move Vector to Tile Slice (Horizontal)",
+      "summary": "Moves an SVE vector into a horizontal slice of a ZA tile.",
+      "syntax": "MOVA <ZA>.<T>H[<Ws>, <imm>], <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SME Move", "binary_pattern": "11000000 | 00 | 0000 | 000 | Pg | Zn | 00000", "hex_opcode": "0xC0000000" },
+      "operands": [{ "name": "ZA", "desc": "Tile Slice" }, { "name": "Zn", "desc": "Src Vector" }],
+      "extension": "SME"
+    },
+    {
+      "mnemonic": "mova",
+      "architecture": "ARMv9-A",
+      "full_name": "Move Vector to Tile Slice (Vertical)",
+      "summary": "Moves an SVE vector into a vertical slice of a ZA tile.",
+      "syntax": "MOVA <ZA>.<T>V[<Ws>, <imm>], <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SME Move", "binary_pattern": "11000000 | 00 | 0000 | 001 | Pg | Zn | 00000", "hex_opcode": "0xC0008000" },
+      "operands": [{ "name": "ZA", "desc": "Tile Slice" }, { "name": "Zn", "desc": "Src Vector" }],
+      "extension": "SME"
+    },
+    {
+      "mnemonic": "mova",
+      "architecture": "ARMv9-A",
+      "full_name": "Move Tile Slice to Vector (Horizontal)",
+      "summary": "Moves a horizontal slice of a ZA tile into an SVE vector.",
+      "syntax": "MOVA <Zd>.<T>, <Pg>/M, <ZA>.<T>H[<Ws>, <imm>]",
+      "encoding": { "format": "SME Move", "binary_pattern": "11000000 | 00 | 0000 | 100 | Pg | 00000 | Zd", "hex_opcode": "0xC0010000" },
+      "operands": [{ "name": "Zd", "desc": "Dest Vector" }, { "name": "ZA", "desc": "Tile Slice" }],
+      "extension": "SME"
+    },
+    {
+      "mnemonic": "mova",
+      "architecture": "ARMv9-A",
+      "full_name": "Move Tile Slice to Vector (Vertical)",
+      "summary": "Moves a vertical slice of a ZA tile into an SVE vector.",
+      "syntax": "MOVA <Zd>.<T>, <Pg>/M, <ZA>.<T>V[<Ws>, <imm>]",
+      "encoding": { "format": "SME Move", "binary_pattern": "11000000 | 00 | 0000 | 101 | Pg | 00000 | Zd", "hex_opcode": "0xC0018000" },
+      "operands": [{ "name": "Zd", "desc": "Dest Vector" }, { "name": "ZA", "desc": "Tile Slice" }],
+      "extension": "SME"
+    },
+    {
+      "mnemonic": "ldsza",
+      "architecture": "ARMv9-A",
+      "full_name": "Load ZA Tile Slice",
+      "summary": "Loads a tile slice from memory directly into ZA.",
+      "syntax": "LDSZA <ZA>.<T>V[<Ws>, <imm>], [<Xn|SP>, <Xm>, LSL <scale>]",
+      "encoding": { "format": "SME Load", "binary_pattern": "11100001 | 00 | 000000 | 00 | Rm | Rn | 00000", "hex_opcode": "0xE1000000" },
+      "operands": [{ "name": "ZA", "desc": "Dest Tile" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SME"
+    },
+    {
+      "mnemonic": "stsza",
+      "architecture": "ARMv9-A",
+      "full_name": "Store ZA Tile Slice",
+      "summary": "Stores a tile slice from ZA directly to memory.",
+      "syntax": "STSZA <ZA>.<T>V[<Ws>, <imm>], [<Xn|SP>, <Xm>, LSL <scale>]",
+      "encoding": { "format": "SME Store", "binary_pattern": "11100001 | 00 | 010000 | 00 | Rm | Rn | 00000", "hex_opcode": "0xE1200000" },
+      "operands": [{ "name": "ZA", "desc": "Src Tile" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "SME"
+    },
+    {
+      "mnemonic": "bdep",
+      "architecture": "ARMv9-A",
+      "full_name": "Bit Deposit (SVE2)",
+      "summary": "Deposits bits from source to destination based on a mask (Scatter bits).",
+      "syntax": "BDEP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2 Bitwise", "binary_pattern": "01000101 | sz | 0 | 0 | 11010 | Zm | 01000 | Zdn", "hex_opcode": "0x450C8000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zm", "desc": "Mask" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "bext",
+      "architecture": "ARMv9-A",
+      "full_name": "Bit Extract (SVE2)",
+      "summary": "Extracts bits from source to destination based on a mask (Gather bits).",
+      "syntax": "BEXT <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2 Bitwise", "binary_pattern": "01000101 | sz | 0 | 0 | 11010 | Zm | 01100 | Zdn", "hex_opcode": "0x450D8000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zm", "desc": "Mask" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "bgrp",
+      "architecture": "ARMv9-A",
+      "full_name": "Bit Group (SVE2)",
+      "summary": "Groups bits from source to left/right based on a mask.",
+      "syntax": "BGRP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2 Bitwise", "binary_pattern": "01000101 | sz | 0 | 0 | 11010 | Zm | 00100 | Zdn", "hex_opcode": "0x450A8000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zm", "desc": "Mask" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "pmullb",
+      "architecture": "ARMv9-A",
+      "full_name": "Polynomial Multiply Long (Bottom)",
+      "summary": "Polynomial multiply of bottom 64-bits (Crypto/CRC).",
+      "syntax": "PMULLB <Zdn>.Q, <Zn>.D, <Zm>.D",
+      "encoding": { "format": "SVE2 Crypto", "binary_pattern": "01000101 | 00 | 0 | 0 | 11000 | Zm | Zn | Zdn", "hex_opcode": "0x45006000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Zn", "desc": "Src 1" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "pmullt",
+      "architecture": "ARMv9-A",
+      "full_name": "Polynomial Multiply Long (Top)",
+      "summary": "Polynomial multiply of top 64-bits (Crypto/CRC).",
+      "syntax": "PMULLT <Zdn>.Q, <Zn>.D, <Zm>.D",
+      "encoding": { "format": "SVE2 Crypto", "binary_pattern": "01000101 | 00 | 0 | 0 | 11001 | Zm | Zn | Zdn", "hex_opcode": "0x45006400" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Zn", "desc": "Src 1" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "f8cvt",
+      "architecture": "ARMv9-A",
+      "full_name": "Floating-Point 8 Convert",
+      "summary": "Converts between FP8 and other formats.",
+      "syntax": "F8CVT <Zd>.H, <Zn>.B, #<imm>",
+      "encoding": { "format": "FP8", "binary_pattern": "01100101 | 00 | 0010 | 0010 | 00 | Zn | Zd", "hex_opcode": "0x65220000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "FP8"
+    },
+    {
+      "mnemonic": "f8mopa",
+      "architecture": "ARMv9-A",
+      "full_name": "FP8 Matrix Outer Product Accumulate",
+      "summary": "Outer product of FP8 vectors accumulating to FP32.",
+      "syntax": "F8MOPA <ZAda>.S, <Zn>.B, <Zm>.B",
+      "encoding": { "format": "SME2 FP8", "binary_pattern": "10000000 | 00 | 0 | 00000 | Zm | Zn | ZAda", "hex_opcode": "0x80000000" },
+      "operands": [{ "name": "ZAda", "desc": "Tile" }, { "name": "Zn", "desc": "Col" }, { "name": "Zm", "desc": "Row" }],
+      "extension": "FP8"
+    },
+    {
+      "mnemonic": "cdot",
+      "architecture": "ARMv9-A",
+      "full_name": "Complex Dot Product (SVE2)",
+      "summary": "Computes complex integer dot product.",
+      "syntax": "CDOT <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot>",
+      "encoding": { "format": "SVE2 Complex", "binary_pattern": "01000100 | 10 | 0 | 00000 | Zm | Zn | Zdn", "hex_opcode": "0x44800000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Zn", "desc": "Src 1" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "cmla",
+      "architecture": "ARMv9-A",
+      "full_name": "Complex Multiply Accumulate (SVE2)",
+      "summary": "Computes complex integer multiply-accumulate.",
+      "syntax": "CMLA <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot>",
+      "encoding": { "format": "SVE2 Complex", "binary_pattern": "01000100 | 10 | 0 | 00100 | Zm | Zn | Zdn", "hex_opcode": "0x44801000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Zn", "desc": "Src 1" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "sqrdmulh",
+      "architecture": "ARMv9-A",
+      "full_name": "Signed Saturating Rounding Doubling Multiply High (SVE2)",
+      "summary": "Saturating, rounding, doubling high multiply.",
+      "syntax": "SQRDMULH <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2 Int", "binary_pattern": "01000100 | sz | 0 | 0 | 01110 | Zm | Zn | Zdn", "hex_opcode": "0x440E0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Zm", "desc": "Src" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "sqrshl",
+      "architecture": "ARMv9-A",
+      "full_name": "Signed Saturating Rounding Shift Left (SVE2)",
+      "summary": "Saturating, rounding left shift by vector.",
+      "syntax": "SQRSHL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2 Shift", "binary_pattern": "01000100 | sz | 0 | 0 | 11110 | Zm | Pg | Zdn | Zdn", "hex_opcode": "0x441E0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zm", "desc": "Shift" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "uqrshl",
+      "architecture": "ARMv9-A",
+      "full_name": "Unsigned Saturating Rounding Shift Left (SVE2)",
+      "summary": "Unsigned saturating, rounding left shift.",
+      "syntax": "UQRSHL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2 Shift", "binary_pattern": "01000100 | sz | 0 | 0 | 11111 | Zm | Pg | Zdn | Zdn", "hex_opcode": "0x441F0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zm", "desc": "Shift" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "whilelt",
+      "architecture": "ARMv9-A",
+      "full_name": "While Less Than (SVE2)",
+      "summary": "Generates a predicate for a loop (start < end).",
+      "syntax": "WHILELT <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | sz | 1 | 00000 | 0 | Xm | Xn | Pd", "hex_opcode": "0x25400000" },
+      "operands": [{ "name": "Pd", "desc": "Dest" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "End" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "whilele",
+      "architecture": "ARMv9-A",
+      "full_name": "While Less Than or Equal (SVE2)",
+      "summary": "Generates a predicate for a loop (start <= end).",
+      "syntax": "WHILELE <Pd>.<T>, <Xn>, <Xm>",
+      "encoding": { "format": "SVE Predicate", "binary_pattern": "00100101 | sz | 1 | 00000 | 1 | Xm | Xn | Pd", "hex_opcode": "0x25408000" },
+      "operands": [{ "name": "Pd", "desc": "Dest" }, { "name": "Xn", "desc": "Start" }, { "name": "Xm", "desc": "End" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "tbl",
+      "architecture": "ARMv9-A",
+      "full_name": "Table Lookup (SVE)",
+      "summary": "Vector table lookup (SVE version of TBL).",
+      "syntax": "TBL <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | 00 | 1 | 01100 | Zm | Zn | Zdn", "hex_opcode": "0x052C0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Zn", "desc": "Table" }, { "name": "Zm", "desc": "Indices" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "tbx",
+      "architecture": "ARMv9-A",
+      "full_name": "Table Lookup Extension (SVE)",
+      "summary": "Vector table extension (SVE version of TBX).",
+      "syntax": "TBX <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | 00 | 1 | 01101 | Zm | Zn | Zdn", "hex_opcode": "0x052D0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Zn", "desc": "Table" }, { "name": "Zm", "desc": "Indices" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sdiv",
+      "architecture": "ARMv9-A",
+      "full_name": "Signed Divide (SVE)",
+      "summary": "Signed integer division (vector).",
+      "syntax": "SDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Math", "binary_pattern": "00000100 | sz | 1 | 00000 | Zm | Pg | Zdn | Zdn", "hex_opcode": "0x04900000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Dividend" }, { "name": "Zm", "desc": "Divisor" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "udiv",
+      "architecture": "ARMv9-A",
+      "full_name": "Unsigned Divide (SVE)",
+      "summary": "Unsigned integer division (vector).",
+      "syntax": "UDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Math", "binary_pattern": "00000100 | sz | 1 | 00001 | Zm | Pg | Zdn | Zdn", "hex_opcode": "0x04910000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Dividend" }, { "name": "Zm", "desc": "Divisor" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "ARMv9-A",
+      "full_name": "Floating-Point Divide (SVE)",
+      "summary": "Floating-point division (vector).",
+      "syntax": "FDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Float", "binary_pattern": "01100101 | sz | 0 | 01100 | Zm | Pg | Zdn | Zdn", "hex_opcode": "0x650C0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Dividend" }, { "name": "Zm", "desc": "Divisor" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "ARMv9-A",
+      "full_name": "Floating-Point Square Root (SVE)",
+      "summary": "Floating-point square root (vector).",
+      "syntax": "FSQRT <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SVE Float", "binary_pattern": "01100101 | sz | 0 | 11010 | Pg | Zn | Zd", "hex_opcode": "0x651A0000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "frintn",
+      "architecture": "ARMv9-A",
+      "full_name": "Floating-Point Round Nearest (SVE)",
+      "summary": "Rounds float to integer (Nearest Even) (vector).",
+      "syntax": "FRINTN <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SVE Float", "binary_pattern": "01100101 | sz | 0 | 11000 | Pg | Zn | Zd", "hex_opcode": "0x65180000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "clastb",
+      "architecture": "ARMv9-A",
+      "full_name": "Compact Last Element (Before)",
+      "summary": "Extracts the last active element (SVE).",
+      "syntax": "CLASTB <Rd>, <Pg>, <Rd>, <Zn>.<T>",
+      "encoding": { "format": "SVE Reduction", "binary_pattern": "00000101 | sz | 1 | 00000 | Pg | Zn | Rd", "hex_opcode": "0x05200000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "splice",
+      "architecture": "ARMv9-A",
+      "full_name": "Splice Vectors",
+      "summary": "Splices two vectors based on a predicate.",
+      "syntax": "SPLICE <Zdn>.<T>, <Pg>, <Zdn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 1 | 01011 | Zm | Pg | Zdn | Zdn", "hex_opcode": "0x052B0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/First" }, { "name": "Zm", "desc": "Second" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "sel",
+      "architecture": "ARMv9-A",
+      "full_name": "Select Elements (SVE)",
+      "summary": "Selects elements from two vectors based on predicate.",
+      "syntax": "SEL <Zd>.<T>, <Pg>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 1 | 01100 | Zm | Pg | Zn | Zd", "hex_opcode": "0x052C0000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "True" }, { "name": "Zm", "desc": "False" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "insr",
+      "architecture": "ARMv9-A",
+      "full_name": "Insert Scalar into Vector",
+      "summary": "Shifts vector and inserts scalar at element 0.",
+      "syntax": "INSR <Zdn>.<T>, <Rm>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 1 | 00011 | Rm | Zdn | Zdn", "hex_opcode": "0x05230000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "SVE"
+    },
+    {
+      "mnemonic": "dup",
+      "architecture": "ARMv9-A",
+      "full_name": "Duplicate Scalar (SVE)",
+      "summary": "Broadcasts a scalar value to all vector elements.",
+      "syntax": "DUP <Zd>.<T>, <Rn|SP>",
+      "encoding": { "format": "SVE Permute", "binary_pattern": "00000101 | sz | 1 | 00000 | Rn | Zd", "hex_opcode": "0x05200000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }],
+      "extension": "SVE"
+    }
+  ]
+}

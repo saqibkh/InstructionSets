@@ -1,0 +1,204 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "bfdot",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Dot Product (NEON)",
+      "summary": "Computes dot product of BFloat16 elements, accumulating to Float32 (NEON).",
+      "syntax": "BFDOT <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "01001110 | 01 | 0 | 11111 | 01 | Zn | Zd | Zm", "hex_opcode": "0x4E40FC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest (F32)" }, { "name": "Vn", "desc": "Src1 (BF16)" }, { "name": "Vm", "desc": "Src2 (BF16)" }],
+      "extension": "FEAT_BF16 (AI)"
+    },
+    {
+      "mnemonic": "bfmmla",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Matrix Multiply-Accumulate (NEON)",
+      "summary": "Performs 2x2 matrix multiplication on BFloat16 tiles (NEON).",
+      "syntax": "BFMMLA <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "01001110 | 10 | 0 | 11111 | 01 | Zn | Zd | Zm", "hex_opcode": "0x4E60FC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src1" }, { "name": "Vm", "desc": "Src2" }],
+      "extension": "FEAT_BF16 (AI)"
+    },
+    {
+      "mnemonic": "bfcvtn",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Convert Narrow (NEON)",
+      "summary": "Converts Float32 to BFloat16 (Lower Half).",
+      "syntax": "BFCVTN <Vd>.<Tb>, <Vn>.<Ta>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "00011110 | 00100001 | 100010 | Vn | Vd", "hex_opcode": "0x1E218800" },
+      "operands": [{ "name": "Vd", "desc": "Dest (BF16)" }, { "name": "Vn", "desc": "Src (F32)" }],
+      "extension": "FEAT_BF16 (AI)"
+    },
+    {
+      "mnemonic": "bfcvtn2",
+      "architecture": "ARMv8-A",
+      "full_name": "BFloat16 Convert Narrow High (NEON)",
+      "summary": "Converts Float32 to BFloat16 (Upper Half).",
+      "syntax": "BFCVTN2 <Vd>.<Tb>, <Vn>.<Ta>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "01011110 | 00100001 | 100010 | Vn | Vd", "hex_opcode": "0x5E218800" },
+      "operands": [{ "name": "Vd", "desc": "Dest (BF16)" }, { "name": "Vn", "desc": "Src (F32)" }],
+      "extension": "FEAT_BF16 (AI)"
+    },
+    {
+      "mnemonic": "smmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Integer Matrix Multiply-Accumulate (NEON)",
+      "summary": "Performs 2x2 matrix multiplication on Signed Int8 tiles.",
+      "syntax": "SMMLA <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "01001110 | 10 | 0 | 11111 | 00 | Zn | Zd | Zm", "hex_opcode": "0x4E40A400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src1" }, { "name": "Vm", "desc": "Src2" }],
+      "extension": "FEAT_I8MM (AI)"
+    },
+    {
+      "mnemonic": "ummla",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Integer Matrix Multiply-Accumulate (NEON)",
+      "summary": "Performs 2x2 matrix multiplication on Unsigned Int8 tiles.",
+      "syntax": "UMMLA <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "01001110 | 10 | 0 | 11111 | 10 | Zn | Zd | Zm", "hex_opcode": "0x4E40AC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src1" }, { "name": "Vm", "desc": "Src2" }],
+      "extension": "FEAT_I8MM (AI)"
+    },
+    {
+      "mnemonic": "usmmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned-Signed Matrix Multiply-Accumulate (NEON)",
+      "summary": "Matrix multiply Unsigned Int8 with Signed Int8.",
+      "syntax": "USMMLA <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "01001110 | 10 | 0 | 11111 | 11 | Zn | Zd | Zm", "hex_opcode": "0x4E40B800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Unsigned" }, { "name": "Vm", "desc": "Signed" }],
+      "extension": "FEAT_I8MM (AI)"
+    },
+    {
+      "mnemonic": "usdot",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned-Signed Dot Product (NEON)",
+      "summary": "Dot product of Unsigned Int8 and Signed Int8.",
+      "syntax": "USDOT <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "01001110 | 10 | 0 | 11111 | 00 | Zn | Zd | Zm", "hex_opcode": "0x4E409C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Unsigned" }, { "name": "Vm", "desc": "Signed" }],
+      "extension": "FEAT_I8MM (AI)"
+    },
+    {
+      "mnemonic": "sudot",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed-Unsigned Dot Product (NEON)",
+      "summary": "Dot product of Signed Int8 and Unsigned Int8 (Indexed).",
+      "syntax": "SUDOT <Vd>.<T>, <Vn>.<T>, <Vm>.<T>[<index>]",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "01001111 | 10 | 0 | 11111 | 00 | Zn | Zd | Zm", "hex_opcode": "0x4F409C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Signed" }, { "name": "Vm", "desc": "Unsigned" }],
+      "extension": "FEAT_I8MM (AI)"
+    },
+    {
+      "mnemonic": "addpt",
+      "architecture": "ARMv9-A",
+      "full_name": "Add Checked Pointer",
+      "summary": "Adds offset to pointer with tag check (Checked Pointer Arithmetic).",
+      "syntax": "ADDPT <Xd|SP>, <Xn|SP>, <Xm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011001 | Xm | 000000 | Xn | Xd", "hex_opcode": "0x9B200000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Ptr" }, { "name": "Xm", "desc": "Offset" }],
+      "extension": "FEAT_CPA (v9.5)"
+    },
+    {
+      "mnemonic": "subpt",
+      "architecture": "ARMv9-A",
+      "full_name": "Subtract Checked Pointer",
+      "summary": "Subtracts offset from pointer with tag check (Checked Pointer Arithmetic).",
+      "syntax": "SUBPT <Xd|SP>, <Xn|SP>, <Xm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011011001 | Xm | 000000 | Xn | Xd", "hex_opcode": "0xDB200000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Ptr" }, { "name": "Xm", "desc": "Offset" }],
+      "extension": "FEAT_CPA (v9.5)"
+    },
+    {
+      "mnemonic": "maddpt",
+      "architecture": "ARMv9-A",
+      "full_name": "Multiply Add Checked Pointer",
+      "summary": "Calculates Ptr + (A * B) with tag check.",
+      "syntax": "MADDPT <Xd>, <Xn>, <Xm>, <Xa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011001 | Xm | 100000 | Xn | Xd", "hex_opcode": "0x9B208000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "A" }, { "name": "Xm", "desc": "B" }, { "name": "Xa", "desc": "Ptr" }],
+      "extension": "FEAT_CPA (v9.5)"
+    },
+    {
+      "mnemonic": "msubpt",
+      "architecture": "ARMv9-A",
+      "full_name": "Multiply Subtract Checked Pointer",
+      "summary": "Calculates Ptr - (A * B) with tag check.",
+      "syntax": "MSUBPT <Xd>, <Xn>, <Xm>, <Xa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011001 | Xm | 100001 | Xn | Xd", "hex_opcode": "0x9B208400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "A" }, { "name": "Xm", "desc": "B" }, { "name": "Xa", "desc": "Ptr" }],
+      "extension": "FEAT_CPA (v9.5)"
+    },
+    {
+      "mnemonic": "mrrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Two Registers from System Register (128-bit)",
+      "summary": "Reads a 128-bit system register into two general-purpose registers.",
+      "syntax": "MRRS <Xt>, <Xt+1>, <sysreg>",
+      "encoding": { "format": "System", "binary_pattern": "110101010011 | sysreg | Rt", "hex_opcode": "0xD5300000" },
+      "operands": [{ "name": "Xt", "desc": "Lo" }, { "name": "Xt+1", "desc": "Hi" }, { "name": "sysreg", "desc": "Reg" }],
+      "extension": "FEAT_SYSREG128"
+    },
+    {
+      "mnemonic": "msrr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Two Registers to System Register (128-bit)",
+      "summary": "Writes two general-purpose registers into a 128-bit system register.",
+      "syntax": "MSRR <sysreg>, <Xt>, <Xt+1>",
+      "encoding": { "format": "System", "binary_pattern": "110101010001 | sysreg | Rt", "hex_opcode": "0xD5100000" },
+      "operands": [{ "name": "sysreg", "desc": "Reg" }, { "name": "Xt", "desc": "Lo" }, { "name": "Xt+1", "desc": "Hi" }],
+      "extension": "FEAT_SYSREG128"
+    },
+    {
+      "mnemonic": "fclamp",
+      "architecture": "ARMv9-A",
+      "full_name": "Floating-Point Clamp",
+      "summary": "Clamps floating-point elements between min and max (SVE2.1).",
+      "syntax": "FCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2.1", "binary_pattern": "01100100 | sz | 0 | 01100 | Zm | Zn | Zdn", "hex_opcode": "0x640C0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zn", "desc": "Min" }, { "name": "Zm", "desc": "Max" }],
+      "extension": "SVE2p1"
+    },
+    {
+      "mnemonic": "sclamp",
+      "architecture": "ARMv9-A",
+      "full_name": "Signed Integer Clamp",
+      "summary": "Clamps signed integer elements between min and max (SVE2.1).",
+      "syntax": "SCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2.1", "binary_pattern": "01000100 | sz | 0 | 01100 | Zm | Zn | Zdn", "hex_opcode": "0x440C0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zn", "desc": "Min" }, { "name": "Zm", "desc": "Max" }],
+      "extension": "SVE2p1"
+    },
+    {
+      "mnemonic": "uclamp",
+      "architecture": "ARMv9-A",
+      "full_name": "Unsigned Integer Clamp",
+      "summary": "Clamps unsigned integer elements between min and max (SVE2.1).",
+      "syntax": "UCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+      "encoding": { "format": "SVE2.1", "binary_pattern": "01000100 | sz | 0 | 01101 | Zm | Zn | Zdn", "hex_opcode": "0x440D0000" },
+      "operands": [{ "name": "Zdn", "desc": "Dest/Src" }, { "name": "Zn", "desc": "Min" }, { "name": "Zm", "desc": "Max" }],
+      "extension": "SVE2p1"
+    },
+    {
+      "mnemonic": "psel",
+      "architecture": "ARMv9-A",
+      "full_name": "Predicate Select",
+      "summary": "Selects a predicate register based on a boolean condition (SME2).",
+      "syntax": "PSEL <Pd>, <Pn>, <Pm>.<T>[<imm>]",
+      "encoding": { "format": "SME2", "binary_pattern": "00100101 | 00 | 100000 | Pm | Pn | Pd", "hex_opcode": "0x25200000" },
+      "operands": [{ "name": "Pd", "desc": "Dest" }, { "name": "Pn", "desc": "True" }, { "name": "Pm", "desc": "Predicate Array" }],
+      "extension": "SME2"
+    },
+    {
+      "mnemonic": "revd",
+      "architecture": "ARMv9-A",
+      "full_name": "Reverse Doublewords",
+      "summary": "Reverses 64-bit doublewords within 128-bit quadwords (SVE2).",
+      "syntax": "REVD <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+      "encoding": { "format": "SVE2", "binary_pattern": "00000101 | sz | 00010 | 10 | Pg | Zn | Zd", "hex_opcode": "0x05220000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Pg", "desc": "Mask" }, { "name": "Zn", "desc": "Src" }],
+      "extension": "SVE2"
+    }
+  ]
+}

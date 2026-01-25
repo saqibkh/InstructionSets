@@ -1,0 +1,314 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "irg",
+      "architecture": "ARMv8-A",
+      "full_name": "Insert Random Tag",
+      "summary": "Inserts a random Allocation Tag into a pointer (MTE).",
+      "syntax": "IRG <Xd|SP>, <Xn|SP>{, <Xm>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011010110 | Xm | 000100 | Xn | Xd", "hex_opcode": "0x9AC01000" },
+      "operands": [{ "name": "Xd", "desc": "Dest Ptr" }, { "name": "Xn", "desc": "Src Ptr" }, { "name": "Xm", "desc": "Exclude Mask" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "gmi",
+      "architecture": "ARMv8-A",
+      "full_name": "Get Memory Tag Intersection",
+      "summary": "Calculates a mask of excluded tags (MTE).",
+      "syntax": "GMI <Xd>, <Xn|SP>, <Xm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011010110 | Xm | 000101 | Xn | Xd", "hex_opcode": "0x9AC01400" },
+      "operands": [{ "name": "Xd", "desc": "Dest Mask" }, { "name": "Xn", "desc": "Ptr" }, { "name": "Xm", "desc": "Excluded" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "ldg",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Allocation Tag",
+      "summary": "Loads the Allocation Tag from memory.",
+      "syntax": "LDG <Xt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001001 | simm9 | 00 | Xn | Xt", "hex_opcode": "0xD9200000" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "stg",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag",
+      "summary": "Stores the Allocation Tag to memory.",
+      "syntax": "STG <Xt|SP>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001001 | simm9 | 01 | Xn | Xt", "hex_opcode": "0xD9200400" },
+      "operands": [{ "name": "Xt", "desc": "Tag Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "stzg",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag and Zero",
+      "summary": "Stores the Allocation Tag and zeros the data granule.",
+      "syntax": "STZG <Xt|SP>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001001 | simm9 | 10 | Xn | Xt", "hex_opcode": "0xD9200800" },
+      "operands": [{ "name": "Xt", "desc": "Tag Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "st2g",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag Two",
+      "summary": "Stores Allocation Tags to two granules.",
+      "syntax": "ST2G <Xt|SP>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001001 | simm9 | 11 | Xn | Xt", "hex_opcode": "0xD9200C00" },
+      "operands": [{ "name": "Xt", "desc": "Tag Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "stz2g",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag and Zero Two",
+      "summary": "Stores Allocation Tags and zeros two granules.",
+      "syntax": "STZ2G <Xt|SP>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001001 | simm9 | 11 | Xn | Xt", "hex_opcode": "0xD9200C00" },
+      "operands": [{ "name": "Xt", "desc": "Tag Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "stgp",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Allocation Tag and Pair",
+      "summary": "Stores Tag and two 64-bit data values.",
+      "syntax": "STGP <Xt>, <Xt2>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01101001001 | simm7 | 10 | Xn | Xt", "hex_opcode": "0x69002000" },
+      "operands": [{ "name": "Xt", "desc": "Data 1" }, { "name": "Xt2", "desc": "Data 2" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "subp",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract Pointers",
+      "summary": "Subtracts pointers ignoring Tags.",
+      "syntax": "SUBP <Xd>, <Xn|SP>, <Xm|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011010000 | Xm | 000000 | Xn | Xd", "hex_opcode": "0x9A000000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Ptr 1" }, { "name": "Xm", "desc": "Ptr 2" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "tstart",
+      "architecture": "ARMv9-A",
+      "full_name": "Transaction Start",
+      "summary": "Starts a new memory transaction (TME).",
+      "syntax": "TSTART <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101001 | 00011 | 0011 | 0011 | 001 | Rt", "hex_opcode": "0xD52B3320" },
+      "operands": [{ "name": "Xt", "desc": "Status Dest" }],
+      "extension": "FEAT_TME (Transactional)"
+    },
+    {
+      "mnemonic": "tcommit",
+      "architecture": "ARMv9-A",
+      "full_name": "Transaction Commit",
+      "summary": "Commits the current memory transaction.",
+      "syntax": "TCOMMIT",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000110011001101011111", "hex_opcode": "0xD503335F" },
+      "operands": [],
+      "extension": "FEAT_TME (Transactional)"
+    },
+    {
+      "mnemonic": "tcancel",
+      "architecture": "ARMv9-A",
+      "full_name": "Transaction Cancel",
+      "summary": "Cancels the current transaction.",
+      "syntax": "TCANCEL #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "11010100010 | imm16 | 00000", "hex_opcode": "0xD4400000" },
+      "operands": [{ "name": "imm", "desc": "Reason" }],
+      "extension": "FEAT_TME (Transactional)"
+    },
+    {
+      "mnemonic": "ttest",
+      "architecture": "ARMv9-A",
+      "full_name": "Transaction Test",
+      "summary": "Tests the transaction depth.",
+      "syntax": "TTEST <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101001 | 00011 | 0011 | 0011 | 100 | Rt", "hex_opcode": "0xD52B3380" },
+      "operands": [{ "name": "Xt", "desc": "Depth Dest" }],
+      "extension": "FEAT_TME (Transactional)"
+    },
+    {
+      "mnemonic": "pacia",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code (Inst A)",
+      "summary": "Signs a pointer in Xd using Key A and modifier Xm (or SP).",
+      "syntax": "PACIA <Xd>, <Xn|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | Xm | 000001 | 11111 | Xd", "hex_opcode": "0xDAC103E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "pacib",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code (Inst B)",
+      "summary": "Signs a pointer in Xd using Key B.",
+      "syntax": "PACIB <Xd>, <Xn|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | Xm | 000001 | 11111 | Xd", "hex_opcode": "0xDAC103E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "pacda",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code (Data A)",
+      "summary": "Signs a data pointer using Key A.",
+      "syntax": "PACDA <Xd>, <Xn|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | Xm | 000011 | 11111 | Xd", "hex_opcode": "0xDAC303E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "pacdb",
+      "architecture": "ARMv8-A",
+      "full_name": "Pointer Authentication Code (Data B)",
+      "summary": "Signs a data pointer using Key B.",
+      "syntax": "PACDB <Xd>, <Xn|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | Xm | 000011 | 11111 | Xd", "hex_opcode": "0xDAC303E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "autia",
+      "architecture": "ARMv8-A",
+      "full_name": "Authenticate Code (Inst A)",
+      "summary": "Authenticates a pointer signed with Key A. Corrupts pointer if failed.",
+      "syntax": "AUTIA <Xd>, <Xn|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | Xm | 000101 | 11111 | Xd", "hex_opcode": "0xDAC503E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "autib",
+      "architecture": "ARMv8-A",
+      "full_name": "Authenticate Code (Inst B)",
+      "summary": "Authenticates a pointer signed with Key B.",
+      "syntax": "AUTIB <Xd>, <Xn|SP>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | Xm | 000101 | 11111 | Xd", "hex_opcode": "0xDAC503E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }, { "name": "Xn", "desc": "Modifier" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "xpaci",
+      "architecture": "ARMv8-A",
+      "full_name": "Strip Pointer Authentication Code (Inst)",
+      "summary": "Removes the PAC signature from an instruction pointer.",
+      "syntax": "XPACI <Xd>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | 11111 | 000100 | 11111 | Xd", "hex_opcode": "0xDAC403E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "xpacd",
+      "architecture": "ARMv8-A",
+      "full_name": "Strip Pointer Authentication Code (Data)",
+      "summary": "Removes the PAC signature from a data pointer.",
+      "syntax": "XPACD <Xd>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010110 | 11111 | 000110 | 11111 | Xd", "hex_opcode": "0xDAC603E0" },
+      "operands": [{ "name": "Xd", "desc": "Ptr" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "ldraa",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Authenticate (Key A)",
+      "summary": "Loads a value, authenticating the address with Key A.",
+      "syntax": "LDRAA <Xt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11111000001 | S | 0 | 0 | 0 | simm9 | 10 | Rn | Rt", "hex_opcode": "0xF8200400" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "ldrab",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Authenticate (Key B)",
+      "summary": "Loads a value, authenticating the address with Key B.",
+      "syntax": "LDRAB <Xt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11111000001 | S | 0 | 0 | 1 | simm9 | 10 | Rn | Rt", "hex_opcode": "0xF8200C00" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "PAC (Security)"
+    },
+    {
+      "mnemonic": "bti",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch Target Identification",
+      "summary": "Marks a valid target for indirect branches (Guard against JOP/ROP).",
+      "syntax": "BTI <target>",
+      "encoding": { "format": "System Hint", "binary_pattern": "110101010000001100100100001 | target | 11111", "hex_opcode": "0xD503241F" },
+      "operands": [{ "name": "target", "desc": "J/C/JC" }],
+      "extension": "BTI (Security)"
+    },
+    {
+      "mnemonic": "rndr",
+      "architecture": "ARMv8-A",
+      "full_name": "Random Number",
+      "summary": "Reads a random number from hardware entropy source.",
+      "syntax": "RNDR <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101001 | 00011 | 0011 | 0010 | 010 | Rt", "hex_opcode": "0xD53B2400" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }],
+      "extension": "FEAT_RNG"
+    },
+    {
+      "mnemonic": "rndrrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Random Number Reseed",
+      "summary": "Reads a random number and requests reseed.",
+      "syntax": "RNDRRS <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101001 | 00011 | 0011 | 0010 | 011 | Rt", "hex_opcode": "0xD53B2600" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }],
+      "extension": "FEAT_RNG"
+    },
+    {
+      "mnemonic": "cfinv",
+      "architecture": "ARMv8-A",
+      "full_name": "Condition Flag Invert",
+      "summary": "Inverts the C (Carry) flag.",
+      "syntax": "CFINV",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000000100000000011111", "hex_opcode": "0xD500401F" },
+      "operands": [],
+      "extension": "FEAT_FlagM"
+    },
+    {
+      "mnemonic": "rmif",
+      "architecture": "ARMv8-A",
+      "full_name": "Rotate Mask Insert Flags",
+      "summary": "Rotates a register and inserts bits into the Process State flags.",
+      "syntax": "RMIF <Xn>, #<shift>, #<mask>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10111010000 | mask | 0 | shift | Rn | 00000", "hex_opcode": "0xBA000000" },
+      "operands": [{ "name": "Xn", "desc": "Src" }, { "name": "shift", "desc": "Rot" }, { "name": "mask", "desc": "Flags" }],
+      "extension": "FEAT_FlagM"
+    },
+    {
+      "mnemonic": "setf8",
+      "architecture": "ARMv8-A",
+      "full_name": "Set Flags 8-bit",
+      "summary": "Sets PSTATE flags based on 8-bit operand.",
+      "syntax": "SETF8 <Wn>",
+      "encoding": { "format": "System", "binary_pattern": "00111010000 | 00000 | 01000 | Rn | 01101", "hex_opcode": "0x3A00080D" },
+      "operands": [{ "name": "Wn", "desc": "Src" }],
+      "extension": "FEAT_FlagM"
+    },
+    {
+      "mnemonic": "setf16",
+      "architecture": "ARMv8-A",
+      "full_name": "Set Flags 16-bit",
+      "summary": "Sets PSTATE flags based on 16-bit operand.",
+      "syntax": "SETF16 <Wn>",
+      "encoding": { "format": "System", "binary_pattern": "00111010000 | 00000 | 01000 | Rn | 11101", "hex_opcode": "0x3A00480D" },
+      "operands": [{ "name": "Wn", "desc": "Src" }],
+      "extension": "FEAT_FlagM"
+    },
+    {
+      "mnemonic": "fjcvtzs",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Javascript Convert",
+      "summary": "Converts double to signed 32-bit integer with JS rounding semantics.",
+      "syntax": "FJCVTZS <Wd>, <Dn>",
+      "encoding": { "format": "Float Convert", "binary_pattern": "00011110 | 01111110 | 000000 | Rn | Rd", "hex_opcode": "0x1E7E0000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Dn", "desc": "Src" }],
+      "extension": "FEAT_JSCVT"
+    }
+  ]
+}

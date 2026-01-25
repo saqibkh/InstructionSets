@@ -64,11 +64,32 @@
             </thead>
 	    <tbody>
                 
+                <tr onclick="window.location='adclb/';" style="cursor: pointer;">
+                    <td class="mono">adclb</td>
+                    <td style="font-weight: 500;">Add with Carry Long (Bottom) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Adds bottom halves with carry.</td>
+                </tr>
+                
+                <tr onclick="window.location='adclt/';" style="cursor: pointer;">
+                    <td class="mono">adclt</td>
+                    <td style="font-weight: 500;">Add with Carry Long (Top) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Adds top halves with carry.</td>
+                </tr>
+                
                 <tr onclick="window.location='add/';" style="cursor: pointer;">
                     <td class="mono">add</td>
                     <td style="font-weight: 500;">Multi-vector Add</td>
                     <td><span class="badge">SME2 Multi-vector</span></td>
                     <td style="color: var(--text-muted);">Adds two or four vectors to two or four accumulators (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='addhnb/';" style="cursor: pointer;">
+                    <td class="mono">addhnb</td>
+                    <td style="font-weight: 500;">Add High Narrow (Bottom) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Adds wide elements, narrows, and stores in bottom half.</td>
                 </tr>
                 
                 <tr onclick="window.location='addhnb/';" style="cursor: pointer;">
@@ -80,9 +101,44 @@
                 
                 <tr onclick="window.location='addhnt/';" style="cursor: pointer;">
                     <td class="mono">addhnt</td>
+                    <td style="font-weight: 500;">Add High Narrow (Top) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Adds wide elements, narrows, and stores in top half.</td>
+                </tr>
+                
+                <tr onclick="window.location='addhnt/';" style="cursor: pointer;">
+                    <td class="mono">addhnt</td>
                     <td style="font-weight: 500;">SVE Add Narrow (Top)</td>
                     <td><span class="badge">SVE2 Narrowing</span></td>
                     <td style="color: var(--text-muted);">Adds wide elements, narrows result to top half.</td>
+                </tr>
+                
+                <tr onclick="window.location='addpt/';" style="cursor: pointer;">
+                    <td class="mono">addpt</td>
+                    <td style="font-weight: 500;">Add Checked Pointer</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Adds offset to pointer with tag check (Checked Pointer Arithmetic).</td>
+                </tr>
+                
+                <tr onclick="window.location='aesd/';" style="cursor: pointer;">
+                    <td class="mono">aesd</td>
+                    <td style="font-weight: 500;">AES Decrypt (SVE2)</td>
+                    <td><span class="badge">SVE2 Crypto</span></td>
+                    <td style="color: var(--text-muted);">AES single round decryption on SVE vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='aese/';" style="cursor: pointer;">
+                    <td class="mono">aese</td>
+                    <td style="font-weight: 500;">AES Encrypt (SVE2)</td>
+                    <td><span class="badge">SVE2 Crypto</span></td>
+                    <td style="color: var(--text-muted);">AES single round encryption on SVE vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='bcax/';" style="cursor: pointer;">
+                    <td class="mono">bcax</td>
+                    <td style="font-weight: 500;">Bitwise Clear and Exclusive OR (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Zn AND NOT Zm) XOR Zk.</td>
                 </tr>
                 
                 <tr onclick="window.location='bdep/';" style="cursor: pointer;">
@@ -92,11 +148,25 @@
                     <td style="color: var(--text-muted);">Scatters bits from LSBs of source to positions specified by mask.</td>
                 </tr>
                 
+                <tr onclick="window.location='bdep/';" style="cursor: pointer;">
+                    <td class="mono">bdep</td>
+                    <td style="font-weight: 500;">Bit Deposit (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Deposits bits from source to destination based on a mask (Scatter bits).</td>
+                </tr>
+                
                 <tr onclick="window.location='bext/';" style="cursor: pointer;">
                     <td class="mono">bext</td>
                     <td style="font-weight: 500;">SVE Bit Extract</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Gathers bits from source based on mask positions to LSBs.</td>
+                </tr>
+                
+                <tr onclick="window.location='bext/';" style="cursor: pointer;">
+                    <td class="mono">bext</td>
+                    <td style="font-weight: 500;">Bit Extract (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Extracts bits from source to destination based on a mask (Gather bits).</td>
                 </tr>
                 
                 <tr onclick="window.location='bfmopa/';" style="cursor: pointer;">
@@ -113,6 +183,48 @@
                     <td style="color: var(--text-muted);">Groups bits from source based on mask (0s to left, 1s to right).</td>
                 </tr>
                 
+                <tr onclick="window.location='bgrp/';" style="cursor: pointer;">
+                    <td class="mono">bgrp</td>
+                    <td style="font-weight: 500;">Bit Group (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Groups bits from source to left/right based on a mask.</td>
+                </tr>
+                
+                <tr onclick="window.location='brbinj/';" style="cursor: pointer;">
+                    <td class="mono">brbinj</td>
+                    <td style="font-weight: 500;">Branch Record Buffer Inject</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Injects a record into the Branch Record Buffer.</td>
+                </tr>
+                
+                <tr onclick="window.location='brbto/';" style="cursor: pointer;">
+                    <td class="mono">brbto</td>
+                    <td style="font-weight: 500;">Branch Record Buffer Trap Overflow</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Manages overflow behavior for the Branch Record Buffer.</td>
+                </tr>
+                
+                <tr onclick="window.location='bsl/';" style="cursor: pointer;">
+                    <td class="mono">bsl</td>
+                    <td style="font-weight: 500;">Bitwise Select (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Bitwise select using (Zdn AND Zm) OR (NOT Zdn AND Zk).</td>
+                </tr>
+                
+                <tr onclick="window.location='bsl1n/';" style="cursor: pointer;">
+                    <td class="mono">bsl1n</td>
+                    <td style="font-weight: 500;">Bitwise Select 1 NOT (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Bitwise select with first operand inverted.</td>
+                </tr>
+                
+                <tr onclick="window.location='bsl2n/';" style="cursor: pointer;">
+                    <td class="mono">bsl2n</td>
+                    <td style="font-weight: 500;">Bitwise Select 2 NOT (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Bitwise select with second operand inverted.</td>
+                </tr>
+                
                 <tr onclick="window.location='cadd/';" style="cursor: pointer;">
                     <td class="mono">cadd</td>
                     <td style="font-weight: 500;">SVE Complex Integer Add</td>
@@ -120,11 +232,39 @@
                     <td style="color: var(--text-muted);">Performs complex integer addition with rotation.</td>
                 </tr>
                 
+                <tr onclick="window.location='cdot/';" style="cursor: pointer;">
+                    <td class="mono">cdot</td>
+                    <td style="font-weight: 500;">Complex Dot Product (SVE2)</td>
+                    <td><span class="badge">SVE2 Complex</span></td>
+                    <td style="color: var(--text-muted);">Computes complex integer dot product.</td>
+                </tr>
+                
+                <tr onclick="window.location='clastb/';" style="cursor: pointer;">
+                    <td class="mono">clastb</td>
+                    <td style="font-weight: 500;">Compact Last Element (Before)</td>
+                    <td><span class="badge">SVE Reduction</span></td>
+                    <td style="color: var(--text-muted);">Extracts the last active element (SVE).</td>
+                </tr>
+                
                 <tr onclick="window.location='cmla/';" style="cursor: pointer;">
                     <td class="mono">cmla</td>
                     <td style="font-weight: 500;">SVE Complex Integer Multiply-Accumulate</td>
                     <td><span class="badge">SVE2 Complex</span></td>
                     <td style="color: var(--text-muted);">Performs complex integer multiply-accumulate with rotation.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmla/';" style="cursor: pointer;">
+                    <td class="mono">cmla</td>
+                    <td style="font-weight: 500;">Complex Multiply Accumulate (SVE2)</td>
+                    <td><span class="badge">SVE2 Complex</span></td>
+                    <td style="color: var(--text-muted);">Computes complex integer multiply-accumulate.</td>
+                </tr>
+                
+                <tr onclick="window.location='cpyfe/';" style="cursor: pointer;">
+                    <td class="mono">cpyfe</td>
+                    <td style="font-weight: 500;">Memory Copy Forward Epilogue (MOPS)</td>
+                    <td><span class="badge">MOPS</span></td>
+                    <td style="color: var(--text-muted);">Optimized memory copy epilogue (Forward).</td>
                 </tr>
                 
                 <tr onclick="window.location='cpyfe/';" style="cursor: pointer;">
@@ -136,6 +276,13 @@
                 
                 <tr onclick="window.location='cpyfm/';" style="cursor: pointer;">
                     <td class="mono">cpyfm</td>
+                    <td style="font-weight: 500;">Memory Copy Forward Main (MOPS)</td>
+                    <td><span class="badge">MOPS</span></td>
+                    <td style="color: var(--text-muted);">Optimized memory copy main loop (Forward).</td>
+                </tr>
+                
+                <tr onclick="window.location='cpyfm/';" style="cursor: pointer;">
+                    <td class="mono">cpyfm</td>
                     <td style="font-weight: 500;">Memory Copy Forward (Main)</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Main loop of a hardware-accelerated memcpy (Forward direction).</td>
@@ -143,9 +290,86 @@
                 
                 <tr onclick="window.location='cpyfp/';" style="cursor: pointer;">
                     <td class="mono">cpyfp</td>
+                    <td style="font-weight: 500;">Memory Copy Forward Prologue (MOPS)</td>
+                    <td><span class="badge">MOPS</span></td>
+                    <td style="color: var(--text-muted);">Optimized memory copy prologue (Forward).</td>
+                </tr>
+                
+                <tr onclick="window.location='cpyfp/';" style="cursor: pointer;">
+                    <td class="mono">cpyfp</td>
                     <td style="font-weight: 500;">Memory Copy Forward (Prologue)</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">First step of a hardware-accelerated memcpy (Forward direction).</td>
+                </tr>
+                
+                <tr onclick="window.location='dup/';" style="cursor: pointer;">
+                    <td class="mono">dup</td>
+                    <td style="font-weight: 500;">Duplicate Scalar (SVE)</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Broadcasts a scalar value to all vector elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='dvmp/';" style="cursor: pointer;">
+                    <td class="mono">dvmp</td>
+                    <td style="font-weight: 500;">Data Value Memory Permission</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Broadcasts permission checking for data values (Realm).</td>
+                </tr>
+                
+                <tr onclick="window.location='eor3/';" style="cursor: pointer;">
+                    <td class="mono">eor3</td>
+                    <td style="font-weight: 500;">Bitwise Exclusive OR (3-way) (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Exclusive OR of three vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='f8cvt/';" style="cursor: pointer;">
+                    <td class="mono">f8cvt</td>
+                    <td style="font-weight: 500;">Floating-Point 8 Convert</td>
+                    <td><span class="badge">FP8</span></td>
+                    <td style="color: var(--text-muted);">Converts between FP8 and other formats.</td>
+                </tr>
+                
+                <tr onclick="window.location='f8mopa/';" style="cursor: pointer;">
+                    <td class="mono">f8mopa</td>
+                    <td style="font-weight: 500;">FP8 Matrix Outer Product Accumulate</td>
+                    <td><span class="badge">SME2 FP8</span></td>
+                    <td style="color: var(--text-muted);">Outer product of FP8 vectors accumulating to FP32.</td>
+                </tr>
+                
+                <tr onclick="window.location='fadd/';" style="cursor: pointer;">
+                    <td class="mono">fadd</td>
+                    <td style="font-weight: 500;">Multi-vector Floating-point Add (SME2)</td>
+                    <td><span class="badge">SME2 Float</span></td>
+                    <td style="color: var(--text-muted);">Adds 2 or 4 FP vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='fclamp/';" style="cursor: pointer;">
+                    <td class="mono">fclamp</td>
+                    <td style="font-weight: 500;">Floating-Point Clamp</td>
+                    <td><span class="badge">SVE2.1</span></td>
+                    <td style="color: var(--text-muted);">Clamps floating-point elements between min and max (SVE2.1).</td>
+                </tr>
+                
+                <tr onclick="window.location='fdiv/';" style="cursor: pointer;">
+                    <td class="mono">fdiv</td>
+                    <td style="font-weight: 500;">Floating-Point Divide (SVE)</td>
+                    <td><span class="badge">SVE Float</span></td>
+                    <td style="color: var(--text-muted);">Floating-point division (vector).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmax/';" style="cursor: pointer;">
+                    <td class="mono">fmax</td>
+                    <td style="font-weight: 500;">Multi-vector Floating-point Maximum (SME2)</td>
+                    <td><span class="badge">SME2 Float</span></td>
+                    <td style="color: var(--text-muted);">Maximum of 2 or 4 FP vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmin/';" style="cursor: pointer;">
+                    <td class="mono">fmin</td>
+                    <td style="font-weight: 500;">Multi-vector Floating-point Minimum (SME2)</td>
+                    <td><span class="badge">SME2 Float</span></td>
+                    <td style="color: var(--text-muted);">Minimum of 2 or 4 FP vectors.</td>
                 </tr>
                 
                 <tr onclick="window.location='fmla/';" style="cursor: pointer;">
@@ -164,6 +388,13 @@
                 
                 <tr onclick="window.location='fmopa/';" style="cursor: pointer;">
                     <td class="mono">fmopa</td>
+                    <td style="font-weight: 500;">Floating-point Outer Product Accumulate (Non-widening)</td>
+                    <td><span class="badge">SME2 Matrix</span></td>
+                    <td style="color: var(--text-muted);">Non-widening floating-point outer product (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmopa/';" style="cursor: pointer;">
+                    <td class="mono">fmopa</td>
                     <td style="font-weight: 500;">Floating-Point Matrix Outer Product Accumulate</td>
                     <td><span class="badge">SME Arithmetic</span></td>
                     <td style="color: var(--text-muted);">Computes (Zn x Zm) + ZA (Outer Product) for floats.</td>
@@ -174,6 +405,34 @@
                     <td style="font-weight: 500;">Floating-Point Matrix Outer Product Subtract</td>
                     <td><span class="badge">SME Arithmetic</span></td>
                     <td style="color: var(--text-muted);">Computes ZA - (Zn x Zm) (Outer Product).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmul/';" style="cursor: pointer;">
+                    <td class="mono">fmul</td>
+                    <td style="font-weight: 500;">Multi-vector Floating-point Multiply (SME2)</td>
+                    <td><span class="badge">SME2 Float</span></td>
+                    <td style="color: var(--text-muted);">Multiplies 2 or 4 FP vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='frintn/';" style="cursor: pointer;">
+                    <td class="mono">frintn</td>
+                    <td style="font-weight: 500;">Floating-Point Round Nearest (SVE)</td>
+                    <td><span class="badge">SVE Float</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to integer (Nearest Even) (vector).</td>
+                </tr>
+                
+                <tr onclick="window.location='fsqrt/';" style="cursor: pointer;">
+                    <td class="mono">fsqrt</td>
+                    <td style="font-weight: 500;">Floating-Point Square Root (SVE)</td>
+                    <td><span class="badge">SVE Float</span></td>
+                    <td style="color: var(--text-muted);">Floating-point square root (vector).</td>
+                </tr>
+                
+                <tr onclick="window.location='fsub/';" style="cursor: pointer;">
+                    <td class="mono">fsub</td>
+                    <td style="font-weight: 500;">Multi-vector Floating-point Subtract (SME2)</td>
+                    <td><span class="badge">SME2 Float</span></td>
+                    <td style="color: var(--text-muted);">Subtracts 2 or 4 FP vectors.</td>
                 </tr>
                 
                 <tr onclick="window.location='gcspushm/';" style="cursor: pointer;">
@@ -192,6 +451,13 @@
                 
                 <tr onclick="window.location='histcnt/';" style="cursor: pointer;">
                     <td class="mono">histcnt</td>
+                    <td style="font-weight: 500;">Histogram Count (SVE2)</td>
+                    <td><span class="badge">SVE2 Histogram</span></td>
+                    <td style="color: var(--text-muted);">Counts matching elements in a vector to build a histogram.</td>
+                </tr>
+                
+                <tr onclick="window.location='histcnt/';" style="cursor: pointer;">
+                    <td class="mono">histcnt</td>
                     <td style="font-weight: 500;">SVE Histogram Count</td>
                     <td><span class="badge">SVE2 Histogram</span></td>
                     <td style="color: var(--text-muted);">Counts active elements that match specific bit patterns (Histogram acceleration).</td>
@@ -199,9 +465,44 @@
                 
                 <tr onclick="window.location='histseg/';" style="cursor: pointer;">
                     <td class="mono">histseg</td>
+                    <td style="font-weight: 500;">Histogram Segment (SVE2)</td>
+                    <td><span class="badge">SVE2 Histogram</span></td>
+                    <td style="color: var(--text-muted);">Counts matching elements in segments of a vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='histseg/';" style="cursor: pointer;">
+                    <td class="mono">histseg</td>
                     <td style="font-weight: 500;">SVE Histogram Segment</td>
                     <td><span class="badge">SVE2 Histogram</span></td>
                     <td style="color: var(--text-muted);">Counts matching elements in segments.</td>
+                </tr>
+                
+                <tr onclick="window.location='insr/';" style="cursor: pointer;">
+                    <td class="mono">insr</td>
+                    <td style="font-weight: 500;">Insert Scalar into Vector</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Shifts vector and inserts scalar at element 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1b/';" style="cursor: pointer;">
+                    <td class="mono">ld1b</td>
+                    <td style="font-weight: 500;">Gather Load Bytes (SVE)</td>
+                    <td><span class="badge">SVE Gather</span></td>
+                    <td style="color: var(--text-muted);">Loads bytes from non-contiguous memory addresses specified by a vector index.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1d/';" style="cursor: pointer;">
+                    <td class="mono">ld1d</td>
+                    <td style="font-weight: 500;">Gather Load Doublewords (SVE)</td>
+                    <td><span class="badge">SVE Gather</span></td>
+                    <td style="color: var(--text-muted);">Loads doublewords from non-contiguous memory addresses.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1h/';" style="cursor: pointer;">
+                    <td class="mono">ld1h</td>
+                    <td style="font-weight: 500;">Gather Load Halfwords (SVE)</td>
+                    <td><span class="badge">SVE Gather</span></td>
+                    <td style="color: var(--text-muted);">Loads halfwords from non-contiguous memory addresses.</td>
                 </tr>
                 
                 <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
@@ -225,6 +526,27 @@
                     <td style="color: var(--text-muted);">Loads a vertical slice (column) of a tile from memory.</td>
                 </tr>
                 
+                <tr onclick="window.location='ld1w/';" style="cursor: pointer;">
+                    <td class="mono">ld1w</td>
+                    <td style="font-weight: 500;">Gather Load Words (SVE)</td>
+                    <td><span class="badge">SVE Gather</span></td>
+                    <td style="color: var(--text-muted);">Loads words from non-contiguous memory addresses.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldnt1b/';" style="cursor: pointer;">
+                    <td class="mono">ldnt1b</td>
+                    <td style="font-weight: 500;">Load Non-Temporal Byte (SVE2)</td>
+                    <td><span class="badge">SVE2 Load</span></td>
+                    <td style="color: var(--text-muted);">Loads bytes hinting non-temporal (no cache alloc).</td>
+                </tr>
+                
+                <tr onclick="window.location='ldsza/';" style="cursor: pointer;">
+                    <td class="mono">ldsza</td>
+                    <td style="font-weight: 500;">Load ZA Tile Slice</td>
+                    <td><span class="badge">SME Load</span></td>
+                    <td style="color: var(--text-muted);">Loads a tile slice from memory directly into ZA.</td>
+                </tr>
+                
                 <tr onclick="window.location='luti2/';" style="cursor: pointer;">
                     <td class="mono">luti2</td>
                     <td style="font-weight: 500;">Lookup Table Index (2-bit)</td>
@@ -239,11 +561,53 @@
                     <td style="color: var(--text-muted);">Looks up values in ZT0 table using 4-bit indices (SME2).</td>
                 </tr>
                 
+                <tr onclick="window.location='maddpt/';" style="cursor: pointer;">
+                    <td class="mono">maddpt</td>
+                    <td style="font-weight: 500;">Multiply Add Checked Pointer</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates Ptr + (A * B) with tag check.</td>
+                </tr>
+                
+                <tr onclick="window.location='match/';" style="cursor: pointer;">
+                    <td class="mono">match</td>
+                    <td style="font-weight: 500;">Detect Matches (SVE2)</td>
+                    <td><span class="badge">SVE2 String</span></td>
+                    <td style="color: var(--text-muted);">Detects matches between vector elements and sets a predicate (String processing).</td>
+                </tr>
+                
                 <tr onclick="window.location='match/';" style="cursor: pointer;">
                     <td class="mono">match</td>
                     <td style="font-weight: 500;">SVE Match</td>
                     <td><span class="badge">SVE2 Match</span></td>
                     <td style="color: var(--text-muted);">Detects if elements in Zn match any element in Zm (String matching).</td>
+                </tr>
+                
+                <tr onclick="window.location='mova/';" style="cursor: pointer;">
+                    <td class="mono">mova</td>
+                    <td style="font-weight: 500;">Move Vector to Tile Slice (Horizontal)</td>
+                    <td><span class="badge">SME Move</span></td>
+                    <td style="color: var(--text-muted);">Moves an SVE vector into a horizontal slice of a ZA tile.</td>
+                </tr>
+                
+                <tr onclick="window.location='mova/';" style="cursor: pointer;">
+                    <td class="mono">mova</td>
+                    <td style="font-weight: 500;">Move Vector to Tile Slice (Vertical)</td>
+                    <td><span class="badge">SME Move</span></td>
+                    <td style="color: var(--text-muted);">Moves an SVE vector into a vertical slice of a ZA tile.</td>
+                </tr>
+                
+                <tr onclick="window.location='mova/';" style="cursor: pointer;">
+                    <td class="mono">mova</td>
+                    <td style="font-weight: 500;">Move Tile Slice to Vector (Horizontal)</td>
+                    <td><span class="badge">SME Move</span></td>
+                    <td style="color: var(--text-muted);">Moves a horizontal slice of a ZA tile into an SVE vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='mova/';" style="cursor: pointer;">
+                    <td class="mono">mova</td>
+                    <td style="font-weight: 500;">Move Tile Slice to Vector (Vertical)</td>
+                    <td><span class="badge">SME Move</span></td>
+                    <td style="color: var(--text-muted);">Moves a vertical slice of a ZA tile into an SVE vector.</td>
                 </tr>
                 
                 <tr onclick="window.location='movt/';" style="cursor: pointer;">
@@ -253,11 +617,53 @@
                     <td style="color: var(--text-muted);">Moves and transposes data between 2/4 vectors (SME2).</td>
                 </tr>
                 
+                <tr onclick="window.location='msubpt/';" style="cursor: pointer;">
+                    <td class="mono">msubpt</td>
+                    <td style="font-weight: 500;">Multiply Subtract Checked Pointer</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates Ptr - (A * B) with tag check.</td>
+                </tr>
+                
+                <tr onclick="window.location='mullb/';" style="cursor: pointer;">
+                    <td class="mono">mullb</td>
+                    <td style="font-weight: 500;">Multiply Long (Bottom) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Multiplies bottom elements of vectors, producing wide result.</td>
+                </tr>
+                
+                <tr onclick="window.location='mullt/';" style="cursor: pointer;">
+                    <td class="mono">mullt</td>
+                    <td style="font-weight: 500;">Multiply Long (Top) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Multiplies top elements of vectors, producing wide result.</td>
+                </tr>
+                
+                <tr onclick="window.location='nbsl/';" style="cursor: pointer;">
+                    <td class="mono">nbsl</td>
+                    <td style="font-weight: 500;">NOT Bitwise Select (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">Inverted result of bitwise select.</td>
+                </tr>
+                
+                <tr onclick="window.location='nmatch/';" style="cursor: pointer;">
+                    <td class="mono">nmatch</td>
+                    <td style="font-weight: 500;">Detect No Matches (SVE2)</td>
+                    <td><span class="badge">SVE2 String</span></td>
+                    <td style="color: var(--text-muted);">Detects mismatches between vector elements (String processing).</td>
+                </tr>
+                
                 <tr onclick="window.location='nmatch/';" style="cursor: pointer;">
                     <td class="mono">nmatch</td>
                     <td style="font-weight: 500;">SVE No Match</td>
                     <td><span class="badge">SVE2 Match</span></td>
                     <td style="color: var(--text-muted);">Detects if elements in Zn match *none* of the elements in Zm.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmul/';" style="cursor: pointer;">
+                    <td class="mono">pmul</td>
+                    <td style="font-weight: 500;">Polynomial Multiply (SVE2)</td>
+                    <td><span class="badge">SVE2 Crypto</span></td>
+                    <td style="color: var(--text-muted);">Performs polynomial multiplication (GF(2) arithmetic).</td>
                 </tr>
                 
                 <tr onclick="window.location='pmullb/';" style="cursor: pointer;">
@@ -267,6 +673,13 @@
                     <td style="color: var(--text-muted);">Polynomial multiply of even elements producing wide result.</td>
                 </tr>
                 
+                <tr onclick="window.location='pmullb/';" style="cursor: pointer;">
+                    <td class="mono">pmullb</td>
+                    <td style="font-weight: 500;">Polynomial Multiply Long (Bottom)</td>
+                    <td><span class="badge">SVE2 Crypto</span></td>
+                    <td style="color: var(--text-muted);">Polynomial multiply of bottom 64-bits (Crypto/CRC).</td>
+                </tr>
+                
                 <tr onclick="window.location='pmullt/';" style="cursor: pointer;">
                     <td class="mono">pmullt</td>
                     <td style="font-weight: 500;">SVE Polynomial Multiply Long (Top)</td>
@@ -274,11 +687,60 @@
                     <td style="color: var(--text-muted);">Polynomial multiply of odd elements producing wide result.</td>
                 </tr>
                 
+                <tr onclick="window.location='pmullt/';" style="cursor: pointer;">
+                    <td class="mono">pmullt</td>
+                    <td style="font-weight: 500;">Polynomial Multiply Long (Top)</td>
+                    <td><span class="badge">SVE2 Crypto</span></td>
+                    <td style="color: var(--text-muted);">Polynomial multiply of top 64-bits (Crypto/CRC).</td>
+                </tr>
+                
+                <tr onclick="window.location='psel/';" style="cursor: pointer;">
+                    <td class="mono">psel</td>
+                    <td style="font-weight: 500;">Predicate Select</td>
+                    <td><span class="badge">SME2</span></td>
+                    <td style="color: var(--text-muted);">Selects a predicate register based on a boolean condition (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='rax1/';" style="cursor: pointer;">
+                    <td class="mono">rax1</td>
+                    <td style="font-weight: 500;">Rotate and Exclusive OR (SVE2)</td>
+                    <td><span class="badge">SVE2 Crypto</span></td>
+                    <td style="color: var(--text-muted);">Rotates source by 1 and XORs (SHA3 acceleration).</td>
+                </tr>
+                
                 <tr onclick="window.location='rdsvl/';" style="cursor: pointer;">
                     <td class="mono">rdsvl</td>
                     <td style="font-weight: 500;">Read Streaming Vector Length</td>
                     <td><span class="badge">SME General</span></td>
                     <td style="color: var(--text-muted);">Reads the current vector length in streaming mode.</td>
+                </tr>
+                
+                <tr onclick="window.location='revd/';" style="cursor: pointer;">
+                    <td class="mono">revd</td>
+                    <td style="font-weight: 500;">Reverse Doublewords</td>
+                    <td><span class="badge">SVE2</span></td>
+                    <td style="color: var(--text-muted);">Reverses 64-bit doublewords within 128-bit quadwords (SVE2).</td>
+                </tr>
+                
+                <tr onclick="window.location='rmpadjust/';" style="cursor: pointer;">
+                    <td class="mono">rmpadjust</td>
+                    <td style="font-weight: 500;">Realm Management Pointer Adjust</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Adjusts the RMP entry for a physical address (Realm Management).</td>
+                </tr>
+                
+                <tr onclick="window.location='rmpinit/';" style="cursor: pointer;">
+                    <td class="mono">rmpinit</td>
+                    <td style="font-weight: 500;">Realm Management Pointer Initialize</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Initializes the Realm Management Pointer table.</td>
+                </tr>
+                
+                <tr onclick="window.location='rmpread/';" style="cursor: pointer;">
+                    <td class="mono">rmpread</td>
+                    <td style="font-weight: 500;">Realm Management Pointer Read</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Reads the RMP entry for a physical address.</td>
                 </tr>
                 
                 <tr onclick="window.location='rsubhnb/';" style="cursor: pointer;">
@@ -295,11 +757,53 @@
                     <td style="color: var(--text-muted);">Subtracts, rounds, and narrows (Top half).</td>
                 </tr>
                 
+                <tr onclick="window.location='saddlb/';" style="cursor: pointer;">
+                    <td class="mono">saddlb</td>
+                    <td style="font-weight: 500;">Signed Add Long (Bottom) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Signed add of bottom halves, widening.</td>
+                </tr>
+                
+                <tr onclick="window.location='sclamp/';" style="cursor: pointer;">
+                    <td class="mono">sclamp</td>
+                    <td style="font-weight: 500;">Signed Integer Clamp</td>
+                    <td><span class="badge">SVE2.1</span></td>
+                    <td style="color: var(--text-muted);">Clamps signed integer elements between min and max (SVE2.1).</td>
+                </tr>
+                
+                <tr onclick="window.location='sdiv/';" style="cursor: pointer;">
+                    <td class="mono">sdiv</td>
+                    <td style="font-weight: 500;">Signed Divide (SVE)</td>
+                    <td><span class="badge">SVE Math</span></td>
+                    <td style="color: var(--text-muted);">Signed integer division (vector).</td>
+                </tr>
+                
+                <tr onclick="window.location='sel/';" style="cursor: pointer;">
+                    <td class="mono">sel</td>
+                    <td style="font-weight: 500;">Select Elements (SVE)</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Selects elements from two vectors based on predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='sete/';" style="cursor: pointer;">
+                    <td class="mono">sete</td>
+                    <td style="font-weight: 500;">Memory Set Epilogue (MOPS)</td>
+                    <td><span class="badge">MOPS</span></td>
+                    <td style="color: var(--text-muted);">Optimized memory set epilogue.</td>
+                </tr>
+                
                 <tr onclick="window.location='sete/';" style="cursor: pointer;">
                     <td class="mono">sete</td>
                     <td style="font-weight: 500;">Memory Set (Epilogue)</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Final step of a hardware-accelerated memset.</td>
+                </tr>
+                
+                <tr onclick="window.location='setm/';" style="cursor: pointer;">
+                    <td class="mono">setm</td>
+                    <td style="font-weight: 500;">Memory Set Main (MOPS)</td>
+                    <td><span class="badge">MOPS</span></td>
+                    <td style="color: var(--text-muted);">Optimized memory set main loop.</td>
                 </tr>
                 
                 <tr onclick="window.location='setm/';" style="cursor: pointer;">
@@ -311,9 +815,44 @@
                 
                 <tr onclick="window.location='setp/';" style="cursor: pointer;">
                     <td class="mono">setp</td>
+                    <td style="font-weight: 500;">Memory Set Prologue (MOPS)</td>
+                    <td><span class="badge">MOPS</span></td>
+                    <td style="color: var(--text-muted);">Optimized memory set prologue.</td>
+                </tr>
+                
+                <tr onclick="window.location='setp/';" style="cursor: pointer;">
+                    <td class="mono">setp</td>
                     <td style="font-weight: 500;">Memory Set (Prologue)</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">First step of a hardware-accelerated memset.</td>
+                </tr>
+                
+                <tr onclick="window.location='sm4e/';" style="cursor: pointer;">
+                    <td class="mono">sm4e</td>
+                    <td style="font-weight: 500;">SM4 Encrypt (SVE2)</td>
+                    <td><span class="badge">SVE2 Crypto</span></td>
+                    <td style="color: var(--text-muted);">SM4 block cipher encryption on SVE vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='smax/';" style="cursor: pointer;">
+                    <td class="mono">smax</td>
+                    <td style="font-weight: 500;">Multi-vector Signed Maximum (SME2)</td>
+                    <td><span class="badge">SME2 Int</span></td>
+                    <td style="color: var(--text-muted);">Signed maximum of 2 or 4 vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='smin/';" style="cursor: pointer;">
+                    <td class="mono">smin</td>
+                    <td style="font-weight: 500;">Multi-vector Signed Minimum (SME2)</td>
+                    <td><span class="badge">SME2 Int</span></td>
+                    <td style="color: var(--text-muted);">Signed minimum of 2 or 4 vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='smopa/';" style="cursor: pointer;">
+                    <td class="mono">smopa</td>
+                    <td style="font-weight: 500;">Signed Integer Outer Product Accumulate (Non-widening)</td>
+                    <td><span class="badge">SME2 Matrix</span></td>
+                    <td style="color: var(--text-muted);">Non-widening signed integer outer product (SME2).</td>
                 </tr>
                 
                 <tr onclick="window.location='smopa/';" style="cursor: pointer;">
@@ -337,11 +876,74 @@
                     <td style="color: var(--text-muted);">Disables Streaming SVE and/or ZA storage.</td>
                 </tr>
                 
+                <tr onclick="window.location='splice/';" style="cursor: pointer;">
+                    <td class="mono">splice</td>
+                    <td style="font-weight: 500;">Splice Vectors</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Splices two vectors based on a predicate.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqdmlalbt/';" style="cursor: pointer;">
+                    <td class="mono">sqdmlalbt</td>
+                    <td style="font-weight: 500;">Signed Saturating Doubling Multiply Add Long (Bot x Top) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Complex integer multiply-accumulate.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqdmlaltb/';" style="cursor: pointer;">
+                    <td class="mono">sqdmlaltb</td>
+                    <td style="font-weight: 500;">Signed Saturating Doubling Multiply Add Long (Top x Bot) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Complex integer multiply-accumulate.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqdmulh/';" style="cursor: pointer;">
+                    <td class="mono">sqdmulh</td>
+                    <td style="font-weight: 500;">Multi-vector Signed Saturating Doubling Multiply High</td>
+                    <td><span class="badge">SME2 Int</span></td>
+                    <td style="color: var(--text-muted);">Saturating doubling multiply high on 2 or 4 vectors.</td>
+                </tr>
+                
                 <tr onclick="window.location='sqrdmulh/';" style="cursor: pointer;">
                     <td class="mono">sqrdmulh</td>
                     <td style="font-weight: 500;">SVE Signed Saturating Rounding Doubling Multiply High</td>
                     <td><span class="badge">SVE2 Integer Binary</span></td>
                     <td style="color: var(--text-muted);">Multiplies, doubles, rounds, and returns high half (Fixed point math).</td>
+                </tr>
+                
+                <tr onclick="window.location='sqrdmulh/';" style="cursor: pointer;">
+                    <td class="mono">sqrdmulh</td>
+                    <td style="font-weight: 500;">Signed Saturating Rounding Doubling Multiply High (SVE2)</td>
+                    <td><span class="badge">SVE2 Int</span></td>
+                    <td style="color: var(--text-muted);">Saturating, rounding, doubling high multiply.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqrshl/';" style="cursor: pointer;">
+                    <td class="mono">sqrshl</td>
+                    <td style="font-weight: 500;">Signed Saturating Rounding Shift Left (SVE2)</td>
+                    <td><span class="badge">SVE2 Shift</span></td>
+                    <td style="color: var(--text-muted);">Saturating, rounding left shift by vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1b/';" style="cursor: pointer;">
+                    <td class="mono">st1b</td>
+                    <td style="font-weight: 500;">Scatter Store Bytes (SVE)</td>
+                    <td><span class="badge">SVE Scatter</span></td>
+                    <td style="color: var(--text-muted);">Stores bytes to non-contiguous memory addresses.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1d/';" style="cursor: pointer;">
+                    <td class="mono">st1d</td>
+                    <td style="font-weight: 500;">Scatter Store Doublewords (SVE)</td>
+                    <td><span class="badge">SVE Scatter</span></td>
+                    <td style="color: var(--text-muted);">Stores doublewords to non-contiguous memory addresses.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1h/';" style="cursor: pointer;">
+                    <td class="mono">st1h</td>
+                    <td style="font-weight: 500;">Scatter Store Halfwords (SVE)</td>
+                    <td><span class="badge">SVE Scatter</span></td>
+                    <td style="color: var(--text-muted);">Stores halfwords to non-contiguous memory addresses.</td>
                 </tr>
                 
                 <tr onclick="window.location='st1w/';" style="cursor: pointer;">
@@ -365,6 +967,27 @@
                     <td style="color: var(--text-muted);">Stores a vertical slice (column) of a tile to memory.</td>
                 </tr>
                 
+                <tr onclick="window.location='st1w/';" style="cursor: pointer;">
+                    <td class="mono">st1w</td>
+                    <td style="font-weight: 500;">Scatter Store Words (SVE)</td>
+                    <td><span class="badge">SVE Scatter</span></td>
+                    <td style="color: var(--text-muted);">Stores words to non-contiguous memory addresses.</td>
+                </tr>
+                
+                <tr onclick="window.location='stnt1b/';" style="cursor: pointer;">
+                    <td class="mono">stnt1b</td>
+                    <td style="font-weight: 500;">Store Non-Temporal Byte (SVE2)</td>
+                    <td><span class="badge">SVE2 Store</span></td>
+                    <td style="color: var(--text-muted);">Stores bytes hinting non-temporal.</td>
+                </tr>
+                
+                <tr onclick="window.location='stsza/';" style="cursor: pointer;">
+                    <td class="mono">stsza</td>
+                    <td style="font-weight: 500;">Store ZA Tile Slice</td>
+                    <td><span class="badge">SME Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a tile slice from ZA directly to memory.</td>
+                </tr>
+                
                 <tr onclick="window.location='sub/';" style="cursor: pointer;">
                     <td class="mono">sub</td>
                     <td style="font-weight: 500;">Multi-vector Subtract</td>
@@ -372,11 +995,165 @@
                     <td style="color: var(--text-muted);">Subtracts two or four vectors from accumulators (SME2).</td>
                 </tr>
                 
+                <tr onclick="window.location='subhnb/';" style="cursor: pointer;">
+                    <td class="mono">subhnb</td>
+                    <td style="font-weight: 500;">Subtract High Narrow (Bottom) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Subtracts wide elements, narrows, and stores in bottom half.</td>
+                </tr>
+                
+                <tr onclick="window.location='subhnt/';" style="cursor: pointer;">
+                    <td class="mono">subhnt</td>
+                    <td style="font-weight: 500;">Subtract High Narrow (Top) (SVE2)</td>
+                    <td><span class="badge">SVE2 Math</span></td>
+                    <td style="color: var(--text-muted);">Subtracts wide elements, narrows, and stores in top half.</td>
+                </tr>
+                
+                <tr onclick="window.location='subpt/';" style="cursor: pointer;">
+                    <td class="mono">subpt</td>
+                    <td style="font-weight: 500;">Subtract Checked Pointer</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts offset from pointer with tag check (Checked Pointer Arithmetic).</td>
+                </tr>
+                
+                <tr onclick="window.location='sumopa/';" style="cursor: pointer;">
+                    <td class="mono">sumopa</td>
+                    <td style="font-weight: 500;">Signed/Unsigned Integer Outer Product Accumulate</td>
+                    <td><span class="badge">SME2 Matrix</span></td>
+                    <td style="color: var(--text-muted);">Outer product of Signed x Unsigned integers (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='tbl/';" style="cursor: pointer;">
+                    <td class="mono">tbl</td>
+                    <td style="font-weight: 500;">Table Lookup (SVE)</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Vector table lookup (SVE version of TBL).</td>
+                </tr>
+                
+                <tr onclick="window.location='tbx/';" style="cursor: pointer;">
+                    <td class="mono">tbx</td>
+                    <td style="font-weight: 500;">Table Lookup Extension (SVE)</td>
+                    <td><span class="badge">SVE Permute</span></td>
+                    <td style="color: var(--text-muted);">Vector table extension (SVE version of TBX).</td>
+                </tr>
+                
+                <tr onclick="window.location='tcancel/';" style="cursor: pointer;">
+                    <td class="mono">tcancel</td>
+                    <td style="font-weight: 500;">Transaction Cancel</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Cancels the current transaction.</td>
+                </tr>
+                
+                <tr onclick="window.location='tcommit/';" style="cursor: pointer;">
+                    <td class="mono">tcommit</td>
+                    <td style="font-weight: 500;">Transaction Commit</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Commits the current memory transaction.</td>
+                </tr>
+                
+                <tr onclick="window.location='tlbi/';" style="cursor: pointer;">
+                    <td class="mono">tlbi</td>
+                    <td style="font-weight: 500;">TLB Invalidate (Realm IPA)</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Invalidates TLB entries for a Realm Intermediate Physical Address.</td>
+                </tr>
+                
+                <tr onclick="window.location='tlbi/';" style="cursor: pointer;">
+                    <td class="mono">tlbi</td>
+                    <td style="font-weight: 500;">TLB Invalidate (Realm PA)</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Invalidates TLB entries by Realm Physical Address.</td>
+                </tr>
+                
+                <tr onclick="window.location='tstart/';" style="cursor: pointer;">
+                    <td class="mono">tstart</td>
+                    <td style="font-weight: 500;">Transaction Start</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Starts a new memory transaction (TME).</td>
+                </tr>
+                
+                <tr onclick="window.location='ttest/';" style="cursor: pointer;">
+                    <td class="mono">ttest</td>
+                    <td style="font-weight: 500;">Transaction Test</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Tests the transaction depth.</td>
+                </tr>
+                
+                <tr onclick="window.location='uclamp/';" style="cursor: pointer;">
+                    <td class="mono">uclamp</td>
+                    <td style="font-weight: 500;">Unsigned Integer Clamp</td>
+                    <td><span class="badge">SVE2.1</span></td>
+                    <td style="color: var(--text-muted);">Clamps unsigned integer elements between min and max (SVE2.1).</td>
+                </tr>
+                
+                <tr onclick="window.location='udiv/';" style="cursor: pointer;">
+                    <td class="mono">udiv</td>
+                    <td style="font-weight: 500;">Unsigned Divide (SVE)</td>
+                    <td><span class="badge">SVE Math</span></td>
+                    <td style="color: var(--text-muted);">Unsigned integer division (vector).</td>
+                </tr>
+                
+                <tr onclick="window.location='umax/';" style="cursor: pointer;">
+                    <td class="mono">umax</td>
+                    <td style="font-weight: 500;">Multi-vector Unsigned Maximum (SME2)</td>
+                    <td><span class="badge">SME2 Int</span></td>
+                    <td style="color: var(--text-muted);">Unsigned maximum of 2 or 4 vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='umin/';" style="cursor: pointer;">
+                    <td class="mono">umin</td>
+                    <td style="font-weight: 500;">Multi-vector Unsigned Minimum (SME2)</td>
+                    <td><span class="badge">SME2 Int</span></td>
+                    <td style="color: var(--text-muted);">Unsigned minimum of 2 or 4 vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='umopa/';" style="cursor: pointer;">
+                    <td class="mono">umopa</td>
+                    <td style="font-weight: 500;">Unsigned Integer Outer Product Accumulate (Non-widening)</td>
+                    <td><span class="badge">SME2 Matrix</span></td>
+                    <td style="color: var(--text-muted);">Non-widening unsigned integer outer product (SME2).</td>
+                </tr>
+                
                 <tr onclick="window.location='umopa/';" style="cursor: pointer;">
                     <td class="mono">umopa</td>
                     <td style="font-weight: 500;">Unsigned Integer Matrix Outer Product Accumulate</td>
                     <td><span class="badge">SME Arithmetic</span></td>
                     <td style="color: var(--text-muted);">Computes outer product for unsigned integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='uqrshl/';" style="cursor: pointer;">
+                    <td class="mono">uqrshl</td>
+                    <td style="font-weight: 500;">Unsigned Saturating Rounding Shift Left (SVE2)</td>
+                    <td><span class="badge">SVE2 Shift</span></td>
+                    <td style="color: var(--text-muted);">Unsigned saturating, rounding left shift.</td>
+                </tr>
+                
+                <tr onclick="window.location='usmopa/';" style="cursor: pointer;">
+                    <td class="mono">usmopa</td>
+                    <td style="font-weight: 500;">Unsigned/Signed Integer Outer Product Accumulate</td>
+                    <td><span class="badge">SME2 Matrix</span></td>
+                    <td style="color: var(--text-muted);">Outer product of Unsigned x Signed integers (SME2).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilele/';" style="cursor: pointer;">
+                    <td class="mono">whilele</td>
+                    <td style="font-weight: 500;">While Less Than or Equal (SVE2)</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Generates a predicate for a loop (start <= end).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilelt/';" style="cursor: pointer;">
+                    <td class="mono">whilelt</td>
+                    <td style="font-weight: 500;">While Less Than (SVE2)</td>
+                    <td><span class="badge">SVE Predicate</span></td>
+                    <td style="color: var(--text-muted);">Generates a predicate for a loop (start < end).</td>
+                </tr>
+                
+                <tr onclick="window.location='whilerw/';" style="cursor: pointer;">
+                    <td class="mono">whilerw</td>
+                    <td style="font-weight: 500;">While Read/Write (SVE2)</td>
+                    <td><span class="badge">SVE2 Predicate</span></td>
+                    <td style="color: var(--text-muted);">Generates a predicate for concurrent read/write loop iterations.</td>
                 </tr>
                 
                 <tr onclick="window.location='whilerw/';" style="cursor: pointer;">
@@ -388,9 +1165,23 @@
                 
                 <tr onclick="window.location='whilewr/';" style="cursor: pointer;">
                     <td class="mono">whilewr</td>
+                    <td style="font-weight: 500;">While Write/Read (SVE2)</td>
+                    <td><span class="badge">SVE2 Predicate</span></td>
+                    <td style="color: var(--text-muted);">Generates a predicate for concurrent write/read loop iterations.</td>
+                </tr>
+                
+                <tr onclick="window.location='whilewr/';" style="cursor: pointer;">
+                    <td class="mono">whilewr</td>
                     <td style="font-weight: 500;">SVE While Write/Read</td>
                     <td><span class="badge">SVE2 Loop</span></td>
                     <td style="color: var(--text-muted);">Generates predicates to avoid write-after-read hazards.</td>
+                </tr>
+                
+                <tr onclick="window.location='xar/';" style="cursor: pointer;">
+                    <td class="mono">xar</td>
+                    <td style="font-weight: 500;">Exclusive OR and Rotate (SVE2)</td>
+                    <td><span class="badge">SVE2 Bitwise</span></td>
+                    <td style="color: var(--text-muted);">XORs two vectors then rotates the result.</td>
                 </tr>
                 
                 <tr onclick="window.location='xar/';" style="cursor: pointer;">

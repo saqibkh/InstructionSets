@@ -1,0 +1,404 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "cas",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Word",
+      "summary": "Atomically compares and swaps a 32-bit value in memory (LSE).",
+      "syntax": "CAS <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10001000 | 101 | 11111 | 00000 | Rn | Rt", "hex_opcode": "0x88A07C00" },
+      "operands": [{ "name": "Ws", "desc": "Compare" }, { "name": "Wt", "desc": "Swap" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "casp",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Swap Pair",
+      "summary": "Atomically compares and swaps a pair of registers (LSE).",
+      "syntax": "CASP <Ws>, <W(s+1)>, <Wt>, <W(t+1)>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "01001000 | 001 | 11111 | 00000 | Rn | Rt", "hex_opcode": "0x48207C00" },
+      "operands": [{ "name": "Ws", "desc": "Compare Lo" }, { "name": "Wt", "desc": "Swap Lo" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "swp",
+      "architecture": "ARMv8-A",
+      "full_name": "Swap Word",
+      "summary": "Atomically swaps a value in memory (LSE).",
+      "syntax": "SWP <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 10000 | Rn | Rt", "hex_opcode": "0xB8208000" },
+      "operands": [{ "name": "Ws", "desc": "Store" }, { "name": "Wt", "desc": "Load" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Add",
+      "summary": "Atomically adds a value to memory (LSE).",
+      "syntax": "LDADD <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 00000 | Rn | Rt", "hex_opcode": "0xB8200000" },
+      "operands": [{ "name": "Ws", "desc": "Addend" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldclr",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Bit Clear",
+      "summary": "Atomically clears bits in memory (AND NOT) (LSE).",
+      "syntax": "LDCLR <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 00010 | Rn | Rt", "hex_opcode": "0xB8201000" },
+      "operands": [{ "name": "Ws", "desc": "Mask" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldeor",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Exclusive OR",
+      "summary": "Atomically XORs a value in memory (LSE).",
+      "syntax": "LDEOR <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 00100 | Rn | Rt", "hex_opcode": "0xB8202000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldset",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Bit Set",
+      "summary": "Atomically sets bits in memory (OR) (LSE).",
+      "syntax": "LDSET <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 00110 | Rn | Rt", "hex_opcode": "0xB8203000" },
+      "operands": [{ "name": "Ws", "desc": "Mask" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldsmax",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Signed Maximum",
+      "summary": "Atomically stores max of value and memory (Signed) (LSE).",
+      "syntax": "LDSMAX <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 01000 | Rn | Rt", "hex_opcode": "0xB8204000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldsmin",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Signed Minimum",
+      "summary": "Atomically stores min of value and memory (Signed) (LSE).",
+      "syntax": "LDSMIN <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 01010 | Rn | Rt", "hex_opcode": "0xB8205000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldumax",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Unsigned Maximum",
+      "summary": "Atomically stores max of value and memory (Unsigned) (LSE).",
+      "syntax": "LDUMAX <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 01100 | Rn | Rt", "hex_opcode": "0xB8206000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "ldumin",
+      "architecture": "ARMv8-A",
+      "full_name": "Atomic Unsigned Minimum",
+      "summary": "Atomically stores min of value and memory (Unsigned) (LSE).",
+      "syntax": "LDUMIN <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "10111000 | 001 | 11111 | 01110 | Rn | Rt", "hex_opcode": "0xB8207000" },
+      "operands": [{ "name": "Ws", "desc": "Value" }, { "name": "Wt", "desc": "Old Val" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "LSE (Atomic)"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Add (Half-Precision)",
+      "summary": "Adds two half-precision floating-point vectors.",
+      "syntax": "FADD <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 010 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x4E20D400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Subtract (Half-Precision)",
+      "summary": "Subtracts two half-precision floating-point vectors.",
+      "syntax": "FSUB <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 101 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x4EA0D400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Multiply (Half-Precision)",
+      "summary": "Multiplies two half-precision floating-point vectors.",
+      "syntax": "FMUL <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01101110 | 010 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x6E20D400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Divide (Half-Precision)",
+      "summary": "Divides two half-precision floating-point vectors.",
+      "syntax": "FDIV <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01101110 | 101 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x6EA0D400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fmax",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Maximum (Half-Precision)",
+      "summary": "Finds max of half-precision vectors.",
+      "syntax": "FMAX <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 001 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x4E20F400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fmin",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Minimum (Half-Precision)",
+      "summary": "Finds min of half-precision vectors.",
+      "syntax": "FMIN <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 101 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x4EA0F400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Multiply Accumulate (Half-Precision)",
+      "summary": "Fused multiply-add on half-precision vectors.",
+      "syntax": "FMLA <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 010 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x4E20CC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fmls",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Multiply Subtract (Half-Precision)",
+      "summary": "Fused multiply-subtract on half-precision vectors.",
+      "syntax": "FMLS <Vd>.8H, <Vn>.8H, <Vm>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 101 | 11111 | 00010 | Vm | Vn | Vd", "hex_opcode": "0x4EA0CC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fabs",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Absolute Value (Half-Precision)",
+      "summary": "Absolute value of half-precision vector.",
+      "syntax": "FABS <Vd>.8H, <Vn>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 111 | 11000 | 01111 | 0 | Vn | Vd", "hex_opcode": "0x4EF87800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fneg",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Negate (Half-Precision)",
+      "summary": "Negates half-precision vector.",
+      "syntax": "FNEG <Vd>.8H, <Vn>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01101110 | 111 | 11000 | 01111 | 0 | Vn | Vd", "hex_opcode": "0x6EF87800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Square Root (Half-Precision)",
+      "summary": "Square root of half-precision vector.",
+      "syntax": "FSQRT <Vd>.8H, <Vn>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01101110 | 111 | 11000 | 01111 | 1 | Vn | Vd", "hex_opcode": "0x7EF87800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fcvtl",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert Long (Half to Single)",
+      "summary": "Converts Half-precision (Bottom) to Single-precision.",
+      "syntax": "FCVTL <Vd>.4S, <Vn>.4H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 001 | 00001 | 01111 | 0 | Vn | Vd", "hex_opcode": "0x4E217800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fcvtl2",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert Long High (Half to Single)",
+      "summary": "Converts Half-precision (Top) to Single-precision.",
+      "syntax": "FCVTL2 <Vd>.4S, <Vn>.8H",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01101110 | 001 | 00001 | 01111 | 0 | Vn | Vd", "hex_opcode": "0x6E217800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fcvtn",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert Narrow (Single to Half)",
+      "summary": "Converts Single-precision to Half-precision (Bottom).",
+      "syntax": "FCVTN <Vd>.4H, <Vn>.4S",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01001110 | 001 | 00001 | 01101 | 0 | Vn | Vd", "hex_opcode": "0x4E216800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "fcvtn2",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert Narrow High (Single to Half)",
+      "summary": "Converts Single-precision to Half-precision (Top).",
+      "syntax": "FCVTN2 <Vd>.8H, <Vn>.4S",
+      "encoding": { "format": "NEON FP16", "binary_pattern": "01101110 | 001 | 00001 | 01101 | 0 | Vn | Vd", "hex_opcode": "0x6E216800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "FEAT_FP16 (NEON)"
+    },
+    {
+      "mnemonic": "sdot",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Dot Product (NEON)",
+      "summary": "Dot product of signed integers (AArch64 NEON).",
+      "syntax": "SDOT <Vd>.4S, <Vn>.16B, <Vm>.16B",
+      "encoding": { "format": "NEON DotProd", "binary_pattern": "01001110 | 10 | 0 | 00000 | 10 | Zn | Zd | Zm", "hex_opcode": "0x4E809400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_DotProd"
+    },
+    {
+      "mnemonic": "udot",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Dot Product (NEON)",
+      "summary": "Dot product of unsigned integers (AArch64 NEON).",
+      "syntax": "UDOT <Vd>.4S, <Vn>.16B, <Vm>.16B",
+      "encoding": { "format": "NEON DotProd", "binary_pattern": "01101110 | 10 | 0 | 00000 | 10 | Zn | Zd | Zm", "hex_opcode": "0x6E809400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "FEAT_DotProd"
+    },
+    {
+      "mnemonic": "fcadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Complex Add (NEON)",
+      "summary": "Complex addition with rotation (NEON).",
+      "syntax": "FCADD <Vd>.4S, <Vn>.4S, <Vm>.4S, #<rot>",
+      "encoding": { "format": "NEON Complex", "binary_pattern": "01101110 | 01 | 0 | 00000 | 11 | rot | Zn | Zd | Zm", "hex_opcode": "0x6E40E400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }, { "name": "rot", "desc": "Rot" }],
+      "extension": "FEAT_FCMA"
+    },
+    {
+      "mnemonic": "fcmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Complex Multiply Accumulate (NEON)",
+      "summary": "Complex multiply-accumulate with rotation (NEON).",
+      "syntax": "FCMLA <Vd>.4S, <Vn>.4S, <Vm>.4S, #<rot>",
+      "encoding": { "format": "NEON Complex", "binary_pattern": "01001110 | 01 | 0 | 00000 | 11 | rot | Zn | Zd | Zm", "hex_opcode": "0x4E40E400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }, { "name": "rot", "desc": "Rot" }],
+      "extension": "FEAT_FCMA"
+    },
+    {
+      "mnemonic": "aese",
+      "architecture": "ARMv8-A",
+      "full_name": "AES Encrypt (A64)",
+      "summary": "AES single round encryption (AArch64 NEON).",
+      "syntax": "AESE <Vd>.16B, <Vm>.16B",
+      "encoding": { "format": "Crypto", "binary_pattern": "01001110 | 00 | 101000 | 01001 | Vm | Vd", "hex_opcode": "0x4E284800" },
+      "operands": [{ "name": "Vd", "desc": "State" }, { "name": "Vm", "desc": "Key" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "aesd",
+      "architecture": "ARMv8-A",
+      "full_name": "AES Decrypt (A64)",
+      "summary": "AES single round decryption (AArch64 NEON).",
+      "syntax": "AESD <Vd>.16B, <Vm>.16B",
+      "encoding": { "format": "Crypto", "binary_pattern": "01001110 | 00 | 101000 | 01011 | Vm | Vd", "hex_opcode": "0x4E285800" },
+      "operands": [{ "name": "Vd", "desc": "State" }, { "name": "Vm", "desc": "Key" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sha1h",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA1 Hash Update (A64)",
+      "summary": "SHA1 hash update (AArch64 NEON).",
+      "syntax": "SHA1H <Sd>, <Sn>",
+      "encoding": { "format": "Crypto", "binary_pattern": "01011110 | 00 | 101000 | 00001 | 0 | Rn | Rd", "hex_opcode": "0x5E280800" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sha1c",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA1 Choose (A64)",
+      "summary": "SHA1 hash choose (AArch64 NEON).",
+      "syntax": "SHA1C <Qd>, <Sn>, <Vm>.4S",
+      "encoding": { "format": "Crypto", "binary_pattern": "01011110 | 00 | 0 | 00000 | 000 | Vm | Rn | Rd", "hex_opcode": "0x5E000000" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Sn", "desc": "Src1" }, { "name": "Vm", "desc": "Src2" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sha256h",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA256 Hash Part 1 (A64)",
+      "summary": "SHA256 hash part 1 (AArch64 NEON).",
+      "syntax": "SHA256H <Qd>, <Qn>, <Vm>.4S",
+      "encoding": { "format": "Crypto", "binary_pattern": "01011110 | 00 | 0 | 00000 | 010 | Vm | Rn | Rd", "hex_opcode": "0x5E004000" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src1" }, { "name": "Vm", "desc": "Src2" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "sha256h2",
+      "architecture": "ARMv8-A",
+      "full_name": "SHA256 Hash Part 2 (A64)",
+      "summary": "SHA256 hash part 2 (AArch64 NEON).",
+      "syntax": "SHA256H2 <Qd>, <Qn>, <Vm>.4S",
+      "encoding": { "format": "Crypto", "binary_pattern": "01011110 | 00 | 0 | 00000 | 011 | Vm | Rn | Rd", "hex_opcode": "0x5E005000" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src1" }, { "name": "Vm", "desc": "Src2" }],
+      "extension": "Crypto"
+    },
+    {
+      "mnemonic": "pmull",
+      "architecture": "ARMv8-A",
+      "full_name": "Polynomial Multiply Long (A64)",
+      "summary": "Polynomial multiply long (NEON).",
+      "syntax": "PMULL <Vd>.1Q, <Vn>.1D, <Vm>.1D",
+      "encoding": { "format": "Crypto", "binary_pattern": "00001110 | 10 | 1 | 00000 | 11100 | Vm | Vn | Vd", "hex_opcode": "0x0E20E000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Crypto (AES)"
+    },
+    {
+      "mnemonic": "ldnt1b",
+      "architecture": "ARMv9-A",
+      "full_name": "Load Non-Temporal Byte (SVE2)",
+      "summary": "Loads bytes hinting non-temporal (no cache alloc).",
+      "syntax": "LDNT1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>, <Zm>, LSL #0]",
+      "encoding": { "format": "SVE2 Load", "binary_pattern": "10000100 | 00 | 0 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0x84000000" },
+      "operands": [{ "name": "Zt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offset" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "stnt1b",
+      "architecture": "ARMv9-A",
+      "full_name": "Store Non-Temporal Byte (SVE2)",
+      "summary": "Stores bytes hinting non-temporal.",
+      "syntax": "STNT1B { <Zt>.B }, <Pg>, [<Xn|SP>, <Zm>, LSL #0]",
+      "encoding": { "format": "SVE2 Store", "binary_pattern": "11100100 | 00 | 0 | mmm | 000 | Pg | Zn | Zt", "hex_opcode": "0xE4000000" },
+      "operands": [{ "name": "Zt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Zm", "desc": "Offset" }],
+      "extension": "SVE2"
+    },
+    {
+      "mnemonic": "saddlb",
+      "architecture": "ARMv9-A",
+      "full_name": "Signed Add Long (Bottom) (SVE2)",
+      "summary": "Signed add of bottom halves, widening.",
+      "syntax": "SADDLB <Zd>.H, <Zn>.B, <Zm>.B",
+      "encoding": { "format": "SVE2 Math", "binary_pattern": "01000101 | 00 | 0 | 0 | 00000 | Zm | Zn | Zd", "hex_opcode": "0x45000000" },
+      "operands": [{ "name": "Zd", "desc": "Dest" }, { "name": "Zn", "desc": "Src 1" }, { "name": "Zm", "desc": "Src 2" }],
+      "extension": "SVE2"
+    }
+  ]
+}

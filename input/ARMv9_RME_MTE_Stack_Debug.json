@@ -1,0 +1,194 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "addg",
+      "architecture": "ARMv8-A",
+      "full_name": "Add with Tag",
+      "summary": "Adds an immediate to an address, modifying the Allocation Tag (MTE).",
+      "syntax": "ADDG <Xd|SP>, <Xn|SP>, #<uimm6>, #<uimm4>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10010001 | 00 | uimm6 | 00 | uimm4 | Xn | Xd", "hex_opcode": "0x91000000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src" }, { "name": "uimm6", "desc": "Address Offset" }, { "name": "uimm4", "desc": "Tag Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "subg",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract with Tag",
+      "summary": "Subtracts an immediate from an address, modifying the Allocation Tag (MTE).",
+      "syntax": "SUBG <Xd|SP>, <Xn|SP>, #<uimm6>, #<uimm4>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11010001 | 00 | uimm6 | 00 | uimm4 | Xn | Xd", "hex_opcode": "0xD1000000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src" }, { "name": "uimm6", "desc": "Address Offset" }, { "name": "uimm4", "desc": "Tag Offset" }],
+      "extension": "MTE (Memory Tagging)"
+    },
+    {
+      "mnemonic": "rmpadjust",
+      "architecture": "ARMv9-A",
+      "full_name": "Realm Management Pointer Adjust",
+      "summary": "Adjusts the RMP entry for a physical address (Realm Management).",
+      "syntax": "RMPADJUST <Xt>, <Xn>, <Xm>",
+      "encoding": { "format": "System", "binary_pattern": "1100100000 | 001 | Xm | 0000 | Xn | Xt", "hex_opcode": "0xC8200000" },
+      "operands": [{ "name": "Xt", "desc": "Target PA" }, { "name": "Xn", "desc": "New Attrs" }, { "name": "Xm", "desc": "Flags" }],
+      "extension": "FEAT_RME (Realm)"
+    },
+    {
+      "mnemonic": "rmpread",
+      "architecture": "ARMv9-A",
+      "full_name": "Realm Management Pointer Read",
+      "summary": "Reads the RMP entry for a physical address.",
+      "syntax": "RMPREAD <Xt>, <Xn>",
+      "encoding": { "format": "System", "binary_pattern": "1100100000 | 001 | 11111 | 0001 | Xn | Xt", "hex_opcode": "0xC83F1000" },
+      "operands": [{ "name": "Xt", "desc": "Dest Data" }, { "name": "Xn", "desc": "Target PA" }],
+      "extension": "FEAT_RME (Realm)"
+    },
+    {
+      "mnemonic": "rmpinit",
+      "architecture": "ARMv9-A",
+      "full_name": "Realm Management Pointer Initialize",
+      "summary": "Initializes the Realm Management Pointer table.",
+      "syntax": "RMPINIT",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000110010000100011111", "hex_opcode": "0xD503211F" },
+      "operands": [],
+      "extension": "FEAT_RME (Realm)"
+    },
+    {
+      "mnemonic": "dvmp",
+      "architecture": "ARMv9-A",
+      "full_name": "Data Value Memory Permission",
+      "summary": "Broadcasts permission checking for data values (Realm).",
+      "syntax": "DVMP <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000110010000100100000 | Rt", "hex_opcode": "0xD5032120" },
+      "operands": [{ "name": "Xt", "desc": "Address" }],
+      "extension": "FEAT_RME (Realm)"
+    },
+    {
+      "mnemonic": "tlbi",
+      "architecture": "ARMv9-A",
+      "full_name": "TLB Invalidate (Realm IPA)",
+      "summary": "Invalidates TLB entries for a Realm Intermediate Physical Address.",
+      "syntax": "TLBI RIPAS2E1, <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101000010001001001001100000 | Rt", "hex_opcode": "0xD5089260" },
+      "operands": [{ "name": "Xt", "desc": "IPA" }],
+      "extension": "FEAT_RME (Realm)"
+    },
+    {
+      "mnemonic": "tlbi",
+      "architecture": "ARMv9-A",
+      "full_name": "TLB Invalidate (Realm PA)",
+      "summary": "Invalidates TLB entries by Realm Physical Address.",
+      "syntax": "TLBI RVAE1, <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101000010001001011000100000 | Rt", "hex_opcode": "0xD5089620" },
+      "operands": [{ "name": "Xt", "desc": "PA" }],
+      "extension": "FEAT_RME (Realm)"
+    },
+    {
+      "mnemonic": "brbinj",
+      "architecture": "ARMv9-A",
+      "full_name": "Branch Record Buffer Inject",
+      "summary": "Injects a record into the Branch Record Buffer.",
+      "syntax": "BRBINJ <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000110010000101000000 | Rt", "hex_opcode": "0xD5032140" },
+      "operands": [{ "name": "Xt", "desc": "Data" }],
+      "extension": "FEAT_BRBE (Debug)"
+    },
+    {
+      "mnemonic": "brbto",
+      "architecture": "ARMv9-A",
+      "full_name": "Branch Record Buffer Trap Overflow",
+      "summary": "Manages overflow behavior for the Branch Record Buffer.",
+      "syntax": "BRBTO",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000110010000101101111", "hex_opcode": "0xD503216F" },
+      "operands": [],
+      "extension": "FEAT_BRBE (Debug)"
+    },
+    {
+      "mnemonic": "cosp",
+      "architecture": "ARMv8-A",
+      "full_name": "Call Out Speculation",
+      "summary": "Prevents speculation from reordering beyond this point.",
+      "syntax": "COSP <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000110011010000100000 | Rt", "hex_opcode": "0xD5033420" },
+      "operands": [{ "name": "Xt", "desc": "Reg" }],
+      "extension": "FEAT_CSV3"
+    },
+    {
+      "mnemonic": "cppp",
+      "architecture": "ARMv8-A",
+      "full_name": "Cache Prefetch Prediction Pruning",
+      "summary": "Prevents cache prefetch prediction past this instruction.",
+      "syntax": "CPPP <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101000000110011010001000000 | Rt", "hex_opcode": "0xD5033440" },
+      "operands": [{ "name": "Xt", "desc": "Reg" }],
+      "extension": "FEAT_CPP"
+    },
+    {
+      "mnemonic": "rcw",
+      "architecture": "ARMv8-A",
+      "full_name": "Read Check Write (128-bit)",
+      "summary": "Atomically updates a 128-bit descriptor in memory (Translation Hardening).",
+      "syntax": "RCW <Xt>, <Xt+1>, [<Xn>]",
+      "encoding": { "format": "Atomic", "binary_pattern": "00111000001111110000000000000000 | Rn | Rt", "hex_opcode": "0x383F0000" },
+      "operands": [{ "name": "Xt", "desc": "Data" }, { "name": "Xn", "desc": "Addr" }],
+      "extension": "FEAT_THE"
+    },
+    {
+      "mnemonic": "cpyfp",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Copy Forward Prologue (MOPS)",
+      "summary": "Optimized memory copy prologue (Forward).",
+      "syntax": "CPYFP [<Xd>]!, [<Xn>]!, <Xm>!",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001000000000100000000000000 | Rn | Rd", "hex_opcode": "0x19000400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src" }, { "name": "Xm", "desc": "Size" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "cpyfm",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Copy Forward Main (MOPS)",
+      "summary": "Optimized memory copy main loop (Forward).",
+      "syntax": "CPYFM [<Xd>]!, [<Xn>]!, <Xm>!",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001010000000100000000000000 | Rn | Rd", "hex_opcode": "0x19400400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src" }, { "name": "Xm", "desc": "Size" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "cpyfe",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Copy Forward Epilogue (MOPS)",
+      "summary": "Optimized memory copy epilogue (Forward).",
+      "syntax": "CPYFE [<Xd>]!, [<Xn>]!, <Xm>!",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001100000000100000000000000 | Rn | Rd", "hex_opcode": "0x19800400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src" }, { "name": "Xm", "desc": "Size" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "setp",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Set Prologue (MOPS)",
+      "summary": "Optimized memory set prologue.",
+      "syntax": "SETP [<Xd>]!, <Xn>!, <Xm>",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001001100000100000000000000 | Rn | Rd", "hex_opcode": "0x19300400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Size" }, { "name": "Xm", "desc": "Val" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "setm",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Set Main (MOPS)",
+      "summary": "Optimized memory set main loop.",
+      "syntax": "SETM [<Xd>]!, <Xn>!, <Xm>",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001011100000100000000000000 | Rn | Rd", "hex_opcode": "0x19700400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Size" }, { "name": "Xm", "desc": "Val" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "sete",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Set Epilogue (MOPS)",
+      "summary": "Optimized memory set epilogue.",
+      "syntax": "SETE [<Xd>]!, <Xn>!, <Xm>",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001101100000100000000000000 | Rn | Rd", "hex_opcode": "0x19B00400" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Size" }, { "name": "Xm", "desc": "Val" }],
+      "extension": "FEAT_MOPS"
+    }
+  ]
+}
