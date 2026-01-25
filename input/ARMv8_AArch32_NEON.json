@@ -1,0 +1,604 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vaba",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Difference and Accumulate",
+      "summary": "Computes absolute difference and adds to accumulator.",
+      "syntax": "VABA<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0111 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000710" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Acc" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vabd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Difference",
+      "summary": "Computes absolute difference between elements.",
+      "syntax": "VABD<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0111 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000700" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vabs",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Value",
+      "summary": "Calculates absolute value of integer/float elements.",
+      "syntax": "VABS<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 01 | Vd | 00110 | Q | M | 0 | Vm", "hex_opcode": "0xF3B10300" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add (Integer)",
+      "summary": "Adds integer elements of two vectors.",
+      "syntax": "VADD<c>.I<size> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1000 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000800" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vaddhn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add High Narrow",
+      "summary": "Adds 2N-bit elements, selects high N-bits for result.",
+      "syntax": "VADDHN<c>.<dt> <Dd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0100 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800400" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vaddl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add Long",
+      "summary": "Adds N-bit elements, producing 2N-bit results.",
+      "syntax": "VADDL<c>.<dt> <Qd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0000 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800000" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vaddw",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add Wide",
+      "summary": "Adds N-bit vector to 2N-bit vector.",
+      "syntax": "VADDW<c>.<dt> <Qd>, <Qn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 0001 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800100" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Qn", "desc": "Src Wide" }, { "name": "Dm", "desc": "Src Narrow" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vand",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise AND",
+      "summary": "Bitwise AND of two vectors.",
+      "syntax": "VAND<c> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 00 | 0 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000110" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vbic",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise Bit Clear",
+      "summary": "ANDs Vd with NOT of Vm (Vd & ~Vm).",
+      "syntax": "VBIC<c> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 00 | 0 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2100110" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vbif",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bit Insert False",
+      "summary": "Inserts bits from Vm into Vd where Vn (mask) is 0.",
+      "syntax": "VBIF<c> <Qd>, <Qm>, <Qn>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110011 | 00 | 1 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF3300110" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "Qn", "desc": "Mask" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vbit",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bit Insert True",
+      "summary": "Inserts bits from Vm into Vd where Vn (mask) is 1.",
+      "syntax": "VBIT<c> <Qd>, <Qm>, <Qn>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110011 | 00 | 1 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF3200110" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "Qn", "desc": "Mask" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vbsl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bit Select",
+      "summary": "Selects bits from Vn or Vm based on Vd (mask).",
+      "syntax": "VBSL<c> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110011 | 00 | 1 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF3100110" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Mask" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vceq",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Equal",
+      "summary": "Sets destination bits to all 1s if elements equal, else 0s.",
+      "syntax": "VCEQ<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1000 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000810" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vcge",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Greater Than or Equal",
+      "summary": "Compares elements (>=) and sets result mask.",
+      "syntax": "VCGE<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0011 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000310" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vcgt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Greater Than",
+      "summary": "Compares elements (>) and sets result mask.",
+      "syntax": "VCGT<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0011 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000300" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vcle",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Less Than or Equal",
+      "summary": "Compares elements (<=). Alias for VCGE with swapped operands.",
+      "syntax": "VCLE<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON Alias", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0011 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000310" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vclt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Less Than",
+      "summary": "Compares elements (<). Alias for VCGT with swapped operands.",
+      "syntax": "VCLT<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON Alias", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0011 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000300" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vcls",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Count Leading Sign Bits",
+      "summary": "Counts number of consecutive sign bits.",
+      "syntax": "VCLS<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 00 | Vd | 00100 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00200" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vclz",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Count Leading Zeros",
+      "summary": "Counts number of consecutive zeros.",
+      "syntax": "VCLZ<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 00 | Vd | 00100 | Q | M | 1 | Vm", "hex_opcode": "0xF3B00280" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vcnt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Count Set Bits",
+      "summary": "Population count (number of 1s) per byte.",
+      "syntax": "VCNT<c>.8 <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | 00 | 00 | Vd | 00101 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00500" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vdup",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Duplicate (Scalar)",
+      "summary": "Duplicates a scalar value to all lanes of a vector.",
+      "syntax": "VDUP<c>.<dt> <Qd>, <Dm[x]>",
+      "encoding": { "format": "NEON Scalar", "binary_pattern": "11110011 | 1 | D | 11 | imm4 | Vd | 11000 | Q | M | 1 | Vm", "hex_opcode": "0xF3B00C00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Dm[x]", "desc": "Scalar" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "veor",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Exclusive OR",
+      "summary": "Bitwise XOR of two vectors.",
+      "syntax": "VEOR<c> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110011 | 00 | 0 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF3000110" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vext",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Extract",
+      "summary": "Extracts a new vector from a pair of vectors (Sliding window).",
+      "syntax": "VEXT<c>.8 <Qd>, <Qn>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Extract", "binary_pattern": "11110010 | 10 | 11 | Vn | Vd | imm4 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2B00000" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Low Src" }, { "name": "Qm", "desc": "High Src" }, { "name": "imm", "desc": "Byte Offset" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vhadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Halving Add",
+      "summary": "Add elements and shift right by 1 (Average).",
+      "syntax": "VHADD<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0000 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000000" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vhsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Halving Subtract",
+      "summary": "Subtract elements and shift right by 1.",
+      "syntax": "VHSUB<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0010 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000200" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vld1",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Load Multiple (Single Element)",
+      "summary": "Loads vector data from memory (interleaved or sequential).",
+      "syntax": "VLD1<c>.<size> <list>, [<Rn>]{!}",
+      "encoding": { "format": "NEON Load", "binary_pattern": "11110100 | 0 | D | 10 | Rn | Vd | type | size | align | Rm", "hex_opcode": "0xF4200000" },
+      "operands": [{ "name": "list", "desc": "Dest Registers" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vld2",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Load Multiple (2-Element Structure)",
+      "summary": "De-interleaves 2 streams of data while loading.",
+      "syntax": "VLD2<c>.<size> <list>, [<Rn>]{!}",
+      "encoding": { "format": "NEON Load", "binary_pattern": "11110100 | 0 | D | 10 | Rn | Vd | type | size | align | Rm", "hex_opcode": "0xF4200000" },
+      "operands": [{ "name": "list", "desc": "Dest Registers" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmax",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Maximum",
+      "summary": "Selects maximum value from elements.",
+      "syntax": "VMAX<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0110 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000600" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmin",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Minimum",
+      "summary": "Selects minimum value from elements.",
+      "syntax": "VMIN<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0110 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000610" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply Accumulate",
+      "summary": "Multiplies and adds to accumulator.",
+      "syntax": "VMLA<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1001 | N | Q | M | 0 | Vm", "hex_opcode": "0xF2000900" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Acc" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmls",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply Subtract",
+      "summary": "Multiplies and subtracts from accumulator.",
+      "syntax": "VMLS<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000910" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Acc" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move (Immediate)",
+      "summary": "Moves immediate value into vector.",
+      "syntax": "VMOV<c>.<dt> <Qd>, #<imm>",
+      "encoding": { "format": "NEON Imm", "binary_pattern": "11110010 | 1 | i | 0 | 000 | op | cmode | 0 | 0 | Vd | 1 | imm", "hex_opcode": "0xF2800010" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "imm", "desc": "Value" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmovl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move Long",
+      "summary": "Copies N-bit elements to 2N-bit elements (Widening).",
+      "syntax": "VMOVL<c>.<dt> <Qd>, <Dm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110010 | 1 | 0 | 00 | 0 | 0 | 1010 | 00 | Vd | 10100 | Q | M | 1 | Vm", "hex_opcode": "0xF2800A10" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dm", "desc": "Src Narrow" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmovn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move Narrow",
+      "summary": "Copies 2N-bit elements to N-bit elements (Narrowing).",
+      "syntax": "VMOVN<c>.<dt> <Dd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 10 | Vd | 00100 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00200" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qm", "desc": "Src Wide" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply",
+      "summary": "Multiplies elements.",
+      "syntax": "VMUL<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000910" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmull",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply Long",
+      "summary": "Multiplies N-bit elements producing 2N-bit results.",
+      "syntax": "VMULL<c>.<dt> <Qd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 1 | sz | 0 | Vn | Vd | 1100 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2800C00" },
+      "operands": [{ "name": "Qd", "desc": "Dest Wide" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vmvn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move NOT",
+      "summary": "Moves bitwise inverse of immediate/register.",
+      "syntax": "VMVN<c> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | 00 | 00 | Vd | 01011 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00580" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vneg",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Negate",
+      "summary": "Negates integer/float elements.",
+      "syntax": "VNEG<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 01 | Vd | 00111 | Q | M | 0 | Vm", "hex_opcode": "0xF3B10380" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vorn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector OR NOT",
+      "summary": "Bitwise OR with NOT (Vd = Vn | ~Vm).",
+      "syntax": "VORN<c> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 00 | 1 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2200110" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vorr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Logical OR",
+      "summary": "Bitwise OR of two vectors.",
+      "syntax": "VORR<c> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 00 | 1 | Vn | Vd | 0001 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2200110" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vpadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Pairwise Add",
+      "summary": "Adds adjacent pairs of elements.",
+      "syntax": "VPADD<c>.<dt> <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1011 | N | 0 | M | 1 | Vm", "hex_opcode": "0xF2000B10" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vpmin",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Pairwise Minimum",
+      "summary": "Minimum of adjacent pairs.",
+      "syntax": "VPMIN<c>.<dt> <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1010 | N | 0 | M | 1 | Vm", "hex_opcode": "0xF2000A10" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vpmax",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Pairwise Maximum",
+      "summary": "Maximum of adjacent pairs.",
+      "syntax": "VPMAX<c>.<dt> <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1010 | N | 0 | M | 0 | Vm", "hex_opcode": "0xF2000A00" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Add",
+      "summary": "Adds elements with saturation.",
+      "syntax": "VQADD<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0000 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000010" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vqsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Saturating Subtract",
+      "summary": "Subtracts elements with saturation.",
+      "syntax": "VQSUB<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 0010 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000210" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrecpe",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Reciprocal Estimate",
+      "summary": "Estimates reciprocal (1/x).",
+      "syntax": "VRECPE<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 10 | Vd | 00100 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00400" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrsqrte",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Reciprocal Square Root Estimate",
+      "summary": "Estimates reciprocal square root (1/sqrt(x)).",
+      "syntax": "VRSQRTE<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 10 | Vd | 00100 | Q | M | 1 | Vm", "hex_opcode": "0xF3B00480" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrev16",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Reverse 16",
+      "summary": "Reverses bytes within 16-bit halfwords.",
+      "syntax": "VREV16<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 00 | Vd | 00010 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00100" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrev32",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Reverse 32",
+      "summary": "Reverses elements within 32-bit words.",
+      "syntax": "VREV32<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 00 | Vd | 00001 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00080" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vrev64",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Reverse 64",
+      "summary": "Reverses elements within 64-bit doublewords.",
+      "syntax": "VREV64<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 00 | Vd | 00000 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00000" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vshl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Shift Left (Immediate)",
+      "summary": "Shifts elements left.",
+      "syntax": "VSHL<c>.<dt> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0101 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800510" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vshr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Shift Right (Immediate)",
+      "summary": "Shifts elements right.",
+      "syntax": "VSHR<c>.<dt> <Qd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 0000 | L | Q | M | 1 | Vm", "hex_opcode": "0xF2800010" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vshrn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Shift Right Narrow",
+      "summary": "Shifts right and narrows result.",
+      "syntax": "VSHRN<c>.<dt> <Dd>, <Qm>, #<imm>",
+      "encoding": { "format": "NEON Shift", "binary_pattern": "11110010 | 1 | D | imm6 | Vd | 1000 | 0 | 0 | M | 1 | Vm", "hex_opcode": "0xF2800810" },
+      "operands": [{ "name": "Dd", "desc": "Dest Narrow" }, { "name": "Qm", "desc": "Src Wide" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vst1",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Store Multiple (Single Element)",
+      "summary": "Stores vector data to memory.",
+      "syntax": "VST1<c>.<size> <list>, [<Rn>]{!}",
+      "encoding": { "format": "NEON Store", "binary_pattern": "11110100 | 0 | D | 00 | Rn | Vd | type | size | align | Rm", "hex_opcode": "0xF4000000" },
+      "operands": [{ "name": "list", "desc": "Src Registers" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Subtract (Integer)",
+      "summary": "Subtracts integer elements.",
+      "syntax": "VSUB<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1000 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000810" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vtbl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Table Lookup",
+      "summary": "Look up elements in a vector table.",
+      "syntax": "VTBL<c>.8 <Dd>, <list>, <Dm>",
+      "encoding": { "format": "NEON Table", "binary_pattern": "11110011 | 1 | D | 11 | Vn | Vd | 10 | len | N | Q | M | 0 | Vm", "hex_opcode": "0xF3B00800" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "list", "desc": "Table" }, { "name": "Dm", "desc": "Indices" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vtrn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Transpose",
+      "summary": "Transposes elements of two vectors.",
+      "syntax": "VTRN<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 10 | Vd | 00001 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00080" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Src1" }, { "name": "Qm", "desc": "Src2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vtst",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Test Bits",
+      "summary": "Tests if any bits match (Vd = (Vn & Vm) != 0).",
+      "syntax": "VTST<c>.<dt> <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "NEON 3-Reg", "binary_pattern": "11110010 | 0 | sz | 0 | Vn | Vd | 1000 | N | Q | M | 1 | Vm", "hex_opcode": "0xF2000810" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vuzp",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unzip",
+      "summary": "De-interleaves vectors.",
+      "syntax": "VUZP<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 10 | Vd | 00010 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00100" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Src1" }, { "name": "Qm", "desc": "Src2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "vzip",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Zip",
+      "summary": "Interleaves vectors.",
+      "syntax": "VZIP<c>.<dt> <Qd>, <Qm>",
+      "encoding": { "format": "NEON 2-Reg", "binary_pattern": "11110011 | 1 | D | 11 | sz | 10 | Vd | 00011 | Q | M | 0 | Vm", "hex_opcode": "0xF3B00180" },
+      "operands": [{ "name": "Qd", "desc": "Dest/Src1" }, { "name": "Qm", "desc": "Src2" }],
+      "extension": "NEON (SIMD)"
+    }
+  ]
+}

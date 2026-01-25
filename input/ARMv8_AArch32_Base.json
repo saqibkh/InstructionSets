@@ -1,0 +1,664 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "adc",
+      "architecture": "ARMv8-A",
+      "full_name": "Add with Carry (A32)",
+      "summary": "Adds two 32-bit values and the Carry flag.",
+      "syntax": "ADC{S}<c> <Rd>, <Rn>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 0101 | S | Rn | Rd | shift | 0 | Rm", "hex_opcode": "0x00A00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "add",
+      "architecture": "ARMv8-A",
+      "full_name": "Add (A32)",
+      "summary": "Adds two 32-bit values.",
+      "syntax": "ADD{S}<c> <Rd>, <Rn>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 0100 | S | Rn | Rd | shift | 0 | Rm", "hex_opcode": "0x00800000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "adr",
+      "architecture": "ARMv8-A",
+      "full_name": "Form PC-relative Address (A32)",
+      "summary": "Adds an immediate value to the PC register.",
+      "syntax": "ADR<c> <Rd>, <label>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 0100 | 0 | 1111 | Rd | imm12", "hex_opcode": "0x028F0000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "label", "desc": "Label" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "and",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise AND (A32)",
+      "summary": "Performs a bitwise AND on two 32-bit values.",
+      "syntax": "AND{S}<c> <Rd>, <Rn>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 0000 | S | Rn | Rd | shift | 0 | Rm", "hex_opcode": "0x00000000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "asr",
+      "architecture": "ARMv8-A",
+      "full_name": "Arithmetic Shift Right (A32)",
+      "summary": "Arithmetic right shift (sign-extending).",
+      "syntax": "ASR{S}<c> <Rd>, <Rm>, <Rs>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1101 | S | 0000 | Rd | Rs | 0 | 101 | Rm", "hex_opcode": "0x01A00050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }, { "name": "Rs", "desc": "Shift Amount" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "b",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch (A32)",
+      "summary": "Branch relative (PC +/- 32MB).",
+      "syntax": "B<c> <label>",
+      "encoding": { "format": "Branch", "binary_pattern": "cond | 1010 | imm24", "hex_opcode": "0x0A000000" },
+      "operands": [{ "name": "label", "desc": "Label" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bfc",
+      "architecture": "ARMv8-A",
+      "full_name": "Bit Field Clear",
+      "summary": "Clears a bitfield in a register.",
+      "syntax": "BFC<c> <Rd>, #<lsb>, #<width>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 0111 | 110 | msb | Rd | lsb | 001 | 1111", "hex_opcode": "0x07C0001F" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "lsb", "desc": "Start Bit" }, { "name": "width", "desc": "Width" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bfi",
+      "architecture": "ARMv8-A",
+      "full_name": "Bit Field Insert",
+      "summary": "Copies a bitfield into a register.",
+      "syntax": "BFI<c> <Rd>, <Rn>, #<lsb>, #<width>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 0111 | 110 | msb | Rd | lsb | 001 | Rn", "hex_opcode": "0x07C00010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }, { "name": "lsb", "desc": "Start" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bic",
+      "architecture": "ARMv8-A",
+      "full_name": "Bit Clear (A32)",
+      "summary": "Performs AND NOT (Rd = Rn & ~Rm).",
+      "syntax": "BIC{S}<c> <Rd>, <Rn>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1110 | S | Rn | Rd | shift | 0 | Rm", "hex_opcode": "0x01C00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bkpt",
+      "architecture": "ARMv8-A",
+      "full_name": "Breakpoint (A32)",
+      "summary": "Causes a software breakpoint.",
+      "syntax": "BKPT #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "1110 | 0001 | 0010 | imm12 | 0111 | imm4", "hex_opcode": "0xE1200070" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bl",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch with Link (A32)",
+      "summary": "Calls a subroutine, storing return address in LR (R14).",
+      "syntax": "BL<c> <label>",
+      "encoding": { "format": "Branch", "binary_pattern": "cond | 1011 | imm24", "hex_opcode": "0x0B000000" },
+      "operands": [{ "name": "label", "desc": "Label" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "blx",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch with Link and Exchange",
+      "summary": "Calls subroutine and optionally switches to Thumb state.",
+      "syntax": "BLX<c> <Rm>",
+      "encoding": { "format": "Branch", "binary_pattern": "cond | 0001 | 0010 | 1111 | 1111 | 1111 | 0011 | Rm", "hex_opcode": "0x012FFF30" },
+      "operands": [{ "name": "Rm", "desc": "Target Reg" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "bx",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch and Exchange",
+      "summary": "Branches to address in register, optionally switching ISA.",
+      "syntax": "BX<c> <Rm>",
+      "encoding": { "format": "Branch", "binary_pattern": "cond | 0001 | 0010 | 1111 | 1111 | 1111 | 0001 | Rm", "hex_opcode": "0x012FFF10" },
+      "operands": [{ "name": "Rm", "desc": "Target Reg" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "clrex",
+      "architecture": "ARMv8-A",
+      "full_name": "Clear Exclusive (A32)",
+      "summary": "Clears the local exclusive access monitor.",
+      "syntax": "CLREX<c>",
+      "encoding": { "format": "System", "binary_pattern": "1111 | 0101 | 0111 | 1111 | 1111 | 0001 | 1111", "hex_opcode": "0xF57FF01F" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "clz",
+      "architecture": "ARMv8-A",
+      "full_name": "Count Leading Zeros (A32)",
+      "summary": "Counts the number of consecutive zeros from MSB.",
+      "syntax": "CLZ<c> <Rd>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 0001 | 0110 | 1111 | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x016F0F10" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "cmn",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare Negative (A32)",
+      "summary": "Adds two values and updates flags (discarding result). Same as ADDS with no destination.",
+      "syntax": "CMN<c> <Rn>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1011 | 1 | Rn | 0000 | shift | 0 | Rm", "hex_opcode": "0x01700000" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "cmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare (A32)",
+      "summary": "Subtracts two values and updates flags (discarding result).",
+      "syntax": "CMP<c> <Rn>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1010 | 1 | Rn | 0000 | shift | 0 | Rm", "hex_opcode": "0x01500000" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "cps",
+      "architecture": "ARMv8-A",
+      "full_name": "Change Processor State",
+      "summary": "Changes the processor mode or interrupt masks (Legacy/System).",
+      "syntax": "CPS<effect> <iflags> {, #<mode>}",
+      "encoding": { "format": "System", "binary_pattern": "1111 | 0001 | 0000 | imod | m | 0 | mode", "hex_opcode": "0xF1000000" },
+      "operands": [{ "name": "effect", "desc": "IE/ID" }, { "name": "mode", "desc": "Mode" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "dmb",
+      "architecture": "ARMv8-A",
+      "full_name": "Data Memory Barrier (A32)",
+      "summary": "Ensures memory access ordering.",
+      "syntax": "DMB <option>",
+      "encoding": { "format": "System", "binary_pattern": "1111 | 0101 | 0111 | 1111 | 1111 | 0000 | 0101 | option", "hex_opcode": "0xF57FF050" },
+      "operands": [{ "name": "option", "desc": "SY, ISH, etc" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "dsb",
+      "architecture": "ARMv8-A",
+      "full_name": "Data Synchronization Barrier (A32)",
+      "summary": "Ensures completion of memory accesses.",
+      "syntax": "DSB <option>",
+      "encoding": { "format": "System", "binary_pattern": "1111 | 0101 | 0111 | 1111 | 1111 | 0000 | 0100 | option", "hex_opcode": "0xF57FF040" },
+      "operands": [{ "name": "option", "desc": "SY, ISH, etc" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "eor",
+      "architecture": "ARMv8-A",
+      "full_name": "Exclusive OR (A32)",
+      "summary": "Performs bitwise XOR.",
+      "syntax": "EOR{S}<c> <Rd>, <Rn>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 0001 | S | Rn | Rd | shift | 0 | Rm", "hex_opcode": "0x00200000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "eret",
+      "architecture": "ARMv8-A",
+      "full_name": "Exception Return (A32)",
+      "summary": "Returns from an exception, restoring PC and CPSR.",
+      "syntax": "ERET",
+      "encoding": { "format": "System", "binary_pattern": "1111 | 1000 | 0000 | 0000 | 0000 | 0000 | 0000 | 1110", "hex_opcode": "0xF800000E" },
+      "operands": [],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "hlt",
+      "architecture": "ARMv8-A",
+      "full_name": "Halting Debug (A32)",
+      "summary": "Enters halting debug state.",
+      "syntax": "HLT #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "cond | 0001 | 0000 | imm12 | 0111 | 0000 | imm4", "hex_opcode": "0x01000070" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "hvc",
+      "architecture": "ARMv8-A",
+      "full_name": "Hypervisor Call (A32)",
+      "summary": "Calls the Hypervisor (EL2).",
+      "syntax": "HVC #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "cond | 0001 | 0100 | imm12 | 0111 | 0000 | imm4", "hex_opcode": "0x01400070" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "isb",
+      "architecture": "ARMv8-A",
+      "full_name": "Instruction Synchronization Barrier (A32)",
+      "summary": "Flushes the pipeline.",
+      "syntax": "ISB <option>",
+      "encoding": { "format": "System", "binary_pattern": "1111 | 0101 | 0111 | 1111 | 1111 | 0000 | 0110 | option", "hex_opcode": "0xF57FF060" },
+      "operands": [{ "name": "option", "desc": "SY" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "lda",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Acquire (A32)",
+      "summary": "Loads a word with Acquire semantics.",
+      "syntax": "LDA<c> <Rt>, [<Rn>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 0001 | 1001 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01900F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldm",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Multiple (A32)",
+      "summary": "Loads multiple registers from memory (Stack pop).",
+      "syntax": "LDM<mode><c> <Rn>{!}, <registers>",
+      "encoding": { "format": "Load Multiple", "binary_pattern": "cond | 100 | P | U | S | W | 1 | Rn | register_list", "hex_opcode": "0x08800000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldr",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register (A32 Immediate)",
+      "summary": "Loads a word from memory.",
+      "syntax": "LDR<c> <Rt>, [<Rn>, #+/-<imm>]{!}",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 010 | P | U | 0 | W | 1 | Rn | Rt | imm12", "hex_opcode": "0x04000000" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldrb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Byte (A32)",
+      "summary": "Loads a byte from memory (Zero extended).",
+      "syntax": "LDRB<c> <Rt>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 010 | P | U | 1 | W | 1 | Rn | Rt | imm12", "hex_opcode": "0x04400000" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldrd",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Dual (A32)",
+      "summary": "Loads two consecutive words into consecutive registers.",
+      "syntax": "LDRD<c> <Rt>, <Rt2>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 000 | P | U | 1 | W | 0 | Rn | Rt | imm4H | 1101 | imm4L", "hex_opcode": "0x004000D0" },
+      "operands": [{ "name": "Rt", "desc": "Dest 1" }, { "name": "Rt2", "desc": "Dest 2" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldrex",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Exclusive (A32)",
+      "summary": "Loads a word and marks physical address as exclusive.",
+      "syntax": "LDREX<c> <Rt>, [<Rn>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 0001 | 1001 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01900F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldrh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Halfword (A32)",
+      "summary": "Loads a halfword (Zero extended).",
+      "syntax": "LDRH<c> <Rt>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 000 | P | U | 1 | W | 0 | Rn | Rt | imm4H | 1011 | imm4L", "hex_opcode": "0x004000B0" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldrsb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Byte (A32)",
+      "summary": "Loads a byte and sign-extends it.",
+      "syntax": "LDRSB<c> <Rt>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 000 | P | U | 1 | W | 0 | Rn | Rt | imm4H | 1101 | imm4L", "hex_opcode": "0x004000D0" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ldrsh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Halfword (A32)",
+      "summary": "Loads a halfword and sign-extends it.",
+      "syntax": "LDRSH<c> <Rt>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 000 | P | U | 1 | W | 0 | Rn | Rt | imm4H | 1111 | imm4L", "hex_opcode": "0x004000F0" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "lsl",
+      "architecture": "ARMv8-A",
+      "full_name": "Logical Shift Left (A32)",
+      "summary": "Shifts a register left.",
+      "syntax": "LSL{S}<c> <Rd>, <Rm>, <Rs>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1101 | S | 0000 | Rd | Rs | 0 | 001 | Rm", "hex_opcode": "0x01A00010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }, { "name": "Rs", "desc": "Shift" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "lsr",
+      "architecture": "ARMv8-A",
+      "full_name": "Logical Shift Right (A32)",
+      "summary": "Shifts a register right.",
+      "syntax": "LSR{S}<c> <Rd>, <Rm>, <Rs>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1101 | S | 0000 | Rd | Rs | 0 | 011 | Rm", "hex_opcode": "0x01A00030" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }, { "name": "Rs", "desc": "Shift" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mla",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply Accumulate (A32)",
+      "summary": "Calculates Rd = (Rn * Rm) + Ra.",
+      "syntax": "MLA{S}<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 0000001 | S | Rd | Ra | Rm | 1001 | Rn", "hex_opcode": "0x00200090" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Addend" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mls",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply Subtract (A32)",
+      "summary": "Calculates Rd = Ra - (Rn * Rm).",
+      "syntax": "MLS<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 00000110 | Rd | Ra | Rm | 1001 | Rn", "hex_opcode": "0x00600090" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Minuend" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mov",
+      "architecture": "ARMv8-A",
+      "full_name": "Move (A32)",
+      "summary": "Moves a value into a register.",
+      "syntax": "MOV{S}<c> <Rd>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 1101 | S | 0000 | Rd | imm12", "hex_opcode": "0x03A00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Operand2", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "movt",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Top (A32)",
+      "summary": "Writes a 16-bit immediate to the top half of a register.",
+      "syntax": "MOVT<c> <Rd>, #<imm16>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00110100 | imm4 | Rd | imm12", "hex_opcode": "0x03400000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "imm16", "desc": "Value" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "movw",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Word (A32)",
+      "summary": "Writes a 16-bit immediate to the bottom half, zeroing top.",
+      "syntax": "MOVW<c> <Rd>, #<imm16>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00110000 | imm4 | Rd | imm12", "hex_opcode": "0x03000000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "imm16", "desc": "Value" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Status Register to Register",
+      "summary": "Reads CPSR or SPSR.",
+      "syntax": "MRS<c> <Rd>, <spec_reg>",
+      "encoding": { "format": "System", "binary_pattern": "cond | 00010 | R | 001111 | Rd | 00000000", "hex_opcode": "0x010F0000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "spec_reg", "desc": "CPSR/SPSR" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "msr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Register to Status Register",
+      "summary": "Writes to CPSR or SPSR.",
+      "syntax": "MSR<c> <spec_reg>_<fields>, <Rn>",
+      "encoding": { "format": "System", "binary_pattern": "cond | 00010 | R | 101001 | 1111 | 00000000 | Rn", "hex_opcode": "0x0120F000" },
+      "operands": [{ "name": "spec_reg", "desc": "CPSR/SPSR" }, { "name": "Rn", "desc": "Src" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mul",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply (A32)",
+      "summary": "Multiplies two 32-bit values.",
+      "syntax": "MUL{S}<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 0000000 | S | Rd | 0000 | Rm | 1001 | Rn", "hex_opcode": "0x00000090" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "mvn",
+      "architecture": "ARMv8-A",
+      "full_name": "Move NOT (A32)",
+      "summary": "Moves bitwise inverse of value.",
+      "syntax": "MVN{S}<c> <Rd>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 1111 | S | 0000 | Rd | imm12", "hex_opcode": "0x03E00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Operand2", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "nop",
+      "architecture": "ARMv8-A",
+      "full_name": "No Operation (A32)",
+      "summary": "Does nothing.",
+      "syntax": "NOP<c>",
+      "encoding": { "format": "System", "binary_pattern": "cond | 00110010000011110000000000000000", "hex_opcode": "0x0320F000" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "orr",
+      "architecture": "ARMv8-A",
+      "full_name": "Logical OR (A32)",
+      "summary": "Performs bitwise OR.",
+      "syntax": "ORR{S}<c> <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 1100 | S | Rn | Rd | imm12", "hex_opcode": "0x03800000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "pop",
+      "architecture": "ARMv8-A",
+      "full_name": "Pop Multiple Registers (A32)",
+      "summary": "Loads registers from stack (Alias for LDMIA SP!).",
+      "syntax": "POP<c> <registers>",
+      "encoding": { "format": "Load Multiple", "binary_pattern": "cond | 10001011 | 1101 | registers", "hex_opcode": "0x08BD0000" },
+      "operands": [{ "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "push",
+      "architecture": "ARMv8-A",
+      "full_name": "Push Multiple Registers (A32)",
+      "summary": "Stores registers to stack (Alias for STMDB SP!).",
+      "syntax": "PUSH<c> <registers>",
+      "encoding": { "format": "Store Multiple", "binary_pattern": "cond | 10010010 | 1101 | registers", "hex_opcode": "0x092D0000" },
+      "operands": [{ "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rbit",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bits (A32)",
+      "summary": "Reverses bits in a 32-bit register.",
+      "syntax": "RBIT<c> <Rd>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 011011111111 | Rd | 11110011 | Rm", "hex_opcode": "0x06FF0F30" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes (A32)",
+      "summary": "Reverses bytes (Endian swap).",
+      "syntax": "REV<c> <Rd>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 011010111111 | Rd | 11110011 | Rm", "hex_opcode": "0x06BF0F30" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ror",
+      "architecture": "ARMv8-A",
+      "full_name": "Rotate Right (A32)",
+      "summary": "Rotates register right.",
+      "syntax": "ROR{S}<c> <Rd>, <Rm>, <Rs>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 0 | 1101 | S | 0000 | Rd | Rs | 0 | 111 | Rm", "hex_opcode": "0x01A00070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }, { "name": "Rs", "desc": "Shift" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rsb",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Subtract (A32)",
+      "summary": "Calculates Rd = Operand2 - Rn.",
+      "syntax": "RSB{S}<c> <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 0011 | S | Rn | Rd | imm12", "hex_opcode": "0x02600000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "rsc",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Subtract with Carry (A32)",
+      "summary": "Calculates Rd = Operand2 - Rn - NOT(Carry).",
+      "syntax": "RSC{S}<c> <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 0111 | S | Rn | Rd | imm12", "hex_opcode": "0x02E00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sbc",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract with Carry (A32)",
+      "summary": "Calculates Rd = Rn - Operand2 - NOT(Carry).",
+      "syntax": "SBC{S}<c> <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 0110 | S | Rn | Rd | imm12", "hex_opcode": "0x02C00000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Divide (A32)",
+      "summary": "Signed integer division.",
+      "syntax": "SDIV<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01110001 | Rd | 1111 | Rm | 0001 | Rn", "hex_opcode": "0x0710F010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Dividend" }, { "name": "Rm", "desc": "Divisor" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "stm",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Multiple (A32)",
+      "summary": "Stores multiple registers to memory.",
+      "syntax": "STM<mode><c> <Rn>{!}, <registers>",
+      "encoding": { "format": "Store Multiple", "binary_pattern": "cond | 100 | P | U | S | W | 0 | Rn | register_list", "hex_opcode": "0x08000000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "registers", "desc": "List" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "str",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register (A32)",
+      "summary": "Stores a word to memory.",
+      "syntax": "STR<c> <Rt>, [<Rn>, #+/-<imm>]{!}",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 010 | P | U | 0 | W | 0 | Rn | Rt | imm12", "hex_opcode": "0x04000000" },
+      "operands": [{ "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract (A32)",
+      "summary": "Subtracts two values.",
+      "syntax": "SUB{S}<c> <Rd>, <Rn>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 0010 | S | Rn | Rd | imm12", "hex_opcode": "0x02400000" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "svc",
+      "architecture": "ARMv8-A",
+      "full_name": "Supervisor Call (A32)",
+      "summary": "System call (formerly SWI).",
+      "syntax": "SVC<c> #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "cond | 1111 | imm24", "hex_opcode": "0x0F000000" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "swp",
+      "architecture": "ARMv8-A",
+      "full_name": "Swap (A32)",
+      "summary": "Atomic swap word (Legacy).",
+      "syntax": "SWP<c> <Rt>, <Rt2>, [<Rn>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "cond | 00010000 | Rn | Rt | 00001001 | Rt2", "hex_opcode": "0x01000090" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rt2", "desc": "Src" }, { "name": "Rn", "desc": "Addr" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "teq",
+      "architecture": "ARMv8-A",
+      "full_name": "Test Equivalence (A32)",
+      "summary": "Bitwise Exclusive OR and update flags (discard result).",
+      "syntax": "TEQ<c> <Rn>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 1001 | 1 | Rn | 0000 | imm12", "hex_opcode": "0x03300000" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "tst",
+      "architecture": "ARMv8-A",
+      "full_name": "Test (A32)",
+      "summary": "Bitwise AND and update flags (discard result).",
+      "syntax": "TST<c> <Rn>, <Operand2>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00 | 1 | 1000 | 1 | Rn | 0000 | imm12", "hex_opcode": "0x03100000" },
+      "operands": [{ "name": "Rn", "desc": "Src 1" }, { "name": "Operand2", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "udiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Divide (A32)",
+      "summary": "Unsigned integer division.",
+      "syntax": "UDIV<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01110011 | Rd | 1111 | Rm | 0001 | Rn", "hex_opcode": "0x0730F010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Dividend" }, { "name": "Rm", "desc": "Divisor" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "umlal",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Multiply Accumulate Long (A32)",
+      "summary": "Unsigned (Rn * Rm) + 64-bit Accumulator.",
+      "syntax": "UMLAL{S}<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 0000101 | S | RdHi | RdLo | Rm | 1001 | Rn", "hex_opcode": "0x00A00090" },
+      "operands": [{ "name": "RdLo", "desc": "Low" }, { "name": "RdHi", "desc": "High" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "umull",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Multiply Long (A32)",
+      "summary": "Unsigned (Rn * Rm) -> 64-bit Result.",
+      "syntax": "UMULL{S}<c> <RdLo>, <RdHi>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 0000100 | S | RdHi | RdLo | Rm | 1001 | Rn", "hex_opcode": "0x00800090" },
+      "operands": [{ "name": "RdLo", "desc": "Low" }, { "name": "RdHi", "desc": "High" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (Base)"
+    }
+  ]
+}

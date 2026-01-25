@@ -1,0 +1,354 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "mcr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Coprocessor from Register (A32)",
+      "summary": "Writes a general-purpose register to a coprocessor register (e.g., CP15).",
+      "syntax": "MCR<c> <coproc>, <opc1>, <Rt>, <CRn>, <CRm>{, <opc2>}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 1110 | opc1 | 0 | CRn | Rt | coproc | opc2 | 1 | CRm", "hex_opcode": "0x0E000010" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Src" }, { "name": "CRn", "desc": "Dest CP Reg" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mrc",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Register from Coprocessor (A32)",
+      "summary": "Reads a coprocessor register into a general-purpose register.",
+      "syntax": "MRC<c> <coproc>, <opc1>, <Rt>, <CRn>, <CRm>{, <opc2>}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 1110 | opc1 | 1 | CRn | Rt | coproc | opc2 | 1 | CRm", "hex_opcode": "0x0E100010" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Dest" }, { "name": "CRn", "desc": "Src CP Reg" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mcrr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Coprocessor from Two Registers (A32)",
+      "summary": "Writes two general-purpose registers to a coprocessor (64-bit transfer).",
+      "syntax": "MCRR<c> <coproc>, <opc1>, <Rt>, <Rt2>, <CRm>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 11000100 | Rt2 | Rt | coproc | opc1 | CRm", "hex_opcode": "0x0C400000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Src 1" }, { "name": "Rt2", "desc": "Src 2" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mrrc",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Two Registers from Coprocessor (A32)",
+      "summary": "Reads a coprocessor register into two general-purpose registers.",
+      "syntax": "MRRC<c> <coproc>, <opc1>, <Rt>, <Rt2>, <CRm>",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 11000101 | Rt2 | Rt | coproc | opc1 | CRm", "hex_opcode": "0x0C500000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "Rt", "desc": "Dest 1" }, { "name": "Rt2", "desc": "Dest 2" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "ldc",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Coprocessor (A32)",
+      "summary": "Loads memory into a coprocessor.",
+      "syntax": "LDC{L}<c> <coproc>, <CRd>, [<Rn>, #+/-<imm>]{!}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 110 | P | U | N | W | 1 | Rn | CRd | coproc | imm8", "hex_opcode": "0x0C100000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "CRd", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "stc",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Coprocessor (A32)",
+      "summary": "Stores coprocessor contents to memory.",
+      "syntax": "STC{L}<c> <coproc>, <CRd>, [<Rn>, #+/-<imm>]{!}",
+      "encoding": { "format": "Coprocessor", "binary_pattern": "cond | 110 | P | U | N | W | 0 | Rn | CRd | coproc | imm8", "hex_opcode": "0x0C000000" },
+      "operands": [{ "name": "coproc", "desc": "CP Num" }, { "name": "CRd", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "vmrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Move VFP System Register to Register",
+      "summary": "Reads a VFP system register (like FPSCR).",
+      "syntax": "VMRS<c> <Rt>, <spec_reg>",
+      "encoding": { "format": "VFP System", "binary_pattern": "cond | 11101111 | 0001 | Rt | 1010 | 0001 | 0000", "hex_opcode": "0x0EF10A10" },
+      "operands": [{ "name": "Rt", "desc": "Dest (or APSR_nzcv)" }, { "name": "spec_reg", "desc": "FPSCR" }],
+      "extension": "VFP (System)"
+    },
+    {
+      "mnemonic": "vmsr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Register to VFP System Register",
+      "summary": "Writes to a VFP system register.",
+      "syntax": "VMSR<c> <spec_reg>, <Rt>",
+      "encoding": { "format": "VFP System", "binary_pattern": "cond | 11101110 | 0001 | Rt | 1010 | 0001 | 0000", "hex_opcode": "0x0EE10A10" },
+      "operands": [{ "name": "spec_reg", "desc": "FPSCR" }, { "name": "Rt", "desc": "Src" }],
+      "extension": "VFP (System)"
+    },
+    {
+      "mnemonic": "ldrexb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Exclusive Byte (A32)",
+      "summary": "Loads a byte and marks address as exclusive.",
+      "syntax": "LDREXB<c> <Rt>, [<Rn>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "cond | 0001 | 1101 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01D00F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "strexb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Exclusive Byte (A32)",
+      "summary": "Stores a byte if address is still exclusive.",
+      "syntax": "STREXB<c> <Rd>, <Rt>, [<Rn>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "cond | 0001 | 1100 | Rn | Rd | 1111 | 1001 | Rt", "hex_opcode": "0x01C00F90" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldrexh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Exclusive Halfword (A32)",
+      "summary": "Loads a halfword and marks address as exclusive.",
+      "syntax": "LDREXH<c> <Rt>, [<Rn>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "cond | 0001 | 1111 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01F00F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "strexh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Exclusive Halfword (A32)",
+      "summary": "Stores a halfword if address is still exclusive.",
+      "syntax": "STREXH<c> <Rd>, <Rt>, [<Rn>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "cond | 0001 | 1110 | Rn | Rd | 1111 | 1001 | Rt", "hex_opcode": "0x01E00F90" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "ldrexd",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Exclusive Double (A32)",
+      "summary": "Loads a doubleword and marks address as exclusive.",
+      "syntax": "LDREXD<c> <Rt>, <Rt2>, [<Rn>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "cond | 0001 | 1011 | Rn | Rt | 1111 | 1001 | 1111", "hex_opcode": "0x01B00F9F" },
+      "operands": [{ "name": "Rt", "desc": "Dest 1" }, { "name": "Rt2", "desc": "Dest 2" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "strexd",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Exclusive Double (A32)",
+      "summary": "Stores a doubleword if address is still exclusive.",
+      "syntax": "STREXD<c> <Rd>, <Rt>, <Rt2>, [<Rn>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "cond | 0001 | 1010 | Rn | Rd | 1111 | 1001 | Rt", "hex_opcode": "0x01A00F90" },
+      "operands": [{ "name": "Rd", "desc": "Status" }, { "name": "Rt", "desc": "Src 1" }, { "name": "Rt2", "desc": "Src 2" }, { "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (Atomic)"
+    },
+    {
+      "mnemonic": "dcps1",
+      "architecture": "ARMv8-A",
+      "full_name": "Debug Change PE State to EL1 (A32)",
+      "summary": "Switches execution to EL1 (Debug).",
+      "syntax": "DCPS1",
+      "encoding": { "format": "System", "binary_pattern": "11110100 | 101 | 00000 | 0000 | 0000 | 000 | 00001", "hex_opcode": "0xF4A00001" },
+      "operands": [],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "dcps2",
+      "architecture": "ARMv8-A",
+      "full_name": "Debug Change PE State to EL2 (A32)",
+      "summary": "Switches execution to EL2 (Debug).",
+      "syntax": "DCPS2",
+      "encoding": { "format": "System", "binary_pattern": "11110100 | 101 | 00000 | 0000 | 0000 | 000 | 00010", "hex_opcode": "0xF4A00002" },
+      "operands": [],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "dcps3",
+      "architecture": "ARMv8-A",
+      "full_name": "Debug Change PE State to EL3 (A32)",
+      "summary": "Switches execution to EL3 (Debug).",
+      "syntax": "DCPS3",
+      "encoding": { "format": "System", "binary_pattern": "11110100 | 101 | 00000 | 0000 | 0000 | 000 | 00011", "hex_opcode": "0xF4A00003" },
+      "operands": [],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "setpan",
+      "architecture": "ARMv8-A",
+      "full_name": "Set Privileged Access Never (A32)",
+      "summary": "Enables/Disables PAN (Prevents kernel accessing user memory).",
+      "syntax": "SETPAN #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "1111000100010000000000 | imm | 00000", "hex_opcode": "0xF1100000" },
+      "operands": [{ "name": "imm", "desc": "0/1" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "esb",
+      "architecture": "ARMv8-A",
+      "full_name": "Error Synchronization Barrier (A32)",
+      "summary": "Synchronizes errors.",
+      "syntax": "ESB",
+      "encoding": { "format": "System Hint", "binary_pattern": "00110010000011110000000000010000", "hex_opcode": "0x0320F010" },
+      "operands": [],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "csdb",
+      "architecture": "ARMv8-A",
+      "full_name": "Consumption of Speculative Data Barrier (A32)",
+      "summary": "Prevents speculative data consumption.",
+      "syntax": "CSDB",
+      "encoding": { "format": "System Hint", "binary_pattern": "00110010000011110000000000010100", "hex_opcode": "0x0320F014" },
+      "operands": [],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "vldm",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Load Multiple (VFP)",
+      "summary": "Loads multiple VFP registers from memory.",
+      "syntax": "VLDM<c><mode> <Rn>{!}, <list>",
+      "encoding": { "format": "VFP Load Multiple", "binary_pattern": "cond | 11001001 | Rn | list", "hex_opcode": "0x0C900A00" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "list", "desc": "Registers" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vstm",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Store Multiple (VFP)",
+      "summary": "Stores multiple VFP registers to memory.",
+      "syntax": "VSTM<c><mode> <Rn>{!}, <list>",
+      "encoding": { "format": "VFP Store Multiple", "binary_pattern": "cond | 11001000 | Rn | list", "hex_opcode": "0x0C800A00" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "list", "desc": "Registers" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vcmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Zero (VFP)",
+      "summary": "Compares a floating-point value with #0.0.",
+      "syntax": "VCMP<c>.F32 <Sd>, #0.0",
+      "encoding": { "format": "VFP Compare", "binary_pattern": "cond | 11101011 | 0 | D | 0101 | Vd | 1010 | 01 | M | 0 | 0000", "hex_opcode": "0x0EB50A40" },
+      "operands": [{ "name": "Sd", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Divide (Double)",
+      "summary": "Divides two double-precision registers.",
+      "syntax": "VDIV<c>.F64 <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11101000 | 0 | D | Vn | Vd | 1011 | N | 0 | M | Vm", "hex_opcode": "0x0E800B00" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Dividend" }, { "name": "Dm", "desc": "Divisor" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vabs",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Value (Double)",
+      "summary": "Absolute value of double-precision register.",
+      "syntax": "VABS<c>.F64 <Dd>, <Dm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0000 | Vd | 1011 | 11 | M | 0 | Vm", "hex_opcode": "0x0EB00BC0" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vneg",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Negate (Double)",
+      "summary": "Negates double-precision register.",
+      "syntax": "VNEG<c>.F64 <Dd>, <Dm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0001 | Vd | 1011 | 01 | M | 0 | Vm", "hex_opcode": "0x0EB10B40" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vsqrt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Square Root (Double)",
+      "summary": "Square root of double-precision register.",
+      "syntax": "VSQRT<c>.F64 <Dd>, <Dm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0001 | Vd | 1011 | 11 | M | 0 | Vm", "hex_opcode": "0x0EB10BC0" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vfma",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Fused Multiply Accumulate (Double)",
+      "summary": "Fused multiply-add (Double).",
+      "syntax": "VFMA<c>.F64 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11101010 | 0 | D | Vn | Vd | 1011 | N | 0 | M | Vm", "hex_opcode": "0x0EA00B00" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "VFPv4 (Float)"
+    },
+    {
+      "mnemonic": "vfms",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Fused Multiply Subtract (Double)",
+      "summary": "Fused multiply-subtract (Double).",
+      "syntax": "VFMS<c>.F64 <Qd>, <Qn>, <Qm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11101010 | 0 | D | Vn | Vd | 1011 | N | 1 | M | Vm", "hex_opcode": "0x0EA00B40" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qn", "desc": "Src 1" }, { "name": "Qm", "desc": "Src 2" }],
+      "extension": "VFPv4 (Float)"
+    },
+    {
+      "mnemonic": "vcmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare (Double)",
+      "summary": "Compares two double-precision values.",
+      "syntax": "VCMP<c>.F64 <Dd>, <Dm>",
+      "encoding": { "format": "VFP Compare", "binary_pattern": "cond | 11101011 | 0 | D | 0100 | Vd | 1011 | 01 | M | 0 | Vm", "hex_opcode": "0x0EB40B40" },
+      "operands": [{ "name": "Dd", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move (Double)",
+      "summary": "Moves data between Double registers.",
+      "syntax": "VMOV<c>.F64 <Dd>, <Dm>",
+      "encoding": { "format": "VFP Move", "binary_pattern": "cond | 11101011 | 0 | D | 0000 | Vd | 1011 | 01 | M | 0 | Vm", "hex_opcode": "0x0EB00B40" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move (Double <-> 2xGPR)",
+      "summary": "Moves a Double register to/from two Core registers.",
+      "syntax": "VMOV<c> <Rt>, <Rt2>, <Dm>",
+      "encoding": { "format": "VFP Transfer", "binary_pattern": "cond | 11000100 | Rt2 | Rt | 1011 | 00 | M | 1 | Vm", "hex_opcode": "0x0C400B10" },
+      "operands": [{ "name": "Rt", "desc": "Low" }, { "name": "Rt2", "desc": "High" }, { "name": "Dm", "desc": "VFP" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vcvta",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Convert to Integer (Nearest, Double)",
+      "summary": "Converts double to integer, rounding to nearest.",
+      "syntax": "VCVTA<c>.<dt>.F64 <Sd>, <Dm>",
+      "encoding": { "format": "VFP Convert", "binary_pattern": "cond | 11101011 | 1 | D | 11 | 00 | Vd | 1011 | 0 | M | 0 | Vm", "hex_opcode": "0x0EBC0B40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Dm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vcvtn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Convert to Integer (Nearest Even, Double)",
+      "summary": "Converts double to integer, rounding to nearest even.",
+      "syntax": "VCVTN<c>.<dt>.F64 <Sd>, <Dm>",
+      "encoding": { "format": "VFP Convert", "binary_pattern": "cond | 11101011 | 1 | D | 11 | 00 | Vd | 1011 | 0 | M | 0 | Vm", "hex_opcode": "0x0EBC0B40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Dm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vcvt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Convert (Fixed Point)",
+      "summary": "Converts between floating-point and fixed-point.",
+      "syntax": "VCVT<c>.<Td>.<Tm> <Qd>, <Qm>, #<fbits>",
+      "encoding": { "format": "VFP Convert", "binary_pattern": "cond | 11101011 | 1 | D | 1110 | Vd | 1010 | 1 | M | 0 | Vm", "hex_opcode": "0x0EBE0A40" },
+      "operands": [{ "name": "Qd", "desc": "Dest" }, { "name": "Qm", "desc": "Src" }, { "name": "fbits", "desc": "Shift" }],
+      "extension": "VFP (Float)"
+    }
+  ]
+}

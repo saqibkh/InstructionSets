@@ -1,0 +1,354 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "cbz",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Branch Zero (Thumb)",
+      "summary": "Branches to label if register is zero (Thumb-only, does not affect flags).",
+      "syntax": "CBZ <Rn>, <label>",
+      "encoding": { "format": "Thumb Branch", "binary_pattern": "10110010 | i | 1 | imm5 | Rn", "hex_opcode": "0xB100" },
+      "operands": [{ "name": "Rn", "desc": "Register" }, { "name": "label", "desc": "Label" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "cbnz",
+      "architecture": "ARMv8-A",
+      "full_name": "Compare and Branch Non-Zero (Thumb)",
+      "summary": "Branches to label if register is not zero (Thumb-only).",
+      "syntax": "CBNZ <Rn>, <label>",
+      "encoding": { "format": "Thumb Branch", "binary_pattern": "10111010 | i | 1 | imm5 | Rn", "hex_opcode": "0xB900" },
+      "operands": [{ "name": "Rn", "desc": "Register" }, { "name": "label", "desc": "Label" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "it",
+      "architecture": "ARMv8-A",
+      "full_name": "If-Then (Thumb)",
+      "summary": "Makes up to 4 following instructions conditional (Thumb-only).",
+      "syntax": "IT{x{y{z}}} <cond>",
+      "encoding": { "format": "Thumb IT", "binary_pattern": "10111111 | firstcond | mask", "hex_opcode": "0xBF00" },
+      "operands": [{ "name": "cond", "desc": "Condition" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "tbb",
+      "architecture": "ARMv8-A",
+      "full_name": "Table Branch Byte",
+      "summary": "PC-relative branch using a table of bytes (Switch statements).",
+      "syntax": "TBB [<Rn>, <Rm>]",
+      "encoding": { "format": "Thumb Branch", "binary_pattern": "111010001101 | Rn | 11110000 | Rm", "hex_opcode": "0xE8D0F000" },
+      "operands": [{ "name": "Rn", "desc": "Table Base" }, { "name": "Rm", "desc": "Index" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "tbh",
+      "architecture": "ARMv8-A",
+      "full_name": "Table Branch Halfword",
+      "summary": "PC-relative branch using a table of halfwords.",
+      "syntax": "TBH [<Rn>, <Rm>, LSL #1]",
+      "encoding": { "format": "Thumb Branch", "binary_pattern": "111010001101 | Rn | 11110001 | Rm", "hex_opcode": "0xE8D0F010" },
+      "operands": [{ "name": "Rn", "desc": "Table Base" }, { "name": "Rm", "desc": "Index" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "qadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Add (A32)",
+      "summary": "Adds two values and saturates the result.",
+      "syntax": "QADD<c> <Rd>, <Rm>, <Rn>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00010000 | Rn | Rd | 00000101 | Rm", "hex_opcode": "0x01000050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src 1" }, { "name": "Rn", "desc": "Src 2" }],
+      "extension": "A32 (Sat)"
+    },
+    {
+      "mnemonic": "qsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Subtract (A32)",
+      "summary": "Subtracts two values and saturates the result.",
+      "syntax": "QSUB<c> <Rd>, <Rm>, <Rn>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00010010 | Rn | Rd | 00000101 | Rm", "hex_opcode": "0x01200050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src 1" }, { "name": "Rn", "desc": "Src 2" }],
+      "extension": "A32 (Sat)"
+    },
+    {
+      "mnemonic": "qdadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Double and Add",
+      "summary": "Doubles the second operand, adds to first, and saturates.",
+      "syntax": "QDADD<c> <Rd>, <Rm>, <Rn>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00010100 | Rn | Rd | 00000101 | Rm", "hex_opcode": "0x01400050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src 1" }, { "name": "Rn", "desc": "Src 2" }],
+      "extension": "A32 (Sat)"
+    },
+    {
+      "mnemonic": "qdsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Saturating Double and Subtract",
+      "summary": "Doubles the second operand, subtracts from first, and saturates.",
+      "syntax": "QDSUB<c> <Rd>, <Rm>, <Rn>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 00010110 | Rn | Rd | 00000101 | Rm", "hex_opcode": "0x01600050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src 1" }, { "name": "Rn", "desc": "Src 2" }],
+      "extension": "A32 (Sat)"
+    },
+    {
+      "mnemonic": "pld",
+      "architecture": "ARMv8-A",
+      "full_name": "Preload Data",
+      "summary": "Hints memory system to bring data into cache.",
+      "syntax": "PLD [<Rn>, #<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11110101 | U | 101 | Rn | 1111 | imm12", "hex_opcode": "0xF550F000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "pli",
+      "architecture": "ARMv8-A",
+      "full_name": "Preload Instruction",
+      "summary": "Hints memory system to bring instructions into cache.",
+      "syntax": "PLI [<Rn>, #<imm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11110100 | U | 101 | Rn | 1111 | imm12", "hex_opcode": "0xF450F000" },
+      "operands": [{ "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "srs",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Return State",
+      "summary": "Stores LR and SPSR to the stack of a specific mode.",
+      "syntax": "SRS<c> SP{!}, #<mode>",
+      "encoding": { "format": "System", "binary_pattern": "11111000 | P | U | 1 | W | 0 | 1101 | 00000 | mode", "hex_opcode": "0xF8CD0500" },
+      "operands": [{ "name": "mode", "desc": "Mode" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "rfe",
+      "architecture": "ARMv8-A",
+      "full_name": "Return From Exception",
+      "summary": "Loads PC and CPSR from the stack.",
+      "syntax": "RFE<c> <Rn>{!}",
+      "encoding": { "format": "System", "binary_pattern": "11111000 | P | U | 0 | W | 1 | Rn | 00001010", "hex_opcode": "0xF8100A00" },
+      "operands": [{ "name": "Rn", "desc": "Base" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "cps",
+      "architecture": "ARMv8-A",
+      "full_name": "Change Processor State",
+      "summary": "Changes the processor mode or interrupt masks.",
+      "syntax": "CPS<effect> <iflags> {, #<mode>}",
+      "encoding": { "format": "System", "binary_pattern": "111100010000 | imod | m | 0 | mode", "hex_opcode": "0xF1000000" },
+      "operands": [{ "name": "effect", "desc": "IE/ID" }, { "name": "mode", "desc": "Mode" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "setend",
+      "architecture": "ARMv8-A",
+      "full_name": "Set Endianness",
+      "summary": "Sets the endianness for data accesses (BE/LE).",
+      "syntax": "SETEND <endian>",
+      "encoding": { "format": "System", "binary_pattern": "1111000100000001000000 | E | 00000", "hex_opcode": "0xF1010000" },
+      "operands": [{ "name": "endian", "desc": "BE/LE" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "yield",
+      "architecture": "ARMv8-A",
+      "full_name": "Yield (A32)",
+      "summary": "Hints that the task is performing a spin-wait.",
+      "syntax": "YIELD",
+      "encoding": { "format": "System Hint", "binary_pattern": "00110010000011110000000000000001", "hex_opcode": "0x0320F001" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "wfe",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Event (A32)",
+      "summary": "Enters low-power state until an event occurs.",
+      "syntax": "WFE",
+      "encoding": { "format": "System Hint", "binary_pattern": "00110010000011110000000000000010", "hex_opcode": "0x0320F002" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "wfi",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Interrupt (A32)",
+      "summary": "Enters low-power state until an interrupt occurs.",
+      "syntax": "WFI",
+      "encoding": { "format": "System Hint", "binary_pattern": "00110010000011110000000000000011", "hex_opcode": "0x0320F003" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sev",
+      "architecture": "ARMv8-A",
+      "full_name": "Send Event (A32)",
+      "summary": "Sends an event to all processors.",
+      "syntax": "SEV",
+      "encoding": { "format": "System Hint", "binary_pattern": "00110010000011110000000000000100", "hex_opcode": "0x0320F004" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sevl",
+      "architecture": "ARMv8-A",
+      "full_name": "Send Event Local (A32)",
+      "summary": "Sends an event locally.",
+      "syntax": "SEVL",
+      "encoding": { "format": "System Hint", "binary_pattern": "00110010000011110000000000000101", "hex_opcode": "0x0320F005" },
+      "operands": [],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "dbg",
+      "architecture": "ARMv8-A",
+      "full_name": "Debug Hint",
+      "summary": "Provides a hint to the debug system.",
+      "syntax": "DBG #<option>",
+      "encoding": { "format": "System Hint", "binary_pattern": "0011001000001111000000001111 | imm4", "hex_opcode": "0x0320F0F0" },
+      "operands": [{ "name": "option", "desc": "Option" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "hlt",
+      "architecture": "ARMv8-A",
+      "full_name": "Halting Debug (Thumb)",
+      "summary": "Enters halting debug state (Thumb encoding).",
+      "syntax": "HLT #<imm>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "1011101010 | imm6", "hex_opcode": "0xBA80" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "bkpt",
+      "architecture": "ARMv8-A",
+      "full_name": "Breakpoint (Thumb)",
+      "summary": "Software Breakpoint (Thumb encoding).",
+      "syntax": "BKPT #<imm>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "10111110 | imm8", "hex_opcode": "0xBE00" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "svc",
+      "architecture": "ARMv8-A",
+      "full_name": "Supervisor Call (Thumb)",
+      "summary": "System Call (Thumb encoding).",
+      "syntax": "SVC #<imm>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "11011111 | imm8", "hex_opcode": "0xDF00" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "udf",
+      "architecture": "ARMv8-A",
+      "full_name": "Undefined Instruction",
+      "summary": "Permanently undefined instruction (generates Undefined Instruction exception).",
+      "syntax": "UDF #<imm>",
+      "encoding": { "format": "System", "binary_pattern": "111001111111 | imm12 | 1111 | imm4", "hex_opcode": "0xE7F000F0" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "udf",
+      "architecture": "ARMv8-A",
+      "full_name": "Undefined Instruction (Thumb)",
+      "summary": "Permanently undefined instruction (Thumb).",
+      "syntax": "UDF #<imm>",
+      "encoding": { "format": "Thumb System", "binary_pattern": "11011110 | imm8", "hex_opcode": "0xDE00" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "T32 (Thumb)"
+    },
+    {
+      "mnemonic": "msr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to Special Register (Banked)",
+      "summary": "Writes to a banked register from a general-purpose register.",
+      "syntax": "MSR <banked_reg>, <Rn>",
+      "encoding": { "format": "System", "binary_pattern": "111000010010 | R | 0010 | Rn | 00 | sysm", "hex_opcode": "0xE1200200" },
+      "operands": [{ "name": "banked_reg", "desc": "Banked" }, { "name": "Rn", "desc": "Src" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "mrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Move from Special Register (Banked)",
+      "summary": "Reads a banked register into a general-purpose register.",
+      "syntax": "MRS <Rd>, <banked_reg>",
+      "encoding": { "format": "System", "binary_pattern": "111000010000 | R | 0010 | Rd | 00 | sysm", "hex_opcode": "0xE1000200" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "banked_reg", "desc": "Banked" }],
+      "extension": "A32 (System)"
+    },
+    {
+      "mnemonic": "vcvtb",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Convert Half-Precision (Bottom)",
+      "summary": "Converts single-precision to half-precision (Bottom half).",
+      "syntax": "VCVTB<c>.F16.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Convert", "binary_pattern": "cond | 11101011 | 0 | D | 0010 | Vd | 1010 | 01 | M | 0 | Vm", "hex_opcode": "0xEB20A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest (Half)" }, { "name": "Sm", "desc": "Src (Single)" }],
+      "extension": "VFP (Half)"
+    },
+    {
+      "mnemonic": "vcvtt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Convert Half-Precision (Top)",
+      "summary": "Converts single-precision to half-precision (Top half).",
+      "syntax": "VCVTT<c>.F16.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Convert", "binary_pattern": "cond | 11101011 | 0 | D | 0010 | Vd | 1010 | 11 | M | 0 | Vm", "hex_opcode": "0xEB20AC0" },
+      "operands": [{ "name": "Sd", "desc": "Dest (Half)" }, { "name": "Sm", "desc": "Src (Single)" }],
+      "extension": "VFP (Half)"
+    },
+    {
+      "mnemonic": "vsel",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Select (Double)",
+      "summary": "Selects between two double-precision registers based on flags.",
+      "syntax": "VSEL<cond>.F64 <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "VFP Misc", "binary_pattern": "11111110 | 0 | D | cc | Vn | Vd | 1011 | N | 0 | M | Vm", "hex_opcode": "0xFE000B00" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmaxnm",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Maximum Number (Double)",
+      "summary": "Returns larger double-precision value, handling NaNs.",
+      "syntax": "VMAXNM<c>.F64 <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "VFP Misc", "binary_pattern": "11111110 | 1 | D | 00 | Vn | Vd | 1011 | N | 0 | M | Vm", "hex_opcode": "0xFE800B00" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vminnm",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Minimum Number (Double)",
+      "summary": "Returns smaller double-precision value, handling NaNs.",
+      "syntax": "VMINNM<c>.F64 <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "VFP Misc", "binary_pattern": "11111110 | 1 | D | 00 | Vn | Vd | 1011 | N | 1 | M | Vm", "hex_opcode": "0xFE800B40" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vrintr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Round Floating-Point (Current)",
+      "summary": "Rounds float to integral float using FPSCR rounding mode.",
+      "syntax": "VRINTR<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0110 | Vd | 1010 | 01 | M | 0 | Vm", "hex_opcode": "0xEB60A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vrintx",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Round Floating-Point (Exact)",
+      "summary": "Rounds float to integral float, raising Inexact exception.",
+      "syntax": "VRINTX<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0111 | Vd | 1010 | 01 | M | 0 | Vm", "hex_opcode": "0xEB70A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    }
+  ]
+}

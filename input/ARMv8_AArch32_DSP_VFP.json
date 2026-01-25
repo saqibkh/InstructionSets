@@ -1,0 +1,444 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "sbfx",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Bit Field Extract (A32)",
+      "summary": "Extracts bits from a register and sign-extends them.",
+      "syntax": "SBFX<c> <Rd>, <Rn>, #<lsb>, #<width>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 0111 | 101 | width-1 | Rd | lsb | 101 | Rn", "hex_opcode": "0x07A00050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }, { "name": "lsb", "desc": "Start Bit" }, { "name": "width", "desc": "Width" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "ubfx",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Bit Field Extract (A32)",
+      "summary": "Extracts bits from a register and zero-extends them.",
+      "syntax": "UBFX<c> <Rd>, <Rn>, #<lsb>, #<width>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 0111 | 111 | width-1 | Rd | lsb | 101 | Rn", "hex_opcode": "0x07E00050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src" }, { "name": "lsb", "desc": "Start Bit" }, { "name": "width", "desc": "Width" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sxtb",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend Byte (A32)",
+      "summary": "Sign-extends the low byte (8-bits) to 32-bits.",
+      "syntax": "SXTB<c> <Rd>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101010 | 1111 | Rd | rot | 0111 | Rm", "hex_opcode": "0x06AF0070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sxth",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend Halfword (A32)",
+      "summary": "Sign-extends the low halfword (16-bits) to 32-bits.",
+      "syntax": "SXTH<c> <Rd>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101011 | 1111 | Rd | rot | 0111 | Rm", "hex_opcode": "0x06BF0070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "sxtb16",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Extend Byte 16 (A32)",
+      "summary": "Sign-extends two bytes to two halfwords.",
+      "syntax": "SXTB16<c> <Rd>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101000 | 1111 | Rd | rot | 0111 | Rm", "hex_opcode": "0x068F0070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uxtb",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend Byte (A32)",
+      "summary": "Zero-extends the low byte to 32-bits.",
+      "syntax": "UXTB<c> <Rd>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101110 | 1111 | Rd | rot | 0111 | Rm", "hex_opcode": "0x06EF0070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "uxth",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend Halfword (A32)",
+      "summary": "Zero-extends the low halfword to 32-bits.",
+      "syntax": "UXTH<c> <Rd>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101111 | 1111 | Rd | rot | 0111 | Rm", "hex_opcode": "0x06FF0070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (Base)"
+    },
+    {
+      "mnemonic": "uxtb16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Extend Byte 16 (A32)",
+      "summary": "Zero-extends two bytes to two halfwords.",
+      "syntax": "UXTB16<c> <Rd>, <Rm> {, <rotation>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101100 | 1111 | Rd | rot | 0111 | Rm", "hex_opcode": "0x06CF0070" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "ssat",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Saturate (A32)",
+      "summary": "Saturates a signed value to a specified bit width.",
+      "syntax": "SSAT<c> <Rd>, #<imm>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 011010 | sat_imm | Rd | shift_imm | 01 | Rm", "hex_opcode": "0x06A00010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "imm", "desc": "Bit Position" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "usat",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Saturate (A32)",
+      "summary": "Saturates an unsigned value to a specified bit width.",
+      "syntax": "USAT<c> <Rd>, #<imm>, <Rm> {, <shift>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 011011 | sat_imm | Rd | shift_imm | 01 | Rm", "hex_opcode": "0x06E00010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "imm", "desc": "Bit Position" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "ssat16",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Saturate 16 (A32)",
+      "summary": "Saturates two signed 16-bit values.",
+      "syntax": "SSAT16<c> <Rd>, #<imm>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101010 | sat_imm | Rd | 11110011 | Rm", "hex_opcode": "0x06A00F30" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "imm", "desc": "Bit Position" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "usat16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Saturate 16 (A32)",
+      "summary": "Saturates two unsigned 16-bit values.",
+      "syntax": "USAT16<c> <Rd>, #<imm>, <Rm>",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101110 | sat_imm | Rd | 11110011 | Rm", "hex_opcode": "0x06E00F30" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "imm", "desc": "Bit Position" }, { "name": "Rm", "desc": "Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "pkhbt",
+      "architecture": "ARMv8-A",
+      "full_name": "Pack Halfword Bottom Top",
+      "summary": "Combines bottom half of Rn with top half of shifted Rm.",
+      "syntax": "PKHBT<c> <Rd>, <Rn>, <Rm> {, LSL #<imm>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101000 | Rn | Rd | shift | 0 | 01 | Rm", "hex_opcode": "0x06800010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Bottom Src" }, { "name": "Rm", "desc": "Top Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "pkhtb",
+      "architecture": "ARMv8-A",
+      "full_name": "Pack Halfword Top Bottom",
+      "summary": "Combines top half of Rn with bottom half of shifted Rm.",
+      "syntax": "PKHTB<c> <Rd>, <Rn>, <Rm> {, ASR #<imm>}",
+      "encoding": { "format": "Data Proc", "binary_pattern": "cond | 01101000 | Rn | Rd | shift | 1 | 01 | Rm", "hex_opcode": "0x06800050" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Top Src" }, { "name": "Rm", "desc": "Bottom Src" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "sadd16",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Add 16 (A32)",
+      "summary": "Parallel add of two signed 16-bit halfwords.",
+      "syntax": "SADD16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100001 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x06100F10" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uadd16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Add 16 (A32)",
+      "summary": "Parallel add of two unsigned 16-bit halfwords.",
+      "syntax": "UADD16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100101 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x06500F10" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "sadd8",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Add 8 (A32)",
+      "summary": "Parallel add of four signed 8-bit bytes.",
+      "syntax": "SADD8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100001 | Rn | Rd | 1111 | 1001 | Rm", "hex_opcode": "0x06100F90" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "uadd8",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Add 8 (A32)",
+      "summary": "Parallel add of four unsigned 8-bit bytes.",
+      "syntax": "UADD8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100101 | Rn | Rd | 1111 | 1001 | Rm", "hex_opcode": "0x06500F90" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "ssub16",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Subtract 16 (A32)",
+      "summary": "Parallel sub of two signed 16-bit halfwords.",
+      "syntax": "SSUB16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100001 | Rn | Rd | 1111 | 0111 | Rm", "hex_opcode": "0x06100F70" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "usub16",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Subtract 16 (A32)",
+      "summary": "Parallel sub of two unsigned 16-bit halfwords.",
+      "syntax": "USUB16<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01100101 | Rn | Rd | 1111 | 0111 | Rm", "hex_opcode": "0x06500F70" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "usad8",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Sum of Absolute Differences",
+      "summary": "Computes sum of absolute differences of bytes (Video Codec).",
+      "syntax": "USAD8<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01111000 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x0780F010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "usada8",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Sum of Absolute Differences Accumulate",
+      "summary": "USAD8 plus accumulator.",
+      "syntax": "USADA8<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "SIMD Integer", "binary_pattern": "cond | 01111000 | Rn | Rd | Ra | 0001 | Rm", "hex_opcode": "0x07800010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Most Significant Word Multiply",
+      "summary": "Multiplies and returns the top 32-bits of the 64-bit result.",
+      "syntax": "SMMUL{R}<c> <Rd>, <Rn>, <Rm>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110101 | Rn | Rd | 1111 | 0001 | Rm", "hex_opcode": "0x0750F010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "smmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Most Significant Word Multiply Accumulate",
+      "summary": "SMMUL + Accumulate.",
+      "syntax": "SMMLA{R}<c> <Rd>, <Rn>, <Rm>, <Ra>",
+      "encoding": { "format": "Multiply", "binary_pattern": "cond | 01110101 | Rn | Rd | Ra | 0001 | Rm", "hex_opcode": "0x07500010" },
+      "operands": [{ "name": "Rd", "desc": "Dest" }, { "name": "Rn", "desc": "Src 1" }, { "name": "Rm", "desc": "Src 2" }, { "name": "Ra", "desc": "Acc" }],
+      "extension": "A32 (DSP)"
+    },
+    {
+      "mnemonic": "vadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add (VFP)",
+      "summary": "Adds two floating-point values.",
+      "syntax": "VADD<c>.F32 <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11100011 | 0 | D | Vn | Vd | 1010 | N | 0 | M | Vm", "hex_opcode": "0x0E300A00" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add Double (VFP)",
+      "summary": "Adds two double-precision floating-point values.",
+      "syntax": "VADD<c>.F64 <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11100011 | 0 | D | Vn | Vd | 1011 | N | 0 | M | Vm", "hex_opcode": "0x0E300B00" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Subtract (VFP)",
+      "summary": "Subtracts two floating-point values.",
+      "syntax": "VSUB<c>.F32 <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11100011 | 0 | D | Vn | Vd | 1010 | N | 1 | M | Vm", "hex_opcode": "0x0E300A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply (VFP)",
+      "summary": "Multiplies two floating-point values.",
+      "syntax": "VMUL<c>.F32 <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11100010 | 0 | D | Vn | Vd | 1010 | N | 0 | M | Vm", "hex_opcode": "0x0E200A00" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Divide (VFP)",
+      "summary": "Divides two floating-point values.",
+      "syntax": "VDIV<c>.F32 <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11101000 | 0 | D | Vn | Vd | 1010 | N | 0 | M | Vm", "hex_opcode": "0x0E800A00" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Dividend" }, { "name": "Sm", "desc": "Divisor" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply Accumulate (VFP)",
+      "summary": "Sd = Sd + (Sn * Sm).",
+      "syntax": "VMLA<c>.F32 <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11100000 | 0 | D | Vn | Vd | 1010 | N | 0 | M | Vm", "hex_opcode": "0x0E000A00" },
+      "operands": [{ "name": "Sd", "desc": "Dest/Acc" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmls",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply Subtract (VFP)",
+      "summary": "Sd = Sd - (Sn * Sm).",
+      "syntax": "VMLS<c>.F32 <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11100000 | 0 | D | Vn | Vd | 1010 | N | 1 | M | Vm", "hex_opcode": "0x0E000A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest/Acc" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vnmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Negated Multiply (VFP)",
+      "summary": "Sd = -(Sn * Sm).",
+      "syntax": "VNMUL<c>.F32 <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "VFP Arith", "binary_pattern": "cond | 11100010 | 0 | D | Vn | Vd | 1010 | N | 1 | M | Vm", "hex_opcode": "0x0E200A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vabs",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Value (VFP)",
+      "summary": "Calculates absolute value.",
+      "syntax": "VABS<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0000 | Vd | 1010 | 11 | M | 0 | Vm", "hex_opcode": "0x0EB00AC0" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vneg",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Negate (VFP)",
+      "summary": "Negates the value.",
+      "syntax": "VNEG<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0001 | Vd | 1010 | 01 | M | 0 | Vm", "hex_opcode": "0x0EB10A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vsqrt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Square Root (VFP)",
+      "summary": "Calculates square root.",
+      "syntax": "VSQRT<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Unary", "binary_pattern": "cond | 11101011 | 0 | D | 0001 | Vd | 1010 | 11 | M | 0 | Vm", "hex_opcode": "0x0EB10AC0" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vcmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare (VFP)",
+      "summary": "Compares two floating-point values.",
+      "syntax": "VCMP<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Compare", "binary_pattern": "cond | 11101011 | 0 | D | 0100 | Vd | 1010 | 01 | M | 0 | Vm", "hex_opcode": "0x0EB40A40" },
+      "operands": [{ "name": "Sd", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vcmpe",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Exception (VFP)",
+      "summary": "Compares values and raises exception on NaN.",
+      "syntax": "VCMPE<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Compare", "binary_pattern": "cond | 11101011 | 0 | D | 0100 | Vd | 1010 | 11 | M | 0 | Vm", "hex_opcode": "0x0EB40AC0" },
+      "operands": [{ "name": "Sd", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vcvt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Convert (Float to Integer)",
+      "summary": "Converts float to signed/unsigned integer.",
+      "syntax": "VCVT<c>.<Td>.<Tm> <Sd>, <Sm>",
+      "encoding": { "format": "VFP Convert", "binary_pattern": "cond | 11101011 | 1 | D | 1101 | Vd | 1010 | 11 | M | 0 | Vm", "hex_opcode": "0x0EBD0AC0" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move (Register)",
+      "summary": "Moves data between VFP registers.",
+      "syntax": "VMOV<c>.F32 <Sd>, <Sm>",
+      "encoding": { "format": "VFP Move", "binary_pattern": "cond | 11101011 | 0 | D | 0000 | Vd | 1010 | 01 | M | 0 | Vm", "hex_opcode": "0x0EB00A40" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sm", "desc": "Src" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move (Core <-> VFP)",
+      "summary": "Moves data between Core registers (R) and VFP registers (S).",
+      "syntax": "VMOV<c> <Sn>, <Rt>",
+      "encoding": { "format": "VFP Transfer", "binary_pattern": "cond | 11100000 | Vn | Rt | 1010 | N | 0010000", "hex_opcode": "0x0E000A10" },
+      "operands": [{ "name": "Sn", "desc": "VFP Reg" }, { "name": "Rt", "desc": "Core Reg" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vldr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Load Register (VFP)",
+      "summary": "Loads a floating-point register from memory.",
+      "syntax": "VLDR<c> <Sd>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "VFP Load", "binary_pattern": "cond | 1101 | U | 001 | Rn | Vd | 1010 | imm8", "hex_opcode": "0x0D100A00" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vstr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Store Register (VFP)",
+      "summary": "Stores a floating-point register to memory.",
+      "syntax": "VSTR<c> <Sd>, [<Rn>, #+/-<imm>]",
+      "encoding": { "format": "VFP Store", "binary_pattern": "cond | 1101 | U | 000 | Rn | Vd | 1010 | imm8", "hex_opcode": "0x0D000A00" },
+      "operands": [{ "name": "Sd", "desc": "Src" }, { "name": "Rn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vpop",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Pop (VFP)",
+      "summary": "Pops VFP registers from the stack (Alias for VLDMIA SP!).",
+      "syntax": "VPOP <list>",
+      "encoding": { "format": "VFP Load Multiple", "binary_pattern": "cond | 11001011 | 1101 | list", "hex_opcode": "0x0CBD0A00" },
+      "operands": [{ "name": "list", "desc": "Register List" }],
+      "extension": "VFP (Float)"
+    },
+    {
+      "mnemonic": "vpush",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Push (VFP)",
+      "summary": "Pushes VFP registers to the stack (Alias for VSTMDB SP!).",
+      "syntax": "VPUSH <list>",
+      "encoding": { "format": "VFP Store Multiple", "binary_pattern": "cond | 11010010 | 1101 | list", "hex_opcode": "0x0D2D0A00" },
+      "operands": [{ "name": "list", "desc": "Register List" }],
+      "extension": "VFP (Float)"
+    }
+  ]
+}

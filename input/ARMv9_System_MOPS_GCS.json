@@ -1,0 +1,204 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "nop",
+      "architecture": "ARMv8-A",
+      "full_name": "No Operation",
+      "summary": "Does nothing. Used for padding or timing.",
+      "syntax": "NOP",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00000 | 11111", "hex_opcode": "0xD503201F" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "wfe",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Event",
+      "summary": "Puts the processor into a low-power state until an event occurs.",
+      "syntax": "WFE",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00010 | 11111", "hex_opcode": "0xD503205F" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "wfi",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Interrupt",
+      "summary": "Puts the processor into a low-power state until an interrupt occurs.",
+      "syntax": "WFI",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00011 | 11111", "hex_opcode": "0xD503207F" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sev",
+      "architecture": "ARMv8-A",
+      "full_name": "Send Event",
+      "summary": "Sends an event to all processors in the cluster (wakes up WFE).",
+      "syntax": "SEV",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00100 | 11111", "hex_opcode": "0xD503209F" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sevl",
+      "architecture": "ARMv8-A",
+      "full_name": "Send Event Local",
+      "summary": "Sends an event locally to the executing processor.",
+      "syntax": "SEVL",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00101 | 11111", "hex_opcode": "0xD50320BF" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "yield",
+      "architecture": "ARMv8-A",
+      "full_name": "Yield",
+      "summary": "Hints that the current thread is performing a spin-wait loop.",
+      "syntax": "YIELD",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00001 | 11111", "hex_opcode": "0xD503203F" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "esb",
+      "architecture": "ARMv8-A",
+      "full_name": "Error Synchronization Barrier",
+      "summary": "Synchronizes unrecoverable system errors.",
+      "syntax": "ESB",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 01000 | 11111", "hex_opcode": "0xD503221F" },
+      "operands": [],
+      "extension": "RAS (Reliability)"
+    },
+    {
+      "mnemonic": "psb",
+      "architecture": "ARMv8-A",
+      "full_name": "Profiling Synchronization Barrier",
+      "summary": "Synchronizes the statistical profiling unit.",
+      "syntax": "PSB CSYNC",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 01001 | 11111", "hex_opcode": "0xD503223F" },
+      "operands": [],
+      "extension": "Profiling"
+    },
+    {
+      "mnemonic": "dc",
+      "architecture": "ARMv8-A",
+      "full_name": "Data Cache Operation",
+      "summary": "Performs data cache maintenance (Clean, Invalidate, Flush).",
+      "syntax": "DC <op>, <Xt>",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 01 | op1 | CRn | CRm | op2 | Rt", "hex_opcode": "0xD5080000" },
+      "operands": [{ "name": "op", "desc": "Operation (IVAC, ISW, etc)" }, { "name": "Xt", "desc": "Address/Set/Way" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "ic",
+      "architecture": "ARMv8-A",
+      "full_name": "Instruction Cache Operation",
+      "summary": "Performs instruction cache maintenance.",
+      "syntax": "IC <op> {, <Xt>}",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 01 | op1 | CRn | CRm | op2 | Rt", "hex_opcode": "0xD5080000" },
+      "operands": [{ "name": "op", "desc": "Operation (IALLU, IVAU)" }, { "name": "Xt", "desc": "Address (Optional)" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "tlbi",
+      "architecture": "ARMv8-A",
+      "full_name": "TLB Invalidate",
+      "summary": "Invalidates Translation Lookaside Buffer entries.",
+      "syntax": "TLBI <op> {, <Xt>}",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 01 | op1 | CRn | CRm | op2 | Rt", "hex_opcode": "0xD5080000" },
+      "operands": [{ "name": "op", "desc": "Operation (VMALLE1, VAE1)" }, { "name": "Xt", "desc": "Address (Optional)" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "at",
+      "architecture": "ARMv8-A",
+      "full_name": "Address Translate",
+      "summary": "Translates a virtual address to a physical address (for debug/software).",
+      "syntax": "AT <op>, <Xt>",
+      "encoding": { "format": "System Alias", "binary_pattern": "11010101 | 000 | 01 | op1 | CRn | CRm | op2 | Rt", "hex_opcode": "0xD5080000" },
+      "operands": [{ "name": "op", "desc": "Operation (S1E1R, S1E0W)" }, { "name": "Xt", "desc": "Virtual Addr" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "cpyfp",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Copy Forward (Prologue)",
+      "summary": "First step of a hardware-accelerated memcpy (Forward direction).",
+      "syntax": "CPYFP [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001 | 00 | 000000 | 01 | Rn | Rd", "hex_opcode": "0x19004000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "Xn", "desc": "Size" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "cpyfm",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Copy Forward (Main)",
+      "summary": "Main loop of a hardware-accelerated memcpy (Forward direction).",
+      "syntax": "CPYFM [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001 | 01 | 000000 | 01 | Rn | Rd", "hex_opcode": "0x19404000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "Xn", "desc": "Size" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "cpyfe",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Copy Forward (Epilogue)",
+      "summary": "Final step of a hardware-accelerated memcpy (Forward direction).",
+      "syntax": "CPYFE [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001 | 10 | 000000 | 01 | Rn | Rd", "hex_opcode": "0x19804000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "Xn", "desc": "Size" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "setp",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Set (Prologue)",
+      "summary": "First step of a hardware-accelerated memset.",
+      "syntax": "SETP [<Wd>|SP]!, <Xn>!, <Xm>",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001 | 00 | 110000 | 01 | Rn | Rd", "hex_opcode": "0x19304000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Xn", "desc": "Size" }, { "name": "Xm", "desc": "Value" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "setm",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Set (Main)",
+      "summary": "Main loop of a hardware-accelerated memset.",
+      "syntax": "SETM [<Wd>|SP]!, <Xn>!, <Xm>",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001 | 01 | 110000 | 01 | Rn | Rd", "hex_opcode": "0x19704000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Xn", "desc": "Size" }, { "name": "Xm", "desc": "Value" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "sete",
+      "architecture": "ARMv9-A",
+      "full_name": "Memory Set (Epilogue)",
+      "summary": "Final step of a hardware-accelerated memset.",
+      "syntax": "SETE [<Wd>|SP]!, <Xn>!, <Xm>",
+      "encoding": { "format": "MOPS", "binary_pattern": "00011001 | 10 | 110000 | 01 | Rn | Rd", "hex_opcode": "0x19B04000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Xn", "desc": "Size" }, { "name": "Xm", "desc": "Value" }],
+      "extension": "FEAT_MOPS"
+    },
+    {
+      "mnemonic": "gcsstr",
+      "architecture": "ARMv9-A",
+      "full_name": "Guarded Control Stack Store",
+      "summary": "Stores a value to the GCS (Control Flow Integrity).",
+      "syntax": "GCSSTR <Xd>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11011001 | 000 | 11111 | 00 | Rn | Rt", "hex_opcode": "0xD91F0000" },
+      "operands": [{ "name": "Xd", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "FEAT_GCS"
+    },
+    {
+      "mnemonic": "gcspushm",
+      "architecture": "ARMv9-A",
+      "full_name": "Guarded Control Stack Push",
+      "summary": "Pushes the Link Register (LR) onto the Guarded Control Stack.",
+      "syntax": "GCSPUSHM",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 00011 | 0010 | 0100 | 00 | 11111", "hex_opcode": "0xD52B243F" },
+      "operands": [],
+      "extension": "FEAT_GCS"
+    }
+  ]
+}

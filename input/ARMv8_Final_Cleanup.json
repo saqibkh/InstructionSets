@@ -1,0 +1,194 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "prfm",
+      "architecture": "ARMv8-A",
+      "full_name": "Prefetch Memory (Immediate)",
+      "summary": "Signals the memory system to prefetch data into cache.",
+      "syntax": "PRFM <prfop>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store Imm", "binary_pattern": "11111001 | 10 | imm12 | Rn | Rt", "hex_opcode": "0xF9800000" },
+      "operands": [{ "name": "prfop", "desc": "Type (PLDL1KEEP, etc)" }, { "name": "Xn", "desc": "Base Addr" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "prfm",
+      "architecture": "ARMv8-A",
+      "full_name": "Prefetch Memory (Literal)",
+      "summary": "Prefetches data from a PC-relative address.",
+      "syntax": "PRFM <prfop>, <label>",
+      "encoding": { "format": "Load Literal", "binary_pattern": "11011000 | imm19 | Rt", "hex_opcode": "0xD8000000" },
+      "operands": [{ "name": "prfop", "desc": "Type" }, { "name": "label", "desc": "Label" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "prfm",
+      "architecture": "ARMv8-A",
+      "full_name": "Prefetch Memory (Register)",
+      "summary": "Prefetches data using a register offset.",
+      "syntax": "PRFM <prfop>, [<Xn|SP>, <R><m> {, <extend> <amount>}]",
+      "encoding": { "format": "Load/Store Reg", "binary_pattern": "11111000 | 101 | Rm | option | S | 10 | Rn | Rt", "hex_opcode": "0xF8A00000" },
+      "operands": [{ "name": "prfop", "desc": "Type" }, { "name": "Xn", "desc": "Base" }, { "name": "Rm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ld64b",
+      "architecture": "ARMv8-A",
+      "full_name": "Single-copy Atomic 64-byte Load",
+      "summary": "Loads a 64-byte block of data atomically (Accelerator support).",
+      "syntax": "LD64B <Xt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11111000 | 001 | 11111 | 11 | 00 | Rn | Rt", "hex_opcode": "0xF81F7C00" },
+      "operands": [{ "name": "Xt", "desc": "Dest (First of 8 regs)" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "st64b",
+      "architecture": "ARMv8-A",
+      "full_name": "Single-copy Atomic 64-byte Store",
+      "summary": "Stores a 64-byte block of data atomically.",
+      "syntax": "ST64B <Xt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11111000 | 001 | 11111 | 10 | 00 | Rn | Rt", "hex_opcode": "0xF81F7800" },
+      "operands": [{ "name": "Xt", "desc": "Src (First of 8 regs)" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "st64bv",
+      "architecture": "ARMv8-A",
+      "full_name": "Single-copy Atomic 64-byte Store with Return",
+      "summary": "Stores 64 bytes atomically and returns status (Success/Fail).",
+      "syntax": "ST64BV <Ws>, <Xt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11111000 | 001 | 11111 | 10 | 01 | Rn | Rt", "hex_opcode": "0xF81F7800" },
+      "operands": [{ "name": "Ws", "desc": "Status Dest" }, { "name": "Xt", "desc": "Data Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "st64bv0",
+      "architecture": "ARMv8-A",
+      "full_name": "Single-copy Atomic 64-byte Store with Return (Zero)",
+      "summary": "Stores 64 bytes (eliding the first 8 bytes as zero) and returns status.",
+      "syntax": "ST64BV0 <Ws>, <Xt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "11111000 | 001 | 11111 | 10 | 10 | Rn | Rt", "hex_opcode": "0xF81F7C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Xt", "desc": "Data" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "LSE (Atomics)"
+    },
+    {
+      "mnemonic": "dgh",
+      "architecture": "ARMv8-A",
+      "full_name": "Data Gathering Hint",
+      "summary": "Hints that multiple memory accesses should be merged.",
+      "syntax": "DGH",
+      "encoding": { "format": "System Hint", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00110 | 11111", "hex_opcode": "0xD50320DF" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sb",
+      "architecture": "ARMv8-A",
+      "full_name": "Speculation Barrier",
+      "summary": "Prevents speculative execution across the barrier.",
+      "syntax": "SB",
+      "encoding": { "format": "System Hint", "binary_pattern": "11010101 | 000 | 00011 | 0011 | 0000 | 111 | 11111", "hex_opcode": "0xD50330FF" },
+      "operands": [],
+      "extension": "Base (v8.0+)"
+    },
+    {
+      "mnemonic": "tsb",
+      "architecture": "ARMv8-A",
+      "full_name": "Trace Synchronization Barrier",
+      "summary": "Ensures trace generation is complete.",
+      "syntax": "TSB CSYNC",
+      "encoding": { "format": "System Hint", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 01001 | 11111", "hex_opcode": "0xD503225F" },
+      "operands": [],
+      "extension": "Trace"
+    },
+    {
+      "mnemonic": "csdb",
+      "architecture": "ARMv8-A",
+      "full_name": "Consumption of Speculative Data Barrier",
+      "summary": "Prevents speculative data consumption.",
+      "syntax": "CSDB",
+      "encoding": { "format": "System Hint", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 01010 | 11111", "hex_opcode": "0xD503229F" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "wfet",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Event with Timeout",
+      "summary": "Waits for an event or a timeout (using a counter).",
+      "syntax": "WFET <Wn>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0001 | 0000 | 000 | Rn", "hex_opcode": "0xD5031000" },
+      "operands": [{ "name": "Wn", "desc": "Timeout" }],
+      "extension": "Base (v8.7)"
+    },
+    {
+      "mnemonic": "wfit",
+      "architecture": "ARMv8-A",
+      "full_name": "Wait For Interrupt with Timeout",
+      "summary": "Waits for an interrupt or a timeout.",
+      "syntax": "WFIT <Wn>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0001 | 0000 | 001 | Rn", "hex_opcode": "0xD5031020" },
+      "operands": [{ "name": "Wn", "desc": "Timeout" }],
+      "extension": "Base (v8.7)"
+    },
+    {
+      "mnemonic": "bc.cond",
+      "architecture": "ARMv8-A",
+      "full_name": "Branch Consistent Conditional",
+      "summary": "Branch if condition is met, with stronger ordering guarantees.",
+      "syntax": "BC.cond <label>",
+      "encoding": { "format": "Branch", "binary_pattern": "01010100 | imm19 | 1 | cond", "hex_opcode": "0x54000010" },
+      "operands": [{ "name": "label", "desc": "Label" }, { "name": "cond", "desc": "Cond" }],
+      "extension": "Base (v8.8)"
+    },
+    {
+      "mnemonic": "ldaprb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load-Acquire RCpc Register Byte",
+      "summary": "Loads a byte with Release Consistency (process consistent) Acquire semantics.",
+      "syntax": "LDAPRB <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111000 | 1 | 0 | 1 | 11111 | 11111 | Rn | Rt", "hex_opcode": "0x38BF C??" },
+      "operands": [{ "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (RCpc)"
+    },
+    {
+      "mnemonic": "ldaprh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load-Acquire RCpc Register Halfword",
+      "summary": "Loads a halfword with RCpc Acquire semantics.",
+      "syntax": "LDAPRH <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01111000 | 1 | 0 | 1 | 11111 | 11111 | Rn | Rt", "hex_opcode": "0x78BF C??" },
+      "operands": [{ "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (RCpc)"
+    },
+    {
+      "mnemonic": "ldapr",
+      "architecture": "ARMv8-A",
+      "full_name": "Load-Acquire RCpc Register",
+      "summary": "Loads a word with RCpc Acquire semantics.",
+      "syntax": "LDAPR <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111000 | 1 | 0 | 1 | 11111 | 11111 | Rn | Rt", "hex_opcode": "0xB8BF C??" },
+      "operands": [{ "name": "Wt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (RCpc)"
+    },
+    {
+      "mnemonic": "pssbb",
+      "architecture": "ARMv8-A",
+      "full_name": "Physical Speculation Barrier",
+      "summary": "Prevents speculation on physical resources.",
+      "syntax": "PSSBB",
+      "encoding": { "format": "System Hint", "binary_pattern": "11010101 | 000 | 00011 | 0010 | 00100 | 11111", "hex_opcode": "0xD503209F" },
+      "operands": [],
+      "extension": "Base (v8.5)"
+    },
+    {
+      "mnemonic": "trcit",
+      "architecture": "ARMv8-A",
+      "full_name": "Trace Instrumentation",
+      "summary": "Generates a trace packet.",
+      "syntax": "TRCIT <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 00011 | 0001 | 0111 | 011 | Rt", "hex_opcode": "0xD5031E00" },
+      "operands": [{ "name": "Xt", "desc": "Data" }],
+      "extension": "Trace"
+    }
+  ]
+}
