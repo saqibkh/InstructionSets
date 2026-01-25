@@ -1,0 +1,794 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "ldrb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Byte (Immediate)",
+      "summary": "Loads a byte from memory (zero-extended) using immediate offset.",
+      "syntax": "LDRB <Wt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111001 | 01 | imm12 | Rn | Rt", "hex_opcode": "0x39400000" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldrb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Byte (Register)",
+      "summary": "Loads a byte from memory (zero-extended) using register offset.",
+      "syntax": "LDRB <Wt>, [<Xn|SP>, <R><m> {, <extend> <amount>}]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111000 | 011 | Rm | option | S | 10 | Rn | Rt", "hex_opcode": "0x38600800" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "Rm", "desc": "Offset Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldrh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Halfword (Immediate)",
+      "summary": "Loads a halfword from memory (zero-extended).",
+      "syntax": "LDRH <Wt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01111001 | 01 | imm12 | Rn | Rt", "hex_opcode": "0x79400000" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldrh",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Halfword (Register)",
+      "summary": "Loads a halfword from memory (zero-extended) using register offset.",
+      "syntax": "LDRH <Wt>, [<Xn|SP>, <R><m> {, <extend> <amount>}]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01111000 | 011 | Rm | option | S | 10 | Rn | Rt", "hex_opcode": "0x78600800" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "Rm", "desc": "Offset Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldrsb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Byte (Immediate)",
+      "summary": "Loads a byte and sign-extends it to 32-bits.",
+      "syntax": "LDRSB <Wt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111001 | 11 | imm12 | Rn | Rt", "hex_opcode": "0x39C00000" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldrsb",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Byte (64-bit Immediate)",
+      "summary": "Loads a byte and sign-extends it to 64-bits.",
+      "syntax": "LDRSB <Xt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111001 | 10 | imm12 | Rn | Rt", "hex_opcode": "0x39800000" },
+      "operands": [{ "name": "Xt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldrsw",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Word (Immediate)",
+      "summary": "Loads a word and sign-extends it to 64-bits.",
+      "syntax": "LDRSW <Xt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111001 | 10 | imm12 | Rn | Rt", "hex_opcode": "0xB9800000" },
+      "operands": [{ "name": "Xt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldrsw",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register Signed Word (Literal)",
+      "summary": "Loads a word from PC-relative address and sign-extends to 64-bits.",
+      "syntax": "LDRSW <Xt>, <label>",
+      "encoding": { "format": "Load Literal", "binary_pattern": "10011000 | imm19 | Rt", "hex_opcode": "0x98000000" },
+      "operands": [{ "name": "Xt", "desc": "Target" }, { "name": "label", "desc": "Label" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldtr",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register (Unprivileged)",
+      "summary": "Loads a word as if in EL0 (User mode).",
+      "syntax": "LDTR <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111000 | 010 | imm9 | 00 | Rn | Rt", "hex_opcode": "0xB8400000" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldur",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Register (Unscaled)",
+      "summary": "Loads a word using an unscaled immediate offset.",
+      "syntax": "LDUR <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111000 | 010 | imm9 | 00 | Rn | Rt", "hex_opcode": "0xB8400000" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldxr",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Exclusive Register",
+      "summary": "Loads a word and marks physical address as exclusive access.",
+      "syntax": "LDXR <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "10001000 | 01011111 | 011111 | Rn | Rt", "hex_opcode": "0x885F7C00" },
+      "operands": [{ "name": "Wt", "desc": "Target" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "ldxp",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Exclusive Pair",
+      "summary": "Loads two words as an exclusive operation.",
+      "syntax": "LDXP <Wt1>, <Wt2>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "10001000 | 01111111 | 011111 | Rn | Rt", "hex_opcode": "0x887F7C00" },
+      "operands": [{ "name": "Wt1", "desc": "Target 1" }, { "name": "Wt2", "desc": "Target 2" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "lsl",
+      "architecture": "ARMv8-A",
+      "full_name": "Logical Shift Left (Register)",
+      "summary": "Shifts register left by variable amount.",
+      "syntax": "LSLV <Wd>, <Wn>, <Wm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00011010 | 110 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1AC02000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "Wm", "desc": "Shift Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lsr",
+      "architecture": "ARMv8-A",
+      "full_name": "Logical Shift Right (Register)",
+      "summary": "Shifts register right by variable amount.",
+      "syntax": "LSRV <Wd>, <Wn>, <Wm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00011010 | 110 | Rm | 001001 | Rn | Rd", "hex_opcode": "0x1AC02400" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "Wm", "desc": "Shift Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "madd",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply-Add",
+      "summary": "Calculates (Ra + (Rn * Rm)).",
+      "syntax": "MADD <Wd>, <Wn>, <Wm>, <Wa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00011011 | 000 | Rm | 0 | Ra | Rn | Rd", "hex_opcode": "0x1B000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }, { "name": "Wa", "desc": "Addend" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "madd",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply-Add (64-bit)",
+      "summary": "Calculates (Xa + (Xn * Xm)).",
+      "syntax": "MADD <Xd>, <Xn>, <Xm>, <Xa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011 | 000 | Rm | 0 | Ra | Rn | Rd", "hex_opcode": "0x9B000000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src 1" }, { "name": "Xm", "desc": "Src 2" }, { "name": "Xa", "desc": "Addend" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "msub",
+      "architecture": "ARMv8-A",
+      "full_name": "Multiply-Subtract",
+      "summary": "Calculates (Ra - (Rn * Rm)).",
+      "syntax": "MSUB <Wd>, <Wn>, <Wm>, <Wa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00011011 | 000 | Rm | 1 | Ra | Rn | Rd", "hex_opcode": "0x1B008000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }, { "name": "Wa", "desc": "Minuend" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "movk",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Keep",
+      "summary": "Inserts a 16-bit immediate into a register, keeping other bits unchanged.",
+      "syntax": "MOVK <Wd>, #<imm16> {, lsl #<shift>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01110010 | 1 | hw | imm16 | Rd", "hex_opcode": "0x72800000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "imm16", "desc": "Imm" }, { "name": "shift", "desc": "Shift (0,16)" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "movn",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Not",
+      "summary": "Moves inverted 16-bit immediate to register.",
+      "syntax": "MOVN <Wd>, #<imm16> {, lsl #<shift>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00010010 | 1 | hw | imm16 | Rd", "hex_opcode": "0x12800000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "imm16", "desc": "Imm" }, { "name": "shift", "desc": "Shift" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "movz",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Zero",
+      "summary": "Moves 16-bit immediate to register, zeroing other bits.",
+      "syntax": "MOVZ <Wd>, #<imm16> {, lsl #<shift>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01010010 | 1 | hw | imm16 | Rd", "hex_opcode": "0x52800000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "imm16", "desc": "Imm" }, { "name": "shift", "desc": "Shift" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Move System Register",
+      "summary": "Moves system register to general-purpose register.",
+      "syntax": "MRS <Xt>, <system_reg>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 1 | imm15 | Rt", "hex_opcode": "0xD5300000" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }, { "name": "system_reg", "desc": "Sys Reg" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "msr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move to System Register",
+      "summary": "Moves general-purpose register to system register.",
+      "syntax": "MSR <system_reg>, <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 1 | imm15 | Rt", "hex_opcode": "0xD5100000" },
+      "operands": [{ "name": "system_reg", "desc": "Sys Reg" }, { "name": "Xt", "desc": "Src" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "orn",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise OR NOT",
+      "summary": "ORs register with NOT of shifted register.",
+      "syntax": "ORN <Wd>, <Wn>, <Wm> {, <shift> #<amount>}",
+      "encoding": { "format": "Logical (Register)", "binary_pattern": "00101010 | 00 | Rm | imm6 | Rn | Rd", "hex_opcode": "0x2A000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "orr",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise OR (Immediate)",
+      "summary": "ORs register with logical immediate.",
+      "syntax": "ORR <Wd|Wsp>, <Wn>, #<imm>",
+      "encoding": { "format": "Logical (Immediate)", "binary_pattern": "00110010 | N | immr | imms | Rn | Rd", "hex_opcode": "0x32000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "imm", "desc": "Imm" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "orr",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise OR (Shifted Register)",
+      "summary": "ORs two registers.",
+      "syntax": "ORR <Wd>, <Wn>, <Wm> {, <shift> #<amount>}",
+      "encoding": { "format": "Logical (Register)", "binary_pattern": "00101010 | 00 | Rm | imm6 | Rn | Rd", "hex_opcode": "0x2A000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rbit",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bits",
+      "summary": "Reverses the bit order in a register.",
+      "syntax": "RBIT <Wd>, <Wn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01011010 | 110 | 00000 | 000000 | Rn | Rd", "hex_opcode": "0x5AC00000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ret",
+      "architecture": "ARMv8-A",
+      "full_name": "Return from Subroutine",
+      "summary": "Branches to address in LR (or specified register).",
+      "syntax": "RET {<Xn>}",
+      "encoding": { "format": "Branch", "binary_pattern": "11010110 | 01011111 | 000000 | Rn | 00000", "hex_opcode": "0xD65F0000" },
+      "operands": [{ "name": "Xn", "desc": "Addr (Def: X30)" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes",
+      "summary": "Reverses byte order (Endian swap) in a 32-bit register.",
+      "syntax": "REV <Wd>, <Wn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01011010 | 110 | 00000 | 000010 | Rn | Rd", "hex_opcode": "0x5AC00400" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes (64-bit)",
+      "summary": "Reverses byte order in a 64-bit register.",
+      "syntax": "REV <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | 00000 | 000011 | Rn | Rd", "hex_opcode": "0xDAC00C00" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rev16",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes in Halfwords",
+      "summary": "Reverses bytes in each 16-bit halfword.",
+      "syntax": "REV16 <Wd>, <Wn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01011010 | 110 | 00000 | 000001 | Rn | Rd", "hex_opcode": "0x5AC00400" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rev32",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes in Words",
+      "summary": "Reverses bytes in each 32-bit word (64-bit op).",
+      "syntax": "REV32 <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | 00000 | 000010 | Rn | Rd", "hex_opcode": "0xDAC00800" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rorv",
+      "architecture": "ARMv8-A",
+      "full_name": "Rotate Right (Register)",
+      "summary": "Rotates register right by variable amount.",
+      "syntax": "RORV <Wd>, <Wn>, <Wm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00011010 | 110 | Rm | 001011 | Rn | Rd", "hex_opcode": "0x1AC02C00" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "Wm", "desc": "Shift Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sbc",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract with Carry",
+      "summary": "Subtracts with borrow (Carry - 1).",
+      "syntax": "SBC <Wd>, <Wn>, <Wm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01011010 | 000 | Rm | 000000 | Rn | Rd", "hex_opcode": "0x5A000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sbcs",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract with Carry and Set Flags",
+      "summary": "Subtracts with borrow and updates flags.",
+      "syntax": "SBCS <Wd>, <Wn>, <Wm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01111010 | 000 | Rm | 000000 | Rn | Rd", "hex_opcode": "0x7A000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sbfm",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Bitfield Move",
+      "summary": "Extracts/Inserts bitfield with sign extension.",
+      "syntax": "SBFM <Wd>, <Wn>, #<immr>, #<imms>",
+      "encoding": { "format": "Bitfield", "binary_pattern": "00010011 | 0 | immr | imms | Rn | Rd", "hex_opcode": "0x13000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "immr", "desc": "Rotate" }, { "name": "imms", "desc": "Size" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Divide",
+      "summary": "Divides two signed registers.",
+      "syntax": "SDIV <Wd>, <Wn>, <Wm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00011010 | 110 | Rm | 000010 | Rn | Rd", "hex_opcode": "0x1AC00C00" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Dividend" }, { "name": "Wm", "desc": "Divisor" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "smaddl",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply-Add Long",
+      "summary": "Multiplies two 32-bit registers, adds to 64-bit register (64-bit result).",
+      "syntax": "SMADDL <Xd>, <Wn>, <Wm>, <Xa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011 | 001 | Rm | 0 | Ra | Rn | Rd", "hex_opcode": "0x9B200000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }, { "name": "Xa", "desc": "Addend" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "smsubl",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply-Subtract Long",
+      "summary": "Calculates (Xa - (Wn * Wm)) (64-bit result).",
+      "syntax": "SMSUBL <Xd>, <Wn>, <Wm>, <Xa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011 | 001 | Rm | 1 | Ra | Rn | Rd", "hex_opcode": "0x9B208000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }, { "name": "Xa", "desc": "Minuend" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "smulh",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Multiply High",
+      "summary": "Multiplies two 64-bit registers, keeps high 64 bits.",
+      "syntax": "SMULH <Xd>, <Xn>, <Xm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011 | 100 | Rm | 0 | 11111 | Rn | Rd", "hex_opcode": "0x9B407C00" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src 1" }, { "name": "Xm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stlr",
+      "architecture": "ARMv8-A",
+      "full_name": "Store-Release Register",
+      "summary": "Stores a word with Release semantics.",
+      "syntax": "STLR <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00001000 | 1 | 0 | 0 | 11111 | 11111 | Rn | Rt", "hex_opcode": "0x089F F??" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stlrb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store-Release Register Byte",
+      "summary": "Stores a byte with Release semantics.",
+      "syntax": "STLRB <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00001000 | 1 | 1 | 0 | 11111 | 11111 | Rn | Rt", "hex_opcode": "0x08BF F??" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stlrh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store-Release Register Halfword",
+      "summary": "Stores a halfword with Release semantics.",
+      "syntax": "STLRH <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01001000 | 1 | 1 | 0 | 11111 | 11111 | Rn | Rt", "hex_opcode": "0x48BF F??" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stlxr",
+      "architecture": "ARMv8-A",
+      "full_name": "Store-Release Exclusive Register",
+      "summary": "Stores a word with Release Exclusive semantics.",
+      "syntax": "STLXR <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "00001000 | 0 | 0 | 0 | Rs | 11111 | Rn | Rt", "hex_opcode": "0x08007C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stlxrb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store-Release Exclusive Register Byte",
+      "summary": "Stores a byte with Release Exclusive semantics.",
+      "syntax": "STLXRB <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "00001000 | 0 | 0 | 0 | Rs | 11111 | Rn | Rt", "hex_opcode": "0x08007C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stlxrh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store-Release Exclusive Register Halfword",
+      "summary": "Stores a halfword with Release Exclusive semantics.",
+      "syntax": "STLXRH <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "01001000 | 0 | 0 | 0 | Rs | 11111 | Rn | Rt", "hex_opcode": "0x48007C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stnp",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Pair (Non-temporal)",
+      "summary": "Stores two registers, hinting non-temporal data.",
+      "syntax": "STNP <Wt1>, <Wt2>, [<Xn|SP>, #<imm>]",
+      "encoding": { "format": "Load/Store Pair", "binary_pattern": "00101000 | 00 | 0 | imm7 | Rt2 | Rn | Rt1", "hex_opcode": "0x28000000" },
+      "operands": [{ "name": "Wt1", "desc": "Src 1" }, { "name": "Wt2", "desc": "Src 2" }, { "name": "Xn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stp",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Pair of Registers",
+      "summary": "Stores two 32-bit registers.",
+      "syntax": "STP <Wt1>, <Wt2>, [<Xn|SP>, #<imm>]",
+      "encoding": { "format": "Load/Store Pair", "binary_pattern": "00101000 | 00 | 0 | imm7 | Rt2 | Rn | Rt1", "hex_opcode": "0x29000000" },
+      "operands": [{ "name": "Wt1", "desc": "Src 1" }, { "name": "Wt2", "desc": "Src 2" }, { "name": "Xn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stp",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Pair of Registers (64-bit)",
+      "summary": "Stores two 64-bit registers.",
+      "syntax": "STP <Xt1>, <Xt2>, [<Xn|SP>, #<imm>]",
+      "encoding": { "format": "Load/Store Pair", "binary_pattern": "10101000 | 00 | 0 | imm7 | Rt2 | Rn | Rt1", "hex_opcode": "0xA9000000" },
+      "operands": [{ "name": "Xt1", "desc": "Src 1" }, { "name": "Xt2", "desc": "Src 2" }, { "name": "Xn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "str",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register (Immediate)",
+      "summary": "Stores a register to memory (Immediate offset).",
+      "syntax": "STR <Wt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store Imm", "binary_pattern": "10111001 | 00 | imm12 | Rn | Rt", "hex_opcode": "0xB9000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "str",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register (Register)",
+      "summary": "Stores a register to memory (Register offset).",
+      "syntax": "STR <Wt>, [<Xn|SP>, <R><m> {, <extend> <amount>}]",
+      "encoding": { "format": "Load/Store Reg", "binary_pattern": "10111000 | 001 | Rm | option | S | 10 | Rn | Rt", "hex_opcode": "0xB8200800" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Rm", "desc": "Offset Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "strb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Byte (Immediate)",
+      "summary": "Stores the low byte of a register.",
+      "syntax": "STRB <Wt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111001 | 00 | imm12 | Rn | Rt", "hex_opcode": "0x39000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "strb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Byte (Register)",
+      "summary": "Stores the low byte of a register using register offset.",
+      "syntax": "STRB <Wt>, [<Xn|SP>, <R><m> {, <extend> <amount>}]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111000 | 001 | Rm | option | S | 10 | Rn | Rt", "hex_opcode": "0x38200800" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Rm", "desc": "Offset Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "strh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Halfword (Immediate)",
+      "summary": "Stores the low halfword of a register.",
+      "syntax": "STRH <Wt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01111001 | 00 | imm12 | Rn | Rt", "hex_opcode": "0x79000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "strh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Halfword (Register)",
+      "summary": "Stores the low halfword of a register using register offset.",
+      "syntax": "STRH <Wt>, [<Xn|SP>, <R><m> {, <extend> <amount>}]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01111000 | 001 | Rm | option | S | 10 | Rn | Rt", "hex_opcode": "0x78200800" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "Rm", "desc": "Offset Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sttr",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register (Unprivileged)",
+      "summary": "Stores a register as if in EL0 (User mode).",
+      "syntax": "STTR <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111000 | 000 | imm9 | 00 | Rn | Rt", "hex_opcode": "0xB8000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sttrb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Byte (Unprivileged)",
+      "summary": "Stores a byte as if in EL0.",
+      "syntax": "STTRB <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111000 | 000 | imm9 | 00 | Rn | Rt", "hex_opcode": "0x38000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sttrh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Halfword (Unprivileged)",
+      "summary": "Stores a halfword as if in EL0.",
+      "syntax": "STTRH <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01111000 | 000 | imm9 | 00 | Rn | Rt", "hex_opcode": "0x78000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stur",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register (Unscaled)",
+      "summary": "Stores a register using an unscaled immediate offset.",
+      "syntax": "STUR <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111000 | 000 | imm9 | 00 | Rn | Rt", "hex_opcode": "0xB8000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sturb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Byte (Unscaled)",
+      "summary": "Stores a byte using an unscaled immediate offset.",
+      "syntax": "STURB <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "00111000 | 000 | imm9 | 00 | Rn | Rt", "hex_opcode": "0x38000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sturh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Register Halfword (Unscaled)",
+      "summary": "Stores a halfword using an unscaled immediate offset.",
+      "syntax": "STURH <Wt>, [<Xn|SP>, #<simm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "01111000 | 000 | imm9 | 00 | Rn | Rt", "hex_opcode": "0x78000000" },
+      "operands": [{ "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "simm", "desc": "Offset" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stxr",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Exclusive Register",
+      "summary": "Stores a word if exclusive monitor matches.",
+      "syntax": "STXR <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "10001000 | 000 | 00000 | Rs | 11111 | Rn | Rt", "hex_opcode": "0x88007C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stxrb",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Exclusive Register Byte",
+      "summary": "Stores a byte if exclusive monitor matches.",
+      "syntax": "STXRB <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "00001000 | 000 | 00000 | Rs | 11111 | Rn | Rt", "hex_opcode": "0x08007C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stxrh",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Exclusive Register Halfword",
+      "summary": "Stores a halfword if exclusive monitor matches.",
+      "syntax": "STXRH <Ws>, <Wt>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "01001000 | 000 | 00000 | Rs | 11111 | Rn | Rt", "hex_opcode": "0x48007C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Wt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "stxp",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Exclusive Pair",
+      "summary": "Stores two registers if exclusive monitor matches.",
+      "syntax": "STXP <Ws>, <Wt1>, <Wt2>, [<Xn|SP>]",
+      "encoding": { "format": "Load/Store Excl", "binary_pattern": "10001000 | 001 | 00000 | Rs | Rt2 | Rn | Rt1", "hex_opcode": "0x88207C00" },
+      "operands": [{ "name": "Ws", "desc": "Status" }, { "name": "Wt1", "desc": "Src 1" }, { "name": "Wt2", "desc": "Src 2" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "Base (Atomic)"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract (Extended Register)",
+      "summary": "Subtracts extended register from register.",
+      "syntax": "SUB <Wd|Wsp>, <Wn|Wsp>, <Wm> {, <extend> {#<amount>}}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01001011 | 001 | Wm | option | imm3 | Wn | Wd", "hex_opcode": "0x4B200000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract (Immediate)",
+      "summary": "Subtracts immediate from register.",
+      "syntax": "SUB <Wd|Wsp>, <Wn|Wsp>, #<imm> {, lsl #<shift>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01010001 | sh | imm12 | Wn | Wd", "hex_opcode": "0x51000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "imm", "desc": "Imm" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract (Shifted Register)",
+      "summary": "Subtracts shifted register from register.",
+      "syntax": "SUB <Wd>, <Wn>, <Wm> {, <shift> #<amount>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01001011 | 000 | Wm | imm6 | Wn | Wd", "hex_opcode": "0x4B000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "subs",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract and Set Flags (Extended)",
+      "summary": "Subtracts extended register and updates flags.",
+      "syntax": "SUBS <Wd>, <Wn|Wsp>, <Wm> {, <extend> {#<amount>}}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01101011 | 001 | Wm | option | imm3 | Wn | Wd", "hex_opcode": "0x6B200000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "subs",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract and Set Flags (Immediate)",
+      "summary": "Subtracts immediate and updates flags.",
+      "syntax": "SUBS <Wd>, <Wn|Wsp>, #<imm> {, lsl #<shift>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01110001 | sh | imm12 | Wn | Wd", "hex_opcode": "0x71000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "imm", "desc": "Imm" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "subs",
+      "architecture": "ARMv8-A",
+      "full_name": "Subtract and Set Flags (Shifted)",
+      "summary": "Subtracts shifted register and updates flags.",
+      "syntax": "SUBS <Wd>, <Wn>, <Wm> {, <shift> #<amount>}",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01101011 | 000 | Wm | imm6 | Wn | Wd", "hex_opcode": "0x6B000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "svc",
+      "architecture": "ARMv8-A",
+      "full_name": "Supervisor Call",
+      "summary": "Causes a Supervisor Call exception (to EL1).",
+      "syntax": "SVC #<imm>",
+      "encoding": { "format": "Exception", "binary_pattern": "11010100 | 000 | imm16 | 00001", "hex_opcode": "0xD4000001" },
+      "operands": [{ "name": "imm", "desc": "ID" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sys",
+      "architecture": "ARMv8-A",
+      "full_name": "System Instruction",
+      "summary": "Executes a system instruction (cache/TLB maintenance).",
+      "syntax": "SYS #<op1>, Cn, Cm, #<op2> {, <Xt>}",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | op1 | CRn | CRm | op2 | Rt", "hex_opcode": "0xD5080000" },
+      "operands": [{ "name": "op1", "desc": "Op1" }, { "name": "Cn", "desc": "CRn" }, { "name": "Cm", "desc": "CRm" }, { "name": "op2", "desc": "Op2" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "tbnz",
+      "architecture": "ARMv8-A",
+      "full_name": "Test Bit Not Zero",
+      "summary": "Branches if specified bit is 1.",
+      "syntax": "TBNZ <Wt|Xt>, #<imm>, <label>",
+      "encoding": { "format": "Branch", "binary_pattern": "00110111 | b5 | imm14 | Rt", "hex_opcode": "0x37000000" },
+      "operands": [{ "name": "Wt", "desc": "Reg" }, { "name": "imm", "desc": "Bit" }, { "name": "label", "desc": "Label" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "tbz",
+      "architecture": "ARMv8-A",
+      "full_name": "Test Bit Zero",
+      "summary": "Branches if specified bit is 0.",
+      "syntax": "TBZ <Wt|Xt>, #<imm>, <label>",
+      "encoding": { "format": "Branch", "binary_pattern": "00110110 | b5 | imm14 | Rt", "hex_opcode": "0x36000000" },
+      "operands": [{ "name": "Wt", "desc": "Reg" }, { "name": "imm", "desc": "Bit" }, { "name": "label", "desc": "Label" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ubfm",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Bitfield Move",
+      "summary": "Extracts/Inserts bitfield (Zero Extend).",
+      "syntax": "UBFM <Wd>, <Wn>, #<immr>, #<imms>",
+      "encoding": { "format": "Bitfield", "binary_pattern": "01010011 | 0 | immr | imms | Rn | Rd", "hex_opcode": "0x53000000" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Src" }, { "name": "immr", "desc": "Rotate" }, { "name": "imms", "desc": "Size" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "udiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Divide",
+      "summary": "Divides two unsigned registers.",
+      "syntax": "UDIV <Wd>, <Wn>, <Wm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "00011010 | 110 | Rm | 000011 | Rn | Rd", "hex_opcode": "0x1AC00800" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Dividend" }, { "name": "Wm", "desc": "Divisor" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "umaddl",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Multiply-Add Long",
+      "summary": "Multiplies two 32-bit regs, adds to 64-bit reg (Unsigned).",
+      "syntax": "UMADDL <Xd>, <Wn>, <Wm>, <Xa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011 | 101 | Rm | 0 | Ra | Rn | Rd", "hex_opcode": "0x9BA00000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }, { "name": "Xa", "desc": "Addend" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "umsubl",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Multiply-Subtract Long",
+      "summary": "Calculates (Xa - (Wn * Wm)) (Unsigned 64-bit).",
+      "syntax": "UMSUBL <Xd>, <Wn>, <Wm>, <Xa>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011 | 101 | Rm | 1 | Ra | Rn | Rd", "hex_opcode": "0x9BA08000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Wn", "desc": "Src 1" }, { "name": "Wm", "desc": "Src 2" }, { "name": "Xa", "desc": "Minuend" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "umulh",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Multiply High",
+      "summary": "Multiplies two 64-bit registers, keeps high 64 bits (Unsigned).",
+      "syntax": "UMULH <Xd>, <Xn>, <Xm>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "10011011 | 110 | Rm | 0 | 11111 | Rn | Rd", "hex_opcode": "0x9BC07C00" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Src 1" }, { "name": "Xm", "desc": "Src 2" }],
+      "extension": "Base"
+    }
+  ]
+}

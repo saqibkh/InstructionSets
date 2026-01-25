@@ -1,0 +1,474 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "fabs",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Absolute Value (Scalar)",
+      "summary": "Calculates the absolute value of a float.",
+      "syntax": "FABS <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100000 | 100000 | Rn | Rd", "hex_opcode": "0x1E20C000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Add (Scalar)",
+      "summary": "Adds two floating-point values.",
+      "syntax": "FADD <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 001000 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E202800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Subtract (Scalar)",
+      "summary": "Subtracts two floating-point values.",
+      "syntax": "FSUB <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 001100 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E203800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Multiply (Scalar)",
+      "summary": "Multiplies two floating-point values.",
+      "syntax": "FMUL <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 000000 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E200800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Divide (Scalar)",
+      "summary": "Divides two floating-point values.",
+      "syntax": "FDIV <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 000100 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E201800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Dividend" }, { "name": "Vm", "desc": "Divisor" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Fused Multiply-Add (Scalar)",
+      "summary": "Calculates (Vn * Vm) + Va without intermediate rounding.",
+      "syntax": "FMADD <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>, <Ha|Sa|Da>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011111 | type | Rm | 0 | Ra | Rn | Rd", "hex_opcode": "0x1F000000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }, { "name": "Va", "desc": "Addend" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Fused Multiply-Subtract (Scalar)",
+      "summary": "Calculates (Vn * Vm) - Va.",
+      "syntax": "FMSUB <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>, <Ha|Sa|Da>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011111 | type | Rm | 1 | Ra | Rn | Rd", "hex_opcode": "0x1F008000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }, { "name": "Va", "desc": "Subtrahend" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fnmadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Fused Negated Multiply-Add (Scalar)",
+      "summary": "Calculates -((Vn * Vm) + Va).",
+      "syntax": "FNMADD <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>, <Ha|Sa|Da>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011111 | type | Rm | 0 | Ra | Rn | Rd", "hex_opcode": "0x1F200000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }, { "name": "Va", "desc": "Addend" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fnmsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Fused Negated Multiply-Subtract (Scalar)",
+      "summary": "Calculates -((Vn * Vm) - Va).",
+      "syntax": "FNMSUB <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>, <Ha|Sa|Da>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011111 | type | Rm | 1 | Ra | Rn | Rd", "hex_opcode": "0x1F208000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }, { "name": "Va", "desc": "Subtrahend" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fnmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Negated Multiply (Scalar)",
+      "summary": "Calculates -(Vn * Vm).",
+      "syntax": "FNMUL <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100000 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E208800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Square Root (Scalar)",
+      "summary": "Calculates square root.",
+      "syntax": "FSQRT <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100001 | 100000 | Rn | Rd", "hex_opcode": "0x1E21C000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fneg",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Negate (Scalar)",
+      "summary": "Negates the value (flips sign bit).",
+      "syntax": "FNEG <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100000 | 100000 | Rn | Rd", "hex_opcode": "0x1E204000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmax",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Maximum (Scalar)",
+      "summary": "Returns the larger of two values.",
+      "syntax": "FMAX <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 001000 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E204800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmin",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Minimum (Scalar)",
+      "summary": "Returns the smaller of two values.",
+      "syntax": "FMIN <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 001000 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E205800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmaxnm",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Max Number (Scalar)",
+      "summary": "Returns larger value, handling NaNs according to IEEE 754-2008 'maxNum'.",
+      "syntax": "FMAXNM <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 001100 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E206800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fminnm",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Min Number (Scalar)",
+      "summary": "Returns smaller value, handling NaNs according to IEEE 754-2008 'minNum'.",
+      "syntax": "FMINNM <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 001100 | Rm | 001000 | Rn | Rd", "hex_opcode": "0x1E207800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Compare (Scalar)",
+      "summary": "Compares two floating-point values and updates process flags (NZCV).",
+      "syntax": "FCMP <Hn|Sn|Dn>, <Hm|Sm|Dm|#0.0>",
+      "encoding": { "format": "FP Compare", "binary_pattern": "00011110 | type | 001000 | Rm | 001000 | Rn | 00000", "hex_opcode": "0x1E202000" },
+      "operands": [{ "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fccmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Conditional Compare (Scalar)",
+      "summary": "Compares floats only if condition is met, else sets flags to immediate.",
+      "syntax": "FCCMP <Hn|Sn|Dn>, <Hm|Sm|Dm>, #<nzcv>, <cond>",
+      "encoding": { "format": "FP Compare", "binary_pattern": "00011110 | type | 001000 | Rm | cond | 00 | Rn | nzcv", "hex_opcode": "0x1E200400" },
+      "operands": [{ "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }, { "name": "nzcv", "desc": "Def Flags" }, { "name": "cond", "desc": "Condition" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcsel",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Conditional Select (Scalar)",
+      "summary": "Selects one of two floats based on condition flags.",
+      "syntax": "FCSEL <Hd|Sd|Dd>, <Hn|Sn|Dn>, <Hm|Sm|Dm>, <cond>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 001100 | Rm | cond | 11 | Rn | Rd", "hex_opcode": "0x1E200C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src True" }, { "name": "Vm", "desc": "Src False" }, { "name": "cond", "desc": "Condition" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvt",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert (Scalar)",
+      "summary": "Converts between float precisions (e.g., Half <-> Single <-> Double).",
+      "syntax": "FCVT <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001000 | 10 | 00000 | Rn | Rd", "hex_opcode": "0x1E220000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtas",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Signed Integer (Nearest)",
+      "summary": "Converts float to signed integer, rounding to nearest.",
+      "syntax": "FCVTAS <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001000 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E200000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtau",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Unsigned Integer (Nearest)",
+      "summary": "Converts float to unsigned integer, rounding to nearest.",
+      "syntax": "FCVTAU <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001000 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E210000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtms",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Signed Integer (Minus Infinity)",
+      "summary": "Converts float to signed integer, rounding towards minus infinity (Floor).",
+      "syntax": "FCVTMS <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001100 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E300000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtmu",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Unsigned Integer (Minus Infinity)",
+      "summary": "Converts float to unsigned integer, rounding towards minus infinity.",
+      "syntax": "FCVTMU <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001100 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E310000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtns",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Signed Integer (Nearest, ties to Even)",
+      "summary": "Converts float to signed integer, rounding to nearest (bankers' round).",
+      "syntax": "FCVTNS <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001000 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E200000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtnu",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Unsigned Integer (Nearest, ties to Even)",
+      "summary": "Converts float to unsigned integer, rounding to nearest (bankers' round).",
+      "syntax": "FCVTNU <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001000 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E210000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtps",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Signed Integer (Plus Infinity)",
+      "summary": "Converts float to signed integer, rounding towards plus infinity (Ceil).",
+      "syntax": "FCVTPS <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001010 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E280000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtpu",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Unsigned Integer (Plus Infinity)",
+      "summary": "Converts float to unsigned integer, rounding towards plus infinity.",
+      "syntax": "FCVTPU <Wd|Xd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001010 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E290000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtzs",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Signed Integer (Zero)",
+      "summary": "Converts float to signed integer, rounding towards zero (Truncate).",
+      "syntax": "FCVTZS <Wd|Xd>, <Hn|Sn|Dn> {, #<fbits>}",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001110 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E380000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }, { "name": "fbits", "desc": "Fixed Point" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fcvtzu",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Convert to Unsigned Integer (Zero)",
+      "summary": "Converts float to unsigned integer, rounding towards zero (Truncate).",
+      "syntax": "FCVTZU <Wd|Xd>, <Hn|Sn|Dn> {, #<fbits>}",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 001110 | 00 | 00000 | Rn | Rd", "hex_opcode": "0x1E390000" },
+      "operands": [{ "name": "Rd", "desc": "Int Dest" }, { "name": "Vn", "desc": "Float Src" }, { "name": "fbits", "desc": "Fixed Point" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "scvtf",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Integer Convert to Floating-Point",
+      "summary": "Converts signed integer (GPR) to floating-point.",
+      "syntax": "SCVTF <Hd|Sd|Dd>, <Wn|Xn> {, #<fbits>}",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 000000 | 10 | 00000 | Rn | Rd", "hex_opcode": "0x1E220000" },
+      "operands": [{ "name": "Vd", "desc": "Float Dest" }, { "name": "Rn", "desc": "Int Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "ucvtf",
+      "architecture": "ARMv8-A",
+      "full_name": "Unsigned Integer Convert to Floating-Point",
+      "summary": "Converts unsigned integer (GPR) to floating-point.",
+      "syntax": "UCVTF <Hd|Sd|Dd>, <Wn|Xn> {, #<fbits>}",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 000000 | 11 | 00000 | Rn | Rd", "hex_opcode": "0x1E230000" },
+      "operands": [{ "name": "Vd", "desc": "Float Dest" }, { "name": "Rn", "desc": "Int Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "frinta",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to Integral (Nearest)",
+      "summary": "Rounds float to nearest integral value (ties away from zero).",
+      "syntax": "FRINTA <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100110 | 100000 | Rn | Rd", "hex_opcode": "0x1E264000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "frinti",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to Integral (Current)",
+      "summary": "Rounds float to integral value using current FPCR rounding mode.",
+      "syntax": "FRINTI <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100111 | 100000 | Rn | Rd", "hex_opcode": "0x1E27C000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "frintm",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to Integral (Minus Infinity)",
+      "summary": "Rounds float to integral value towards minus infinity (Floor).",
+      "syntax": "FRINTM <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100101 | 100000 | Rn | Rd", "hex_opcode": "0x1E254000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "frintn",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to Integral (Nearest Even)",
+      "summary": "Rounds float to integral value nearest, ties to even.",
+      "syntax": "FRINTN <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100100 | 100000 | Rn | Rd", "hex_opcode": "0x1E244000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "frintp",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to Integral (Plus Infinity)",
+      "summary": "Rounds float to integral value towards plus infinity (Ceil).",
+      "syntax": "FRINTP <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100100 | 100000 | Rn | Rd", "hex_opcode": "0x1E24C000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "frintx",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to Integral (Exact)",
+      "summary": "Rounds float to integral value using current mode, raising Inexact exception.",
+      "syntax": "FRINTX <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100111 | 100000 | Rn | Rd", "hex_opcode": "0x1E274000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "frintz",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Round to Integral (Zero)",
+      "summary": "Rounds float to integral value towards zero (Truncate).",
+      "syntax": "FRINTZ <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100101 | 100000 | Rn | Rd", "hex_opcode": "0x1E25C000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Move (Immediate)",
+      "summary": "Moves a floating-point immediate into a scalar register.",
+      "syntax": "FMOV <Hd|Sd|Dd>, #<fimm>",
+      "encoding": { "format": "FP Immediate", "binary_pattern": "00011110 | type | 001000 | imm8 | Rn | Rd", "hex_opcode": "0x1E201000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "fimm", "desc": "Immediate" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Move (Register)",
+      "summary": "Copies a value from one scalar FP register to another.",
+      "syntax": "FMOV <Hd|Sd|Dd>, <Hn|Sn|Dn>",
+      "encoding": { "format": "FP Data Processing", "binary_pattern": "00011110 | type | 100000 | 100000 | Rn | Rd", "hex_opcode": "0x1E204000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Move (General)",
+      "summary": "Copies bits between a General-Purpose Register (W/X) and FP Register (S/D).",
+      "syntax": "FMOV <Wd|Xd>, <Sn|Dn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 000000 | 11 | 00000 | Rn | Rd", "hex_opcode": "0x1E260000" },
+      "operands": [{ "name": "Rd", "desc": "GPR Dest" }, { "name": "Vn", "desc": "FP Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "fmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-Point Move (General to FP)",
+      "summary": "Copies bits from a General-Purpose Register (W/X) to FP Register (S/D).",
+      "syntax": "FMOV <Sd|Dd>, <Wn|Xn>",
+      "encoding": { "format": "FP Conversion", "binary_pattern": "00011110 | type | 000000 | 11 | 00000 | Rn | Rd", "hex_opcode": "0x1E270000" },
+      "operands": [{ "name": "Vd", "desc": "FP Dest" }, { "name": "Rn", "desc": "GPR Src" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "ldr",
+      "architecture": "ARMv8-A",
+      "full_name": "Load SIMD&FP Register (Immediate)",
+      "summary": "Loads a floating-point/SIMD register from memory.",
+      "syntax": "LDR <Bt|Ht|St|Dt|Qt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111101 | size | imm12 | Rn | Rt", "hex_opcode": "0xBD400000" },
+      "operands": [{ "name": "Vt", "desc": "Dest" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "str",
+      "architecture": "ARMv8-A",
+      "full_name": "Store SIMD&FP Register (Immediate)",
+      "summary": "Stores a floating-point/SIMD register to memory.",
+      "syntax": "STR <Bt|Ht|St|Dt|Qt>, [<Xn|SP>, #<pimm>]",
+      "encoding": { "format": "Load/Store", "binary_pattern": "10111101 | size | imm12 | Rn | Rt", "hex_opcode": "0xBD000000" },
+      "operands": [{ "name": "Vt", "desc": "Src" }, { "name": "Xn", "desc": "Base" }, { "name": "pimm", "desc": "Offset" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "ldp",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Pair SIMD&FP Registers",
+      "summary": "Loads two floating-point/SIMD registers.",
+      "syntax": "LDP <St1|Dt1|Qt1>, <St2|Dt2|Qt2>, [<Xn|SP>, #<imm>]",
+      "encoding": { "format": "Load/Store Pair", "binary_pattern": "00101101 | 01 | 0 | imm7 | Rt2 | Rn | Rt1", "hex_opcode": "0x2D400000" },
+      "operands": [{ "name": "Vt1", "desc": "Dest 1" }, { "name": "Vt2", "desc": "Dest 2" }, { "name": "Xn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "Floating Point"
+    },
+    {
+      "mnemonic": "stp",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Pair SIMD&FP Registers",
+      "summary": "Stores two floating-point/SIMD registers.",
+      "syntax": "STP <St1|Dt1|Qt1>, <St2|Dt2|Qt2>, [<Xn|SP>, #<imm>]",
+      "encoding": { "format": "Load/Store Pair", "binary_pattern": "00101101 | 00 | 0 | imm7 | Rt2 | Rn | Rt1", "hex_opcode": "0x2D000000" },
+      "operands": [{ "name": "Vt1", "desc": "Src 1" }, { "name": "Vt2", "desc": "Src 2" }, { "name": "Xn", "desc": "Base" }, { "name": "imm", "desc": "Offset" }],
+      "extension": "Floating Point"
+    }
+  ]
+}

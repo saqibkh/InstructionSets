@@ -1,0 +1,614 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "add",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add (Integer)",
+      "summary": "Adds corresponding elements in two vectors.",
+      "syntax": "ADD <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 10000 | Rm | 1000 | Rn | Rd", "hex_opcode": "0x0E208400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Subtract (Integer)",
+      "summary": "Subtracts elements of Vm from Vn.",
+      "syntax": "SUB <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 10000 | Rm | 1000 | Rn | Rd", "hex_opcode": "0x2E208400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "mul",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply (Integer)",
+      "summary": "Multiplies corresponding elements in two vectors.",
+      "syntax": "MUL <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 10011 | Rm | 1001 | Rn | Rd", "hex_opcode": "0x0E209C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "mla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply-Accumulate",
+      "summary": "Multiplies elements and adds to destination (Vd = Vd + Vn * Vm).",
+      "syntax": "MLA <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 10010 | Rm | 1001 | Rn | Rd", "hex_opcode": "0x0E209400" },
+      "operands": [{ "name": "Vd", "desc": "Dest/Acc" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "mls",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Multiply-Subtract",
+      "summary": "Multiplies elements and subtracts from destination (Vd = Vd - Vn * Vm).",
+      "syntax": "MLS <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 10010 | Rm | 1001 | Rn | Rd", "hex_opcode": "0x2E209400" },
+      "operands": [{ "name": "Vd", "desc": "Dest/Acc" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "pmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Polynomial Multiply",
+      "summary": "Performs polynomial multiplication over {0,1}.",
+      "syntax": "PMUL <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 10011 | Rm | 1001 | Rn | Rd", "hex_opcode": "0x2E209C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "and",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise AND",
+      "summary": "Bitwise AND of two vectors.",
+      "syntax": "AND <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 00 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x0E201C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "orr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise OR",
+      "summary": "Bitwise OR of two vectors.",
+      "syntax": "ORR <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 10 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x0EA01C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "eor",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise Exclusive OR",
+      "summary": "Bitwise XOR of two vectors.",
+      "syntax": "EOR <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | 00 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x2E201C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "bic",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise Bit Clear",
+      "summary": "ANDs Vd with NOT of Vm.",
+      "syntax": "BIC <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 01 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x0E601C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "orn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise OR NOT",
+      "summary": "ORs Vd with NOT of Vm.",
+      "syntax": "ORN <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 11 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x0EE01C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "mov",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Move (Register)",
+      "summary": "Copies a vector register (Alias for ORR Vd, Vn, Vn).",
+      "syntax": "MOV <Vd>.<T>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Alias", "binary_pattern": "0 | Q | 001110 | 10 | 1 | Rn | 0001 | 1 | Rn | Rd", "hex_opcode": "0x0EA01C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "bsl",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise Select",
+      "summary": "Selects bits from Vn or Vm based on Vd (mask). (Vd = (Vd & Vn) | (~Vd & Vm)).",
+      "syntax": "BSL <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | 01 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x2E601C00" },
+      "operands": [{ "name": "Vd", "desc": "Mask/Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "bit",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise Insert if True",
+      "summary": "Inserts bits from Vn into Vd where Vm (mask) is 1.",
+      "syntax": "BIT <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | 10 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x2EA01C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }, { "name": "Vm", "desc": "Mask" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "bif",
+      "architecture": "ARMv8-A",
+      "full_name": "Bitwise Insert if False",
+      "summary": "Inserts bits from Vn into Vd where Vm (mask) is 0.",
+      "syntax": "BIF <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | 11 | 1 | Rm | 0001 | 1 | Rn | Rd", "hex_opcode": "0x2EE01C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }, { "name": "Vm", "desc": "Mask" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Add",
+      "summary": "Adds elements of two floating-point vectors.",
+      "syntax": "FADD <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 0 | sz | 1 | Rm | 1101 | 0 | Rn | Rd", "hex_opcode": "0x0E20D400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Subtract",
+      "summary": "Subtracts elements of floating-point vectors.",
+      "syntax": "FSUB <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 1 | sz | 1 | Rm | 1101 | 0 | Rn | Rd", "hex_opcode": "0x0E20D400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Multiply",
+      "summary": "Multiplies elements of floating-point vectors.",
+      "syntax": "FMUL <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | 0 | sz | 1 | Rm | 1101 | 1 | Rn | Rd", "hex_opcode": "0x2E20DC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Divide",
+      "summary": "Divides elements of floating-point vectors.",
+      "syntax": "FDIV <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | 0 | sz | 1 | Rm | 1111 | 1 | Rn | Rd", "hex_opcode": "0x2E20FC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Dividend" }, { "name": "Vm", "desc": "Divisor" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fmax",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Maximum",
+      "summary": "Compares and returns the larger value per element.",
+      "syntax": "FMAX <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 0 | sz | 1 | Rm | 1111 | 0 | Rn | Rd", "hex_opcode": "0x0E20F400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fmin",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Minimum",
+      "summary": "Compares and returns the smaller value per element.",
+      "syntax": "FMIN <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 1 | sz | 1 | Rm | 1111 | 0 | Rn | Rd", "hex_opcode": "0x0EA0F400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fmla",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Multiply-Accumulate",
+      "summary": "Multiplies and adds to destination (Vd = Vd + Vn * Vm).",
+      "syntax": "FMLA <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 0 | sz | 1 | Rm | 1100 | 1 | Rn | Rd", "hex_opcode": "0x0E20CC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest/Acc" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fmls",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Multiply-Subtract",
+      "summary": "Multiplies and subtracts from destination (Vd = Vd - Vn * Vm).",
+      "syntax": "FMLS <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | 0 | sz | 1 | Rm | 1100 | 1 | Rn | Rd", "hex_opcode": "0x0EA0CC00" },
+      "operands": [{ "name": "Vd", "desc": "Dest/Acc" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Square Root",
+      "summary": "Calculates square root for each element.",
+      "syntax": "FSQRT <Vd>.<T>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Two Register", "binary_pattern": "0 | Q | 101110 | 1 | sz | 10000 | 11111 | 1 | Rn | Rd", "hex_opcode": "0x2EA1F800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fabs",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Absolute Value",
+      "summary": "Calculates absolute value for each element.",
+      "syntax": "FABS <Vd>.<T>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Two Register", "binary_pattern": "0 | Q | 001110 | 1 | sz | 10000 | 01111 | 1 | Rn | Rd", "hex_opcode": "0x0EA0F800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "fneg",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Floating-Point Negate",
+      "summary": "Negates each element.",
+      "syntax": "FNEG <Vd>.<T>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Two Register", "binary_pattern": "0 | Q | 101110 | 1 | sz | 10000 | 01111 | 1 | Rn | Rd", "hex_opcode": "0x2EA0F800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "dup",
+      "architecture": "ARMv8-A",
+      "full_name": "Duplicate Vector Element (Scalar)",
+      "summary": "Duplicates a general-purpose register to all vector elements.",
+      "syntax": "DUP <Vd>.<T>, <R><n>",
+      "encoding": { "format": "SIMD Copy", "binary_pattern": "0 | Q | 001110 | 000 | imm5 | 00001 | Rn | Rd", "hex_opcode": "0x0E000400" },
+      "operands": [{ "name": "Vd", "desc": "Dest Vector" }, { "name": "Rn", "desc": "Src GPR" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "dup",
+      "architecture": "ARMv8-A",
+      "full_name": "Duplicate Vector Element (Element)",
+      "summary": "Duplicates a vector element to all elements in destination.",
+      "syntax": "DUP <Vd>.<T>, <Vn>.<Ts>[<index>]",
+      "encoding": { "format": "SIMD Copy", "binary_pattern": "0 | Q | 001110 | 000 | imm5 | 00001 | Rn | Rd", "hex_opcode": "0x0E000400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src Vector" }, { "name": "index", "desc": "Index" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "ins",
+      "architecture": "ARMv8-A",
+      "full_name": "Insert Vector Element (General)",
+      "summary": "Moves data from a GPR to a specific vector element.",
+      "syntax": "INS <Vd>.<Ts>[<index>], <Rn>",
+      "encoding": { "format": "SIMD Copy", "binary_pattern": "01001110 | 000 | imm5 | 00011 | Rn | Rd", "hex_opcode": "0x4E001C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "index", "desc": "Index" }, { "name": "Rn", "desc": "Src GPR" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "mov",
+      "architecture": "ARMv8-A",
+      "full_name": "Move Element to Element",
+      "summary": "Moves a vector element to another vector element (Alias for INS).",
+      "syntax": "MOV <Vd>.<Ts>[<index1>], <Vn>.<Ts>[<index2>]",
+      "encoding": { "format": "SIMD Copy", "binary_pattern": "01101110 | 000 | imm5 | 00001 | Rn | Rd", "hex_opcode": "0x6E000400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "index1", "desc": "Dst Index" }, { "name": "Vn", "desc": "Src" }, { "name": "index2", "desc": "Src Index" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "abs",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Absolute Value",
+      "summary": "Calculates absolute value of integer elements.",
+      "syntax": "ABS <Vd>.<T>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Two Register", "binary_pattern": "0 | Q | 001110 | size | 10000 | 01011 | 1 | Rn | Rd", "hex_opcode": "0x0E20B800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "neg",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Negate",
+      "summary": "Negates integer elements.",
+      "syntax": "NEG <Vd>.<T>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Two Register", "binary_pattern": "0 | Q | 101110 | size | 10000 | 01011 | 1 | Rn | Rd", "hex_opcode": "0x2E20B800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "mvn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Bitwise NOT",
+      "summary": "Bitwise NOT of a vector.",
+      "syntax": "MVN <Vd>.<T>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Two Register", "binary_pattern": "0 | Q | 101110 | 00 | 10000 | 01011 | 1 | Rn | Rd", "hex_opcode": "0x2E205800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "smax",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Signed Maximum",
+      "summary": "Returns larger signed integer per element.",
+      "syntax": "SMAX <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 01100 | Rm | 0100 | Rn | Rd", "hex_opcode": "0x0E206400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "smin",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Signed Minimum",
+      "summary": "Returns smaller signed integer per element.",
+      "syntax": "SMIN <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 01101 | Rm | 0100 | Rn | Rd", "hex_opcode": "0x0E206800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "umax",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned Maximum",
+      "summary": "Returns larger unsigned integer per element.",
+      "syntax": "UMAX <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 01100 | Rm | 0100 | Rn | Rd", "hex_opcode": "0x2E206400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "umin",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned Minimum",
+      "summary": "Returns smaller unsigned integer per element.",
+      "syntax": "UMIN <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 01101 | Rm | 0100 | Rn | Rd", "hex_opcode": "0x2E206800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "sqadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Signed Saturating Add",
+      "summary": "Adds signed integers with saturation.",
+      "syntax": "SQADD <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 00001 | Rm | 0000 | Rn | Rd", "hex_opcode": "0x0E200C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "uqadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned Saturating Add",
+      "summary": "Adds unsigned integers with saturation.",
+      "syntax": "UQADD <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 00001 | Rm | 0000 | Rn | Rd", "hex_opcode": "0x2E200C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "sqsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Signed Saturating Subtract",
+      "summary": "Subtracts signed integers with saturation.",
+      "syntax": "SQSUB <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 00101 | Rm | 0000 | Rn | Rd", "hex_opcode": "0x0E202C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "uqsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned Saturating Subtract",
+      "summary": "Subtracts unsigned integers with saturation.",
+      "syntax": "UQSUB <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 00101 | Rm | 0000 | Rn | Rd", "hex_opcode": "0x2E202C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "shl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Shift Left (Immediate)",
+      "summary": "Shifts elements left by immediate value.",
+      "syntax": "SHL <Vd>.<T>, <Vn>.<T>, #<shift>",
+      "encoding": { "format": "SIMD Shift Imm", "binary_pattern": "0 | Q | 001111 | 0 | imm | 0101 | 01 | Rn | Rd", "hex_opcode": "0x0F005400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }, { "name": "shift", "desc": "Imm" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "ushr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned Shift Right",
+      "summary": "Shifts elements right (logical).",
+      "syntax": "USHR <Vd>.<T>, <Vn>.<T>, #<shift>",
+      "encoding": { "format": "SIMD Shift Imm", "binary_pattern": "0 | Q | 101111 | 0 | imm | 0000 | 01 | Rn | Rd", "hex_opcode": "0x2F000400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }, { "name": "shift", "desc": "Imm" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "sshr",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Signed Shift Right",
+      "summary": "Shifts elements right (arithmetic/sign-extending).",
+      "syntax": "SSHR <Vd>.<T>, <Vn>.<T>, #<shift>",
+      "encoding": { "format": "SIMD Shift Imm", "binary_pattern": "0 | Q | 001111 | 0 | imm | 0000 | 01 | Rn | Rd", "hex_opcode": "0x0F000400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }, { "name": "shift", "desc": "Imm" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "cmgt",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Greater Than",
+      "summary": "Compares elements (Vn > Vm) and sets bits to all 1s or 0s.",
+      "syntax": "CMGT <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 00110 | Rm | 0011 | Rn | Rd", "hex_opcode": "0x0E203400" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "cmeq",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Equal",
+      "summary": "Compares elements (Vn == Vm) and sets bits to all 1s or 0s.",
+      "syntax": "CMEQ <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 101110 | size | 10001 | Rm | 1000 | Rn | Rd", "hex_opcode": "0x2E208C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "cmge",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Greater Than or Equal",
+      "summary": "Compares elements (Vn >= Vm).",
+      "syntax": "CMGE <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 00111 | Rm | 0011 | Rn | Rd", "hex_opcode": "0x0E203C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "cmtst",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Compare Test",
+      "summary": "Tests if any bits match ((Vn & Vm) != 0).",
+      "syntax": "CMTST <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Three Register", "binary_pattern": "0 | Q | 001110 | size | 10001 | Rm | 1000 | Rn | Rd", "hex_opcode": "0x0E208C00" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "addv",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Add Across",
+      "summary": "Adds all elements of the vector into a scalar result.",
+      "syntax": "ADDV <V><d>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Across Lane", "binary_pattern": "0 | Q | 001110 | size | 11000 | 10111 | 10 | Rn | Rd", "hex_opcode": "0x0E31B800" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Vn", "desc": "Src Vector" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "smaxv",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Signed Maximum Across",
+      "summary": "Finds the maximum signed value across the vector.",
+      "syntax": "SMAXV <V><d>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Across Lane", "binary_pattern": "0 | Q | 001110 | size | 11000 | 10101 | 10 | Rn | Rd", "hex_opcode": "0x0E31A800" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Vn", "desc": "Src Vector" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "uminv",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unsigned Minimum Across",
+      "summary": "Finds the minimum unsigned value across the vector.",
+      "syntax": "UMINV <V><d>, <Vn>.<T>",
+      "encoding": { "format": "SIMD Across Lane", "binary_pattern": "0 | Q | 101110 | size | 11000 | 11010 | 10 | Rn | Rd", "hex_opcode": "0x2E31A800" },
+      "operands": [{ "name": "Vd", "desc": "Dest Scalar" }, { "name": "Vn", "desc": "Src Vector" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "zip1",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Zip 1 (Interleave)",
+      "summary": "Interleaves the lower halves of two vectors.",
+      "syntax": "ZIP1 <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Permute", "binary_pattern": "0 | Q | 001110 | size | 0 | Rm | 0011 | 10 | Rn | Rd", "hex_opcode": "0x0E003800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "zip2",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Zip 2 (Interleave)",
+      "summary": "Interleaves the upper halves of two vectors.",
+      "syntax": "ZIP2 <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Permute", "binary_pattern": "0 | Q | 001110 | size | 0 | Rm | 0111 | 10 | Rn | Rd", "hex_opcode": "0x0E007800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "uzp1",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unzip 1",
+      "summary": "De-interleaves lower halves (Selects odd elements).",
+      "syntax": "UZP1 <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Permute", "binary_pattern": "0 | Q | 001110 | size | 0 | Rm | 0001 | 10 | Rn | Rd", "hex_opcode": "0x0E001800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "uzp2",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Unzip 2",
+      "summary": "De-interleaves upper halves (Selects even elements).",
+      "syntax": "UZP2 <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Permute", "binary_pattern": "0 | Q | 001110 | size | 0 | Rm | 0101 | 10 | Rn | Rd", "hex_opcode": "0x0E005800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "trn1",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Transpose 1",
+      "summary": "Transposes elements (Lower).",
+      "syntax": "TRN1 <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Permute", "binary_pattern": "0 | Q | 001110 | size | 0 | Rm | 0010 | 10 | Rn | Rd", "hex_opcode": "0x0E002800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "trn2",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Transpose 2",
+      "summary": "Transposes elements (Upper).",
+      "syntax": "TRN2 <Vd>.<T>, <Vn>.<T>, <Vm>.<T>",
+      "encoding": { "format": "SIMD Permute", "binary_pattern": "0 | Q | 001110 | size | 0 | Rm | 0110 | 10 | Rn | Rd", "hex_opcode": "0x0E006800" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src 1" }, { "name": "Vm", "desc": "Src 2" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "tbl",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Table Lookup",
+      "summary": "Look up elements in a table of vectors using indices.",
+      "syntax": "TBL <Vd>.<T>, { <Vn>.16B, ... }, <Vm>.<T>",
+      "encoding": { "format": "SIMD Table", "binary_pattern": "0 | Q | 001110 | 000 | Rm | 0 | len | 00 | Rn | Rd", "hex_opcode": "0x0E000000" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Table" }, { "name": "Vm", "desc": "Indices" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "xtn",
+      "architecture": "ARMv8-A",
+      "full_name": "Vector Extract Narrow",
+      "summary": "Reads elements, narrows them, and writes to lower half of destination.",
+      "syntax": "XTN <Vd>.<Tb>, <Vn>.<Ta>",
+      "encoding": { "format": "SIMD Shift Imm", "binary_pattern": "0 | 0 | 001111 | 0 | size | 10001 | 00 | Rn | Rd", "hex_opcode": "0x0F001200" },
+      "operands": [{ "name": "Vd", "desc": "Dest" }, { "name": "Vn", "desc": "Src" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "ld1",
+      "architecture": "ARMv8-A",
+      "full_name": "Load Multiple Single Elements",
+      "summary": "Loads one element structure from memory into 1-4 registers.",
+      "syntax": "LD1 { <Vt>.<T>, ... }, [<Xn|SP>]",
+      "encoding": { "format": "SIMD Load/Store", "binary_pattern": "0 | Q | 001101 | 0 | 1 | 000000 | 0 | Rn | Rt", "hex_opcode": "0x0D400000" },
+      "operands": [{ "name": "Vt", "desc": "Dest List" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "NEON (SIMD)"
+    },
+    {
+      "mnemonic": "st1",
+      "architecture": "ARMv8-A",
+      "full_name": "Store Multiple Single Elements",
+      "summary": "Stores one element structure from 1-4 registers to memory.",
+      "syntax": "ST1 { <Vt>.<T>, ... }, [<Xn|SP>]",
+      "encoding": { "format": "SIMD Load/Store", "binary_pattern": "0 | Q | 001101 | 0 | 0 | 000000 | 0 | Rn | Rt", "hex_opcode": "0x0D000000" },
+      "operands": [{ "name": "Vt", "desc": "Src List" }, { "name": "Xn", "desc": "Base" }],
+      "extension": "NEON (SIMD)"
+    }
+  ]
+}

@@ -1,0 +1,2470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The modern, open-source reference for CPU instruction sets (RISC-V, x86, ARM).">
+    <title>ISA Database</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
+
+    
+<div class="container" style="padding-top: 40px;">
+    <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <h1>ARMv8-A</h1>
+            <p>Instruction Set Reference</p>
+        </div>
+        <a href="../" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Back to Home</a>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Mnemonic</th>
+                    <th style="width: 35%;">Name</th>
+                    <th style="width: 15%;">Format</th>
+                    <th style="width: 35%;">Summary</th>
+                </tr>
+            </thead>
+	    <tbody>
+                
+                <tr onclick="window.location='abs/';" style="cursor: pointer;">
+                    <td class="mono">abs</td>
+                    <td style="font-weight: 500;">Vector Absolute Value</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Calculates absolute value of integer elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='adc/';" style="cursor: pointer;">
+                    <td class="mono">adc</td>
+                    <td style="font-weight: 500;">Add with Carry</td>
+                    <td><span class="badge">Data Processing (3-source)</span></td>
+                    <td style="color: var(--text-muted);">Adds two register values and the Carry flag.</td>
+                </tr>
+                
+                <tr onclick="window.location='adc/';" style="cursor: pointer;">
+                    <td class="mono">adc</td>
+                    <td style="font-weight: 500;">Add with Carry (64-bit)</td>
+                    <td><span class="badge">Data Processing (3-source)</span></td>
+                    <td style="color: var(--text-muted);">Adds two 64-bit register values and the Carry flag.</td>
+                </tr>
+                
+                <tr onclick="window.location='adcs/';" style="cursor: pointer;">
+                    <td class="mono">adcs</td>
+                    <td style="font-weight: 500;">Add with Carry and Set Flags</td>
+                    <td><span class="badge">Data Processing (3-source)</span></td>
+                    <td style="color: var(--text-muted);">Adds two register values and Carry, updating NZCV flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='adcs/';" style="cursor: pointer;">
+                    <td class="mono">adcs</td>
+                    <td style="font-weight: 500;">Add with Carry and Set Flags (64-bit)</td>
+                    <td><span class="badge">Data Processing (3-source)</span></td>
+                    <td style="color: var(--text-muted);">Adds two 64-bit register values and Carry, updating NZCV flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add (Extended Register)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds a register value and a sign/zero-extended register value.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add (Extended Register 64-bit)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds a 64-bit register and an extended register value.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add (Immediate)</td>
+                    <td><span class="badge">Data Processing (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Adds a register value and an immediate value.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add (Immediate 64-bit)</td>
+                    <td><span class="badge">Data Processing (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Adds a 64-bit register value and an immediate value.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add (Shifted Register)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds a register value and a shifted register value.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add (Shifted Register 64-bit)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds a 64-bit register value and a shifted register value.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Vector Add (Integer)</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Adds corresponding elements in two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='addp/';" style="cursor: pointer;">
+                    <td class="mono">addp</td>
+                    <td style="font-weight: 500;">Vector Add Pairwise</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Adds adjacent pairs of elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='adds/';" style="cursor: pointer;">
+                    <td class="mono">adds</td>
+                    <td style="font-weight: 500;">Add and Set Flags (Extended Register)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds and updates flags (Extended Register).</td>
+                </tr>
+                
+                <tr onclick="window.location='adds/';" style="cursor: pointer;">
+                    <td class="mono">adds</td>
+                    <td style="font-weight: 500;">Add and Set Flags (Extended Register 64-bit)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds and updates flags (Extended Register 64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='adds/';" style="cursor: pointer;">
+                    <td class="mono">adds</td>
+                    <td style="font-weight: 500;">Add and Set Flags (Immediate)</td>
+                    <td><span class="badge">Data Processing (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Adds immediate and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='adds/';" style="cursor: pointer;">
+                    <td class="mono">adds</td>
+                    <td style="font-weight: 500;">Add and Set Flags (Immediate 64-bit)</td>
+                    <td><span class="badge">Data Processing (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Adds immediate and updates flags (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='adds/';" style="cursor: pointer;">
+                    <td class="mono">adds</td>
+                    <td style="font-weight: 500;">Add and Set Flags (Shifted Register)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds shifted register and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='adds/';" style="cursor: pointer;">
+                    <td class="mono">adds</td>
+                    <td style="font-weight: 500;">Add and Set Flags (Shifted Register 64-bit)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Adds shifted register and updates flags (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='addv/';" style="cursor: pointer;">
+                    <td class="mono">addv</td>
+                    <td style="font-weight: 500;">Vector Add Across</td>
+                    <td><span class="badge">SIMD Across Lane</span></td>
+                    <td style="color: var(--text-muted);">Adds all elements of the vector into a scalar result.</td>
+                </tr>
+                
+                <tr onclick="window.location='adr/';" style="cursor: pointer;">
+                    <td class="mono">adr</td>
+                    <td style="font-weight: 500;">Form PC-relative Address</td>
+                    <td><span class="badge">PC-rel</span></td>
+                    <td style="color: var(--text-muted);">Calculates the address of a label (PC +/- 1MB range).</td>
+                </tr>
+                
+                <tr onclick="window.location='adrp/';" style="cursor: pointer;">
+                    <td class="mono">adrp</td>
+                    <td style="font-weight: 500;">Form PC-relative Address to 4KB Page</td>
+                    <td><span class="badge">PC-rel</span></td>
+                    <td style="color: var(--text-muted);">Calculates page address of a label (PC +/- 4GB range).</td>
+                </tr>
+                
+                <tr onclick="window.location='aesd/';" style="cursor: pointer;">
+                    <td class="mono">aesd</td>
+                    <td style="font-weight: 500;">AES Decrypt</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">Performs one round of AES decryption.</td>
+                </tr>
+                
+                <tr onclick="window.location='aese/';" style="cursor: pointer;">
+                    <td class="mono">aese</td>
+                    <td style="font-weight: 500;">AES Encrypt</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">Performs one round of AES encryption.</td>
+                </tr>
+                
+                <tr onclick="window.location='aesimc/';" style="cursor: pointer;">
+                    <td class="mono">aesimc</td>
+                    <td style="font-weight: 500;">AES Inverse Mix Columns</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">Performs AES Inverse Mix Columns transformation.</td>
+                </tr>
+                
+                <tr onclick="window.location='aesmc/';" style="cursor: pointer;">
+                    <td class="mono">aesmc</td>
+                    <td style="font-weight: 500;">AES Mix Columns</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">Performs AES Mix Columns transformation.</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">Bitwise AND (Immediate)</td>
+                    <td><span class="badge">Logical (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND with logical immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">Bitwise AND (Immediate 64-bit)</td>
+                    <td><span class="badge">Logical (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND with logical immediate (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">Bitwise AND (Shifted Register)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND with shifted register.</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">Bitwise AND (Shifted Register 64-bit)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND with shifted register (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">Vector Bitwise AND</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND of two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='ands/';" style="cursor: pointer;">
+                    <td class="mono">ands</td>
+                    <td style="font-weight: 500;">Bitwise AND and Set Flags (Immediate)</td>
+                    <td><span class="badge">Logical (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND immediate, updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='ands/';" style="cursor: pointer;">
+                    <td class="mono">ands</td>
+                    <td style="font-weight: 500;">Bitwise AND and Set Flags (Immediate 64-bit)</td>
+                    <td><span class="badge">Logical (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND immediate, updates flags (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='ands/';" style="cursor: pointer;">
+                    <td class="mono">ands</td>
+                    <td style="font-weight: 500;">Bitwise AND and Set Flags (Shifted Register)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND shifted register, updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='ands/';" style="cursor: pointer;">
+                    <td class="mono">ands</td>
+                    <td style="font-weight: 500;">Bitwise AND and Set Flags (Shifted Register 64-bit)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">Bitwise AND shifted register, updates flags (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='asr/';" style="cursor: pointer;">
+                    <td class="mono">asr</td>
+                    <td style="font-weight: 500;">Arithmetic Shift Right (Immediate)</td>
+                    <td><span class="badge">Data Processing (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Arithmetic shift right by immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='asr/';" style="cursor: pointer;">
+                    <td class="mono">asr</td>
+                    <td style="font-weight: 500;">Arithmetic Shift Right (Immediate 64-bit)</td>
+                    <td><span class="badge">Data Processing (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">Arithmetic shift right by immediate (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='asr/';" style="cursor: pointer;">
+                    <td class="mono">asr</td>
+                    <td style="font-weight: 500;">Arithmetic Shift Right (Register)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Arithmetic shift right by register value.</td>
+                </tr>
+                
+                <tr onclick="window.location='asr/';" style="cursor: pointer;">
+                    <td class="mono">asr</td>
+                    <td style="font-weight: 500;">Arithmetic Shift Right (Register 64-bit)</td>
+                    <td><span class="badge">Data Processing (Register)</span></td>
+                    <td style="color: var(--text-muted);">Arithmetic shift right by register value (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='b/';" style="cursor: pointer;">
+                    <td class="mono">b</td>
+                    <td style="font-weight: 500;">Branch</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Unconditional branch to label.</td>
+                </tr>
+                
+                <tr onclick="window.location='b.cond/';" style="cursor: pointer;">
+                    <td class="mono">b.cond</td>
+                    <td style="font-weight: 500;">Branch Conditional</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branch if condition is met (e.g., B.EQ, B.NE).</td>
+                </tr>
+                
+                <tr onclick="window.location='bfm/';" style="cursor: pointer;">
+                    <td class="mono">bfm</td>
+                    <td style="font-weight: 500;">Bitfield Move</td>
+                    <td><span class="badge">Bitfield</span></td>
+                    <td style="color: var(--text-muted);">Moves a bitfield from source to destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='bfm/';" style="cursor: pointer;">
+                    <td class="mono">bfm</td>
+                    <td style="font-weight: 500;">Bitfield Move (64-bit)</td>
+                    <td><span class="badge">Bitfield</span></td>
+                    <td style="color: var(--text-muted);">Moves a bitfield from source to destination (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='bic/';" style="cursor: pointer;">
+                    <td class="mono">bic</td>
+                    <td style="font-weight: 500;">Bitwise Bit Clear (Shifted Register)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">ANDs register with NOT of shifted register (AND NOT).</td>
+                </tr>
+                
+                <tr onclick="window.location='bic/';" style="cursor: pointer;">
+                    <td class="mono">bic</td>
+                    <td style="font-weight: 500;">Bitwise Bit Clear (Shifted Register 64-bit)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">ANDs register with NOT of shifted register (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='bic/';" style="cursor: pointer;">
+                    <td class="mono">bic</td>
+                    <td style="font-weight: 500;">Vector Bitwise Bit Clear</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">ANDs Vd with NOT of Vm.</td>
+                </tr>
+                
+                <tr onclick="window.location='bics/';" style="cursor: pointer;">
+                    <td class="mono">bics</td>
+                    <td style="font-weight: 500;">Bitwise Bit Clear and Set Flags</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">Performs BIC and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='bics/';" style="cursor: pointer;">
+                    <td class="mono">bics</td>
+                    <td style="font-weight: 500;">Bitwise Bit Clear and Set Flags (64-bit)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">Performs BIC and updates flags (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='bif/';" style="cursor: pointer;">
+                    <td class="mono">bif</td>
+                    <td style="font-weight: 500;">Bitwise Insert if False</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Inserts bits from Vn into Vd where Vm (mask) is 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='bit/';" style="cursor: pointer;">
+                    <td class="mono">bit</td>
+                    <td style="font-weight: 500;">Bitwise Insert if True</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Inserts bits from Vn into Vd where Vm (mask) is 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='bl/';" style="cursor: pointer;">
+                    <td class="mono">bl</td>
+                    <td style="font-weight: 500;">Branch with Link</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Function call. Branches to label and stores return address in LR (X30).</td>
+                </tr>
+                
+                <tr onclick="window.location='blr/';" style="cursor: pointer;">
+                    <td class="mono">blr</td>
+                    <td style="font-weight: 500;">Branch with Link to Register</td>
+                    <td><span class="badge">Branch (Reg)</span></td>
+                    <td style="color: var(--text-muted);">Indirect function call. Branches to address in Xn and stores return in LR.</td>
+                </tr>
+                
+                <tr onclick="window.location='br/';" style="cursor: pointer;">
+                    <td class="mono">br</td>
+                    <td style="font-weight: 500;">Branch to Register</td>
+                    <td><span class="badge">Branch (Reg)</span></td>
+                    <td style="color: var(--text-muted);">Indirect branch to address in Xn.</td>
+                </tr>
+                
+                <tr onclick="window.location='brk/';" style="cursor: pointer;">
+                    <td class="mono">brk</td>
+                    <td style="font-weight: 500;">Breakpoint</td>
+                    <td><span class="badge">Exception</span></td>
+                    <td style="color: var(--text-muted);">Generates a Breakpoint instruction exception.</td>
+                </tr>
+                
+                <tr onclick="window.location='bsl/';" style="cursor: pointer;">
+                    <td class="mono">bsl</td>
+                    <td style="font-weight: 500;">Bitwise Select</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Selects bits from Vn or Vm based on Vd (mask). (Vd = (Vd & Vn) | (~Vd & Vm)).</td>
+                </tr>
+                
+                <tr onclick="window.location='cbnz/';" style="cursor: pointer;">
+                    <td class="mono">cbnz</td>
+                    <td style="font-weight: 500;">Compare and Branch Not Zero</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branches if register is not zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='cbnz/';" style="cursor: pointer;">
+                    <td class="mono">cbnz</td>
+                    <td style="font-weight: 500;">Compare and Branch Not Zero (64-bit)</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branches if 64-bit register is not zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='cbz/';" style="cursor: pointer;">
+                    <td class="mono">cbz</td>
+                    <td style="font-weight: 500;">Compare and Branch Zero</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branches if register is zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='cbz/';" style="cursor: pointer;">
+                    <td class="mono">cbz</td>
+                    <td style="font-weight: 500;">Compare and Branch Zero (64-bit)</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branches if 64-bit register is zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='ccmn/';" style="cursor: pointer;">
+                    <td class="mono">ccmn</td>
+                    <td style="font-weight: 500;">Conditional Compare Negative (Immediate)</td>
+                    <td><span class="badge">Cond Comp</span></td>
+                    <td style="color: var(--text-muted);">Compares register with negative immediate if condition is true.</td>
+                </tr>
+                
+                <tr onclick="window.location='ccmn/';" style="cursor: pointer;">
+                    <td class="mono">ccmn</td>
+                    <td style="font-weight: 500;">Conditional Compare Negative (Immediate 64-bit)</td>
+                    <td><span class="badge">Cond Comp</span></td>
+                    <td style="color: var(--text-muted);">Compares 64-bit register with negative immediate if condition is true.</td>
+                </tr>
+                
+                <tr onclick="window.location='ccmn/';" style="cursor: pointer;">
+                    <td class="mono">ccmn</td>
+                    <td style="font-weight: 500;">Conditional Compare Negative (Register)</td>
+                    <td><span class="badge">Cond Comp</span></td>
+                    <td style="color: var(--text-muted);">Compares two registers (negated) if condition is true.</td>
+                </tr>
+                
+                <tr onclick="window.location='ccmp/';" style="cursor: pointer;">
+                    <td class="mono">ccmp</td>
+                    <td style="font-weight: 500;">Conditional Compare (Immediate)</td>
+                    <td><span class="badge">Cond Comp</span></td>
+                    <td style="color: var(--text-muted);">Compares register with immediate if condition is true.</td>
+                </tr>
+                
+                <tr onclick="window.location='ccmp/';" style="cursor: pointer;">
+                    <td class="mono">ccmp</td>
+                    <td style="font-weight: 500;">Conditional Compare (Register)</td>
+                    <td><span class="badge">Cond Comp</span></td>
+                    <td style="color: var(--text-muted);">Compares two registers if condition is true.</td>
+                </tr>
+                
+                <tr onclick="window.location='cinc/';" style="cursor: pointer;">
+                    <td class="mono">cinc</td>
+                    <td style="font-weight: 500;">Conditional Increment</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Increment register if condition is true, else copy. (Alias for CSINC)</td>
+                </tr>
+                
+                <tr onclick="window.location='cinv/';" style="cursor: pointer;">
+                    <td class="mono">cinv</td>
+                    <td style="font-weight: 500;">Conditional Invert</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Invert register bits if condition is true, else copy. (Alias for CSINV)</td>
+                </tr>
+                
+                <tr onclick="window.location='cls/';" style="cursor: pointer;">
+                    <td class="mono">cls</td>
+                    <td style="font-weight: 500;">Count Leading Sign Bits</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Counts number of consecutive sign bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='clz/';" style="cursor: pointer;">
+                    <td class="mono">clz</td>
+                    <td style="font-weight: 500;">Count Leading Zeros</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Counts number of consecutive zeros.</td>
+                </tr>
+                
+                <tr onclick="window.location='clz/';" style="cursor: pointer;">
+                    <td class="mono">clz</td>
+                    <td style="font-weight: 500;">Vector Count Leading Zeros</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Counts leading zeros for each element.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmeq/';" style="cursor: pointer;">
+                    <td class="mono">cmeq</td>
+                    <td style="font-weight: 500;">Vector Compare Equal</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Compares elements (Vn == Vm) and sets bits to all 1s or 0s.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmge/';" style="cursor: pointer;">
+                    <td class="mono">cmge</td>
+                    <td style="font-weight: 500;">Vector Compare Greater Than or Equal</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Compares elements (Vn >= Vm).</td>
+                </tr>
+                
+                <tr onclick="window.location='cmgt/';" style="cursor: pointer;">
+                    <td class="mono">cmgt</td>
+                    <td style="font-weight: 500;">Vector Compare Greater Than</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Compares elements (Vn > Vm) and sets bits to all 1s or 0s.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmn/';" style="cursor: pointer;">
+                    <td class="mono">cmn</td>
+                    <td style="font-weight: 500;">Compare Negative (Immediate)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Adds register and immediate, updates flags (discard result). (Alias for ADDS)</td>
+                </tr>
+                
+                <tr onclick="window.location='cmp/';" style="cursor: pointer;">
+                    <td class="mono">cmp</td>
+                    <td style="font-weight: 500;">Compare (Immediate)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts immediate from register, updates flags (discard result). (Alias for SUBS)</td>
+                </tr>
+                
+                <tr onclick="window.location='cmtst/';" style="cursor: pointer;">
+                    <td class="mono">cmtst</td>
+                    <td style="font-weight: 500;">Vector Compare Test</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Tests if any bits match ((Vn & Vm) != 0).</td>
+                </tr>
+                
+                <tr onclick="window.location='cneg/';" style="cursor: pointer;">
+                    <td class="mono">cneg</td>
+                    <td style="font-weight: 500;">Conditional Negate</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Negate register if condition is true, else copy. (Alias for CSNEG)</td>
+                </tr>
+                
+                <tr onclick="window.location='cnt/';" style="cursor: pointer;">
+                    <td class="mono">cnt</td>
+                    <td style="font-weight: 500;">Vector Population Count</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Counts set bits (population count) per byte.</td>
+                </tr>
+                
+                <tr onclick="window.location='crc32b/';" style="cursor: pointer;">
+                    <td class="mono">crc32b</td>
+                    <td style="font-weight: 500;">CRC32 Byte</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Updates CRC32 checksum with a byte.</td>
+                </tr>
+                
+                <tr onclick="window.location='crc32cb/';" style="cursor: pointer;">
+                    <td class="mono">crc32cb</td>
+                    <td style="font-weight: 500;">CRC32C Byte</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Updates CRC32C (Castagnoli) checksum with a byte.</td>
+                </tr>
+                
+                <tr onclick="window.location='crc32w/';" style="cursor: pointer;">
+                    <td class="mono">crc32w</td>
+                    <td style="font-weight: 500;">CRC32 Word</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Updates CRC32 checksum with a word.</td>
+                </tr>
+                
+                <tr onclick="window.location='crc32x/';" style="cursor: pointer;">
+                    <td class="mono">crc32x</td>
+                    <td style="font-weight: 500;">CRC32 Doubleword</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Updates CRC32 checksum with a doubleword (64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='csel/';" style="cursor: pointer;">
+                    <td class="mono">csel</td>
+                    <td style="font-weight: 500;">Conditional Select</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Selects between two registers based on condition.</td>
+                </tr>
+                
+                <tr onclick="window.location='cset/';" style="cursor: pointer;">
+                    <td class="mono">cset</td>
+                    <td style="font-weight: 500;">Conditional Set</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Sets register to 1 if condition true, else 0. (Alias for CSINC)</td>
+                </tr>
+                
+                <tr onclick="window.location='csinc/';" style="cursor: pointer;">
+                    <td class="mono">csinc</td>
+                    <td style="font-weight: 500;">Conditional Select Increment</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Selects Wn if cond true, else (Wm + 1).</td>
+                </tr>
+                
+                <tr onclick="window.location='csinv/';" style="cursor: pointer;">
+                    <td class="mono">csinv</td>
+                    <td style="font-weight: 500;">Conditional Select Invert</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Selects Wn if cond true, else NOT Wm.</td>
+                </tr>
+                
+                <tr onclick="window.location='csneg/';" style="cursor: pointer;">
+                    <td class="mono">csneg</td>
+                    <td style="font-weight: 500;">Conditional Select Negate</td>
+                    <td><span class="badge">Cond Select</span></td>
+                    <td style="color: var(--text-muted);">Selects Wn if cond true, else -Wm.</td>
+                </tr>
+                
+                <tr onclick="window.location='dcps1/';" style="cursor: pointer;">
+                    <td class="mono">dcps1</td>
+                    <td style="font-weight: 500;">Debug Change PE State to EL1</td>
+                    <td><span class="badge">Exception</span></td>
+                    <td style="color: var(--text-muted);">Switch to Exception Level 1 (Debug).</td>
+                </tr>
+                
+                <tr onclick="window.location='dcps2/';" style="cursor: pointer;">
+                    <td class="mono">dcps2</td>
+                    <td style="font-weight: 500;">Debug Change PE State to EL2</td>
+                    <td><span class="badge">Exception</span></td>
+                    <td style="color: var(--text-muted);">Switch to Exception Level 2 (Debug).</td>
+                </tr>
+                
+                <tr onclick="window.location='dcps3/';" style="cursor: pointer;">
+                    <td class="mono">dcps3</td>
+                    <td style="font-weight: 500;">Debug Change PE State to EL3</td>
+                    <td><span class="badge">Exception</span></td>
+                    <td style="color: var(--text-muted);">Switch to Exception Level 3 (Debug).</td>
+                </tr>
+                
+                <tr onclick="window.location='dmb/';" style="cursor: pointer;">
+                    <td class="mono">dmb</td>
+                    <td style="font-weight: 500;">Data Memory Barrier</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Ensures memory access ordering.</td>
+                </tr>
+                
+                <tr onclick="window.location='drps/';" style="cursor: pointer;">
+                    <td class="mono">drps</td>
+                    <td style="font-weight: 500;">Debug Restore PE State</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Restores state from SPSR_ELx and DLR_EL0.</td>
+                </tr>
+                
+                <tr onclick="window.location='dsb/';" style="cursor: pointer;">
+                    <td class="mono">dsb</td>
+                    <td style="font-weight: 500;">Data Synchronization Barrier</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Ensures completion of memory accesses.</td>
+                </tr>
+                
+                <tr onclick="window.location='dup/';" style="cursor: pointer;">
+                    <td class="mono">dup</td>
+                    <td style="font-weight: 500;">Duplicate Vector Element (Scalar)</td>
+                    <td><span class="badge">SIMD Copy</span></td>
+                    <td style="color: var(--text-muted);">Duplicates a general-purpose register to all vector elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='dup/';" style="cursor: pointer;">
+                    <td class="mono">dup</td>
+                    <td style="font-weight: 500;">Duplicate Vector Element (Element)</td>
+                    <td><span class="badge">SIMD Copy</span></td>
+                    <td style="color: var(--text-muted);">Duplicates a vector element to all elements in destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='eon/';" style="cursor: pointer;">
+                    <td class="mono">eon</td>
+                    <td style="font-weight: 500;">Bitwise Exclusive OR NOT</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">XORs register with NOT of shifted register (XNOR).</td>
+                </tr>
+                
+                <tr onclick="window.location='eon/';" style="cursor: pointer;">
+                    <td class="mono">eon</td>
+                    <td style="font-weight: 500;">Bitwise Exclusive OR NOT (64-bit)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">XORs 64-bit register with NOT of shifted register.</td>
+                </tr>
+                
+                <tr onclick="window.location='eor/';" style="cursor: pointer;">
+                    <td class="mono">eor</td>
+                    <td style="font-weight: 500;">Bitwise Exclusive OR (Immediate)</td>
+                    <td><span class="badge">Logical (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">XORs register with immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='eor/';" style="cursor: pointer;">
+                    <td class="mono">eor</td>
+                    <td style="font-weight: 500;">Bitwise Exclusive OR (Register)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">XORs two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='eor/';" style="cursor: pointer;">
+                    <td class="mono">eor</td>
+                    <td style="font-weight: 500;">Vector Bitwise Exclusive OR</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Bitwise XOR of two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='eret/';" style="cursor: pointer;">
+                    <td class="mono">eret</td>
+                    <td style="font-weight: 500;">Exception Return</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Returns from an exception.</td>
+                </tr>
+                
+                <tr onclick="window.location='ext/';" style="cursor: pointer;">
+                    <td class="mono">ext</td>
+                    <td style="font-weight: 500;">Extract Vector</td>
+                    <td><span class="badge">SIMD Extract</span></td>
+                    <td style="color: var(--text-muted);">Extracts a vector from a pair of vectors (Sliding window).</td>
+                </tr>
+                
+                <tr onclick="window.location='extr/';" style="cursor: pointer;">
+                    <td class="mono">extr</td>
+                    <td style="font-weight: 500;">Extract</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Extracts a register from a pair of registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='extr/';" style="cursor: pointer;">
+                    <td class="mono">extr</td>
+                    <td style="font-weight: 500;">Extract (64-bit)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Extracts a 64-bit register from a pair.</td>
+                </tr>
+                
+                <tr onclick="window.location='fabs/';" style="cursor: pointer;">
+                    <td class="mono">fabs</td>
+                    <td style="font-weight: 500;">Floating-Point Absolute Value (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates the absolute value of a float.</td>
+                </tr>
+                
+                <tr onclick="window.location='fabs/';" style="cursor: pointer;">
+                    <td class="mono">fabs</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Absolute Value</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Calculates absolute value for each element.</td>
+                </tr>
+                
+                <tr onclick="window.location='fadd/';" style="cursor: pointer;">
+                    <td class="mono">fadd</td>
+                    <td style="font-weight: 500;">Floating-Point Add (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Adds two floating-point values.</td>
+                </tr>
+                
+                <tr onclick="window.location='fadd/';" style="cursor: pointer;">
+                    <td class="mono">fadd</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Add</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Adds elements of two floating-point vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='faddp/';" style="cursor: pointer;">
+                    <td class="mono">faddp</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Add Pairwise</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Adds adjacent pairs of float elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='fccmp/';" style="cursor: pointer;">
+                    <td class="mono">fccmp</td>
+                    <td style="font-weight: 500;">Floating-Point Conditional Compare (Scalar)</td>
+                    <td><span class="badge">FP Compare</span></td>
+                    <td style="color: var(--text-muted);">Compares floats only if condition is met, else sets flags to immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcmp/';" style="cursor: pointer;">
+                    <td class="mono">fcmp</td>
+                    <td style="font-weight: 500;">Floating-Point Compare (Scalar)</td>
+                    <td><span class="badge">FP Compare</span></td>
+                    <td style="color: var(--text-muted);">Compares two floating-point values and updates process flags (NZCV).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcsel/';" style="cursor: pointer;">
+                    <td class="mono">fcsel</td>
+                    <td style="font-weight: 500;">Floating-Point Conditional Select (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Selects one of two floats based on condition flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvt/';" style="cursor: pointer;">
+                    <td class="mono">fcvt</td>
+                    <td style="font-weight: 500;">Floating-Point Convert (Scalar)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts between float precisions (e.g., Half <-> Single <-> Double).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtas/';" style="cursor: pointer;">
+                    <td class="mono">fcvtas</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Signed Integer (Nearest)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to signed integer, rounding to nearest.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtau/';" style="cursor: pointer;">
+                    <td class="mono">fcvtau</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Unsigned Integer (Nearest)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to unsigned integer, rounding to nearest.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtl/';" style="cursor: pointer;">
+                    <td class="mono">fcvtl</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Convert Long</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Converts narrow floats to wide floats (e.g., Half -> Single).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtms/';" style="cursor: pointer;">
+                    <td class="mono">fcvtms</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Signed Integer (Minus Infinity)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to signed integer, rounding towards minus infinity (Floor).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtmu/';" style="cursor: pointer;">
+                    <td class="mono">fcvtmu</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Unsigned Integer (Minus Infinity)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to unsigned integer, rounding towards minus infinity.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtn/';" style="cursor: pointer;">
+                    <td class="mono">fcvtn</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Convert Narrow</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Converts wide floats to narrow floats (e.g., Single -> Half).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtns/';" style="cursor: pointer;">
+                    <td class="mono">fcvtns</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Signed Integer (Nearest, ties to Even)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to signed integer, rounding to nearest (bankers' round).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtnu/';" style="cursor: pointer;">
+                    <td class="mono">fcvtnu</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Unsigned Integer (Nearest, ties to Even)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to unsigned integer, rounding to nearest (bankers' round).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtps/';" style="cursor: pointer;">
+                    <td class="mono">fcvtps</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Signed Integer (Plus Infinity)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to signed integer, rounding towards plus infinity (Ceil).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtpu/';" style="cursor: pointer;">
+                    <td class="mono">fcvtpu</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Unsigned Integer (Plus Infinity)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to unsigned integer, rounding towards plus infinity.</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtzs/';" style="cursor: pointer;">
+                    <td class="mono">fcvtzs</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Signed Integer (Zero)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to signed integer, rounding towards zero (Truncate).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtzs/';" style="cursor: pointer;">
+                    <td class="mono">fcvtzs</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Convert to Signed Integer</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Converts floats to signed integers (Truncate).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtzu/';" style="cursor: pointer;">
+                    <td class="mono">fcvtzu</td>
+                    <td style="font-weight: 500;">Floating-Point Convert to Unsigned Integer (Zero)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts float to unsigned integer, rounding towards zero (Truncate).</td>
+                </tr>
+                
+                <tr onclick="window.location='fcvtzu/';" style="cursor: pointer;">
+                    <td class="mono">fcvtzu</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Convert to Unsigned Integer</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Converts floats to unsigned integers (Truncate).</td>
+                </tr>
+                
+                <tr onclick="window.location='fdiv/';" style="cursor: pointer;">
+                    <td class="mono">fdiv</td>
+                    <td style="font-weight: 500;">Floating-Point Divide (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Divides two floating-point values.</td>
+                </tr>
+                
+                <tr onclick="window.location='fdiv/';" style="cursor: pointer;">
+                    <td class="mono">fdiv</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Divide</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Divides elements of floating-point vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmadd/';" style="cursor: pointer;">
+                    <td class="mono">fmadd</td>
+                    <td style="font-weight: 500;">Floating-Point Fused Multiply-Add (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Vn * Vm) + Va without intermediate rounding.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmax/';" style="cursor: pointer;">
+                    <td class="mono">fmax</td>
+                    <td style="font-weight: 500;">Floating-Point Maximum (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Returns the larger of two values.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmax/';" style="cursor: pointer;">
+                    <td class="mono">fmax</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Maximum</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Compares and returns the larger value per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmaxnm/';" style="cursor: pointer;">
+                    <td class="mono">fmaxnm</td>
+                    <td style="font-weight: 500;">Floating-Point Max Number (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Returns larger value, handling NaNs according to IEEE 754-2008 'maxNum'.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmaxp/';" style="cursor: pointer;">
+                    <td class="mono">fmaxp</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Max Pairwise</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Max of adjacent float elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmin/';" style="cursor: pointer;">
+                    <td class="mono">fmin</td>
+                    <td style="font-weight: 500;">Floating-Point Minimum (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Returns the smaller of two values.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmin/';" style="cursor: pointer;">
+                    <td class="mono">fmin</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Minimum</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Compares and returns the smaller value per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='fminnm/';" style="cursor: pointer;">
+                    <td class="mono">fminnm</td>
+                    <td style="font-weight: 500;">Floating-Point Min Number (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Returns smaller value, handling NaNs according to IEEE 754-2008 'minNum'.</td>
+                </tr>
+                
+                <tr onclick="window.location='fminp/';" style="cursor: pointer;">
+                    <td class="mono">fminp</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Min Pairwise</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Min of adjacent float elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmla/';" style="cursor: pointer;">
+                    <td class="mono">fmla</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Multiply-Accumulate</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Multiplies and adds to destination (Vd = Vd + Vn * Vm).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmls/';" style="cursor: pointer;">
+                    <td class="mono">fmls</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Multiply-Subtract</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Multiplies and subtracts from destination (Vd = Vd - Vn * Vm).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmov/';" style="cursor: pointer;">
+                    <td class="mono">fmov</td>
+                    <td style="font-weight: 500;">Floating-Point Move (Immediate)</td>
+                    <td><span class="badge">FP Immediate</span></td>
+                    <td style="color: var(--text-muted);">Moves a floating-point immediate into a scalar register.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmov/';" style="cursor: pointer;">
+                    <td class="mono">fmov</td>
+                    <td style="font-weight: 500;">Floating-Point Move (Register)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Copies a value from one scalar FP register to another.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmov/';" style="cursor: pointer;">
+                    <td class="mono">fmov</td>
+                    <td style="font-weight: 500;">Floating-Point Move (General)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Copies bits between a General-Purpose Register (W/X) and FP Register (S/D).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmov/';" style="cursor: pointer;">
+                    <td class="mono">fmov</td>
+                    <td style="font-weight: 500;">Floating-Point Move (General to FP)</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Copies bits from a General-Purpose Register (W/X) to FP Register (S/D).</td>
+                </tr>
+                
+                <tr onclick="window.location='fmsub/';" style="cursor: pointer;">
+                    <td class="mono">fmsub</td>
+                    <td style="font-weight: 500;">Floating-Point Fused Multiply-Subtract (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Vn * Vm) - Va.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmul/';" style="cursor: pointer;">
+                    <td class="mono">fmul</td>
+                    <td style="font-weight: 500;">Floating-Point Multiply (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two floating-point values.</td>
+                </tr>
+                
+                <tr onclick="window.location='fmul/';" style="cursor: pointer;">
+                    <td class="mono">fmul</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Multiply</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Multiplies elements of floating-point vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='fneg/';" style="cursor: pointer;">
+                    <td class="mono">fneg</td>
+                    <td style="font-weight: 500;">Floating-Point Negate (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Negates the value (flips sign bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='fneg/';" style="cursor: pointer;">
+                    <td class="mono">fneg</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Negate</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Negates each element.</td>
+                </tr>
+                
+                <tr onclick="window.location='fnmadd/';" style="cursor: pointer;">
+                    <td class="mono">fnmadd</td>
+                    <td style="font-weight: 500;">Floating-Point Fused Negated Multiply-Add (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates -((Vn * Vm) + Va).</td>
+                </tr>
+                
+                <tr onclick="window.location='fnmsub/';" style="cursor: pointer;">
+                    <td class="mono">fnmsub</td>
+                    <td style="font-weight: 500;">Floating-Point Fused Negated Multiply-Subtract (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates -((Vn * Vm) - Va).</td>
+                </tr>
+                
+                <tr onclick="window.location='fnmul/';" style="cursor: pointer;">
+                    <td class="mono">fnmul</td>
+                    <td style="font-weight: 500;">Floating-Point Negated Multiply (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates -(Vn * Vm).</td>
+                </tr>
+                
+                <tr onclick="window.location='frecpe/';" style="cursor: pointer;">
+                    <td class="mono">frecpe</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Reciprocal Estimate</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Estimates reciprocal (1/x) for floats.</td>
+                </tr>
+                
+                <tr onclick="window.location='frecps/';" style="cursor: pointer;">
+                    <td class="mono">frecps</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Reciprocal Step</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Newton-Raphson step for reciprocal refinement.</td>
+                </tr>
+                
+                <tr onclick="window.location='frinta/';" style="cursor: pointer;">
+                    <td class="mono">frinta</td>
+                    <td style="font-weight: 500;">Floating-Point Round to Integral (Nearest)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to nearest integral value (ties away from zero).</td>
+                </tr>
+                
+                <tr onclick="window.location='frinti/';" style="cursor: pointer;">
+                    <td class="mono">frinti</td>
+                    <td style="font-weight: 500;">Floating-Point Round to Integral (Current)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to integral value using current FPCR rounding mode.</td>
+                </tr>
+                
+                <tr onclick="window.location='frintm/';" style="cursor: pointer;">
+                    <td class="mono">frintm</td>
+                    <td style="font-weight: 500;">Floating-Point Round to Integral (Minus Infinity)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to integral value towards minus infinity (Floor).</td>
+                </tr>
+                
+                <tr onclick="window.location='frintn/';" style="cursor: pointer;">
+                    <td class="mono">frintn</td>
+                    <td style="font-weight: 500;">Floating-Point Round to Integral (Nearest Even)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to integral value nearest, ties to even.</td>
+                </tr>
+                
+                <tr onclick="window.location='frintp/';" style="cursor: pointer;">
+                    <td class="mono">frintp</td>
+                    <td style="font-weight: 500;">Floating-Point Round to Integral (Plus Infinity)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to integral value towards plus infinity (Ceil).</td>
+                </tr>
+                
+                <tr onclick="window.location='frintx/';" style="cursor: pointer;">
+                    <td class="mono">frintx</td>
+                    <td style="font-weight: 500;">Floating-Point Round to Integral (Exact)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to integral value using current mode, raising Inexact exception.</td>
+                </tr>
+                
+                <tr onclick="window.location='frintz/';" style="cursor: pointer;">
+                    <td class="mono">frintz</td>
+                    <td style="font-weight: 500;">Floating-Point Round to Integral (Zero)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rounds float to integral value towards zero (Truncate).</td>
+                </tr>
+                
+                <tr onclick="window.location='frsqrte/';" style="cursor: pointer;">
+                    <td class="mono">frsqrte</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Reciprocal Sqrt Estimate</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Estimates reciprocal square root (1/sqrt(x)).</td>
+                </tr>
+                
+                <tr onclick="window.location='frsqrts/';" style="cursor: pointer;">
+                    <td class="mono">frsqrts</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Reciprocal Sqrt Step</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Newton-Raphson step for reciprocal square root refinement.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsqrt/';" style="cursor: pointer;">
+                    <td class="mono">fsqrt</td>
+                    <td style="font-weight: 500;">Floating-Point Square Root (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates square root.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsqrt/';" style="cursor: pointer;">
+                    <td class="mono">fsqrt</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Square Root</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Calculates square root for each element.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsub/';" style="cursor: pointer;">
+                    <td class="mono">fsub</td>
+                    <td style="font-weight: 500;">Floating-Point Subtract (Scalar)</td>
+                    <td><span class="badge">FP Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts two floating-point values.</td>
+                </tr>
+                
+                <tr onclick="window.location='fsub/';" style="cursor: pointer;">
+                    <td class="mono">fsub</td>
+                    <td style="font-weight: 500;">Vector Floating-Point Subtract</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Subtracts elements of floating-point vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='hint/';" style="cursor: pointer;">
+                    <td class="mono">hint</td>
+                    <td style="font-weight: 500;">Hint</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Provides a hint to the processor (e.g., NOP, YIELD).</td>
+                </tr>
+                
+                <tr onclick="window.location='hlt/';" style="cursor: pointer;">
+                    <td class="mono">hlt</td>
+                    <td style="font-weight: 500;">Halting Debug-mode</td>
+                    <td><span class="badge">Exception</span></td>
+                    <td style="color: var(--text-muted);">Enters Halting debug mode.</td>
+                </tr>
+                
+                <tr onclick="window.location='hvc/';" style="cursor: pointer;">
+                    <td class="mono">hvc</td>
+                    <td style="font-weight: 500;">Hypervisor Call</td>
+                    <td><span class="badge">Exception</span></td>
+                    <td style="color: var(--text-muted);">Generates a Hypervisor Call exception to EL2.</td>
+                </tr>
+                
+                <tr onclick="window.location='ins/';" style="cursor: pointer;">
+                    <td class="mono">ins</td>
+                    <td style="font-weight: 500;">Insert Vector Element (General)</td>
+                    <td><span class="badge">SIMD Copy</span></td>
+                    <td style="color: var(--text-muted);">Moves data from a GPR to a specific vector element.</td>
+                </tr>
+                
+                <tr onclick="window.location='isb/';" style="cursor: pointer;">
+                    <td class="mono">isb</td>
+                    <td style="font-weight: 500;">Instruction Synchronization Barrier</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Flushes the pipeline and prefetches.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1/';" style="cursor: pointer;">
+                    <td class="mono">ld1</td>
+                    <td style="font-weight: 500;">Load Multiple Single Elements</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads one element structure from memory into 1-4 registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld1r/';" style="cursor: pointer;">
+                    <td class="mono">ld1r</td>
+                    <td style="font-weight: 500;">Load Single Element Replicate</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads one element and replicates it to all lanes of the vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld2/';" style="cursor: pointer;">
+                    <td class="mono">ld2</td>
+                    <td style="font-weight: 500;">Load Multiple 2-Element Structures</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads two-element structures from memory into two registers (De-interleave).</td>
+                </tr>
+                
+                <tr onclick="window.location='ld2r/';" style="cursor: pointer;">
+                    <td class="mono">ld2r</td>
+                    <td style="font-weight: 500;">Load 2-Element Structure Replicate</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads 2 elements and replicates them to all lanes.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld3/';" style="cursor: pointer;">
+                    <td class="mono">ld3</td>
+                    <td style="font-weight: 500;">Load Multiple 3-Element Structures</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads three-element structures (e.g., RGB) into three registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='ld4/';" style="cursor: pointer;">
+                    <td class="mono">ld4</td>
+                    <td style="font-weight: 500;">Load Multiple 4-Element Structures</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads four-element structures (e.g., RGBA) into four registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldar/';" style="cursor: pointer;">
+                    <td class="mono">ldar</td>
+                    <td style="font-weight: 500;">Load-Acquire Register</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a word with Acquire semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldarb/';" style="cursor: pointer;">
+                    <td class="mono">ldarb</td>
+                    <td style="font-weight: 500;">Load-Acquire Register Byte</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte with Acquire semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldarh/';" style="cursor: pointer;">
+                    <td class="mono">ldarh</td>
+                    <td style="font-weight: 500;">Load-Acquire Register Halfword</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a halfword with Acquire semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldaxr/';" style="cursor: pointer;">
+                    <td class="mono">ldaxr</td>
+                    <td style="font-weight: 500;">Load-Acquire Exclusive Register</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Loads a word with Acquire Exclusive semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldaxrb/';" style="cursor: pointer;">
+                    <td class="mono">ldaxrb</td>
+                    <td style="font-weight: 500;">Load-Acquire Exclusive Register Byte</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte with Acquire Exclusive semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldaxrh/';" style="cursor: pointer;">
+                    <td class="mono">ldaxrh</td>
+                    <td style="font-weight: 500;">Load-Acquire Exclusive Register Halfword</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Loads a halfword with Acquire Exclusive semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldnp/';" style="cursor: pointer;">
+                    <td class="mono">ldnp</td>
+                    <td style="font-weight: 500;">Load Pair of Registers (Non-temporal)</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Loads two words, hinting non-temporal data (no caching).</td>
+                </tr>
+                
+                <tr onclick="window.location='ldp/';" style="cursor: pointer;">
+                    <td class="mono">ldp</td>
+                    <td style="font-weight: 500;">Load Pair SIMD&FP Registers</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Loads two floating-point/SIMD registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldp/';" style="cursor: pointer;">
+                    <td class="mono">ldp</td>
+                    <td style="font-weight: 500;">Load Pair of Registers</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Loads two words from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldp/';" style="cursor: pointer;">
+                    <td class="mono">ldp</td>
+                    <td style="font-weight: 500;">Load Pair of Registers (64-bit)</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Loads two 64-bit doublewords from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldpsw/';" style="cursor: pointer;">
+                    <td class="mono">ldpsw</td>
+                    <td style="font-weight: 500;">Load Pair of Registers Signed Word</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Loads two words and sign-extends them to 64-bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldr/';" style="cursor: pointer;">
+                    <td class="mono">ldr</td>
+                    <td style="font-weight: 500;">Load SIMD&FP Register (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a floating-point/SIMD register from memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldr/';" style="cursor: pointer;">
+                    <td class="mono">ldr</td>
+                    <td style="font-weight: 500;">Load Register (Immediate)</td>
+                    <td><span class="badge">Load/Store Imm</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from memory (Immediate offset).</td>
+                </tr>
+                
+                <tr onclick="window.location='ldr/';" style="cursor: pointer;">
+                    <td class="mono">ldr</td>
+                    <td style="font-weight: 500;">Load Register (Literal)</td>
+                    <td><span class="badge">Load Literal</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from a PC-relative address.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldr/';" style="cursor: pointer;">
+                    <td class="mono">ldr</td>
+                    <td style="font-weight: 500;">Load Register (Register)</td>
+                    <td><span class="badge">Load/Store Reg</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from memory (Register offset).</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrb/';" style="cursor: pointer;">
+                    <td class="mono">ldrb</td>
+                    <td style="font-weight: 500;">Load Register Byte (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte from memory (zero-extended) using immediate offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrb/';" style="cursor: pointer;">
+                    <td class="mono">ldrb</td>
+                    <td style="font-weight: 500;">Load Register Byte (Register)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte from memory (zero-extended) using register offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrh/';" style="cursor: pointer;">
+                    <td class="mono">ldrh</td>
+                    <td style="font-weight: 500;">Load Register Halfword (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a halfword from memory (zero-extended).</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrh/';" style="cursor: pointer;">
+                    <td class="mono">ldrh</td>
+                    <td style="font-weight: 500;">Load Register Halfword (Register)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a halfword from memory (zero-extended) using register offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrsb/';" style="cursor: pointer;">
+                    <td class="mono">ldrsb</td>
+                    <td style="font-weight: 500;">Load Register Signed Byte (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte and sign-extends it to 32-bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrsb/';" style="cursor: pointer;">
+                    <td class="mono">ldrsb</td>
+                    <td style="font-weight: 500;">Load Register Signed Byte (64-bit Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a byte and sign-extends it to 64-bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrsw/';" style="cursor: pointer;">
+                    <td class="mono">ldrsw</td>
+                    <td style="font-weight: 500;">Load Register Signed Word (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a word and sign-extends it to 64-bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldrsw/';" style="cursor: pointer;">
+                    <td class="mono">ldrsw</td>
+                    <td style="font-weight: 500;">Load Register Signed Word (Literal)</td>
+                    <td><span class="badge">Load Literal</span></td>
+                    <td style="color: var(--text-muted);">Loads a word from PC-relative address and sign-extends to 64-bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldtr/';" style="cursor: pointer;">
+                    <td class="mono">ldtr</td>
+                    <td style="font-weight: 500;">Load Register (Unprivileged)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a word as if in EL0 (User mode).</td>
+                </tr>
+                
+                <tr onclick="window.location='ldur/';" style="cursor: pointer;">
+                    <td class="mono">ldur</td>
+                    <td style="font-weight: 500;">Load Register (Unscaled)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Loads a word using an unscaled immediate offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldxp/';" style="cursor: pointer;">
+                    <td class="mono">ldxp</td>
+                    <td style="font-weight: 500;">Load Exclusive Pair</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Loads two words as an exclusive operation.</td>
+                </tr>
+                
+                <tr onclick="window.location='ldxr/';" style="cursor: pointer;">
+                    <td class="mono">ldxr</td>
+                    <td style="font-weight: 500;">Load Exclusive Register</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Loads a word and marks physical address as exclusive access.</td>
+                </tr>
+                
+                <tr onclick="window.location='lsl/';" style="cursor: pointer;">
+                    <td class="mono">lsl</td>
+                    <td style="font-weight: 500;">Logical Shift Left (Register)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Shifts register left by variable amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='lsr/';" style="cursor: pointer;">
+                    <td class="mono">lsr</td>
+                    <td style="font-weight: 500;">Logical Shift Right (Register)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Shifts register right by variable amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='madd/';" style="cursor: pointer;">
+                    <td class="mono">madd</td>
+                    <td style="font-weight: 500;">Multiply-Add</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Ra + (Rn * Rm)).</td>
+                </tr>
+                
+                <tr onclick="window.location='madd/';" style="cursor: pointer;">
+                    <td class="mono">madd</td>
+                    <td style="font-weight: 500;">Multiply-Add (64-bit)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Xa + (Xn * Xm)).</td>
+                </tr>
+                
+                <tr onclick="window.location='mla/';" style="cursor: pointer;">
+                    <td class="mono">mla</td>
+                    <td style="font-weight: 500;">Vector Multiply-Accumulate</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Multiplies elements and adds to destination (Vd = Vd + Vn * Vm).</td>
+                </tr>
+                
+                <tr onclick="window.location='mls/';" style="cursor: pointer;">
+                    <td class="mono">mls</td>
+                    <td style="font-weight: 500;">Vector Multiply-Subtract</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Multiplies elements and subtracts from destination (Vd = Vd - Vn * Vm).</td>
+                </tr>
+                
+                <tr onclick="window.location='mov/';" style="cursor: pointer;">
+                    <td class="mono">mov</td>
+                    <td style="font-weight: 500;">Vector Move (Register)</td>
+                    <td><span class="badge">SIMD Alias</span></td>
+                    <td style="color: var(--text-muted);">Copies a vector register (Alias for ORR Vd, Vn, Vn).</td>
+                </tr>
+                
+                <tr onclick="window.location='mov/';" style="cursor: pointer;">
+                    <td class="mono">mov</td>
+                    <td style="font-weight: 500;">Move Element to Element</td>
+                    <td><span class="badge">SIMD Copy</span></td>
+                    <td style="color: var(--text-muted);">Moves a vector element to another vector element (Alias for INS).</td>
+                </tr>
+                
+                <tr onclick="window.location='movi/';" style="cursor: pointer;">
+                    <td class="mono">movi</td>
+                    <td style="font-weight: 500;">Move Immediate (Vector)</td>
+                    <td><span class="badge">SIMD Modified Imm</span></td>
+                    <td style="color: var(--text-muted);">Moves an immediate value into every element of a vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='movk/';" style="cursor: pointer;">
+                    <td class="mono">movk</td>
+                    <td style="font-weight: 500;">Move Keep</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Inserts a 16-bit immediate into a register, keeping other bits unchanged.</td>
+                </tr>
+                
+                <tr onclick="window.location='movn/';" style="cursor: pointer;">
+                    <td class="mono">movn</td>
+                    <td style="font-weight: 500;">Move Not</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Moves inverted 16-bit immediate to register.</td>
+                </tr>
+                
+                <tr onclick="window.location='movz/';" style="cursor: pointer;">
+                    <td class="mono">movz</td>
+                    <td style="font-weight: 500;">Move Zero</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Moves 16-bit immediate to register, zeroing other bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='mrs/';" style="cursor: pointer;">
+                    <td class="mono">mrs</td>
+                    <td style="font-weight: 500;">Move System Register</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Moves system register to general-purpose register.</td>
+                </tr>
+                
+                <tr onclick="window.location='msr/';" style="cursor: pointer;">
+                    <td class="mono">msr</td>
+                    <td style="font-weight: 500;">Move to System Register</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Moves general-purpose register to system register.</td>
+                </tr>
+                
+                <tr onclick="window.location='msub/';" style="cursor: pointer;">
+                    <td class="mono">msub</td>
+                    <td style="font-weight: 500;">Multiply-Subtract</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Ra - (Rn * Rm)).</td>
+                </tr>
+                
+                <tr onclick="window.location='mul/';" style="cursor: pointer;">
+                    <td class="mono">mul</td>
+                    <td style="font-weight: 500;">Vector Multiply (Integer)</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Multiplies corresponding elements in two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='mvn/';" style="cursor: pointer;">
+                    <td class="mono">mvn</td>
+                    <td style="font-weight: 500;">Vector Bitwise NOT</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Bitwise NOT of a vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='mvni/';" style="cursor: pointer;">
+                    <td class="mono">mvni</td>
+                    <td style="font-weight: 500;">Move NOT Immediate (Vector)</td>
+                    <td><span class="badge">SIMD Modified Imm</span></td>
+                    <td style="color: var(--text-muted);">Moves the inverse of an immediate value into every element.</td>
+                </tr>
+                
+                <tr onclick="window.location='neg/';" style="cursor: pointer;">
+                    <td class="mono">neg</td>
+                    <td style="font-weight: 500;">Vector Negate</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Negates integer elements.</td>
+                </tr>
+                
+                <tr onclick="window.location='not/';" style="cursor: pointer;">
+                    <td class="mono">not</td>
+                    <td style="font-weight: 500;">Vector Bitwise NOT</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Inverts all bits. (Alias for MVN).</td>
+                </tr>
+                
+                <tr onclick="window.location='orn/';" style="cursor: pointer;">
+                    <td class="mono">orn</td>
+                    <td style="font-weight: 500;">Bitwise OR NOT</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">ORs register with NOT of shifted register.</td>
+                </tr>
+                
+                <tr onclick="window.location='orn/';" style="cursor: pointer;">
+                    <td class="mono">orn</td>
+                    <td style="font-weight: 500;">Vector Bitwise OR NOT</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">ORs Vd with NOT of Vm.</td>
+                </tr>
+                
+                <tr onclick="window.location='orr/';" style="cursor: pointer;">
+                    <td class="mono">orr</td>
+                    <td style="font-weight: 500;">Bitwise OR (Immediate)</td>
+                    <td><span class="badge">Logical (Immediate)</span></td>
+                    <td style="color: var(--text-muted);">ORs register with logical immediate.</td>
+                </tr>
+                
+                <tr onclick="window.location='orr/';" style="cursor: pointer;">
+                    <td class="mono">orr</td>
+                    <td style="font-weight: 500;">Bitwise OR (Shifted Register)</td>
+                    <td><span class="badge">Logical (Register)</span></td>
+                    <td style="color: var(--text-muted);">ORs two registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='orr/';" style="cursor: pointer;">
+                    <td class="mono">orr</td>
+                    <td style="font-weight: 500;">Vector Bitwise OR</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Bitwise OR of two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmul/';" style="cursor: pointer;">
+                    <td class="mono">pmul</td>
+                    <td style="font-weight: 500;">Vector Polynomial Multiply</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Performs polynomial multiplication over {0,1}.</td>
+                </tr>
+                
+                <tr onclick="window.location='pmull/';" style="cursor: pointer;">
+                    <td class="mono">pmull</td>
+                    <td style="font-weight: 500;">Polynomial Multiply Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Performs polynomial multiplication over {0,1} producing wide result (Used for GCM).</td>
+                </tr>
+                
+                <tr onclick="window.location='rbit/';" style="cursor: pointer;">
+                    <td class="mono">rbit</td>
+                    <td style="font-weight: 500;">Reverse Bits</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Reverses the bit order in a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='ret/';" style="cursor: pointer;">
+                    <td class="mono">ret</td>
+                    <td style="font-weight: 500;">Return from Subroutine</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branches to address in LR (or specified register).</td>
+                </tr>
+                
+                <tr onclick="window.location='rev/';" style="cursor: pointer;">
+                    <td class="mono">rev</td>
+                    <td style="font-weight: 500;">Reverse Bytes</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Reverses byte order (Endian swap) in a 32-bit register.</td>
+                </tr>
+                
+                <tr onclick="window.location='rev/';" style="cursor: pointer;">
+                    <td class="mono">rev</td>
+                    <td style="font-weight: 500;">Reverse Bytes (64-bit)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Reverses byte order in a 64-bit register.</td>
+                </tr>
+                
+                <tr onclick="window.location='rev16/';" style="cursor: pointer;">
+                    <td class="mono">rev16</td>
+                    <td style="font-weight: 500;">Reverse Bytes in Halfwords</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Reverses bytes in each 16-bit halfword.</td>
+                </tr>
+                
+                <tr onclick="window.location='rev32/';" style="cursor: pointer;">
+                    <td class="mono">rev32</td>
+                    <td style="font-weight: 500;">Reverse Bytes in Words</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Reverses bytes in each 32-bit word (64-bit op).</td>
+                </tr>
+                
+                <tr onclick="window.location='rorv/';" style="cursor: pointer;">
+                    <td class="mono">rorv</td>
+                    <td style="font-weight: 500;">Rotate Right (Register)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Rotates register right by variable amount.</td>
+                </tr>
+                
+                <tr onclick="window.location='saddl/';" style="cursor: pointer;">
+                    <td class="mono">saddl</td>
+                    <td style="font-weight: 500;">Signed Add Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Adds lower/upper halves of signed vectors, producing wider result (Widening).</td>
+                </tr>
+                
+                <tr onclick="window.location='saddw/';" style="cursor: pointer;">
+                    <td class="mono">saddw</td>
+                    <td style="font-weight: 500;">Signed Add Wide</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Adds a wide vector to the lower/upper half of a narrow vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='sbc/';" style="cursor: pointer;">
+                    <td class="mono">sbc</td>
+                    <td style="font-weight: 500;">Subtract with Carry</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts with borrow (Carry - 1).</td>
+                </tr>
+                
+                <tr onclick="window.location='sbcs/';" style="cursor: pointer;">
+                    <td class="mono">sbcs</td>
+                    <td style="font-weight: 500;">Subtract with Carry and Set Flags</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts with borrow and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='sbfm/';" style="cursor: pointer;">
+                    <td class="mono">sbfm</td>
+                    <td style="font-weight: 500;">Signed Bitfield Move</td>
+                    <td><span class="badge">Bitfield</span></td>
+                    <td style="color: var(--text-muted);">Extracts/Inserts bitfield with sign extension.</td>
+                </tr>
+                
+                <tr onclick="window.location='scvtf/';" style="cursor: pointer;">
+                    <td class="mono">scvtf</td>
+                    <td style="font-weight: 500;">Signed Integer Convert to Floating-Point</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts signed integer (GPR) to floating-point.</td>
+                </tr>
+                
+                <tr onclick="window.location='sdiv/';" style="cursor: pointer;">
+                    <td class="mono">sdiv</td>
+                    <td style="font-weight: 500;">Signed Divide</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Divides two signed registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='sha1c/';" style="cursor: pointer;">
+                    <td class="mono">sha1c</td>
+                    <td style="font-weight: 500;">SHA1 Choose</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">SHA1 hash update (Choose function).</td>
+                </tr>
+                
+                <tr onclick="window.location='sha1h/';" style="cursor: pointer;">
+                    <td class="mono">sha1h</td>
+                    <td style="font-weight: 500;">SHA1 Hash Update</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">Updates SHA1 hash state.</td>
+                </tr>
+                
+                <tr onclick="window.location='sha1m/';" style="cursor: pointer;">
+                    <td class="mono">sha1m</td>
+                    <td style="font-weight: 500;">SHA1 Majority</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">SHA1 hash update (Majority function).</td>
+                </tr>
+                
+                <tr onclick="window.location='sha1p/';" style="cursor: pointer;">
+                    <td class="mono">sha1p</td>
+                    <td style="font-weight: 500;">SHA1 Parity</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">SHA1 hash update (Parity function).</td>
+                </tr>
+                
+                <tr onclick="window.location='sha256h/';" style="cursor: pointer;">
+                    <td class="mono">sha256h</td>
+                    <td style="font-weight: 500;">SHA256 Hash Part 1</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">SHA256 hash update (part 1).</td>
+                </tr>
+                
+                <tr onclick="window.location='sha256h2/';" style="cursor: pointer;">
+                    <td class="mono">sha256h2</td>
+                    <td style="font-weight: 500;">SHA256 Hash Part 2</td>
+                    <td><span class="badge">Crypto</span></td>
+                    <td style="color: var(--text-muted);">SHA256 hash update (part 2).</td>
+                </tr>
+                
+                <tr onclick="window.location='shl/';" style="cursor: pointer;">
+                    <td class="mono">shl</td>
+                    <td style="font-weight: 500;">Vector Shift Left (Immediate)</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Shifts elements left by immediate value.</td>
+                </tr>
+                
+                <tr onclick="window.location='shll/';" style="cursor: pointer;">
+                    <td class="mono">shll</td>
+                    <td style="font-weight: 500;">Shift Left Long</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Shifts narrow vector left, extending to wide result.</td>
+                </tr>
+                
+                <tr onclick="window.location='shrn/';" style="cursor: pointer;">
+                    <td class="mono">shrn</td>
+                    <td style="font-weight: 500;">Shift Right Narrow</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Shifts wide vector right, narrowing to destination (Upper/Lower).</td>
+                </tr>
+                
+                <tr onclick="window.location='sli/';" style="cursor: pointer;">
+                    <td class="mono">sli</td>
+                    <td style="font-weight: 500;">Shift Left and Insert</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Shifts source left and inserts into destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='smaddl/';" style="cursor: pointer;">
+                    <td class="mono">smaddl</td>
+                    <td style="font-weight: 500;">Signed Multiply-Add Long</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two 32-bit registers, adds to 64-bit register (64-bit result).</td>
+                </tr>
+                
+                <tr onclick="window.location='smax/';" style="cursor: pointer;">
+                    <td class="mono">smax</td>
+                    <td style="font-weight: 500;">Vector Signed Maximum</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Returns larger signed integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='smaxv/';" style="cursor: pointer;">
+                    <td class="mono">smaxv</td>
+                    <td style="font-weight: 500;">Vector Signed Maximum Across</td>
+                    <td><span class="badge">SIMD Across Lane</span></td>
+                    <td style="color: var(--text-muted);">Finds the maximum signed value across the vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='smin/';" style="cursor: pointer;">
+                    <td class="mono">smin</td>
+                    <td style="font-weight: 500;">Vector Signed Minimum</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Returns smaller signed integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='smlal/';" style="cursor: pointer;">
+                    <td class="mono">smlal</td>
+                    <td style="font-weight: 500;">Signed Multiply-Accumulate Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Multiplies signed narrow vectors and adds to wide destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='smsubl/';" style="cursor: pointer;">
+                    <td class="mono">smsubl</td>
+                    <td style="font-weight: 500;">Signed Multiply-Subtract Long</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Xa - (Wn * Wm)) (64-bit result).</td>
+                </tr>
+                
+                <tr onclick="window.location='smulh/';" style="cursor: pointer;">
+                    <td class="mono">smulh</td>
+                    <td style="font-weight: 500;">Signed Multiply High</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two 64-bit registers, keeps high 64 bits.</td>
+                </tr>
+                
+                <tr onclick="window.location='smull/';" style="cursor: pointer;">
+                    <td class="mono">smull</td>
+                    <td style="font-weight: 500;">Signed Multiply Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Multiplies signed narrow vectors, producing wider result.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqadd/';" style="cursor: pointer;">
+                    <td class="mono">sqadd</td>
+                    <td style="font-weight: 500;">Vector Signed Saturating Add</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Adds signed integers with saturation.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqsub/';" style="cursor: pointer;">
+                    <td class="mono">sqsub</td>
+                    <td style="font-weight: 500;">Vector Signed Saturating Subtract</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Subtracts signed integers with saturation.</td>
+                </tr>
+                
+                <tr onclick="window.location='sqxtn/';" style="cursor: pointer;">
+                    <td class="mono">sqxtn</td>
+                    <td style="font-weight: 500;">Signed Saturating Extract Narrow</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Reads wide elements, saturates, and narrows.</td>
+                </tr>
+                
+                <tr onclick="window.location='sri/';" style="cursor: pointer;">
+                    <td class="mono">sri</td>
+                    <td style="font-weight: 500;">Shift Right and Insert</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Shifts source right and inserts into destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='sshr/';" style="cursor: pointer;">
+                    <td class="mono">sshr</td>
+                    <td style="font-weight: 500;">Vector Signed Shift Right</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Shifts elements right (arithmetic/sign-extending).</td>
+                </tr>
+                
+                <tr onclick="window.location='ssra/';" style="cursor: pointer;">
+                    <td class="mono">ssra</td>
+                    <td style="font-weight: 500;">Signed Shift Right and Accumulate</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Arithmetic right shift and add to destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='ssubl/';" style="cursor: pointer;">
+                    <td class="mono">ssubl</td>
+                    <td style="font-weight: 500;">Signed Subtract Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Subtracts signed narrow vectors, producing wider result.</td>
+                </tr>
+                
+                <tr onclick="window.location='st1/';" style="cursor: pointer;">
+                    <td class="mono">st1</td>
+                    <td style="font-weight: 500;">Store Multiple Single Elements</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores one element structure from 1-4 registers to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='st2/';" style="cursor: pointer;">
+                    <td class="mono">st2</td>
+                    <td style="font-weight: 500;">Store Multiple 2-Element Structures</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores two-element structures from two registers to memory (Interleave).</td>
+                </tr>
+                
+                <tr onclick="window.location='st3/';" style="cursor: pointer;">
+                    <td class="mono">st3</td>
+                    <td style="font-weight: 500;">Store Multiple 3-Element Structures</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores three-element structures from three registers (Interleave RGB).</td>
+                </tr>
+                
+                <tr onclick="window.location='st4/';" style="cursor: pointer;">
+                    <td class="mono">st4</td>
+                    <td style="font-weight: 500;">Store Multiple 4-Element Structures</td>
+                    <td><span class="badge">SIMD Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores four-element structures from four registers (Interleave RGBA).</td>
+                </tr>
+                
+                <tr onclick="window.location='stlr/';" style="cursor: pointer;">
+                    <td class="mono">stlr</td>
+                    <td style="font-weight: 500;">Store-Release Register</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a word with Release semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='stlrb/';" style="cursor: pointer;">
+                    <td class="mono">stlrb</td>
+                    <td style="font-weight: 500;">Store-Release Register Byte</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a byte with Release semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='stlrh/';" style="cursor: pointer;">
+                    <td class="mono">stlrh</td>
+                    <td style="font-weight: 500;">Store-Release Register Halfword</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a halfword with Release semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='stlxr/';" style="cursor: pointer;">
+                    <td class="mono">stlxr</td>
+                    <td style="font-weight: 500;">Store-Release Exclusive Register</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Stores a word with Release Exclusive semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='stlxrb/';" style="cursor: pointer;">
+                    <td class="mono">stlxrb</td>
+                    <td style="font-weight: 500;">Store-Release Exclusive Register Byte</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Stores a byte with Release Exclusive semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='stlxrh/';" style="cursor: pointer;">
+                    <td class="mono">stlxrh</td>
+                    <td style="font-weight: 500;">Store-Release Exclusive Register Halfword</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Stores a halfword with Release Exclusive semantics.</td>
+                </tr>
+                
+                <tr onclick="window.location='stnp/';" style="cursor: pointer;">
+                    <td class="mono">stnp</td>
+                    <td style="font-weight: 500;">Store Pair (Non-temporal)</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Stores two registers, hinting non-temporal data.</td>
+                </tr>
+                
+                <tr onclick="window.location='stp/';" style="cursor: pointer;">
+                    <td class="mono">stp</td>
+                    <td style="font-weight: 500;">Store Pair SIMD&FP Registers</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Stores two floating-point/SIMD registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='stp/';" style="cursor: pointer;">
+                    <td class="mono">stp</td>
+                    <td style="font-weight: 500;">Store Pair of Registers</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Stores two 32-bit registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='stp/';" style="cursor: pointer;">
+                    <td class="mono">stp</td>
+                    <td style="font-weight: 500;">Store Pair of Registers (64-bit)</td>
+                    <td><span class="badge">Load/Store Pair</span></td>
+                    <td style="color: var(--text-muted);">Stores two 64-bit registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='str/';" style="cursor: pointer;">
+                    <td class="mono">str</td>
+                    <td style="font-weight: 500;">Store SIMD&FP Register (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a floating-point/SIMD register to memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='str/';" style="cursor: pointer;">
+                    <td class="mono">str</td>
+                    <td style="font-weight: 500;">Store Register (Immediate)</td>
+                    <td><span class="badge">Load/Store Imm</span></td>
+                    <td style="color: var(--text-muted);">Stores a register to memory (Immediate offset).</td>
+                </tr>
+                
+                <tr onclick="window.location='str/';" style="cursor: pointer;">
+                    <td class="mono">str</td>
+                    <td style="font-weight: 500;">Store Register (Register)</td>
+                    <td><span class="badge">Load/Store Reg</span></td>
+                    <td style="color: var(--text-muted);">Stores a register to memory (Register offset).</td>
+                </tr>
+                
+                <tr onclick="window.location='strb/';" style="cursor: pointer;">
+                    <td class="mono">strb</td>
+                    <td style="font-weight: 500;">Store Register Byte (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores the low byte of a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='strb/';" style="cursor: pointer;">
+                    <td class="mono">strb</td>
+                    <td style="font-weight: 500;">Store Register Byte (Register)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores the low byte of a register using register offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='strh/';" style="cursor: pointer;">
+                    <td class="mono">strh</td>
+                    <td style="font-weight: 500;">Store Register Halfword (Immediate)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores the low halfword of a register.</td>
+                </tr>
+                
+                <tr onclick="window.location='strh/';" style="cursor: pointer;">
+                    <td class="mono">strh</td>
+                    <td style="font-weight: 500;">Store Register Halfword (Register)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores the low halfword of a register using register offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='sttr/';" style="cursor: pointer;">
+                    <td class="mono">sttr</td>
+                    <td style="font-weight: 500;">Store Register (Unprivileged)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a register as if in EL0 (User mode).</td>
+                </tr>
+                
+                <tr onclick="window.location='sttrb/';" style="cursor: pointer;">
+                    <td class="mono">sttrb</td>
+                    <td style="font-weight: 500;">Store Register Byte (Unprivileged)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a byte as if in EL0.</td>
+                </tr>
+                
+                <tr onclick="window.location='sttrh/';" style="cursor: pointer;">
+                    <td class="mono">sttrh</td>
+                    <td style="font-weight: 500;">Store Register Halfword (Unprivileged)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a halfword as if in EL0.</td>
+                </tr>
+                
+                <tr onclick="window.location='stur/';" style="cursor: pointer;">
+                    <td class="mono">stur</td>
+                    <td style="font-weight: 500;">Store Register (Unscaled)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a register using an unscaled immediate offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='sturb/';" style="cursor: pointer;">
+                    <td class="mono">sturb</td>
+                    <td style="font-weight: 500;">Store Register Byte (Unscaled)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a byte using an unscaled immediate offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='sturh/';" style="cursor: pointer;">
+                    <td class="mono">sturh</td>
+                    <td style="font-weight: 500;">Store Register Halfword (Unscaled)</td>
+                    <td><span class="badge">Load/Store</span></td>
+                    <td style="color: var(--text-muted);">Stores a halfword using an unscaled immediate offset.</td>
+                </tr>
+                
+                <tr onclick="window.location='stxp/';" style="cursor: pointer;">
+                    <td class="mono">stxp</td>
+                    <td style="font-weight: 500;">Store Exclusive Pair</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Stores two registers if exclusive monitor matches.</td>
+                </tr>
+                
+                <tr onclick="window.location='stxr/';" style="cursor: pointer;">
+                    <td class="mono">stxr</td>
+                    <td style="font-weight: 500;">Store Exclusive Register</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Stores a word if exclusive monitor matches.</td>
+                </tr>
+                
+                <tr onclick="window.location='stxrb/';" style="cursor: pointer;">
+                    <td class="mono">stxrb</td>
+                    <td style="font-weight: 500;">Store Exclusive Register Byte</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Stores a byte if exclusive monitor matches.</td>
+                </tr>
+                
+                <tr onclick="window.location='stxrh/';" style="cursor: pointer;">
+                    <td class="mono">stxrh</td>
+                    <td style="font-weight: 500;">Store Exclusive Register Halfword</td>
+                    <td><span class="badge">Load/Store Excl</span></td>
+                    <td style="color: var(--text-muted);">Stores a halfword if exclusive monitor matches.</td>
+                </tr>
+                
+                <tr onclick="window.location='sub/';" style="cursor: pointer;">
+                    <td class="mono">sub</td>
+                    <td style="font-weight: 500;">Subtract (Extended Register)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts extended register from register.</td>
+                </tr>
+                
+                <tr onclick="window.location='sub/';" style="cursor: pointer;">
+                    <td class="mono">sub</td>
+                    <td style="font-weight: 500;">Subtract (Immediate)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts immediate from register.</td>
+                </tr>
+                
+                <tr onclick="window.location='sub/';" style="cursor: pointer;">
+                    <td class="mono">sub</td>
+                    <td style="font-weight: 500;">Subtract (Shifted Register)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts shifted register from register.</td>
+                </tr>
+                
+                <tr onclick="window.location='sub/';" style="cursor: pointer;">
+                    <td class="mono">sub</td>
+                    <td style="font-weight: 500;">Vector Subtract (Integer)</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Subtracts elements of Vm from Vn.</td>
+                </tr>
+                
+                <tr onclick="window.location='subs/';" style="cursor: pointer;">
+                    <td class="mono">subs</td>
+                    <td style="font-weight: 500;">Subtract and Set Flags (Extended)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts extended register and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='subs/';" style="cursor: pointer;">
+                    <td class="mono">subs</td>
+                    <td style="font-weight: 500;">Subtract and Set Flags (Immediate)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts immediate and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='subs/';" style="cursor: pointer;">
+                    <td class="mono">subs</td>
+                    <td style="font-weight: 500;">Subtract and Set Flags (Shifted)</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Subtracts shifted register and updates flags.</td>
+                </tr>
+                
+                <tr onclick="window.location='svc/';" style="cursor: pointer;">
+                    <td class="mono">svc</td>
+                    <td style="font-weight: 500;">Supervisor Call</td>
+                    <td><span class="badge">Exception</span></td>
+                    <td style="color: var(--text-muted);">Causes a Supervisor Call exception (to EL1).</td>
+                </tr>
+                
+                <tr onclick="window.location='sys/';" style="cursor: pointer;">
+                    <td class="mono">sys</td>
+                    <td style="font-weight: 500;">System Instruction</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Executes a system instruction (cache/TLB maintenance).</td>
+                </tr>
+                
+                <tr onclick="window.location='tbl/';" style="cursor: pointer;">
+                    <td class="mono">tbl</td>
+                    <td style="font-weight: 500;">Vector Table Lookup</td>
+                    <td><span class="badge">SIMD Table</span></td>
+                    <td style="color: var(--text-muted);">Look up elements in a table of vectors using indices.</td>
+                </tr>
+                
+                <tr onclick="window.location='tbnz/';" style="cursor: pointer;">
+                    <td class="mono">tbnz</td>
+                    <td style="font-weight: 500;">Test Bit Not Zero</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branches if specified bit is 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='tbz/';" style="cursor: pointer;">
+                    <td class="mono">tbz</td>
+                    <td style="font-weight: 500;">Test Bit Zero</td>
+                    <td><span class="badge">Branch</span></td>
+                    <td style="color: var(--text-muted);">Branches if specified bit is 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='trn1/';" style="cursor: pointer;">
+                    <td class="mono">trn1</td>
+                    <td style="font-weight: 500;">Vector Transpose 1</td>
+                    <td><span class="badge">SIMD Permute</span></td>
+                    <td style="color: var(--text-muted);">Transposes elements (Lower).</td>
+                </tr>
+                
+                <tr onclick="window.location='trn2/';" style="cursor: pointer;">
+                    <td class="mono">trn2</td>
+                    <td style="font-weight: 500;">Vector Transpose 2</td>
+                    <td><span class="badge">SIMD Permute</span></td>
+                    <td style="color: var(--text-muted);">Transposes elements (Upper).</td>
+                </tr>
+                
+                <tr onclick="window.location='uaddl/';" style="cursor: pointer;">
+                    <td class="mono">uaddl</td>
+                    <td style="font-weight: 500;">Unsigned Add Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Adds lower/upper halves of unsigned vectors, producing wider result.</td>
+                </tr>
+                
+                <tr onclick="window.location='uaddw/';" style="cursor: pointer;">
+                    <td class="mono">uaddw</td>
+                    <td style="font-weight: 500;">Unsigned Add Wide</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Adds a wide vector to the lower/upper half of a narrow vector (Unsigned).</td>
+                </tr>
+                
+                <tr onclick="window.location='ubfm/';" style="cursor: pointer;">
+                    <td class="mono">ubfm</td>
+                    <td style="font-weight: 500;">Unsigned Bitfield Move</td>
+                    <td><span class="badge">Bitfield</span></td>
+                    <td style="color: var(--text-muted);">Extracts/Inserts bitfield (Zero Extend).</td>
+                </tr>
+                
+                <tr onclick="window.location='ucvtf/';" style="cursor: pointer;">
+                    <td class="mono">ucvtf</td>
+                    <td style="font-weight: 500;">Unsigned Integer Convert to Floating-Point</td>
+                    <td><span class="badge">FP Conversion</span></td>
+                    <td style="color: var(--text-muted);">Converts unsigned integer (GPR) to floating-point.</td>
+                </tr>
+                
+                <tr onclick="window.location='udiv/';" style="cursor: pointer;">
+                    <td class="mono">udiv</td>
+                    <td style="font-weight: 500;">Unsigned Divide</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Divides two unsigned registers.</td>
+                </tr>
+                
+                <tr onclick="window.location='umaddl/';" style="cursor: pointer;">
+                    <td class="mono">umaddl</td>
+                    <td style="font-weight: 500;">Unsigned Multiply-Add Long</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two 32-bit regs, adds to 64-bit reg (Unsigned).</td>
+                </tr>
+                
+                <tr onclick="window.location='umax/';" style="cursor: pointer;">
+                    <td class="mono">umax</td>
+                    <td style="font-weight: 500;">Vector Unsigned Maximum</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Returns larger unsigned integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='umin/';" style="cursor: pointer;">
+                    <td class="mono">umin</td>
+                    <td style="font-weight: 500;">Vector Unsigned Minimum</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Returns smaller unsigned integer per element.</td>
+                </tr>
+                
+                <tr onclick="window.location='uminv/';" style="cursor: pointer;">
+                    <td class="mono">uminv</td>
+                    <td style="font-weight: 500;">Vector Unsigned Minimum Across</td>
+                    <td><span class="badge">SIMD Across Lane</span></td>
+                    <td style="color: var(--text-muted);">Finds the minimum unsigned value across the vector.</td>
+                </tr>
+                
+                <tr onclick="window.location='umlal/';" style="cursor: pointer;">
+                    <td class="mono">umlal</td>
+                    <td style="font-weight: 500;">Unsigned Multiply-Accumulate Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Multiplies unsigned narrow vectors and adds to wide destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='umsubl/';" style="cursor: pointer;">
+                    <td class="mono">umsubl</td>
+                    <td style="font-weight: 500;">Unsigned Multiply-Subtract Long</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Calculates (Xa - (Wn * Wm)) (Unsigned 64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='umulh/';" style="cursor: pointer;">
+                    <td class="mono">umulh</td>
+                    <td style="font-weight: 500;">Unsigned Multiply High</td>
+                    <td><span class="badge">Data Processing</span></td>
+                    <td style="color: var(--text-muted);">Multiplies two 64-bit registers, keeps high 64 bits (Unsigned).</td>
+                </tr>
+                
+                <tr onclick="window.location='umull/';" style="cursor: pointer;">
+                    <td class="mono">umull</td>
+                    <td style="font-weight: 500;">Unsigned Multiply Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Multiplies unsigned narrow vectors, producing wider result.</td>
+                </tr>
+                
+                <tr onclick="window.location='uqadd/';" style="cursor: pointer;">
+                    <td class="mono">uqadd</td>
+                    <td style="font-weight: 500;">Vector Unsigned Saturating Add</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Adds unsigned integers with saturation.</td>
+                </tr>
+                
+                <tr onclick="window.location='uqsub/';" style="cursor: pointer;">
+                    <td class="mono">uqsub</td>
+                    <td style="font-weight: 500;">Vector Unsigned Saturating Subtract</td>
+                    <td><span class="badge">SIMD Three Register</span></td>
+                    <td style="color: var(--text-muted);">Subtracts unsigned integers with saturation.</td>
+                </tr>
+                
+                <tr onclick="window.location='uqxtn/';" style="cursor: pointer;">
+                    <td class="mono">uqxtn</td>
+                    <td style="font-weight: 500;">Unsigned Saturating Extract Narrow</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Reads wide unsigned elements, saturates, and narrows.</td>
+                </tr>
+                
+                <tr onclick="window.location='urecpe/';" style="cursor: pointer;">
+                    <td class="mono">urecpe</td>
+                    <td style="font-weight: 500;">Vector Unsigned Reciprocal Estimate</td>
+                    <td><span class="badge">SIMD Two Register</span></td>
+                    <td style="color: var(--text-muted);">Estimates reciprocal for unsigned integers.</td>
+                </tr>
+                
+                <tr onclick="window.location='ushr/';" style="cursor: pointer;">
+                    <td class="mono">ushr</td>
+                    <td style="font-weight: 500;">Vector Unsigned Shift Right</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Shifts elements right (logical).</td>
+                </tr>
+                
+                <tr onclick="window.location='usra/';" style="cursor: pointer;">
+                    <td class="mono">usra</td>
+                    <td style="font-weight: 500;">Unsigned Shift Right and Accumulate</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Logical right shift and add to destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='usubl/';" style="cursor: pointer;">
+                    <td class="mono">usubl</td>
+                    <td style="font-weight: 500;">Unsigned Subtract Long</td>
+                    <td><span class="badge">SIMD Three Register Diff</span></td>
+                    <td style="color: var(--text-muted);">Subtracts unsigned narrow vectors, producing wider result.</td>
+                </tr>
+                
+                <tr onclick="window.location='uzp1/';" style="cursor: pointer;">
+                    <td class="mono">uzp1</td>
+                    <td style="font-weight: 500;">Vector Unzip 1</td>
+                    <td><span class="badge">SIMD Permute</span></td>
+                    <td style="color: var(--text-muted);">De-interleaves lower halves (Selects odd elements).</td>
+                </tr>
+                
+                <tr onclick="window.location='uzp2/';" style="cursor: pointer;">
+                    <td class="mono">uzp2</td>
+                    <td style="font-weight: 500;">Vector Unzip 2</td>
+                    <td><span class="badge">SIMD Permute</span></td>
+                    <td style="color: var(--text-muted);">De-interleaves upper halves (Selects even elements).</td>
+                </tr>
+                
+                <tr onclick="window.location='xtn/';" style="cursor: pointer;">
+                    <td class="mono">xtn</td>
+                    <td style="font-weight: 500;">Vector Extract Narrow</td>
+                    <td><span class="badge">SIMD Shift Imm</span></td>
+                    <td style="color: var(--text-muted);">Reads elements, narrows them, and writes to lower half of destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='zip1/';" style="cursor: pointer;">
+                    <td class="mono">zip1</td>
+                    <td style="font-weight: 500;">Vector Zip 1 (Interleave)</td>
+                    <td><span class="badge">SIMD Permute</span></td>
+                    <td style="color: var(--text-muted);">Interleaves the lower halves of two vectors.</td>
+                </tr>
+                
+                <tr onclick="window.location='zip2/';" style="cursor: pointer;">
+                    <td class="mono">zip2</td>
+                    <td style="font-weight: 500;">Vector Zip 2 (Interleave)</td>
+                    <td><span class="badge">SIMD Permute</span></td>
+                    <td style="color: var(--text-muted);">Interleaves the upper halves of two vectors.</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../static/theme.js"></script>
+
+    <script src="../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
