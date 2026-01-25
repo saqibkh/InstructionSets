@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The modern, open-source reference for CPU instruction sets (RISC-V, x86, ARM).">
+    <title>ISA Database</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const SEARCH_INDEX_PATH = "../search.json";
+    </script>
+    
+    <script src="../static/search.js"></script>
+
+    
+<div class="container" style="padding-top: 40px;">
+    <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <h1>x86</h1>
+            <p>Instruction Set Reference</p>
+        </div>
+        <a href="../" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Back to Home</a>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Mnemonic</th>
+                    <th style="width: 35%;">Name</th>
+                    <th style="width: 15%;">Format</th>
+                    <th style="width: 35%;">Summary</th>
+                </tr>
+            </thead>
+	    <tbody>
+                
+                <tr onclick="window.location='aaa/';" style="cursor: pointer;">
+                    <td class="mono">aaa</td>
+                    <td style="font-weight: 500;">ASCII Adjust After Addition</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Adjusts AL after addition for unpacked BCD.</td>
+                </tr>
+                
+                <tr onclick="window.location='aad/';" style="cursor: pointer;">
+                    <td class="mono">aad</td>
+                    <td style="font-weight: 500;">ASCII Adjust Before Division</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Adjusts AX before division for unpacked BCD.</td>
+                </tr>
+                
+                <tr onclick="window.location='aam/';" style="cursor: pointer;">
+                    <td class="mono">aam</td>
+                    <td style="font-weight: 500;">ASCII Adjust After Multiply</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Adjusts AX after multiply for unpacked BCD.</td>
+                </tr>
+                
+                <tr onclick="window.location='aas/';" style="cursor: pointer;">
+                    <td class="mono">aas</td>
+                    <td style="font-weight: 500;">ASCII Adjust After Subtraction</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Adjusts AL after subtraction for unpacked BCD.</td>
+                </tr>
+                
+                <tr onclick="window.location='add/';" style="cursor: pointer;">
+                    <td class="mono">add</td>
+                    <td style="font-weight: 500;">Add</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Adds src to dest and stores result in dest.</td>
+                </tr>
+                
+                <tr onclick="window.location='and/';" style="cursor: pointer;">
+                    <td class="mono">and</td>
+                    <td style="font-weight: 500;">Logical AND</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Performs bitwise AND.</td>
+                </tr>
+                
+                <tr onclick="window.location='bound/';" style="cursor: pointer;">
+                    <td class="mono">bound</td>
+                    <td style="font-weight: 500;">Check Array Index Against Bounds</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Checks if operand is within bounds defined in memory.</td>
+                </tr>
+                
+                <tr onclick="window.location='bsf/';" style="cursor: pointer;">
+                    <td class="mono">bsf</td>
+                    <td style="font-weight: 500;">Bit Scan Forward</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Scans for LSB set to 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='bsr/';" style="cursor: pointer;">
+                    <td class="mono">bsr</td>
+                    <td style="font-weight: 500;">Bit Scan Reverse</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Scans for MSB set to 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='bswap/';" style="cursor: pointer;">
+                    <td class="mono">bswap</td>
+                    <td style="font-weight: 500;">Byte Swap</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Reverses the byte order of a register (Endian swap).</td>
+                </tr>
+                
+                <tr onclick="window.location='bt/';" style="cursor: pointer;">
+                    <td class="mono">bt</td>
+                    <td style="font-weight: 500;">Bit Test</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Selects a bit and stores it in CF.</td>
+                </tr>
+                
+                <tr onclick="window.location='btc/';" style="cursor: pointer;">
+                    <td class="mono">btc</td>
+                    <td style="font-weight: 500;">Bit Test and Complement</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Stores bit in CF and complements the bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='btr/';" style="cursor: pointer;">
+                    <td class="mono">btr</td>
+                    <td style="font-weight: 500;">Bit Test and Reset</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Stores bit in CF and clears bit to 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='bts/';" style="cursor: pointer;">
+                    <td class="mono">bts</td>
+                    <td style="font-weight: 500;">Bit Test and Set</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Stores bit in CF and sets bit to 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='call/';" style="cursor: pointer;">
+                    <td class="mono">call</td>
+                    <td style="font-weight: 500;">Call Procedure</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Push EIP/RIP and jump to target.</td>
+                </tr>
+                
+                <tr onclick="window.location='cbw/';" style="cursor: pointer;">
+                    <td class="mono">cbw</td>
+                    <td style="font-weight: 500;">Convert Byte to Word</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sign-extends AL into AX.</td>
+                </tr>
+                
+                <tr onclick="window.location='clc/';" style="cursor: pointer;">
+                    <td class="mono">clc</td>
+                    <td style="font-weight: 500;">Clear Carry Flag</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sets the CF flag to 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='cld/';" style="cursor: pointer;">
+                    <td class="mono">cld</td>
+                    <td style="font-weight: 500;">Clear Direction Flag</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sets DF to 0 (String operations increment).</td>
+                </tr>
+                
+                <tr onclick="window.location='cli/';" style="cursor: pointer;">
+                    <td class="mono">cli</td>
+                    <td style="font-weight: 500;">Clear Interrupt Flag</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Disables maskable hardware interrupts.</td>
+                </tr>
+                
+                <tr onclick="window.location='cltd/';" style="cursor: pointer;">
+                    <td class="mono">cltd</td>
+                    <td style="font-weight: 500;">Convert Long to Double Long</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sign-extends EAX into EDX:EAX (also CDQ).</td>
+                </tr>
+                
+                <tr onclick="window.location='cmc/';" style="cursor: pointer;">
+                    <td class="mono">cmc</td>
+                    <td style="font-weight: 500;">Complement Carry Flag</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Toggles the CF flag.</td>
+                </tr>
+                
+                <tr onclick="window.location='cmovcc/';" style="cursor: pointer;">
+                    <td class="mono">cmovcc</td>
+                    <td style="font-weight: 500;">Conditional Move</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Moves data if condition code is met (e.g., CMOVE, CMOVNE).</td>
+                </tr>
+                
+                <tr onclick="window.location='cmp/';" style="cursor: pointer;">
+                    <td class="mono">cmp</td>
+                    <td style="font-weight: 500;">Compare Two Operands</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Subtracts src from dest and updates flags (dest not modified).</td>
+                </tr>
+                
+                <tr onclick="window.location='cmpxchg/';" style="cursor: pointer;">
+                    <td class="mono">cmpxchg</td>
+                    <td style="font-weight: 500;">Compare and Exchange</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Compares accumulator with dest; if equal, dest = src; else accumulator = dest.</td>
+                </tr>
+                
+                <tr onclick="window.location='cpuid/';" style="cursor: pointer;">
+                    <td class="mono">cpuid</td>
+                    <td style="font-weight: 500;">CPU Identification</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Returns processor information based on EAX value.</td>
+                </tr>
+                
+                <tr onclick="window.location='cwd/';" style="cursor: pointer;">
+                    <td class="mono">cwd</td>
+                    <td style="font-weight: 500;">Convert Word to Doubleword</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sign-extends AX into DX:AX.</td>
+                </tr>
+                
+                <tr onclick="window.location='cwtl/';" style="cursor: pointer;">
+                    <td class="mono">cwtl</td>
+                    <td style="font-weight: 500;">Convert Word to Long</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sign-extends AX into EAX (also CWDE).</td>
+                </tr>
+                
+                <tr onclick="window.location='daa/';" style="cursor: pointer;">
+                    <td class="mono">daa</td>
+                    <td style="font-weight: 500;">Decimal Adjust After Addition</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Adjusts AL after addition for packed BCD.</td>
+                </tr>
+                
+                <tr onclick="window.location='das/';" style="cursor: pointer;">
+                    <td class="mono">das</td>
+                    <td style="font-weight: 500;">Decimal Adjust After Subtraction</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Adjusts AL after subtraction for packed BCD.</td>
+                </tr>
+                
+                <tr onclick="window.location='dec/';" style="cursor: pointer;">
+                    <td class="mono">dec</td>
+                    <td style="font-weight: 500;">Decrement</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Decrements the operand by 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='div/';" style="cursor: pointer;">
+                    <td class="mono">div</td>
+                    <td style="font-weight: 500;">Unsigned Divide</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Unsigned divide (AX / src).</td>
+                </tr>
+                
+                <tr onclick="window.location='enter/';" style="cursor: pointer;">
+                    <td class="mono">enter</td>
+                    <td style="font-weight: 500;">Make Stack Frame</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Creates a stack frame for procedure parameters.</td>
+                </tr>
+                
+                <tr onclick="window.location='hlt/';" style="cursor: pointer;">
+                    <td class="mono">hlt</td>
+                    <td style="font-weight: 500;">Halt</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Stops instruction execution and places processor in HALT state.</td>
+                </tr>
+                
+                <tr onclick="window.location='idiv/';" style="cursor: pointer;">
+                    <td class="mono">idiv</td>
+                    <td style="font-weight: 500;">Signed Divide</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Signed divide (AX / src).</td>
+                </tr>
+                
+                <tr onclick="window.location='imul/';" style="cursor: pointer;">
+                    <td class="mono">imul</td>
+                    <td style="font-weight: 500;">Signed Multiply</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Signed multiply.</td>
+                </tr>
+                
+                <tr onclick="window.location='inc/';" style="cursor: pointer;">
+                    <td class="mono">inc</td>
+                    <td style="font-weight: 500;">Increment</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Increments the operand by 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='int/';" style="cursor: pointer;">
+                    <td class="mono">int</td>
+                    <td style="font-weight: 500;">Interrupt</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Calls to interrupt procedure.</td>
+                </tr>
+                
+                <tr onclick="window.location='int3/';" style="cursor: pointer;">
+                    <td class="mono">int3</td>
+                    <td style="font-weight: 500;">Breakpoint</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Calls to interrupt vector 3 (Debugger breakpoint).</td>
+                </tr>
+                
+                <tr onclick="window.location='ja/';" style="cursor: pointer;">
+                    <td class="mono">ja</td>
+                    <td style="font-weight: 500;">Jump if Above</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if CF=0 and ZF=0 (Unsigned >).</td>
+                </tr>
+                
+                <tr onclick="window.location='jb/';" style="cursor: pointer;">
+                    <td class="mono">jb</td>
+                    <td style="font-weight: 500;">Jump if Below</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if CF=1 (Unsigned <).</td>
+                </tr>
+                
+                <tr onclick="window.location='je/';" style="cursor: pointer;">
+                    <td class="mono">je</td>
+                    <td style="font-weight: 500;">Jump if Equal</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if ZF=1 (Same as JZ).</td>
+                </tr>
+                
+                <tr onclick="window.location='jecxz/';" style="cursor: pointer;">
+                    <td class="mono">jecxz</td>
+                    <td style="font-weight: 500;">Jump if ECX is Zero</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jumps if ECX register is 0.</td>
+                </tr>
+                
+                <tr onclick="window.location='jg/';" style="cursor: pointer;">
+                    <td class="mono">jg</td>
+                    <td style="font-weight: 500;">Jump if Greater</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if ZF=0 and SF=OF (Signed >).</td>
+                </tr>
+                
+                <tr onclick="window.location='jl/';" style="cursor: pointer;">
+                    <td class="mono">jl</td>
+                    <td style="font-weight: 500;">Jump if Less</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if SF!=OF (Signed <).</td>
+                </tr>
+                
+                <tr onclick="window.location='jmp/';" style="cursor: pointer;">
+                    <td class="mono">jmp</td>
+                    <td style="font-weight: 500;">Jump</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Unconditional jump to target.</td>
+                </tr>
+                
+                <tr onclick="window.location='jne/';" style="cursor: pointer;">
+                    <td class="mono">jne</td>
+                    <td style="font-weight: 500;">Jump if Not Equal</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if ZF=0 (Same as JNZ).</td>
+                </tr>
+                
+                <tr onclick="window.location='lahf/';" style="cursor: pointer;">
+                    <td class="mono">lahf</td>
+                    <td style="font-weight: 500;">Load Flags into AH</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Loads bits 0, 2, 4, 6, and 7 of EFLAGS into AH.</td>
+                </tr>
+                
+                <tr onclick="window.location='lea/';" style="cursor: pointer;">
+                    <td class="mono">lea</td>
+                    <td style="font-weight: 500;">Load Effective Address</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Computes effective address and stores in register.</td>
+                </tr>
+                
+                <tr onclick="window.location='leave/';" style="cursor: pointer;">
+                    <td class="mono">leave</td>
+                    <td style="font-weight: 500;">High Level Procedure Exit</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Releases stack frame (MOV ESP, EBP; POP EBP).</td>
+                </tr>
+                
+                <tr onclick="window.location='loop/';" style="cursor: pointer;">
+                    <td class="mono">loop</td>
+                    <td style="font-weight: 500;">Loop</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Decrements ECX/RCX and jumps if not zero.</td>
+                </tr>
+                
+                <tr onclick="window.location='loope/';" style="cursor: pointer;">
+                    <td class="mono">loope</td>
+                    <td style="font-weight: 500;">Loop if Equal</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Decrements count; jumps if count!=0 and ZF=1.</td>
+                </tr>
+                
+                <tr onclick="window.location='loopne/';" style="cursor: pointer;">
+                    <td class="mono">loopne</td>
+                    <td style="font-weight: 500;">Loop if Not Equal</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Decrements count; jumps if count!=0 and ZF=0.</td>
+                </tr>
+                
+                <tr onclick="window.location='lzcnt/';" style="cursor: pointer;">
+                    <td class="mono">lzcnt</td>
+                    <td style="font-weight: 500;">Count Leading Zeros</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Counts number of leading zeros.</td>
+                </tr>
+                
+                <tr onclick="window.location='mov/';" style="cursor: pointer;">
+                    <td class="mono">mov</td>
+                    <td style="font-weight: 500;">Move</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Copies data from source to destination.</td>
+                </tr>
+                
+                <tr onclick="window.location='movsx/';" style="cursor: pointer;">
+                    <td class="mono">movsx</td>
+                    <td style="font-weight: 500;">Move with Sign-Extension</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Copies and sign-extends a smaller value to a larger register.</td>
+                </tr>
+                
+                <tr onclick="window.location='movzx/';" style="cursor: pointer;">
+                    <td class="mono">movzx</td>
+                    <td style="font-weight: 500;">Move with Zero-Extension</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Copies and zero-extends a smaller value to a larger register.</td>
+                </tr>
+                
+                <tr onclick="window.location='mul/';" style="cursor: pointer;">
+                    <td class="mono">mul</td>
+                    <td style="font-weight: 500;">Unsigned Multiply</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Unsigned multiply (AX = AL * src).</td>
+                </tr>
+                
+                <tr onclick="window.location='neg/';" style="cursor: pointer;">
+                    <td class="mono">neg</td>
+                    <td style="font-weight: 500;">Two's Complement Negation</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Negates value (0 - operand).</td>
+                </tr>
+                
+                <tr onclick="window.location='nop/';" style="cursor: pointer;">
+                    <td class="mono">nop</td>
+                    <td style="font-weight: 500;">No Operation</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Does nothing (alias for XCHG EAX, EAX).</td>
+                </tr>
+                
+                <tr onclick="window.location='not/';" style="cursor: pointer;">
+                    <td class="mono">not</td>
+                    <td style="font-weight: 500;">One's Complement Negation</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Reverses bits of operand.</td>
+                </tr>
+                
+                <tr onclick="window.location='or/';" style="cursor: pointer;">
+                    <td class="mono">or</td>
+                    <td style="font-weight: 500;">Logical OR</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Performs bitwise OR.</td>
+                </tr>
+                
+                <tr onclick="window.location='pause/';" style="cursor: pointer;">
+                    <td class="mono">pause</td>
+                    <td style="font-weight: 500;">Spin Loop Hint</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Improves performance of spin-wait loops (alias for REP NOP).</td>
+                </tr>
+                
+                <tr onclick="window.location='pop/';" style="cursor: pointer;">
+                    <td class="mono">pop</td>
+                    <td style="font-weight: 500;">Pop Value from Stack</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Loads operand from stack and increments SP.</td>
+                </tr>
+                
+                <tr onclick="window.location='popa/';" style="cursor: pointer;">
+                    <td class="mono">popa</td>
+                    <td style="font-weight: 500;">Pop All General-Purpose Registers</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Pops into DI, SI, BP, SP, BX, DX, CX, AX (Invalid in 64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='popcnt/';" style="cursor: pointer;">
+                    <td class="mono">popcnt</td>
+                    <td style="font-weight: 500;">Population Count</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Counts number of bits set to 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='popf/';" style="cursor: pointer;">
+                    <td class="mono">popf</td>
+                    <td style="font-weight: 500;">Pop Flags</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Pops stack into EFLAGS.</td>
+                </tr>
+                
+                <tr onclick="window.location='push/';" style="cursor: pointer;">
+                    <td class="mono">push</td>
+                    <td style="font-weight: 500;">Push Word/Doubleword/Quadword Onto Stack</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Decrements SP and stores operand on stack.</td>
+                </tr>
+                
+                <tr onclick="window.location='pusha/';" style="cursor: pointer;">
+                    <td class="mono">pusha</td>
+                    <td style="font-weight: 500;">Push All General-Purpose Registers</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Pushes AX, CX, DX, BX, SP, BP, SI, DI (Invalid in 64-bit).</td>
+                </tr>
+                
+                <tr onclick="window.location='pushf/';" style="cursor: pointer;">
+                    <td class="mono">pushf</td>
+                    <td style="font-weight: 500;">Push Flags</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Pushes EFLAGS onto stack.</td>
+                </tr>
+                
+                <tr onclick="window.location='rcl/';" style="cursor: pointer;">
+                    <td class="mono">rcl</td>
+                    <td style="font-weight: 500;">Rotate Carry Left</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Rotates bits left through Carry Flag.</td>
+                </tr>
+                
+                <tr onclick="window.location='rcr/';" style="cursor: pointer;">
+                    <td class="mono">rcr</td>
+                    <td style="font-weight: 500;">Rotate Carry Right</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Rotates bits right through Carry Flag.</td>
+                </tr>
+                
+                <tr onclick="window.location='rdtsc/';" style="cursor: pointer;">
+                    <td class="mono">rdtsc</td>
+                    <td style="font-weight: 500;">Read Time-Stamp Counter</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Reads the time-stamp counter into EDX:EAX.</td>
+                </tr>
+                
+                <tr onclick="window.location='rep_movs/';" style="cursor: pointer;">
+                    <td class="mono">rep movs</td>
+                    <td style="font-weight: 500;">Repeat Move String</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Moves ECX bytes/words from [ESI] to [EDI].</td>
+                </tr>
+                
+                <tr onclick="window.location='rep_stos/';" style="cursor: pointer;">
+                    <td class="mono">rep stos</td>
+                    <td style="font-weight: 500;">Repeat Store String</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Fills [EDI] with AL/AX/EAX for ECX repeats.</td>
+                </tr>
+                
+                <tr onclick="window.location='repe_cmps/';" style="cursor: pointer;">
+                    <td class="mono">repe cmps</td>
+                    <td style="font-weight: 500;">Repeat Compare String Equal</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Compares [ESI] and [EDI] until mismatch or ECX=0.</td>
+                </tr>
+                
+                <tr onclick="window.location='repne_scas/';" style="cursor: pointer;">
+                    <td class="mono">repne scas</td>
+                    <td style="font-weight: 500;">Repeat Scan String Not Equal</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Scans [EDI] for AL/AX/EAX until match or ECX=0.</td>
+                </tr>
+                
+                <tr onclick="window.location='ret/';" style="cursor: pointer;">
+                    <td class="mono">ret</td>
+                    <td style="font-weight: 500;">Return from Procedure</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Pop EIP/RIP and resume execution.</td>
+                </tr>
+                
+                <tr onclick="window.location='rol/';" style="cursor: pointer;">
+                    <td class="mono">rol</td>
+                    <td style="font-weight: 500;">Rotate Left</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Rotates bits left.</td>
+                </tr>
+                
+                <tr onclick="window.location='ror/';" style="cursor: pointer;">
+                    <td class="mono">ror</td>
+                    <td style="font-weight: 500;">Rotate Right</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Rotates bits right.</td>
+                </tr>
+                
+                <tr onclick="window.location='sahf/';" style="cursor: pointer;">
+                    <td class="mono">sahf</td>
+                    <td style="font-weight: 500;">Store AH into Flags</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Loads SF, ZF, AF, PF, and CF from AH.</td>
+                </tr>
+                
+                <tr onclick="window.location='sar/';" style="cursor: pointer;">
+                    <td class="mono">sar</td>
+                    <td style="font-weight: 500;">Shift Arithmetic Right</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Shifts bits right, preserving sign bit.</td>
+                </tr>
+                
+                <tr onclick="window.location='setcc/';" style="cursor: pointer;">
+                    <td class="mono">setcc</td>
+                    <td style="font-weight: 500;">Set Byte on Condition</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sets byte to 1 if condition met, else 0 (e.g., SETE, SETZ).</td>
+                </tr>
+                
+                <tr onclick="window.location='shl/';" style="cursor: pointer;">
+                    <td class="mono">shl</td>
+                    <td style="font-weight: 500;">Shift Logical Left</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Shifts bits left (same as SAL).</td>
+                </tr>
+                
+                <tr onclick="window.location='shr/';" style="cursor: pointer;">
+                    <td class="mono">shr</td>
+                    <td style="font-weight: 500;">Shift Logical Right</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Shifts bits right, filling with zeros.</td>
+                </tr>
+                
+                <tr onclick="window.location='stc/';" style="cursor: pointer;">
+                    <td class="mono">stc</td>
+                    <td style="font-weight: 500;">Set Carry Flag</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sets the CF flag to 1.</td>
+                </tr>
+                
+                <tr onclick="window.location='std/';" style="cursor: pointer;">
+                    <td class="mono">std</td>
+                    <td style="font-weight: 500;">Set Direction Flag</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Sets DF to 1 (String operations decrement).</td>
+                </tr>
+                
+                <tr onclick="window.location='sti/';" style="cursor: pointer;">
+                    <td class="mono">sti</td>
+                    <td style="font-weight: 500;">Set Interrupt Flag</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Enables maskable hardware interrupts.</td>
+                </tr>
+                
+                <tr onclick="window.location='sub/';" style="cursor: pointer;">
+                    <td class="mono">sub</td>
+                    <td style="font-weight: 500;">Subtract</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Subtracts src from dest.</td>
+                </tr>
+                
+                <tr onclick="window.location='test/';" style="cursor: pointer;">
+                    <td class="mono">test</td>
+                    <td style="font-weight: 500;">Logical Compare</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">ANDs operands and updates flags (result discarded).</td>
+                </tr>
+                
+                <tr onclick="window.location='ud2/';" style="cursor: pointer;">
+                    <td class="mono">ud2</td>
+                    <td style="font-weight: 500;">Undefined Instruction</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Generates an invalid opcode exception.</td>
+                </tr>
+                
+                <tr onclick="window.location='wait/';" style="cursor: pointer;">
+                    <td class="mono">wait</td>
+                    <td style="font-weight: 500;">Wait</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Wait for FPU (same as FWAIT).</td>
+                </tr>
+                
+                <tr onclick="window.location='xadd/';" style="cursor: pointer;">
+                    <td class="mono">xadd</td>
+                    <td style="font-weight: 500;">Exchange and Add</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Exchanges dest and src, then loads sum into dest.</td>
+                </tr>
+                
+                <tr onclick="window.location='xchg/';" style="cursor: pointer;">
+                    <td class="mono">xchg</td>
+                    <td style="font-weight: 500;">Exchange Register/Memory with Register</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Exchanges content of two operands.</td>
+                </tr>
+                
+                <tr onclick="window.location='xlat/';" style="cursor: pointer;">
+                    <td class="mono">xlat</td>
+                    <td style="font-weight: 500;">Table Look-up Translation</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Replaces AL with byte from table at [EBX+AL].</td>
+                </tr>
+                
+                <tr onclick="window.location='xor/';" style="cursor: pointer;">
+                    <td class="mono">xor</td>
+                    <td style="font-weight: 500;">Logical Exclusive OR</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Performs bitwise XOR.</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../static/theme.js"></script>
+
+    <script src="../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
