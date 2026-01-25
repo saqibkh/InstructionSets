@@ -1,0 +1,774 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "emms",
+      "architecture": "x86",
+      "full_name": "Empty MMX Technology State",
+      "summary": "Clears the FPU tag word to allow FP instructions after MMX.",
+      "syntax": "EMMS",
+      "encoding": { "format": "MMX", "hex_opcode": "0x0F 77", "length": "2" },
+      "operands": [],
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "movd",
+      "architecture": "x86",
+      "full_name": "Move Doubleword",
+      "summary": "Moves 32 bits between GPR and XMM/MMX register.",
+      "syntax": "MOVD mm/xmm, r32/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 6E", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM/MM" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "MMX/SSE2"
+    },
+    {
+      "mnemonic": "movq",
+      "architecture": "x86",
+      "full_name": "Move Quadword",
+      "summary": "Moves 64 bits between XMM registers or memory.",
+      "syntax": "MOVQ xmm, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "0xF3 0F 7E", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "movaps",
+      "architecture": "x86",
+      "full_name": "Move Aligned Packed Single-Precision",
+      "summary": "Moves 128-bit packed float data (Must be 16-byte aligned).",
+      "syntax": "MOVAPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 28", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movups",
+      "architecture": "x86",
+      "full_name": "Move Unaligned Packed Single-Precision",
+      "summary": "Moves 128-bit packed float data (Unaligned).",
+      "syntax": "MOVUPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 10", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movapd",
+      "architecture": "x86",
+      "full_name": "Move Aligned Packed Double-Precision",
+      "summary": "Moves 128-bit packed double data (Must be 16-byte aligned).",
+      "syntax": "MOVAPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 28", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "movupd",
+      "architecture": "x86",
+      "full_name": "Move Unaligned Packed Double-Precision",
+      "summary": "Moves 128-bit packed double data (Unaligned).",
+      "syntax": "MOVUPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 10", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "movdqa",
+      "architecture": "x86",
+      "full_name": "Move Aligned Packed Integer",
+      "summary": "Moves 128-bit integer data (Aligned).",
+      "syntax": "MOVDQA xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 6F", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "movdqu",
+      "architecture": "x86",
+      "full_name": "Move Unaligned Packed Integer",
+      "summary": "Moves 128-bit integer data (Unaligned).",
+      "syntax": "MOVDQU xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0xF3 0F 6F", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "addps",
+      "architecture": "x86",
+      "full_name": "Add Packed Single-Precision",
+      "summary": "Adds four 32-bit floats.",
+      "syntax": "ADDPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 58", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "addpd",
+      "architecture": "x86",
+      "full_name": "Add Packed Double-Precision",
+      "summary": "Adds two 64-bit doubles.",
+      "syntax": "ADDPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 58", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "addss",
+      "architecture": "x86",
+      "full_name": "Add Scalar Single-Precision",
+      "summary": "Adds the low 32-bit float.",
+      "syntax": "ADDSS xmm, xmm/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "0xF3 0F 58", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "addsd",
+      "architecture": "x86",
+      "full_name": "Add Scalar Double-Precision",
+      "summary": "Adds the low 64-bit double.",
+      "syntax": "ADDSD xmm, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "0xF2 0F 58", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "subps",
+      "architecture": "x86",
+      "full_name": "Subtract Packed Single-Precision",
+      "summary": "Subtracts four 32-bit floats.",
+      "syntax": "SUBPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 5C", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "subpd",
+      "architecture": "x86",
+      "full_name": "Subtract Packed Double-Precision",
+      "summary": "Subtracts two 64-bit doubles.",
+      "syntax": "SUBPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 5C", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "mulps",
+      "architecture": "x86",
+      "full_name": "Multiply Packed Single-Precision",
+      "summary": "Multiplies four 32-bit floats.",
+      "syntax": "MULPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 59", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "mulpd",
+      "architecture": "x86",
+      "full_name": "Multiply Packed Double-Precision",
+      "summary": "Multiplies two 64-bit doubles.",
+      "syntax": "MULPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 59", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "divps",
+      "architecture": "x86",
+      "full_name": "Divide Packed Single-Precision",
+      "summary": "Divides four 32-bit floats.",
+      "syntax": "DIVPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 5E", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "divpd",
+      "architecture": "x86",
+      "full_name": "Divide Packed Double-Precision",
+      "summary": "Divides two 64-bit doubles.",
+      "syntax": "DIVPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 5E", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "sqrtps",
+      "architecture": "x86",
+      "full_name": "Square Root Packed Single-Precision",
+      "summary": "Computes square root of four 32-bit floats.",
+      "syntax": "SQRTPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 51", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "sqrtpd",
+      "architecture": "x86",
+      "full_name": "Square Root Packed Double-Precision",
+      "summary": "Computes square root of two 64-bit doubles.",
+      "syntax": "SQRTPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 51", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "rcpps",
+      "architecture": "x86",
+      "full_name": "Reciprocal Packed Single-Precision",
+      "summary": "Approximate reciprocal (1/x) of four 32-bit floats.",
+      "syntax": "RCPPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 53", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "rsqrtps",
+      "architecture": "x86",
+      "full_name": "Reciprocal Square Root Packed Single-Precision",
+      "summary": "Approximate reciprocal sqrt (1/sqrt(x)) of four 32-bit floats.",
+      "syntax": "RSQRTPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 52", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "maxps",
+      "architecture": "x86",
+      "full_name": "Maximum Packed Single-Precision",
+      "summary": "Returns maximum of packed floats.",
+      "syntax": "MAXPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 5F", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "minps",
+      "architecture": "x86",
+      "full_name": "Minimum Packed Single-Precision",
+      "summary": "Returns minimum of packed floats.",
+      "syntax": "MINPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 5D", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "andps",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical AND Packed Single-Precision",
+      "summary": "Bitwise AND of 128 bits.",
+      "syntax": "ANDPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 54", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "andpd",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical AND Packed Double-Precision",
+      "summary": "Bitwise AND of 128 bits.",
+      "syntax": "ANDPD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 54", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "orps",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical OR Packed Single-Precision",
+      "summary": "Bitwise OR of 128 bits.",
+      "syntax": "ORPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 56", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "xorps",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical XOR Packed Single-Precision",
+      "summary": "Bitwise XOR of 128 bits (Used to clear registers).",
+      "syntax": "XORPS xmm, xmm/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 57", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "paddb",
+      "architecture": "x86",
+      "full_name": "Packed Add Bytes",
+      "summary": "Adds 16 bytes (Wraparound).",
+      "syntax": "PADDB xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F FC", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "paddw",
+      "architecture": "x86",
+      "full_name": "Packed Add Words",
+      "summary": "Adds 8 words (Wraparound).",
+      "syntax": "PADDW xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F FD", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "paddd",
+      "architecture": "x86",
+      "full_name": "Packed Add Doublewords",
+      "summary": "Adds 4 doublewords (Wraparound).",
+      "syntax": "PADDD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F FE", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "paddq",
+      "architecture": "x86",
+      "full_name": "Packed Add Quadwords",
+      "summary": "Adds 2 quadwords (Wraparound).",
+      "syntax": "PADDQ xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F D4", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "paddsb",
+      "architecture": "x86",
+      "full_name": "Packed Add Bytes Signed Saturate",
+      "summary": "Adds 16 signed bytes with saturation.",
+      "syntax": "PADDSB xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F EC", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "paddusb",
+      "architecture": "x86",
+      "full_name": "Packed Add Bytes Unsigned Saturate",
+      "summary": "Adds 16 unsigned bytes with saturation.",
+      "syntax": "PADDUSB xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F DC", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psubb",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Bytes",
+      "summary": "Subtracts 16 bytes.",
+      "syntax": "PSUBB xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F F8", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psubw",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Words",
+      "summary": "Subtracts 8 words.",
+      "syntax": "PSUBW xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F F9", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psubd",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Doublewords",
+      "summary": "Subtracts 4 doublewords.",
+      "syntax": "PSUBD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F FA", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pand",
+      "architecture": "x86",
+      "full_name": "Packed Logical AND",
+      "summary": "Bitwise AND of 128-bit integers.",
+      "syntax": "PAND xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F DB", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "por",
+      "architecture": "x86",
+      "full_name": "Packed Logical OR",
+      "summary": "Bitwise OR of 128-bit integers.",
+      "syntax": "POR xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F EB", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pxor",
+      "architecture": "x86",
+      "full_name": "Packed Logical Exclusive OR",
+      "summary": "Bitwise XOR of 128-bit integers.",
+      "syntax": "PXOR xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F EF", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psllw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Logical Word",
+      "summary": "Shifts words left.",
+      "syntax": "PSLLW xmm, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 71 /6", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "count", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pslld",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Logical Doubleword",
+      "summary": "Shifts doublewords left.",
+      "syntax": "PSLLD xmm, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 72 /6", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "count", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psrlw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Logical Word",
+      "summary": "Shifts words right logical.",
+      "syntax": "PSRLW xmm, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 71 /2", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "count", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psrld",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Logical Doubleword",
+      "summary": "Shifts doublewords right logical.",
+      "syntax": "PSRLD xmm, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 72 /2", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "count", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psraw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Arithmetic Word",
+      "summary": "Shifts words right arithmetic (sign bit).",
+      "syntax": "PSRAW xmm, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 71 /4", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "count", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psrad",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Arithmetic Doubleword",
+      "summary": "Shifts doublewords right arithmetic.",
+      "syntax": "PSRAD xmm, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 72 /4", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "count", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pcmpeqb",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Byte",
+      "summary": "Compares bytes for equality (Result mask 0xFF or 0x00).",
+      "syntax": "PCMPEQB xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 74", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pcmpeqw",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Word",
+      "summary": "Compares words for equality.",
+      "syntax": "PCMPEQW xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 75", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pcmpeqd",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Doubleword",
+      "summary": "Compares doublewords for equality.",
+      "syntax": "PCMPEQD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 76", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "shufps",
+      "architecture": "x86",
+      "full_name": "Shuffle Packed Single-Precision",
+      "summary": "Shuffles 32-bit floats based on immediate mask.",
+      "syntax": "SHUFPS xmm, xmm/m128, imm8",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F C6", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "mask", "desc": "Imm" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "shufpd",
+      "architecture": "x86",
+      "full_name": "Shuffle Packed Double-Precision",
+      "summary": "Shuffles 64-bit doubles based on immediate mask.",
+      "syntax": "SHUFPD xmm, xmm/m128, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F C6", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "mask", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pshufd",
+      "architecture": "x86",
+      "full_name": "Packed Shuffle Doubleword",
+      "summary": "Shuffles 32-bit integers.",
+      "syntax": "PSHUFD xmm, xmm/m128, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 70", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "mask", "desc": "Imm" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvtsi2ss",
+      "architecture": "x86",
+      "full_name": "Convert Doubleword Integer to Scalar Single-Precision",
+      "summary": "Converts 32-bit int to float.",
+      "syntax": "CVTSI2SS xmm, r/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "0xF3 0F 2A", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "cvtsi2sd",
+      "architecture": "x86",
+      "full_name": "Convert Doubleword Integer to Scalar Double-Precision",
+      "summary": "Converts 32-bit int to double.",
+      "syntax": "CVTSI2SD xmm, r/m32",
+      "encoding": { "format": "SSE2", "hex_opcode": "0xF2 0F 2A", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvttss2si",
+      "architecture": "x86",
+      "full_name": "Convert with Truncation Scalar Single to Integer",
+      "summary": "Converts float to 32-bit int (Truncate).",
+      "syntax": "CVTTSS2SI r32, xmm/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "0xF3 0F 2C", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "cvttsd2si",
+      "architecture": "x86",
+      "full_name": "Convert with Truncation Scalar Double to Integer",
+      "summary": "Converts double to 32-bit int (Truncate).",
+      "syntax": "CVTTSD2SI r32, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "0xF2 0F 2C", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvtss2sd",
+      "architecture": "x86",
+      "full_name": "Convert Scalar Single to Scalar Double",
+      "summary": "Converts float to double.",
+      "syntax": "CVTSS2SD xmm, xmm/m32",
+      "encoding": { "format": "SSE2", "hex_opcode": "0xF3 0F 5A", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvtsd2ss",
+      "architecture": "x86",
+      "full_name": "Convert Scalar Double to Scalar Single",
+      "summary": "Converts double to float.",
+      "syntax": "CVTSD2SS xmm, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "0xF2 0F 5A", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "ucomiss",
+      "architecture": "x86",
+      "full_name": "Unordered Compare Scalar Single-Precision",
+      "summary": "Compares low float and sets EFLAGS.",
+      "syntax": "UCOMISS xmm, xmm/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 2E", "length": "3+" },
+      "operands": [{ "name": "src1", "desc": "XMM" }, { "name": "src2", "desc": "XMM/Mem" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "ucomisd",
+      "architecture": "x86",
+      "full_name": "Unordered Compare Scalar Double-Precision",
+      "summary": "Compares low double and sets EFLAGS.",
+      "syntax": "UCOMISD xmm, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 2E", "length": "4+" },
+      "operands": [{ "name": "src1", "desc": "XMM" }, { "name": "src2", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "punpcklbw",
+      "architecture": "x86",
+      "full_name": "Unpack Low Data Bytes",
+      "summary": "Interleaves low bytes from two sources.",
+      "syntax": "PUNPCKLBW xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 60", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "punpcklwd",
+      "architecture": "x86",
+      "full_name": "Unpack Low Data Words",
+      "summary": "Interleaves low words.",
+      "syntax": "PUNPCKLWD xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 61", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "punpckldq",
+      "architecture": "x86",
+      "full_name": "Unpack Low Data Doublewords",
+      "summary": "Interleaves low doublewords.",
+      "syntax": "PUNPCKLDQ xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 62", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "punpcklqdq",
+      "architecture": "x86",
+      "full_name": "Unpack Low Data Quadwords",
+      "summary": "Interleaves low quadwords.",
+      "syntax": "PUNPCKLQDQ xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 6C", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "packsswb",
+      "architecture": "x86",
+      "full_name": "Pack with Signed Saturation Word to Byte",
+      "summary": "Converts words to bytes with saturation.",
+      "syntax": "PACKSSWB xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 63", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "packssdw",
+      "architecture": "x86",
+      "full_name": "Pack with Signed Saturation Doubleword to Word",
+      "summary": "Converts doublewords to words with saturation.",
+      "syntax": "PACKSSDW xmm, xmm/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F 6B", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pmovmskb",
+      "architecture": "x86",
+      "full_name": "Move Byte Mask",
+      "summary": "Creates a mask from the MSB of each byte in XMM.",
+      "syntax": "PMOVMSKB r32, xmm",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F D7", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "XMM" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "maskmovdqu",
+      "architecture": "x86",
+      "full_name": "Store Selected Bytes of Double Quadword",
+      "summary": "Non-temporal store of selected bytes (masked).",
+      "syntax": "MASKMOVDQU xmm, xmm",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x66 0F F7", "length": "4+" },
+      "operands": [{ "name": "src", "desc": "XMM" }, { "name": "mask", "desc": "XMM" }],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "ldmxcsr",
+      "architecture": "x86",
+      "full_name": "Load MXCSR Register",
+      "summary": "Loads the MXCSR control/status register from memory.",
+      "syntax": "LDMXCSR m32",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F AE /2", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Memory" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "stmxcsr",
+      "architecture": "x86",
+      "full_name": "Store MXCSR Register",
+      "summary": "Stores the MXCSR register to memory.",
+      "syntax": "STMXCSR m32",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F AE /3", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "prefetcht0",
+      "architecture": "x86",
+      "full_name": "Prefetch Data into all Cache Levels",
+      "summary": "Prefetches data to L1 cache.",
+      "syntax": "PREFETCHT0 m8",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 18 /1", "length": "3+" },
+      "operands": [{ "name": "mem", "desc": "Address" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "prefetchnta",
+      "architecture": "x86",
+      "full_name": "Prefetch Data using Non-Temporal Access",
+      "summary": "Prefetches data to non-temporal cache structure (minimize pollution).",
+      "syntax": "PREFETCHNTA m8",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F 18 /0", "length": "3+" },
+      "operands": [{ "name": "mem", "desc": "Address" }],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "sfence",
+      "architecture": "x86",
+      "full_name": "Store Fence",
+      "summary": "Serializes all store operations.",
+      "syntax": "SFENCE",
+      "encoding": { "format": "SSE", "hex_opcode": "0x0F AE F8", "length": "3" },
+      "operands": [],
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "lfence",
+      "architecture": "x86",
+      "full_name": "Load Fence",
+      "summary": "Serializes all load operations.",
+      "syntax": "LFENCE",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x0F AE E8", "length": "3" },
+      "operands": [],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "mfence",
+      "architecture": "x86",
+      "full_name": "Memory Fence",
+      "summary": "Serializes all load and store operations.",
+      "syntax": "MFENCE",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x0F AE F0", "length": "3" },
+      "operands": [],
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "clflush",
+      "architecture": "x86",
+      "full_name": "Flush Cache Line",
+      "summary": "Flushes cache line containing address.",
+      "syntax": "CLFLUSH m8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0x0F AE /7", "length": "3+" },
+      "operands": [{ "name": "mem", "desc": "Address" }],
+      "extension": "SSE2"
+    }
+  ]
+}

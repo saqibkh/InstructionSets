@@ -1,0 +1,394 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "addsubps",
+      "architecture": "x86",
+      "full_name": "Packed Single-FP Add/Subtract",
+      "summary": "Adds odd elements, subtracts even elements (Complex Math).",
+      "syntax": "ADDSUBPS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F D0", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "haddps",
+      "architecture": "x86",
+      "full_name": "Horizontal Add Packed Single-Precision",
+      "summary": "Adds adjacent float elements horizontally.",
+      "syntax": "HADDPS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F 7C", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "movddup",
+      "architecture": "x86",
+      "full_name": "Move One Double-FP and Duplicate",
+      "summary": "Loads 64-bit double and duplicates it to fill 128-bit register.",
+      "syntax": "MOVDDUP xmm1, xmm2/m64",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F 12", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "lddqu",
+      "architecture": "x86",
+      "full_name": "Load Unaligned Integer 128-bit",
+      "summary": "Loads unaligned data avoiding split-line penalties.",
+      "syntax": "LDDQU xmm1, m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F F0", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "Memory" }],
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "pshufb",
+      "architecture": "x86",
+      "full_name": "Packed Shuffle Bytes",
+      "summary": "Shuffles bytes according to indices in source operand.",
+      "syntax": "PSHUFB xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 00", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "mask", "desc": "XMM/Mem" }],
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "phaddw",
+      "architecture": "x86",
+      "full_name": "Packed Horizontal Add Word",
+      "summary": "Adds adjacent 16-bit integers horizontally.",
+      "syntax": "PHADDW xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 01", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "palignr",
+      "architecture": "x86",
+      "full_name": "Packed Align Right",
+      "summary": "Concatenates dest and src, extracts 128 bits byte-aligned.",
+      "syntax": "PALIGNR xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 3A 0F", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "imm", "desc": "Shift" }],
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "pmulhrsw",
+      "architecture": "x86",
+      "full_name": "Packed Multiply High with Round and Scale",
+      "summary": "Multiplies signed 16-bit words, rounds, and scales.",
+      "syntax": "PMULHRSW xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 0B", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "psignb",
+      "architecture": "x86",
+      "full_name": "Packed Sign Byte",
+      "summary": "Negates/Zeroes bytes in dest based on sign of src.",
+      "syntax": "PSIGNB xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 08", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "pabsb",
+      "architecture": "x86",
+      "full_name": "Packed Absolute Value Byte",
+      "summary": "Computes absolute value of bytes.",
+      "syntax": "PABSB xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 1C", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "blendps",
+      "architecture": "x86",
+      "full_name": "Blend Packed Single-Precision",
+      "summary": "Selects floats from two sources based on immediate mask.",
+      "syntax": "BLENDPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0C", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "mask", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pblendw",
+      "architecture": "x86",
+      "full_name": "Packed Blend Words",
+      "summary": "Selects words from two sources based on immediate mask.",
+      "syntax": "PBLENDW xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0E", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "mask", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pmulld",
+      "architecture": "x86",
+      "full_name": "Packed Multiply Low Doubleword",
+      "summary": "Multiplies 32-bit integers, stores low 32-bit result.",
+      "syntax": "PMULLD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 40", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pmovsxbw",
+      "architecture": "x86",
+      "full_name": "Packed Move with Sign Extend Byte to Word",
+      "summary": "Sign extends 8-bit integers to 16-bit.",
+      "syntax": "PMOVSXBW xmm1, xmm2/m64",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 20", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pmovzxbw",
+      "architecture": "x86",
+      "full_name": "Packed Move with Zero Extend Byte to Word",
+      "summary": "Zero extends 8-bit integers to 16-bit.",
+      "syntax": "PMOVZXBW xmm1, xmm2/m64",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 30", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "extractps",
+      "architecture": "x86",
+      "full_name": "Extract Packed Single-Precision",
+      "summary": "Extracts a single float from XMM to integer register.",
+      "syntax": "EXTRACTPS r32/m32, xmm1, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 17", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }, { "name": "src", "desc": "XMM" }, { "name": "idx", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "insertps",
+      "architecture": "x86",
+      "full_name": "Insert Packed Single-Precision",
+      "summary": "Inserts a float into XMM from another XMM or memory.",
+      "syntax": "INSERTPS xmm1, xmm2/m32, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 21", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "ctrl", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pinsrb",
+      "architecture": "x86",
+      "full_name": "Packed Insert Byte",
+      "summary": "Inserts a byte from integer register into XMM.",
+      "syntax": "PINSRB xmm1, r32/m8, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 20", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "Reg/Mem" }, { "name": "idx", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pextrb",
+      "architecture": "x86",
+      "full_name": "Packed Extract Byte",
+      "summary": "Extracts a byte from XMM to integer register.",
+      "syntax": "PEXTRB r32/m8, xmm1, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 14", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }, { "name": "src", "desc": "XMM" }, { "name": "idx", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "roundps",
+      "architecture": "x86",
+      "full_name": "Round Packed Single-Precision",
+      "summary": "Rounds floats according to immediate mode (ceil/floor/trunc).",
+      "syntax": "ROUNDPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 08", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "mode", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "dpps",
+      "architecture": "x86",
+      "full_name": "Dot Product Packed Single-Precision",
+      "summary": "Calculates dot product of float vectors.",
+      "syntax": "DPPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 40", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "mask", "desc": "Imm" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "ptest",
+      "architecture": "x86",
+      "full_name": "Packed Logical Comparison",
+      "summary": "Bitwise compare of 128-bit value (AND) setting flags.",
+      "syntax": "PTEST xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 17", "length": "5+" },
+      "operands": [{ "name": "src1", "desc": "XMM" }, { "name": "src2", "desc": "XMM/Mem" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pcmpeqq",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Quadword",
+      "summary": "Compares 64-bit integers for equality.",
+      "syntax": "PCMPEQQ xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 29", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "crc32",
+      "architecture": "x86",
+      "full_name": "Accumulate CRC32 Value",
+      "summary": "Accumulates CRC32C (Castagnoli) value.",
+      "syntax": "CRC32 r32, r/m",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "F2 0F 38 F1", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "pcmpestri",
+      "architecture": "x86",
+      "full_name": "Packed Compare Explicit Length Strings, Return Index",
+      "summary": "String compare/search, returns index (ECX).",
+      "syntax": "PCMPESTRI xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "66 0F 3A 61", "length": "6+" },
+      "operands": [{ "name": "src1", "desc": "XMM" }, { "name": "src2", "desc": "XMM/Mem" }, { "name": "ctrl", "desc": "Imm" }],
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "pcmpestrm",
+      "architecture": "x86",
+      "full_name": "Packed Compare Explicit Length Strings, Return Mask",
+      "summary": "String compare/search, returns mask (XMM0).",
+      "syntax": "PCMPESTRM xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "66 0F 3A 60", "length": "6+" },
+      "operands": [{ "name": "src1", "desc": "XMM" }, { "name": "src2", "desc": "XMM/Mem" }, { "name": "ctrl", "desc": "Imm" }],
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "aesenc",
+      "architecture": "x86",
+      "full_name": "AES Encrypt",
+      "summary": "Performs one round of AES encryption flow.",
+      "syntax": "AESENC xmm1, xmm2/m128",
+      "encoding": { "format": "AES-NI", "hex_opcode": "66 0F 38 DC", "length": "5+" },
+      "operands": [{ "name": "state", "desc": "XMM" }, { "name": "key", "desc": "XMM/Mem" }],
+      "extension": "AES-NI"
+    },
+    {
+      "mnemonic": "aesenclast",
+      "architecture": "x86",
+      "full_name": "AES Encrypt Last Round",
+      "summary": "Performs the last round of AES encryption.",
+      "syntax": "AESENCLAST xmm1, xmm2/m128",
+      "encoding": { "format": "AES-NI", "hex_opcode": "66 0F 38 DD", "length": "5+" },
+      "operands": [{ "name": "state", "desc": "XMM" }, { "name": "key", "desc": "XMM/Mem" }],
+      "extension": "AES-NI"
+    },
+    {
+      "mnemonic": "aesdec",
+      "architecture": "x86",
+      "full_name": "AES Decrypt",
+      "summary": "Performs one round of AES decryption flow.",
+      "syntax": "AESDEC xmm1, xmm2/m128",
+      "encoding": { "format": "AES-NI", "hex_opcode": "66 0F 38 DE", "length": "5+" },
+      "operands": [{ "name": "state", "desc": "XMM" }, { "name": "key", "desc": "XMM/Mem" }],
+      "extension": "AES-NI"
+    },
+    {
+      "mnemonic": "aeskeygenassist",
+      "architecture": "x86",
+      "full_name": "AES Key Generation Assist",
+      "summary": "Generates round key for AES encryption.",
+      "syntax": "AESKEYGENASSIST xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "AES-NI", "hex_opcode": "66 0F 3A DF", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "rcon", "desc": "Imm" }],
+      "extension": "AES-NI"
+    },
+    {
+      "mnemonic": "pclmulqdq",
+      "architecture": "x86",
+      "full_name": "Carry-Less Multiplication Quadword",
+      "summary": "Performs carry-less multiply (Galois Field math for GCM).",
+      "syntax": "PCLMULQDQ xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "PCLMUL", "hex_opcode": "66 0F 3A 44", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "sel", "desc": "Imm" }],
+      "extension": "PCLMULQDQ"
+    },
+    {
+      "mnemonic": "vaddps",
+      "architecture": "x86",
+      "full_name": "Add Packed Single-Precision (AVX)",
+      "summary": "Adds packed floats (256-bit YMM support).",
+      "syntax": "VADDPS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 /r 58", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vmulps",
+      "architecture": "x86",
+      "full_name": "Multiply Packed Single-Precision (AVX)",
+      "summary": "Multiplies packed floats (256-bit).",
+      "syntax": "VMULPS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 /r 59", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vfmadd231ps",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add (132)",
+      "summary": "Computes (Dest * Src2) + Src1.",
+      "syntax": "VFMADD231PS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... B8", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vinsertf128",
+      "architecture": "x86",
+      "full_name": "Insert Float 128-bit",
+      "summary": "Inserts 128-bits into a YMM register.",
+      "syntax": "VINSERTF128 ymm1, ymm2, xmm3/m128, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 18", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "XMM/Mem" }, { "name": "idx", "desc": "Imm" }],
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vextractf128",
+      "architecture": "x86",
+      "full_name": "Extract Float 128-bit",
+      "summary": "Extracts 128-bits from YMM register.",
+      "syntax": "VEXTRACTF128 xmm1/m128, ymm2, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 19", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM/Mem" }, { "name": "src", "desc": "YMM" }, { "name": "idx", "desc": "Imm" }],
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vbroadcastss",
+      "architecture": "x86",
+      "full_name": "Broadcast Scalar Single",
+      "summary": "Broadcasts a single float to all elements of YMM.",
+      "syntax": "VBROADCASTSS ymm1, m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 18", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src", "desc": "Memory" }],
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vzeroupper",
+      "architecture": "x86",
+      "full_name": "Zero Upper Bits of YMM Registers",
+      "summary": "Clears bits 128-255 of all YMM registers (Avoids AVX-SSE transition penalty).",
+      "syntax": "VZEROUPPER",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 F8 77", "length": "3" },
+      "operands": [],
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vzeroall",
+      "architecture": "x86",
+      "full_name": "Zero All YMM Registers",
+      "summary": "Clears all YMM registers.",
+      "syntax": "VZEROALL",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 FC 77", "length": "3" },
+      "operands": [],
+      "extension": "AVX"
+    }
+  ]
+}

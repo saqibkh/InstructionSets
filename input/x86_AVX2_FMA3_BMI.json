@@ -1,0 +1,544 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vfmadd132ps",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add (132) Packed Single",
+      "summary": "Computes (Dest * Src2) + Src1.",
+      "syntax": "VFMADD132PS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 98", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vfmadd213ps",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add (213) Packed Single",
+      "summary": "Computes (Src1 * Dest) + Src2.",
+      "syntax": "VFMADD213PS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... A8", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vfmadd231ps",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add (231) Packed Single",
+      "summary": "Computes (Src1 * Src2) + Dest.",
+      "syntax": "VFMADD231PS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... B8", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vfmsub132ps",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Subtract (132) Packed Single",
+      "summary": "Computes (Dest * Src2) - Src1.",
+      "syntax": "VFMSUB132PS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 9A", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vfnmadd132ps",
+      "architecture": "x86",
+      "full_name": "Fused Negative Multiply-Add (132) Packed Single",
+      "summary": "Computes -(Dest * Src2) + Src1.",
+      "syntax": "VFNMADD132PS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 9C", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vpaddd",
+      "architecture": "x86",
+      "full_name": "Packed Add Doubleword (AVX2)",
+      "summary": "Adds 8 integers (256-bit).",
+      "syntax": "VPADDD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 ... FE", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpaddb",
+      "architecture": "x86",
+      "full_name": "Packed Add Byte (AVX2)",
+      "summary": "Adds 32 bytes (256-bit).",
+      "syntax": "VPADDB ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 ... FC", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsubd",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Doubleword (AVX2)",
+      "summary": "Subtracts 8 integers (256-bit).",
+      "syntax": "VPSUBD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 ... FA", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpmulld",
+      "architecture": "x86",
+      "full_name": "Packed Multiply Low Doubleword (AVX2)",
+      "summary": "Multiplies 8 integers (256-bit).",
+      "syntax": "VPMULLD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 40", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpshufb",
+      "architecture": "x86",
+      "full_name": "Packed Shuffle Bytes (AVX2)",
+      "summary": "Shuffles 32 bytes based on indices.",
+      "syntax": "VPSHUFB ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 00", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src", "desc": "YMM" }, { "name": "mask", "desc": "YMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vperm2i128",
+      "architecture": "x86",
+      "full_name": "Permute 128-bit Integer Blocks",
+      "summary": "Shuffles two 128-bit lanes between registers.",
+      "syntax": "VPERM2I128 ymm1, ymm2, ymm3/m256, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 46", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "YMM/Mem" }, { "name": "ctrl", "desc": "Imm" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpermd",
+      "architecture": "x86",
+      "full_name": "Permute Doublewords",
+      "summary": "Full permutation of 8 integers using indices from a register.",
+      "syntax": "VPERMD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 36", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "indices", "desc": "YMM" }, { "name": "src", "desc": "YMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpermps",
+      "architecture": "x86",
+      "full_name": "Permute Single-Precision Floating-Point",
+      "summary": "Full permutation of 8 floats using indices.",
+      "syntax": "VPERMPS ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 16", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "indices", "desc": "YMM" }, { "name": "src", "desc": "YMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpbroadcastb",
+      "architecture": "x86",
+      "full_name": "Broadcast Byte",
+      "summary": "Broadcasts a byte from memory/register to all elements of YMM.",
+      "syntax": "VPBROADCASTB ymm1, xmm2/m8",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 78", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpbroadcastd",
+      "architecture": "x86",
+      "full_name": "Broadcast Doubleword",
+      "summary": "Broadcasts an integer to all elements of YMM.",
+      "syntax": "VPBROADCASTD ymm1, xmm2/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 58", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vgatherdps",
+      "architecture": "x86",
+      "full_name": "Gather Packed Single Precision",
+      "summary": "Loads floats from non-contiguous memory using indices.",
+      "syntax": "VGATHERDPS ymm1, [base+ymm_idx*scale], ymm_mask",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 92", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "mem", "desc": "Base+Idx" }, { "name": "mask", "desc": "YMM" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vgatherdpd",
+      "architecture": "x86",
+      "full_name": "Gather Packed Double Precision",
+      "summary": "Loads doubles from non-contiguous memory using indices.",
+      "syntax": "VGATHERDPD ymm1, [base+xmm_idx*scale], ymm_mask",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 92", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "mem", "desc": "Base+Idx" }, { "name": "mask", "desc": "YMM" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "andn",
+      "architecture": "x86",
+      "full_name": "Logical AND NOT",
+      "summary": "Calculates (NOT src1) AND src2. Non-destructive.",
+      "syntax": "ANDN r32, r32, r/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F2", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src1", "desc": "Reg" }, { "name": "src2", "desc": "Reg/Mem" }],
+      "extension": "BMI1"
+    },
+    {
+      "mnemonic": "bextr",
+      "architecture": "x86",
+      "full_name": "Bit Field Extract",
+      "summary": "Extracts sequence of bits from source using index/length.",
+      "syntax": "BEXTR r32, r/m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F7", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }, { "name": "ctrl", "desc": "Reg" }],
+      "extension": "BMI1"
+    },
+    {
+      "mnemonic": "blsi",
+      "architecture": "x86",
+      "full_name": "Extract Lowest Set Isolated Bit",
+      "summary": "Extracts the lowest set bit (x & -x).",
+      "syntax": "BLSI r32, r/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F3 /3", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "BMI1"
+    },
+    {
+      "mnemonic": "blsmsk",
+      "architecture": "x86",
+      "full_name": "Get Mask Up to Lowest Set Bit",
+      "summary": "Creates mask up to lowest set bit (x ^ (x-1)).",
+      "syntax": "BLSMSK r32, r/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F3 /2", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "BMI1"
+    },
+    {
+      "mnemonic": "blsr",
+      "architecture": "x86",
+      "full_name": "Reset Lowest Set Bit",
+      "summary": "Clears the lowest set bit (x & (x-1)).",
+      "syntax": "BLSR r32, r/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F3 /1", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "BMI1"
+    },
+    {
+      "mnemonic": "tzcnt",
+      "architecture": "x86",
+      "full_name": "Count Trailing Zeros",
+      "summary": "Counts the number of trailing zeros.",
+      "syntax": "TZCNT r32, r/m32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F BC", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "BMI1"
+    },
+    {
+      "mnemonic": "bzhi",
+      "architecture": "x86",
+      "full_name": "Zero High Bits Starting with Specified Bit Position",
+      "summary": "Clears high bits starting at index.",
+      "syntax": "BZHI r32, r/m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F5", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }, { "name": "idx", "desc": "Reg" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "pext",
+      "architecture": "x86",
+      "full_name": "Parallel Bits Extract",
+      "summary": "Extracts bits from source using mask and packs them to LSB.",
+      "syntax": "PEXT r32, r32, r/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F5", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg" }, { "name": "mask", "desc": "Reg/Mem" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "pdep",
+      "architecture": "x86",
+      "full_name": "Parallel Bits Deposit",
+      "summary": "Scatters bits from LSB of source to positions marked in mask.",
+      "syntax": "PDEP r32, r32, r/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F5", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg" }, { "name": "mask", "desc": "Reg/Mem" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "mulx",
+      "architecture": "x86",
+      "full_name": "Unsigned Multiply Without Affecting Flags",
+      "summary": "Unsigned multiply of RDX * Src. Result in Hi:Lo. No flags.",
+      "syntax": "MULX r32, r32, r/m32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F6", "length": "5+" },
+      "operands": [{ "name": "hi", "desc": "Reg" }, { "name": "lo", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "shlx",
+      "architecture": "x86",
+      "full_name": "Shift Logical Left Without Affecting Flags",
+      "summary": "Logical left shift, count in register. No flags update.",
+      "syntax": "SHLX r32, r/m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F7", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }, { "name": "cnt", "desc": "Reg" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "shrx",
+      "architecture": "x86",
+      "full_name": "Shift Logical Right Without Affecting Flags",
+      "summary": "Logical right shift, count in register. No flags update.",
+      "syntax": "SHRX r32, r/m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F7", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }, { "name": "cnt", "desc": "Reg" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "sarx",
+      "architecture": "x86",
+      "full_name": "Shift Arithmetic Right Without Affecting Flags",
+      "summary": "Arithmetic right shift, count in register. No flags update.",
+      "syntax": "SARX r32, r/m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F7", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }, { "name": "cnt", "desc": "Reg" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "rorx",
+      "architecture": "x86",
+      "full_name": "Rotate Right Logical Without Affecting Flags",
+      "summary": "Rotate right with immediate. No flags update.",
+      "syntax": "RORX r32, r/m32, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... F0", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }, { "name": "imm", "desc": "Imm" }],
+      "extension": "BMI2"
+    },
+    {
+      "mnemonic": "rdrand",
+      "architecture": "x86",
+      "full_name": "Read Random Number",
+      "summary": "Retrieves a hardware-generated random number.",
+      "syntax": "RDRAND r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C7 /6", "length": "3" },
+      "operands": [{ "name": "dest", "desc": "Register" }],
+      "extension": "RDRAND"
+    },
+    {
+      "mnemonic": "rdseed",
+      "architecture": "x86",
+      "full_name": "Read Random Seed",
+      "summary": "Retrieves a random seed from hardware entropy source.",
+      "syntax": "RDSEED r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C7 /7", "length": "3" },
+      "operands": [{ "name": "dest", "desc": "Register" }],
+      "extension": "RDSEED"
+    },
+    {
+      "mnemonic": "xsave",
+      "architecture": "x86",
+      "full_name": "Save Processor Extended States",
+      "summary": "Saves state components (AVX/SSE) to memory.",
+      "syntax": "XSAVE m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F AE /4", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "xrstor",
+      "architecture": "x86",
+      "full_name": "Restore Processor Extended States",
+      "summary": "Restores state components from memory.",
+      "syntax": "XRSTOR m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F AE /5", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Memory" }],
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "xgetbv",
+      "architecture": "x86",
+      "full_name": "Get Value of Extended Control Register",
+      "summary": "Reads an XCR specified by ECX into EDX:EAX.",
+      "syntax": "XGETBV",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D0", "length": "3" },
+      "operands": [],
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "xsetbv",
+      "architecture": "x86",
+      "full_name": "Set Value of Extended Control Register",
+      "summary": "Writes EDX:EAX to XCR specified by ECX (Privileged).",
+      "syntax": "XSETBV",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D1", "length": "3" },
+      "operands": [],
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "invpcid",
+      "architecture": "x86",
+      "full_name": "Invalidate Process-Context Identifier",
+      "summary": "Invalidates TLB entries based on PCID.",
+      "syntax": "INVPCID r32, m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F 38 82", "length": "5+" },
+      "operands": [{ "name": "type", "desc": "Reg" }, { "name": "desc", "desc": "Mem" }],
+      "extension": "INVPCID"
+    },
+    {
+      "mnemonic": "adcx",
+      "architecture": "x86",
+      "full_name": "Unsigned Integer Addition of Two Operands with Carry Flag",
+      "summary": "Adds with Carry Flag (distinct from ADC, affects CF only).",
+      "syntax": "ADCX r32, r/m32",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F 38 F6", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "ADX"
+    },
+    {
+      "mnemonic": "adox",
+      "architecture": "x86",
+      "full_name": "Unsigned Integer Addition of Two Operands with Overflow Flag",
+      "summary": "Adds with Overflow Flag (Parallel addition with ADCX).",
+      "syntax": "ADOX r32, r/m32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 F6", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "ADX"
+    },
+    {
+      "mnemonic": "rdtscp",
+      "architecture": "x86",
+      "full_name": "Read Time-Stamp Counter and Processor ID",
+      "summary": "Reads TSC and IA32_TSC_AUX into EDX:EAX and ECX.",
+      "syntax": "RDTSCP",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 F9", "length": "3" },
+      "operands": [],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "vinserti128",
+      "architecture": "x86",
+      "full_name": "Insert Integer 128-bit",
+      "summary": "Inserts 128-bits of integer data into a YMM register.",
+      "syntax": "VINSERTI128 ymm1, ymm2, xmm3/m128, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 38", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "YMM" }, { "name": "src1", "desc": "YMM" }, { "name": "src2", "desc": "XMM/Mem" }, { "name": "idx", "desc": "Imm" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vextracti128",
+      "architecture": "x86",
+      "full_name": "Extract Integer 128-bit",
+      "summary": "Extracts 128-bits of integer data from YMM.",
+      "syntax": "VEXTRACTI128 xmm1/m128, ymm2, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 39", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM/Mem" }, { "name": "src", "desc": "YMM" }, { "name": "idx", "desc": "Imm" }],
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "clac",
+      "architecture": "x86",
+      "full_name": "Clear AC Flag in EFLAGS",
+      "summary": "Clears Alignment Check flag (SMAP prevention).",
+      "syntax": "CLAC",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 CA", "length": "3" },
+      "operands": [],
+      "extension": "SMAP"
+    },
+    {
+      "mnemonic": "stac",
+      "architecture": "x86",
+      "full_name": "Set AC Flag in EFLAGS",
+      "summary": "Sets Alignment Check flag (Allow user memory access).",
+      "syntax": "STAC",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 CB", "length": "3" },
+      "operands": [],
+      "extension": "SMAP"
+    },
+    {
+      "mnemonic": "gf2p8affineqb",
+      "architecture": "x86",
+      "full_name": "Galois Field Affine Transformation",
+      "summary": "Computes affine transformation in GF(2^8).",
+      "syntax": "GF2P8AFFINEQB xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 3A CE", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "imm", "desc": "Imm" }],
+      "extension": "GFNI"
+    },
+    {
+      "mnemonic": "gf2p8mulb",
+      "architecture": "x86",
+      "full_name": "Galois Field Multiply Bytes",
+      "summary": "Multiplies bytes in GF(2^8).",
+      "syntax": "GF2P8MULB xmm1, xmm2/m128",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 CF", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "GFNI"
+    },
+    {
+      "mnemonic": "sha1msg1",
+      "architecture": "x86",
+      "full_name": "SHA1 Message Schedule 1",
+      "summary": "Performs intermediate calculation for SHA1 message schedule.",
+      "syntax": "SHA1MSG1 xmm1, xmm2/m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 C9", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SHA"
+    },
+    {
+      "mnemonic": "sha1msg2",
+      "architecture": "x86",
+      "full_name": "SHA1 Message Schedule 2",
+      "summary": "Performs final calculation for SHA1 message schedule.",
+      "syntax": "SHA1MSG2 xmm1, xmm2/m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 CA", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SHA"
+    },
+    {
+      "mnemonic": "sha1nexte",
+      "architecture": "x86",
+      "full_name": "SHA1 State Variable E",
+      "summary": "Calculates SHA1 state variable E.",
+      "syntax": "SHA1NEXTE xmm1, xmm2/m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 C8", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SHA"
+    },
+    {
+      "mnemonic": "sha1rnds4",
+      "architecture": "x86",
+      "full_name": "SHA1 Rounds 4",
+      "summary": "Performs 4 rounds of SHA1 operation.",
+      "syntax": "SHA1RNDS4 xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 3A CC", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "imm", "desc": "Imm" }],
+      "extension": "SHA"
+    },
+    {
+      "mnemonic": "sha256msg1",
+      "architecture": "x86",
+      "full_name": "SHA256 Message Schedule 1",
+      "summary": "Performs intermediate calculation for SHA256 message schedule.",
+      "syntax": "SHA256MSG1 xmm1, xmm2/m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 CC", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SHA"
+    },
+    {
+      "mnemonic": "sha256msg2",
+      "architecture": "x86",
+      "full_name": "SHA256 Message Schedule 2",
+      "summary": "Performs final calculation for SHA256 message schedule.",
+      "syntax": "SHA256MSG2 xmm1, xmm2/m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 CD", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }],
+      "extension": "SHA"
+    },
+    {
+      "mnemonic": "sha256rnds2",
+      "architecture": "x86",
+      "full_name": "SHA256 Rounds 2",
+      "summary": "Performs 2 rounds of SHA256 operation.",
+      "syntax": "SHA256RNDS2 xmm1, xmm2/m128, xmm0",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 CB", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "XMM" }, { "name": "src", "desc": "XMM/Mem" }, { "name": "state", "desc": "XMM0" }],
+      "extension": "SHA"
+    }
+  ]
+}

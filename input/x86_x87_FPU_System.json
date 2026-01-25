@@ -1,0 +1,594 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "fld",
+      "architecture": "x86",
+      "full_name": "Load Floating Point Value",
+      "summary": "Pushes a floating-point value onto the FPU register stack (ST0).",
+      "syntax": "FLD m32fp/m64fp/m80fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 /0", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fst",
+      "architecture": "x86",
+      "full_name": "Store Floating Point Value",
+      "summary": "Copies the value in ST(0) to memory or another register.",
+      "syntax": "FST m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 /2", "length": "2+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fstp",
+      "architecture": "x86",
+      "full_name": "Store Floating Point Value and Pop",
+      "summary": "Copies ST(0) to destination and pops the register stack.",
+      "syntax": "FSTP m32fp/m64fp/m80fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 /3", "length": "2+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fild",
+      "architecture": "x86",
+      "full_name": "Load Integer",
+      "summary": "Converts integer in memory to double-extended-precision float and pushes to ST(0).",
+      "syntax": "FILD m16int/m32int/m64int",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xDF /0", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Integer Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fist",
+      "architecture": "x86",
+      "full_name": "Store Integer",
+      "summary": "Converts ST(0) to integer and stores in memory.",
+      "syntax": "FIST m16int/m32int",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xDF /2", "length": "2+" },
+      "operands": [{ "name": "dest", "desc": "Integer Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fistp",
+      "architecture": "x86",
+      "full_name": "Store Integer and Pop",
+      "summary": "Converts ST(0) to integer, stores in memory, and pops stack.",
+      "syntax": "FISTP m16int/m32int/m64int",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xDF /3", "length": "2+" },
+      "operands": [{ "name": "dest", "desc": "Integer Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "x86",
+      "full_name": "Add Floating Point",
+      "summary": "Adds src to dest (ST(0) += src).",
+      "syntax": "FADD m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD8 /0", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory/Reg" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "x86",
+      "full_name": "Subtract Floating Point",
+      "summary": "Subtracts src from dest.",
+      "syntax": "FSUB m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD8 /4", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory/Reg" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "x86",
+      "full_name": "Multiply Floating Point",
+      "summary": "Multiplies dest by src.",
+      "syntax": "FMUL m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD8 /1", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory/Reg" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "x86",
+      "full_name": "Divide Floating Point",
+      "summary": "Divides dest by src.",
+      "syntax": "FDIV m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD8 /6", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory/Reg" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fprem",
+      "architecture": "x86",
+      "full_name": "Partial Remainder",
+      "summary": "Computes remainder of ST(0) / ST(1).",
+      "syntax": "FPREM",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 F8", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fabs",
+      "architecture": "x86",
+      "full_name": "Absolute Value",
+      "summary": "Replaces ST(0) with its absolute value.",
+      "syntax": "FABS",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 E1", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fchs",
+      "architecture": "x86",
+      "full_name": "Change Sign",
+      "summary": "Reverses the sign of ST(0).",
+      "syntax": "FCHS",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 E0", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "x86",
+      "full_name": "Square Root",
+      "summary": "Computes square root of ST(0).",
+      "syntax": "FSQRT",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 FA", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsin",
+      "architecture": "x86",
+      "full_name": "Sine",
+      "summary": "Computes sine of ST(0) (in radians).",
+      "syntax": "FSIN",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 FE", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fcos",
+      "architecture": "x86",
+      "full_name": "Cosine",
+      "summary": "Computes cosine of ST(0) (in radians).",
+      "syntax": "FCOS",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 FF", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsincos",
+      "architecture": "x86",
+      "full_name": "Sine and Cosine",
+      "summary": "Computes sine and cosine of ST(0), pushing both to stack.",
+      "syntax": "FSINCOS",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 FB", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fptan",
+      "architecture": "x86",
+      "full_name": "Partial Tangent",
+      "summary": "Computes tangent of ST(0) and pushes 1.0.",
+      "syntax": "FPTAN",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 F2", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fpatan",
+      "architecture": "x86",
+      "full_name": "Partial Arctangent",
+      "summary": "Computes arctan(ST(1)/ST(0)).",
+      "syntax": "FPATAN",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 F3", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fyl2x",
+      "architecture": "x86",
+      "full_name": "Y * log2(X)",
+      "summary": "Computes ST(1) * log2(ST(0)).",
+      "syntax": "FYL2X",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 F1", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fxch",
+      "architecture": "x86",
+      "full_name": "Exchange Register",
+      "summary": "Exchanges contents of ST(0) and ST(i).",
+      "syntax": "FXCH ST(i)",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 C8+i", "length": "2" },
+      "operands": [{ "name": "dest", "desc": "Register" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fcom",
+      "architecture": "x86",
+      "full_name": "Compare Real",
+      "summary": "Compares ST(0) with source.",
+      "syntax": "FCOM m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD8 /2", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory/Reg" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fcomi",
+      "architecture": "x86",
+      "full_name": "Compare Real and Set EFLAGS",
+      "summary": "Compares ST(0) with ST(i) and sets CPU EFLAGS directly.",
+      "syntax": "FCOMI ST(0), ST(i)",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xDB F0+i", "length": "2" },
+      "operands": [{ "name": "src", "desc": "Register" }],
+      "extension": "x87 FPU (P6+)"
+    },
+    {
+      "mnemonic": "finit",
+      "architecture": "x86",
+      "full_name": "Initialize FPU",
+      "summary": "Resets FPU to default state.",
+      "syntax": "FINIT",
+      "encoding": { "format": "Legacy", "hex_opcode": "0x9B DB E3", "length": "3" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fclex",
+      "architecture": "x86",
+      "full_name": "Clear Exceptions",
+      "summary": "Clears floating-point exception flags.",
+      "syntax": "FCLEX",
+      "encoding": { "format": "Legacy", "hex_opcode": "0x9B DB E2", "length": "3" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fstsw",
+      "architecture": "x86",
+      "full_name": "Store Status Word",
+      "summary": "Stores FPU status word to AX or memory.",
+      "syntax": "FSTSW AX",
+      "encoding": { "format": "Legacy", "hex_opcode": "0x9B DF E0", "length": "3" },
+      "operands": [{ "name": "dest", "desc": "AX/Mem" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fldcw",
+      "architecture": "x86",
+      "full_name": "Load Control Word",
+      "summary": "Loads FPU control word from memory.",
+      "syntax": "FLDCW m2byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xD9 /5", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fstcw",
+      "architecture": "x86",
+      "full_name": "Store Control Word",
+      "summary": "Stores FPU control word to memory.",
+      "syntax": "FSTCW m2byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "0x9B D9 /7", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "frstor",
+      "architecture": "x86",
+      "full_name": "Restore FPU State",
+      "summary": "Loads FPU state from memory.",
+      "syntax": "FRSTOR m108byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "0xDD /4", "length": "2+" },
+      "operands": [{ "name": "src", "desc": "Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsave",
+      "architecture": "x86",
+      "full_name": "Save FPU State",
+      "summary": "Stores FPU state to memory and re-initializes FPU.",
+      "syntax": "FSAVE m108byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "0x9B DD /6", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "lgdt",
+      "architecture": "x86",
+      "full_name": "Load Global Descriptor Table Register",
+      "summary": "Loads the GDT register (Privileged).",
+      "syntax": "LGDT m16&32",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 01 /2", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Memory" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lidt",
+      "architecture": "x86",
+      "full_name": "Load Interrupt Descriptor Table Register",
+      "summary": "Loads the IDT register (Privileged).",
+      "syntax": "LIDT m16&32",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 01 /3", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Memory" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sgdt",
+      "architecture": "x86",
+      "full_name": "Store Global Descriptor Table Register",
+      "summary": "Stores GDT limit and base address to memory.",
+      "syntax": "SGDT m",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 01 /0", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sidt",
+      "architecture": "x86",
+      "full_name": "Store Interrupt Descriptor Table Register",
+      "summary": "Stores IDT limit and base address to memory.",
+      "syntax": "SIDT m",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 01 /1", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lldt",
+      "architecture": "x86",
+      "full_name": "Load Local Descriptor Table Register",
+      "summary": "Loads LDT segment selector (Privileged).",
+      "syntax": "LLDT r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 00 /2", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Reg/Mem" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sldt",
+      "architecture": "x86",
+      "full_name": "Store Local Descriptor Table Register",
+      "summary": "Stores LDT segment selector.",
+      "syntax": "SLDT r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 00 /0", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "ltr",
+      "architecture": "x86",
+      "full_name": "Load Task Register",
+      "summary": "Loads Task Register (Privileged).",
+      "syntax": "LTR r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 00 /3", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Reg/Mem" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "str",
+      "architecture": "x86",
+      "full_name": "Store Task Register",
+      "summary": "Stores Task Register.",
+      "syntax": "STR r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 00 /1", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "mov cr",
+      "architecture": "x86",
+      "full_name": "Move Control Register",
+      "summary": "Moves data to/from Control Registers (CR0, CR3, etc.) (Privileged).",
+      "syntax": "MOV CRn, r",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 22 /r", "length": "3" },
+      "operands": [{ "name": "dest", "desc": "CRn" }, { "name": "src", "desc": "Reg" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "mov dr",
+      "architecture": "x86",
+      "full_name": "Move Debug Register",
+      "summary": "Moves data to/from Debug Registers (DR0-DR7) (Privileged).",
+      "syntax": "MOV DRn, r",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 23 /r", "length": "3" },
+      "operands": [{ "name": "dest", "desc": "DRn" }, { "name": "src", "desc": "Reg" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lmsw",
+      "architecture": "x86",
+      "full_name": "Load Machine Status Word",
+      "summary": "Loads Machine Status Word (Legacy CR0 modification).",
+      "syntax": "LMSW r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 01 /6", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Reg/Mem" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "smsw",
+      "architecture": "x86",
+      "full_name": "Store Machine Status Word",
+      "summary": "Stores Machine Status Word.",
+      "syntax": "SMSW r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 01 /4", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "clts",
+      "architecture": "x86",
+      "full_name": "Clear Task-Switched Flag",
+      "summary": "Clears the TS flag in CR0 (Privileged).",
+      "syntax": "CLTS",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 06", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "invd",
+      "architecture": "x86",
+      "full_name": "Invalidate Internal Caches",
+      "summary": "Flushes internal caches without writing back data (Privileged).",
+      "syntax": "INVD",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 08", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "wbinvd",
+      "architecture": "x86",
+      "full_name": "Write Back and Invalidate Cache",
+      "summary": "Writes back modified data and invalidates caches (Privileged).",
+      "syntax": "WBINVD",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 09", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "invlpg",
+      "architecture": "x86",
+      "full_name": "Invalidate TLB Entry",
+      "summary": "Invalidates a specific TLB entry (Privileged).",
+      "syntax": "INVLPG m",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 01 /7", "length": "3+" },
+      "operands": [{ "name": "addr", "desc": "Memory" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "rdmsr",
+      "architecture": "x86",
+      "full_name": "Read Model Specific Register",
+      "summary": "Reads MSR specified by ECX into EDX:EAX (Privileged).",
+      "syntax": "RDMSR",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 32", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "wrmsr",
+      "architecture": "x86",
+      "full_name": "Write Model Specific Register",
+      "summary": "Writes EDX:EAX to MSR specified by ECX (Privileged).",
+      "syntax": "WRMSR",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 30", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "rdpmc",
+      "architecture": "x86",
+      "full_name": "Read Performance-Monitoring Counters",
+      "summary": "Reads performance counter specified by ECX into EDX:EAX.",
+      "syntax": "RDPMC",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 33", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sysenter",
+      "architecture": "x86",
+      "full_name": "Fast System Call",
+      "summary": "Fast call to level 0 system procedures.",
+      "syntax": "SYSENTER",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 34", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sysexit",
+      "architecture": "x86",
+      "full_name": "Fast Return from System Call",
+      "summary": "Fast return to level 3 user code.",
+      "syntax": "SYSEXIT",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 35", "length": "2" },
+      "operands": [],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lar",
+      "architecture": "x86",
+      "full_name": "Load Access Rights Byte",
+      "summary": "Reads access rights from segment descriptor.",
+      "syntax": "LAR r, r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 02", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Register" }, { "name": "src", "desc": "Selector" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lsl",
+      "architecture": "x86",
+      "full_name": "Load Segment Limit",
+      "summary": "Reads segment limit from descriptor.",
+      "syntax": "LSL r, r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 03", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Register" }, { "name": "src", "desc": "Selector" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "verr",
+      "architecture": "x86",
+      "full_name": "Verify Segment for Reading",
+      "summary": "Checks if segment can be read; sets ZF.",
+      "syntax": "VERR r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 00 /4", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Selector" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "verw",
+      "architecture": "x86",
+      "full_name": "Verify Segment for Writing",
+      "summary": "Checks if segment can be written; sets ZF.",
+      "syntax": "VERW r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0x0F 00 /5", "length": "3+" },
+      "operands": [{ "name": "src", "desc": "Selector" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "arpl",
+      "architecture": "x86",
+      "full_name": "Adjust Requested Privilege Level",
+      "summary": "Adjusts RPL of selector to match current CPL (Legacy).",
+      "syntax": "ARPL r/m16, r16",
+      "encoding": { "format": "System", "hex_opcode": "0x63", "length": "2+" },
+      "operands": [{ "name": "dest", "desc": "Selector" }, { "name": "src", "desc": "RPL" }],
+      "extension": "System (32-bit)"
+    },
+    {
+      "mnemonic": "rsm",
+      "architecture": "x86",
+      "full_name": "Resume from System Management Mode",
+      "summary": "Exits SMM and returns to previous state (Privileged).",
+      "syntax": "RSM",
+      "encoding": { "format": "System", "hex_opcode": "0x0F AA", "length": "2" },
+      "operands": [],
+      "extension": "System (SMM)"
+    },
+    {
+      "mnemonic": "bswap",
+      "architecture": "x86",
+      "full_name": "Byte Swap",
+      "summary": "Reverses the byte order of a 32/64-bit register.",
+      "syntax": "BSWAP r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0x0F C8", "length": "2" },
+      "operands": [{ "name": "dest", "desc": "Register" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmpxchg8b",
+      "architecture": "x86",
+      "full_name": "Compare and Exchange 8 Bytes",
+      "summary": "Atomically compares EDX:EAX with memory; swaps if equal.",
+      "syntax": "CMPXCHG8B m64",
+      "encoding": { "format": "Legacy", "hex_opcode": "0x0F C7 /1", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "Base"
+    }
+  ]
+}
