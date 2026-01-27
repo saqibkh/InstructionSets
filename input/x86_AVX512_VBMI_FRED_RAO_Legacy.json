@@ -1,0 +1,384 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "adc",
+      "architecture": "x86",
+      "full_name": "Add with Carry",
+      "summary": "Adds operands and the Carry Flag (CF).",
+      "syntax": "ADC r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "11", "length": "2+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }, { "name": "src", "desc": "Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sbb",
+      "architecture": "x86",
+      "full_name": "Subtract with Borrow",
+      "summary": "Subtracts operands and the Carry Flag (CF).",
+      "syntax": "SBB r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "19", "length": "2+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }, { "name": "src", "desc": "Reg" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "shld",
+      "architecture": "x86",
+      "full_name": "Double Precision Shift Left",
+      "summary": "Shifts dest left, filling with bits from src.",
+      "syntax": "SHLD r/m, r, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F A4", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }, { "name": "fill", "desc": "Reg" }, { "name": "count", "desc": "Imm" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "shrd",
+      "architecture": "x86",
+      "full_name": "Double Precision Shift Right",
+      "summary": "Shifts dest right, filling with bits from src.",
+      "syntax": "SHRD r/m, r, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F AC", "length": "4+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }, { "name": "fill", "desc": "Reg" }, { "name": "count", "desc": "Imm" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "vpermb",
+      "architecture": "x86",
+      "full_name": "Permute Packed Bytes",
+      "summary": "Permutes bytes in ZMM based on index vector.",
+      "syntax": "VPERMB zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 8D", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "idx", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_VBMI"
+    },
+    {
+      "mnemonic": "vpermi2b",
+      "architecture": "x86",
+      "full_name": "Permute Two-Source Bytes",
+      "summary": "Shuffles bytes from two ZMM registers into destination.",
+      "syntax": "VPERMI2B zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 75", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "idx", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_VBMI"
+    },
+    {
+      "mnemonic": "vpermt2b",
+      "architecture": "x86",
+      "full_name": "Permute Two-Source Bytes (Overwrite)",
+      "summary": "Shuffles bytes from two sources, overwriting index.",
+      "syntax": "VPERMT2B zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 7D", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "idx", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_VBMI"
+    },
+    {
+      "mnemonic": "vpmultishiftqb",
+      "architecture": "x86",
+      "full_name": "Select Packed Unaligned Bytes from Quadword Sources",
+      "summary": "Selects bytes from each 64-bit element based on shift control.",
+      "syntax": "VPMULTISHIFTQB zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 83", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "ctrl", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_VBMI"
+    },
+    {
+      "mnemonic": "vpshldd",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Double Concatenate",
+      "summary": "Funnel shift left of doublewords.",
+      "syntax": "VPSHLDD zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 71", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }, { "name": "cnt", "desc": "Imm" }],
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpshrdd",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Double Concatenate",
+      "summary": "Funnel shift right of doublewords.",
+      "syntax": "VPSHRDD zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 73", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }, { "name": "cnt", "desc": "Imm" }],
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpcompressb",
+      "architecture": "x86",
+      "full_name": "Store Sparse Packed Byte Integer Values",
+      "summary": "Compresses active bytes from ZMM to memory.",
+      "syntax": "VPCOMPRESSB m512 {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 63", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src", "desc": "ZMM" }],
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpexpandb",
+      "architecture": "x86",
+      "full_name": "Load Sparse Packed Byte Integer Values",
+      "summary": "Expands bytes from memory into sparse locations in ZMM.",
+      "syntax": "VPEXPANDB zmm1 {k1}, m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 62", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "Mem" }],
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpopcntb",
+      "architecture": "x86",
+      "full_name": "Packed Population Count Byte",
+      "summary": "Counts set bits in each byte.",
+      "syntax": "VPOPCNTB zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 54", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_BITALG"
+    },
+    {
+      "mnemonic": "vpshufbitqmb",
+      "architecture": "x86",
+      "full_name": "Shuffle Bits from Quadword Elements to Mask",
+      "summary": "Extracts bits from bytes and packs into a mask register.",
+      "syntax": "VPSHUFBITQMB k1 {k2}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 8F", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_BITALG"
+    },
+    {
+      "mnemonic": "vp2intersectd",
+      "architecture": "x86",
+      "full_name": "Compute Intersection Pair Doublewords",
+      "summary": "Computes intersection of two ZMM registers into mask pair.",
+      "syntax": "VP2INTERSECTD k1+1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "F2 0F 38 68", "length": "6+" },
+      "operands": [{ "name": "kdest", "desc": "k-pair" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_VP2INTERSECT"
+    },
+    {
+      "mnemonic": "vpmadd52luq",
+      "architecture": "x86",
+      "full_name": "Packed Multiply-Add Unsigned 52-bit Integers (Low)",
+      "summary": "Fused multiply-add for 52-bit integers (Low 52 bits).",
+      "syntax": "VPMADD52LUQ zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 B4", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_IFMA"
+    },
+    {
+      "mnemonic": "vpmadd52huq",
+      "architecture": "x86",
+      "full_name": "Packed Multiply-Add Unsigned 52-bit Integers (High)",
+      "summary": "Fused multiply-add for 52-bit integers (High 52 bits).",
+      "syntax": "VPMADD52HUQ zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 B5", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_IFMA"
+    },
+    {
+      "mnemonic": "aadd",
+      "architecture": "x86",
+      "full_name": "Atomically Add",
+      "summary": "Atomically adds a value to a remote memory location.",
+      "syntax": "AADD m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src", "desc": "Reg" }],
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "aand",
+      "architecture": "x86",
+      "full_name": "Atomically AND",
+      "summary": "Atomically ANDs a value to a remote memory location.",
+      "syntax": "AAND m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC /r", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src", "desc": "Reg" }],
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "aor",
+      "architecture": "x86",
+      "full_name": "Atomically OR",
+      "summary": "Atomically ORs a value to a remote memory location.",
+      "syntax": "AOR m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC /r", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src", "desc": "Reg" }],
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "axor",
+      "architecture": "x86",
+      "full_name": "Atomically XOR",
+      "summary": "Atomically XORs a value to a remote memory location.",
+      "syntax": "AXOR m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC /r", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src", "desc": "Reg" }],
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "cmpccxadd",
+      "architecture": "x86",
+      "full_name": "Compare and Add if Condition is Met",
+      "summary": "Atomically adds if condition is met.",
+      "syntax": "CMPccXADD m32, r32, r32",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 E0", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src1", "desc": "Reg" }, { "name": "src2", "desc": "Reg" }],
+      "extension": "CMPccXADD"
+    },
+    {
+      "mnemonic": "erets",
+      "architecture": "x86",
+      "full_name": "Event Return Supervisor",
+      "summary": "Returns from an event handler to supervisor mode (FRED).",
+      "syntax": "ERETS",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 01 CA", "length": "4" },
+      "operands": [],
+      "extension": "FRED"
+    },
+    {
+      "mnemonic": "eretu",
+      "architecture": "x86",
+      "full_name": "Event Return User",
+      "summary": "Returns from an event handler to user mode (FRED).",
+      "syntax": "ERETU",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 CA", "length": "4" },
+      "operands": [],
+      "extension": "FRED"
+    },
+    {
+      "mnemonic": "lkgs",
+      "architecture": "x86",
+      "full_name": "Load Kernel GS Base",
+      "summary": "Loads the kernel GS base address (FRED support).",
+      "syntax": "LKGS r16",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 00 /6", "length": "4+" },
+      "operands": [{ "name": "src", "desc": "Reg" }],
+      "extension": "LKGS"
+    },
+    {
+      "mnemonic": "enqcmd",
+      "architecture": "x86",
+      "full_name": "Enqueue Command",
+      "summary": "Writes a command to a device (DSA/IAA accelerator).",
+      "syntax": "ENQCMD r32, m512",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 38 F8", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "Reg" }, { "name": "src", "desc": "Mem" }],
+      "extension": "ENQCMD"
+    },
+    {
+      "mnemonic": "pconfig",
+      "architecture": "x86",
+      "full_name": "Platform Configuration",
+      "summary": "Configures platform features like MKTME (Memory Encryption).",
+      "syntax": "PCONFIG",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 C5", "length": "3" },
+      "operands": [],
+      "extension": "PCONFIG"
+    },
+    {
+      "mnemonic": "wbnoinvd",
+      "architecture": "x86",
+      "full_name": "Write Back and Do Not Invalidate Cache",
+      "summary": "Writes back modified lines but keeps them valid in cache.",
+      "syntax": "WBNOINVD",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 09", "length": "3" },
+      "operands": [],
+      "extension": "WBNOINVD"
+    },
+    {
+      "mnemonic": "aesencwide128kl",
+      "architecture": "x86",
+      "full_name": "AES Encrypt Wide 128-bit Key Locker",
+      "summary": "Encrypts 8 blocks using 128-bit Key Locker handle.",
+      "syntax": "AESENCWIDE128KL m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 D8", "length": "5+" },
+      "operands": [{ "name": "handle", "desc": "Mem" }],
+      "extension": "KEYLOCKER_WIDE"
+    },
+    {
+      "mnemonic": "aesencwide256kl",
+      "architecture": "x86",
+      "full_name": "AES Encrypt Wide 256-bit Key Locker",
+      "summary": "Encrypts 8 blocks using 256-bit Key Locker handle.",
+      "syntax": "AESENCWIDE256KL m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 D8 /1", "length": "5+" },
+      "operands": [{ "name": "handle", "desc": "Mem" }],
+      "extension": "KEYLOCKER_WIDE"
+    },
+    {
+      "mnemonic": "fucom",
+      "architecture": "x86",
+      "full_name": "Unordered Compare Real",
+      "summary": "Compares ST(0) with source (supports NaNs).",
+      "syntax": "FUCOM ST(i)",
+      "encoding": { "format": "Legacy", "hex_opcode": "DD E0+i", "length": "2" },
+      "operands": [{ "name": "src", "desc": "Reg" }],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "frndint",
+      "architecture": "x86",
+      "full_name": "Round to Integer",
+      "summary": "Rounds ST(0) to integer according to RC field.",
+      "syntax": "FRNDINT",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 FC", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fscale",
+      "architecture": "x86",
+      "full_name": "Scale",
+      "summary": "Scales ST(0) by ST(1) (ST(0) * 2^ST(1)).",
+      "syntax": "FSCALE",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 FD", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fxtract",
+      "architecture": "x86",
+      "full_name": "Extract Exponent and Significand",
+      "summary": "Separates exponent and significand of ST(0).",
+      "syntax": "FXTRACT",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 F4", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "f2xm1",
+      "architecture": "x86",
+      "full_name": "Compute 2^x - 1",
+      "summary": "Computes (2^ST(0)) - 1.",
+      "syntax": "F2XM1",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 F0", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fyl2xp1",
+      "architecture": "x86",
+      "full_name": "Compute y * log2(x + 1)",
+      "summary": "Computes ST(1) * log2(ST(0) + 1).",
+      "syntax": "FYL2XP1",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 F9", "length": "2" },
+      "operands": [],
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "clrssbsy",
+      "architecture": "x86",
+      "full_name": "Clear Shadow Stack Busy Flag",
+      "summary": "Clears the busy flag in the shadow stack token.",
+      "syntax": "CLRSSBSY m64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /6", "length": "4+" },
+      "operands": [{ "name": "token", "desc": "Mem" }],
+      "extension": "CET-SS"
+    },
+    {
+      "mnemonic": "tdpfp16ps",
+      "architecture": "x86",
+      "full_name": "Tile Dot Product FP16 Packed Single",
+      "summary": "Matrix multiply (FP16 * FP16) accumulating to Float32.",
+      "syntax": "TDPFP16PS tmm1, tmm2, tmm3",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 5C", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "TMM" }, { "name": "src1", "desc": "TMM" }, { "name": "src2", "desc": "TMM" }],
+      "extension": "AMX-FP16"
+    }
+  ]
+}

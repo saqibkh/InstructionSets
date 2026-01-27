@@ -1,0 +1,444 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vmxon",
+      "architecture": "x86",
+      "full_name": "Enter VMX Operation",
+      "summary": "Enters VMX root operation (Host Mode).",
+      "syntax": "VMXON m64",
+      "encoding": { "format": "VMX", "hex_opcode": "F3 0F C7 /6", "length": "4+" },
+      "operands": [{ "name": "ptr", "desc": "Memory" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmcall",
+      "architecture": "x86",
+      "full_name": "Call to VM Monitor",
+      "summary": "Guest VM calls the Hypervisor (VM Exit).",
+      "syntax": "VMCALL",
+      "encoding": { "format": "VMX", "hex_opcode": "0F 01 C1", "length": "3" },
+      "operands": [],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmclear",
+      "architecture": "x86",
+      "full_name": "Clear Virtual-Machine Control Structure",
+      "summary": "Initializes a VMCS region in memory.",
+      "syntax": "VMCLEAR m64",
+      "encoding": { "format": "VMX", "hex_opcode": "66 0F C7 /6", "length": "4+" },
+      "operands": [{ "name": "ptr", "desc": "Memory" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmlaunch",
+      "architecture": "x86",
+      "full_name": "Launch Virtual Machine",
+      "summary": "Launches a VM managed by the current VMCS.",
+      "syntax": "VMLAUNCH",
+      "encoding": { "format": "VMX", "hex_opcode": "0F 01 C2", "length": "3" },
+      "operands": [],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmresume",
+      "architecture": "x86",
+      "full_name": "Resume Virtual Machine",
+      "summary": "Resumes a VM from the current VMCS.",
+      "syntax": "VMRESUME",
+      "encoding": { "format": "VMX", "hex_opcode": "0F 01 C3", "length": "3" },
+      "operands": [],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmptrld",
+      "architecture": "x86",
+      "full_name": "Load Pointer to VMCS",
+      "summary": "Loads the current VMCS pointer from memory.",
+      "syntax": "VMPTRLD m64",
+      "encoding": { "format": "VMX", "hex_opcode": "0F C7 /6", "length": "3+" },
+      "operands": [{ "name": "ptr", "desc": "Memory" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmptrst",
+      "architecture": "x86",
+      "full_name": "Store Pointer to VMCS",
+      "summary": "Stores the current VMCS pointer to memory.",
+      "syntax": "VMPTRST m64",
+      "encoding": { "format": "VMX", "hex_opcode": "0F C7 /7", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Memory" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmread",
+      "architecture": "x86",
+      "full_name": "Read Field from VMCS",
+      "summary": "Reads a field from the Virtual Machine Control Structure.",
+      "syntax": "VMREAD r/m64, r64",
+      "encoding": { "format": "VMX", "hex_opcode": "0F 78", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "Reg/Mem" }, { "name": "field", "desc": "Reg" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmwrite",
+      "architecture": "x86",
+      "full_name": "Write Field to VMCS",
+      "summary": "Writes a field to the Virtual Machine Control Structure.",
+      "syntax": "VMWRITE r64, r/m64",
+      "encoding": { "format": "VMX", "hex_opcode": "0F 79", "length": "3+" },
+      "operands": [{ "name": "field", "desc": "Reg" }, { "name": "src", "desc": "Reg/Mem" }],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "vmoff",
+      "architecture": "x86",
+      "full_name": "Leave VMX Operation",
+      "summary": "Leaves VMX root operation.",
+      "syntax": "VMOFF",
+      "encoding": { "format": "VMX", "hex_opcode": "0F 01 C4", "length": "3" },
+      "operands": [],
+      "extension": "VMX"
+    },
+    {
+      "mnemonic": "invept",
+      "architecture": "x86",
+      "full_name": "Invalidate Translations Derived from EPT",
+      "summary": "Invalidates Extended Page Table entries.",
+      "syntax": "INVEPT r64, m128",
+      "encoding": { "format": "VMX", "hex_opcode": "66 0F 38 80", "length": "5+" },
+      "operands": [{ "name": "type", "desc": "Reg" }, { "name": "desc", "desc": "Mem" }],
+      "extension": "VMX (EPT)"
+    },
+    {
+      "mnemonic": "invvpid",
+      "architecture": "x86",
+      "full_name": "Invalidate Translations Based on VPID",
+      "summary": "Invalidates TLB entries based on Virtual Processor ID.",
+      "syntax": "INVVPID r64, m128",
+      "encoding": { "format": "VMX", "hex_opcode": "66 0F 38 81", "length": "5+" },
+      "operands": [{ "name": "type", "desc": "Reg" }, { "name": "desc", "desc": "Mem" }],
+      "extension": "VMX (VPID)"
+    },
+    {
+      "mnemonic": "kmovw",
+      "architecture": "x86",
+      "full_name": "Move Word Mask Register",
+      "summary": "Moves 16-bit mask to/from k-register.",
+      "syntax": "KMOVW k1, k2/m16",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 90", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src", "desc": "k-reg/Mem" }],
+      "extension": "AVX-512"
+    },
+    {
+      "mnemonic": "kmovq",
+      "architecture": "x86",
+      "full_name": "Move Quadword Mask Register",
+      "summary": "Moves 64-bit mask to/from k-register.",
+      "syntax": "KMOVQ k1, k2/m64",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 90", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src", "desc": "k-reg/Mem" }],
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kandw",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical AND Masks Word",
+      "summary": "Bitwise AND of 16-bit masks.",
+      "syntax": "KANDW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 41", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src1", "desc": "k-reg" }, { "name": "src2", "desc": "k-reg" }],
+      "extension": "AVX-512"
+    },
+    {
+      "mnemonic": "kandnw",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical AND NOT Masks Word",
+      "summary": "Bitwise AND NOT of 16-bit masks.",
+      "syntax": "KANDNW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 42", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src1", "desc": "k-reg" }, { "name": "src2", "desc": "k-reg" }],
+      "extension": "AVX-512"
+    },
+    {
+      "mnemonic": "korw",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical OR Masks Word",
+      "summary": "Bitwise OR of 16-bit masks.",
+      "syntax": "KORW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 45", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src1", "desc": "k-reg" }, { "name": "src2", "desc": "k-reg" }],
+      "extension": "AVX-512"
+    },
+    {
+      "mnemonic": "kxorw",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical XOR Masks Word",
+      "summary": "Bitwise XOR of 16-bit masks.",
+      "syntax": "KXORW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 47", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src1", "desc": "k-reg" }, { "name": "src2", "desc": "k-reg" }],
+      "extension": "AVX-512"
+    },
+    {
+      "mnemonic": "knotw",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical NOT Masks Word",
+      "summary": "Bitwise NOT of 16-bit mask.",
+      "syntax": "KNOTW k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 44", "length": "3+" },
+      "operands": [{ "name": "dest", "desc": "k-reg" }, { "name": "src", "desc": "k-reg" }],
+      "extension": "AVX-512"
+    },
+    {
+      "mnemonic": "kortestw",
+      "architecture": "x86",
+      "full_name": "OR Masks And Set Flags Word",
+      "summary": "ORs two masks and sets EFLAGS (ZF, CF) based on result.",
+      "syntax": "KORTESTW k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 98", "length": "3+" },
+      "operands": [{ "name": "src1", "desc": "k-reg" }, { "name": "src2", "desc": "k-reg" }],
+      "extension": "AVX-512"
+    },
+    {
+      "mnemonic": "vpternlogd",
+      "architecture": "x86",
+      "full_name": "Packed Doubleword Ternary Logic",
+      "summary": "Performs one of 256 logical operations on 3 inputs.",
+      "syntax": "VPTERNLOGD zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 25", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM" }, { "name": "src3", "desc": "ZMM/Mem" }, { "name": "func", "desc": "Imm" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpternlogq",
+      "architecture": "x86",
+      "full_name": "Packed Quadword Ternary Logic",
+      "summary": "Performs one of 256 logical operations on 3 quadwords.",
+      "syntax": "VPTERNLOGQ zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 25", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM" }, { "name": "src3", "desc": "ZMM/Mem" }, { "name": "func", "desc": "Imm" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcompresspd",
+      "architecture": "x86",
+      "full_name": "Store Sparse Packed Double-Precision Floating-Point Values",
+      "summary": "Compresses active elements from ZMM to memory.",
+      "syntax": "VCOMPRESSPD m512 {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 8A", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src", "desc": "ZMM" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcompressps",
+      "architecture": "x86",
+      "full_name": "Store Sparse Packed Single-Precision Floating-Point Values",
+      "summary": "Compresses active elements from ZMM to memory.",
+      "syntax": "VCOMPRESSPS m512 {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 8A", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "Mem" }, { "name": "src", "desc": "ZMM" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vexpandpd",
+      "architecture": "x86",
+      "full_name": "Load Sparse Packed Double-Precision Floating-Point Values",
+      "summary": "Expands data from memory into sparse locations in ZMM.",
+      "syntax": "VEXPANDPD zmm1 {k1}, m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 88", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vexpandps",
+      "architecture": "x86",
+      "full_name": "Load Sparse Packed Single-Precision Floating-Point Values",
+      "summary": "Expands data from memory into sparse locations in ZMM.",
+      "syntax": "VEXPANDPS zmm1 {k1}, m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 88", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpermi2d",
+      "architecture": "x86",
+      "full_name": "Permute Two-Source Doublewords",
+      "summary": "Shuffles doublewords from two ZMM registers into destination.",
+      "syntax": "VPERMI2D zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 76", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "idx", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpermt2d",
+      "architecture": "x86",
+      "full_name": "Permute Two-Source Doublewords (Overwrite)",
+      "summary": "Shuffles 2 sources, overwriting the index register.",
+      "syntax": "VPERMT2D zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 7F", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "idx", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vshuff32x4",
+      "architecture": "x86",
+      "full_name": "Shuffle Packed Float32x4",
+      "summary": "Shuffles 128-bit blocks of single-precision floats.",
+      "syntax": "VSHUFF32X4 zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 23", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }, { "name": "ctrl", "desc": "Imm" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpmovdb",
+      "architecture": "x86",
+      "full_name": "Truncate Doubleword to Byte",
+      "summary": "Down-converts 32-bit integers to 8-bit.",
+      "syntax": "VPMOVDB xmm1/m128 {k1}, zmm2",
+      "encoding": { "format": "EVEX", "hex_opcode": "F3 0F 38 31", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM/Mem" }, { "name": "src", "desc": "ZMM" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpmovusdb",
+      "architecture": "x86",
+      "full_name": "Saturate Unsigned Doubleword to Byte",
+      "summary": "Down-converts 32-bit to 8-bit with unsigned saturation.",
+      "syntax": "VPMOVUSDB xmm1/m128 {k1}, zmm2",
+      "encoding": { "format": "EVEX", "hex_opcode": "F3 0F 38 11", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "XMM/Mem" }, { "name": "src", "desc": "ZMM" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vrndscalepd",
+      "architecture": "x86",
+      "full_name": "Round Packed Double-Precision Floating-Point with Scale",
+      "summary": "Rounds doubles to integer values using imm8 control.",
+      "syntax": "VRNDSCALEPD zmm1 {k1}, zmm2/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 09", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }, { "name": "ctrl", "desc": "Imm" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vfixupimmpd",
+      "architecture": "x86",
+      "full_name": "Fix Up Special Packed Float64 Values",
+      "summary": "Fixes special cases (NaN, Inf) using a table.",
+      "syntax": "VFIXUPIMMPD zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 54", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src1", "desc": "ZMM" }, { "name": "table", "desc": "ZMM/Mem" }, { "name": "imm", "desc": "Imm" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vgetmantpd",
+      "architecture": "x86",
+      "full_name": "Get Mantissa Packed Double-Precision",
+      "summary": "Extracts mantissas from doubles.",
+      "syntax": "VGETMANTPD zmm1 {k1}, zmm2/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 26", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }, { "name": "ctrl", "desc": "Imm" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vgetexppd",
+      "architecture": "x86",
+      "full_name": "Get Exponent Packed Double-Precision",
+      "summary": "Extracts exponents from doubles as float values.",
+      "syntax": "VGETEXPPD zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 42", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vscalefpd",
+      "architecture": "x86",
+      "full_name": "Scale Packed Float64 Values with Float64 Exponents",
+      "summary": "Scales doubles by exponents (x * 2^n).",
+      "syntax": "VSCALEFPD zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 2C", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM" }, { "name": "exp", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "valignd",
+      "architecture": "x86",
+      "full_name": "Align Doubleword Vectors",
+      "summary": "Extracts 512-bits from two concatenated ZMMs shifted by count.",
+      "syntax": "VALIGND zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 03", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src1", "desc": "ZMM" }, { "name": "src2", "desc": "ZMM/Mem" }, { "name": "count", "desc": "Imm" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpconflictd",
+      "architecture": "x86",
+      "full_name": "Detect Conflicts Within a Vector of Packed Dword Values",
+      "summary": "Detects duplicate values in a vector (Conflict Detection).",
+      "syntax": "VPCONFLICTD zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 C4", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512CD"
+    },
+    {
+      "mnemonic": "vplzcntd",
+      "architecture": "x86",
+      "full_name": "Count Leading Zero Bits",
+      "summary": "Counts leading zeros for each doubleword element.",
+      "syntax": "VPLZCNTD zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 44", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512CD"
+    },
+    {
+      "mnemonic": "vcvtudq2ps",
+      "architecture": "x86",
+      "full_name": "Convert Packed Unsigned Doubleword Integers to Packed Single-Precision Floating-Point",
+      "summary": "Converts unsigned int32 to float.",
+      "syntax": "VCVTUDQ2PS zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "F2 0F 5B", "length": "5+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vprolvd",
+      "architecture": "x86",
+      "full_name": "Rotate Left Doubleword Variable",
+      "summary": "Rotates doublewords left by amounts in second vector.",
+      "syntax": "VPROLVD zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 15", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM" }, { "name": "counts", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpopcntd",
+      "architecture": "x86",
+      "full_name": "Packed Population Count Doubleword",
+      "summary": "Counts set bits in each doubleword element.",
+      "syntax": "VPOPCNTD zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 55", "length": "6+" },
+      "operands": [{ "name": "dest", "desc": "ZMM" }, { "name": "src", "desc": "ZMM/Mem" }],
+      "extension": "AVX-512_VPOPCNTDQ"
+    },
+    {
+      "mnemonic": "encls",
+      "architecture": "x86",
+      "full_name": "Execute Enclave Supervisor Leaf",
+      "summary": "Executes an SGX supervisor function specified by EAX.",
+      "syntax": "ENCLS",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 CF", "length": "3" },
+      "operands": [],
+      "extension": "SGX"
+    },
+    {
+      "mnemonic": "enclu",
+      "architecture": "x86",
+      "full_name": "Execute Enclave User Leaf",
+      "summary": "Executes an SGX user function specified by EAX.",
+      "syntax": "ENCLU",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D7", "length": "3" },
+      "operands": [],
+      "extension": "SGX"
+    }
+  ]
+}
