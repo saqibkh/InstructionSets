@@ -164,6 +164,7 @@ def generate_site(master_db):
     template_detail = env.get_template('instruction_detail.html')
     template_summary = env.get_template('arch_summary.html')
     template_index = env.get_template('index.html')
+    template_table = env.get_template('opcode_table.html')
 
     # 3b. Generate robots.txt
     with open(os.path.join(OUTPUT_DIR, 'robots.txt'), 'w') as f:
@@ -239,7 +240,31 @@ def generate_site(master_db):
                 instructions=sorted_insts, 
                 root=".."
             ))
+       
+        # --- NEW: GENERATE OPCODE TABLE ---
+        def get_op_int(inst):
+            try:
+                # robustly parse hex strings like "0x13", "89", "0xCB (alias)"
+                op_str = inst.get('encoding', {}).get('hex_opcode', '')
+                clean = re.sub(r'[^0-9a-fA-F]', '', op_str) # Keep only hex chars
+                return int(clean, 16) if clean else 9999999
+            except:
+                return 9999999
+
+        # Sort by opcode integer value
+        sorted_by_opcode = sorted(instructions, key=get_op_int)
         
+        table_dir = os.path.join(arch_dir, 'table')
+        os.makedirs(table_dir, exist_ok=True)
+        with open(os.path.join(table_dir, 'index.html'), 'w') as f:
+            f.write(template_table.render(
+                arch=arch,
+                instructions=sorted_by_opcode,
+                root="../.."
+            ))
+        print(f"   └── Generated opcode table for {arch}")
+        # ----------------------------------
+
         # INSTRUCTION DETAIL PAGES
         for inst in instructions:
             safe_name = inst['mnemonic'].lower().replace(' ', '_').replace('.', '_')

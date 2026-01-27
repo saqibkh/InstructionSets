@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Opcode Table - {{ arch }}{% endblock %}
+{% block meta_desc %}Hexadecimal opcode lookup table for {{ arch }} instructions.{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 40px;">
+    <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../">{{ arch }}</a> <span>/</span> 
+                Table
+            </div>
+            <h1>{{ arch }} Opcode Map</h1>
+            <p>Reverse lookup instructions by their hexadecimal encoding.</p>
+        </div>
+        <a href="../" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Back to List</a>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Opcode</th>
+                    <th style="width: 15%;">Mnemonic</th>
+                    <th style="width: 20%;">Format</th>
+                    <th style="width: 50%;">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inst in instructions %}
+                <tr onclick="window.location='../{{ inst.mnemonic|lower|replace(' ', '_')|replace('.', '_') }}/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">{{ inst.encoding.hex_opcode }}</td>
+                    <td class="mono">{{ inst.mnemonic }}</td>
+                    <td><span class="badge">{{ inst.encoding.format }}</span></td>
+                    <td style="color: var(--text-muted);">{{ inst.full_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
