@@ -60,11 +60,14 @@ def load_data():
 
 def parse_encoding(pattern_str):
     """
-    Parses encoding strings like:
-    RISC-V:   "0000000 | rs2 | rs1 | 000 | rd | 0110011"
-    PowerISA: "31 | RT | RA | RB | OE | 266 | Rc"
+    Parses encoding strings safely.
+    Returns a list of parts or an empty list if input is invalid.
     """
-    parts = [p.strip() for p in pattern_str.split('|')]
+    if not pattern_str or not isinstance(pattern_str, str):
+        return []
+    
+    # Split by '|', strip whitespace, and filter out empty strings
+    parts = [p.strip() for p in pattern_str.split('|') if p.strip()]
     return parts
 
 def create_linkifier(mnemonic_to_url):
@@ -219,24 +222,44 @@ def generate_site(master_db):
         grouped_insts = {}
         # Sort instructions alphabetically first
         sorted_insts = sorted(instructions, key=lambda x: x['mnemonic'])
-        
+       
         for inst in sorted_insts:
-            # Process Visual Encoding
-            if 'encoding' in inst and 'binary_pattern' in inst['encoding']:
-                raw_parts = parse_encoding(inst['encoding']['binary_pattern'])
-                inst['encoding']['visual_parts'] = []
+            # --- 1. DATA NORMALIZATION (Fix common issues) ---
+            
+            # Ensure 'encoding' dict exists
+            if 'encoding' not in inst: inst['encoding'] = {}
+            
+            # Fallback: Look for 'pattern' if 'binary_pattern' is missing
+            raw_pattern = inst['encoding'].get('binary_pattern') or inst['encoding'].get('pattern')
+            
+            # Fallback: Ensure 'operands' is a list
+            if 'operands' not in inst: inst['operands'] = []
+
+            # --- 2. PROCESS VISUAL ENCODING ---
+            inst['encoding']['visual_parts'] = [] # Default to empty
+            
+            if raw_pattern:
+                # Store the normalized pattern back so the template sees it
+                inst['encoding']['binary_pattern'] = raw_pattern 
+                
+                raw_parts = parse_encoding(raw_pattern)
                 for p in raw_parts:
+                    # Clean up "rs1[4:0]" -> "rs1" for tooltip matching
                     clean_name = p.split('[')[0].strip()
                     inst['encoding']['visual_parts'].append({'raw': p, 'clean': clean_name})
-            
+            else:
+                # OPTIONAL: Print warning for missing patterns so you can fix JSON later
+                print(f"⚠️  Warning: No binary pattern for {inst['mnemonic']} ({arch})")
+
+            # --- 3. LINKS & TEXT ---
             # Add Auto-Links
-            inst['linked_summary'] = linkify(inst['summary'])
+            inst['linked_summary'] = linkify(inst.get('summary', ''))
             inst['linked_pseudocode'] = linkify(inst.get('pseudocode', ''))
 
             # Categorize
             cat = get_instruction_category(inst)
             if cat not in grouped_insts: grouped_insts[cat] = []
-            grouped_insts[cat].append(inst)
+            grouped_insts[cat].append(inst)        
 
         # Define Sort Order for Sidebar
         cat_order = [
