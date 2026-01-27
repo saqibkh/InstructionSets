@@ -2,12 +2,14 @@ import os
 import json
 import shutil
 import re
+from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 
 # Configuration
 INPUT_DIR = 'input'
 OUTPUT_DIR = 'docs'
 TEMPLATE_DIR = 'templates'
+SITE_URL = "https://instructionsets.com"
 
 # Ensure output directory exists
 if os.path.exists(OUTPUT_DIR):
@@ -110,15 +112,13 @@ def generate_site(master_db):
     
     mnemonic_to_url = {}
     search_index = []
-    
+    all_pages = []
+
     # 1. First Pass: Build Index & URLs
     for arch, insts in master_db.items():
         for inst in insts:
-            # Create a URL-safe name (handle dots in mnemonics)
             clean_name = inst['mnemonic'].lower().replace(' ', '_').replace('.', '_')
             rel_url = f"{arch.lower()}/{clean_name}/"
-            
-            # Allow linking by simple mnemonic
             mnemonic_to_url[inst['mnemonic']] = f"../../{rel_url}"
             
             search_index.append({
@@ -127,17 +127,49 @@ def generate_site(master_db):
                 "summary": inst['summary'],
                 "arch": arch
             })
+            
+            # Add to sitemap list
+            all_pages.append(rel_url)
 
     linkify = create_linkifier(mnemonic_to_url)
+
+    # --- NEW: Generate Sitemap.xml ---
+    sitemap_content = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ]
+    
+    # Add homepage
+    today = datetime.now().strftime("%Y-%m-%d")
+    sitemap_content.append(f"  <url><loc>{SITE_URL}/</loc><lastmod>{today}</lastmod></url>")
+
+    # Add all instruction pages
+    for page in all_pages:
+        full_url = f"{SITE_URL}/{page}"
+        sitemap_content.append(f"  <url><loc>{full_url}</loc><lastmod>{today}</lastmod></url>")
+    
+    sitemap_content.append('</urlset>')
+    
+    with open(os.path.join(OUTPUT_DIR, 'sitemap.xml'), 'w') as f:
+        f.write('\n'.join(sitemap_content))
+    
+    print(f"✅ Generated sitemap.xml with {len(all_pages) + 1} URLs")
+
 
     # 2. Write Search Index
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
-    # 3. Setup Templates
+    # 3a. Setup Templates
     template_detail = env.get_template('instruction_detail.html')
     template_summary = env.get_template('arch_summary.html')
     template_index = env.get_template('index.html')
+
+    # 3b. Generate robots.txt
+    with open(os.path.join(OUTPUT_DIR, 'robots.txt'), 'w') as f:
+        f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml")
+    
+    print("✅ Generated robots.txt")
 
     # Copy Static Assets
     static_src = 'static'
