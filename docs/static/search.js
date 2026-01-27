@@ -24,12 +24,27 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
 
-            // Smart Search: Check if all query parts exist in label or summary
-            const terms = query.split(" ");
-            const results = searchIndex.filter(item => {
-                const text = (item.label + " " + item.summary).toLowerCase();
-                return terms.every(term => text.includes(term));
-            });
+	    // Weighted Search: Score results based on relevance
+            const results = searchIndex.map(item => {
+                let score = 0;
+                const label = item.label.toLowerCase();
+                const summary = item.summary.toLowerCase();
+                const queryLower = query.toLowerCase();
+
+                // 1. Exact Match (Highest Priority)
+                if (label === queryLower || item.label.toLowerCase().startsWith(queryLower + " ")) score += 100;
+                // 2. Starts With (High Priority)
+                else if (label.startsWith(queryLower)) score += 50;
+                // 3. Contains in Mnemonic/Title (Medium Priority)
+                else if (label.includes(queryLower)) score += 10;
+                // 4. Contains in Summary (Low Priority)
+                else if (summary.includes(queryLower)) score += 1;
+                
+                return { item, score };
+            })
+            .filter(r => r.score > 0) // Remove non-matches
+            .sort((a, b) => b.score - a.score) // Sort by highest score
+            .map(r => r.item); // Unwrap back to original item format
 
             renderResults(results);
         });

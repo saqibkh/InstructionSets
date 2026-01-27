@@ -36,4 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
             row.addEventListener('mouseleave', () => highlight(row.dataset.op, false));
         }
     });
+
+    // --- New: Copy to Clipboard Logic ---
+    document.querySelectorAll('.code-block').forEach(block => {
+        // 1. Create the button
+        const button = document.createElement('button');
+        button.className = 'copy-btn';
+        button.innerHTML = '📋';
+        button.ariaLabel = 'Copy code';
+        
+        // 2. Add click handler
+        button.addEventListener('click', () => {
+            navigator.clipboard.writeText(block.innerText.trim());
+            
+            // Visual feedback
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅';
+            setTimeout(() => button.innerHTML = originalText, 2000);
+        });
+
+        // 3. Append to the block
+        block.style.position = 'relative';
+        block.appendChild(button);
+    });
 });
