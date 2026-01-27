@@ -198,6 +198,12 @@ def generate_site(master_db):
     if os.path.exists(static_dest): shutil.rmtree(static_dest)
     if os.path.exists(static_src): shutil.copytree(static_src, static_dest)
 
+    # --- NEW: Copy CNAME to Output ---
+    if os.path.exists('CNAME'):
+        shutil.copy('CNAME', os.path.join(OUTPUT_DIR, 'CNAME'))
+        print("✅ Copied CNAME to output directory")
+    # ---------------------------------
+
     # 4. Generate Main Index (Landing Page)
     arch_counts = {arch: len(insts) for arch, insts in master_db.items()}
     with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f:
