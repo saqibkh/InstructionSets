@@ -3,8 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const bitBoxes = document.querySelectorAll('.bit-box');
     const operandRows = document.querySelectorAll('.operand-row');
 
+    const tooltip = document.getElementById('bit-tooltip');
+
     function highlight(name, active) {
-        // Find bit boxes with this name
+        let descText = "";
+
+        // 1. Highlight Bit Boxes
         bitBoxes.forEach(box => {
             if (box.dataset.op === name) {
                 if(active) box.classList.add('highlight');
@@ -12,13 +16,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Find operand rows with this name
+        // 2. Highlight Operand Rows & Grab Description
         operandRows.forEach(row => {
             if (row.dataset.op === name) {
-                if(active) row.classList.add('highlight');
-                else row.classList.remove('highlight');
+                if(active) {
+                    row.classList.add('highlight');
+                    // Grab the description from the second span in the row
+                    const descSpan = row.querySelectorAll('span')[1]; 
+                    if (descSpan) descText = descSpan.innerText;
+                } else {
+                    row.classList.remove('highlight');
+                }
             }
         });
+
+        // 3. Update Tooltip
+        if (tooltip) {
+            if (active) {
+                // If we found a description in operands, use it. 
+                // Otherwise, check if it looks like a fixed binary value (0/1) or Hex
+                if (descText) {
+                    tooltip.innerText = `${name}: ${descText}`;
+                    tooltip.style.opacity = '1';
+                } else if (/^[01]+$/.test(name)) {
+                    tooltip.innerText = "Fixed Opcode Bits";
+                    tooltip.style.opacity = '1';
+                } else {
+                    // Fallback for things like 'opcode' or 'func3' that aren't operands
+                    tooltip.innerText = name; 
+                    tooltip.style.opacity = '1';
+                }
+            } else {
+                tooltip.style.opacity = '0';
+            }
+        }
     }
 
     // Attach events to Bit Boxes
