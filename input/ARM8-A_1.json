@@ -1,0 +1,224 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "svc",
+      "architecture": "ARMv8-A",
+      "full_name": "Supervisor Call",
+      "summary": "Generates a Supervisor Call exception (system call to OS).",
+      "syntax": "SVC #<imm>",
+      "encoding": { "format": "Exception", "binary_pattern": "11010100 | 000 | imm16 | 00001", "hex_opcode": "0xD4000001" },
+      "operands": [{ "name": "imm", "desc": "Exception ID (16-bit)" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mrs",
+      "architecture": "ARMv8-A",
+      "full_name": "Move System Register to General Register",
+      "summary": "Reads a system register (like TPIDR_EL0 or NZCV) into a general-purpose register.",
+      "syntax": "MRS <Xt>, <system_reg>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 001 | 1 | o0 | op1 | CRn | CRm | op2 | Rt", "hex_opcode": "0xD5300000" },
+      "operands": [{ "name": "Xt", "desc": "Dest" }, { "name": "system_reg", "desc": "Sys Reg" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "msr",
+      "architecture": "ARMv8-A",
+      "full_name": "Move General Register to System Register",
+      "summary": "Writes a general-purpose register value to a system register.",
+      "syntax": "MSR <system_reg>, <Xt>",
+      "encoding": { "format": "System", "binary_pattern": "11010101 | 000 | 1 | o0 | op1 | CRn | CRm | op2 | Rt", "hex_opcode": "0xD5100000" },
+      "operands": [{ "name": "system_reg", "desc": "Sys Reg" }, { "name": "Xt", "desc": "Source" }],
+      "extension": "System"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Add (Single)",
+      "summary": "Adds two single-precision floating-point registers.",
+      "syntax": "FADD <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 001 | Rm | 001010 | Rn | Rd", "hex_opcode": "0x1E202800" },
+      "operands": [{ "name": "Sd", "desc": "Dest (32-bit)" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Add (Double)",
+      "summary": "Adds two double-precision floating-point registers.",
+      "syntax": "FADD <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 011 | Rm | 001010 | Rn | Rd", "hex_opcode": "0x1E602800" },
+      "operands": [{ "name": "Dd", "desc": "Dest (64-bit)" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Subtract (Single)",
+      "summary": "Subtracts two single-precision floating-point registers.",
+      "syntax": "FSUB <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 001 | Rm | 001110 | Rn | Rd", "hex_opcode": "0x1E203800" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Subtract (Double)",
+      "summary": "Subtracts two double-precision floating-point registers.",
+      "syntax": "FSUB <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 011 | Rm | 001110 | Rn | Rd", "hex_opcode": "0x1E603800" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Multiply (Single)",
+      "summary": "Multiplies two single-precision floating-point registers.",
+      "syntax": "FMUL <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 001 | Rm | 000010 | Rn | Rd", "hex_opcode": "0x1E200800" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Multiply (Double)",
+      "summary": "Multiplies two double-precision floating-point registers.",
+      "syntax": "FMUL <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 011 | Rm | 000010 | Rn | Rd", "hex_opcode": "0x1E600800" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Divide (Single)",
+      "summary": "Divides two single-precision floating-point registers.",
+      "syntax": "FDIV <Sd>, <Sn>, <Sm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 001 | Rm | 000110 | Rn | Rd", "hex_opcode": "0x1E201800" },
+      "operands": [{ "name": "Sd", "desc": "Dest" }, { "name": "Sn", "desc": "Dividend" }, { "name": "Sm", "desc": "Divisor" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Divide (Double)",
+      "summary": "Divides two double-precision floating-point registers.",
+      "syntax": "FDIV <Dd>, <Dn>, <Dm>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 011 | Rm | 000110 | Rn | Rd", "hex_opcode": "0x1E601800" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Dividend" }, { "name": "Dm", "desc": "Divisor" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fcmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Compare (Single)",
+      "summary": "Compares two single-precision registers and updates NZCV flags.",
+      "syntax": "FCMP <Sn>, <Sm>",
+      "encoding": { "format": "Float Compare", "binary_pattern": "00011110 | 001 | Rm | 001000 | Rn | 00000", "hex_opcode": "0x1E202000" },
+      "operands": [{ "name": "Sn", "desc": "Src 1" }, { "name": "Sm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fcmp",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Compare (Double)",
+      "summary": "Compares two double-precision registers and updates NZCV flags.",
+      "syntax": "FCMP <Dn>, <Dm>",
+      "encoding": { "format": "Float Compare", "binary_pattern": "00011110 | 011 | Rm | 001000 | Rn | 00000", "hex_opcode": "0x1E602000" },
+      "operands": [{ "name": "Dn", "desc": "Src 1" }, { "name": "Dm", "desc": "Src 2" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Move (Register)",
+      "summary": "Copies value between floating-point registers.",
+      "syntax": "FMOV <Dd>, <Dn>",
+      "encoding": { "format": "Float Data Proc", "binary_pattern": "00011110 | 011 | 00000 | 010000 | Rn | Rd", "hex_opcode": "0x1E604000" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "Dn", "desc": "Source" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fmov",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Move (Immediate)",
+      "summary": "Moves immediate value into floating-point register.",
+      "syntax": "FMOV <Dd>, #<imm>",
+      "encoding": { "format": "Float Imm", "binary_pattern": "00011110 | 011 | 10000 | imm8 | Rd", "hex_opcode": "0x1E601000" },
+      "operands": [{ "name": "Dd", "desc": "Dest" }, { "name": "imm", "desc": "Immediate" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "scvtf",
+      "architecture": "ARMv8-A",
+      "full_name": "Signed Integer Convert to Floating-point",
+      "summary": "Converts signed integer (scalar) to floating-point.",
+      "syntax": "SCVTF <Dd>, <Xn>",
+      "encoding": { "format": "Float Conversion", "binary_pattern": "10011110 | 01 | 1 | 00010 | 000000 | Rn | Rd", "hex_opcode": "0x9E220000" },
+      "operands": [{ "name": "Dd", "desc": "Dest (Double)" }, { "name": "Xn", "desc": "Src (Int64)" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "fcvtzs",
+      "architecture": "ARMv8-A",
+      "full_name": "Floating-point Convert to Signed Integer (Round towards Zero)",
+      "summary": "Converts floating-point to signed integer.",
+      "syntax": "FCVTZS <Xd>, <Dn>",
+      "encoding": { "format": "Float Conversion", "binary_pattern": "10011110 | 01 | 1 | 11000 | 000000 | Rn | Rd", "hex_opcode": "0x9E380000" },
+      "operands": [{ "name": "Xd", "desc": "Dest (Int64)" }, { "name": "Dn", "desc": "Src (Double)" }],
+      "extension": "F.P."
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes (32-bit)",
+      "summary": "Reverses the byte order in a 32-bit register (Endianness swap).",
+      "syntax": "REV <Wd>, <Wn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "01011010 | 100 | 00000 | 000010 | Rn | Rd", "hex_opcode": "0x5AC00800" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rev",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bytes (64-bit)",
+      "summary": "Reverses the byte order in a 64-bit register.",
+      "syntax": "REV <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 100 | 00000 | 000011 | Rn | Rd", "hex_opcode": "0xDAC00C00" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rbit",
+      "architecture": "ARMv8-A",
+      "full_name": "Reverse Bits (64-bit)",
+      "summary": "Reverses the bit order in a 64-bit register.",
+      "syntax": "RBIT <Xd>, <Xn>",
+      "encoding": { "format": "Data Processing", "binary_pattern": "11011010 | 110 | 00000 | 000000 | Rn | Rd", "hex_opcode": "0xDAC00000" },
+      "operands": [{ "name": "Xd", "desc": "Dest" }, { "name": "Xn", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sxtb",
+      "architecture": "ARMv8-A",
+      "full_name": "Sign Extend Byte",
+      "summary": "Extracts the lowest 8 bits and sign-extends to 32 bits (Alias for SBFM).",
+      "syntax": "SXTB <Wd>, <Wn>",
+      "encoding": { "format": "Bitfield", "binary_pattern": "00010011 | 00 | 000000 | 000111 | Rn | Rd", "hex_opcode": "0x13001C00" },
+      "operands": [{ "name": "Wd", "desc": "Dest" }, { "name": "Wn", "desc": "Source" }],
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sxtw",
+      "architecture": "ARMv8-A",
+      "full_name": "Sign Extend Word",
+      "summary": "Sign-extends a 32-bit register to 64 bits (Alias for SBFM).",
+      "syntax": "SXTW <Xd>, <Wn>",
+      "encoding": { "format": "Bitfield", "binary_pattern": "10010011 | 01 | 000000 | 011111 | Rn | Rd", "hex_opcode": "0x93407C00" },
+      "operands": [{ "name": "Xd", "desc": "Dest (64)" }, { "name": "Wn", "desc": "Source (32)" }],
+      "extension": "Base"
+    }
+  ]
+}

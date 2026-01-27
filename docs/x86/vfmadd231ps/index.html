@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Computes (Src1 * Src2) + Dest.">
+    <meta name="description" content="Computes (Dest * Src2) + Src1.">
     <title>vfmadd231ps - x86</title>
     
     <meta property="og:type" content="website">
@@ -2090,19 +2090,9 @@
                         xrstors
                     </a>
                     
-                    <a href="../xrstors/" 
-                       class="">
-                        xrstors
-                    </a>
-                    
                     <a href="../xsave/" 
                        class="">
                         xsave
-                    </a>
-                    
-                    <a href="../xsaves/" 
-                       class="">
-                        xsaves
                     </a>
                     
                     <a href="../xsaves/" 
@@ -2345,11 +2335,6 @@
                     <a href="../vfmadd213ps/" 
                        class="">
                         vfmadd213ps
-                    </a>
-                    
-                    <a href="../vfmadd231ps/" 
-                       class="active">
-                        vfmadd231ps
                     </a>
                     
                     <a href="../vfmadd231ps/" 
@@ -2673,14 +2658,14 @@
             </div>
 
             <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">vfmadd231ps</h1>
-            <h2 style="font-weight: 400; color: var(--text-muted);">Fused Multiply-Add (231) Packed Single</h2>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Fused Multiply-Add (132)</h2>
             
             <div class="syntax-box">
                 VFMADD231PS ymm1, ymm2, ymm3/m256
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Computes (Src1 * Src2) + Dest.
+                Computes (Dest * Src2) + Src1.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -2757,8 +2742,8 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "vfmadd231ps (x86)",
-  "description": "Computes (Src1 * Src2) + Dest.",
-  "articleBody": "Fused Multiply-Add (231) Packed Single. Syntax: VFMADD231PS ymm1, ymm2, ymm3/m256. Opcode: C4 ... B8",
+  "description": "Computes (Dest * Src2) + Src1.",
+  "articleBody": "Fused Multiply-Add (132). Syntax: VFMADD231PS ymm1, ymm2, ymm3/m256. Opcode: C4 ... B8",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

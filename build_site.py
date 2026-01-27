@@ -8,6 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 # Configuration
 INPUT_DIR = 'input'
 OUTPUT_DIR = 'docs'
+DB_DIR = 'db'
 TEMPLATE_DIR = 'templates'
 SITE_URL = "https://instructionsets.com"
 
@@ -15,9 +16,11 @@ SITE_URL = "https://instructionsets.com"
 if os.path.exists(OUTPUT_DIR):
     shutil.rmtree(OUTPUT_DIR)
 os.makedirs(OUTPUT_DIR)
+os.makedirs(DB_DIR, exist_ok=True)
 
 def load_data():
     master_db = {}
+    seen_hashes = set() # Track unique signatures to prevent exact duplicates
     
     # Read all JSON files in the input directory
     for filename in os.listdir(INPUT_DIR):
@@ -30,6 +33,23 @@ def load_data():
                     # Merge into master_db grouped by Architecture
                     for inst in data.get('instructions', []):
                         arch = inst.get('architecture', 'Unknown')
+                        
+                        # --- NEW: Deduplication Logic ---
+                        # Create a unique signature based on key fields
+                        # We use Mnemonic + Syntax + Hex Opcode to distinguish variants
+                        signature = (
+                            inst.get('mnemonic', '').strip(),
+                            inst.get('syntax', '').strip(),
+                            inst.get('encoding', {}).get('hex_opcode', '').strip()
+                        )
+                        
+                        if signature in seen_hashes:
+                            # Skip this instruction if we've already seen an exact match
+                            continue
+                        
+                        seen_hashes.add(signature)
+                        # --------------------------------
+                        
                         if arch not in master_db:
                             master_db[arch] = []
                         master_db[arch].append(inst)
@@ -240,7 +260,14 @@ def generate_site(master_db):
                 instructions=sorted_insts, 
                 root=".."
             ))
-       
+
+        # --- NEW: SAVE TO ROOT DB FOLDER ---
+        # This creates db/RISC-V.json, db/x86-64.json, etc.
+        with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
+            json.dump(instructions, f, indent=2)
+        print(f"   └── Saved database to db/{arch}.json")
+
+
         # --- NEW: GENERATE OPCODE TABLE ---
         def get_op_int(inst):
             try:
