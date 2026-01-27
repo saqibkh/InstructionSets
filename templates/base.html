@@ -37,7 +37,9 @@
     </nav>
 
     <script>
-        const SEARCH_INDEX_PATH = "{{ root }}/search.json";
+    	const SEARCH_INDEX_PATH = "{{ root }}/search.json";
+        /* Default: Global Search (null). Child templates override this block. */
+        {% block search_config %}const CURRENT_ARCH = null;{% endblock %}
     </script>
     
     <script src="{{ root }}/static/search.js"></script>

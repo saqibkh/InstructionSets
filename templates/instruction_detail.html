@@ -3,6 +3,8 @@
 {% block title %}{{ instruction.mnemonic }} - {{ instruction.architecture }}{% endblock %}
 {% block meta_desc %}{{ instruction.summary }}{% endblock %}
 
+{% block search_config %}const CURRENT_ARCH = "{{ instruction.architecture }}";{% endblock %}
+
 {% block content %}
 <div class="container doc-layout">
     
@@ -72,17 +74,6 @@
                         <h3>Encoding</h3>
                         
                         <div class="bit-grid-container">
-                            <div class="bit-grid-label">Binary Layout</div>
-                            <div class="bit-row">
-                                {% for part in instruction.encoding.visual_parts %}
-                                <div class="bit-box" data-op="{{ part.clean }}">
-                                    <span class="bit-value">{{ part.raw }}</span>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-
-			<div class="bit-grid-container">
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 {% for part in instruction.encoding.visual_parts %}

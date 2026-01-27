@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Search Logic (Only runs if input exists)
     if (searchInput) {
+        
+        // --- NEW: Update Placeholder based on Scope ---
+        if (typeof CURRENT_ARCH !== 'undefined' && CURRENT_ARCH) {
+            searchInput.placeholder = `Search ${CURRENT_ARCH} instructions...`;
+        }
+
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
             selectedIndex = -1;
@@ -24,8 +30,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
 
-	    // Weighted Search: Score results based on relevance
-            const results = searchIndex.map(item => {
+            // --- NEW: Filter by Architecture Scope ---
+            let pool = searchIndex;
+            if (typeof CURRENT_ARCH !== 'undefined' && CURRENT_ARCH) {
+                pool = searchIndex.filter(item => item.arch === CURRENT_ARCH);
+            }
+
+            // Weighted Search: Score results based on relevance
+            const results = pool.map(item => {
                 let score = 0;
                 const label = item.label.toLowerCase();
                 const summary = item.summary.toLowerCase();
@@ -69,9 +81,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
         });
-    } // <--- End of if(searchInput)
+    }
 
-    // 4. Global Keyboard Shortcut (Ctrl+K) - MOVED OUTSIDE for safety
+    // 4. Global Keyboard Shortcut (Ctrl+K)
     document.addEventListener('keydown', (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault(); 
