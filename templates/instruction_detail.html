@@ -16,8 +16,8 @@
                 <summary>{{ group }}</summary>
                 <div class="group-links">
                     {% for nav_inst in insts %}
-                    <a href="../{{ nav_inst.mnemonic|lower|replace(' ', '_')|replace('.', '_') }}/" 
-                       class="{% if nav_inst.mnemonic == current_page %}active{% endif %}">
+                    <a href="../{{ nav_inst.slug }}/" 
+                       class="{% if nav_inst.slug == current_page %}active{% endif %}">
                         {{ nav_inst.mnemonic }}
                     </a>
                     {% endfor %}

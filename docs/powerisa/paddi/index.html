@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adds 34-bit immediate.">
+    <meta name="description" content="Adds a 34-bit signed immediate to a register. Supports PC-relative addressing (LEA).">
     <title>paddi - PowerISA</title>
     
     <meta property="og:type" content="website">
@@ -715,7 +715,7 @@
                         e_slw
                     </a>
                     
-                    <a href="../e_slw/" 
+                    <a href="../e_slw_1/" 
                        class="">
                         e_slw
                     </a>
@@ -725,7 +725,7 @@
                         e_sraw
                     </a>
                     
-                    <a href="../e_sraw/" 
+                    <a href="../e_sraw_1/" 
                        class="">
                         e_sraw
                     </a>
@@ -740,7 +740,7 @@
                         e_srw
                     </a>
                     
-                    <a href="../e_srw/" 
+                    <a href="../e_srw_1/" 
                        class="">
                         e_srw
                     </a>
@@ -800,7 +800,7 @@
                         e_stmw
                     </a>
                     
-                    <a href="../e_stmw/" 
+                    <a href="../e_stmw_1/" 
                        class="">
                         e_stmw
                     </a>
@@ -1615,7 +1615,7 @@
                         mr
                     </a>
                     
-                    <a href="../mr/" 
+                    <a href="../mr_1/" 
                        class="">
                         mr
                     </a>
@@ -1945,7 +1945,7 @@
                         rldic
                     </a>
                     
-                    <a href="../rldic/" 
+                    <a href="../rldic_1/" 
                        class="">
                         rldic
                     </a>
@@ -1960,7 +1960,7 @@
                         rldicr
                     </a>
                     
-                    <a href="../rldicr/" 
+                    <a href="../rldicr_1/" 
                        class="">
                         rldicr
                     </a>
@@ -2040,7 +2040,7 @@
                         se_bgeni
                     </a>
                     
-                    <a href="../se_bgeni/" 
+                    <a href="../se_bgeni_1/" 
                        class="">
                         se_bgeni
                     </a>
@@ -2060,7 +2060,7 @@
                         se_bmaski
                     </a>
                     
-                    <a href="../se_bmaski/" 
+                    <a href="../se_bmaski_1/" 
                        class="">
                         se_bmaski
                     </a>
@@ -2130,7 +2130,7 @@
                         se_li
                     </a>
                     
-                    <a href="../se_li/" 
+                    <a href="../se_li_1/" 
                        class="">
                         se_li
                     </a>
@@ -2315,7 +2315,7 @@
                         sld
                     </a>
                     
-                    <a href="../sld/" 
+                    <a href="../sld_1/" 
                        class="">
                         sld
                     </a>
@@ -2340,7 +2340,7 @@
                         sradi
                     </a>
                     
-                    <a href="../sradi/" 
+                    <a href="../sradi_1/" 
                        class="">
                         sradi
                     </a>
@@ -2620,7 +2620,7 @@
                         wait
                     </a>
                     
-                    <a href="../wait/" 
+                    <a href="../wait_1/" 
                        class="">
                         wait
                     </a>
@@ -2992,7 +2992,7 @@
                         efscfsf
                     </a>
                     
-                    <a href="../efscfsi/" 
+                    <a href="../efscfsi_1/" 
                        class="">
                         efscfsi
                     </a>
@@ -3022,7 +3022,7 @@
                         efscmplt
                     </a>
                     
-                    <a href="../efsctsi/" 
+                    <a href="../efsctsi_1/" 
                        class="">
                         efsctsi
                     </a>
@@ -3750,7 +3750,7 @@
                         dcbtst
                     </a>
                     
-                    <a href="../dcbtst/" 
+                    <a href="../dcbtst_1/" 
                        class="">
                         dcbtst
                     </a>
@@ -3780,7 +3780,7 @@
                         icbt
                     </a>
                     
-                    <a href="../icbt/" 
+                    <a href="../icbt_1/" 
                        class="">
                         icbt
                     </a>
@@ -4447,7 +4447,7 @@
                         vmulouw
                     </a>
                     
-                    <a href="../vmulouw/" 
+                    <a href="../vmulouw_1/" 
                        class="">
                         vmulouw
                     </a>
@@ -5606,8 +5606,8 @@
                         paddi
                     </a>
                     
-                    <a href="../paddi/" 
-                       class="active">
+                    <a href="../paddi_1/" 
+                       class="">
                         paddi
                     </a>
                     
@@ -5743,11 +5743,11 @@
             <h2 style="font-weight: 400; color: var(--text-muted);">Prefixed Add Immediate</h2>
             
             <div class="syntax-box">
-                paddi RT, RA, SI, R
+                paddi RT, RA, SI34, R
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Adds 34-<a href="../../armv8-a/bit/">bit</a> immediate.
+                Adds a 34-<a href="../../armv8-a/bit/">bit</a> signed immediate to a register. Supports PC-relative addressing (LEA).
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -5756,10 +5756,16 @@
                     <div class="panel">
                         <h3>Pseudocode Operation</h3>
                         <div class="code-block" style="border:none; padding:0; background: transparent;">
-                            
+                            if R=1 then RT <- PC + EXTS(SI34) else RT <- (RA|0) + EXTS(SI34)
                         </div>
                     </div>
 
+                    
+                    <div class="panel">
+                        <h3>Example</h3>
+                        <div class="code-block" style="margin-bottom: 10px;">paddi r3, 0, label, 1</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Load address of 'label' (PC-relative).</p>
+                    </div>
                     
                 </div>
 
@@ -5779,16 +5785,32 @@
                                     <span class="bit-value">10</span>
                                 </div>
                                 
-                                <div class="bit-box" data-op="...">
-                                    <span class="bit-value">...</span>
+                                <div class="bit-box" data-op="0">
+                                    <span class="bit-value">0</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="00000">
+                                    <span class="bit-value">00000</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="0000000000000000">
+                                    <span class="bit-value">0000000000000000</span>
                                 </div>
                                 
                                 <div class="bit-box" data-op="14">
                                     <span class="bit-value">14</span>
                                 </div>
                                 
-                                <div class="bit-box" data-op="...">
-                                    <span class="bit-value">...</span>
+                                <div class="bit-box" data-op="RT">
+                                    <span class="bit-value">RT</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="RA">
+                                    <span class="bit-value">RA</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="SI34">
+                                    <span class="bit-value">SI34</span>
                                 </div>
                                 
                             </div>
@@ -5800,11 +5822,11 @@
                         <div class="meta-grid">
                             <div class="meta-item">
                                 <span class="meta-label">Format</span>
-                                <span class="badge">MLS:D-form</span>
+                                <span class="badge">MLS:D-form (64-bit)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Opcode</span>
-                                <span class="mono accent">0x06000000</span>
+                                <span class="mono accent">0x06000000... (Prefix)</span>
                             </div>
                         </div>
                     </div>
@@ -5816,25 +5838,25 @@
                             <li class="operand-row" data-op="RT" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">RT</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Target</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Target Register</span>
                             </li>
                             
                             <li class="operand-row" data-op="RA" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">RA</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Src</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Source Register (0 means 0 or PC)</span>
                             </li>
                             
-                            <li class="operand-row" data-op="SI" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">SI</span>
+                            <li class="operand-row" data-op="SI34" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">SI34</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Imm</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">34-bit Signed Immediate</span>
                             </li>
                             
                             <li class="operand-row" data-op="R" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">R</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">PC-Rel</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">PC-Relative Flag (0=Abs, 1=PC-Rel)</span>
                             </li>
                             
                         </ul>
@@ -5850,8 +5872,8 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "paddi (PowerISA)",
-  "description": "Adds 34-bit immediate.",
-  "articleBody": "Prefixed Add Immediate. Syntax: paddi RT, RA, SI, R. Opcode: 0x06000000",
+  "description": "Adds a 34-bit signed immediate to a register. Supports PC-relative addressing (LEA).",
+  "articleBody": "Prefixed Add Immediate. Syntax: paddi RT, RA, SI34, R. Opcode: 0x06000000... (Prefix)",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

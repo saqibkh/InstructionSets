@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Multiplies the 1st and 3rd words of the source vectors to produce two 64-bit results.">
+    <meta name="description" content="Multiplies odd words (1,3) to 64-bit result.">
     <title>vmulouw - PowerISA</title>
     
     <meta property="og:type" content="website">
@@ -715,7 +715,7 @@
                         e_slw
                     </a>
                     
-                    <a href="../e_slw/" 
+                    <a href="../e_slw_1/" 
                        class="">
                         e_slw
                     </a>
@@ -725,7 +725,7 @@
                         e_sraw
                     </a>
                     
-                    <a href="../e_sraw/" 
+                    <a href="../e_sraw_1/" 
                        class="">
                         e_sraw
                     </a>
@@ -740,7 +740,7 @@
                         e_srw
                     </a>
                     
-                    <a href="../e_srw/" 
+                    <a href="../e_srw_1/" 
                        class="">
                         e_srw
                     </a>
@@ -800,7 +800,7 @@
                         e_stmw
                     </a>
                     
-                    <a href="../e_stmw/" 
+                    <a href="../e_stmw_1/" 
                        class="">
                         e_stmw
                     </a>
@@ -1615,7 +1615,7 @@
                         mr
                     </a>
                     
-                    <a href="../mr/" 
+                    <a href="../mr_1/" 
                        class="">
                         mr
                     </a>
@@ -1945,7 +1945,7 @@
                         rldic
                     </a>
                     
-                    <a href="../rldic/" 
+                    <a href="../rldic_1/" 
                        class="">
                         rldic
                     </a>
@@ -1960,7 +1960,7 @@
                         rldicr
                     </a>
                     
-                    <a href="../rldicr/" 
+                    <a href="../rldicr_1/" 
                        class="">
                         rldicr
                     </a>
@@ -2040,7 +2040,7 @@
                         se_bgeni
                     </a>
                     
-                    <a href="../se_bgeni/" 
+                    <a href="../se_bgeni_1/" 
                        class="">
                         se_bgeni
                     </a>
@@ -2060,7 +2060,7 @@
                         se_bmaski
                     </a>
                     
-                    <a href="../se_bmaski/" 
+                    <a href="../se_bmaski_1/" 
                        class="">
                         se_bmaski
                     </a>
@@ -2130,7 +2130,7 @@
                         se_li
                     </a>
                     
-                    <a href="../se_li/" 
+                    <a href="../se_li_1/" 
                        class="">
                         se_li
                     </a>
@@ -2315,7 +2315,7 @@
                         sld
                     </a>
                     
-                    <a href="../sld/" 
+                    <a href="../sld_1/" 
                        class="">
                         sld
                     </a>
@@ -2340,7 +2340,7 @@
                         sradi
                     </a>
                     
-                    <a href="../sradi/" 
+                    <a href="../sradi_1/" 
                        class="">
                         sradi
                     </a>
@@ -2620,7 +2620,7 @@
                         wait
                     </a>
                     
-                    <a href="../wait/" 
+                    <a href="../wait_1/" 
                        class="">
                         wait
                     </a>
@@ -2992,7 +2992,7 @@
                         efscfsf
                     </a>
                     
-                    <a href="../efscfsi/" 
+                    <a href="../efscfsi_1/" 
                        class="">
                         efscfsi
                     </a>
@@ -3022,7 +3022,7 @@
                         efscmplt
                     </a>
                     
-                    <a href="../efsctsi/" 
+                    <a href="../efsctsi_1/" 
                        class="">
                         efsctsi
                     </a>
@@ -3750,7 +3750,7 @@
                         dcbtst
                     </a>
                     
-                    <a href="../dcbtst/" 
+                    <a href="../dcbtst_1/" 
                        class="">
                         dcbtst
                     </a>
@@ -3780,7 +3780,7 @@
                         icbt
                     </a>
                     
-                    <a href="../icbt/" 
+                    <a href="../icbt_1/" 
                        class="">
                         icbt
                     </a>
@@ -4447,8 +4447,8 @@
                         vmulouw
                     </a>
                     
-                    <a href="../vmulouw/" 
-                       class="active">
+                    <a href="../vmulouw_1/" 
+                       class="">
                         vmulouw
                     </a>
                     
@@ -5606,7 +5606,7 @@
                         paddi
                     </a>
                     
-                    <a href="../paddi/" 
+                    <a href="../paddi_1/" 
                        class="">
                         paddi
                     </a>
@@ -5747,7 +5747,7 @@
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Multiplies the 1st <a href="../../armv8-a/and/">and</a> 3rd words of the source vectors to produce two 64-<a href="../../armv8-a/bit/">bit</a> results.
+                Multiplies odd words (1,3) to 64-<a href="../../armv8-a/bit/">bit</a> result.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -5756,16 +5756,10 @@
                     <div class="panel">
                         <h3>Pseudocode Operation</h3>
                         <div class="code-block" style="border:none; padding:0; background: transparent;">
-                            vD.dword[0] <- vA.word[1] * vB.word[1]; vD.dword[1] <- vA.word[3] * vB.word[3]
+                            
                         </div>
                     </div>
 
-                    
-                    <div class="panel">
-                        <h3>Example</h3>
-                        <div class="code-block" style="margin-bottom: 10px;">vmulouw v1, v2, v3</div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Widening multiply (32x32->64).</p>
-                    </div>
                     
                 </div>
 
@@ -5793,8 +5787,8 @@
                                     <span class="bit-value">vB</span>
                                 </div>
                                 
-                                <div class="bit-box" data-op="128">
-                                    <span class="bit-value">128</span>
+                                <div class="bit-box" data-op="136">
+                                    <span class="bit-value">136</span>
                                 </div>
                                 
                             </div>
@@ -5806,11 +5800,11 @@
                         <div class="meta-grid">
                             <div class="meta-item">
                                 <span class="meta-label">Format</span>
-                                <span class="badge">VA-form</span>
+                                <span class="badge">VX-form</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Opcode</span>
-                                <span class="mono accent">0x10000080</span>
+                                <span class="mono accent">0x10000088</span>
                             </div>
                         </div>
                     </div>
@@ -5828,13 +5822,13 @@
                             <li class="operand-row" data-op="vA" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">vA</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Source A</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Src A</span>
                             </li>
                             
                             <li class="operand-row" data-op="vB" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
                                 <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">vB</span>
                                 <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Source B</span>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Src B</span>
                             </li>
                             
                         </ul>
@@ -5850,8 +5844,8 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "vmulouw (PowerISA)",
-  "description": "Multiplies the 1st and 3rd words of the source vectors to produce two 64-bit results.",
-  "articleBody": "Vector Multiply Odd Unsigned Word. Syntax: vmulouw vD, vA, vB. Opcode: 0x10000080",
+  "description": "Multiplies odd words (1,3) to 64-bit result.",
+  "articleBody": "Vector Multiply Odd Unsigned Word. Syntax: vmulouw vD, vA, vB. Opcode: 0x10000088",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

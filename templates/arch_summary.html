@@ -4,38 +4,24 @@
 
 {% block content %}
 <div class="container" style="padding-top: 40px;">
-    <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
-        <div>
-            <h1>{{ arch }}</h1>
-            <p>Instruction Set Reference</p>
-        </div>
-        <div style="display: flex; gap: 15px; align-items: center;">
-            <a href="table/" class="badge" style="padding: 8px 12px; text-decoration: none; background: var(--bg-hover); color: var(--accent);">
-                🔢 Opcode Table
-            </a>
-            <a href="{{ root }}/" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Back to Home</a>
-        </div>
-    </div>
-
     <div class="table-container">
         <table class="data-table">
             <thead>
                 <tr>
-                    <th style="width: 15%;">Mnemonic</th>
-                    <th style="width: 35%;">Name</th>
-                    <th style="width: 15%;">Format</th>
-                    <th style="width: 35%;">Summary</th>
+                    <th style="width: 10%;">Mnemonic</th>
+                    <th style="width: 35%;">Syntax</th>  <th style="width: 10%;">Format</th>
+                    <th style="width: 45%;">Summary</th>
                 </tr>
             </thead>
-	    <tbody>
-                {% for inst in instructions %}
-                <tr onclick="window.location='{{ inst.mnemonic|lower|replace(' ', '_') }}/';" style="cursor: pointer;">
-                    <td class="mono">{{ inst.mnemonic }}</td>
-                    <td style="font-weight: 500;">{{ inst.full_name }}</td>
-                    <td><span class="badge">{{ inst.encoding.format }}</span></td>
-                    <td style="color: var(--text-muted);">{{ inst.summary }}</td>
-                </tr>
-                {% endfor %}
+            <tbody>
+		{% for inst in instructions %}
+		<tr onclick="window.location='{{ inst.slug }}/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">{{ inst.mnemonic }}</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">{{ inst.syntax }}</td>
+		    <td><span class="badge">{{ inst.encoding.format }}</span></td>
+		    <td style="color: var(--text-muted);">{{ inst.summary }}</td>
+		</tr>
+		{% endfor %}
             </tbody>
         </table>
     </div>

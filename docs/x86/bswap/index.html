@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Reverses the byte order of a 32/64-bit register.">
+    <meta name="description" content="Reverses the byte order of a register (Endian swap).">
     <title>bswap - x86</title>
     
     <meta property="og:type" content="website">
@@ -220,8 +220,8 @@
                         bswap
                     </a>
                     
-                    <a href="../bswap/" 
-                       class="active">
+                    <a href="../bswap_1/" 
+                       class="">
                         bswap
                     </a>
                     
@@ -2661,11 +2661,11 @@
             <h2 style="font-weight: 400; color: var(--text-muted);">Byte Swap</h2>
             
             <div class="syntax-box">
-                BSWAP r
+                BSWAP r32
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Reverses the byte order of a 32/64-<a href="../../armv8-a/bit/">bit</a> register.
+                Reverses the byte order of a register (Endian swap).
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -2702,7 +2702,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Opcode</span>
-                                <span class="mono accent">0x0F C8</span>
+                                <span class="mono accent">0x0F C8+rd</span>
                             </div>
                         </div>
                     </div>
@@ -2711,8 +2711,8 @@
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
                             
-                            <li class="operand-row" data-op="dest" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">dest</span>
+                            <li class="operand-row" data-op="reg" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">reg</span>
                                 <br>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Register</span>
                             </li>
@@ -2730,8 +2730,8 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "bswap (x86)",
-  "description": "Reverses the byte order of a 32/64-bit register.",
-  "articleBody": "Byte Swap. Syntax: BSWAP r. Opcode: 0x0F C8",
+  "description": "Reverses the byte order of a register (Endian swap).",
+  "articleBody": "Byte Swap. Syntax: BSWAP r32. Opcode: 0x0F C8+rd",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

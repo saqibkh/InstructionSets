@@ -45,7 +45,6 @@
     <script src="../../static/search.js"></script>
 
     
-
 <div class="container" style="padding-top: 40px;">
     <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
         <div>
@@ -65,9 +64,9 @@
             <thead>
                 <tr>
                     <th style="width: 15%;">Opcode</th>
-                    <th style="width: 15%;">Mnemonic</th>
-                    <th style="width: 20%;">Format</th>
-                    <th style="width: 50%;">Name</th>
+                    <th style="width: 10%;">Mnemonic</th>
+                    <th style="width: 30%;">Syntax</th> <th style="width: 15%;">Format</th>
+                    <th style="width: 30%;">Name</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,6 +74,7 @@
                 <tr onclick="window.location='../smstart/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD50342??</td>
                     <td class="mono">smstart</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SMSTART { <mode> }</td>
                     <td><span class="badge">SME Control</span></td>
                     <td style="color: var(--text-muted);">Streaming Mode Start</td>
                 </tr>
@@ -82,6 +82,7 @@
                 <tr onclick="window.location='../smstop/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD50346??</td>
                     <td class="mono">smstop</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SMSTOP { <mode> }</td>
                     <td><span class="badge">SME Control</span></td>
                     <td style="color: var(--text-muted);">Streaming Mode Stop</td>
                 </tr>
@@ -89,6 +90,7 @@
                 <tr onclick="window.location='../sqrdmulh/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x040E4000</td>
                     <td class="mono">sqrdmulh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQRDMULH <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Integer Binary</span></td>
                     <td style="color: var(--text-muted);">SVE Signed Saturating Rounding Doubling Multiply High</td>
                 </tr>
@@ -96,6 +98,7 @@
                 <tr onclick="window.location='../bcax/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04200000</td>
                     <td class="mono">bcax</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BCAX <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bitwise Clear and Exclusive OR (SVE2)</td>
                 </tr>
@@ -103,6 +106,7 @@
                 <tr onclick="window.location='../bsl/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04200400</td>
                     <td class="mono">bsl</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BSL <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bitwise Select (SVE2)</td>
                 </tr>
@@ -110,6 +114,7 @@
                 <tr onclick="window.location='../bsl1n/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04200800</td>
                     <td class="mono">bsl1n</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BSL1N <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bitwise Select 1 NOT (SVE2)</td>
                 </tr>
@@ -117,6 +122,7 @@
                 <tr onclick="window.location='../bsl2n/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04200C00</td>
                     <td class="mono">bsl2n</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BSL2N <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bitwise Select 2 NOT (SVE2)</td>
                 </tr>
@@ -124,6 +130,7 @@
                 <tr onclick="window.location='../eor3/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04201000</td>
                     <td class="mono">eor3</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">EOR3 <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bitwise Exclusive OR (3-way) (SVE2)</td>
                 </tr>
@@ -131,6 +138,7 @@
                 <tr onclick="window.location='../nbsl/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04201400</td>
                     <td class="mono">nbsl</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NBSL <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D</td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">NOT Bitwise Select (SVE2)</td>
                 </tr>
@@ -138,13 +146,15 @@
                 <tr onclick="window.location='../pmul/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x042D0000</td>
                     <td class="mono">pmul</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMUL <Zdn>.B, <Zdn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Crypto</span></td>
                     <td style="color: var(--text-muted);">Polynomial Multiply (SVE2)</td>
                 </tr>
                 
-                <tr onclick="window.location='../xar/';" style="cursor: pointer;">
+                <tr onclick="window.location='../xar_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04603400</td>
                     <td class="mono">xar</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XAR <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>, #<imm></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">SVE Exclusive OR and Rotate</td>
                 </tr>
@@ -152,6 +162,7 @@
                 <tr onclick="window.location='../xar/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04800000</td>
                     <td class="mono">xar</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XAR <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>, #<imm></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Exclusive OR and Rotate (SVE2)</td>
                 </tr>
@@ -159,6 +170,7 @@
                 <tr onclick="window.location='../sdiv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04900000</td>
                     <td class="mono">sdiv</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE Math</span></td>
                     <td style="color: var(--text-muted);">Signed Divide (SVE)</td>
                 </tr>
@@ -166,6 +178,7 @@
                 <tr onclick="window.location='../udiv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04910000</td>
                     <td class="mono">udiv</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE Math</span></td>
                     <td style="color: var(--text-muted);">Unsigned Divide (SVE)</td>
                 </tr>
@@ -173,6 +186,7 @@
                 <tr onclick="window.location='../rdsvl/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x04BF5800</td>
                     <td class="mono">rdsvl</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RDSVL <Xd>, #<imm></td>
                     <td><span class="badge">SME General</span></td>
                     <td style="color: var(--text-muted);">Read Streaming Vector Length</td>
                 </tr>
@@ -180,6 +194,7 @@
                 <tr onclick="window.location='../clastb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x05200000</td>
                     <td class="mono">clastb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CLASTB <Rd>, <Pg>, <Rd>, <Zn>.<T></td>
                     <td><span class="badge">SVE Reduction</span></td>
                     <td style="color: var(--text-muted);">Compact Last Element (Before)</td>
                 </tr>
@@ -187,6 +202,7 @@
                 <tr onclick="window.location='../dup/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x05200000</td>
                     <td class="mono">dup</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DUP <Zd>.<T>, <Rn|SP></td>
                     <td><span class="badge">SVE Permute</span></td>
                     <td style="color: var(--text-muted);">Duplicate Scalar (SVE)</td>
                 </tr>
@@ -194,6 +210,7 @@
                 <tr onclick="window.location='../revd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x05220000</td>
                     <td class="mono">revd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">REVD <Zd>.<T>, <Pg>/M, <Zn>.<T></td>
                     <td><span class="badge">SVE2</span></td>
                     <td style="color: var(--text-muted);">Reverse Doublewords</td>
                 </tr>
@@ -201,6 +218,7 @@
                 <tr onclick="window.location='../insr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x05230000</td>
                     <td class="mono">insr</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INSR <Zdn>.<T>, <Rm></td>
                     <td><span class="badge">SVE Permute</span></td>
                     <td style="color: var(--text-muted);">Insert Scalar into Vector</td>
                 </tr>
@@ -208,6 +226,7 @@
                 <tr onclick="window.location='../splice/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x052B0000</td>
                     <td class="mono">splice</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SPLICE <Zdn>.<T>, <Pg>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE Permute</span></td>
                     <td style="color: var(--text-muted);">Splice Vectors</td>
                 </tr>
@@ -215,6 +234,7 @@
                 <tr onclick="window.location='../tbl/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x052C0000</td>
                     <td class="mono">tbl</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TBL <Zdn>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE Permute</span></td>
                     <td style="color: var(--text-muted);">Table Lookup (SVE)</td>
                 </tr>
@@ -222,6 +242,7 @@
                 <tr onclick="window.location='../sel/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x052C0000</td>
                     <td class="mono">sel</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SEL <Zd>.<T>, <Pg>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE Permute</span></td>
                     <td style="color: var(--text-muted);">Select Elements (SVE)</td>
                 </tr>
@@ -229,6 +250,7 @@
                 <tr onclick="window.location='../tbx/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x052D0000</td>
                     <td class="mono">tbx</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TBX <Zdn>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE Permute</span></td>
                     <td style="color: var(--text-muted);">Table Lookup Extension (SVE)</td>
                 </tr>
@@ -236,13 +258,15 @@
                 <tr onclick="window.location='../cpyfp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19000400</td>
                     <td class="mono">cpyfp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CPYFP [<Xd>]!, [<Xn>]!, <Xm>!</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Copy Forward Prologue (MOPS)</td>
                 </tr>
                 
-                <tr onclick="window.location='../cpyfp/';" style="cursor: pointer;">
+                <tr onclick="window.location='../cpyfp_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19004000</td>
                     <td class="mono">cpyfp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CPYFP [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Copy Forward (Prologue)</td>
                 </tr>
@@ -250,13 +274,15 @@
                 <tr onclick="window.location='../setp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19300400</td>
                     <td class="mono">setp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETP [<Xd>]!, <Xn>!, <Xm></td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Set Prologue (MOPS)</td>
                 </tr>
                 
-                <tr onclick="window.location='../setp/';" style="cursor: pointer;">
+                <tr onclick="window.location='../setp_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19304000</td>
                     <td class="mono">setp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETP [<Wd>|SP]!, <Xn>!, <Xm></td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Set (Prologue)</td>
                 </tr>
@@ -264,13 +290,15 @@
                 <tr onclick="window.location='../cpyfm/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19400400</td>
                     <td class="mono">cpyfm</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CPYFM [<Xd>]!, [<Xn>]!, <Xm>!</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Copy Forward Main (MOPS)</td>
                 </tr>
                 
-                <tr onclick="window.location='../cpyfm/';" style="cursor: pointer;">
+                <tr onclick="window.location='../cpyfm_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19404000</td>
                     <td class="mono">cpyfm</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CPYFM [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Copy Forward (Main)</td>
                 </tr>
@@ -278,13 +306,15 @@
                 <tr onclick="window.location='../setm/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19700400</td>
                     <td class="mono">setm</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETM [<Xd>]!, <Xn>!, <Xm></td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Set Main (MOPS)</td>
                 </tr>
                 
-                <tr onclick="window.location='../setm/';" style="cursor: pointer;">
+                <tr onclick="window.location='../setm_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19704000</td>
                     <td class="mono">setm</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETM [<Wd>|SP]!, <Xn>!, <Xm></td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Set (Main)</td>
                 </tr>
@@ -292,13 +322,15 @@
                 <tr onclick="window.location='../cpyfe/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19800400</td>
                     <td class="mono">cpyfe</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CPYFE [<Xd>]!, [<Xn>]!, <Xm>!</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Copy Forward Epilogue (MOPS)</td>
                 </tr>
                 
-                <tr onclick="window.location='../cpyfe/';" style="cursor: pointer;">
+                <tr onclick="window.location='../cpyfe_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19804000</td>
                     <td class="mono">cpyfe</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CPYFE [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!</td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Copy Forward (Epilogue)</td>
                 </tr>
@@ -306,13 +338,15 @@
                 <tr onclick="window.location='../sete/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19B00400</td>
                     <td class="mono">sete</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETE [<Xd>]!, <Xn>!, <Xm></td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Set Epilogue (MOPS)</td>
                 </tr>
                 
-                <tr onclick="window.location='../sete/';" style="cursor: pointer;">
+                <tr onclick="window.location='../sete_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x19B04000</td>
                     <td class="mono">sete</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETE [<Wd>|SP]!, <Xn>!, <Xm></td>
                     <td><span class="badge">MOPS</span></td>
                     <td style="color: var(--text-muted);">Memory Set (Epilogue)</td>
                 </tr>
@@ -320,6 +354,7 @@
                 <tr onclick="window.location='../psel/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x25200000</td>
                     <td class="mono">psel</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSEL <Pd>, <Pn>, <Pm>.<T>[<imm>]</td>
                     <td><span class="badge">SME2</span></td>
                     <td style="color: var(--text-muted);">Predicate Select</td>
                 </tr>
@@ -327,6 +362,7 @@
                 <tr onclick="window.location='../whilerw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x25230000</td>
                     <td class="mono">whilerw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WHILERW <Pd>.<T>, <Xn>, <Xm></td>
                     <td><span class="badge">SVE2 Predicate</span></td>
                     <td style="color: var(--text-muted);">While Read/Write (SVE2)</td>
                 </tr>
@@ -334,6 +370,7 @@
                 <tr onclick="window.location='../whilewr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x25238000</td>
                     <td class="mono">whilewr</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WHILEWR <Pd>.<T>, <Xn>, <Xm></td>
                     <td><span class="badge">SVE2 Predicate</span></td>
                     <td style="color: var(--text-muted);">While Write/Read (SVE2)</td>
                 </tr>
@@ -341,20 +378,23 @@
                 <tr onclick="window.location='../whilele/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x25408000</td>
                     <td class="mono">whilele</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WHILELE <Pd>.<T>, <Xn>, <Xm></td>
                     <td><span class="badge">SVE Predicate</span></td>
                     <td style="color: var(--text-muted);">While Less Than or Equal (SVE2)</td>
                 </tr>
                 
-                <tr onclick="window.location='../whilerw/';" style="cursor: pointer;">
+                <tr onclick="window.location='../whilerw_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x25460000</td>
                     <td class="mono">whilerw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WHILERW <Pd>.<T>, <Xn>, <Xm></td>
                     <td><span class="badge">SVE2 Loop</span></td>
                     <td style="color: var(--text-muted);">SVE While Read/Write</td>
                 </tr>
                 
-                <tr onclick="window.location='../whilewr/';" style="cursor: pointer;">
+                <tr onclick="window.location='../whilewr_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x25470000</td>
                     <td class="mono">whilewr</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WHILEWR <Pd>.<T>, <Xn>, <Xm></td>
                     <td><span class="badge">SVE2 Loop</span></td>
                     <td style="color: var(--text-muted);">SVE While Write/Read</td>
                 </tr>
@@ -362,6 +402,7 @@
                 <tr onclick="window.location='../sqdmlalbt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x44000400</td>
                     <td class="mono">sqdmlalbt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQDMLALBT <Zd>.H, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Signed Saturating Doubling Multiply Add Long (Bot x Top) (SVE2)</td>
                 </tr>
@@ -369,6 +410,7 @@
                 <tr onclick="window.location='../sqdmlaltb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x44000800</td>
                     <td class="mono">sqdmlaltb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQDMLALTB <Zd>.H, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Signed Saturating Doubling Multiply Add Long (Top x Bot) (SVE2)</td>
                 </tr>
@@ -376,6 +418,7 @@
                 <tr onclick="window.location='../sclamp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x440C0000</td>
                     <td class="mono">sclamp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2.1</span></td>
                     <td style="color: var(--text-muted);">Signed Integer Clamp</td>
                 </tr>
@@ -383,13 +426,15 @@
                 <tr onclick="window.location='../uclamp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x440D0000</td>
                     <td class="mono">uclamp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2.1</span></td>
                     <td style="color: var(--text-muted);">Unsigned Integer Clamp</td>
                 </tr>
                 
-                <tr onclick="window.location='../sqrdmulh/';" style="cursor: pointer;">
+                <tr onclick="window.location='../sqrdmulh_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x440E0000</td>
                     <td class="mono">sqrdmulh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQRDMULH <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Int</span></td>
                     <td style="color: var(--text-muted);">Signed Saturating Rounding Doubling Multiply High (SVE2)</td>
                 </tr>
@@ -397,6 +442,7 @@
                 <tr onclick="window.location='../sqrshl/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x441E0000</td>
                     <td class="mono">sqrshl</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQRSHL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Shift</span></td>
                     <td style="color: var(--text-muted);">Signed Saturating Rounding Shift Left (SVE2)</td>
                 </tr>
@@ -404,6 +450,7 @@
                 <tr onclick="window.location='../uqrshl/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x441F0000</td>
                     <td class="mono">uqrshl</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UQRSHL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Shift</span></td>
                     <td style="color: var(--text-muted);">Unsigned Saturating Rounding Shift Left (SVE2)</td>
                 </tr>
@@ -411,6 +458,7 @@
                 <tr onclick="window.location='../cmla/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x44200000</td>
                     <td class="mono">cmla</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMLA <Zda>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot></td>
                     <td><span class="badge">SVE2 Complex</span></td>
                     <td style="color: var(--text-muted);">SVE Complex Integer Multiply-Accumulate</td>
                 </tr>
@@ -418,13 +466,15 @@
                 <tr onclick="window.location='../cdot/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x44800000</td>
                     <td class="mono">cdot</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CDOT <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot></td>
                     <td><span class="badge">SVE2 Complex</span></td>
                     <td style="color: var(--text-muted);">Complex Dot Product (SVE2)</td>
                 </tr>
                 
-                <tr onclick="window.location='../cmla/';" style="cursor: pointer;">
+                <tr onclick="window.location='../cmla_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x44801000</td>
                     <td class="mono">cmla</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMLA <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot></td>
                     <td><span class="badge">SVE2 Complex</span></td>
                     <td style="color: var(--text-muted);">Complex Multiply Accumulate (SVE2)</td>
                 </tr>
@@ -432,6 +482,7 @@
                 <tr onclick="window.location='../addhnb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45000000</td>
                     <td class="mono">addhnb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDHNB <Zd>.B, <Zn>.H, <Zm>.H</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Add High Narrow (Bottom) (SVE2)</td>
                 </tr>
@@ -439,6 +490,7 @@
                 <tr onclick="window.location='../cadd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45000000</td>
                     <td class="mono">cadd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CADD <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>, #<rot></td>
                     <td><span class="badge">SVE2 Complex</span></td>
                     <td style="color: var(--text-muted);">SVE Complex Integer Add</td>
                 </tr>
@@ -446,6 +498,7 @@
                 <tr onclick="window.location='../saddlb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45000000</td>
                     <td class="mono">saddlb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SADDLB <Zd>.H, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Signed Add Long (Bottom) (SVE2)</td>
                 </tr>
@@ -453,6 +506,7 @@
                 <tr onclick="window.location='../addhnt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45000400</td>
                     <td class="mono">addhnt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDHNT <Zd>.B, <Zn>.H, <Zm>.H</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Add High Narrow (Top) (SVE2)</td>
                 </tr>
@@ -460,6 +514,7 @@
                 <tr onclick="window.location='../subhnb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45000800</td>
                     <td class="mono">subhnb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBHNB <Zd>.B, <Zn>.H, <Zm>.H</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Subtract High Narrow (Bottom) (SVE2)</td>
                 </tr>
@@ -467,6 +522,7 @@
                 <tr onclick="window.location='../subhnt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45000C00</td>
                     <td class="mono">subhnt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBHNT <Zd>.B, <Zn>.H, <Zm>.H</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Subtract High Narrow (Top) (SVE2)</td>
                 </tr>
@@ -474,6 +530,7 @@
                 <tr onclick="window.location='../adclb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45001000</td>
                     <td class="mono">adclb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADCLB <Zd>.S, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Add with Carry Long (Bottom) (SVE2)</td>
                 </tr>
@@ -481,6 +538,7 @@
                 <tr onclick="window.location='../adclt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45001400</td>
                     <td class="mono">adclt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADCLT <Zd>.S, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Add with Carry Long (Top) (SVE2)</td>
                 </tr>
@@ -488,6 +546,7 @@
                 <tr onclick="window.location='../mullb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45003000</td>
                     <td class="mono">mullb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULLB <Zd>.H, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Multiply Long (Bottom) (SVE2)</td>
                 </tr>
@@ -495,20 +554,23 @@
                 <tr onclick="window.location='../mullt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45003400</td>
                     <td class="mono">mullt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULLT <Zd>.H, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Math</span></td>
                     <td style="color: var(--text-muted);">Multiply Long (Top) (SVE2)</td>
                 </tr>
                 
-                <tr onclick="window.location='../pmullb/';" style="cursor: pointer;">
+                <tr onclick="window.location='../pmullb_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45006000</td>
                     <td class="mono">pmullb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLB <Zdn>.Q, <Zn>.D, <Zm>.D</td>
                     <td><span class="badge">SVE2 Crypto</span></td>
                     <td style="color: var(--text-muted);">Polynomial Multiply Long (Bottom)</td>
                 </tr>
                 
-                <tr onclick="window.location='../pmullt/';" style="cursor: pointer;">
+                <tr onclick="window.location='../pmullt_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45006400</td>
                     <td class="mono">pmullt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLT <Zdn>.Q, <Zn>.D, <Zm>.D</td>
                     <td><span class="badge">SVE2 Crypto</span></td>
                     <td style="color: var(--text-muted);">Polynomial Multiply Long (Top)</td>
                 </tr>
@@ -516,20 +578,23 @@
                 <tr onclick="window.location='../histseg/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x4500A000</td>
                     <td class="mono">histseg</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HISTSEG <Zd>.B, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Histogram</span></td>
                     <td style="color: var(--text-muted);">Histogram Segment (SVE2)</td>
                 </tr>
                 
-                <tr onclick="window.location='../addhnb/';" style="cursor: pointer;">
+                <tr onclick="window.location='../addhnb_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45044000</td>
                     <td class="mono">addhnb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDHNB <Zd>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Narrowing</span></td>
                     <td style="color: var(--text-muted);">SVE Add Narrow (Bottom)</td>
                 </tr>
                 
-                <tr onclick="window.location='../addhnt/';" style="cursor: pointer;">
+                <tr onclick="window.location='../addhnt_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45046000</td>
                     <td class="mono">addhnt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDHNT <Zd>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Narrowing</span></td>
                     <td style="color: var(--text-muted);">SVE Add Narrow (Top)</td>
                 </tr>
@@ -537,6 +602,7 @@
                 <tr onclick="window.location='../rsubhnb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45064000</td>
                     <td class="mono">rsubhnb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RSUBHNB <Zd>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Narrowing</span></td>
                     <td style="color: var(--text-muted);">SVE Rounding Subtract Narrow (Bottom)</td>
                 </tr>
@@ -544,6 +610,7 @@
                 <tr onclick="window.location='../rsubhnt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45066000</td>
                     <td class="mono">rsubhnt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RSUBHNT <Zd>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Narrowing</span></td>
                     <td style="color: var(--text-muted);">SVE Rounding Subtract Narrow (Top)</td>
                 </tr>
@@ -551,6 +618,7 @@
                 <tr onclick="window.location='../aese/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45072000</td>
                     <td class="mono">aese</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AESE <Zdn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Crypto</span></td>
                     <td style="color: var(--text-muted);">AES Encrypt (SVE2)</td>
                 </tr>
@@ -558,6 +626,7 @@
                 <tr onclick="window.location='../aesd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45072800</td>
                     <td class="mono">aesd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AESD <Zdn>.B, <Zm>.B</td>
                     <td><span class="badge">SVE2 Crypto</span></td>
                     <td style="color: var(--text-muted);">AES Decrypt (SVE2)</td>
                 </tr>
@@ -565,6 +634,7 @@
                 <tr onclick="window.location='../sm4e/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45073000</td>
                     <td class="mono">sm4e</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SM4E <Zdn>.S, <Zm>.S</td>
                     <td><span class="badge">SVE2 Crypto</span></td>
                     <td style="color: var(--text-muted);">SM4 Encrypt (SVE2)</td>
                 </tr>
@@ -572,6 +642,7 @@
                 <tr onclick="window.location='../pmullb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450A4000</td>
                     <td class="mono">pmullb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLB <Zda>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Poly</span></td>
                     <td style="color: var(--text-muted);">SVE Polynomial Multiply Long (Bottom)</td>
                 </tr>
@@ -579,13 +650,15 @@
                 <tr onclick="window.location='../pmullt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450A6000</td>
                     <td class="mono">pmullt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLT <Zda>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Poly</span></td>
                     <td style="color: var(--text-muted);">SVE Polynomial Multiply Long (Top)</td>
                 </tr>
                 
-                <tr onclick="window.location='../bgrp/';" style="cursor: pointer;">
+                <tr onclick="window.location='../bgrp_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450A8000</td>
                     <td class="mono">bgrp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BGRP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bit Group (SVE2)</td>
                 </tr>
@@ -593,13 +666,15 @@
                 <tr onclick="window.location='../bdep/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450C4000</td>
                     <td class="mono">bdep</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BDEP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">SVE Bit Deposit</td>
                 </tr>
                 
-                <tr onclick="window.location='../bdep/';" style="cursor: pointer;">
+                <tr onclick="window.location='../bdep_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450C8000</td>
                     <td class="mono">bdep</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BDEP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bit Deposit (SVE2)</td>
                 </tr>
@@ -607,13 +682,15 @@
                 <tr onclick="window.location='../bext/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450D4000</td>
                     <td class="mono">bext</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BEXT <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">SVE Bit Extract</td>
                 </tr>
                 
-                <tr onclick="window.location='../bext/';" style="cursor: pointer;">
+                <tr onclick="window.location='../bext_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450D8000</td>
                     <td class="mono">bext</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BEXT <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">Bit Extract (SVE2)</td>
                 </tr>
@@ -621,6 +698,7 @@
                 <tr onclick="window.location='../rax1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450E0000</td>
                     <td class="mono">rax1</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RAX1 <Zdn>.D, <Zn>.D, <Zm>.D</td>
                     <td><span class="badge">SVE2 Crypto</span></td>
                     <td style="color: var(--text-muted);">Rotate and Exclusive OR (SVE2)</td>
                 </tr>
@@ -628,6 +706,7 @@
                 <tr onclick="window.location='../bgrp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x450E4000</td>
                     <td class="mono">bgrp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BGRP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Bitwise</span></td>
                     <td style="color: var(--text-muted);">SVE Bit Group</td>
                 </tr>
@@ -635,6 +714,7 @@
                 <tr onclick="window.location='../match/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45200000</td>
                     <td class="mono">match</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 String</span></td>
                     <td style="color: var(--text-muted);">Detect Matches (SVE2)</td>
                 </tr>
@@ -642,6 +722,7 @@
                 <tr onclick="window.location='../nmatch/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45201000</td>
                     <td class="mono">nmatch</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NMATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 String</span></td>
                     <td style="color: var(--text-muted);">Detect No Matches (SVE2)</td>
                 </tr>
@@ -649,27 +730,31 @@
                 <tr onclick="window.location='../histcnt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45208000</td>
                     <td class="mono">histcnt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HISTCNT <Zd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Histogram</span></td>
                     <td style="color: var(--text-muted);">Histogram Count (SVE2)</td>
                 </tr>
                 
-                <tr onclick="window.location='../match/';" style="cursor: pointer;">
+                <tr onclick="window.location='../match_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45800000</td>
                     <td class="mono">match</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Match</span></td>
                     <td style="color: var(--text-muted);">SVE Match</td>
                 </tr>
                 
-                <tr onclick="window.location='../nmatch/';" style="cursor: pointer;">
+                <tr onclick="window.location='../nmatch_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45801000</td>
                     <td class="mono">nmatch</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NMATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Match</span></td>
                     <td style="color: var(--text-muted);">SVE No Match</td>
                 </tr>
                 
-                <tr onclick="window.location='../histcnt/';" style="cursor: pointer;">
+                <tr onclick="window.location='../histcnt_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x45A00000</td>
                     <td class="mono">histcnt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HISTCNT <Zd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2 Histogram</span></td>
                     <td style="color: var(--text-muted);">SVE Histogram Count</td>
                 </tr>
@@ -677,6 +762,7 @@
                 <tr onclick="window.location='../fclamp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x640C0000</td>
                     <td class="mono">fclamp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE2.1</span></td>
                     <td style="color: var(--text-muted);">Floating-Point Clamp</td>
                 </tr>
@@ -684,6 +770,7 @@
                 <tr onclick="window.location='../fdiv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x650C0000</td>
                     <td class="mono">fdiv</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T></td>
                     <td><span class="badge">SVE Float</span></td>
                     <td style="color: var(--text-muted);">Floating-Point Divide (SVE)</td>
                 </tr>
@@ -691,6 +778,7 @@
                 <tr onclick="window.location='../frintn/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x65180000</td>
                     <td class="mono">frintn</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FRINTN <Zd>.<T>, <Pg>/M, <Zn>.<T></td>
                     <td><span class="badge">SVE Float</span></td>
                     <td style="color: var(--text-muted);">Floating-Point Round Nearest (SVE)</td>
                 </tr>
@@ -698,6 +786,7 @@
                 <tr onclick="window.location='../fsqrt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x651A0000</td>
                     <td class="mono">fsqrt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSQRT <Zd>.<T>, <Pg>/M, <Zn>.<T></td>
                     <td><span class="badge">SVE Float</span></td>
                     <td style="color: var(--text-muted);">Floating-Point Square Root (SVE)</td>
                 </tr>
@@ -705,13 +794,15 @@
                 <tr onclick="window.location='../f8cvt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x65220000</td>
                     <td class="mono">f8cvt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">F8CVT <Zd>.H, <Zn>.B, #<imm></td>
                     <td><span class="badge">FP8</span></td>
                     <td style="color: var(--text-muted);">Floating-Point 8 Convert</td>
                 </tr>
                 
-                <tr onclick="window.location='../fmopa/';" style="cursor: pointer;">
+                <tr onclick="window.location='../fmopa_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x80000000</td>
                     <td class="mono">fmopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMOPA <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SME Arithmetic</span></td>
                     <td style="color: var(--text-muted);">Floating-Point Matrix Outer Product Accumulate</td>
                 </tr>
@@ -719,6 +810,7 @@
                 <tr onclick="window.location='../f8mopa/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x80000000</td>
                     <td class="mono">f8mopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">F8MOPA <ZAda>.S, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SME2 FP8</span></td>
                     <td style="color: var(--text-muted);">FP8 Matrix Outer Product Accumulate</td>
                 </tr>
@@ -726,6 +818,7 @@
                 <tr onclick="window.location='../fmops/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x80010000</td>
                     <td class="mono">fmops</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMOPS <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SME Arithmetic</span></td>
                     <td style="color: var(--text-muted);">Floating-Point Matrix Outer Product Subtract</td>
                 </tr>
@@ -733,6 +826,7 @@
                 <tr onclick="window.location='../fmopa/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x80800000</td>
                     <td class="mono">fmopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMOPA <ZAda>.S, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SME2 Matrix</span></td>
                     <td style="color: var(--text-muted);">Floating-point Outer Product Accumulate (Non-widening)</td>
                 </tr>
@@ -740,6 +834,7 @@
                 <tr onclick="window.location='../bfmopa/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x81800000</td>
                     <td class="mono">bfmopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BFMOPA <ZAda>.S, <Zn>.H, <Zm>.H</td>
                     <td><span class="badge">SME2 Matrix</span></td>
                     <td style="color: var(--text-muted);">BFloat16 Sum of Outer Products Accumulate</td>
                 </tr>
@@ -747,6 +842,7 @@
                 <tr onclick="window.location='../ldnt1b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x84000000</td>
                     <td class="mono">ldnt1b</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LDNT1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>, <Zm>, LSL #0]</td>
                     <td><span class="badge">SVE2 Load</span></td>
                     <td style="color: var(--text-muted);">Load Non-Temporal Byte (SVE2)</td>
                 </tr>
@@ -754,6 +850,7 @@
                 <tr onclick="window.location='../ld1b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x84000000</td>
                     <td class="mono">ld1b</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW]</td>
                     <td><span class="badge">SVE Gather</span></td>
                     <td style="color: var(--text-muted);">Gather Load Bytes (SVE)</td>
                 </tr>
@@ -761,13 +858,15 @@
                 <tr onclick="window.location='../ld1h/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x84200000</td>
                     <td class="mono">ld1h</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD1H { <Zt>.H }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW #1]</td>
                     <td><span class="badge">SVE Gather</span></td>
                     <td style="color: var(--text-muted);">Gather Load Halfwords (SVE)</td>
                 </tr>
                 
-                <tr onclick="window.location='../ld1w/';" style="cursor: pointer;">
+                <tr onclick="window.location='../ld1w_3/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x84400000</td>
                     <td class="mono">ld1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD1W { <Zt>.S }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW #2]</td>
                     <td><span class="badge">SVE Gather</span></td>
                     <td style="color: var(--text-muted);">Gather Load Words (SVE)</td>
                 </tr>
@@ -775,6 +874,7 @@
                 <tr onclick="window.location='../addpt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x9B200000</td>
                     <td class="mono">addpt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDPT <Xd|SP>, <Xn|SP>, <Xm></td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Add Checked Pointer</td>
                 </tr>
@@ -782,6 +882,7 @@
                 <tr onclick="window.location='../maddpt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x9B208000</td>
                     <td class="mono">maddpt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MADDPT <Xd>, <Xn>, <Xm>, <Xa></td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Multiply Add Checked Pointer</td>
                 </tr>
@@ -789,20 +890,23 @@
                 <tr onclick="window.location='../msubpt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x9B208400</td>
                     <td class="mono">msubpt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MSUBPT <Xd>, <Xn>, <Xm>, <Xa></td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Multiply Subtract Checked Pointer</td>
                 </tr>
                 
-                <tr onclick="window.location='../umopa/';" style="cursor: pointer;">
+                <tr onclick="window.location='../umopa_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xA0000000</td>
                     <td class="mono">umopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UMOPA <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SME Arithmetic</span></td>
                     <td style="color: var(--text-muted);">Unsigned Integer Matrix Outer Product Accumulate</td>
                 </tr>
                 
-                <tr onclick="window.location='../smopa/';" style="cursor: pointer;">
+                <tr onclick="window.location='../smopa_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xA0010000</td>
                     <td class="mono">smopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SMOPA <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.B, <Zm>.B</td>
                     <td><span class="badge">SME Arithmetic</span></td>
                     <td style="color: var(--text-muted);">Signed Integer Matrix Outer Product Accumulate</td>
                 </tr>
@@ -810,6 +914,7 @@
                 <tr onclick="window.location='../smopa/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xA0800000</td>
                     <td class="mono">smopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SMOPA <ZAda>.S, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SME2 Matrix</span></td>
                     <td style="color: var(--text-muted);">Signed Integer Outer Product Accumulate (Non-widening)</td>
                 </tr>
@@ -817,6 +922,7 @@
                 <tr onclick="window.location='../sumopa/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xA0880000</td>
                     <td class="mono">sumopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUMOPA <ZAda>.S, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SME2 Matrix</span></td>
                     <td style="color: var(--text-muted);">Signed/Unsigned Integer Outer Product Accumulate</td>
                 </tr>
@@ -824,6 +930,7 @@
                 <tr onclick="window.location='../umopa/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xA0900000</td>
                     <td class="mono">umopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UMOPA <ZAda>.S, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SME2 Matrix</span></td>
                     <td style="color: var(--text-muted);">Unsigned Integer Outer Product Accumulate (Non-widening)</td>
                 </tr>
@@ -831,6 +938,7 @@
                 <tr onclick="window.location='../usmopa/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xA0980000</td>
                     <td class="mono">usmopa</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">USMOPA <ZAda>.S, <Zn>.S, <Zm>.S</td>
                     <td><span class="badge">SME2 Matrix</span></td>
                     <td style="color: var(--text-muted);">Unsigned/Signed Integer Outer Product Accumulate</td>
                 </tr>
@@ -838,34 +946,39 @@
                 <tr onclick="window.location='../mova/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0000000</td>
                     <td class="mono">mova</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVA <ZA>.<T>H[<Ws>, <imm>], <Pg>/M, <Zn>.<T></td>
                     <td><span class="badge">SME Move</span></td>
                     <td style="color: var(--text-muted);">Move Vector to Tile Slice (Horizontal)</td>
                 </tr>
                 
-                <tr onclick="window.location='../mova/';" style="cursor: pointer;">
+                <tr onclick="window.location='../mova_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0008000</td>
                     <td class="mono">mova</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVA <ZA>.<T>V[<Ws>, <imm>], <Pg>/M, <Zn>.<T></td>
                     <td><span class="badge">SME Move</span></td>
                     <td style="color: var(--text-muted);">Move Vector to Tile Slice (Vertical)</td>
                 </tr>
                 
-                <tr onclick="window.location='../mova/';" style="cursor: pointer;">
+                <tr onclick="window.location='../mova_2/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0010000</td>
                     <td class="mono">mova</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVA <Zd>.<T>, <Pg>/M, <ZA>.<T>H[<Ws>, <imm>]</td>
                     <td><span class="badge">SME Move</span></td>
                     <td style="color: var(--text-muted);">Move Tile Slice to Vector (Horizontal)</td>
                 </tr>
                 
-                <tr onclick="window.location='../mova/';" style="cursor: pointer;">
+                <tr onclick="window.location='../mova_3/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0018000</td>
                     <td class="mono">mova</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVA <Zd>.<T>, <Pg>/M, <ZA>.<T>V[<Ws>, <imm>]</td>
                     <td><span class="badge">SME Move</span></td>
                     <td style="color: var(--text-muted);">Move Tile Slice to Vector (Vertical)</td>
                 </tr>
                 
-                <tr onclick="window.location='../zero/';" style="cursor: pointer;">
+                <tr onclick="window.location='../zero_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0080000</td>
                     <td class="mono">zero</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ZERO { <mask> }</td>
                     <td><span class="badge">SME Control</span></td>
                     <td style="color: var(--text-muted);">Zero Matrix Tile</td>
                 </tr>
@@ -873,6 +986,7 @@
                 <tr onclick="window.location='../zero/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC008007F</td>
                     <td class="mono">zero</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ZERO ZT0</td>
                     <td><span class="badge">SME2 Control</span></td>
                     <td style="color: var(--text-muted);">Zero ZT0</td>
                 </tr>
@@ -880,6 +994,7 @@
                 <tr onclick="window.location='../movt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0200000</td>
                     <td class="mono">movt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVT { <Zd1>.H-<Zd2>.H }, { <Zn1>.H-<Zn2>.H }</td>
                     <td><span class="badge">SME2 Move</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Move (Transpose)</td>
                 </tr>
@@ -887,6 +1002,7 @@
                 <tr onclick="window.location='../luti2/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0800000</td>
                     <td class="mono">luti2</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LUTI2 <Zd>.B, ZT0, <Zn>.B[<index>]</td>
                     <td><span class="badge">SME2 LUT</span></td>
                     <td style="color: var(--text-muted);">Lookup Table Index (2-bit)</td>
                 </tr>
@@ -894,6 +1010,7 @@
                 <tr onclick="window.location='../luti4/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC0804000</td>
                     <td class="mono">luti4</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LUTI4 <Zd>.B, ZT0, <Zn>.B[<index>]</td>
                     <td><span class="badge">SME2 LUT</span></td>
                     <td style="color: var(--text-muted);">Lookup Table Index (4-bit)</td>
                 </tr>
@@ -901,6 +1018,7 @@
                 <tr onclick="window.location='../add/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1800000</td>
                     <td class="mono">add</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADD { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Multi-vector</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Add</td>
                 </tr>
@@ -908,6 +1026,7 @@
                 <tr onclick="window.location='../sub/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1804000</td>
                     <td class="mono">sub</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUB { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Multi-vector</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Subtract</td>
                 </tr>
@@ -915,6 +1034,7 @@
                 <tr onclick="window.location='../smax/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1808000</td>
                     <td class="mono">smax</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SMAX { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Int</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Signed Maximum (SME2)</td>
                 </tr>
@@ -922,6 +1042,7 @@
                 <tr onclick="window.location='../smin/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC180C000</td>
                     <td class="mono">smin</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SMIN { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Int</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Signed Minimum (SME2)</td>
                 </tr>
@@ -929,6 +1050,7 @@
                 <tr onclick="window.location='../fadd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1900000</td>
                     <td class="mono">fadd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FADD { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Float</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Floating-point Add (SME2)</td>
                 </tr>
@@ -936,6 +1058,7 @@
                 <tr onclick="window.location='../fsub/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1904000</td>
                     <td class="mono">fsub</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSUB { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Float</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Floating-point Subtract (SME2)</td>
                 </tr>
@@ -943,6 +1066,7 @@
                 <tr onclick="window.location='../umax/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1908000</td>
                     <td class="mono">umax</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UMAX { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Int</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Unsigned Maximum (SME2)</td>
                 </tr>
@@ -950,6 +1074,7 @@
                 <tr onclick="window.location='../umin/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC190C000</td>
                     <td class="mono">umin</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UMIN { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Int</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Unsigned Minimum (SME2)</td>
                 </tr>
@@ -957,6 +1082,7 @@
                 <tr onclick="window.location='../fmla/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1A00000</td>
                     <td class="mono">fmla</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMLA { <Zd1>.S-<Zd4>.S }, { <Zn1>.S-<Zn4>.S }, { <Zm1>.S-<Zm4>.S }</td>
                     <td><span class="badge">SME2 Multi-vector</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Floating-point Multiply-Accumulate</td>
                 </tr>
@@ -964,6 +1090,7 @@
                 <tr onclick="window.location='../sqdmulh/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1A00000</td>
                     <td class="mono">sqdmulh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQDMULH { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Int</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Signed Saturating Doubling Multiply High</td>
                 </tr>
@@ -971,6 +1098,7 @@
                 <tr onclick="window.location='../fmls/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1A04000</td>
                     <td class="mono">fmls</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMLS { <Zd1>.S-<Zd4>.S }, { <Zn1>.S-<Zn4>.S }, { <Zm1>.S-<Zm4>.S }</td>
                     <td><span class="badge">SME2 Multi-vector</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Floating-point Multiply-Subtract</td>
                 </tr>
@@ -978,6 +1106,7 @@
                 <tr onclick="window.location='../fmul/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1A08000</td>
                     <td class="mono">fmul</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMUL { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Float</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Floating-point Multiply (SME2)</td>
                 </tr>
@@ -985,6 +1114,7 @@
                 <tr onclick="window.location='../fmax/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1B00000</td>
                     <td class="mono">fmax</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMAX { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Float</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Floating-point Maximum (SME2)</td>
                 </tr>
@@ -992,6 +1122,7 @@
                 <tr onclick="window.location='../fmin/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC1B04000</td>
                     <td class="mono">fmin</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMIN { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }</td>
                     <td><span class="badge">SME2 Float</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Floating-point Minimum (SME2)</td>
                 </tr>
@@ -999,6 +1130,7 @@
                 <tr onclick="window.location='../ld1d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC4600000</td>
                     <td class="mono">ld1d</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD1D { <Zt>.D }, <Pg>/Z, [<Xn|SP>, <Zm>.D, LSL #3]</td>
                     <td><span class="badge">SVE Gather</span></td>
                     <td style="color: var(--text-muted);">Gather Load Doublewords (SVE)</td>
                 </tr>
@@ -1006,6 +1138,7 @@
                 <tr onclick="window.location='../rmpadjust/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC8200000</td>
                     <td class="mono">rmpadjust</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RMPADJUST <Xt>, <Xn>, <Xm></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Realm Management Pointer Adjust</td>
                 </tr>
@@ -1013,6 +1146,7 @@
                 <tr onclick="window.location='../rmpread/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xC83F1000</td>
                     <td class="mono">rmpread</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RMPREAD <Xt>, <Xn></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Realm Management Pointer Read</td>
                 </tr>
@@ -1020,6 +1154,7 @@
                 <tr onclick="window.location='../tcancel/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD4400000</td>
                     <td class="mono">tcancel</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TCANCEL #<imm></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Transaction Cancel</td>
                 </tr>
@@ -1027,6 +1162,7 @@
                 <tr onclick="window.location='../rmpinit/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD503211F</td>
                     <td class="mono">rmpinit</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RMPINIT</td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Realm Management Pointer Initialize</td>
                 </tr>
@@ -1034,6 +1170,7 @@
                 <tr onclick="window.location='../dvmp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD5032120</td>
                     <td class="mono">dvmp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DVMP <Xt></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Data Value Memory Permission</td>
                 </tr>
@@ -1041,6 +1178,7 @@
                 <tr onclick="window.location='../brbinj/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD5032140</td>
                     <td class="mono">brbinj</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BRBINJ <Xt></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Branch Record Buffer Inject</td>
                 </tr>
@@ -1048,6 +1186,7 @@
                 <tr onclick="window.location='../brbto/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD503216F</td>
                     <td class="mono">brbto</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BRBTO</td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Branch Record Buffer Trap Overflow</td>
                 </tr>
@@ -1055,6 +1194,7 @@
                 <tr onclick="window.location='../tcommit/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD503335F</td>
                     <td class="mono">tcommit</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TCOMMIT</td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Transaction Commit</td>
                 </tr>
@@ -1062,13 +1202,15 @@
                 <tr onclick="window.location='../tlbi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD5089260</td>
                     <td class="mono">tlbi</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TLBI RIPAS2E1, <Xt></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">TLB Invalidate (Realm IPA)</td>
                 </tr>
                 
-                <tr onclick="window.location='../tlbi/';" style="cursor: pointer;">
+                <tr onclick="window.location='../tlbi_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD5089620</td>
                     <td class="mono">tlbi</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TLBI RVAE1, <Xt></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">TLB Invalidate (Realm PA)</td>
                 </tr>
@@ -1076,6 +1218,7 @@
                 <tr onclick="window.location='../gcspushm/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD52B243F</td>
                     <td class="mono">gcspushm</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">GCSPUSHM</td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Guarded Control Stack Push</td>
                 </tr>
@@ -1083,6 +1226,7 @@
                 <tr onclick="window.location='../tstart/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD52B3320</td>
                     <td class="mono">tstart</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TSTART <Xt></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Transaction Start</td>
                 </tr>
@@ -1090,6 +1234,7 @@
                 <tr onclick="window.location='../ttest/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD52B3380</td>
                     <td class="mono">ttest</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">TTEST <Xt></td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Transaction Test</td>
                 </tr>
@@ -1097,6 +1242,7 @@
                 <tr onclick="window.location='../gcsstr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD91F0000</td>
                     <td class="mono">gcsstr</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">GCSSTR <Xd>, [<Xn|SP>]</td>
                     <td><span class="badge">Load/Store</span></td>
                     <td style="color: var(--text-muted);">Guarded Control Stack Store</td>
                 </tr>
@@ -1104,34 +1250,39 @@
                 <tr onclick="window.location='../subpt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xDB200000</td>
                     <td class="mono">subpt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBPT <Xd|SP>, <Xn|SP>, <Xm></td>
                     <td><span class="badge">Data Processing</span></td>
                     <td style="color: var(--text-muted);">Subtract Checked Pointer</td>
                 </tr>
                 
-                <tr onclick="window.location='../ld1w/';" style="cursor: pointer;">
+                <tr onclick="window.location='../ld1w_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE0000000</td>
                     <td class="mono">ld1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD1W { <ZAdaH>.S[<slice>, #<imm>] }, <Pg>/Z, [<Xn|SP>]</td>
                     <td><span class="badge">SME Load</span></td>
                     <td style="color: var(--text-muted);">Load Matrix Tile Slice (Horizontal)</td>
                 </tr>
                 
-                <tr onclick="window.location='../ld1w/';" style="cursor: pointer;">
+                <tr onclick="window.location='../ld1w_2/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE0010000</td>
                     <td class="mono">ld1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD1W { <ZAdaV>.S[<slice>, #<imm>] }, <Pg>/Z, [<Xn|SP>]</td>
                     <td><span class="badge">SME Load</span></td>
                     <td style="color: var(--text-muted);">Load Matrix Tile Slice (Vertical)</td>
                 </tr>
                 
-                <tr onclick="window.location='../st1w/';" style="cursor: pointer;">
+                <tr onclick="window.location='../st1w_1/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE0100000</td>
                     <td class="mono">st1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ST1W { <ZAdaH>.S[<slice>, #<imm>] }, <Pg>, [<Xn|SP>]</td>
                     <td><span class="badge">SME Store</span></td>
                     <td style="color: var(--text-muted);">Store Matrix Tile Slice (Horizontal)</td>
                 </tr>
                 
-                <tr onclick="window.location='../st1w/';" style="cursor: pointer;">
+                <tr onclick="window.location='../st1w_2/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE0110000</td>
                     <td class="mono">st1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ST1W { <ZAdaV>.S[<slice>, #<imm>] }, <Pg>, [<Xn|SP>]</td>
                     <td><span class="badge">SME Store</span></td>
                     <td style="color: var(--text-muted);">Store Matrix Tile Slice (Vertical)</td>
                 </tr>
@@ -1139,6 +1290,7 @@
                 <tr onclick="window.location='../ldsza/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE1000000</td>
                     <td class="mono">ldsza</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LDSZA <ZA>.<T>V[<Ws>, <imm>], [<Xn|SP>, <Xm>, LSL <scale>]</td>
                     <td><span class="badge">SME Load</span></td>
                     <td style="color: var(--text-muted);">Load ZA Tile Slice</td>
                 </tr>
@@ -1146,6 +1298,7 @@
                 <tr onclick="window.location='../stsza/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE1200000</td>
                     <td class="mono">stsza</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STSZA <ZA>.<T>V[<Ws>, <imm>], [<Xn|SP>, <Xm>, LSL <scale>]</td>
                     <td><span class="badge">SME Store</span></td>
                     <td style="color: var(--text-muted);">Store ZA Tile Slice</td>
                 </tr>
@@ -1153,6 +1306,7 @@
                 <tr onclick="window.location='../ld1w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE1400000</td>
                     <td class="mono">ld1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD1W { <Zd1>.S-<Zd4>.S }, [<Xn|SP>]</td>
                     <td><span class="badge">SME2 Load</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Load Words</td>
                 </tr>
@@ -1160,6 +1314,7 @@
                 <tr onclick="window.location='../st1w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE1600000</td>
                     <td class="mono">st1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ST1W { <Zd1>.S-<Zd4>.S }, [<Xn|SP>]</td>
                     <td><span class="badge">SME2 Store</span></td>
                     <td style="color: var(--text-muted);">Multi-vector Store Words</td>
                 </tr>
@@ -1167,6 +1322,7 @@
                 <tr onclick="window.location='../stnt1b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE4000000</td>
                     <td class="mono">stnt1b</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STNT1B { <Zt>.B }, <Pg>, [<Xn|SP>, <Zm>, LSL #0]</td>
                     <td><span class="badge">SVE2 Store</span></td>
                     <td style="color: var(--text-muted);">Store Non-Temporal Byte (SVE2)</td>
                 </tr>
@@ -1174,6 +1330,7 @@
                 <tr onclick="window.location='../st1b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE4000000</td>
                     <td class="mono">st1b</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ST1B { <Zt>.B }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW]</td>
                     <td><span class="badge">SVE Scatter</span></td>
                     <td style="color: var(--text-muted);">Scatter Store Bytes (SVE)</td>
                 </tr>
@@ -1181,13 +1338,15 @@
                 <tr onclick="window.location='../st1h/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE4200000</td>
                     <td class="mono">st1h</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ST1H { <Zt>.H }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW #1]</td>
                     <td><span class="badge">SVE Scatter</span></td>
                     <td style="color: var(--text-muted);">Scatter Store Halfwords (SVE)</td>
                 </tr>
                 
-                <tr onclick="window.location='../st1w/';" style="cursor: pointer;">
+                <tr onclick="window.location='../st1w_3/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE4400000</td>
                     <td class="mono">st1w</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ST1W { <Zt>.S }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW #2]</td>
                     <td><span class="badge">SVE Scatter</span></td>
                     <td style="color: var(--text-muted);">Scatter Store Words (SVE)</td>
                 </tr>
@@ -1195,6 +1354,7 @@
                 <tr onclick="window.location='../st1d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE4600000</td>
                     <td class="mono">st1d</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ST1D { <Zt>.D }, <Pg>, [<Xn|SP>, <Zm>.D, LSL #3]</td>
                     <td><span class="badge">SVE Scatter</span></td>
                     <td style="color: var(--text-muted);">Scatter Store Doublewords (SVE)</td>
                 </tr>

@@ -127,6 +127,7 @@ def get_instruction_category(inst):
     
     return 'Base Integer'
 
+
 def generate_site(master_db):
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     
@@ -134,82 +135,84 @@ def generate_site(master_db):
     search_index = []
     all_pages = []
 
-    # 1. First Pass: Build Index & URLs
+    # 1. First Pass: Build Index, Unique URLs & Slugs
     for arch, insts in master_db.items():
+        slug_counts = {} # Track mnemonic usage to handle duplicates
+        
         for inst in insts:
-            clean_name = inst['mnemonic'].lower().replace(' ', '_').replace('.', '_')
-            rel_url = f"{arch.lower()}/{clean_name}/"
-            mnemonic_to_url[inst['mnemonic']] = f"../../{rel_url}"
+            # Create base slug
+            base_slug = inst['mnemonic'].lower().replace(' ', '_').replace('.', '_')
             
+            # Handle Duplicates: Append _1, _2, etc. if needed
+            if base_slug in slug_counts:
+                slug_counts[base_slug] += 1
+                unique_slug = f"{base_slug}_{slug_counts[base_slug]}"
+            else:
+                slug_counts[base_slug] = 0
+                unique_slug = base_slug
+            
+            # Save these fields to the instruction object for the templates to use
+            inst['slug'] = unique_slug
+            inst['rel_url'] = f"{arch.lower()}/{unique_slug}/"
+            
+            # Build search index
+            mnemonic_to_url[inst['mnemonic']] = f"../../{inst['rel_url']}"
             search_index.append({
                 "label": f"{inst['mnemonic']} ({arch})",
-                "url": rel_url,
+                "url": inst['rel_url'],
                 "summary": inst['summary'],
                 "arch": arch
             })
-            
-            # Add to sitemap list
-            all_pages.append(rel_url)
+            all_pages.append(inst['rel_url'])
 
     linkify = create_linkifier(mnemonic_to_url)
 
-    # --- NEW: Generate Sitemap.xml ---
+    # 2. Generate Sitemap.xml
     sitemap_content = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
     ]
-    
-    # Add homepage
     today = datetime.now().strftime("%Y-%m-%d")
     sitemap_content.append(f"  <url><loc>{SITE_URL}/</loc><lastmod>{today}</lastmod></url>")
-
-    # Add all instruction pages
     for page in all_pages:
         full_url = f"{SITE_URL}/{page}"
         sitemap_content.append(f"  <url><loc>{full_url}</loc><lastmod>{today}</lastmod></url>")
-    
     sitemap_content.append('</urlset>')
     
     with open(os.path.join(OUTPUT_DIR, 'sitemap.xml'), 'w') as f:
         f.write('\n'.join(sitemap_content))
-    
     print(f"✅ Generated sitemap.xml with {len(all_pages) + 1} URLs")
 
-
-    # 2. Write Search Index
+    # 3. Write Search Index
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w') as f:
         json.dump(search_index, f)
 
-    # 3a. Setup Templates
+    # 4. Setup Templates (THIS WAS MISSING)
     template_detail = env.get_template('instruction_detail.html')
     template_summary = env.get_template('arch_summary.html')
     template_index = env.get_template('index.html')
     template_table = env.get_template('opcode_table.html')
 
-    # 3b. Generate robots.txt
+    # 5. Generate robots.txt
     with open(os.path.join(OUTPUT_DIR, 'robots.txt'), 'w') as f:
         f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml")
     
-    print("✅ Generated robots.txt")
-
-    # Copy Static Assets
+    # 6. Copy Static Assets & CNAME
     static_src = 'static'
     static_dest = os.path.join(OUTPUT_DIR, 'static')
     if os.path.exists(static_dest): shutil.rmtree(static_dest)
     if os.path.exists(static_src): shutil.copytree(static_src, static_dest)
 
-    # --- NEW: Copy CNAME to Output ---
     if os.path.exists('CNAME'):
         shutil.copy('CNAME', os.path.join(OUTPUT_DIR, 'CNAME'))
         print("✅ Copied CNAME to output directory")
-    # ---------------------------------
 
-    # 4. Generate Main Index (Landing Page)
+    # 7. Generate Main Index (Landing Page)
     arch_counts = {arch: len(insts) for arch, insts in master_db.items()}
     with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f:
         f.write(template_index.render(architectures=list(master_db.keys()), counts=arch_counts, root="."))
 
-    # 5. Generate Architecture & Detail Pages
+    # 8. Generate Architecture & Detail Pages
     for arch, instructions in master_db.items():
         
         # --- Grouping Logic ---
@@ -223,7 +226,6 @@ def generate_site(master_db):
                 raw_parts = parse_encoding(inst['encoding']['binary_pattern'])
                 inst['encoding']['visual_parts'] = []
                 for p in raw_parts:
-                    # Clean up "rs1[4:0]" -> "rs1" for display if needed
                     clean_name = p.split('[')[0].strip()
                     inst['encoding']['visual_parts'].append({'raw': p, 'clean': clean_name})
             
@@ -236,55 +238,46 @@ def generate_site(master_db):
             if cat not in grouped_insts: grouped_insts[cat] = []
             grouped_insts[cat].append(inst)
 
-        # Define Sort Order for Sidebar (RISC-V + PowerISA mixed list)
+        # Define Sort Order for Sidebar
         cat_order = [
-            # RISC-V
             'Base Integer', '64-bit Extensions', 'Math Extensions (M)', 
             'Floating Point', 'Atomics', 'Bit Manipulation', 
-            'Cryptography (Scalar)', 
-            'Vector Operations', 'Compressed (16-bit)', 
+            'Cryptography (Scalar)', 'Vector Operations', 'Compressed (16-bit)', 
             'System & Privileged', 'Pseudo-Instructions',
-            
-            # PowerISA Specifics
             'Load & Store', 'Branch & Control', 'Comparison & CR',
             'Cache Management', 'Vector (VMX/AltiVec)', 
             'Vector-Scalar (VSX)', 'Prefixed (64-bit)'
         ]
         
-        # Sort groups based on the master list
+        # Sort groups
         sorted_groups = {k: grouped_insts[k] for k in cat_order if k in grouped_insts}
-        # Add any groups not in the explicit list at the end
         for k in grouped_insts:
             if k not in sorted_groups: sorted_groups[k] = grouped_insts[k]
 
-        # ARCHITECTURE LANDING PAGE (e.g., site/risc-v/index.html)
+        # ARCHITECTURE LANDING PAGE
         arch_dir = os.path.join(OUTPUT_DIR, arch.lower())
         os.makedirs(arch_dir, exist_ok=True)
+        
         with open(os.path.join(arch_dir, 'index.html'), 'w') as f:
             f.write(template_summary.render(
                 arch=arch, 
                 instructions=sorted_insts, 
                 root=".."
             ))
-
-        # --- NEW: SAVE TO ROOT DB FOLDER ---
-        # This creates db/RISC-V.json, db/x86-64.json, etc.
-        with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
+            
+        # GENERATE ARCHITECTURE JSON
+        with open(os.path.join(arch_dir, 'instructions.json'), 'w') as f:
             json.dump(instructions, f, indent=2)
-        print(f"   └── Saved database to db/{arch}.json")
-
-
-        # --- NEW: GENERATE OPCODE TABLE ---
+       
+        # GENERATE OPCODE TABLE
         def get_op_int(inst):
             try:
-                # robustly parse hex strings like "0x13", "89", "0xCB (alias)"
                 op_str = inst.get('encoding', {}).get('hex_opcode', '')
-                clean = re.sub(r'[^0-9a-fA-F]', '', op_str) # Keep only hex chars
+                clean = re.sub(r'[^0-9a-fA-F]', '', op_str)
                 return int(clean, 16) if clean else 9999999
             except:
                 return 9999999
 
-        # Sort by opcode integer value
         sorted_by_opcode = sorted(instructions, key=get_op_int)
         
         table_dir = os.path.join(arch_dir, 'table')
@@ -295,13 +288,12 @@ def generate_site(master_db):
                 instructions=sorted_by_opcode,
                 root="../.."
             ))
-        print(f"   └── Generated opcode table for {arch}")
-        # ----------------------------------
+        print(f"   └── Generated pages for {arch}")
 
         # INSTRUCTION DETAIL PAGES
         for inst in instructions:
-            safe_name = inst['mnemonic'].lower().replace(' ', '_').replace('.', '_')
-            inst_dir = os.path.join(arch_dir, safe_name)
+            # Use unique slug for folder name
+            inst_dir = os.path.join(arch_dir, inst['slug'])
             os.makedirs(inst_dir, exist_ok=True)
             
             with open(os.path.join(inst_dir, 'index.html'), 'w') as f:
@@ -311,6 +303,11 @@ def generate_site(master_db):
                     current_page=inst['mnemonic'],
                     root="../.."
                 ))
+    
+    # Save Master DB
+    for arch, insts in master_db.items():
+        with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
+            json.dump(insts, f, indent=2)
 
     print(f"🚀 Website generation complete! Output in '{OUTPUT_DIR}'")
 

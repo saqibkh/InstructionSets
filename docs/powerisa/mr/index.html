@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Copies contents of RS to RA. (Alias for 'or RA, RS, RS').">
+    <meta name="description" content="Copies the contents of one register to another. (Encoded as OR RA, RS, RS).">
     <title>mr - PowerISA</title>
     
     <meta property="og:type" content="website">
@@ -715,7 +715,7 @@
                         e_slw
                     </a>
                     
-                    <a href="../e_slw/" 
+                    <a href="../e_slw_1/" 
                        class="">
                         e_slw
                     </a>
@@ -725,7 +725,7 @@
                         e_sraw
                     </a>
                     
-                    <a href="../e_sraw/" 
+                    <a href="../e_sraw_1/" 
                        class="">
                         e_sraw
                     </a>
@@ -740,7 +740,7 @@
                         e_srw
                     </a>
                     
-                    <a href="../e_srw/" 
+                    <a href="../e_srw_1/" 
                        class="">
                         e_srw
                     </a>
@@ -800,7 +800,7 @@
                         e_stmw
                     </a>
                     
-                    <a href="../e_stmw/" 
+                    <a href="../e_stmw_1/" 
                        class="">
                         e_stmw
                     </a>
@@ -1615,8 +1615,8 @@
                         mr
                     </a>
                     
-                    <a href="../mr/" 
-                       class="active">
+                    <a href="../mr_1/" 
+                       class="">
                         mr
                     </a>
                     
@@ -1945,7 +1945,7 @@
                         rldic
                     </a>
                     
-                    <a href="../rldic/" 
+                    <a href="../rldic_1/" 
                        class="">
                         rldic
                     </a>
@@ -1960,7 +1960,7 @@
                         rldicr
                     </a>
                     
-                    <a href="../rldicr/" 
+                    <a href="../rldicr_1/" 
                        class="">
                         rldicr
                     </a>
@@ -2040,7 +2040,7 @@
                         se_bgeni
                     </a>
                     
-                    <a href="../se_bgeni/" 
+                    <a href="../se_bgeni_1/" 
                        class="">
                         se_bgeni
                     </a>
@@ -2060,7 +2060,7 @@
                         se_bmaski
                     </a>
                     
-                    <a href="../se_bmaski/" 
+                    <a href="../se_bmaski_1/" 
                        class="">
                         se_bmaski
                     </a>
@@ -2130,7 +2130,7 @@
                         se_li
                     </a>
                     
-                    <a href="../se_li/" 
+                    <a href="../se_li_1/" 
                        class="">
                         se_li
                     </a>
@@ -2315,7 +2315,7 @@
                         sld
                     </a>
                     
-                    <a href="../sld/" 
+                    <a href="../sld_1/" 
                        class="">
                         sld
                     </a>
@@ -2340,7 +2340,7 @@
                         sradi
                     </a>
                     
-                    <a href="../sradi/" 
+                    <a href="../sradi_1/" 
                        class="">
                         sradi
                     </a>
@@ -2620,7 +2620,7 @@
                         wait
                     </a>
                     
-                    <a href="../wait/" 
+                    <a href="../wait_1/" 
                        class="">
                         wait
                     </a>
@@ -2992,7 +2992,7 @@
                         efscfsf
                     </a>
                     
-                    <a href="../efscfsi/" 
+                    <a href="../efscfsi_1/" 
                        class="">
                         efscfsi
                     </a>
@@ -3022,7 +3022,7 @@
                         efscmplt
                     </a>
                     
-                    <a href="../efsctsi/" 
+                    <a href="../efsctsi_1/" 
                        class="">
                         efsctsi
                     </a>
@@ -3750,7 +3750,7 @@
                         dcbtst
                     </a>
                     
-                    <a href="../dcbtst/" 
+                    <a href="../dcbtst_1/" 
                        class="">
                         dcbtst
                     </a>
@@ -3780,7 +3780,7 @@
                         icbt
                     </a>
                     
-                    <a href="../icbt/" 
+                    <a href="../icbt_1/" 
                        class="">
                         icbt
                     </a>
@@ -4447,7 +4447,7 @@
                         vmulouw
                     </a>
                     
-                    <a href="../vmulouw/" 
+                    <a href="../vmulouw_1/" 
                        class="">
                         vmulouw
                     </a>
@@ -5606,7 +5606,7 @@
                         paddi
                     </a>
                     
-                    <a href="../paddi/" 
+                    <a href="../paddi_1/" 
                        class="">
                         paddi
                     </a>
@@ -5740,14 +5740,14 @@
             </div>
 
             <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">mr</h1>
-            <h2 style="font-weight: 400; color: var(--text-muted);">Move Register</h2>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Move Register (Pseudo)</h2>
             
             <div class="syntax-box">
                 mr RA, RS
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Copies contents of RS to RA. (Alias for '<a href="../../powerisa/or/">or</a> RA, RS, RS').
+                Copies the contents of one register to another. (Encoded as <a href="../../risc-v/or/">OR</a> RA, RS, RS).
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -5756,10 +5756,16 @@
                     <div class="panel">
                         <h3>Pseudocode Operation</h3>
                         <div class="code-block" style="border:none; padding:0; background: transparent;">
-                            
+                            RA <- (RS)
                         </div>
                     </div>
 
+                    
+                    <div class="panel">
+                        <h3>Example</h3>
+                        <div class="code-block" style="margin-bottom: 10px;">mr r3, r4</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Copy r4 to r3.</p>
+                    </div>
                     
                 </div>
 
@@ -5771,28 +5777,8 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box" data-op="31">
-                                    <span class="bit-value">31</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="RS">
-                                    <span class="bit-value">RS</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="RA">
-                                    <span class="bit-value">RA</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="RS">
-                                    <span class="bit-value">RS</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="444">
-                                    <span class="bit-value">444</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="/">
-                                    <span class="bit-value">/</span>
+                                <div class="bit-box" data-op="or RA, RS, RS">
+                                    <span class="bit-value">or RA, RS, RS</span>
                                 </div>
                                 
                             </div>
@@ -5804,11 +5790,11 @@
                         <div class="meta-grid">
                             <div class="meta-item">
                                 <span class="meta-label">Format</span>
-                                <span class="badge">X-form</span>
+                                <span class="badge">Pseudo</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Opcode</span>
-                                <span class="mono accent">0x7C000378</span>
+                                <span class="mono accent">See OR</span>
                             </div>
                         </div>
                     </div>
@@ -5842,8 +5828,8 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "mr (PowerISA)",
-  "description": "Copies contents of RS to RA. (Alias for 'or RA, RS, RS').",
-  "articleBody": "Move Register. Syntax: mr RA, RS. Opcode: 0x7C000378",
+  "description": "Copies the contents of one register to another. (Encoded as OR RA, RS, RS).",
+  "articleBody": "Move Register (Pseudo). Syntax: mr RA, RS. Opcode: See OR",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

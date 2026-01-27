@@ -45,7 +45,6 @@
     <script src="../../static/search.js"></script>
 
     
-
 <div class="container" style="padding-top: 40px;">
     <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
         <div>
@@ -65,9 +64,9 @@
             <thead>
                 <tr>
                     <th style="width: 15%;">Opcode</th>
-                    <th style="width: 15%;">Mnemonic</th>
-                    <th style="width: 20%;">Format</th>
-                    <th style="width: 50%;">Name</th>
+                    <th style="width: 10%;">Mnemonic</th>
+                    <th style="width: 30%;">Syntax</th> <th style="width: 15%;">Format</th>
+                    <th style="width: 30%;">Name</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,6 +74,7 @@
                 <tr onclick="window.location='../c_addi4spn/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">00</td>
                     <td class="mono">C.ADDI4SPN</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ADDI4SPN rd', uimm</td>
                     <td><span class="badge">CIW</span></td>
                     <td style="color: var(--text-muted);">Compressed Add Immediate to Stack Pointer (Non-zero)</td>
                 </tr>
@@ -82,6 +82,7 @@
                 <tr onclick="window.location='../c_lw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">00</td>
                     <td class="mono">C.LW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.LW rd', offset(rs1')</td>
                     <td><span class="badge">CL</span></td>
                     <td style="color: var(--text-muted);">Compressed Load Word</td>
                 </tr>
@@ -89,6 +90,7 @@
                 <tr onclick="window.location='../c_sw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">00</td>
                     <td class="mono">C.SW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SW rs2', offset(rs1')</td>
                     <td><span class="badge">CS</span></td>
                     <td style="color: var(--text-muted);">Compressed Store Word</td>
                 </tr>
@@ -96,6 +98,7 @@
                 <tr onclick="window.location='../c_addi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.ADDI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ADDI rd, imm</td>
                     <td><span class="badge">CI</span></td>
                     <td style="color: var(--text-muted);">Compressed Add Immediate</td>
                 </tr>
@@ -103,6 +106,7 @@
                 <tr onclick="window.location='../c_jal/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.JAL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.JAL offset</td>
                     <td><span class="badge">CJ</span></td>
                     <td style="color: var(--text-muted);">Compressed Jump and Link</td>
                 </tr>
@@ -110,6 +114,7 @@
                 <tr onclick="window.location='../c_li/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.LI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.LI rd, imm</td>
                     <td><span class="badge">CI</span></td>
                     <td style="color: var(--text-muted);">Compressed Load Immediate</td>
                 </tr>
@@ -117,6 +122,7 @@
                 <tr onclick="window.location='../c_addi16sp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.ADDI16SP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ADDI16SP imm</td>
                     <td><span class="badge">CI</span></td>
                     <td style="color: var(--text-muted);">Compressed Add Immediate to Stack Pointer</td>
                 </tr>
@@ -124,6 +130,7 @@
                 <tr onclick="window.location='../c_lui/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.LUI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.LUI rd, imm</td>
                     <td><span class="badge">CI</span></td>
                     <td style="color: var(--text-muted);">Compressed Load Upper Immediate</td>
                 </tr>
@@ -131,6 +138,7 @@
                 <tr onclick="window.location='../c_srli/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.SRLI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SRLI rd', imm</td>
                     <td><span class="badge">CB</span></td>
                     <td style="color: var(--text-muted);">Compressed Shift Right Logical Immediate</td>
                 </tr>
@@ -138,6 +146,7 @@
                 <tr onclick="window.location='../c_srai/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.SRAI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SRAI rd', imm</td>
                     <td><span class="badge">CB</span></td>
                     <td style="color: var(--text-muted);">Compressed Shift Right Arithmetic Immediate</td>
                 </tr>
@@ -145,6 +154,7 @@
                 <tr onclick="window.location='../c_andi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.ANDI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ANDI rd', imm</td>
                     <td><span class="badge">CB</span></td>
                     <td style="color: var(--text-muted);">Compressed AND Immediate</td>
                 </tr>
@@ -152,6 +162,7 @@
                 <tr onclick="window.location='../c_sub/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.SUB</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SUB rd', rs2'</td>
                     <td><span class="badge">CA</span></td>
                     <td style="color: var(--text-muted);">Compressed Subtract</td>
                 </tr>
@@ -159,6 +170,7 @@
                 <tr onclick="window.location='../c_xor/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.XOR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.XOR rd', rs2'</td>
                     <td><span class="badge">CA</span></td>
                     <td style="color: var(--text-muted);">Compressed XOR</td>
                 </tr>
@@ -166,6 +178,7 @@
                 <tr onclick="window.location='../c_or/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.OR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.OR rd', rs2'</td>
                     <td><span class="badge">CA</span></td>
                     <td style="color: var(--text-muted);">Compressed OR</td>
                 </tr>
@@ -173,6 +186,7 @@
                 <tr onclick="window.location='../c_and/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.AND</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.AND rd', rs2'</td>
                     <td><span class="badge">CA</span></td>
                     <td style="color: var(--text-muted);">Compressed AND</td>
                 </tr>
@@ -180,6 +194,7 @@
                 <tr onclick="window.location='../c_j/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.J</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.J offset</td>
                     <td><span class="badge">CJ</span></td>
                     <td style="color: var(--text-muted);">Compressed Jump</td>
                 </tr>
@@ -187,6 +202,7 @@
                 <tr onclick="window.location='../c_beqz/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.BEQZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.BEQZ rs1', offset</td>
                     <td><span class="badge">CB</span></td>
                     <td style="color: var(--text-muted);">Compressed Branch if Equal to Zero</td>
                 </tr>
@@ -194,6 +210,7 @@
                 <tr onclick="window.location='../c_bnez/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.BNEZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.BNEZ rs1', offset</td>
                     <td><span class="badge">CB</span></td>
                     <td style="color: var(--text-muted);">Compressed Branch if Not Equal to Zero</td>
                 </tr>
@@ -201,6 +218,7 @@
                 <tr onclick="window.location='../c_slli/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">02</td>
                     <td class="mono">C.SLLI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SLLI rd, imm</td>
                     <td><span class="badge">CI</span></td>
                     <td style="color: var(--text-muted);">Compressed Shift Left Logical Immediate</td>
                 </tr>
@@ -208,6 +226,7 @@
                 <tr onclick="window.location='../c_lwsp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">02</td>
                     <td class="mono">C.LWSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.LWSP rd, offset(x2)</td>
                     <td><span class="badge">CI</span></td>
                     <td style="color: var(--text-muted);">Compressed Load Word from Stack Pointer</td>
                 </tr>
@@ -215,6 +234,7 @@
                 <tr onclick="window.location='../c_swsp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">02</td>
                     <td class="mono">C.SWSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SWSP rs2, offset(x2)</td>
                     <td><span class="badge">CSS</span></td>
                     <td style="color: var(--text-muted);">Compressed Store Word to Stack Pointer</td>
                 </tr>
@@ -222,6 +242,7 @@
                 <tr onclick="window.location='../c_jr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">02</td>
                     <td class="mono">C.JR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.JR rs1</td>
                     <td><span class="badge">CR</span></td>
                     <td style="color: var(--text-muted);">Compressed Jump Register</td>
                 </tr>
@@ -229,6 +250,7 @@
                 <tr onclick="window.location='../c_mv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">02</td>
                     <td class="mono">C.MV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.MV rd, rs2</td>
                     <td><span class="badge">CR</span></td>
                     <td style="color: var(--text-muted);">Compressed Move</td>
                 </tr>
@@ -236,6 +258,7 @@
                 <tr onclick="window.location='../c_jalr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">02</td>
                     <td class="mono">C.JALR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.JALR rs1</td>
                     <td><span class="badge">CR</span></td>
                     <td style="color: var(--text-muted);">Compressed Jump and Link Register</td>
                 </tr>
@@ -243,6 +266,7 @@
                 <tr onclick="window.location='../c_add/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">02</td>
                     <td class="mono">C.ADD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ADD rd, rs2</td>
                     <td><span class="badge">CR</span></td>
                     <td style="color: var(--text-muted);">Compressed Add</td>
                 </tr>
@@ -250,6 +274,7 @@
                 <tr onclick="window.location='../lb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x03</td>
                     <td class="mono">LB</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LB rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Load Byte</td>
                 </tr>
@@ -257,6 +282,7 @@
                 <tr onclick="window.location='../lh/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x03</td>
                     <td class="mono">LH</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LH rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Load Halfword</td>
                 </tr>
@@ -264,6 +290,7 @@
                 <tr onclick="window.location='../lw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x03</td>
                     <td class="mono">LW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LW rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Load Word</td>
                 </tr>
@@ -271,6 +298,7 @@
                 <tr onclick="window.location='../lbu/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x03</td>
                     <td class="mono">LBU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LBU rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Load Byte Unsigned</td>
                 </tr>
@@ -278,6 +306,7 @@
                 <tr onclick="window.location='../lhu/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x03</td>
                     <td class="mono">LHU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LHU rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Load Halfword Unsigned</td>
                 </tr>
@@ -285,6 +314,7 @@
                 <tr onclick="window.location='../ld/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x03</td>
                     <td class="mono">LD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LD rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Load Doubleword</td>
                 </tr>
@@ -292,6 +322,7 @@
                 <tr onclick="window.location='../lwu/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x03</td>
                     <td class="mono">LWU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LWU rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Load Word Unsigned</td>
                 </tr>
@@ -299,6 +330,7 @@
                 <tr onclick="window.location='../fld/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x07</td>
                     <td class="mono">FLD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLD rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Float Load Double</td>
                 </tr>
@@ -306,6 +338,7 @@
                 <tr onclick="window.location='../flh/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x07</td>
                     <td class="mono">FLH</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLH rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Float Load Halfword</td>
                 </tr>
@@ -313,6 +346,7 @@
                 <tr onclick="window.location='../vle32_v/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x07</td>
                     <td class="mono">VLE32.V</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLE32.V vd, (rs1), vm</td>
                     <td><span class="badge">V-Load</span></td>
                     <td style="color: var(--text-muted);">Vector Load Element (32-bit)</td>
                 </tr>
@@ -320,6 +354,7 @@
                 <tr onclick="window.location='../flw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x07</td>
                     <td class="mono">FLW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLW rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Float Load Word</td>
                 </tr>
@@ -327,6 +362,7 @@
                 <tr onclick="window.location='../fence_i/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F</td>
                     <td class="mono">FENCE.I</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FENCE.I</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Instruction Fence</td>
                 </tr>
@@ -334,6 +370,7 @@
                 <tr onclick="window.location='../pause/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F</td>
                     <td class="mono">PAUSE</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAUSE</td>
                     <td><span class="badge">I-Type (Hint)</span></td>
                     <td style="color: var(--text-muted);">Pause</td>
                 </tr>
@@ -341,6 +378,7 @@
                 <tr onclick="window.location='../cbo_clean/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F</td>
                     <td class="mono">CBO.CLEAN</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CBO.CLEAN (rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Cache Block Operation: Clean</td>
                 </tr>
@@ -348,6 +386,7 @@
                 <tr onclick="window.location='../cbo_flush/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F</td>
                     <td class="mono">CBO.FLUSH</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CBO.FLUSH (rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Cache Block Operation: Flush</td>
                 </tr>
@@ -355,6 +394,7 @@
                 <tr onclick="window.location='../cbo_inval/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F</td>
                     <td class="mono">CBO.INVAL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CBO.INVAL (rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Cache Block Operation: Invalidate</td>
                 </tr>
@@ -362,6 +402,7 @@
                 <tr onclick="window.location='../cbo_zero/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F</td>
                     <td class="mono">CBO.ZERO</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CBO.ZERO (rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Cache Block Operation: Zero</td>
                 </tr>
@@ -369,6 +410,7 @@
                 <tr onclick="window.location='../fence/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F</td>
                     <td class="mono">FENCE</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FENCE pred, succ</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Fence</td>
                 </tr>
@@ -376,6 +418,7 @@
                 <tr onclick="window.location='../prefetch_i/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">PREFETCH.I</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PREFETCH.I offset(rs1)</td>
                     <td><span class="badge">S-Type (Hint)</span></td>
                     <td style="color: var(--text-muted);">Prefetch Instruction</td>
                 </tr>
@@ -383,6 +426,7 @@
                 <tr onclick="window.location='../prefetch_r/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">PREFETCH.R</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PREFETCH.R offset(rs1)</td>
                     <td><span class="badge">S-Type (Hint)</span></td>
                     <td style="color: var(--text-muted);">Prefetch Read</td>
                 </tr>
@@ -390,6 +434,7 @@
                 <tr onclick="window.location='../prefetch_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">PREFETCH.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PREFETCH.W offset(rs1)</td>
                     <td><span class="badge">S-Type (Hint)</span></td>
                     <td style="color: var(--text-muted);">Prefetch Write</td>
                 </tr>
@@ -397,6 +442,7 @@
                 <tr onclick="window.location='../clz/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">CLZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CLZ rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Count Leading Zeros</td>
                 </tr>
@@ -404,6 +450,7 @@
                 <tr onclick="window.location='../ctz/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">CTZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CTZ rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Count Trailing Zeros</td>
                 </tr>
@@ -411,6 +458,7 @@
                 <tr onclick="window.location='../cpop/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">CPOP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CPOP rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Population Count</td>
                 </tr>
@@ -418,6 +466,7 @@
                 <tr onclick="window.location='../sex_b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">SEX.B</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SEX.B rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Sign Extend Byte</td>
                 </tr>
@@ -425,6 +474,7 @@
                 <tr onclick="window.location='../sex_h/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">SEX.H</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SEX.H rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Sign Extend Halfword</td>
                 </tr>
@@ -432,6 +482,7 @@
                 <tr onclick="window.location='../orc_b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">ORC.B</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ORC.B rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Bitwise OR-Combine Byte</td>
                 </tr>
@@ -439,6 +490,7 @@
                 <tr onclick="window.location='../rev8/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">REV8</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">REV8 rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Byte Reverse</td>
                 </tr>
@@ -446,6 +498,7 @@
                 <tr onclick="window.location='../nop/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x00000013</td>
                     <td class="mono">NOP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NOP</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">No Operation</td>
                 </tr>
@@ -453,6 +506,7 @@
                 <tr onclick="window.location='../sha256sig0/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">SHA256SIG0</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SHA256SIG0 rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">SHA-256 Sigma0</td>
                 </tr>
@@ -460,6 +514,7 @@
                 <tr onclick="window.location='../sha256sum0/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">SHA256SUM0</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SHA256SUM0 rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">SHA-256 Sum0</td>
                 </tr>
@@ -467,6 +522,7 @@
                 <tr onclick="window.location='../bseti/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">BSETI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BSETI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Set Immediate</td>
                 </tr>
@@ -474,6 +530,7 @@
                 <tr onclick="window.location='../bclri/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">BCLRI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BCLRI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Clear Immediate</td>
                 </tr>
@@ -481,6 +538,7 @@
                 <tr onclick="window.location='../binvi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">BINVI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BINVI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Invert Immediate</td>
                 </tr>
@@ -488,6 +546,7 @@
                 <tr onclick="window.location='../bexti/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">BEXTI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BEXTI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Extract Immediate</td>
                 </tr>
@@ -495,6 +554,7 @@
                 <tr onclick="window.location='../ori/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">ORI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ORI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Logical OR Immediate</td>
                 </tr>
@@ -502,6 +562,7 @@
                 <tr onclick="window.location='../slli/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">SLLI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLLI rd, rs1, shamt</td>
                     <td><span class="badge">I-Type (Shift)</span></td>
                     <td style="color: var(--text-muted);">Shift Left Logical Immediate</td>
                 </tr>
@@ -509,6 +570,7 @@
                 <tr onclick="window.location='../slti/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">SLTI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLTI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Set Less Than Immediate</td>
                 </tr>
@@ -516,6 +578,7 @@
                 <tr onclick="window.location='../xori/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">XORI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XORI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Logical XOR Immediate</td>
                 </tr>
@@ -523,6 +586,7 @@
                 <tr onclick="window.location='../addi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">ADDI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Add Immediate</td>
                 </tr>
@@ -530,6 +594,7 @@
                 <tr onclick="window.location='../andi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x13</td>
                     <td class="mono">ANDI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ANDI rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Logical AND Immediate</td>
                 </tr>
@@ -537,6 +602,7 @@
                 <tr onclick="window.location='../auipc/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x17</td>
                     <td class="mono">AUIPC</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AUIPC rd, imm</td>
                     <td><span class="badge">U-Type</span></td>
                     <td style="color: var(--text-muted);">Add Upper Immediate to PC</td>
                 </tr>
@@ -544,6 +610,7 @@
                 <tr onclick="window.location='../slliw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x1B</td>
                     <td class="mono">SLLIW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLLIW rd, rs1, shamt</td>
                     <td><span class="badge">I-Type (Shift)</span></td>
                     <td style="color: var(--text-muted);">Shift Left Logical Immediate Word</td>
                 </tr>
@@ -551,6 +618,7 @@
                 <tr onclick="window.location='../srliw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x1B</td>
                     <td class="mono">SRLIW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SRLIW rd, rs1, shamt</td>
                     <td><span class="badge">I-Type (Shift)</span></td>
                     <td style="color: var(--text-muted);">Shift Right Logical Immediate Word</td>
                 </tr>
@@ -558,6 +626,7 @@
                 <tr onclick="window.location='../sraiw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x1B</td>
                     <td class="mono">SRAIW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SRAIW rd, rs1, shamt</td>
                     <td><span class="badge">I-Type (Shift)</span></td>
                     <td style="color: var(--text-muted);">Shift Right Arithmetic Immediate Word</td>
                 </tr>
@@ -565,6 +634,7 @@
                 <tr onclick="window.location='../addiw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x1B</td>
                     <td class="mono">ADDIW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDIW rd, rs1, imm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Add Immediate Word</td>
                 </tr>
@@ -572,6 +642,7 @@
                 <tr onclick="window.location='../sb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x23</td>
                     <td class="mono">SB</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SB rs2, offset(rs1)</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Store Byte</td>
                 </tr>
@@ -579,6 +650,7 @@
                 <tr onclick="window.location='../sh/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x23</td>
                     <td class="mono">SH</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SH rs2, offset(rs1)</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Store Halfword</td>
                 </tr>
@@ -586,6 +658,7 @@
                 <tr onclick="window.location='../sw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x23</td>
                     <td class="mono">SW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SW rs2, offset(rs1)</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Store Word</td>
                 </tr>
@@ -593,6 +666,7 @@
                 <tr onclick="window.location='../sd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x23</td>
                     <td class="mono">SD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SD rs2, offset(rs1)</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Store Doubleword</td>
                 </tr>
@@ -600,6 +674,7 @@
                 <tr onclick="window.location='../fsd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x27</td>
                     <td class="mono">FSD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSD rs2, offset(rs1)</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Float Store Double</td>
                 </tr>
@@ -607,6 +682,7 @@
                 <tr onclick="window.location='../fsh/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x27</td>
                     <td class="mono">FSH</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSH rs2, offset(rs1)</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Float Store Halfword</td>
                 </tr>
@@ -614,6 +690,7 @@
                 <tr onclick="window.location='../vse32_v/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x27</td>
                     <td class="mono">VSE32.V</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSE32.V vs3, (rs1), vm</td>
                     <td><span class="badge">V-Store</span></td>
                     <td style="color: var(--text-muted);">Vector Store Element (32-bit)</td>
                 </tr>
@@ -621,6 +698,7 @@
                 <tr onclick="window.location='../fsw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x27</td>
                     <td class="mono">FSW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSW rs2, offset(rs1)</td>
                     <td><span class="badge">S-Type</span></td>
                     <td style="color: var(--text-muted);">Float Store Word</td>
                 </tr>
@@ -628,6 +706,7 @@
                 <tr onclick="window.location='../amoor_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOOR.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOOR.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic OR Word</td>
                 </tr>
@@ -635,6 +714,7 @@
                 <tr onclick="window.location='../amoxor_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOXOR.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOXOR.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic XOR Word</td>
                 </tr>
@@ -642,6 +722,7 @@
                 <tr onclick="window.location='../amomax_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOMAX.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOMAX.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Max Word</td>
                 </tr>
@@ -649,6 +730,7 @@
                 <tr onclick="window.location='../amomin_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOMIN.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOMIN.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Min Word</td>
                 </tr>
@@ -656,6 +738,7 @@
                 <tr onclick="window.location='../amoadd_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOADD.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOADD.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Add Doubleword</td>
                 </tr>
@@ -663,6 +746,7 @@
                 <tr onclick="window.location='../amoswap_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOSWAP.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOSWAP.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Swap Doubleword</td>
                 </tr>
@@ -670,6 +754,7 @@
                 <tr onclick="window.location='../amoand_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOAND.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOAND.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic AND Doubleword</td>
                 </tr>
@@ -677,6 +762,7 @@
                 <tr onclick="window.location='../amoor_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOOR.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOOR.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic OR Doubleword</td>
                 </tr>
@@ -684,6 +770,7 @@
                 <tr onclick="window.location='../amoxor_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOXOR.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOXOR.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic XOR Doubleword</td>
                 </tr>
@@ -691,6 +778,7 @@
                 <tr onclick="window.location='../amomax_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOMAX.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOMAX.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Max Doubleword</td>
                 </tr>
@@ -698,6 +786,7 @@
                 <tr onclick="window.location='../amomin_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOMIN.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOMIN.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Min Doubleword</td>
                 </tr>
@@ -705,6 +794,7 @@
                 <tr onclick="window.location='../sc_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">SC.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SC.D rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Store Conditional Doubleword</td>
                 </tr>
@@ -712,6 +802,7 @@
                 <tr onclick="window.location='../sc_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">SC.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SC.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Store Conditional Word</td>
                 </tr>
@@ -719,6 +810,7 @@
                 <tr onclick="window.location='../lr_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">LR.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LR.W rd, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Load Reserved Word</td>
                 </tr>
@@ -726,6 +818,7 @@
                 <tr onclick="window.location='../lr_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">LR.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LR.D rd, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Load Reserved Doubleword</td>
                 </tr>
@@ -733,6 +826,7 @@
                 <tr onclick="window.location='../amoadd_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOADD.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOADD.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Add Word</td>
                 </tr>
@@ -740,6 +834,7 @@
                 <tr onclick="window.location='../amoswap_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOSWAP.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOSWAP.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic Swap Word</td>
                 </tr>
@@ -747,6 +842,7 @@
                 <tr onclick="window.location='../amoand_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x2F</td>
                     <td class="mono">AMOAND.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOAND.W rd, rs2, (rs1)</td>
                     <td><span class="badge">R-Type (Atomic)</span></td>
                     <td style="color: var(--text-muted);">Atomic AND Word</td>
                 </tr>
@@ -754,6 +850,7 @@
                 <tr onclick="window.location='../andn/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">ANDN</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ANDN rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">AND Not</td>
                 </tr>
@@ -761,6 +858,7 @@
                 <tr onclick="window.location='../orn/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">ORN</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ORN rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">OR Not</td>
                 </tr>
@@ -768,6 +866,7 @@
                 <tr onclick="window.location='../xnor/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">XNOR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XNOR rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Exclusive NOR</td>
                 </tr>
@@ -775,6 +874,7 @@
                 <tr onclick="window.location='../rol/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">ROL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ROL rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Rotate Left</td>
                 </tr>
@@ -782,6 +882,7 @@
                 <tr onclick="window.location='../ror/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">ROR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ROR rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Rotate Right</td>
                 </tr>
@@ -789,6 +890,7 @@
                 <tr onclick="window.location='../max/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">MAX</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MAX rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Maximum</td>
                 </tr>
@@ -796,6 +898,7 @@
                 <tr onclick="window.location='../min/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">MIN</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MIN rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Minimum</td>
                 </tr>
@@ -803,6 +906,7 @@
                 <tr onclick="window.location='../czero_eqz/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">CZERO.EQZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CZERO.EQZ rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Conditional Zero Equal to Zero</td>
                 </tr>
@@ -810,6 +914,7 @@
                 <tr onclick="window.location='../czero_nez/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">CZERO.NEZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CZERO.NEZ rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Conditional Zero Not Equal to Zero</td>
                 </tr>
@@ -817,6 +922,7 @@
                 <tr onclick="window.location='../aes64es/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">AES64ES</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AES64ES rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">AES-64 Encryption Schedule</td>
                 </tr>
@@ -824,6 +930,7 @@
                 <tr onclick="window.location='../aes64ds/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">AES64DS</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AES64DS rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">AES-64 Decryption Schedule</td>
                 </tr>
@@ -831,6 +938,7 @@
                 <tr onclick="window.location='../sh1add/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">SH1ADD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SH1ADD rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Left 1 and Add</td>
                 </tr>
@@ -838,6 +946,7 @@
                 <tr onclick="window.location='../sh2add/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">SH2ADD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SH2ADD rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Left 2 and Add</td>
                 </tr>
@@ -845,6 +954,7 @@
                 <tr onclick="window.location='../sh3add/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">SH3ADD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SH3ADD rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Left 3 and Add</td>
                 </tr>
@@ -852,6 +962,7 @@
                 <tr onclick="window.location='../bset/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">BSET</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BSET rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Set</td>
                 </tr>
@@ -859,6 +970,7 @@
                 <tr onclick="window.location='../bclr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">BCLR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BCLR rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Clear</td>
                 </tr>
@@ -866,6 +978,7 @@
                 <tr onclick="window.location='../binv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">BINV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BINV rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Invert</td>
                 </tr>
@@ -873,6 +986,7 @@
                 <tr onclick="window.location='../bext/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">BEXT</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BEXT rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Bit Extract</td>
                 </tr>
@@ -880,6 +994,7 @@
                 <tr onclick="window.location='../clmul/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">CLMUL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CLMUL rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Carry-less Multiply</td>
                 </tr>
@@ -887,6 +1002,7 @@
                 <tr onclick="window.location='../div/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">DIV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIV rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Divide</td>
                 </tr>
@@ -894,6 +1010,7 @@
                 <tr onclick="window.location='../divu/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">DIVU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVU rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Divide Unsigned</td>
                 </tr>
@@ -901,6 +1018,7 @@
                 <tr onclick="window.location='../mul/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">MUL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MUL rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Multiply</td>
                 </tr>
@@ -908,6 +1026,7 @@
                 <tr onclick="window.location='../mulh/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">MULH</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULH rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Multiply High Signed</td>
                 </tr>
@@ -915,6 +1034,7 @@
                 <tr onclick="window.location='../or/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">OR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">OR rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Logical OR</td>
                 </tr>
@@ -922,6 +1042,7 @@
                 <tr onclick="window.location='../rem/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">REM</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">REM rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Remainder</td>
                 </tr>
@@ -929,6 +1050,7 @@
                 <tr onclick="window.location='../sll/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">SLL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLL rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Left Logical</td>
                 </tr>
@@ -936,6 +1058,7 @@
                 <tr onclick="window.location='../srl/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">SRL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SRL rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Right Logical</td>
                 </tr>
@@ -943,6 +1066,7 @@
                 <tr onclick="window.location='../sra/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">SRA</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SRA rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Right Arithmetic</td>
                 </tr>
@@ -950,6 +1074,7 @@
                 <tr onclick="window.location='../slt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">SLT</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLT rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Set Less Than</td>
                 </tr>
@@ -957,6 +1082,7 @@
                 <tr onclick="window.location='../xor/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">XOR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XOR rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Logical XOR</td>
                 </tr>
@@ -964,6 +1090,7 @@
                 <tr onclick="window.location='../add/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">ADD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADD rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Add</td>
                 </tr>
@@ -971,6 +1098,7 @@
                 <tr onclick="window.location='../and/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">AND</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AND rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Logical AND</td>
                 </tr>
@@ -978,6 +1106,7 @@
                 <tr onclick="window.location='../lui/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x37</td>
                     <td class="mono">LUI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LUI rd, imm</td>
                     <td><span class="badge">U-Type</span></td>
                     <td style="color: var(--text-muted);">Load Upper Immediate</td>
                 </tr>
@@ -985,6 +1114,7 @@
                 <tr onclick="window.location='../subw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">SUBW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Subtract Word</td>
                 </tr>
@@ -992,6 +1122,7 @@
                 <tr onclick="window.location='../sllw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">SLLW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLLW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Left Logical Word</td>
                 </tr>
@@ -999,6 +1130,7 @@
                 <tr onclick="window.location='../srlw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">SRLW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SRLW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Right Logical Word</td>
                 </tr>
@@ -1006,6 +1138,7 @@
                 <tr onclick="window.location='../sraw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">SRAW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SRAW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Shift Right Arithmetic Word</td>
                 </tr>
@@ -1013,6 +1146,7 @@
                 <tr onclick="window.location='../mulw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">MULW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Multiply Word</td>
                 </tr>
@@ -1020,6 +1154,7 @@
                 <tr onclick="window.location='../divw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">DIVW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Divide Word</td>
                 </tr>
@@ -1027,6 +1162,7 @@
                 <tr onclick="window.location='../divuw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">DIVUW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVUW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Divide Unsigned Word</td>
                 </tr>
@@ -1034,6 +1170,7 @@
                 <tr onclick="window.location='../remw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">REMW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">REMW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Remainder Word</td>
                 </tr>
@@ -1041,6 +1178,7 @@
                 <tr onclick="window.location='../remuw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">REMUW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">REMUW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Remainder Unsigned Word</td>
                 </tr>
@@ -1048,6 +1186,7 @@
                 <tr onclick="window.location='../zext_h/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">ZEXT.H</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ZEXT.H rd, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Zero Extend Halfword</td>
                 </tr>
@@ -1055,6 +1194,7 @@
                 <tr onclick="window.location='../adduw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">ADDUW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDUW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Add Unsigned Word</td>
                 </tr>
@@ -1062,6 +1202,7 @@
                 <tr onclick="window.location='../addw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x3B</td>
                     <td class="mono">ADDW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ADDW rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Add Word</td>
                 </tr>
@@ -1069,6 +1210,7 @@
                 <tr onclick="window.location='../fmadd_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x43</td>
                     <td class="mono">FMADD.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMADD.S rd, rs1, rs2, rs3</td>
                     <td><span class="badge">R4-Type</span></td>
                     <td style="color: var(--text-muted);">Float Fused Multiply-Add (Single)</td>
                 </tr>
@@ -1076,6 +1218,7 @@
                 <tr onclick="window.location='../fmadd_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x43</td>
                     <td class="mono">FMADD.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMADD.D rd, rs1, rs2, rs3</td>
                     <td><span class="badge">R4-Type</span></td>
                     <td style="color: var(--text-muted);">Float Fused Multiply-Add (Double)</td>
                 </tr>
@@ -1083,6 +1226,7 @@
                 <tr onclick="window.location='../fadd_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FADD.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FADD.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Add Double</td>
                 </tr>
@@ -1090,6 +1234,7 @@
                 <tr onclick="window.location='../fsub_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FSUB.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSUB.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Subtract Double</td>
                 </tr>
@@ -1097,6 +1242,7 @@
                 <tr onclick="window.location='../fmul_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FMUL.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMUL.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Multiply Double</td>
                 </tr>
@@ -1104,6 +1250,7 @@
                 <tr onclick="window.location='../fdiv_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FDIV.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FDIV.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Divide Double</td>
                 </tr>
@@ -1111,6 +1258,7 @@
                 <tr onclick="window.location='../fcvt_lu_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.LU.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.LU.D rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Double to Unsigned Long</td>
                 </tr>
@@ -1118,6 +1266,7 @@
                 <tr onclick="window.location='../fadd_h/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FADD.H</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FADD.H rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Add Half</td>
                 </tr>
@@ -1125,6 +1274,7 @@
                 <tr onclick="window.location='../fcvt_s_h/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.S.H</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.S.H rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Half to Single</td>
                 </tr>
@@ -1132,6 +1282,7 @@
                 <tr onclick="window.location='../fcvt_h_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.H.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.H.S rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Single to Half</td>
                 </tr>
@@ -1139,6 +1290,7 @@
                 <tr onclick="window.location='../fcvt_w_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.W.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.W.S rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Float Convert to Word (Single)</td>
                 </tr>
@@ -1146,6 +1298,7 @@
                 <tr onclick="window.location='../fcvt_s_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.S.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.S.W rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Float Convert from Word (Single)</td>
                 </tr>
@@ -1153,6 +1306,7 @@
                 <tr onclick="window.location='../fcvt_d_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.D.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.D.S rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Float Convert Single to Double</td>
                 </tr>
@@ -1160,6 +1314,7 @@
                 <tr onclick="window.location='../fcvt_s_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.S.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.S.D rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Float Convert Double to Single</td>
                 </tr>
@@ -1167,6 +1322,7 @@
                 <tr onclick="window.location='../fsgnj_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FSGNJ.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSGNJ.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Sign Injection (Single)</td>
                 </tr>
@@ -1174,6 +1330,7 @@
                 <tr onclick="window.location='../fsgnjn_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FSGNJN.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSGNJN.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Sign Injection Negate (Single)</td>
                 </tr>
@@ -1181,6 +1338,7 @@
                 <tr onclick="window.location='../fsgnjx_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FSGNJX.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSGNJX.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Sign Injection XOR (Single)</td>
                 </tr>
@@ -1188,6 +1346,7 @@
                 <tr onclick="window.location='../feq_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FEQ.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FEQ.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Equal (Single)</td>
                 </tr>
@@ -1195,6 +1354,7 @@
                 <tr onclick="window.location='../flt_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FLT.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLT.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Less Than (Single)</td>
                 </tr>
@@ -1202,6 +1362,7 @@
                 <tr onclick="window.location='../fle_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FLE.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLE.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Less or Equal (Single)</td>
                 </tr>
@@ -1209,6 +1370,7 @@
                 <tr onclick="window.location='../fmv_x_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FMV.X.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMV.X.W rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Move Float to Integer</td>
                 </tr>
@@ -1216,6 +1378,7 @@
                 <tr onclick="window.location='../fmv_w_x/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FMV.W.X</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMV.W.X rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Move Integer to Float</td>
                 </tr>
@@ -1223,6 +1386,7 @@
                 <tr onclick="window.location='../fcvt_wu_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.WU.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.WU.S rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Float to Unsigned Word</td>
                 </tr>
@@ -1230,6 +1394,7 @@
                 <tr onclick="window.location='../fcvt_s_wu/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.S.WU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.S.WU rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Unsigned Word to Float</td>
                 </tr>
@@ -1237,6 +1402,7 @@
                 <tr onclick="window.location='../fcvt_w_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.W.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.W.D rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Double to Word</td>
                 </tr>
@@ -1244,6 +1410,7 @@
                 <tr onclick="window.location='../fcvt_d_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.D.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.D.W rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Word to Double</td>
                 </tr>
@@ -1251,6 +1418,7 @@
                 <tr onclick="window.location='../fclass_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCLASS.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCLASS.S rd, rs1</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Classify (Single)</td>
                 </tr>
@@ -1258,6 +1426,7 @@
                 <tr onclick="window.location='../fclass_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCLASS.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCLASS.D rd, rs1</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Classify (Double)</td>
                 </tr>
@@ -1265,6 +1434,7 @@
                 <tr onclick="window.location='../fcvt_s_l/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.S.L</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.S.L rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Long to Float</td>
                 </tr>
@@ -1272,6 +1442,7 @@
                 <tr onclick="window.location='../fcvt_s_lu/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.S.LU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.S.LU rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Unsigned Long to Float</td>
                 </tr>
@@ -1279,6 +1450,7 @@
                 <tr onclick="window.location='../fcvt_l_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.L.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.L.S rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Float to Long</td>
                 </tr>
@@ -1286,6 +1458,7 @@
                 <tr onclick="window.location='../fcvt_lu_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.LU.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.LU.S rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Float to Unsigned Long</td>
                 </tr>
@@ -1293,6 +1466,7 @@
                 <tr onclick="window.location='../fcvt_d_l/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.D.L</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.D.L rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Long to Double</td>
                 </tr>
@@ -1300,6 +1474,7 @@
                 <tr onclick="window.location='../fcvt_d_lu/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.D.LU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.D.LU rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Unsigned Long to Double</td>
                 </tr>
@@ -1307,6 +1482,7 @@
                 <tr onclick="window.location='../fcvt_l_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.L.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.L.D rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Convert Double to Long</td>
                 </tr>
@@ -1314,6 +1490,7 @@
                 <tr onclick="window.location='../fsgnj_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FSGNJ.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSGNJ.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Sign Injection (Double)</td>
                 </tr>
@@ -1321,6 +1498,7 @@
                 <tr onclick="window.location='../fsgnjn_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FSGNJN.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSGNJN.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Sign Injection Negate (Double)</td>
                 </tr>
@@ -1328,6 +1506,7 @@
                 <tr onclick="window.location='../feq_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FEQ.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FEQ.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Equal (Double)</td>
                 </tr>
@@ -1335,6 +1514,7 @@
                 <tr onclick="window.location='../flt_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FLT.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLT.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Less Than (Double)</td>
                 </tr>
@@ -1342,6 +1522,7 @@
                 <tr onclick="window.location='../fle_d/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FLE.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLE.D rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Less or Equal (Double)</td>
                 </tr>
@@ -1349,6 +1530,7 @@
                 <tr onclick="window.location='../fadd_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FADD.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FADD.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Add (Single)</td>
                 </tr>
@@ -1356,6 +1538,7 @@
                 <tr onclick="window.location='../vsetvli/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x57</td>
                     <td class="mono">VSETVLI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSETVLI rd, rs1, vtypei</td>
                     <td><span class="badge">V-Type</span></td>
                     <td style="color: var(--text-muted);">Vector Set VL Immediate</td>
                 </tr>
@@ -1363,6 +1546,7 @@
                 <tr onclick="window.location='../vadd_vv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x57</td>
                     <td class="mono">VADD.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VADD.VV vd, vs2, vs1, vm</td>
                     <td><span class="badge">OPIVV</span></td>
                     <td style="color: var(--text-muted);">Vector Integer Add</td>
                 </tr>
@@ -1370,6 +1554,7 @@
                 <tr onclick="window.location='../vmul_vv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x57</td>
                     <td class="mono">VMUL.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMUL.VV vd, vs2, vs1, vm</td>
                     <td><span class="badge">OPIVV</span></td>
                     <td style="color: var(--text-muted);">Vector Integer Multiply</td>
                 </tr>
@@ -1377,6 +1562,7 @@
                 <tr onclick="window.location='../beq/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x63</td>
                     <td class="mono">BEQ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BEQ rs1, rs2, offset</td>
                     <td><span class="badge">B-Type</span></td>
                     <td style="color: var(--text-muted);">Branch if Equal</td>
                 </tr>
@@ -1384,6 +1570,7 @@
                 <tr onclick="window.location='../bne/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x63</td>
                     <td class="mono">BNE</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BNE rs1, rs2, offset</td>
                     <td><span class="badge">B-Type</span></td>
                     <td style="color: var(--text-muted);">Branch if Not Equal</td>
                 </tr>
@@ -1391,6 +1578,7 @@
                 <tr onclick="window.location='../blt/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x63</td>
                     <td class="mono">BLT</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLT rs1, rs2, offset</td>
                     <td><span class="badge">B-Type</span></td>
                     <td style="color: var(--text-muted);">Branch if Less Than</td>
                 </tr>
@@ -1398,6 +1586,7 @@
                 <tr onclick="window.location='../bge/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x63</td>
                     <td class="mono">BGE</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BGE rs1, rs2, offset</td>
                     <td><span class="badge">B-Type</span></td>
                     <td style="color: var(--text-muted);">Branch if Greater or Equal</td>
                 </tr>
@@ -1405,6 +1594,7 @@
                 <tr onclick="window.location='../jalr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x67</td>
                     <td class="mono">JALR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JALR rd, offset(rs1)</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Jump and Link Register</td>
                 </tr>
@@ -1412,6 +1602,7 @@
                 <tr onclick="window.location='../jal/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x6F</td>
                     <td class="mono">JAL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JAL rd, offset</td>
                     <td><span class="badge">J-Type</span></td>
                     <td style="color: var(--text-muted);">Jump and Link</td>
                 </tr>
@@ -1419,6 +1610,7 @@
                 <tr onclick="window.location='../csrrc/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">CSRRC</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRRC rd, csr, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Control Status Register Read and Clear</td>
                 </tr>
@@ -1426,6 +1618,7 @@
                 <tr onclick="window.location='../csrrwi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">CSRRWI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRRWI rd, csr, uimm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">CSR Read/Write Immediate</td>
                 </tr>
@@ -1433,6 +1626,7 @@
                 <tr onclick="window.location='../csrrsi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">CSRRSI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRRSI rd, csr, uimm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">CSR Read and Set Immediate</td>
                 </tr>
@@ -1440,6 +1634,7 @@
                 <tr onclick="window.location='../csrrci/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">CSRRCI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRRCI rd, csr, uimm</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">CSR Read and Clear Immediate</td>
                 </tr>
@@ -1447,6 +1642,7 @@
                 <tr onclick="window.location='../uret/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">URET</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">URET</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">User Return</td>
                 </tr>
@@ -1454,6 +1650,7 @@
                 <tr onclick="window.location='../hlv_b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">HLV.B</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HLV.B rd, (rs1)</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Hypervisor Load Byte</td>
                 </tr>
@@ -1461,6 +1658,7 @@
                 <tr onclick="window.location='../hlv_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">HLV.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HLV.W rd, (rs1)</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Hypervisor Load Word</td>
                 </tr>
@@ -1468,6 +1666,7 @@
                 <tr onclick="window.location='../hsv_b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">HSV.B</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HSV.B rs2, (rs1)</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Hypervisor Store Byte</td>
                 </tr>
@@ -1475,6 +1674,7 @@
                 <tr onclick="window.location='../hsv_w/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">HSV.W</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HSV.W rs2, (rs1)</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Hypervisor Store Word</td>
                 </tr>
@@ -1482,6 +1682,7 @@
                 <tr onclick="window.location='../dret/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">DRET</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DRET</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Debug Return</td>
                 </tr>
@@ -1489,6 +1690,7 @@
                 <tr onclick="window.location='../csrrw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">CSRRW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRRW rd, csr, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Control Status Register Read/Write</td>
                 </tr>
@@ -1496,6 +1698,7 @@
                 <tr onclick="window.location='../csrrs/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">CSRRS</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRRS rd, csr, rs1</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Control Status Register Read and Set</td>
                 </tr>
@@ -1503,6 +1706,7 @@
                 <tr onclick="window.location='../ebreak/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">EBREAK</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">EBREAK</td>
                     <td><span class="badge">I-Type</span></td>
                     <td style="color: var(--text-muted);">Environment Break</td>
                 </tr>
@@ -1510,6 +1714,7 @@
                 <tr onclick="window.location='../mret/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">MRET</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MRET</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Machine Return</td>
                 </tr>
@@ -1517,6 +1722,7 @@
                 <tr onclick="window.location='../sfence_vma/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">SFENCE.VMA</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SFENCE.VMA rs1, rs2</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Supervisor Fence Virtual Memory</td>
                 </tr>
@@ -1524,6 +1730,7 @@
                 <tr onclick="window.location='../sret/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">SRET</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SRET</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Supervisor Return</td>
                 </tr>
@@ -1531,6 +1738,7 @@
                 <tr onclick="window.location='../wfi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">WFI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WFI</td>
                     <td><span class="badge">R-Type (System)</span></td>
                     <td style="color: var(--text-muted);">Wait for Interrupt</td>
                 </tr>
@@ -1538,6 +1746,7 @@
                 <tr onclick="window.location='../hfence_gvma/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">HFENCE.GVMA</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HFENCE.GVMA rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Hypervisor Fence Guest Virtual Memory Address</td>
                 </tr>
@@ -1545,6 +1754,7 @@
                 <tr onclick="window.location='../hfence_vvma/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x73</td>
                     <td class="mono">HFENCE.VVMA</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">HFENCE.VVMA rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Hypervisor Fence Virtual Virtual Memory Address</td>
                 </tr>
@@ -1552,6 +1762,7 @@
                 <tr onclick="window.location='../not/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See XORI</td>
                     <td class="mono">NOT</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NOT rd, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Bitwise NOT</td>
                 </tr>
@@ -1559,6 +1770,7 @@
                 <tr onclick="window.location='../seqz/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See SLTIU</td>
                     <td class="mono">SEQZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SEQZ rd, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Set if Equal to Zero</td>
                 </tr>
@@ -1566,6 +1778,7 @@
                 <tr onclick="window.location='../snez/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See SLTU</td>
                     <td class="mono">SNEZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SNEZ rd, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Set if Not Equal to Zero</td>
                 </tr>
@@ -1573,6 +1786,7 @@
                 <tr onclick="window.location='../j/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See JAL</td>
                     <td class="mono">J</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">J offset</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Jump</td>
                 </tr>
@@ -1580,6 +1794,7 @@
                 <tr onclick="window.location='../jr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See JALR</td>
                     <td class="mono">JR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JR rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Jump Register</td>
                 </tr>
@@ -1587,6 +1802,7 @@
                 <tr onclick="window.location='../neg/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See SUB</td>
                     <td class="mono">NEG</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NEG rd, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Negate</td>
                 </tr>
@@ -1594,6 +1810,7 @@
                 <tr onclick="window.location='../csrr/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See CSRRS</td>
                     <td class="mono">CSRR</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRR rd, csr</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Control Status Register Read</td>
                 </tr>
@@ -1601,6 +1818,7 @@
                 <tr onclick="window.location='../csrw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See CSRRW</td>
                     <td class="mono">CSRW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRW csr, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Control Status Register Write</td>
                 </tr>
@@ -1608,6 +1826,7 @@
                 <tr onclick="window.location='../csrs/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See CSRRS</td>
                     <td class="mono">CSRS</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRS csr, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Control Status Register Set</td>
                 </tr>
@@ -1615,6 +1834,7 @@
                 <tr onclick="window.location='../rdcycle/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See CSRRS</td>
                     <td class="mono">RDCYCLE</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RDCYCLE rd</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Read Cycle Counter</td>
                 </tr>
@@ -1622,6 +1842,7 @@
                 <tr onclick="window.location='../rdtime/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See CSRRS</td>
                     <td class="mono">RDTIME</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RDTIME rd</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Read Real-Time Clock</td>
                 </tr>
@@ -1629,6 +1850,7 @@
                 <tr onclick="window.location='../rdinstret/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See CSRRS</td>
                     <td class="mono">RDINSTRET</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RDINSTRET rd</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Read Instructions Retired</td>
                 </tr>
@@ -1636,6 +1858,7 @@
                 <tr onclick="window.location='../ret/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x00008067</td>
                     <td class="mono">RET</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RET</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Return</td>
                 </tr>
@@ -1643,6 +1866,7 @@
                 <tr onclick="window.location='../c_ebreak/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">9002</td>
                     <td class="mono">C.EBREAK</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.EBREAK</td>
                     <td><span class="badge">CR</span></td>
                     <td style="color: var(--text-muted);">Compressed Environment Break</td>
                 </tr>
@@ -1650,6 +1874,7 @@
                 <tr onclick="window.location='../li/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">Variable</td>
                     <td class="mono">LI</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LI rd, imm</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Load Immediate</td>
                 </tr>
@@ -1657,6 +1882,7 @@
                 <tr onclick="window.location='../call/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">Variable</td>
                     <td class="mono">CALL</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CALL symbol</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Call Subroutine</td>
                 </tr>
@@ -1664,6 +1890,7 @@
                 <tr onclick="window.location='../beqz/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See BEQ</td>
                     <td class="mono">BEQZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BEQZ rs, offset</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Branch if Equal to Zero</td>
                 </tr>
@@ -1671,6 +1898,7 @@
                 <tr onclick="window.location='../bnez/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See BNE</td>
                     <td class="mono">BNEZ</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BNEZ rs, offset</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Branch if Not Equal to Zero</td>
                 </tr>
@@ -1678,6 +1906,7 @@
                 <tr onclick="window.location='../csrc/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See CSRRC</td>
                     <td class="mono">CSRC</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CSRC csr, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Control Status Register Clear</td>
                 </tr>
@@ -1685,6 +1914,7 @@
                 <tr onclick="window.location='../mv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">See ADDI</td>
                     <td class="mono">MV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MV rd, rs</td>
                     <td><span class="badge">Pseudo</span></td>
                     <td style="color: var(--text-muted);">Move</td>
                 </tr>
