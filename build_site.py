@@ -249,7 +249,8 @@ def generate_site(master_db):
                     inst['encoding']['visual_parts'].append({'raw': p, 'clean': clean_name})
             else:
                 # OPTIONAL: Print warning for missing patterns so you can fix JSON later
-                print(f"⚠️  Warning: No binary pattern for {inst['mnemonic']} ({arch})")
+                if arch not in ['x86', 'x86-64']: 
+                    print(f"⚠️  Warning: No binary pattern for {inst['mnemonic']} ({arch})")
 
             # --- 3. LINKS & TEXT ---
             # Add Auto-Links
