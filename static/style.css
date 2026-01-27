@@ -179,7 +179,20 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
     font-size: 1.1rem; color: var(--accent); margin: 24px 0;
 }
 .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
-.code-block { background: var(--code-bg); padding: 16px; border-radius: 8px; border: 1px solid var(--border); color: var(--text-main); font-family: 'JetBrains Mono'; overflow-x: auto; }
+.code-block { 
+    background: var(--code-bg); 
+    padding: 16px; 
+    border-radius: 8px; 
+    border: 1px solid var(--border); 
+    color: var(--text-main); 
+    font-family: 'JetBrains Mono'; 
+    overflow-x: auto;       /* Keep horizontal scroll for long lines */
+    overflow-y: visible;    /* Disable vertical scroll */
+    max-height: none;       /* Allow box to grow infinitely */
+    min-height: 100px;      /* Increase default height */
+    display: flex;          /* Centers short content vertically if needed */
+    align-items: center;    
+}
 .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; background: var(--bg-hover); border: 1px solid var(--border); color: var(--text-muted); font-weight: bold; }
 .mono { font-family: 'JetBrains Mono'; } .accent { color: var(--accent); }
 
