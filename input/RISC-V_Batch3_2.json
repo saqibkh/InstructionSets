@@ -1,0 +1,387 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "AMOMINU.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Min Unsigned Doubleword",
+      "summary": "Atomically updates memory with the minimum of the memory value and register value (Unsigned 64-bit).",
+      "syntax": "AMOMINU.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "11000 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = min_u(temp, R[rs2]); R[rd] = temp;"
+    },
+    {
+      "mnemonic": "AMOMAXU.D",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Max Unsigned Doubleword",
+      "summary": "Atomically updates memory with the maximum of the memory value and register value (Unsigned 64-bit).",
+      "syntax": "AMOMAXU.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "11100 | aq | rl | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = max_u(temp, R[rs2]); R[rd] = temp;"
+    },
+    {
+      "mnemonic": "FMSUB.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Fused Multiply-Subtract (Single)",
+      "summary": "Computes (rs1 * rs2) - rs3 with a single rounding.",
+      "syntax": "FMSUB.S rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1000111",
+        "hex_opcode": "0x47"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) - F[rs3];"
+    },
+    {
+      "mnemonic": "FNMADD.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Negated Fused Multiply-Add (Single)",
+      "summary": "Computes -(rs1 * rs2) - rs3 with a single rounding.",
+      "syntax": "FNMADD.S rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1001111",
+        "hex_opcode": "0x4F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) + F[rs3]);"
+    },
+    {
+      "mnemonic": "FNMSUB.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Negated Fused Multiply-Subtract (Single)",
+      "summary": "Computes -(rs1 * rs2) + rs3 with a single rounding.",
+      "syntax": "FNMSUB.S rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1001011",
+        "hex_opcode": "0x4B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) - F[rs3]);"
+    },
+    {
+      "mnemonic": "FSQRT.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Square Root (Double)",
+      "summary": "Computes the square root of a double-precision floating-point number.",
+      "syntax": "FSQRT.D rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "0101101 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "F[rd] = sqrt(F[rs1]);"
+    },
+    {
+      "mnemonic": "FMIN.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Minimum (Double)",
+      "summary": "Writes the smaller of two double-precision floating-point values to rd.",
+      "syntax": "FMIN.D rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010101 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = min(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMAX.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Maximum (Double)",
+      "summary": "Writes the larger of two double-precision floating-point values to rd.",
+      "syntax": "FMAX.D rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010101 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = max(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMSUB.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Fused Multiply-Subtract (Double)",
+      "summary": "Computes (rs1 * rs2) - rs3 with a single rounding (Double).",
+      "syntax": "FMSUB.D rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 01 | rs2 | rs1 | rm | rd | 1000111",
+        "hex_opcode": "0x47"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) - F[rs3];"
+    },
+    {
+      "mnemonic": "FNMADD.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Negated Fused Multiply-Add (Double)",
+      "summary": "Computes -(rs1 * rs2) - rs3 with a single rounding (Double).",
+      "syntax": "FNMADD.D rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 01 | rs2 | rs1 | rm | rd | 1001111",
+        "hex_opcode": "0x4F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) + F[rs3]);"
+    },
+    {
+      "mnemonic": "FNMSUB.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Float Negated Fused Multiply-Subtract (Double)",
+      "summary": "Computes -(rs1 * rs2) + rs3 with a single rounding (Double).",
+      "syntax": "FNMSUB.D rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 01 | rs2 | rs1 | rm | rd | 1001011",
+        "hex_opcode": "0x4B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) - F[rs3]);"
+    },
+    {
+      "mnemonic": "FCVT.WU.D",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Convert Double to Unsigned Word",
+      "summary": "Converts a double-precision float to a 32-bit unsigned integer.",
+      "syntax": "FCVT.WU.D rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100001 | 00001 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (UInt)" },
+        { "name": "rs1", "desc": "Source (Double)" }
+      ],
+      "pseudocode": "R[rd] = sext(f64_to_u32(F[rs1]));"
+    },
+    {
+      "mnemonic": "FCVT.D.WU",
+      "architecture": "RISC-V",
+      "extension": "D",
+      "full_name": "Convert Unsigned Word to Double",
+      "summary": "Converts a 32-bit unsigned integer to a double-precision float.",
+      "syntax": "FCVT.D.WU rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101001 | 00001 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Double)" },
+        { "name": "rs1", "desc": "Source (UInt)" }
+      ],
+      "pseudocode": "F[rd] = u32_to_f64(R[rs1]);"
+    },
+    {
+      "mnemonic": "C.FLW",
+      "architecture": "RISC-V",
+      "extension": "C (Compressed)",
+      "full_name": "Compressed Float Load Word",
+      "summary": "Loads a single-precision float from memory (Compressed).",
+      "syntax": "C.FLW rd', offset(rs1')",
+      "encoding": {
+        "format": "CL",
+        "binary_pattern": "011 | imm | rs1' | imm | rd' | 00",
+        "hex_opcode": "00"
+      },
+      "operands": [
+        { "name": "rd'", "desc": "Dest (f8-f15)" },
+        { "name": "rs1'", "desc": "Base (x8-x15)" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "F[rd'] = M[R[rs1'] + offset][31:0];"
+    },
+    {
+      "mnemonic": "C.FSW",
+      "architecture": "RISC-V",
+      "extension": "C (Compressed)",
+      "full_name": "Compressed Float Store Word",
+      "summary": "Stores a single-precision float to memory (Compressed).",
+      "syntax": "C.FSW rs2', offset(rs1')",
+      "encoding": {
+        "format": "CS",
+        "binary_pattern": "111 | imm | rs1' | imm | rs2' | 00",
+        "hex_opcode": "00"
+      },
+      "operands": [
+        { "name": "rs2'", "desc": "Source (f8-f15)" },
+        { "name": "rs1'", "desc": "Base (x8-x15)" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1'] + offset][31:0] = F[rs2'];"
+    },
+    {
+      "mnemonic": "C.LD",
+      "architecture": "RISC-V",
+      "extension": "C (Compressed)",
+      "full_name": "Compressed Load Doubleword",
+      "summary": "Loads a 64-bit value from memory (Compressed, RV64).",
+      "syntax": "C.LD rd', offset(rs1')",
+      "encoding": {
+        "format": "CL",
+        "binary_pattern": "011 | imm | rs1' | imm | rd' | 00",
+        "hex_opcode": "00"
+      },
+      "operands": [
+        { "name": "rd'", "desc": "Dest (x8-x15)" },
+        { "name": "rs1'", "desc": "Base (x8-x15)" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "R[rd'] = M[R[rs1'] + offset][63:0];"
+    },
+    {
+      "mnemonic": "C.SD",
+      "architecture": "RISC-V",
+      "extension": "C (Compressed)",
+      "full_name": "Compressed Store Doubleword",
+      "summary": "Stores a 64-bit value to memory (Compressed, RV64).",
+      "syntax": "C.SD rs2', offset(rs1')",
+      "encoding": {
+        "format": "CS",
+        "binary_pattern": "111 | imm | rs1' | imm | rs2' | 00",
+        "hex_opcode": "00"
+      },
+      "operands": [
+        { "name": "rs2'", "desc": "Source (x8-x15)" },
+        { "name": "rs1'", "desc": "Base (x8-x15)" },
+        { "name": "offset", "desc": "Offset" }
+      ],
+      "pseudocode": "M[R[rs1'] + offset][63:0] = R[rs2'];"
+    },
+    {
+      "mnemonic": "VFADD.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Add",
+      "summary": "Adds elements of two vector registers (Floating Point).",
+      "syntax": "VFADD.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "000000 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] + vs2[i];"
+    },
+    {
+      "mnemonic": "VRGATHER.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Register Gather",
+      "summary": "Gathers elements from a vector register using indices from another vector register.",
+      "syntax": "VRGATHER.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "001100 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Source Table" },
+        { "name": "vs1", "desc": "Indices" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs1[i] >= vlmax) ? 0 : vs2[vs1[i]];"
+    },
+    {
+      "mnemonic": "VMAND.MM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Mask AND",
+      "summary": "Performs bitwise AND on vector mask registers.",
+      "syntax": "VMAND.MM vd, vs2, vs1",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "011001 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Mask" },
+        { "name": "vs2", "desc": "Src 2 Mask" },
+        { "name": "vs1", "desc": "Src 1 Mask" }
+      ],
+      "pseudocode": "vd = vs1 & vs2;"
+    }
+  ]
+}

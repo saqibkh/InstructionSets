@@ -487,12 +487,28 @@
                     <td style="color: var(--text-muted);">Compressed Environment Break</td>
                 </tr>
                 
+                <tr onclick="window.location='../c_fld/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">00</td>
+                    <td class="mono">C.FLD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FLD rd&#x27;, offset(rs1&#x27;)</td>
+                    <td><span class="badge">CL</span></td>
+                    <td style="color: var(--text-muted);">Compressed Float Load Double</td>
+                </tr>
+                
                 <tr onclick="window.location='../c_flw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">00</td>
                     <td class="mono">C.FLW</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FLW rd&#x27;, offset(rs1&#x27;)</td>
                     <td><span class="badge">CL</span></td>
                     <td style="color: var(--text-muted);">Compressed Float Load Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../c_fsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">00</td>
+                    <td class="mono">C.FSD</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FSD rs2&#x27;, offset(rs1&#x27;)</td>
+                    <td><span class="badge">CS</span></td>
+                    <td style="color: var(--text-muted);">Compressed Float Store Double</td>
                 </tr>
                 
                 <tr onclick="window.location='../c_fsw/';" style="cursor: pointer;">
@@ -951,6 +967,14 @@
                     <td style="color: var(--text-muted);">Convert Word to Double</td>
                 </tr>
                 
+                <tr onclick="window.location='../fcvt_d_wu/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x53</td>
+                    <td class="mono">FCVT.D.WU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCVT.D.WU rd, rs1</td>
+                    <td><span class="badge">I-Type (Float)</span></td>
+                    <td style="color: var(--text-muted);">Convert Unsigned Word to Double</td>
+                </tr>
+                
                 <tr onclick="window.location='../fcvt_h_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FCVT.H.S</td>
@@ -1223,6 +1247,14 @@
                     <td style="color: var(--text-muted);">Float Minimum (Single)</td>
                 </tr>
                 
+                <tr onclick="window.location='../fmsub_d/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x47</td>
+                    <td class="mono">FMSUB.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMSUB.D rd, rs1, rs2, rs3</td>
+                    <td><span class="badge">R4-Type</span></td>
+                    <td style="color: var(--text-muted);">Float Fused Multiply-Subtract (Double)</td>
+                </tr>
+                
                 <tr onclick="window.location='../fmsub_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x47</td>
                     <td class="mono">FMSUB.S</td>
@@ -1263,12 +1295,36 @@
                     <td style="color: var(--text-muted);">Move Float to Integer</td>
                 </tr>
                 
+                <tr onclick="window.location='../fnmadd_d/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x4F</td>
+                    <td class="mono">FNMADD.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FNMADD.D rd, rs1, rs2, rs3</td>
+                    <td><span class="badge">R4-Type</span></td>
+                    <td style="color: var(--text-muted);">Float Negated Fused Multiply-Add (Double)</td>
+                </tr>
+                
                 <tr onclick="window.location='../fnmadd_s/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x4F</td>
                     <td class="mono">FNMADD.S</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FNMADD.S rd, rs1, rs2, rs3</td>
                     <td><span class="badge">R4-Type</span></td>
                     <td style="color: var(--text-muted);">Float Negated Fused Multiply-Add (Single)</td>
+                </tr>
+                
+                <tr onclick="window.location='../fnmsub_d/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x4B</td>
+                    <td class="mono">FNMSUB.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FNMSUB.D rd, rs1, rs2, rs3</td>
+                    <td><span class="badge">R4-Type</span></td>
+                    <td style="color: var(--text-muted);">Float Negated Fused Multiply-Subtract (Double)</td>
+                </tr>
+                
+                <tr onclick="window.location='../fnmsub_s/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x4B</td>
+                    <td class="mono">FNMSUB.S</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FNMSUB.S rd, rs1, rs2, rs3</td>
+                    <td><span class="badge">R4-Type</span></td>
+                    <td style="color: var(--text-muted);">Float Negated Fused Multiply-Subtract (Single)</td>
                 </tr>
                 
                 <tr onclick="window.location='../fsd/';" style="cursor: pointer;">
