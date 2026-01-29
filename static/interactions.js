@@ -129,6 +129,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Auto-add anchor links to headers
+    document.querySelectorAll('.panel h3').forEach(header => {
+        header.style.position = 'relative';
+        header.style.cursor = 'pointer';
+        
+        const anchor = document.createElement('span');
+        anchor.innerHTML = '#';
+        anchor.style.position = 'absolute';
+        anchor.style.left = '-20px';
+        anchor.style.opacity = '0';
+        anchor.style.color = 'var(--accent)';
+        anchor.style.transition = 'opacity 0.2s';
+        
+        header.appendChild(anchor);
+        
+        // Generate ID if missing
+        if (!header.id) {
+            header.id = header.innerText.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        }
+        
+        header.addEventListener('mouseenter', () => anchor.style.opacity = '1');
+        header.addEventListener('mouseleave', () => anchor.style.opacity = '0');
+        header.addEventListener('click', () => {
+            window.location.hash = header.id;
+            navigator.clipboard.writeText(window.location.href);
+        });
+    });
+
     // --- Table Sorting Logic ---
     document.querySelectorAll('th').forEach((th, index) => {
         th.style.cursor = 'pointer';
