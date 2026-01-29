@@ -134,6 +134,20 @@
 		    <td style="color: var(--text-muted);">Atomically performs bitwise AND on a word in memory.</td>
 		</tr>
 		
+		<tr onclick="window.location='amocas_d/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">AMOCAS.D</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOCAS.D rd, rs2, (rs1)</td>
+		    <td><span class="badge">R-Type (Atomic)</span></td>
+		    <td style="color: var(--text-muted);">Atomically compares 64-bit memory at rs1 with rd; if equal, writes rs2 to memory.</td>
+		</tr>
+		
+		<tr onclick="window.location='amocas_w/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">AMOCAS.W</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOCAS.W rd, rs2, (rs1)</td>
+		    <td><span class="badge">R-Type (Atomic)</span></td>
+		    <td style="color: var(--text-muted);">Atomically compares memory at rs1 with rd; if equal, writes rs2 to memory. Returns original value in rd.</td>
+		</tr>
+		
 		<tr onclick="window.location='amomax_d/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">AMOMAX.D</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOMAX.D rd, rs2, (rs1)</td>
@@ -575,6 +589,13 @@
 		    <td style="color: var(--text-muted);">Loads a word from the stack pointer (x2).</td>
 		</tr>
 		
+		<tr onclick="window.location='c_mul/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">C.MUL</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.MUL rd&#x27;, rs2&#x27;</td>
+		    <td><span class="badge">CA</span></td>
+		    <td style="color: var(--text-muted);">Performs 32-bit multiplication (rd = rd * rs2) in 16-bit encoding.</td>
+		</tr>
+		
 		<tr onclick="window.location='c_mv/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">C.MV</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.MV rd, rs2</td>
@@ -587,6 +608,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.NOP</td>
 		    <td><span class="badge">CI</span></td>
 		    <td style="color: var(--text-muted);">Performs no operation (Compressed encoding).</td>
+		</tr>
+		
+		<tr onclick="window.location='c_not/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">C.NOT</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.NOT rd&#x27;</td>
+		    <td><span class="badge">CR</span></td>
+		    <td style="color: var(--text-muted);">Computes bitwise logical negation.</td>
 		</tr>
 		
 		<tr onclick="window.location='c_or/';" style="cursor: pointer;">
@@ -608,6 +636,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SDSP rs2, offset(x2)</td>
 		    <td><span class="badge">CSS</span></td>
 		    <td style="color: var(--text-muted);">Stores a 64-bit value to the stack pointer (RV64).</td>
+		</tr>
+		
+		<tr onclick="window.location='c_sext_b/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">C.SEXT.B</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SEXT.B rd&#x27;</td>
+		    <td><span class="badge">CR</span></td>
+		    <td style="color: var(--text-muted);">Sign extends the lowest byte of rd' to XLEN.</td>
 		</tr>
 		
 		<tr onclick="window.location='c_slli/';" style="cursor: pointer;">
@@ -666,6 +701,13 @@
 		    <td style="color: var(--text-muted);">Bitwise XOR of two registers.</td>
 		</tr>
 		
+		<tr onclick="window.location='c_zext_b/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">C.ZEXT.B</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ZEXT.B rd&#x27;</td>
+		    <td><span class="badge">CR</span></td>
+		    <td style="color: var(--text-muted);">Zero extends the lowest byte of rd' to XLEN.</td>
+		</tr>
+		
 		<tr onclick="window.location='call/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">CALL</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CALL symbol</td>
@@ -698,7 +740,7 @@
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">CBO.ZERO</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CBO.ZERO (rs1)</td>
 		    <td><span class="badge">I-Type</span></td>
-		    <td style="color: var(--text-muted);">Zeros a cache block specified by the address.</td>
+		    <td style="color: var(--text-muted);">Zeros a cache block corresponding to the address in rs1.</td>
 		</tr>
 		
 		<tr onclick="window.location='clmul/';" style="cursor: pointer;">
@@ -713,6 +755,20 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CLZ rd, rs1</td>
 		    <td><span class="badge">I-Type</span></td>
 		    <td style="color: var(--text-muted);">Counts the number of 0 bits at the MSB end of the register.</td>
+		</tr>
+		
+		<tr onclick="window.location='cm_pop/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">CM.POP</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CM.POP {reg_list}, stack_adj</td>
+		    <td><span class="badge">Push/Pop</span></td>
+		    <td style="color: var(--text-muted);">Pops multiple registers from the stack and restores sp.</td>
+		</tr>
+		
+		<tr onclick="window.location='cm_push/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">CM.PUSH</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CM.PUSH {reg_list}, -stack_adj</td>
+		    <td><span class="badge">Push/Pop</span></td>
+		    <td style="color: var(--text-muted);">Pushes multiple registers (ra, s0-s11) to the stack and adjusts sp. Critical for small code size.</td>
 		</tr>
 		
 		<tr onclick="window.location='cpop/';" style="cursor: pointer;">
@@ -1163,6 +1219,27 @@
 		    <td style="color: var(--text-muted);">Loads a 16-bit half-precision float from memory.</td>
 		</tr>
 		
+		<tr onclick="window.location='fli_d/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">FLI.D</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLI.D rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads a common double-precision constant into a register.</td>
+		</tr>
+		
+		<tr onclick="window.location='fli_h/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">FLI.H</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLI.H rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads a common half-precision constant into a register.</td>
+		</tr>
+		
+		<tr onclick="window.location='fli_s/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">FLI.S</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLI.S rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads a common floating-point constant (e.g., 1.0, 0.5, PI) into a register from a small table.</td>
+		</tr>
+		
 		<tr onclick="window.location='flt_d/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">FLT.D</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLT.D rd, rs1, rs2</td>
@@ -1233,6 +1310,13 @@
 		    <td style="color: var(--text-muted);">Writes the larger of two single-precision floating-point values to rd.</td>
 		</tr>
 		
+		<tr onclick="window.location='fmaxm_s/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">FMAXM.S</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMAXM.S rd, rs1, rs2</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Maximum of two floats, treating +0.0 as larger than -0.0.</td>
+		</tr>
+		
 		<tr onclick="window.location='fmin_d/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">FMIN.D</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMIN.D rd, rs1, rs2</td>
@@ -1252,6 +1336,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMIN.S rd, rs1, rs2</td>
 		    <td><span class="badge">R-Type</span></td>
 		    <td style="color: var(--text-muted);">Writes the smaller of two single-precision floating-point values to rd.</td>
+		</tr>
+		
+		<tr onclick="window.location='fminm_s/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">FMINM.S</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMINM.S rd, rs1, rs2</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Minimum of two floats, treating -0.0 as smaller than +0.0 (canonicalize NaNs).</td>
 		</tr>
 		
 		<tr onclick="window.location='fmsub_d/';" style="cursor: pointer;">
@@ -1364,6 +1455,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FNMSUB.S rd, rs1, rs2, rs3</td>
 		    <td><span class="badge">R4-Type</span></td>
 		    <td style="color: var(--text-muted);">Computes -(rs1 * rs2) + rs3 with a single rounding.</td>
+		</tr>
+		
+		<tr onclick="window.location='fround_s/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">FROUND.S</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FROUND.S rd, rs1, rm</td>
+		    <td><span class="badge">I-Type</span></td>
+		    <td style="color: var(--text-muted);">Rounds a float to the nearest integer value (returned as a float).</td>
 		</tr>
 		
 		<tr onclick="window.location='fsd/';" style="cursor: pointer;">
@@ -2057,6 +2155,34 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLTU rd, rs1, rs2</td>
 		    <td><span class="badge">R-Type</span></td>
 		    <td style="color: var(--text-muted);">Sets rd to 1 if rs1 < rs2 (unsigned comparison), otherwise 0.</td>
+		</tr>
+		
+		<tr onclick="window.location='sm3p0/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SM3P0</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SM3P0 rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs the P0 permutation for the SM3 hash algorithm.</td>
+		</tr>
+		
+		<tr onclick="window.location='sm3p1/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SM3P1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SM3P1 rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs the P1 permutation for the SM3 hash algorithm.</td>
+		</tr>
+		
+		<tr onclick="window.location='sm4ed/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SM4ED</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SM4ED rd, rs1, rs2, bs</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Accelerates the SM4 block cipher (encryption/decryption round).</td>
+		</tr>
+		
+		<tr onclick="window.location='sm4ks/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SM4KS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SM4KS rd, rs1, rs2, bs</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Accelerates the SM4 key schedule generation.</td>
 		</tr>
 		
 		<tr onclick="window.location='snez/';" style="cursor: pointer;">
@@ -3149,6 +3275,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSETIVLI rd, uimm, vtypei</td>
 		    <td><span class="badge">V-Type</span></td>
 		    <td style="color: var(--text-muted);">Sets vector length (VL) and type (VTYPE) using a 5-bit immediate for the requested length.</td>
+		</tr>
+		
+		<tr onclick="window.location='vsetvl/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSETVL</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSETVL rd, rs1, rs2</td>
+		    <td><span class="badge">V-Type</span></td>
+		    <td style="color: var(--text-muted);">Sets the vector length (VL) based on the application vector length (AVL) in rs1 and configuration in rs2.</td>
 		</tr>
 		
 		<tr onclick="window.location='vsetvli/';" style="cursor: pointer;">

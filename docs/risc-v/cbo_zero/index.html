@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zeros a cache block specified by the address.">
+    <meta name="description" content="Zeros a cache block corresponding to the address in rs1.">
     <title>CBO.ZERO - RISC-V</title>
     
     <meta property="og:type" content="website">
@@ -195,6 +195,16 @@
                     <a href="../amoand_w/" 
                        class="">
                         AMOAND.W
+                    </a>
+                    
+                    <a href="../amocas_d/" 
+                       class="">
+                        AMOCAS.D
+                    </a>
+                    
+                    <a href="../amocas_w/" 
+                       class="">
+                        AMOCAS.W
                     </a>
                     
                     <a href="../amomax_d/" 
@@ -412,6 +422,16 @@
                     <a href="../clmul/" 
                        class="">
                         CLMUL
+                    </a>
+                    
+                    <a href="../cm_pop/" 
+                       class="">
+                        CM.POP
+                    </a>
+                    
+                    <a href="../cm_push/" 
+                       class="">
+                        CM.PUSH
                     </a>
                     
                     <a href="../csrrc/" 
@@ -888,6 +908,11 @@
                         C.LWSP
                     </a>
                     
+                    <a href="../c_mul/" 
+                       class="">
+                        C.MUL
+                    </a>
+                    
                     <a href="../c_mv/" 
                        class="">
                         C.MV
@@ -896,6 +921,11 @@
                     <a href="../c_nop/" 
                        class="">
                         C.NOP
+                    </a>
+                    
+                    <a href="../c_not/" 
+                       class="">
+                        C.NOT
                     </a>
                     
                     <a href="../c_or/" 
@@ -911,6 +941,11 @@
                     <a href="../c_sdsp/" 
                        class="">
                         C.SDSP
+                    </a>
+                    
+                    <a href="../c_sext_b/" 
+                       class="">
+                        C.SEXT.B
                     </a>
                     
                     <a href="../c_slli/" 
@@ -953,6 +988,11 @@
                         C.XOR
                     </a>
                     
+                    <a href="../c_zext_b/" 
+                       class="">
+                        C.ZEXT.B
+                    </a>
+                    
                 </div>
             </details>
             
@@ -978,6 +1018,26 @@
                     <a href="../sha256sum0/" 
                        class="">
                         SHA256SUM0
+                    </a>
+                    
+                    <a href="../sm3p0/" 
+                       class="">
+                        SM3P0
+                    </a>
+                    
+                    <a href="../sm3p1/" 
+                       class="">
+                        SM3P1
+                    </a>
+                    
+                    <a href="../sm4ed/" 
+                       class="">
+                        SM4ED
+                    </a>
+                    
+                    <a href="../sm4ks/" 
+                       class="">
+                        SM4KS
                     </a>
                     
                 </div>
@@ -1202,6 +1262,21 @@
                         FLH
                     </a>
                     
+                    <a href="../fli_d/" 
+                       class="">
+                        FLI.D
+                    </a>
+                    
+                    <a href="../fli_h/" 
+                       class="">
+                        FLI.H
+                    </a>
+                    
+                    <a href="../fli_s/" 
+                       class="">
+                        FLI.S
+                    </a>
+                    
                     <a href="../flt_d/" 
                        class="">
                         FLT.D
@@ -1252,6 +1327,11 @@
                         FMAX.S
                     </a>
                     
+                    <a href="../fmaxm_s/" 
+                       class="">
+                        FMAXM.S
+                    </a>
+                    
                     <a href="../fmin_d/" 
                        class="">
                         FMIN.D
@@ -1265,6 +1345,11 @@
                     <a href="../fmin_s/" 
                        class="">
                         FMIN.S
+                    </a>
+                    
+                    <a href="../fminm_s/" 
+                       class="">
+                        FMINM.S
                     </a>
                     
                     <a href="../fmsub_d/" 
@@ -1345,6 +1430,11 @@
                     <a href="../fnmsub_s/" 
                        class="">
                         FNMSUB.S
+                    </a>
+                    
+                    <a href="../fround_s/" 
+                       class="">
+                        FROUND.S
                     </a>
                     
                     <a href="../fsd/" 
@@ -2360,6 +2450,11 @@
                         VSETIVLI
                     </a>
                     
+                    <a href="../vsetvl/" 
+                       class="">
+                        VSETVL
+                    </a>
+                    
                     <a href="../vsetvli/" 
                        class="">
                         VSETVLI
@@ -2584,14 +2679,14 @@
             </div>
 
             <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">CBO.ZERO</h1>
-            <h2 style="font-weight: 400; color: var(--text-muted);">Cache Block Operation: Zero</h2>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Cache Block Zero</h2>
             
             <div class="syntax-box">
                 CBO.ZERO (rs1)
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Zeros a cache block specified by the address.
+                Zeros a cache block corresponding to the address <a href="../../x86/in/">in</a> rs1.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -2600,16 +2695,10 @@
                     <div class="panel">
                         <h3>Pseudocode Operation</h3>
                         <div class="code-block" style="border:none; padding:0; background: transparent;">
-                            MemSet(R[rs1], BlockSize, 0);
+                            memset(BlockAddr(rs1), 0, BlockSize);
                         </div>
                     </div>
 
-                    
-                    <div class="panel">
-                        <h3>Example</h3>
-                        <div class="code-block" style="margin-bottom: 10px;">CBO.ZERO (x10)</div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">// Fast zeroing of memory blocks.</p>
-                    </div>
                     
                 </div>
 
@@ -2682,8 +2771,8 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "CBO.ZERO (RISC-V)",
-  "description": "Zeros a cache block specified by the address.",
-  "articleBody": "Cache Block Operation: Zero. Syntax: CBO.ZERO (rs1). Opcode: 0x0F",
+  "description": "Zeros a cache block corresponding to the address in rs1.",
+  "articleBody": "Cache Block Zero. Syntax: CBO.ZERO (rs1). Opcode: 0x0F",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

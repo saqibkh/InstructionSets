@@ -12558,6 +12558,1098 @@
       "linked_pseudocode": "vd[0] = fs1;"
     },
     {
+      "mnemonic": "FLI.S",
+      "architecture": "RISC-V",
+      "extension": "Zfa (Float Automation)",
+      "full_name": "Float Load Immediate (Single)",
+      "summary": "Loads a common floating-point constant (e.g., 1.0, 0.5, PI) into a register from a small table.",
+      "syntax": "FLI.S rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1111000 | 00001 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1111000",
+            "clean": "1111000"
+          },
+          {
+            "raw": "00001",
+            "clean": "00001"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Constant Index"
+        }
+      ],
+      "pseudocode": "F[rd] = FloatTable[rs1];",
+      "slug": "fli_s",
+      "rel_url": "risc-v/fli_s/",
+      "linked_summary": "Loads a common floating-point constant (e.g., 1.0, 0.5, PI) into a register from a small table.",
+      "linked_pseudocode": "F[rd] = FloatTable[rs1];"
+    },
+    {
+      "mnemonic": "FLI.D",
+      "architecture": "RISC-V",
+      "extension": "Zfa (Float Automation)",
+      "full_name": "Float Load Immediate (Double)",
+      "summary": "Loads a common double-precision constant into a register.",
+      "syntax": "FLI.D rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1111001 | 00001 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1111001",
+            "clean": "1111001"
+          },
+          {
+            "raw": "00001",
+            "clean": "00001"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Constant Index"
+        }
+      ],
+      "pseudocode": "F[rd] = DoubleTable[rs1];",
+      "slug": "fli_d",
+      "rel_url": "risc-v/fli_d/",
+      "linked_summary": "Loads a common double-precision constant into a register.",
+      "linked_pseudocode": "F[rd] = DoubleTable[rs1];"
+    },
+    {
+      "mnemonic": "FLI.H",
+      "architecture": "RISC-V",
+      "extension": "Zfa (Float Automation)",
+      "full_name": "Float Load Immediate (Half)",
+      "summary": "Loads a common half-precision constant into a register.",
+      "syntax": "FLI.H rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1111000 | 00001 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1111000",
+            "clean": "1111000"
+          },
+          {
+            "raw": "00001",
+            "clean": "00001"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Constant Index"
+        }
+      ],
+      "pseudocode": "F[rd] = HalfTable[rs1];",
+      "slug": "fli_h",
+      "rel_url": "risc-v/fli_h/",
+      "linked_summary": "Loads a common half-precision constant into a register.",
+      "linked_pseudocode": "F[rd] = HalfTable[rs1];"
+    },
+    {
+      "mnemonic": "FMINM.S",
+      "architecture": "RISC-V",
+      "extension": "Zfa (Float Automation)",
+      "full_name": "Float Minimum (IEEE 754-2019)",
+      "summary": "Minimum of two floats, treating -0.0 as smaller than +0.0 (canonicalize NaNs).",
+      "syntax": "FMINM.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 010 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0010100",
+            "clean": "0010100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "F[rd] = minNum(F[rs1], F[rs2]);",
+      "slug": "fminm_s",
+      "rel_url": "risc-v/fminm_s/",
+      "linked_summary": "Minimum of two floats, treating -0.0 as smaller than +0.0 (canonicalize NaNs).",
+      "linked_pseudocode": "F[rd] = minNum(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMAXM.S",
+      "architecture": "RISC-V",
+      "extension": "Zfa (Float Automation)",
+      "full_name": "Float Maximum (IEEE 754-2019)",
+      "summary": "Maximum of two floats, treating +0.0 as larger than -0.0.",
+      "syntax": "FMAXM.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 011 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0010100",
+            "clean": "0010100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "011",
+            "clean": "011"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "F[rd] = maxNum(F[rs1], F[rs2]);",
+      "slug": "fmaxm_s",
+      "rel_url": "risc-v/fmaxm_s/",
+      "linked_summary": "Maximum of two floats, treating +0.0 as larger than -0.0.",
+      "linked_pseudocode": "F[rd] = maxNum(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FROUND.S",
+      "architecture": "RISC-V",
+      "extension": "Zfa (Float Automation)",
+      "full_name": "Float Round to Integer",
+      "summary": "Rounds a float to the nearest integer value (returned as a float).",
+      "syntax": "FROUND.S rd, rs1, rm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "0100000 | 00100 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0100000",
+            "clean": "0100000"
+          },
+          {
+            "raw": "00100",
+            "clean": "00100"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src"
+        },
+        {
+          "name": "rm",
+          "desc": "Mode"
+        }
+      ],
+      "pseudocode": "F[rd] = round(F[rs1]);",
+      "slug": "fround_s",
+      "rel_url": "risc-v/fround_s/",
+      "linked_summary": "Rounds a float to the nearest integer value (returned as a float).",
+      "linked_pseudocode": "F[rd] = round(F[rs1]);"
+    },
+    {
+      "mnemonic": "AMOCAS.W",
+      "architecture": "RISC-V",
+      "extension": "Zacas (Atomic CAS)",
+      "full_name": "Atomic Compare and Swap Word",
+      "summary": "Atomically compares memory at rs1 with rd; if equal, writes rs2 to memory. Returns original value in rd.",
+      "syntax": "AMOCAS.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00101 | 1 | 0 | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "00101",
+            "clean": "00101"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "0",
+            "clean": "0"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest/Compare"
+        },
+        {
+          "name": "rs2",
+          "desc": "Swap Value"
+        },
+        {
+          "name": "rs1",
+          "desc": "Address"
+        }
+      ],
+      "pseudocode": "atomic { if(M[rs1]==R[rd]) M[rs1]=R[rs2]; R[rd]=M[rs1]; }",
+      "slug": "amocas_w",
+      "rel_url": "risc-v/amocas_w/",
+      "linked_summary": "Atomically compares memory <a href=\"../../armv8-a/at_2/\">at</a> rs1 with rd; if equal, writes rs2 to memory. Returns original value <a href=\"../../x86/in/\">in</a> rd.",
+      "linked_pseudocode": "atomic { if(M[rs1]==R[rd]) M[rs1]=R[rs2]; R[rd]=M[rs1]; }"
+    },
+    {
+      "mnemonic": "AMOCAS.D",
+      "architecture": "RISC-V",
+      "extension": "Zacas (Atomic CAS)",
+      "full_name": "Atomic Compare and Swap Doubleword",
+      "summary": "Atomically compares 64-bit memory at rs1 with rd; if equal, writes rs2 to memory.",
+      "syntax": "AMOCAS.D rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "00101 | 1 | 0 | rs2 | rs1 | 011 | rd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "00101",
+            "clean": "00101"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "0",
+            "clean": "0"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "011",
+            "clean": "011"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest/Compare"
+        },
+        {
+          "name": "rs2",
+          "desc": "Swap Value"
+        },
+        {
+          "name": "rs1",
+          "desc": "Address"
+        }
+      ],
+      "pseudocode": "atomic { if(M[rs1]==R[rd]) M[rs1]=R[rs2]; R[rd]=M[rs1]; }",
+      "slug": "amocas_d",
+      "rel_url": "risc-v/amocas_d/",
+      "linked_summary": "Atomically compares 64-<a href=\"../../armv8-a/bit/\">bit</a> memory <a href=\"../../armv8-a/at_2/\">at</a> rs1 with rd; if equal, writes rs2 to memory.",
+      "linked_pseudocode": "atomic { if(M[rs1]==R[rd]) M[rs1]=R[rs2]; R[rd]=M[rs1]; }"
+    },
+    {
+      "mnemonic": "C.MUL",
+      "architecture": "RISC-V",
+      "extension": "Zcb (Compressed)",
+      "full_name": "Compressed Multiply",
+      "summary": "Performs 32-bit multiplication (rd = rd * rs2) in 16-bit encoding.",
+      "syntax": "C.MUL rd&#x27;, rs2&#x27;",
+      "encoding": {
+        "format": "CA",
+        "binary_pattern": "100111 | rd' | 10 | rs2' | 01",
+        "hex_opcode": "01",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "rd'",
+            "clean": "rd'"
+          },
+          {
+            "raw": "10",
+            "clean": "10"
+          },
+          {
+            "raw": "rs2'",
+            "clean": "rs2'"
+          },
+          {
+            "raw": "01",
+            "clean": "01"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd'",
+          "desc": "Dest/Src1"
+        },
+        {
+          "name": "rs2'",
+          "desc": "Src2"
+        }
+      ],
+      "pseudocode": "R[rd'] = R[rd'] * R[rs2'];",
+      "slug": "c_mul",
+      "rel_url": "risc-v/c_mul/",
+      "linked_summary": "Performs 32-<a href=\"../../armv8-a/bit/\">bit</a> multiplication (rd = rd * rs2) <a href=\"../../x86/in/\">in</a> 16-<a href=\"../../armv8-a/bit/\">bit</a> encoding.",
+      "linked_pseudocode": "R[rd'] = R[rd'] * R[rs2'];"
+    },
+    {
+      "mnemonic": "C.ZEXT.B",
+      "architecture": "RISC-V",
+      "extension": "Zcb (Compressed)",
+      "full_name": "Compressed Zero Extend Byte",
+      "summary": "Zero extends the lowest byte of rd' to XLEN.",
+      "syntax": "C.ZEXT.B rd&#x27;",
+      "encoding": {
+        "format": "CR",
+        "binary_pattern": "100111 | rd' | 11 | 000 | 01",
+        "hex_opcode": "01",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "rd'",
+            "clean": "rd'"
+          },
+          {
+            "raw": "11",
+            "clean": "11"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "01",
+            "clean": "01"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd'",
+          "desc": "Dest/Src"
+        }
+      ],
+      "pseudocode": "R[rd'] = zext(R[rd'][7:0]);",
+      "slug": "c_zext_b",
+      "rel_url": "risc-v/c_zext_b/",
+      "linked_summary": "Zero extends the lowest byte of rd' to XLEN.",
+      "linked_pseudocode": "R[rd'] = zext(R[rd'][7:0]);"
+    },
+    {
+      "mnemonic": "C.SEXT.B",
+      "architecture": "RISC-V",
+      "extension": "Zcb (Compressed)",
+      "full_name": "Compressed Sign Extend Byte",
+      "summary": "Sign extends the lowest byte of rd' to XLEN.",
+      "syntax": "C.SEXT.B rd&#x27;",
+      "encoding": {
+        "format": "CR",
+        "binary_pattern": "100111 | rd' | 11 | 001 | 01",
+        "hex_opcode": "01",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "rd'",
+            "clean": "rd'"
+          },
+          {
+            "raw": "11",
+            "clean": "11"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "01",
+            "clean": "01"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd'",
+          "desc": "Dest/Src"
+        }
+      ],
+      "pseudocode": "R[rd'] = sext(R[rd'][7:0]);",
+      "slug": "c_sext_b",
+      "rel_url": "risc-v/c_sext_b/",
+      "linked_summary": "Sign extends the lowest byte of rd' to XLEN.",
+      "linked_pseudocode": "R[rd'] = sext(R[rd'][7:0]);"
+    },
+    {
+      "mnemonic": "C.NOT",
+      "architecture": "RISC-V",
+      "extension": "Zcb (Compressed)",
+      "full_name": "Compressed Bitwise NOT",
+      "summary": "Computes bitwise logical negation.",
+      "syntax": "C.NOT rd&#x27;",
+      "encoding": {
+        "format": "CR",
+        "binary_pattern": "100111 | rd' | 11 | 101 | 01",
+        "hex_opcode": "01",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "rd'",
+            "clean": "rd'"
+          },
+          {
+            "raw": "11",
+            "clean": "11"
+          },
+          {
+            "raw": "101",
+            "clean": "101"
+          },
+          {
+            "raw": "01",
+            "clean": "01"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd'",
+          "desc": "Dest/Src"
+        }
+      ],
+      "pseudocode": "R[rd'] = ~R[rd'];",
+      "slug": "c_not",
+      "rel_url": "risc-v/c_not/",
+      "linked_summary": "Computes bitwise logical negation.",
+      "linked_pseudocode": "R[rd'] = ~R[rd'];"
+    },
+    {
+      "mnemonic": "SM4ED",
+      "architecture": "RISC-V",
+      "extension": "Zks (Scalar Crypto)",
+      "full_name": "SM4 Encryption/Decryption",
+      "summary": "Accelerates the SM4 block cipher (encryption/decryption round).",
+      "syntax": "SM4ED rd, rs1, rs2, bs",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "110000 | bs | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "110000",
+            "clean": "110000"
+          },
+          {
+            "raw": "bs",
+            "clean": "bs"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0110011",
+            "clean": "0110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "bs",
+          "desc": "Byte Select"
+        }
+      ],
+      "pseudocode": "rd = SM4_Round(rs1, rs2, bs);",
+      "slug": "sm4ed",
+      "rel_url": "risc-v/sm4ed/",
+      "linked_summary": "Accelerates the SM4 block cipher (encryption/decryption round).",
+      "linked_pseudocode": "rd = SM4_Round(rs1, rs2, bs);"
+    },
+    {
+      "mnemonic": "SM4KS",
+      "architecture": "RISC-V",
+      "extension": "Zks (Scalar Crypto)",
+      "full_name": "SM4 Key Schedule",
+      "summary": "Accelerates the SM4 key schedule generation.",
+      "syntax": "SM4KS rd, rs1, rs2, bs",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "110100 | bs | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "110100",
+            "clean": "110100"
+          },
+          {
+            "raw": "bs",
+            "clean": "bs"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0110011",
+            "clean": "0110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "bs",
+          "desc": "Byte Select"
+        }
+      ],
+      "pseudocode": "rd = SM4_KeyGen(rs1, rs2, bs);",
+      "slug": "sm4ks",
+      "rel_url": "risc-v/sm4ks/",
+      "linked_summary": "Accelerates the SM4 key schedule generation.",
+      "linked_pseudocode": "rd = SM4_KeyGen(rs1, rs2, bs);"
+    },
+    {
+      "mnemonic": "SM3P0",
+      "architecture": "RISC-V",
+      "extension": "Zks (Scalar Crypto)",
+      "full_name": "SM3 P0 Transformation",
+      "summary": "Performs the P0 permutation for the SM3 hash algorithm.",
+      "syntax": "SM3P0 rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | 01000 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "0001000",
+            "clean": "0001000"
+          },
+          {
+            "raw": "01000",
+            "clean": "01000"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "rd = P0(rs1);",
+      "slug": "sm3p0",
+      "rel_url": "risc-v/sm3p0/",
+      "linked_summary": "Performs the P0 permutation for the SM3 hash algorithm.",
+      "linked_pseudocode": "rd = P0(rs1);"
+    },
+    {
+      "mnemonic": "SM3P1",
+      "architecture": "RISC-V",
+      "extension": "Zks (Scalar Crypto)",
+      "full_name": "SM3 P1 Transformation",
+      "summary": "Performs the P1 permutation for the SM3 hash algorithm.",
+      "syntax": "SM3P1 rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | 01001 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "0001000",
+            "clean": "0001000"
+          },
+          {
+            "raw": "01001",
+            "clean": "01001"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "rd = P1(rs1);",
+      "slug": "sm3p1",
+      "rel_url": "risc-v/sm3p1/",
+      "linked_summary": "Performs the P1 permutation for the SM3 hash algorithm.",
+      "linked_pseudocode": "rd = P1(rs1);"
+    },
+    {
+      "mnemonic": "CM.PUSH",
+      "architecture": "RISC-V",
+      "extension": "Zcmp (Code Size)",
+      "full_name": "Push Registers",
+      "summary": "Pushes multiple registers (ra, s0-s11) to the stack and adjusts sp. Critical for small code size.",
+      "syntax": "CM.PUSH {reg_list}, -stack_adj",
+      "encoding": {
+        "format": "Push/Pop",
+        "binary_pattern": "1011100 | rlist | spimm | 10",
+        "hex_opcode": "0x02",
+        "visual_parts": [
+          {
+            "raw": "1011100",
+            "clean": "1011100"
+          },
+          {
+            "raw": "rlist",
+            "clean": "rlist"
+          },
+          {
+            "raw": "spimm",
+            "clean": "spimm"
+          },
+          {
+            "raw": "10",
+            "clean": "10"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rlist",
+          "desc": "Register List"
+        },
+        {
+          "name": "stack_adj",
+          "desc": "Stack Adjustment"
+        }
+      ],
+      "pseudocode": "SP -= adj; Mem[SP] = {regs};",
+      "slug": "cm_push",
+      "rel_url": "risc-v/cm_push/",
+      "linked_summary": "Pushes multiple registers (ra, s0-s11) to the stack <a href=\"../../armv8-a/and_6/\">and</a> adjusts sp. Critical for small code size.",
+      "linked_pseudocode": "SP -= adj; Mem[SP] = {regs};"
+    },
+    {
+      "mnemonic": "CM.POP",
+      "architecture": "RISC-V",
+      "extension": "Zcmp (Code Size)",
+      "full_name": "Pop Registers",
+      "summary": "Pops multiple registers from the stack and restores sp.",
+      "syntax": "CM.POP {reg_list}, stack_adj",
+      "encoding": {
+        "format": "Push/Pop",
+        "binary_pattern": "1011101 | rlist | spimm | 10",
+        "hex_opcode": "0x02",
+        "visual_parts": [
+          {
+            "raw": "1011101",
+            "clean": "1011101"
+          },
+          {
+            "raw": "rlist",
+            "clean": "rlist"
+          },
+          {
+            "raw": "spimm",
+            "clean": "spimm"
+          },
+          {
+            "raw": "10",
+            "clean": "10"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rlist",
+          "desc": "Register List"
+        },
+        {
+          "name": "stack_adj",
+          "desc": "Stack Adjustment"
+        }
+      ],
+      "pseudocode": "{regs} = Mem[SP]; SP += adj;",
+      "slug": "cm_pop",
+      "rel_url": "risc-v/cm_pop/",
+      "linked_summary": "Pops multiple registers from the stack <a href=\"../../armv8-a/and_6/\">and</a> restores sp.",
+      "linked_pseudocode": "{regs} = Mem[SP]; SP += adj;"
+    },
+    {
+      "mnemonic": "VSETVL",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Set VL",
+      "summary": "Sets the vector length (VL) based on the application vector length (AVL) in rs1 and configuration in rs2.",
+      "syntax": "VSETVL rd, rs1, rs2",
+      "encoding": {
+        "format": "V-Type",
+        "binary_pattern": "1000000 | rs2 | rs1 | 111 | rd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "1000000",
+            "clean": "1000000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (New VL)"
+        },
+        {
+          "name": "rs1",
+          "desc": "AVL"
+        },
+        {
+          "name": "rs2",
+          "desc": "Config (VTYPE)"
+        }
+      ],
+      "pseudocode": "vl = set_config(rs1, rs2); R[rd] = vl;",
+      "slug": "vsetvl",
+      "rel_url": "risc-v/vsetvl/",
+      "linked_summary": "Sets the vector length (VL) based on the application vector length (AVL) <a href=\"../../x86/in/\">in</a> rs1 <a href=\"../../armv8-a/and_6/\">and</a> configuration <a href=\"../../x86/in/\">in</a> rs2.",
+      "linked_pseudocode": "vl = set_config(rs1, rs2); R[rd] = vl;"
+    },
+    {
+      "mnemonic": "CBO.ZERO",
+      "architecture": "RISC-V",
+      "extension": "Zicboz",
+      "full_name": "Cache Block Zero",
+      "summary": "Zeros a cache block corresponding to the address in rs1.",
+      "syntax": "CBO.ZERO (rs1)",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000100 | rs1 | 010 | 00000 | 0001111",
+        "hex_opcode": "0x0F",
+        "visual_parts": [
+          {
+            "raw": "000000000100",
+            "clean": "000000000100"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "0001111",
+            "clean": "0001111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rs1",
+          "desc": "Address"
+        }
+      ],
+      "pseudocode": "memset(BlockAddr(rs1), 0, BlockSize);",
+      "slug": "cbo_zero",
+      "rel_url": "risc-v/cbo_zero/",
+      "linked_summary": "Zeros a cache block corresponding to the address <a href=\"../../x86/in/\">in</a> rs1.",
+      "linked_pseudocode": "memset(BlockAddr(rs1), 0, BlockSize);"
+    },
+    {
       "mnemonic": "FCVT.W.S",
       "architecture": "RISC-V",
       "extension": "F",
@@ -16873,54 +17965,6 @@
       "rel_url": "risc-v/cbo_inval/",
       "linked_summary": "Performs an invalidate operation on the cache block.",
       "linked_pseudocode": "CacheInvalidate(R[rs1]);"
-    },
-    {
-      "mnemonic": "CBO.ZERO",
-      "architecture": "RISC-V",
-      "extension": "Zicboz",
-      "full_name": "Cache Block Operation: Zero",
-      "summary": "Zeros a cache block specified by the address.",
-      "syntax": "CBO.ZERO (rs1)",
-      "encoding": {
-        "format": "I-Type",
-        "binary_pattern": "000000000100 | rs1 | 010 | 00000 | 0001111",
-        "hex_opcode": "0x0F",
-        "visual_parts": [
-          {
-            "raw": "000000000100",
-            "clean": "000000000100"
-          },
-          {
-            "raw": "rs1",
-            "clean": "rs1"
-          },
-          {
-            "raw": "010",
-            "clean": "010"
-          },
-          {
-            "raw": "00000",
-            "clean": "00000"
-          },
-          {
-            "raw": "0001111",
-            "clean": "0001111"
-          }
-        ]
-      },
-      "operands": [
-        {
-          "name": "rs1",
-          "desc": "Address"
-        }
-      ],
-      "pseudocode": "MemSet(R[rs1], BlockSize, 0);",
-      "example": "CBO.ZERO (x10)",
-      "example_note": "Fast zeroing of memory blocks.",
-      "slug": "cbo_zero",
-      "rel_url": "risc-v/cbo_zero/",
-      "linked_summary": "Zeros a cache block specified by the address.",
-      "linked_pseudocode": "MemSet(R[rs1], BlockSize, 0);"
     },
     {
       "mnemonic": "RDCYCLE",
