@@ -10424,6 +10424,684 @@
       "linked_pseudocode": "F[rd] = R[rs1];"
     },
     {
+      "mnemonic": "VFMUL.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Multiply",
+      "summary": "Multiplies elements of two floating-point vectors.",
+      "syntax": "VFMUL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "100100 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100100",
+            "clean": "100100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] * vs2[i];",
+      "slug": "vfmul_vv",
+      "rel_url": "risc-v/vfmul_vv/",
+      "linked_summary": "Multiplies elements of two floating-point vectors.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] * vs2[i];"
+    },
+    {
+      "mnemonic": "VFDIV.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Divide",
+      "summary": "Divides elements of two floating-point vectors.",
+      "syntax": "VFDIV.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "100000 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100000",
+            "clean": "100000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Divisor"
+        },
+        {
+          "name": "vs1",
+          "desc": "Dividend"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] / vs2[i];",
+      "slug": "vfdiv_vv",
+      "rel_url": "risc-v/vfdiv_vv/",
+      "linked_summary": "Divides elements of two floating-point vectors.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] / vs2[i];"
+    },
+    {
+      "mnemonic": "VFSQRT.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Square Root",
+      "summary": "Computes the square root of elements in a floating-point vector.",
+      "syntax": "VFSQRT.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010011 | vm | vs2 | 00000 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010011",
+            "clean": "010011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = sqrt(vs2[i]);",
+      "slug": "vfsqrt_v",
+      "rel_url": "risc-v/vfsqrt_v/",
+      "linked_summary": "Computes the square root of elements <a href=\"../../x86/in/\">in</a> a floating-point vector.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = sqrt(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFMADD.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Fused Multiply-Add",
+      "summary": "Computes (vs1 * vs2) + vd (overwriting vd) with single rounding.",
+      "syntax": "VFMADD.VV vd, vs1, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "101000 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101000",
+            "clean": "101000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest/Addend"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs1[i] * vs2[i]) + vd[i];",
+      "slug": "vfmadd_vv",
+      "rel_url": "risc-v/vfmadd_vv/",
+      "linked_summary": "Computes (vs1 * vs2) + vd (overwriting vd) with single rounding.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs1[i] * vs2[i]) + vd[i];"
+    },
+    {
+      "mnemonic": "VFMIN.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Minimum",
+      "summary": "Writes the smaller of two floating-point vector elements to vd.",
+      "syntax": "VFMIN.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "000100 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000100",
+            "clean": "000100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = min(vs1[i], vs2[i]);",
+      "slug": "vfmin_vv",
+      "rel_url": "risc-v/vfmin_vv/",
+      "linked_summary": "Writes the smaller of two floating-point vector elements to vd.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = min(vs1[i], vs2[i]);"
+    },
+    {
+      "mnemonic": "VFMAX.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Maximum",
+      "summary": "Writes the larger of two floating-point vector elements to vd.",
+      "syntax": "VFMAX.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "000110 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = max(vs1[i], vs2[i]);",
+      "slug": "vfmax_vv",
+      "rel_url": "risc-v/vfmax_vv/",
+      "linked_summary": "Writes the larger of two floating-point vector elements to vd.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = max(vs1[i], vs2[i]);"
+    },
+    {
+      "mnemonic": "VFSGNJ.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Sign Injection",
+      "summary": "Injects the sign of vs2 into vs1 (Copy Sign).",
+      "syntax": "VFSGNJ.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "001000 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "001000",
+            "clean": "001000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Sign Src"
+        },
+        {
+          "name": "vs1",
+          "desc": "Body Src"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = copy_sign(vs1[i], vs2[i]);",
+      "slug": "vfsgnj_vv",
+      "rel_url": "risc-v/vfsgnj_vv/",
+      "linked_summary": "Injects the sign of vs2 into vs1 (Copy Sign).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = copy_sign(vs1[i], vs2[i]);"
+    },
+    {
+      "mnemonic": "VSADD.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Saturating Integer Add",
+      "summary": "Adds elements with signed saturation (clips to Max/Min instead of wrapping).",
+      "syntax": "VSADD.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100001 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100001",
+            "clean": "100001"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = saturate_s(vs1[i] + vs2[i]);",
+      "slug": "vsadd_vv",
+      "rel_url": "risc-v/vsadd_vv/",
+      "linked_summary": "Adds elements with signed saturation (clips to Max/Min instead of wrapping).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = saturate_s(vs1[i] + vs2[i]);"
+    },
+    {
+      "mnemonic": "VSSUB.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Saturating Integer Subtract",
+      "summary": "Subtracts elements with signed saturation.",
+      "syntax": "VSSUB.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100011 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100011",
+            "clean": "100011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = saturate_s(vs1[i] - vs2[i]);",
+      "slug": "vssub_vv",
+      "rel_url": "risc-v/vssub_vv/",
+      "linked_summary": "Subtracts elements with signed saturation.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = saturate_s(vs1[i] - vs2[i]);"
+    },
+    {
+      "mnemonic": "VAADD.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Averaging Add",
+      "summary": "Computes (vs1 + vs2) >> 1 with rounding.",
+      "syntax": "VAADD.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100100 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100100",
+            "clean": "100100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs1[i] + vs2[i] + 1) >> 1;",
+      "slug": "vaadd_vv",
+      "rel_url": "risc-v/vaadd_vv/",
+      "linked_summary": "Computes (vs1 + vs2) >> 1 with rounding.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs1[i] + vs2[i] + 1) >> 1;"
+    },
+    {
+      "mnemonic": "VCOMPRESS.VM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Compress",
+      "summary": "Compacts elements from source vector into contiguous elements in dest where the mask is 1.",
+      "syntax": "VCOMPRESS.VM vd, vs2, vs1",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "010111 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010111",
+            "clean": "010111"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source"
+        },
+        {
+          "name": "vs1",
+          "desc": "Mask"
+        }
+      ],
+      "pseudocode": "idx = 0; foreach(i < vl): if vs1[i]: vd[idx++] = vs2[i];",
+      "slug": "vcompress_vm",
+      "rel_url": "risc-v/vcompress_vm/",
+      "linked_summary": "Compacts elements from source vector into contiguous elements <a href=\"../../x86/in/\">in</a> dest where the mask is 1.",
+      "linked_pseudocode": "idx = 0; foreach(i < vl): if vs1[i]: vd[idx++] = vs2[i];"
+    },
+    {
       "mnemonic": "CZERO.EQZ",
       "architecture": "RISC-V",
       "extension": "Zicond",
