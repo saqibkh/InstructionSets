@@ -1,0 +1,339 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "VWADD.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Integer Add",
+      "summary": "Adds N-bit elements to produce 2*N-bit results (Widening).",
+      "syntax": "VWADD.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "110001 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (2*SEW)" },
+        { "name": "vs2", "desc": "Src 2 (SEW)" },
+        { "name": "vs1", "desc": "Src 1 (SEW)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = sext(vs1[i]) + sext(vs2[i]);"
+    },
+    {
+      "mnemonic": "VWADDU.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Integer Add Unsigned",
+      "summary": "Adds unsigned N-bit elements to produce unsigned 2*N-bit results.",
+      "syntax": "VWADDU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "110000 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (2*SEW)" },
+        { "name": "vs2", "desc": "Src 2 (SEW)" },
+        { "name": "vs1", "desc": "Src 1 (SEW)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = zext(vs1[i]) + zext(vs2[i]);"
+    },
+    {
+      "mnemonic": "VWSUB.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Integer Subtract",
+      "summary": "Subtracts N-bit elements to produce 2*N-bit results.",
+      "syntax": "VWSUB.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "110011 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (2*SEW)" },
+        { "name": "vs2", "desc": "Src 2 (SEW)" },
+        { "name": "vs1", "desc": "Src 1 (SEW)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = sext(vs2[i]) - sext(vs1[i]);"
+    },
+    {
+      "mnemonic": "VWMUL.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Integer Multiply",
+      "summary": "Multiplies N-bit elements to produce 2*N-bit results.",
+      "syntax": "VWMUL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "111011 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (2*SEW)" },
+        { "name": "vs2", "desc": "Src 2 (SEW)" },
+        { "name": "vs1", "desc": "Src 1 (SEW)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = sext(vs2[i]) * sext(vs1[i]);"
+    },
+    {
+      "mnemonic": "VNSRL.WX",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Shift Right Logical",
+      "summary": "Shifts 2*N-bit elements right and narrows the result to N-bits.",
+      "syntax": "VNSRL.WX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "101100 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (SEW)" },
+        { "name": "vs2", "desc": "Src Vector (2*SEW)" },
+        { "name": "rs1", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >> rs1) & Mask(SEW);"
+    },
+    {
+      "mnemonic": "VNSRA.WX",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Shift Right Arithmetic",
+      "summary": "Arithmetically shifts 2*N-bit elements right and narrows to N-bits.",
+      "syntax": "VNSRA.WX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "101101 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (SEW)" },
+        { "name": "vs2", "desc": "Src Vector (2*SEW)" },
+        { "name": "rs1", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >>s rs1) & Mask(SEW);"
+    },
+    {
+      "mnemonic": "VMERGE.VVM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Merge",
+      "summary": "Merges two vectors based on the mask (if mask=0, pick vs2; if mask=1, pick vs1).",
+      "syntax": "VMERGE.VVM vd, vs2, vs1, v0",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010111 | 0 | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "False Src" },
+        { "name": "vs1", "desc": "True Src" },
+        { "name": "v0", "desc": "Mask" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = v0[i] ? vs1[i] : vs2[i];"
+    },
+    {
+      "mnemonic": "VMV.V.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move",
+      "summary": "Copies a vector register.",
+      "syntax": "VMV.V.V vd, vs1",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "VADDI.VI vd, vs1, 0",
+        "hex_opcode": "See VADDI"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs1", "desc": "Source" }
+      ],
+      "pseudocode": "vd = vs1;"
+    },
+    {
+      "mnemonic": "VMV.X.S",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move Scalar to Integer",
+      "summary": "Copies element 0 of a vector to an integer register.",
+      "syntax": "VMV.X.S rd, vs2",
+      "encoding": {
+        "format": "OPMVX",
+        "binary_pattern": "010000 | 1 | vs2 | 00000 | 010 | rd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int)" },
+        { "name": "vs2", "desc": "Source (Vector)" }
+      ],
+      "pseudocode": "rd = vs2[0];"
+    },
+    {
+      "mnemonic": "VMV.S.X",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move Integer to Scalar",
+      "summary": "Copies an integer register to element 0 of a vector.",
+      "syntax": "VMV.S.X vd, rs1",
+      "encoding": {
+        "format": "OPMVX",
+        "binary_pattern": "010000 | 1 | 00000 | rs1 | 110 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Vector)" },
+        { "name": "rs1", "desc": "Source (Int)" }
+      ],
+      "pseudocode": "vd[0] = rs1;"
+    },
+    {
+      "mnemonic": "VMFEQ.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Equal",
+      "summary": "Compares float vectors for equality, writing result to mask register.",
+      "syntax": "VMFEQ.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "011000 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Mask" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] == vs1[i]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "VMFLE.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Less or Equal",
+      "summary": "Compares float vectors (vs2 <= vs1), writing result to mask register.",
+      "syntax": "VMFLE.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "011001 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Mask" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] <= vs1[i]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "VMFLT.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Less Than",
+      "summary": "Compares float vectors (vs2 < vs1), writing result to mask register.",
+      "syntax": "VMFLT.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "011011 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Mask" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] < vs1[i]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "VFCLASS.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Classify",
+      "summary": "Classifies elements of a float vector (NaN, Inf, etc.).",
+      "syntax": "VFCLASS.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010011 | vm | vs2 | 10000 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Mask Bits)" },
+        { "name": "vs2", "desc": "Src Vector" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = classify(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFMV.F.S",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move Float to Scalar",
+      "summary": "Moves element 0 of a float vector to a scalar float register.",
+      "syntax": "VFMV.F.S fd, vs2",
+      "encoding": {
+        "format": "OPFVW",
+        "binary_pattern": "001100 | 1 | vs2 | 00000 | 001 | fd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "fd", "desc": "Dest (Float)" },
+        { "name": "vs2", "desc": "Src Vector" }
+      ],
+      "pseudocode": "fd = vs2[0];"
+    },
+    {
+      "mnemonic": "VFMV.S.F",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move Scalar to Float",
+      "summary": "Moves a scalar float register to element 0 of a vector.",
+      "syntax": "VFMV.S.F vd, fs1",
+      "encoding": {
+        "format": "OPFVW",
+        "binary_pattern": "001101 | 1 | 00000 | fs1 | 101 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Vector" },
+        { "name": "fs1", "desc": "Src Float" }
+      ],
+      "pseudocode": "vd[0] = fs1;"
+    },
+    {
+      "mnemonic": "VCPOP.M",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Mask Population Count",
+      "summary": "Counts the number of set bits in a vector mask.",
+      "syntax": "VCPOP.M rd, vs2, vm",
+      "encoding": {
+        "format": "OPMVX",
+        "binary_pattern": "010000 | vm | vs2 | 10000 | 010 | rd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int Count)" },
+        { "name": "vs2", "desc": "Src Mask" }
+      ],
+      "pseudocode": "rd = count_set_bits(vs2 & vm);"
+    },
+    {
+      "mnemonic": "VFIRST.M",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Find First Set Mask Bit",
+      "summary": "Finds the index of the first set bit in the mask register.",
+      "syntax": "VFIRST.M rd, vs2, vm",
+      "encoding": {
+        "format": "OPMVX",
+        "binary_pattern": "010000 | vm | vs2 | 10001 | 010 | rd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Index)" },
+        { "name": "vs2", "desc": "Src Mask" }
+      ],
+      "pseudocode": "rd = lowest_set_bit_index(vs2 & vm);"
+    }
+  ]
+}
