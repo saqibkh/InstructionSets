@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sets mask bits before the first set bit in the source mask.">
+    <title>VMSBF.M - RISC-V</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    	const SEARCH_INDEX_PATH = "../../search.json";
+        /* Default: Global Search (null). Child templates override this block. */
+        const CURRENT_ARCH = "RISC-V";
+    </script>
+    
+    <script src="../../static/search.js"></script>
+
+    
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>RISC-V Reference</h3>
+        <div class="sidebar-list">
+            
+            <details open class="nav-group">
+                <summary>64-bit Extensions</summary>
+                <div class="group-links">
+                    
+                    <a href="../addiw/" 
+                       class="">
+                        ADDIW
+                    </a>
+                    
+                    <a href="../adduw/" 
+                       class="">
+                        ADDUW
+                    </a>
+                    
+                    <a href="../addw/" 
+                       class="">
+                        ADDW
+                    </a>
+                    
+                    <a href="../divuw/" 
+                       class="">
+                        DIVUW
+                    </a>
+                    
+                    <a href="../divw/" 
+                       class="">
+                        DIVW
+                    </a>
+                    
+                    <a href="../hlv_w/" 
+                       class="">
+                        HLV.W
+                    </a>
+                    
+                    <a href="../hsv_w/" 
+                       class="">
+                        HSV.W
+                    </a>
+                    
+                    <a href="../ld/" 
+                       class="">
+                        LD
+                    </a>
+                    
+                    <a href="../lw/" 
+                       class="">
+                        LW
+                    </a>
+                    
+                    <a href="../lwu/" 
+                       class="">
+                        LWU
+                    </a>
+                    
+                    <a href="../mulw/" 
+                       class="">
+                        MULW
+                    </a>
+                    
+                    <a href="../prefetch_w/" 
+                       class="">
+                        PREFETCH.W
+                    </a>
+                    
+                    <a href="../remuw/" 
+                       class="">
+                        REMUW
+                    </a>
+                    
+                    <a href="../remw/" 
+                       class="">
+                        REMW
+                    </a>
+                    
+                    <a href="../sd/" 
+                       class="">
+                        SD
+                    </a>
+                    
+                    <a href="../slliw/" 
+                       class="">
+                        SLLIW
+                    </a>
+                    
+                    <a href="../sllw/" 
+                       class="">
+                        SLLW
+                    </a>
+                    
+                    <a href="../sraiw/" 
+                       class="">
+                        SRAIW
+                    </a>
+                    
+                    <a href="../sraw/" 
+                       class="">
+                        SRAW
+                    </a>
+                    
+                    <a href="../srliw/" 
+                       class="">
+                        SRLIW
+                    </a>
+                    
+                    <a href="../srlw/" 
+                       class="">
+                        SRLW
+                    </a>
+                    
+                    <a href="../subw/" 
+                       class="">
+                        SUBW
+                    </a>
+                    
+                    <a href="../sw/" 
+                       class="">
+                        SW
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Atomics</summary>
+                <div class="group-links">
+                    
+                    <a href="../amoadd_d/" 
+                       class="">
+                        AMOADD.D
+                    </a>
+                    
+                    <a href="../amoadd_w/" 
+                       class="">
+                        AMOADD.W
+                    </a>
+                    
+                    <a href="../amoand_d/" 
+                       class="">
+                        AMOAND.D
+                    </a>
+                    
+                    <a href="../amoand_w/" 
+                       class="">
+                        AMOAND.W
+                    </a>
+                    
+                    <a href="../amomax_d/" 
+                       class="">
+                        AMOMAX.D
+                    </a>
+                    
+                    <a href="../amomax_w/" 
+                       class="">
+                        AMOMAX.W
+                    </a>
+                    
+                    <a href="../amomaxu_d/" 
+                       class="">
+                        AMOMAXU.D
+                    </a>
+                    
+                    <a href="../amomaxu_w/" 
+                       class="">
+                        AMOMAXU.W
+                    </a>
+                    
+                    <a href="../amomin_d/" 
+                       class="">
+                        AMOMIN.D
+                    </a>
+                    
+                    <a href="../amomin_w/" 
+                       class="">
+                        AMOMIN.W
+                    </a>
+                    
+                    <a href="../amominu_d/" 
+                       class="">
+                        AMOMINU.D
+                    </a>
+                    
+                    <a href="../amominu_w/" 
+                       class="">
+                        AMOMINU.W
+                    </a>
+                    
+                    <a href="../amoor_d/" 
+                       class="">
+                        AMOOR.D
+                    </a>
+                    
+                    <a href="../amoor_w/" 
+                       class="">
+                        AMOOR.W
+                    </a>
+                    
+                    <a href="../amoswap_d/" 
+                       class="">
+                        AMOSWAP.D
+                    </a>
+                    
+                    <a href="../amoswap_w/" 
+                       class="">
+                        AMOSWAP.W
+                    </a>
+                    
+                    <a href="../amoxor_d/" 
+                       class="">
+                        AMOXOR.D
+                    </a>
+                    
+                    <a href="../amoxor_w/" 
+                       class="">
+                        AMOXOR.W
+                    </a>
+                    
+                    <a href="../lr_d/" 
+                       class="">
+                        LR.D
+                    </a>
+                    
+                    <a href="../lr_w/" 
+                       class="">
+                        LR.W
+                    </a>
+                    
+                    <a href="../sc_d/" 
+                       class="">
+                        SC.D
+                    </a>
+                    
+                    <a href="../sc_w/" 
+                       class="">
+                        SC.W
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Base Integer</summary>
+                <div class="group-links">
+                    
+                    <a href="../add/" 
+                       class="">
+                        ADD
+                    </a>
+                    
+                    <a href="../addi/" 
+                       class="">
+                        ADDI
+                    </a>
+                    
+                    <a href="../and/" 
+                       class="">
+                        AND
+                    </a>
+                    
+                    <a href="../andi/" 
+                       class="">
+                        ANDI
+                    </a>
+                    
+                    <a href="../auipc/" 
+                       class="">
+                        AUIPC
+                    </a>
+                    
+                    <a href="../bclr/" 
+                       class="">
+                        BCLR
+                    </a>
+                    
+                    <a href="../bclri/" 
+                       class="">
+                        BCLRI
+                    </a>
+                    
+                    <a href="../beq/" 
+                       class="">
+                        BEQ
+                    </a>
+                    
+                    <a href="../bext/" 
+                       class="">
+                        BEXT
+                    </a>
+                    
+                    <a href="../bexti/" 
+                       class="">
+                        BEXTI
+                    </a>
+                    
+                    <a href="../bge/" 
+                       class="">
+                        BGE
+                    </a>
+                    
+                    <a href="../bgeu/" 
+                       class="">
+                        BGEU
+                    </a>
+                    
+                    <a href="../binv/" 
+                       class="">
+                        BINV
+                    </a>
+                    
+                    <a href="../binvi/" 
+                       class="">
+                        BINVI
+                    </a>
+                    
+                    <a href="../blt/" 
+                       class="">
+                        BLT
+                    </a>
+                    
+                    <a href="../bltu/" 
+                       class="">
+                        BLTU
+                    </a>
+                    
+                    <a href="../bne/" 
+                       class="">
+                        BNE
+                    </a>
+                    
+                    <a href="../bset/" 
+                       class="">
+                        BSET
+                    </a>
+                    
+                    <a href="../bseti/" 
+                       class="">
+                        BSETI
+                    </a>
+                    
+                    <a href="../cbo_clean/" 
+                       class="">
+                        CBO.CLEAN
+                    </a>
+                    
+                    <a href="../cbo_flush/" 
+                       class="">
+                        CBO.FLUSH
+                    </a>
+                    
+                    <a href="../cbo_inval/" 
+                       class="">
+                        CBO.INVAL
+                    </a>
+                    
+                    <a href="../cbo_zero/" 
+                       class="">
+                        CBO.ZERO
+                    </a>
+                    
+                    <a href="../clmul/" 
+                       class="">
+                        CLMUL
+                    </a>
+                    
+                    <a href="../csrrc/" 
+                       class="">
+                        CSRRC
+                    </a>
+                    
+                    <a href="../csrrci/" 
+                       class="">
+                        CSRRCI
+                    </a>
+                    
+                    <a href="../csrrs/" 
+                       class="">
+                        CSRRS
+                    </a>
+                    
+                    <a href="../csrrsi/" 
+                       class="">
+                        CSRRSI
+                    </a>
+                    
+                    <a href="../csrrwi/" 
+                       class="">
+                        CSRRWI
+                    </a>
+                    
+                    <a href="../czero_eqz/" 
+                       class="">
+                        CZERO.EQZ
+                    </a>
+                    
+                    <a href="../czero_nez/" 
+                       class="">
+                        CZERO.NEZ
+                    </a>
+                    
+                    <a href="../ebreak/" 
+                       class="">
+                        EBREAK
+                    </a>
+                    
+                    <a href="../ecall/" 
+                       class="">
+                        ECALL
+                    </a>
+                    
+                    <a href="../hfence_gvma/" 
+                       class="">
+                        HFENCE.GVMA
+                    </a>
+                    
+                    <a href="../hfence_vvma/" 
+                       class="">
+                        HFENCE.VVMA
+                    </a>
+                    
+                    <a href="../hlv_b/" 
+                       class="">
+                        HLV.B
+                    </a>
+                    
+                    <a href="../hlv_d/" 
+                       class="">
+                        HLV.D
+                    </a>
+                    
+                    <a href="../hlv_wu/" 
+                       class="">
+                        HLV.WU
+                    </a>
+                    
+                    <a href="../hsv_b/" 
+                       class="">
+                        HSV.B
+                    </a>
+                    
+                    <a href="../hsv_d/" 
+                       class="">
+                        HSV.D
+                    </a>
+                    
+                    <a href="../jal/" 
+                       class="">
+                        JAL
+                    </a>
+                    
+                    <a href="../jalr/" 
+                       class="">
+                        JALR
+                    </a>
+                    
+                    <a href="../lb/" 
+                       class="">
+                        LB
+                    </a>
+                    
+                    <a href="../lbu/" 
+                       class="">
+                        LBU
+                    </a>
+                    
+                    <a href="../lh/" 
+                       class="">
+                        LH
+                    </a>
+                    
+                    <a href="../lhu/" 
+                       class="">
+                        LHU
+                    </a>
+                    
+                    <a href="../lui/" 
+                       class="">
+                        LUI
+                    </a>
+                    
+                    <a href="../maxu/" 
+                       class="">
+                        MAXU
+                    </a>
+                    
+                    <a href="../minu/" 
+                       class="">
+                        MINU
+                    </a>
+                    
+                    <a href="../or/" 
+                       class="">
+                        OR
+                    </a>
+                    
+                    <a href="../ori/" 
+                       class="">
+                        ORI
+                    </a>
+                    
+                    <a href="../pack/" 
+                       class="">
+                        PACK
+                    </a>
+                    
+                    <a href="../packh/" 
+                       class="">
+                        PACKH
+                    </a>
+                    
+                    <a href="../pause/" 
+                       class="">
+                        PAUSE
+                    </a>
+                    
+                    <a href="../prefetch_i/" 
+                       class="">
+                        PREFETCH.I
+                    </a>
+                    
+                    <a href="../prefetch_r/" 
+                       class="">
+                        PREFETCH.R
+                    </a>
+                    
+                    <a href="../sb/" 
+                       class="">
+                        SB
+                    </a>
+                    
+                    <a href="../sh/" 
+                       class="">
+                        SH
+                    </a>
+                    
+                    <a href="../sh1add/" 
+                       class="">
+                        SH1ADD
+                    </a>
+                    
+                    <a href="../sh2add/" 
+                       class="">
+                        SH2ADD
+                    </a>
+                    
+                    <a href="../sh3add/" 
+                       class="">
+                        SH3ADD
+                    </a>
+                    
+                    <a href="../sll/" 
+                       class="">
+                        SLL
+                    </a>
+                    
+                    <a href="../slli/" 
+                       class="">
+                        SLLI
+                    </a>
+                    
+                    <a href="../slt/" 
+                       class="">
+                        SLT
+                    </a>
+                    
+                    <a href="../slti/" 
+                       class="">
+                        SLTI
+                    </a>
+                    
+                    <a href="../sltiu/" 
+                       class="">
+                        SLTIU
+                    </a>
+                    
+                    <a href="../sltu/" 
+                       class="">
+                        SLTU
+                    </a>
+                    
+                    <a href="../sra/" 
+                       class="">
+                        SRA
+                    </a>
+                    
+                    <a href="../srl/" 
+                       class="">
+                        SRL
+                    </a>
+                    
+                    <a href="../sub/" 
+                       class="">
+                        SUB
+                    </a>
+                    
+                    <a href="../xor/" 
+                       class="">
+                        XOR
+                    </a>
+                    
+                    <a href="../xori/" 
+                       class="">
+                        XORI
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Bit Manipulation</summary>
+                <div class="group-links">
+                    
+                    <a href="../andn/" 
+                       class="">
+                        ANDN
+                    </a>
+                    
+                    <a href="../clz/" 
+                       class="">
+                        CLZ
+                    </a>
+                    
+                    <a href="../cpop/" 
+                       class="">
+                        CPOP
+                    </a>
+                    
+                    <a href="../ctz/" 
+                       class="">
+                        CTZ
+                    </a>
+                    
+                    <a href="../max/" 
+                       class="">
+                        MAX
+                    </a>
+                    
+                    <a href="../min/" 
+                       class="">
+                        MIN
+                    </a>
+                    
+                    <a href="../orc_b/" 
+                       class="">
+                        ORC.B
+                    </a>
+                    
+                    <a href="../orn/" 
+                       class="">
+                        ORN
+                    </a>
+                    
+                    <a href="../rev8/" 
+                       class="">
+                        REV8
+                    </a>
+                    
+                    <a href="../rol/" 
+                       class="">
+                        ROL
+                    </a>
+                    
+                    <a href="../ror/" 
+                       class="">
+                        ROR
+                    </a>
+                    
+                    <a href="../sex_b/" 
+                       class="">
+                        SEX.B
+                    </a>
+                    
+                    <a href="../sex_h/" 
+                       class="">
+                        SEX.H
+                    </a>
+                    
+                    <a href="../xnor/" 
+                       class="">
+                        XNOR
+                    </a>
+                    
+                    <a href="../zext_h/" 
+                       class="">
+                        ZEXT.H
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Compressed (16-bit)</summary>
+                <div class="group-links">
+                    
+                    <a href="../c_add/" 
+                       class="">
+                        C.ADD
+                    </a>
+                    
+                    <a href="../c_addi/" 
+                       class="">
+                        C.ADDI
+                    </a>
+                    
+                    <a href="../c_addi16sp/" 
+                       class="">
+                        C.ADDI16SP
+                    </a>
+                    
+                    <a href="../c_addi4spn/" 
+                       class="">
+                        C.ADDI4SPN
+                    </a>
+                    
+                    <a href="../c_addiw/" 
+                       class="">
+                        C.ADDIW
+                    </a>
+                    
+                    <a href="../c_addw/" 
+                       class="">
+                        C.ADDW
+                    </a>
+                    
+                    <a href="../c_and/" 
+                       class="">
+                        C.AND
+                    </a>
+                    
+                    <a href="../c_andi/" 
+                       class="">
+                        C.ANDI
+                    </a>
+                    
+                    <a href="../c_beqz/" 
+                       class="">
+                        C.BEQZ
+                    </a>
+                    
+                    <a href="../c_bnez/" 
+                       class="">
+                        C.BNEZ
+                    </a>
+                    
+                    <a href="../c_ebreak/" 
+                       class="">
+                        C.EBREAK
+                    </a>
+                    
+                    <a href="../c_fld/" 
+                       class="">
+                        C.FLD
+                    </a>
+                    
+                    <a href="../c_fldsp/" 
+                       class="">
+                        C.FLDSP
+                    </a>
+                    
+                    <a href="../c_flw/" 
+                       class="">
+                        C.FLW
+                    </a>
+                    
+                    <a href="../c_flwsp/" 
+                       class="">
+                        C.FLWSP
+                    </a>
+                    
+                    <a href="../c_fsd/" 
+                       class="">
+                        C.FSD
+                    </a>
+                    
+                    <a href="../c_fsdsp/" 
+                       class="">
+                        C.FSDSP
+                    </a>
+                    
+                    <a href="../c_fsw/" 
+                       class="">
+                        C.FSW
+                    </a>
+                    
+                    <a href="../c_fswsp/" 
+                       class="">
+                        C.FSWSP
+                    </a>
+                    
+                    <a href="../c_j/" 
+                       class="">
+                        C.J
+                    </a>
+                    
+                    <a href="../c_jal/" 
+                       class="">
+                        C.JAL
+                    </a>
+                    
+                    <a href="../c_jalr/" 
+                       class="">
+                        C.JALR
+                    </a>
+                    
+                    <a href="../c_jr/" 
+                       class="">
+                        C.JR
+                    </a>
+                    
+                    <a href="../c_ld/" 
+                       class="">
+                        C.LD
+                    </a>
+                    
+                    <a href="../c_ldsp/" 
+                       class="">
+                        C.LDSP
+                    </a>
+                    
+                    <a href="../c_li/" 
+                       class="">
+                        C.LI
+                    </a>
+                    
+                    <a href="../c_lui/" 
+                       class="">
+                        C.LUI
+                    </a>
+                    
+                    <a href="../c_lw/" 
+                       class="">
+                        C.LW
+                    </a>
+                    
+                    <a href="../c_lwsp/" 
+                       class="">
+                        C.LWSP
+                    </a>
+                    
+                    <a href="../c_mv/" 
+                       class="">
+                        C.MV
+                    </a>
+                    
+                    <a href="../c_nop/" 
+                       class="">
+                        C.NOP
+                    </a>
+                    
+                    <a href="../c_or/" 
+                       class="">
+                        C.OR
+                    </a>
+                    
+                    <a href="../c_sd/" 
+                       class="">
+                        C.SD
+                    </a>
+                    
+                    <a href="../c_sdsp/" 
+                       class="">
+                        C.SDSP
+                    </a>
+                    
+                    <a href="../c_slli/" 
+                       class="">
+                        C.SLLI
+                    </a>
+                    
+                    <a href="../c_srai/" 
+                       class="">
+                        C.SRAI
+                    </a>
+                    
+                    <a href="../c_srli/" 
+                       class="">
+                        C.SRLI
+                    </a>
+                    
+                    <a href="../c_sub/" 
+                       class="">
+                        C.SUB
+                    </a>
+                    
+                    <a href="../c_subw/" 
+                       class="">
+                        C.SUBW
+                    </a>
+                    
+                    <a href="../c_sw/" 
+                       class="">
+                        C.SW
+                    </a>
+                    
+                    <a href="../c_swsp/" 
+                       class="">
+                        C.SWSP
+                    </a>
+                    
+                    <a href="../c_xor/" 
+                       class="">
+                        C.XOR
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Cryptography (Scalar)</summary>
+                <div class="group-links">
+                    
+                    <a href="../aes64ds/" 
+                       class="">
+                        AES64DS
+                    </a>
+                    
+                    <a href="../aes64es/" 
+                       class="">
+                        AES64ES
+                    </a>
+                    
+                    <a href="../sha256sig0/" 
+                       class="">
+                        SHA256SIG0
+                    </a>
+                    
+                    <a href="../sha256sum0/" 
+                       class="">
+                        SHA256SUM0
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Floating Point</summary>
+                <div class="group-links">
+                    
+                    <a href="../fadd_d/" 
+                       class="">
+                        FADD.D
+                    </a>
+                    
+                    <a href="../fadd_h/" 
+                       class="">
+                        FADD.H
+                    </a>
+                    
+                    <a href="../fadd_s/" 
+                       class="">
+                        FADD.S
+                    </a>
+                    
+                    <a href="../fclass_d/" 
+                       class="">
+                        FCLASS.D
+                    </a>
+                    
+                    <a href="../fclass_h/" 
+                       class="">
+                        FCLASS.H
+                    </a>
+                    
+                    <a href="../fclass_s/" 
+                       class="">
+                        FCLASS.S
+                    </a>
+                    
+                    <a href="../fcvt_d_l/" 
+                       class="">
+                        FCVT.D.L
+                    </a>
+                    
+                    <a href="../fcvt_d_lu/" 
+                       class="">
+                        FCVT.D.LU
+                    </a>
+                    
+                    <a href="../fcvt_d_s/" 
+                       class="">
+                        FCVT.D.S
+                    </a>
+                    
+                    <a href="../fcvt_d_w/" 
+                       class="">
+                        FCVT.D.W
+                    </a>
+                    
+                    <a href="../fcvt_d_wu/" 
+                       class="">
+                        FCVT.D.WU
+                    </a>
+                    
+                    <a href="../fcvt_h_s/" 
+                       class="">
+                        FCVT.H.S
+                    </a>
+                    
+                    <a href="../fcvt_h_w/" 
+                       class="">
+                        FCVT.H.W
+                    </a>
+                    
+                    <a href="../fcvt_h_wu/" 
+                       class="">
+                        FCVT.H.WU
+                    </a>
+                    
+                    <a href="../fcvt_l_d/" 
+                       class="">
+                        FCVT.L.D
+                    </a>
+                    
+                    <a href="../fcvt_l_s/" 
+                       class="">
+                        FCVT.L.S
+                    </a>
+                    
+                    <a href="../fcvt_lu_d/" 
+                       class="">
+                        FCVT.LU.D
+                    </a>
+                    
+                    <a href="../fcvt_lu_s/" 
+                       class="">
+                        FCVT.LU.S
+                    </a>
+                    
+                    <a href="../fcvt_s_d/" 
+                       class="">
+                        FCVT.S.D
+                    </a>
+                    
+                    <a href="../fcvt_s_h/" 
+                       class="">
+                        FCVT.S.H
+                    </a>
+                    
+                    <a href="../fcvt_s_l/" 
+                       class="">
+                        FCVT.S.L
+                    </a>
+                    
+                    <a href="../fcvt_s_lu/" 
+                       class="">
+                        FCVT.S.LU
+                    </a>
+                    
+                    <a href="../fcvt_s_w/" 
+                       class="">
+                        FCVT.S.W
+                    </a>
+                    
+                    <a href="../fcvt_s_wu/" 
+                       class="">
+                        FCVT.S.WU
+                    </a>
+                    
+                    <a href="../fcvt_w_d/" 
+                       class="">
+                        FCVT.W.D
+                    </a>
+                    
+                    <a href="../fcvt_w_h/" 
+                       class="">
+                        FCVT.W.H
+                    </a>
+                    
+                    <a href="../fcvt_w_s/" 
+                       class="">
+                        FCVT.W.S
+                    </a>
+                    
+                    <a href="../fcvt_wu_d/" 
+                       class="">
+                        FCVT.WU.D
+                    </a>
+                    
+                    <a href="../fcvt_wu_h/" 
+                       class="">
+                        FCVT.WU.H
+                    </a>
+                    
+                    <a href="../fcvt_wu_s/" 
+                       class="">
+                        FCVT.WU.S
+                    </a>
+                    
+                    <a href="../fdiv_d/" 
+                       class="">
+                        FDIV.D
+                    </a>
+                    
+                    <a href="../fdiv_h/" 
+                       class="">
+                        FDIV.H
+                    </a>
+                    
+                    <a href="../fdiv_s/" 
+                       class="">
+                        FDIV.S
+                    </a>
+                    
+                    <a href="../fence/" 
+                       class="">
+                        FENCE
+                    </a>
+                    
+                    <a href="../fence_i/" 
+                       class="">
+                        FENCE.I
+                    </a>
+                    
+                    <a href="../feq_d/" 
+                       class="">
+                        FEQ.D
+                    </a>
+                    
+                    <a href="../feq_h/" 
+                       class="">
+                        FEQ.H
+                    </a>
+                    
+                    <a href="../feq_s/" 
+                       class="">
+                        FEQ.S
+                    </a>
+                    
+                    <a href="../fld/" 
+                       class="">
+                        FLD
+                    </a>
+                    
+                    <a href="../fle_d/" 
+                       class="">
+                        FLE.D
+                    </a>
+                    
+                    <a href="../fle_h/" 
+                       class="">
+                        FLE.H
+                    </a>
+                    
+                    <a href="../fle_s/" 
+                       class="">
+                        FLE.S
+                    </a>
+                    
+                    <a href="../flh/" 
+                       class="">
+                        FLH
+                    </a>
+                    
+                    <a href="../flt_d/" 
+                       class="">
+                        FLT.D
+                    </a>
+                    
+                    <a href="../flt_h/" 
+                       class="">
+                        FLT.H
+                    </a>
+                    
+                    <a href="../flt_s/" 
+                       class="">
+                        FLT.S
+                    </a>
+                    
+                    <a href="../flw/" 
+                       class="">
+                        FLW
+                    </a>
+                    
+                    <a href="../fmadd_d/" 
+                       class="">
+                        FMADD.D
+                    </a>
+                    
+                    <a href="../fmadd_h/" 
+                       class="">
+                        FMADD.H
+                    </a>
+                    
+                    <a href="../fmadd_s/" 
+                       class="">
+                        FMADD.S
+                    </a>
+                    
+                    <a href="../fmax_d/" 
+                       class="">
+                        FMAX.D
+                    </a>
+                    
+                    <a href="../fmax_h/" 
+                       class="">
+                        FMAX.H
+                    </a>
+                    
+                    <a href="../fmax_s/" 
+                       class="">
+                        FMAX.S
+                    </a>
+                    
+                    <a href="../fmin_d/" 
+                       class="">
+                        FMIN.D
+                    </a>
+                    
+                    <a href="../fmin_h/" 
+                       class="">
+                        FMIN.H
+                    </a>
+                    
+                    <a href="../fmin_s/" 
+                       class="">
+                        FMIN.S
+                    </a>
+                    
+                    <a href="../fmsub_d/" 
+                       class="">
+                        FMSUB.D
+                    </a>
+                    
+                    <a href="../fmsub_h/" 
+                       class="">
+                        FMSUB.H
+                    </a>
+                    
+                    <a href="../fmsub_s/" 
+                       class="">
+                        FMSUB.S
+                    </a>
+                    
+                    <a href="../fmul_d/" 
+                       class="">
+                        FMUL.D
+                    </a>
+                    
+                    <a href="../fmul_h/" 
+                       class="">
+                        FMUL.H
+                    </a>
+                    
+                    <a href="../fmul_s/" 
+                       class="">
+                        FMUL.S
+                    </a>
+                    
+                    <a href="../fmv_d_x/" 
+                       class="">
+                        FMV.D.X
+                    </a>
+                    
+                    <a href="../fmv_w_x/" 
+                       class="">
+                        FMV.W.X
+                    </a>
+                    
+                    <a href="../fmv_x_d/" 
+                       class="">
+                        FMV.X.D
+                    </a>
+                    
+                    <a href="../fmv_x_w/" 
+                       class="">
+                        FMV.X.W
+                    </a>
+                    
+                    <a href="../fnmadd_d/" 
+                       class="">
+                        FNMADD.D
+                    </a>
+                    
+                    <a href="../fnmadd_h/" 
+                       class="">
+                        FNMADD.H
+                    </a>
+                    
+                    <a href="../fnmadd_s/" 
+                       class="">
+                        FNMADD.S
+                    </a>
+                    
+                    <a href="../fnmsub_d/" 
+                       class="">
+                        FNMSUB.D
+                    </a>
+                    
+                    <a href="../fnmsub_h/" 
+                       class="">
+                        FNMSUB.H
+                    </a>
+                    
+                    <a href="../fnmsub_s/" 
+                       class="">
+                        FNMSUB.S
+                    </a>
+                    
+                    <a href="../fsd/" 
+                       class="">
+                        FSD
+                    </a>
+                    
+                    <a href="../fsgnj_d/" 
+                       class="">
+                        FSGNJ.D
+                    </a>
+                    
+                    <a href="../fsgnj_h/" 
+                       class="">
+                        FSGNJ.H
+                    </a>
+                    
+                    <a href="../fsgnj_s/" 
+                       class="">
+                        FSGNJ.S
+                    </a>
+                    
+                    <a href="../fsgnjn_d/" 
+                       class="">
+                        FSGNJN.D
+                    </a>
+                    
+                    <a href="../fsgnjn_h/" 
+                       class="">
+                        FSGNJN.H
+                    </a>
+                    
+                    <a href="../fsgnjn_s/" 
+                       class="">
+                        FSGNJN.S
+                    </a>
+                    
+                    <a href="../fsgnjx_d/" 
+                       class="">
+                        FSGNJX.D
+                    </a>
+                    
+                    <a href="../fsgnjx_h/" 
+                       class="">
+                        FSGNJX.H
+                    </a>
+                    
+                    <a href="../fsgnjx_s/" 
+                       class="">
+                        FSGNJX.S
+                    </a>
+                    
+                    <a href="../fsh/" 
+                       class="">
+                        FSH
+                    </a>
+                    
+                    <a href="../fsqrt_d/" 
+                       class="">
+                        FSQRT.D
+                    </a>
+                    
+                    <a href="../fsqrt_h/" 
+                       class="">
+                        FSQRT.H
+                    </a>
+                    
+                    <a href="../fsqrt_s/" 
+                       class="">
+                        FSQRT.S
+                    </a>
+                    
+                    <a href="../fsub_d/" 
+                       class="">
+                        FSUB.D
+                    </a>
+                    
+                    <a href="../fsub_h/" 
+                       class="">
+                        FSUB.H
+                    </a>
+                    
+                    <a href="../fsub_s/" 
+                       class="">
+                        FSUB.S
+                    </a>
+                    
+                    <a href="../fsw/" 
+                       class="">
+                        FSW
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Math Extensions (M)</summary>
+                <div class="group-links">
+                    
+                    <a href="../div/" 
+                       class="">
+                        DIV
+                    </a>
+                    
+                    <a href="../divu/" 
+                       class="">
+                        DIVU
+                    </a>
+                    
+                    <a href="../mul/" 
+                       class="">
+                        MUL
+                    </a>
+                    
+                    <a href="../mulh/" 
+                       class="">
+                        MULH
+                    </a>
+                    
+                    <a href="../mulhsu/" 
+                       class="">
+                        MULHSU
+                    </a>
+                    
+                    <a href="../mulhu/" 
+                       class="">
+                        MULHU
+                    </a>
+                    
+                    <a href="../rem/" 
+                       class="">
+                        REM
+                    </a>
+                    
+                    <a href="../remu/" 
+                       class="">
+                        REMU
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Pseudo-Instructions</summary>
+                <div class="group-links">
+                    
+                    <a href="../beqz/" 
+                       class="">
+                        BEQZ
+                    </a>
+                    
+                    <a href="../bnez/" 
+                       class="">
+                        BNEZ
+                    </a>
+                    
+                    <a href="../call/" 
+                       class="">
+                        CALL
+                    </a>
+                    
+                    <a href="../csrc/" 
+                       class="">
+                        CSRC
+                    </a>
+                    
+                    <a href="../csrr/" 
+                       class="">
+                        CSRR
+                    </a>
+                    
+                    <a href="../csrs/" 
+                       class="">
+                        CSRS
+                    </a>
+                    
+                    <a href="../csrw/" 
+                       class="">
+                        CSRW
+                    </a>
+                    
+                    <a href="../j/" 
+                       class="">
+                        J
+                    </a>
+                    
+                    <a href="../jr/" 
+                       class="">
+                        JR
+                    </a>
+                    
+                    <a href="../li/" 
+                       class="">
+                        LI
+                    </a>
+                    
+                    <a href="../mv/" 
+                       class="">
+                        MV
+                    </a>
+                    
+                    <a href="../neg/" 
+                       class="">
+                        NEG
+                    </a>
+                    
+                    <a href="../nop/" 
+                       class="">
+                        NOP
+                    </a>
+                    
+                    <a href="../not/" 
+                       class="">
+                        NOT
+                    </a>
+                    
+                    <a href="../rdcycle/" 
+                       class="">
+                        RDCYCLE
+                    </a>
+                    
+                    <a href="../rdinstret/" 
+                       class="">
+                        RDINSTRET
+                    </a>
+                    
+                    <a href="../rdtime/" 
+                       class="">
+                        RDTIME
+                    </a>
+                    
+                    <a href="../ret/" 
+                       class="">
+                        RET
+                    </a>
+                    
+                    <a href="../seqz/" 
+                       class="">
+                        SEQZ
+                    </a>
+                    
+                    <a href="../snez/" 
+                       class="">
+                        SNEZ
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>System & Privileged</summary>
+                <div class="group-links">
+                    
+                    <a href="../csrrw/" 
+                       class="">
+                        CSRRW
+                    </a>
+                    
+                    <a href="../dret/" 
+                       class="">
+                        DRET
+                    </a>
+                    
+                    <a href="../mret/" 
+                       class="">
+                        MRET
+                    </a>
+                    
+                    <a href="../sfence_vma/" 
+                       class="">
+                        SFENCE.VMA
+                    </a>
+                    
+                    <a href="../sret/" 
+                       class="">
+                        SRET
+                    </a>
+                    
+                    <a href="../uret/" 
+                       class="">
+                        URET
+                    </a>
+                    
+                    <a href="../wfi/" 
+                       class="">
+                        WFI
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Vector Operations</summary>
+                <div class="group-links">
+                    
+                    <a href="../vaadd_vv/" 
+                       class="">
+                        VAADD.VV
+                    </a>
+                    
+                    <a href="../vaaddu_vv/" 
+                       class="">
+                        VAADDU.VV
+                    </a>
+                    
+                    <a href="../vadc_vvm/" 
+                       class="">
+                        VADC.VVM
+                    </a>
+                    
+                    <a href="../vadd_vi/" 
+                       class="">
+                        VADD.VI
+                    </a>
+                    
+                    <a href="../vadd_vv/" 
+                       class="">
+                        VADD.VV
+                    </a>
+                    
+                    <a href="../vaddc_vvm/" 
+                       class="">
+                        VADDC.VVM
+                    </a>
+                    
+                    <a href="../vaesdf_vv/" 
+                       class="">
+                        VAESDF.VV
+                    </a>
+                    
+                    <a href="../vaesdm_vv/" 
+                       class="">
+                        VAESDM.VV
+                    </a>
+                    
+                    <a href="../vaesef_vv/" 
+                       class="">
+                        VAESEF.VV
+                    </a>
+                    
+                    <a href="../vaesem_vv/" 
+                       class="">
+                        VAESEM.VV
+                    </a>
+                    
+                    <a href="../vaeskf1_vi/" 
+                       class="">
+                        VAESKF1.VI
+                    </a>
+                    
+                    <a href="../vaeskf2_vi/" 
+                       class="">
+                        VAESKF2.VI
+                    </a>
+                    
+                    <a href="../vand_vi/" 
+                       class="">
+                        VAND.VI
+                    </a>
+                    
+                    <a href="../vandn_vv/" 
+                       class="">
+                        VANDN.VV
+                    </a>
+                    
+                    <a href="../vandn_vx/" 
+                       class="">
+                        VANDN.VX
+                    </a>
+                    
+                    <a href="../vasub_vv/" 
+                       class="">
+                        VASUB.VV
+                    </a>
+                    
+                    <a href="../vasubu_vv/" 
+                       class="">
+                        VASUBU.VV
+                    </a>
+                    
+                    <a href="../vbrev8_v/" 
+                       class="">
+                        VBREV8.V
+                    </a>
+                    
+                    <a href="../vclmul_vv/" 
+                       class="">
+                        VCLMUL.VV
+                    </a>
+                    
+                    <a href="../vclmulh_vv/" 
+                       class="">
+                        VCLMULH.VV
+                    </a>
+                    
+                    <a href="../vclz_v/" 
+                       class="">
+                        VCLZ.V
+                    </a>
+                    
+                    <a href="../vcompress_vm/" 
+                       class="">
+                        VCOMPRESS.VM
+                    </a>
+                    
+                    <a href="../vcpop_m/" 
+                       class="">
+                        VCPOP.M
+                    </a>
+                    
+                    <a href="../vcpop_v/" 
+                       class="">
+                        VCPOP.V
+                    </a>
+                    
+                    <a href="../vctz_v/" 
+                       class="">
+                        VCTZ.V
+                    </a>
+                    
+                    <a href="../vdiv_vv/" 
+                       class="">
+                        VDIV.VV
+                    </a>
+                    
+                    <a href="../vdivu_vv/" 
+                       class="">
+                        VDIVU.VV
+                    </a>
+                    
+                    <a href="../vfadd_vv/" 
+                       class="">
+                        VFADD.VV
+                    </a>
+                    
+                    <a href="../vfclass_v/" 
+                       class="">
+                        VFCLASS.V
+                    </a>
+                    
+                    <a href="../vfcvt_f_x_v/" 
+                       class="">
+                        VFCVT.F.X.V
+                    </a>
+                    
+                    <a href="../vfcvt_x_f_v/" 
+                       class="">
+                        VFCVT.X.F.V
+                    </a>
+                    
+                    <a href="../vfdiv_vv/" 
+                       class="">
+                        VFDIV.VV
+                    </a>
+                    
+                    <a href="../vfirst_m/" 
+                       class="">
+                        VFIRST.M
+                    </a>
+                    
+                    <a href="../vfmadd_vv/" 
+                       class="">
+                        VFMADD.VV
+                    </a>
+                    
+                    <a href="../vfmax_vv/" 
+                       class="">
+                        VFMAX.VV
+                    </a>
+                    
+                    <a href="../vfmin_vv/" 
+                       class="">
+                        VFMIN.VV
+                    </a>
+                    
+                    <a href="../vfmul_vv/" 
+                       class="">
+                        VFMUL.VV
+                    </a>
+                    
+                    <a href="../vfmv_f_s/" 
+                       class="">
+                        VFMV.F.S
+                    </a>
+                    
+                    <a href="../vfmv_s_f/" 
+                       class="">
+                        VFMV.S.F
+                    </a>
+                    
+                    <a href="../vfncvt_f_f_w/" 
+                       class="">
+                        VFNCVT.F.F.W
+                    </a>
+                    
+                    <a href="../vfncvt_x_f_w/" 
+                       class="">
+                        VFNCVT.X.F.W
+                    </a>
+                    
+                    <a href="../vfrec7_v/" 
+                       class="">
+                        VFREC7.V
+                    </a>
+                    
+                    <a href="../vfredmax_vs/" 
+                       class="">
+                        VFREDMAX.VS
+                    </a>
+                    
+                    <a href="../vfredusum_vs/" 
+                       class="">
+                        VFREDUSUM.VS
+                    </a>
+                    
+                    <a href="../vfrsqrt7_v/" 
+                       class="">
+                        VFRSQRT7.V
+                    </a>
+                    
+                    <a href="../vfsgnj_vv/" 
+                       class="">
+                        VFSGNJ.VV
+                    </a>
+                    
+                    <a href="../vfsqrt_v/" 
+                       class="">
+                        VFSQRT.V
+                    </a>
+                    
+                    <a href="../vfwadd_vv/" 
+                       class="">
+                        VFWADD.VV
+                    </a>
+                    
+                    <a href="../vfwcvt_f_f_v/" 
+                       class="">
+                        VFWCVT.F.F.V
+                    </a>
+                    
+                    <a href="../vfwcvt_f_x_v/" 
+                       class="">
+                        VFWCVT.F.X.V
+                    </a>
+                    
+                    <a href="../vfwcvt_x_f_v/" 
+                       class="">
+                        VFWCVT.X.F.V
+                    </a>
+                    
+                    <a href="../vfwmul_vv/" 
+                       class="">
+                        VFWMUL.VV
+                    </a>
+                    
+                    <a href="../vghsh_vv/" 
+                       class="">
+                        VGHSH.VV
+                    </a>
+                    
+                    <a href="../vgsha_vv/" 
+                       class="">
+                        VGSHA.VV
+                    </a>
+                    
+                    <a href="../vid_v/" 
+                       class="">
+                        VID.V
+                    </a>
+                    
+                    <a href="../viota_m/" 
+                       class="">
+                        VIOTA.M
+                    </a>
+                    
+                    <a href="../vle16_v/" 
+                       class="">
+                        VLE16.V
+                    </a>
+                    
+                    <a href="../vle32_v/" 
+                       class="">
+                        VLE32.V
+                    </a>
+                    
+                    <a href="../vle64_v/" 
+                       class="">
+                        VLE64.V
+                    </a>
+                    
+                    <a href="../vle8_v/" 
+                       class="">
+                        VLE8.V
+                    </a>
+                    
+                    <a href="../vlm_v/" 
+                       class="">
+                        VLM.V
+                    </a>
+                    
+                    <a href="../vloxei32_v/" 
+                       class="">
+                        VLOXEI32.V
+                    </a>
+                    
+                    <a href="../vlse32_v/" 
+                       class="">
+                        VLSE32.V
+                    </a>
+                    
+                    <a href="../vluxei32_v/" 
+                       class="">
+                        VLUXEI32.V
+                    </a>
+                    
+                    <a href="../vmacc_vv/" 
+                       class="">
+                        VMACC.VV
+                    </a>
+                    
+                    <a href="../vmadc_vim/" 
+                       class="">
+                        VMADC.VIM
+                    </a>
+                    
+                    <a href="../vmadc_vvm/" 
+                       class="">
+                        VMADC.VVM
+                    </a>
+                    
+                    <a href="../vmand_mm/" 
+                       class="">
+                        VMAND.MM
+                    </a>
+                    
+                    <a href="../vmandn_mm/" 
+                       class="">
+                        VMANDN.MM
+                    </a>
+                    
+                    <a href="../vmax_vv/" 
+                       class="">
+                        VMAX.VV
+                    </a>
+                    
+                    <a href="../vmaxu_vv/" 
+                       class="">
+                        VMAXU.VV
+                    </a>
+                    
+                    <a href="../vmerge_vvm/" 
+                       class="">
+                        VMERGE.VVM
+                    </a>
+                    
+                    <a href="../vmfeq_vv/" 
+                       class="">
+                        VMFEQ.VV
+                    </a>
+                    
+                    <a href="../vmfle_vv/" 
+                       class="">
+                        VMFLE.VV
+                    </a>
+                    
+                    <a href="../vmflt_vv/" 
+                       class="">
+                        VMFLT.VV
+                    </a>
+                    
+                    <a href="../vmin_vv/" 
+                       class="">
+                        VMIN.VV
+                    </a>
+                    
+                    <a href="../vminu_vv/" 
+                       class="">
+                        VMINU.VV
+                    </a>
+                    
+                    <a href="../vmnand_mm/" 
+                       class="">
+                        VMNAND.MM
+                    </a>
+                    
+                    <a href="../vmorn_mm/" 
+                       class="">
+                        VMORN.MM
+                    </a>
+                    
+                    <a href="../vmsbc_vv/" 
+                       class="">
+                        VMSBC.VV
+                    </a>
+                    
+                    <a href="../vmsbf_m/" 
+                       class="">
+                        VMSBF.M
+                    </a>
+                    
+                    <a href="../vmseq_vi/" 
+                       class="">
+                        VMSEQ.VI
+                    </a>
+                    
+                    <a href="../vmseq_vv/" 
+                       class="">
+                        VMSEQ.VV
+                    </a>
+                    
+                    <a href="../vmsge_vv/" 
+                       class="">
+                        VMSGE.VV
+                    </a>
+                    
+                    <a href="../vmsgeu_vv/" 
+                       class="">
+                        VMSGEU.VV
+                    </a>
+                    
+                    <a href="../vmsgt_vv/" 
+                       class="">
+                        VMSGT.VV
+                    </a>
+                    
+                    <a href="../vmsgtu_vv/" 
+                       class="">
+                        VMSGTU.VV
+                    </a>
+                    
+                    <a href="../vmsif_m/" 
+                       class="">
+                        VMSIF.M
+                    </a>
+                    
+                    <a href="../vmsle_vi/" 
+                       class="">
+                        VMSLE.VI
+                    </a>
+                    
+                    <a href="../vmsle_vv/" 
+                       class="">
+                        VMSLE.VV
+                    </a>
+                    
+                    <a href="../vmsleu_vi/" 
+                       class="">
+                        VMSLEU.VI
+                    </a>
+                    
+                    <a href="../vmsleu_vv/" 
+                       class="">
+                        VMSLEU.VV
+                    </a>
+                    
+                    <a href="../vmslt_vi/" 
+                       class="">
+                        VMSLT.VI
+                    </a>
+                    
+                    <a href="../vmslt_vv/" 
+                       class="">
+                        VMSLT.VV
+                    </a>
+                    
+                    <a href="../vmsltu_vi/" 
+                       class="">
+                        VMSLTU.VI
+                    </a>
+                    
+                    <a href="../vmsltu_vv/" 
+                       class="">
+                        VMSLTU.VV
+                    </a>
+                    
+                    <a href="../vmsne_vi/" 
+                       class="">
+                        VMSNE.VI
+                    </a>
+                    
+                    <a href="../vmsof_m/" 
+                       class="">
+                        VMSOF.M
+                    </a>
+                    
+                    <a href="../vmul_vv/" 
+                       class="">
+                        VMUL.VV
+                    </a>
+                    
+                    <a href="../vmulh_vv/" 
+                       class="">
+                        VMULH.VV
+                    </a>
+                    
+                    <a href="../vmulhu_vv/" 
+                       class="">
+                        VMULHU.VV
+                    </a>
+                    
+                    <a href="../vmv_s_x/" 
+                       class="">
+                        VMV.S.X
+                    </a>
+                    
+                    <a href="../vmv_v_v/" 
+                       class="">
+                        VMV.V.V
+                    </a>
+                    
+                    <a href="../vmv_x_s/" 
+                       class="">
+                        VMV.X.S
+                    </a>
+                    
+                    <a href="../vmv1r_v/" 
+                       class="">
+                        VMV1R.V
+                    </a>
+                    
+                    <a href="../vmv2r_v/" 
+                       class="">
+                        VMV2R.V
+                    </a>
+                    
+                    <a href="../vmv4r_v/" 
+                       class="">
+                        VMV4R.V
+                    </a>
+                    
+                    <a href="../vmv8r_v/" 
+                       class="">
+                        VMV8R.V
+                    </a>
+                    
+                    <a href="../vmxnor_mm/" 
+                       class="">
+                        VMXNOR.MM
+                    </a>
+                    
+                    <a href="../vnclip_wv/" 
+                       class="">
+                        VNCLIP.WV
+                    </a>
+                    
+                    <a href="../vnclipu_wi/" 
+                       class="">
+                        VNCLIPU.WI
+                    </a>
+                    
+                    <a href="../vnmsub_vv/" 
+                       class="">
+                        VNMSUB.VV
+                    </a>
+                    
+                    <a href="../vnsra_wi/" 
+                       class="">
+                        VNSRA.WI
+                    </a>
+                    
+                    <a href="../vnsra_wx/" 
+                       class="">
+                        VNSRA.WX
+                    </a>
+                    
+                    <a href="../vnsrl_wi/" 
+                       class="">
+                        VNSRL.WI
+                    </a>
+                    
+                    <a href="../vnsrl_wx/" 
+                       class="">
+                        VNSRL.WX
+                    </a>
+                    
+                    <a href="../vor_vi/" 
+                       class="">
+                        VOR.VI
+                    </a>
+                    
+                    <a href="../vor_vv/" 
+                       class="">
+                        VOR.VV
+                    </a>
+                    
+                    <a href="../vorn_vv/" 
+                       class="">
+                        VORN.VV
+                    </a>
+                    
+                    <a href="../vorn_vx/" 
+                       class="">
+                        VORN.VX
+                    </a>
+                    
+                    <a href="../vredand_vs/" 
+                       class="">
+                        VREDAND.VS
+                    </a>
+                    
+                    <a href="../vredmax_vs/" 
+                       class="">
+                        VREDMAX.VS
+                    </a>
+                    
+                    <a href="../vredmin_vs/" 
+                       class="">
+                        VREDMIN.VS
+                    </a>
+                    
+                    <a href="../vredor_vs/" 
+                       class="">
+                        VREDOR.VS
+                    </a>
+                    
+                    <a href="../vredsum_vs/" 
+                       class="">
+                        VREDSUM.VS
+                    </a>
+                    
+                    <a href="../vrem_vv/" 
+                       class="">
+                        VREM.VV
+                    </a>
+                    
+                    <a href="../vremu_vv/" 
+                       class="">
+                        VREMU.VV
+                    </a>
+                    
+                    <a href="../vrev8_v/" 
+                       class="">
+                        VREV8.V
+                    </a>
+                    
+                    <a href="../vrgather_vi/" 
+                       class="">
+                        VRGATHER.VI
+                    </a>
+                    
+                    <a href="../vrgather_vv/" 
+                       class="">
+                        VRGATHER.VV
+                    </a>
+                    
+                    <a href="../vrol_vv/" 
+                       class="">
+                        VROL.VV
+                    </a>
+                    
+                    <a href="../vrol_vx/" 
+                       class="">
+                        VROL.VX
+                    </a>
+                    
+                    <a href="../vror_vv/" 
+                       class="">
+                        VROR.VV
+                    </a>
+                    
+                    <a href="../vror_vx/" 
+                       class="">
+                        VROR.VX
+                    </a>
+                    
+                    <a href="../vrsub_vi/" 
+                       class="">
+                        VRSUB.VI
+                    </a>
+                    
+                    <a href="../vrsub_vx/" 
+                       class="">
+                        VRSUB.VX
+                    </a>
+                    
+                    <a href="../vsadd_vv/" 
+                       class="">
+                        VSADD.VV
+                    </a>
+                    
+                    <a href="../vsaddu_vv/" 
+                       class="">
+                        VSADDU.VV
+                    </a>
+                    
+                    <a href="../vsbc_vvm/" 
+                       class="">
+                        VSBC.VVM
+                    </a>
+                    
+                    <a href="../vse16_v/" 
+                       class="">
+                        VSE16.V
+                    </a>
+                    
+                    <a href="../vse32_v/" 
+                       class="">
+                        VSE32.V
+                    </a>
+                    
+                    <a href="../vse64_v/" 
+                       class="">
+                        VSE64.V
+                    </a>
+                    
+                    <a href="../vse8_v/" 
+                       class="">
+                        VSE8.V
+                    </a>
+                    
+                    <a href="../vsetivli/" 
+                       class="">
+                        VSETIVLI
+                    </a>
+                    
+                    <a href="../vsetvli/" 
+                       class="">
+                        VSETVLI
+                    </a>
+                    
+                    <a href="../vsha2ch_vv/" 
+                       class="">
+                        VSHA2CH.VV
+                    </a>
+                    
+                    <a href="../vsha2cl_vv/" 
+                       class="">
+                        VSHA2CL.VV
+                    </a>
+                    
+                    <a href="../vsha2ms_vv/" 
+                       class="">
+                        VSHA2MS.VV
+                    </a>
+                    
+                    <a href="../vslidedown_vi/" 
+                       class="">
+                        VSLIDEDOWN.VI
+                    </a>
+                    
+                    <a href="../vslidedown_vx/" 
+                       class="">
+                        VSLIDEDOWN.VX
+                    </a>
+                    
+                    <a href="../vslideup_vi/" 
+                       class="">
+                        VSLIDEUP.VI
+                    </a>
+                    
+                    <a href="../vslideup_vx/" 
+                       class="">
+                        VSLIDEUP.VX
+                    </a>
+                    
+                    <a href="../vsll_vi/" 
+                       class="">
+                        VSLL.VI
+                    </a>
+                    
+                    <a href="../vsll_vv/" 
+                       class="">
+                        VSLL.VV
+                    </a>
+                    
+                    <a href="../vsm_v/" 
+                       class="">
+                        VSM.V
+                    </a>
+                    
+                    <a href="../vsmul_vv/" 
+                       class="">
+                        VSMUL.VV
+                    </a>
+                    
+                    <a href="../vsoxei32_v/" 
+                       class="">
+                        VSOXEI32.V
+                    </a>
+                    
+                    <a href="../vsra_vi/" 
+                       class="">
+                        VSRA.VI
+                    </a>
+                    
+                    <a href="../vsra_vv/" 
+                       class="">
+                        VSRA.VV
+                    </a>
+                    
+                    <a href="../vsrl_vi/" 
+                       class="">
+                        VSRL.VI
+                    </a>
+                    
+                    <a href="../vsrl_vv/" 
+                       class="">
+                        VSRL.VV
+                    </a>
+                    
+                    <a href="../vsse32_v/" 
+                       class="">
+                        VSSE32.V
+                    </a>
+                    
+                    <a href="../vssra_vv/" 
+                       class="">
+                        VSSRA.VV
+                    </a>
+                    
+                    <a href="../vssrl_vv/" 
+                       class="">
+                        VSSRL.VV
+                    </a>
+                    
+                    <a href="../vssub_vv/" 
+                       class="">
+                        VSSUB.VV
+                    </a>
+                    
+                    <a href="../vssubu_vv/" 
+                       class="">
+                        VSSUBU.VV
+                    </a>
+                    
+                    <a href="../vsub_vv/" 
+                       class="">
+                        VSUB.VV
+                    </a>
+                    
+                    <a href="../vsuxei32_v/" 
+                       class="">
+                        VSUXEI32.V
+                    </a>
+                    
+                    <a href="../vwadd_vv/" 
+                       class="">
+                        VWADD.VV
+                    </a>
+                    
+                    <a href="../vwaddu_vv/" 
+                       class="">
+                        VWADDU.VV
+                    </a>
+                    
+                    <a href="../vwmacc_vv/" 
+                       class="">
+                        VWMACC.VV
+                    </a>
+                    
+                    <a href="../vwmaccsu_vv/" 
+                       class="">
+                        VWMACCSU.VV
+                    </a>
+                    
+                    <a href="../vwmaccu_vv/" 
+                       class="">
+                        VWMACCU.VV
+                    </a>
+                    
+                    <a href="../vwmaccus_vv/" 
+                       class="">
+                        VWMACCUS.VV
+                    </a>
+                    
+                    <a href="../vwmul_vv/" 
+                       class="">
+                        VWMUL.VV
+                    </a>
+                    
+                    <a href="../vwredsum_vs/" 
+                       class="">
+                        VWREDSUM.VS
+                    </a>
+                    
+                    <a href="../vwredsumu_vs/" 
+                       class="">
+                        VWREDSUMU.VS
+                    </a>
+                    
+                    <a href="../vwsll_vi/" 
+                       class="">
+                        VWSLL.VI
+                    </a>
+                    
+                    <a href="../vwsll_vv/" 
+                       class="">
+                        VWSLL.VV
+                    </a>
+                    
+                    <a href="../vwsll_vx/" 
+                       class="">
+                        VWSLL.VX
+                    </a>
+                    
+                    <a href="../vwsub_vv/" 
+                       class="">
+                        VWSUB.VV
+                    </a>
+                    
+                    <a href="../vxnor_vv/" 
+                       class="">
+                        VXNOR.VV
+                    </a>
+                    
+                    <a href="../vxnor_vx/" 
+                       class="">
+                        VXNOR.VX
+                    </a>
+                    
+                    <a href="../vxor_vi/" 
+                       class="">
+                        VXOR.VI
+                    </a>
+                    
+                    <a href="../vxor_vv/" 
+                       class="">
+                        VXOR.VV
+                    </a>
+                    
+                </div>
+            </details>
+            
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <a href="../../risc-v/" style="color: var(--text-muted);">← All Instructions</a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div>
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../risc-v/">RISC-V</a> <span>/</span> 
+                VMSBF.M
+            </div>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">VMSBF.M</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Vector Mask Set Before First</h2>
+            
+            <div class="syntax-box">
+                VMSBF.M vd, vs2, vm
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Sets mask bits before the first set <a href="../../armv8-a/bit/">bit</a> <a href="../../x86/in/">in</a> the source mask.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
+                <div>
+                    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            Set 1s up to the first 1 <a href="../../x86/in/">in</a> vs2.
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                                <div class="bit-box" data-op="010100">
+                                    <span class="bit-value">010100</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="vm">
+                                    <span class="bit-value">vm</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="vs2">
+                                    <span class="bit-value">vs2</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="00001">
+                                    <span class="bit-value">00001</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="010">
+                                    <span class="bit-value">010</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="vd">
+                                    <span class="bit-value">vd</span>
+                                </div>
+                                
+                                <div class="bit-box" data-op="1010111">
+                                    <span class="bit-value">1010111</span>
+                                </div>
+                                
+                            </div>
+                            <div id="bit-tooltip" style="min-height: 24px; color: var(--accent); font-size: 0.9rem; margin-top: 12px; font-family: 'Inter', sans-serif; font-weight: 500; transition: opacity 0.2s; opacity: 0;">
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">OPMVV</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x57</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                            <li class="operand-row" data-op="vd" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">vd</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Dest Mask</span>
+                            </li>
+                            
+                            <li class="operand-row" data-op="vs2" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
+                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">vs2</span>
+                                <br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Src Mask</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "VMSBF.M (RISC-V)",
+  "description": "Sets mask bits before the first set bit in the source mask.",
+  "articleBody": "Vector Mask Set Before First. Syntax: VMSBF.M vd, vs2, vm. Opcode: 0x57",
+  "proficiencyLevel": "Expert",
+  "datePublished": "2024-01-01"
+}
+</script>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../../static/theme.js"></script>
+
+    <script src="../../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

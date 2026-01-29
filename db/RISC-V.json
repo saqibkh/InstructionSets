@@ -1,6 +1,2198 @@
 {
   "instructions": [
     {
+      "mnemonic": "VANDN.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Bitwise AND-NOT",
+      "summary": "Computes vd = vs2 & ~vs1 (bitwise AND with inverted source).",
+      "syntax": "VANDN.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "000001 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs2[i] & ~vs1[i];",
+      "slug": "vandn_vv",
+      "rel_url": "risc-v/vandn_vv/",
+      "linked_summary": "Computes vd = vs2 & ~vs1 (bitwise <a href=\"../../risc-v/and/\">AND</a> with inverted source).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs2[i] & ~vs1[i];"
+    },
+    {
+      "mnemonic": "VORN.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Bitwise OR-NOT",
+      "summary": "Computes vd = vs2 | ~vs1 (bitwise OR with inverted source).",
+      "syntax": "VORN.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "000101 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000101",
+            "clean": "000101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs2[i] | ~vs1[i];",
+      "slug": "vorn_vv",
+      "rel_url": "risc-v/vorn_vv/",
+      "linked_summary": "Computes vd = vs2 | ~vs1 (bitwise <a href=\"../../risc-v/or/\">OR</a> with inverted source).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs2[i] | ~vs1[i];"
+    },
+    {
+      "mnemonic": "VXNOR.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Bitwise XNOR",
+      "summary": "Computes vd = ~(vs2 ^ vs1) (bitwise Exclusive-NOR).",
+      "syntax": "VXNOR.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "000111 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000111",
+            "clean": "000111"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = ~(vs2[i] ^ vs1[i]);",
+      "slug": "vxnor_vv",
+      "rel_url": "risc-v/vxnor_vv/",
+      "linked_summary": "Computes vd = ~(vs2 ^ vs1) (bitwise Exclusive-NOR).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = ~(vs2[i] ^ vs1[i]);"
+    },
+    {
+      "mnemonic": "VROL.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Rotate Left",
+      "summary": "Rotates bits in elements of vs2 left by amounts in vs1.",
+      "syntax": "VROL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010101 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010101",
+            "clean": "010101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "vs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] << vs1[i]) | (vs2[i] >> (SEW - vs1[i]));",
+      "slug": "vrol_vv",
+      "rel_url": "risc-v/vrol_vv/",
+      "linked_summary": "Rotates bits <a href=\"../../x86/in/\">in</a> elements of vs2 left by amounts <a href=\"../../x86/in/\">in</a> vs1.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs2[i] << vs1[i]) | (vs2[i] >> (SEW - vs1[i]));"
+    },
+    {
+      "mnemonic": "VROR.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Rotate Right",
+      "summary": "Rotates bits in elements of vs2 right by amounts in vs1.",
+      "syntax": "VROR.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010100 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010100",
+            "clean": "010100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "vs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >> vs1[i]) | (vs2[i] << (SEW - vs1[i]));",
+      "slug": "vror_vv",
+      "rel_url": "risc-v/vror_vv/",
+      "linked_summary": "Rotates bits <a href=\"../../x86/in/\">in</a> elements of vs2 right by amounts <a href=\"../../x86/in/\">in</a> vs1.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >> vs1[i]) | (vs2[i] << (SEW - vs1[i]));"
+    },
+    {
+      "mnemonic": "VROL.VX",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Rotate Left Scalar",
+      "summary": "Rotates bits in elements of vs2 left by scalar rs1.",
+      "syntax": "VROL.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "010101 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010101",
+            "clean": "010101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "rs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = rotate_left(vs2[i], rs1);",
+      "slug": "vrol_vx",
+      "rel_url": "risc-v/vrol_vx/",
+      "linked_summary": "Rotates bits <a href=\"../../x86/in/\">in</a> elements of vs2 left by scalar rs1.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = rotate_left(vs2[i], rs1);"
+    },
+    {
+      "mnemonic": "VROR.VX",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Rotate Right Scalar",
+      "summary": "Rotates bits in elements of vs2 right by scalar rs1.",
+      "syntax": "VROR.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "010100 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010100",
+            "clean": "010100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "rs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = rotate_right(vs2[i], rs1);",
+      "slug": "vror_vx",
+      "rel_url": "risc-v/vror_vx/",
+      "linked_summary": "Rotates bits <a href=\"../../x86/in/\">in</a> elements of vs2 right by scalar rs1.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = rotate_right(vs2[i], rs1);"
+    },
+    {
+      "mnemonic": "VBREV8.V",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Byte Reverse",
+      "summary": "Reverses the bits within each byte of the source elements.",
+      "syntax": "VBREV8.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010010 | vm | vs2 | 01000 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01000",
+            "clean": "01000"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = reverse_bits_in_bytes(vs2[i]);",
+      "slug": "vbrev8_v",
+      "rel_url": "risc-v/vbrev8_v/",
+      "linked_summary": "Reverses the bits within each byte of the source elements.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = reverse_bits_in_bytes(vs2[i]);"
+    },
+    {
+      "mnemonic": "VREV8.V",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Reverse 8",
+      "summary": "Reverses the order of bytes within each element (Endian swap).",
+      "syntax": "VREV8.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010010 | vm | vs2 | 01001 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01001",
+            "clean": "01001"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = bswap(vs2[i]);",
+      "slug": "vrev8_v",
+      "rel_url": "risc-v/vrev8_v/",
+      "linked_summary": "Reverses the order of bytes within each element (Endian swap).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = <a href=\"../../x86/bswap_1/\">bswap</a>(vs2[i]);"
+    },
+    {
+      "mnemonic": "VCLZ.V",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Count Leading Zeros",
+      "summary": "Counts the number of leading zero bits in each element.",
+      "syntax": "VCLZ.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010010 | vm | vs2 | 01100 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01100",
+            "clean": "01100"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = count_leading_zeros(vs2[i]);",
+      "slug": "vclz_v",
+      "rel_url": "risc-v/vclz_v/",
+      "linked_summary": "Counts the number of leading <a href=\"../../armv9-a/zero_1/\">zero</a> bits <a href=\"../../x86/in/\">in</a> each element.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = count_leading_zeros(vs2[i]);"
+    },
+    {
+      "mnemonic": "VCTZ.V",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Count Trailing Zeros",
+      "summary": "Counts the number of trailing zero bits in each element.",
+      "syntax": "VCTZ.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010010 | vm | vs2 | 01101 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01101",
+            "clean": "01101"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = count_trailing_zeros(vs2[i]);",
+      "slug": "vctz_v",
+      "rel_url": "risc-v/vctz_v/",
+      "linked_summary": "Counts the number of trailing <a href=\"../../armv9-a/zero_1/\">zero</a> bits <a href=\"../../x86/in/\">in</a> each element.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = count_trailing_zeros(vs2[i]);"
+    },
+    {
+      "mnemonic": "VCPOP.V",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Population Count",
+      "summary": "Counts the number of set bits (1s) in each element.",
+      "syntax": "VCPOP.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010010 | vm | vs2 | 01110 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01110",
+            "clean": "01110"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = count_set_bits(vs2[i]);",
+      "slug": "vcpop_v",
+      "rel_url": "risc-v/vcpop_v/",
+      "linked_summary": "Counts the number of set bits (1s) <a href=\"../../x86/in/\">in</a> each element.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = count_set_bits(vs2[i]);"
+    },
+    {
+      "mnemonic": "VWSLL.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbb (Vector BitManip)",
+      "full_name": "Vector Widening Shift Left Logical",
+      "summary": "Shifts N-bit elements left to produce 2*N-bit results.",
+      "syntax": "VWSLL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "110101 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "110101",
+            "clean": "110101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Wide)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Narrow)"
+        },
+        {
+          "name": "vs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = zext(vs2[i]) << vs1[i];",
+      "slug": "vwsll_vv",
+      "rel_url": "risc-v/vwsll_vv/",
+      "linked_summary": "Shifts N-<a href=\"../../armv8-a/bit/\">bit</a> elements left to produce 2*N-<a href=\"../../armv8-a/bit/\">bit</a> results.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = zext(vs2[i]) << vs1[i];"
+    },
+    {
+      "mnemonic": "VAESDF.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvkned (Vector Crypto)",
+      "full_name": "Vector AES Decryption Final Round",
+      "summary": "Performs the final AES decryption round.",
+      "syntax": "VAESDF.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101001 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101001",
+            "clean": "101001"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "State"
+        },
+        {
+          "name": "vs2",
+          "desc": "Round Key"
+        },
+        {
+          "name": "vs1",
+          "desc": "Undef"
+        }
+      ],
+      "pseudocode": "vd = AES_Decrypt_Final(vd, vs2);",
+      "slug": "vaesdf_vv",
+      "rel_url": "risc-v/vaesdf_vv/",
+      "linked_summary": "Performs the final AES decryption round.",
+      "linked_pseudocode": "vd = AES_Decrypt_Final(vd, vs2);"
+    },
+    {
+      "mnemonic": "VAESDM.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvkned (Vector Crypto)",
+      "full_name": "Vector AES Decryption Middle Round",
+      "summary": "Performs a middle AES decryption round.",
+      "syntax": "VAESDM.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101000 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101000",
+            "clean": "101000"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "State"
+        },
+        {
+          "name": "vs2",
+          "desc": "Round Key"
+        },
+        {
+          "name": "vs1",
+          "desc": "Undef"
+        }
+      ],
+      "pseudocode": "vd = AES_Decrypt_Middle(vd, vs2);",
+      "slug": "vaesdm_vv",
+      "rel_url": "risc-v/vaesdm_vv/",
+      "linked_summary": "Performs a middle AES decryption round.",
+      "linked_pseudocode": "vd = AES_Decrypt_Middle(vd, vs2);"
+    },
+    {
+      "mnemonic": "VAESEF.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvkned (Vector Crypto)",
+      "full_name": "Vector AES Encryption Final Round",
+      "summary": "Performs the final AES encryption round.",
+      "syntax": "VAESEF.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101011 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101011",
+            "clean": "101011"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "State"
+        },
+        {
+          "name": "vs2",
+          "desc": "Round Key"
+        },
+        {
+          "name": "vs1",
+          "desc": "Undef"
+        }
+      ],
+      "pseudocode": "vd = AES_Encrypt_Final(vd, vs2);",
+      "slug": "vaesef_vv",
+      "rel_url": "risc-v/vaesef_vv/",
+      "linked_summary": "Performs the final AES encryption round.",
+      "linked_pseudocode": "vd = AES_Encrypt_Final(vd, vs2);"
+    },
+    {
+      "mnemonic": "VAESEM.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvkned (Vector Crypto)",
+      "full_name": "Vector AES Encryption Middle Round",
+      "summary": "Performs a middle AES encryption round.",
+      "syntax": "VAESEM.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101010 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101010",
+            "clean": "101010"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "State"
+        },
+        {
+          "name": "vs2",
+          "desc": "Round Key"
+        },
+        {
+          "name": "vs1",
+          "desc": "Undef"
+        }
+      ],
+      "pseudocode": "vd = AES_Encrypt_Middle(vd, vs2);",
+      "slug": "vaesem_vv",
+      "rel_url": "risc-v/vaesem_vv/",
+      "linked_summary": "Performs a middle AES encryption round.",
+      "linked_pseudocode": "vd = AES_Encrypt_Middle(vd, vs2);"
+    },
+    {
+      "mnemonic": "VAESKF1.VI",
+      "architecture": "RISC-V",
+      "extension": "Zvkned (Vector Crypto)",
+      "full_name": "Vector AES Key Expansion 1",
+      "summary": "Generates the next round key for AES (Step 1).",
+      "syntax": "VAESKF1.VI vd, vs2, uimm",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "100010 | 1 | vs2 | uimm | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100010",
+            "clean": "100010"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "uimm",
+            "clean": "uimm"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "uimm",
+          "desc": "RCON"
+        }
+      ],
+      "pseudocode": "vd = AES_KeyGen_1(vs2, uimm);",
+      "slug": "vaeskf1_vi",
+      "rel_url": "risc-v/vaeskf1_vi/",
+      "linked_summary": "Generates the next round key for AES (Step 1).",
+      "linked_pseudocode": "vd = AES_KeyGen_1(vs2, uimm);"
+    },
+    {
+      "mnemonic": "VAESKF2.VI",
+      "architecture": "RISC-V",
+      "extension": "Zvkned (Vector Crypto)",
+      "full_name": "Vector AES Key Expansion 2",
+      "summary": "Generates the next round key for AES (Step 2).",
+      "syntax": "VAESKF2.VI vd, vs2, uimm",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "101010 | 1 | vs2 | uimm | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101010",
+            "clean": "101010"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "uimm",
+            "clean": "uimm"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "uimm",
+          "desc": "Round"
+        }
+      ],
+      "pseudocode": "vd = AES_KeyGen_2(vs2, uimm);",
+      "slug": "vaeskf2_vi",
+      "rel_url": "risc-v/vaeskf2_vi/",
+      "linked_summary": "Generates the next round key for AES (Step 2).",
+      "linked_pseudocode": "vd = AES_KeyGen_2(vs2, uimm);"
+    },
+    {
+      "mnemonic": "VSHA2CH.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvknha (Vector Crypto)",
+      "full_name": "Vector SHA-2 Compress High",
+      "summary": "Performs SHA-256 compression (high 128 bits).",
+      "syntax": "VSHA2CH.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101110 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101110",
+            "clean": "101110"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "State"
+        },
+        {
+          "name": "vs2",
+          "desc": "Message"
+        },
+        {
+          "name": "vs1",
+          "desc": "State B"
+        }
+      ],
+      "pseudocode": "vd = SHA256_Compress_High(vd, vs1, vs2);",
+      "slug": "vsha2ch_vv",
+      "rel_url": "risc-v/vsha2ch_vv/",
+      "linked_summary": "Performs SHA-256 compression (high 128 bits).",
+      "linked_pseudocode": "vd = SHA256_Compress_High(vd, vs1, vs2);"
+    },
+    {
+      "mnemonic": "VSHA2CL.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvknha (Vector Crypto)",
+      "full_name": "Vector SHA-2 Compress Low",
+      "summary": "Performs SHA-256 compression (low 128 bits).",
+      "syntax": "VSHA2CL.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101111 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101111",
+            "clean": "101111"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "State"
+        },
+        {
+          "name": "vs2",
+          "desc": "Message"
+        },
+        {
+          "name": "vs1",
+          "desc": "State B"
+        }
+      ],
+      "pseudocode": "vd = SHA256_Compress_Low(vd, vs1, vs2);",
+      "slug": "vsha2cl_vv",
+      "rel_url": "risc-v/vsha2cl_vv/",
+      "linked_summary": "Performs SHA-256 compression (low 128 bits).",
+      "linked_pseudocode": "vd = SHA256_Compress_Low(vd, vs1, vs2);"
+    },
+    {
+      "mnemonic": "VSHA2MS.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvknha (Vector Crypto)",
+      "full_name": "Vector SHA-2 Message Schedule",
+      "summary": "Generates SHA-256 message schedule words.",
+      "syntax": "VSHA2MS.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101100 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101100",
+            "clean": "101100"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "vd = SHA256_MsgSched(vd, vs1, vs2);",
+      "slug": "vsha2ms_vv",
+      "rel_url": "risc-v/vsha2ms_vv/",
+      "linked_summary": "Generates SHA-256 message schedule words.",
+      "linked_pseudocode": "vd = SHA256_MsgSched(vd, vs1, vs2);"
+    },
+    {
+      "mnemonic": "VGHSH.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvkg (Vector Crypto)",
+      "full_name": "Vector GCM Hash",
+      "summary": "Performs GHASH multiply-add for AES-GCM.",
+      "syntax": "VGHSH.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101100 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101100",
+            "clean": "101100"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Accumulator"
+        },
+        {
+          "name": "vs2",
+          "desc": "Hash Key"
+        },
+        {
+          "name": "vs1",
+          "desc": "Data"
+        }
+      ],
+      "pseudocode": "vd = GHASH_MulAdd(vd, vs1, vs2);",
+      "slug": "vghsh_vv",
+      "rel_url": "risc-v/vghsh_vv/",
+      "linked_summary": "Performs GHASH multiply-<a href=\"../../armv8-a/add_8/\">add</a> for AES-GCM.",
+      "linked_pseudocode": "vd = GHASH_MulAdd(vd, vs1, vs2);"
+    },
+    {
+      "mnemonic": "VGSHA.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvkg (Vector Crypto)",
+      "full_name": "Vector GCM Hash Accumulate",
+      "summary": "Used in GCM GHASH loop.",
+      "syntax": "VGSHA.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101101 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101101",
+            "clean": "101101"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "vd = GHASH_Step(vd, vs1, vs2);",
+      "slug": "vgsha_vv",
+      "rel_url": "risc-v/vgsha_vv/",
+      "linked_summary": "Used <a href=\"../../x86/in/\">in</a> GCM GHASH <a href=\"../../x86/loop/\">loop</a>.",
+      "linked_pseudocode": "vd = GHASH_Step(vd, vs1, vs2);"
+    },
+    {
+      "mnemonic": "VCLMUL.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbc (Vector Crypto)",
+      "full_name": "Vector Carry-less Multiply",
+      "summary": "Performs carry-less multiplication on vector elements (GF(2^n)).",
+      "syntax": "VCLMUL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "001100 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "001100",
+            "clean": "001100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = clmul(vs1[i], vs2[i]);",
+      "slug": "vclmul_vv",
+      "rel_url": "risc-v/vclmul_vv/",
+      "linked_summary": "Performs carry-less multiplication on vector elements (GF(2^n)).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = clmul(vs1[i], vs2[i]);"
+    },
+    {
+      "mnemonic": "VCLMULH.VV",
+      "architecture": "RISC-V",
+      "extension": "Zvbc (Vector Crypto)",
+      "full_name": "Vector Carry-less Multiply High",
+      "summary": "Performs carry-less multiplication, keeping the high half.",
+      "syntax": "VCLMULH.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "001101 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "001101",
+            "clean": "001101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = clmulh(vs1[i], vs2[i]);",
+      "slug": "vclmulh_vv",
+      "rel_url": "risc-v/vclmulh_vv/",
+      "linked_summary": "Performs carry-less multiplication, keeping the high half.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = clmulh(vs1[i], vs2[i]);"
+    },
+    {
+      "mnemonic": "VCPOP.M",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Mask Population Count",
+      "summary": "Counts set bits in the source mask register.",
+      "syntax": "VCPOP.M rd, vs2, vm",
+      "encoding": {
+        "format": "OPMVX",
+        "binary_pattern": "010000 | vm | vs2 | 10000 | 010 | rd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010000",
+            "clean": "010000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Scalar)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Mask"
+        }
+      ],
+      "pseudocode": "rd = count_set_bits(vs2 & vm);",
+      "slug": "vcpop_m",
+      "rel_url": "risc-v/vcpop_m/",
+      "linked_summary": "Counts set bits <a href=\"../../x86/in/\">in</a> the source mask register.",
+      "linked_pseudocode": "rd = count_set_bits(vs2 & vm);"
+    },
+    {
+      "mnemonic": "VFIRST.M",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Find First Set Mask Bit",
+      "summary": "Finds the index of the first set bit in the mask.",
+      "syntax": "VFIRST.M rd, vs2, vm",
+      "encoding": {
+        "format": "OPMVX",
+        "binary_pattern": "010000 | vm | vs2 | 10001 | 010 | rd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010000",
+            "clean": "010000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "10001",
+            "clean": "10001"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Index)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Mask"
+        }
+      ],
+      "pseudocode": "rd = find_first_set(vs2 & vm);",
+      "slug": "vfirst_m",
+      "rel_url": "risc-v/vfirst_m/",
+      "linked_summary": "Finds the <a href=\"../../armv8-a/index/\">index</a> of the first set <a href=\"../../armv8-a/bit/\">bit</a> <a href=\"../../x86/in/\">in</a> the mask.",
+      "linked_pseudocode": "rd = find_first_set(vs2 & vm);"
+    },
+    {
+      "mnemonic": "VMSBF.M",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Mask Set Before First",
+      "summary": "Sets mask bits before the first set bit in the source mask.",
+      "syntax": "VMSBF.M vd, vs2, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "010100 | vm | vs2 | 00001 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010100",
+            "clean": "010100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00001",
+            "clean": "00001"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Mask"
+        }
+      ],
+      "pseudocode": "Set 1s up to the first 1 in vs2.",
+      "slug": "vmsbf_m",
+      "rel_url": "risc-v/vmsbf_m/",
+      "linked_summary": "Sets mask bits before the first set <a href=\"../../armv8-a/bit/\">bit</a> <a href=\"../../x86/in/\">in</a> the source mask.",
+      "linked_pseudocode": "Set 1s up to the first 1 <a href=\"../../x86/in/\">in</a> vs2."
+    },
+    {
+      "mnemonic": "VMSIF.M",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Mask Set Including First",
+      "summary": "Sets mask bits up to and including the first set bit in the source.",
+      "syntax": "VMSIF.M vd, vs2, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "010100 | vm | vs2 | 00011 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010100",
+            "clean": "010100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00011",
+            "clean": "00011"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Mask"
+        }
+      ],
+      "pseudocode": "Set 1s up to and including the first 1 in vs2.",
+      "slug": "vmsif_m",
+      "rel_url": "risc-v/vmsif_m/",
+      "linked_summary": "Sets mask bits up to <a href=\"../../armv8-a/and_6/\">and</a> including the first set <a href=\"../../armv8-a/bit/\">bit</a> <a href=\"../../x86/in/\">in</a> the source.",
+      "linked_pseudocode": "Set 1s up to <a href=\"../../armv8-a/and_6/\">and</a> including the first 1 <a href=\"../../x86/in/\">in</a> vs2."
+    },
+    {
+      "mnemonic": "VMSOF.M",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Mask Set Only First",
+      "summary": "Sets only the first set bit from the source mask.",
+      "syntax": "VMSOF.M vd, vs2, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "010100 | vm | vs2 | 00010 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010100",
+            "clean": "010100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00010",
+            "clean": "00010"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Mask"
+        }
+      ],
+      "pseudocode": "vd = (1 << first_set_index(vs2)) & vm;",
+      "slug": "vmsof_m",
+      "rel_url": "risc-v/vmsof_m/",
+      "linked_summary": "Sets only the first set <a href=\"../../armv8-a/bit/\">bit</a> from the source mask.",
+      "linked_pseudocode": "vd = (1 << first_set_index(vs2)) & vm;"
+    },
+    {
+      "mnemonic": "VANDN.VX",
+      "architecture": "RISC-V",
+      "extension": "Zvbb",
+      "full_name": "Vector Bitwise AND-NOT Scalar",
+      "summary": "Computes vd = vs2 & ~rs1.",
+      "syntax": "VANDN.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "000001 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "rs1",
+          "desc": "Scalar"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs2[i] & ~rs1;",
+      "slug": "vandn_vx",
+      "rel_url": "risc-v/vandn_vx/",
+      "linked_summary": "Computes vd = vs2 & ~rs1.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs2[i] & ~rs1;"
+    },
+    {
+      "mnemonic": "VORN.VX",
+      "architecture": "RISC-V",
+      "extension": "Zvbb",
+      "full_name": "Vector Bitwise OR-NOT Scalar",
+      "summary": "Computes vd = vs2 | ~rs1.",
+      "syntax": "VORN.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "000101 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000101",
+            "clean": "000101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "rs1",
+          "desc": "Scalar"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs2[i] | ~rs1;",
+      "slug": "vorn_vx",
+      "rel_url": "risc-v/vorn_vx/",
+      "linked_summary": "Computes vd = vs2 | ~rs1.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs2[i] | ~rs1;"
+    },
+    {
+      "mnemonic": "VXNOR.VX",
+      "architecture": "RISC-V",
+      "extension": "Zvbb",
+      "full_name": "Vector Bitwise XNOR Scalar",
+      "summary": "Computes vd = ~(vs2 ^ rs1).",
+      "syntax": "VXNOR.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "000111 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000111",
+            "clean": "000111"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src"
+        },
+        {
+          "name": "rs1",
+          "desc": "Scalar"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = ~(vs2[i] ^ rs1);",
+      "slug": "vxnor_vx",
+      "rel_url": "risc-v/vxnor_vx/",
+      "linked_summary": "Computes vd = ~(vs2 ^ rs1).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = ~(vs2[i] ^ rs1);"
+    },
+    {
+      "mnemonic": "VWSLL.VX",
+      "architecture": "RISC-V",
+      "extension": "Zvbb",
+      "full_name": "Vector Widening Shift Left Logical Scalar",
+      "summary": "Shifts elements left by scalar rs1, widening the result.",
+      "syntax": "VWSLL.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "110101 | vm | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "110101",
+            "clean": "110101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Wide)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Narrow)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = zext(vs2[i]) << rs1;",
+      "slug": "vwsll_vx",
+      "rel_url": "risc-v/vwsll_vx/",
+      "linked_summary": "Shifts elements left by scalar rs1, widening the result.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = zext(vs2[i]) << rs1;"
+    },
+    {
+      "mnemonic": "VWSLL.VI",
+      "architecture": "RISC-V",
+      "extension": "Zvbb",
+      "full_name": "Vector Widening Shift Left Logical Immediate",
+      "summary": "Shifts elements left by immediate, widening the result.",
+      "syntax": "VWSLL.VI vd, vs2, imm, vm",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "110101 | vm | vs2 | imm | 011 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "110101",
+            "clean": "110101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "imm",
+            "clean": "imm"
+          },
+          {
+            "raw": "011",
+            "clean": "011"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Wide)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Narrow)"
+        },
+        {
+          "name": "imm",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = zext(vs2[i]) << imm;",
+      "slug": "vwsll_vi",
+      "rel_url": "risc-v/vwsll_vi/",
+      "linked_summary": "Shifts elements left by immediate, widening the result.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = zext(vs2[i]) << imm;"
+    },
+    {
       "mnemonic": "BLTU",
       "architecture": "RISC-V",
       "extension": "Base",
@@ -10364,122 +12556,6 @@
       "rel_url": "risc-v/vfmv_s_f/",
       "linked_summary": "Moves a scalar float register to element 0 of a vector.",
       "linked_pseudocode": "vd[0] = fs1;"
-    },
-    {
-      "mnemonic": "VCPOP.M",
-      "architecture": "RISC-V",
-      "extension": "V (Vector)",
-      "full_name": "Vector Mask Population Count",
-      "summary": "Counts the number of set bits in a vector mask.",
-      "syntax": "VCPOP.M rd, vs2, vm",
-      "encoding": {
-        "format": "OPMVX",
-        "binary_pattern": "010000 | vm | vs2 | 10000 | 010 | rd | 1010111",
-        "hex_opcode": "0x57",
-        "visual_parts": [
-          {
-            "raw": "010000",
-            "clean": "010000"
-          },
-          {
-            "raw": "vm",
-            "clean": "vm"
-          },
-          {
-            "raw": "vs2",
-            "clean": "vs2"
-          },
-          {
-            "raw": "10000",
-            "clean": "10000"
-          },
-          {
-            "raw": "010",
-            "clean": "010"
-          },
-          {
-            "raw": "rd",
-            "clean": "rd"
-          },
-          {
-            "raw": "1010111",
-            "clean": "1010111"
-          }
-        ]
-      },
-      "operands": [
-        {
-          "name": "rd",
-          "desc": "Dest (Int Count)"
-        },
-        {
-          "name": "vs2",
-          "desc": "Src Mask"
-        }
-      ],
-      "pseudocode": "rd = count_set_bits(vs2 & vm);",
-      "slug": "vcpop_m",
-      "rel_url": "risc-v/vcpop_m/",
-      "linked_summary": "Counts the number of set bits <a href=\"../../x86/in/\">in</a> a vector mask.",
-      "linked_pseudocode": "rd = count_set_bits(vs2 & vm);"
-    },
-    {
-      "mnemonic": "VFIRST.M",
-      "architecture": "RISC-V",
-      "extension": "V (Vector)",
-      "full_name": "Vector Find First Set Mask Bit",
-      "summary": "Finds the index of the first set bit in the mask register.",
-      "syntax": "VFIRST.M rd, vs2, vm",
-      "encoding": {
-        "format": "OPMVX",
-        "binary_pattern": "010000 | vm | vs2 | 10001 | 010 | rd | 1010111",
-        "hex_opcode": "0x57",
-        "visual_parts": [
-          {
-            "raw": "010000",
-            "clean": "010000"
-          },
-          {
-            "raw": "vm",
-            "clean": "vm"
-          },
-          {
-            "raw": "vs2",
-            "clean": "vs2"
-          },
-          {
-            "raw": "10001",
-            "clean": "10001"
-          },
-          {
-            "raw": "010",
-            "clean": "010"
-          },
-          {
-            "raw": "rd",
-            "clean": "rd"
-          },
-          {
-            "raw": "1010111",
-            "clean": "1010111"
-          }
-        ]
-      },
-      "operands": [
-        {
-          "name": "rd",
-          "desc": "Dest (Index)"
-        },
-        {
-          "name": "vs2",
-          "desc": "Src Mask"
-        }
-      ],
-      "pseudocode": "rd = lowest_set_bit_index(vs2 & vm);",
-      "slug": "vfirst_m",
-      "rel_url": "risc-v/vfirst_m/",
-      "linked_summary": "Finds the <a href=\"../../armv8-a/index/\">index</a> of the first set <a href=\"../../armv8-a/bit/\">bit</a> <a href=\"../../x86/in/\">in</a> the mask register.",
-      "linked_pseudocode": "rd = lowest_set_bit_index(vs2 & vm);"
     },
     {
       "mnemonic": "FCVT.W.S",

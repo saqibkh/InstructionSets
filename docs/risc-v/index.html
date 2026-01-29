@@ -2185,11 +2185,67 @@
 		    <td style="color: var(--text-muted);">Adds two vectors plus a carry-in from the mask register (v0).</td>
 		</tr>
 		
+		<tr onclick="window.location='vaesdf_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAESDF.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAESDF.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs the final AES decryption round.</td>
+		</tr>
+		
+		<tr onclick="window.location='vaesdm_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAESDM.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAESDM.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs a middle AES decryption round.</td>
+		</tr>
+		
+		<tr onclick="window.location='vaesef_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAESEF.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAESEF.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs the final AES encryption round.</td>
+		</tr>
+		
+		<tr onclick="window.location='vaesem_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAESEM.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAESEM.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs a middle AES encryption round.</td>
+		</tr>
+		
+		<tr onclick="window.location='vaeskf1_vi/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAESKF1.VI</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAESKF1.VI vd, vs2, uimm</td>
+		    <td><span class="badge">OPIVI</span></td>
+		    <td style="color: var(--text-muted);">Generates the next round key for AES (Step 1).</td>
+		</tr>
+		
+		<tr onclick="window.location='vaeskf2_vi/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAESKF2.VI</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAESKF2.VI vd, vs2, uimm</td>
+		    <td><span class="badge">OPIVI</span></td>
+		    <td style="color: var(--text-muted);">Generates the next round key for AES (Step 2).</td>
+		</tr>
+		
 		<tr onclick="window.location='vand_vi/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAND.VI</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAND.VI vd, vs2, imm, vm</td>
 		    <td><span class="badge">OPIVI</span></td>
 		    <td style="color: var(--text-muted);">Bitwise AND with immediate.</td>
+		</tr>
+		
+		<tr onclick="window.location='vandn_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VANDN.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VANDN.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = vs2 & ~vs1 (bitwise AND with inverted source).</td>
+		</tr>
+		
+		<tr onclick="window.location='vandn_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VANDN.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VANDN.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = vs2 & ~rs1.</td>
 		</tr>
 		
 		<tr onclick="window.location='vasub_vv/';" style="cursor: pointer;">
@@ -2206,6 +2262,34 @@
 		    <td style="color: var(--text-muted);">Computes (a - b) >> 1 for unsigned integers.</td>
 		</tr>
 		
+		<tr onclick="window.location='vbrev8_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VBREV8.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VBREV8.V vd, vs2, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Reverses the bits within each byte of the source elements.</td>
+		</tr>
+		
+		<tr onclick="window.location='vclmul_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VCLMUL.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCLMUL.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs carry-less multiplication on vector elements (GF(2^n)).</td>
+		</tr>
+		
+		<tr onclick="window.location='vclmulh_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VCLMULH.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCLMULH.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs carry-less multiplication, keeping the high half.</td>
+		</tr>
+		
+		<tr onclick="window.location='vclz_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VCLZ.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCLZ.V vd, vs2, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Counts the number of leading zero bits in each element.</td>
+		</tr>
+		
 		<tr onclick="window.location='vcompress_vm/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VCOMPRESS.VM</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCOMPRESS.VM vd, vs2, vs1</td>
@@ -2217,7 +2301,21 @@
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VCPOP.M</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCPOP.M rd, vs2, vm</td>
 		    <td><span class="badge">OPMVX</span></td>
-		    <td style="color: var(--text-muted);">Counts the number of set bits in a vector mask.</td>
+		    <td style="color: var(--text-muted);">Counts set bits in the source mask register.</td>
+		</tr>
+		
+		<tr onclick="window.location='vcpop_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VCPOP.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCPOP.V vd, vs2, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Counts the number of set bits (1s) in each element.</td>
+		</tr>
+		
+		<tr onclick="window.location='vctz_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VCTZ.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCTZ.V vd, vs2, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Counts the number of trailing zero bits in each element.</td>
 		</tr>
 		
 		<tr onclick="window.location='vdiv_vv/';" style="cursor: pointer;">
@@ -2273,7 +2371,7 @@
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFIRST.M</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFIRST.M rd, vs2, vm</td>
 		    <td><span class="badge">OPMVX</span></td>
-		    <td style="color: var(--text-muted);">Finds the index of the first set bit in the mask register.</td>
+		    <td style="color: var(--text-muted);">Finds the index of the first set bit in the mask.</td>
 		</tr>
 		
 		<tr onclick="window.location='vfmadd_vv/';" style="cursor: pointer;">
@@ -2407,6 +2505,20 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFWMUL.VV vd, vs2, vs1, vm</td>
 		    <td><span class="badge">OPFVV</span></td>
 		    <td style="color: var(--text-muted);">Multiplies N-bit floats to produce 2*N-bit float results.</td>
+		</tr>
+		
+		<tr onclick="window.location='vghsh_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VGHSH.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VGHSH.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs GHASH multiply-add for AES-GCM.</td>
+		</tr>
+		
+		<tr onclick="window.location='vgsha_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VGSHA.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VGSHA.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Used in GCM GHASH loop.</td>
 		</tr>
 		
 		<tr onclick="window.location='vid_v/';" style="cursor: pointer;">
@@ -2591,6 +2703,13 @@
 		    <td style="color: var(--text-muted);">Writes a mask where bits are 1 before the first element in vs2 that is 1.</td>
 		</tr>
 		
+		<tr onclick="window.location='vmsbf_m/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMSBF.M</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSBF.M vd, vs2, vm</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Sets mask bits before the first set bit in the source mask.</td>
+		</tr>
+		
 		<tr onclick="window.location='vmseq_vi/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMSEQ.VI</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSEQ.VI vd, vs2, imm, vm</td>
@@ -2631,6 +2750,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSGTU.VV vd, vs2, vs1, vm</td>
 		    <td><span class="badge">OPIVV</span></td>
 		    <td style="color: var(--text-muted);">Sets mask if vs2 > vs1 (Unsigned).</td>
+		</tr>
+		
+		<tr onclick="window.location='vmsif_m/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMSIF.M</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSIF.M vd, vs2, vm</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Sets mask bits up to and including the first set bit in the source.</td>
 		</tr>
 		
 		<tr onclick="window.location='vmsle_vi/';" style="cursor: pointer;">
@@ -2694,6 +2820,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSNE.VI vd, vs2, imm, vm</td>
 		    <td><span class="badge">OPIVI</span></td>
 		    <td style="color: var(--text-muted);">Sets mask if element != imm.</td>
+		</tr>
+		
+		<tr onclick="window.location='vmsof_m/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMSOF.M</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSOF.M vd, vs2, vm</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Sets only the first set bit from the source mask.</td>
 		</tr>
 		
 		<tr onclick="window.location='vmul_vv/';" style="cursor: pointer;">
@@ -2836,6 +2969,20 @@
 		    <td style="color: var(--text-muted);">Performs bitwise OR on elements of two vectors.</td>
 		</tr>
 		
+		<tr onclick="window.location='vorn_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VORN.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VORN.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = vs2 | ~vs1 (bitwise OR with inverted source).</td>
+		</tr>
+		
+		<tr onclick="window.location='vorn_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VORN.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VORN.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = vs2 | ~rs1.</td>
+		</tr>
+		
 		<tr onclick="window.location='vredand_vs/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VREDAND.VS</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDAND.VS vd, vs2, vs1, vm</td>
@@ -2885,6 +3032,13 @@
 		    <td style="color: var(--text-muted);">Computes unsigned remainder.</td>
 		</tr>
 		
+		<tr onclick="window.location='vrev8_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VREV8.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREV8.V vd, vs2, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Reverses the order of bytes within each element (Endian swap).</td>
+		</tr>
+		
 		<tr onclick="window.location='vrgather_vi/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VRGATHER.VI</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VRGATHER.VI vd, vs2, imm, vm</td>
@@ -2897,6 +3051,34 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VRGATHER.VV vd, vs2, vs1, vm</td>
 		    <td><span class="badge">OPIVV</span></td>
 		    <td style="color: var(--text-muted);">Gathers elements from a vector register using indices from another vector register.</td>
+		</tr>
+		
+		<tr onclick="window.location='vrol_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VROL.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VROL.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Rotates bits in elements of vs2 left by amounts in vs1.</td>
+		</tr>
+		
+		<tr onclick="window.location='vrol_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VROL.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VROL.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Rotates bits in elements of vs2 left by scalar rs1.</td>
+		</tr>
+		
+		<tr onclick="window.location='vror_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VROR.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VROR.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Rotates bits in elements of vs2 right by amounts in vs1.</td>
+		</tr>
+		
+		<tr onclick="window.location='vror_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VROR.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VROR.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Rotates bits in elements of vs2 right by scalar rs1.</td>
 		</tr>
 		
 		<tr onclick="window.location='vrsub_vi/';" style="cursor: pointer;">
@@ -2974,6 +3156,27 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSETVLI rd, rs1, vtypei</td>
 		    <td><span class="badge">V-Type</span></td>
 		    <td style="color: var(--text-muted);">Configures the vector length (vl) and vector type (vtype) based on application needs.</td>
+		</tr>
+		
+		<tr onclick="window.location='vsha2ch_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSHA2CH.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSHA2CH.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs SHA-256 compression (high 128 bits).</td>
+		</tr>
+		
+		<tr onclick="window.location='vsha2cl_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSHA2CL.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSHA2CL.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs SHA-256 compression (low 128 bits).</td>
+		</tr>
+		
+		<tr onclick="window.location='vsha2ms_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSHA2MS.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSHA2MS.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Generates SHA-256 message schedule words.</td>
 		</tr>
 		
 		<tr onclick="window.location='vslidedown_vi/';" style="cursor: pointer;">
@@ -3179,11 +3382,46 @@
 		    <td style="color: var(--text-muted);">Sums N-bit elements into a 2*N-bit scalar accumulator (Unsigned).</td>
 		</tr>
 		
+		<tr onclick="window.location='vwsll_vi/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VWSLL.VI</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VWSLL.VI vd, vs2, imm, vm</td>
+		    <td><span class="badge">OPIVI</span></td>
+		    <td style="color: var(--text-muted);">Shifts elements left by immediate, widening the result.</td>
+		</tr>
+		
+		<tr onclick="window.location='vwsll_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VWSLL.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VWSLL.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Shifts N-bit elements left to produce 2*N-bit results.</td>
+		</tr>
+		
+		<tr onclick="window.location='vwsll_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VWSLL.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VWSLL.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Shifts elements left by scalar rs1, widening the result.</td>
+		</tr>
+		
 		<tr onclick="window.location='vwsub_vv/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VWSUB.VV</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VWSUB.VV vd, vs2, vs1, vm</td>
 		    <td><span class="badge">OPIVV</span></td>
 		    <td style="color: var(--text-muted);">Subtracts N-bit elements to produce 2*N-bit results.</td>
+		</tr>
+		
+		<tr onclick="window.location='vxnor_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VXNOR.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VXNOR.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = ~(vs2 ^ vs1) (bitwise Exclusive-NOR).</td>
+		</tr>
+		
+		<tr onclick="window.location='vxnor_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VXNOR.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VXNOR.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = ~(vs2 ^ rs1).</td>
 		</tr>
 		
 		<tr onclick="window.location='vxor_vi/';" style="cursor: pointer;">
