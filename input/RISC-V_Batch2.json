@@ -1,0 +1,406 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "SUB",
+      "architecture": "RISC-V",
+      "extension": "Base",
+      "full_name": "Subtract",
+      "summary": "Subtracts rs2 from rs1.",
+      "syntax": "SUB rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0100000 | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          { "raw": "0100000", "clean": "0100000" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "000", "clean": "000" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0110011", "clean": "0110011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Minuend" },
+        { "name": "rs2", "desc": "Subtrahend" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] - R[rs2];"
+    },
+    {
+      "mnemonic": "SLTU",
+      "architecture": "RISC-V",
+      "extension": "Base",
+      "full_name": "Set Less Than Unsigned",
+      "summary": "Sets rd to 1 if rs1 < rs2 (unsigned comparison), otherwise 0.",
+      "syntax": "SLTU rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000000 | rs2 | rs1 | 011 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          { "raw": "0000000", "clean": "0000000" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "011", "clean": "011" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0110011", "clean": "0110011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] <u R[rs2]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "SLTIU",
+      "architecture": "RISC-V",
+      "extension": "Base",
+      "full_name": "Set Less Than Immediate Unsigned",
+      "summary": "Sets rd to 1 if rs1 < immediate (unsigned comparison), otherwise 0.",
+      "syntax": "SLTIU rd, rs1, imm",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "imm[11:0] | rs1 | 011 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          { "raw": "imm[11:0]", "clean": "imm" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "011", "clean": "011" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0010011", "clean": "0010011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" },
+        { "name": "imm", "desc": "Immediate" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] <u sext(imm)) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "ECALL",
+      "architecture": "RISC-V",
+      "extension": "Base",
+      "full_name": "Environment Call",
+      "summary": "Generates an environment call exception (system call).",
+      "syntax": "ECALL",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000000000 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          { "raw": "000000000000", "clean": "000000000000" },
+          { "raw": "00000", "clean": "00000" },
+          { "raw": "000", "clean": "000" },
+          { "raw": "00000", "clean": "00000" },
+          { "raw": "1110011", "clean": "1110011" }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "RaiseException(EnvironmentCall);"
+    },
+    {
+      "mnemonic": "MULHU",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Multiply High Unsigned",
+      "summary": "Performs unsigned multiplication and returns the upper XLEN bits.",
+      "syntax": "MULHU rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 011 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          { "raw": "0000001", "clean": "0000001" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "011", "clean": "011" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0110011", "clean": "0110011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Upper Bits)" },
+        { "name": "rs1", "desc": "Source 1" },
+        { "name": "rs2", "desc": "Source 2" }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] *u R[rs2]) >> XLEN;"
+    },
+    {
+      "mnemonic": "MULHSU",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Multiply High Signed-Unsigned",
+      "summary": "Multiplies signed rs1 by unsigned rs2 and returns the upper XLEN bits.",
+      "syntax": "MULHSU rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 010 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          { "raw": "0000001", "clean": "0000001" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "010", "clean": "010" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0110011", "clean": "0110011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Upper Bits)" },
+        { "name": "rs1", "desc": "Signed Source" },
+        { "name": "rs2", "desc": "Unsigned Source" }
+      ],
+      "pseudocode": "R[rd] = (sext(R[rs1]) * zext(R[rs2])) >> XLEN;"
+    },
+    {
+      "mnemonic": "REMU",
+      "architecture": "RISC-V",
+      "extension": "M",
+      "full_name": "Remainder Unsigned",
+      "summary": "Computes the unsigned remainder of division.",
+      "syntax": "REMU rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000001 | rs2 | rs1 | 111 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          { "raw": "0000001", "clean": "0000001" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "111", "clean": "111" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0110011", "clean": "0110011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Remainder)" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "R[rd] = R[rs1] %u R[rs2];"
+    },
+    {
+      "mnemonic": "AMOMINU.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Min Unsigned Word",
+      "summary": "Atomically updates memory with the minimum of the memory value and register value (Unsigned).",
+      "syntax": "AMOMINU.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "11000 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          { "raw": "11000", "clean": "11000" },
+          { "raw": "aq", "clean": "aq" },
+          { "raw": "rl", "clean": "rl" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "010", "clean": "010" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0101111", "clean": "0101111" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = min_u(temp, R[rs2]); R[rd] = temp;"
+    },
+    {
+      "mnemonic": "AMOMAXU.W",
+      "architecture": "RISC-V",
+      "extension": "A (Atomic)",
+      "full_name": "Atomic Max Unsigned Word",
+      "summary": "Atomically updates memory with the maximum of the memory value and register value (Unsigned).",
+      "syntax": "AMOMAXU.W rd, rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (Atomic)",
+        "binary_pattern": "11100 | aq | rl | rs2 | rs1 | 010 | rd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          { "raw": "11100", "clean": "11100" },
+          { "raw": "aq", "clean": "aq" },
+          { "raw": "rl", "clean": "rl" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "010", "clean": "010" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "0101111", "clean": "0101111" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Old Value)" },
+        { "name": "rs2", "desc": "Operand" },
+        { "name": "rs1", "desc": "Address" }
+      ],
+      "pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = max_u(temp, R[rs2]); R[rd] = temp;"
+    },
+    {
+      "mnemonic": "FSUB.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Subtract (Single)",
+      "summary": "Performs single-precision floating-point subtraction.",
+      "syntax": "FSUB.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000100 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          { "raw": "0000100", "clean": "0000100" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "rm", "clean": "rm" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "1010011", "clean": "1010011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] - F[rs2];"
+    },
+    {
+      "mnemonic": "FMUL.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Multiply (Single)",
+      "summary": "Performs single-precision floating-point multiplication.",
+      "syntax": "FMUL.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          { "raw": "0001000", "clean": "0001000" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "rm", "clean": "rm" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "1010011", "clean": "1010011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] * F[rs2];"
+    },
+    {
+      "mnemonic": "FDIV.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Divide (Single)",
+      "summary": "Performs single-precision floating-point division.",
+      "syntax": "FDIV.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001100 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          { "raw": "0001100", "clean": "0001100" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "rm", "clean": "rm" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "1010011", "clean": "1010011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] / F[rs2];"
+    },
+    {
+      "mnemonic": "FSQRT.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Square Root (Single)",
+      "summary": "Computes the square root of a single-precision floating-point number.",
+      "syntax": "FSQRT.S rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "0101100 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          { "raw": "0101100", "clean": "0101100" },
+          { "raw": "00000", "clean": "00000" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "rm", "clean": "rm" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "1010011", "clean": "1010011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "F[rd] = sqrt(F[rs1]);"
+    },
+    {
+      "mnemonic": "FMIN.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Minimum (Single)",
+      "summary": "Writes the smaller of two single-precision floating-point values to rd.",
+      "syntax": "FMIN.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          { "raw": "0010100", "clean": "0010100" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "000", "clean": "000" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "1010011", "clean": "1010011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = min(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMAX.S",
+      "architecture": "RISC-V",
+      "extension": "F",
+      "full_name": "Float Maximum (Single)",
+      "summary": "Writes the larger of two single-precision floating-point values to rd.",
+      "syntax": "FMAX.S rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          { "raw": "0010100", "clean": "0010100" },
+          { "raw": "rs2", "clean": "rs2" },
+          { "raw": "rs1", "clean": "rs1" },
+          { "raw": "001", "clean": "001" },
+          { "raw": "rd", "clean": "rd" },
+          { "raw": "1010011", "clean": "1010011" }
+        ]
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = max(F[rs1], F[rs2]);"
+    }
+  ]
+}
