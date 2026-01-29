@@ -263,7 +263,25 @@ def generate_site(master_db):
                     root="../..",
                     version=CACHE_BUST
                 ))
+   
+    # 6. Generate Sitemap.xml
+    sitemap_content = ['<?xml version="1.0" encoding="UTF-8"?>',
+                       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     
+    # Add Home
+    sitemap_content.append(f'  <url><loc>{SITE_URL}/</loc><changefreq>weekly</changefreq></url>')
+    
+    # Add all generated pages
+    for page in all_pages:
+        # page is relative like "risc-v/vadd_vv/"
+        full_url = f"{SITE_URL}/{page}"
+        sitemap_content.append(f'  <url><loc>{full_url}</loc><changefreq>monthly</changefreq></url>')
+        
+    sitemap_content.append('</urlset>')
+    
+    with open(os.path.join(OUTPUT_DIR, 'sitemap.xml'), 'w') as f:
+        f.write('\n'.join(sitemap_content))
+
     # Save Master DB
     for arch, insts in master_db.items():
         with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
