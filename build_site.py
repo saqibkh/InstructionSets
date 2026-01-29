@@ -251,7 +251,8 @@ def generate_site(master_db):
     # Save Master DB
     for arch, insts in master_db.items():
         with open(os.path.join(DB_DIR, f"{arch}.json"), 'w') as f:
-            json.dump(insts, f, indent=2)
+            # Wrap list in "instructions" key to match input format
+            json.dump({"instructions": insts}, f, indent=2)
 
     print(f"🚀 Website generation complete! Output in '{OUTPUT_DIR}'")
 
