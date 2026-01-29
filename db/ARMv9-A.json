@@ -4,7 +4,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Add",
     "summary": "Adds two or four vectors to two or four accumulators (SME2).",
-    "syntax": "ADD { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "ADD { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Multi-vector",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 000 | Zn | 00 | Zd",
@@ -69,7 +69,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Subtract",
     "summary": "Subtracts two or four vectors from accumulators (SME2).",
-    "syntax": "SUB { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "SUB { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Multi-vector",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 000 | Zn | 01 | Zd",
@@ -134,7 +134,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Floating-point Multiply-Accumulate",
     "summary": "Fused multiply-add on 2 or 4 vectors (SME2).",
-    "syntax": "FMLA { <Zd1>.S-<Zd4>.S }, { <Zn1>.S-<Zn4>.S }, { <Zm1>.S-<Zm4>.S }",
+    "syntax": "FMLA { &lt;Zd1&gt;.S-&lt;Zd4&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn4&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm4&gt;.S }",
     "encoding": {
       "format": "SME2 Multi-vector",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 010 | Zn | 00 | Zd",
@@ -199,7 +199,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Floating-point Multiply-Subtract",
     "summary": "Fused multiply-subtract on 2 or 4 vectors (SME2).",
-    "syntax": "FMLS { <Zd1>.S-<Zd4>.S }, { <Zn1>.S-<Zn4>.S }, { <Zm1>.S-<Zm4>.S }",
+    "syntax": "FMLS { &lt;Zd1&gt;.S-&lt;Zd4&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn4&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm4&gt;.S }",
     "encoding": {
       "format": "SME2 Multi-vector",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 010 | Zn | 01 | Zd",
@@ -264,7 +264,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Lookup Table Index (2-bit)",
     "summary": "Looks up values in ZT0 table using 2-bit indices (SME2).",
-    "syntax": "LUTI2 <Zd>.B, ZT0, <Zn>.B[<index>]",
+    "syntax": "LUTI2 &lt;Zd&gt;.B, ZT0, &lt;Zn&gt;.B[&lt;index&gt;]",
     "encoding": {
       "format": "SME2 LUT",
       "binary_pattern": "11000000 | 10 | 00 | 00 | 00 | Zn | Zd",
@@ -325,7 +325,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Lookup Table Index (4-bit)",
     "summary": "Looks up values in ZT0 table using 4-bit indices (SME2).",
-    "syntax": "LUTI4 <Zd>.B, ZT0, <Zn>.B[<index>]",
+    "syntax": "LUTI4 &lt;Zd&gt;.B, ZT0, &lt;Zn&gt;.B[&lt;index&gt;]",
     "encoding": {
       "format": "SME2 LUT",
       "binary_pattern": "11000000 | 10 | 00 | 00 | 01 | Zn | Zd",
@@ -386,7 +386,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Load Words",
     "summary": "Loads multiple vectors (2 or 4) from memory (SME2).",
-    "syntax": "LD1W { <Zd1>.S-<Zd4>.S }, [<Xn|SP>]",
+    "syntax": "LD1W { &lt;Zd1&gt;.S-&lt;Zd4&gt;.S }, [&lt;Xn|SP&gt;]",
     "encoding": {
       "format": "SME2 Load",
       "binary_pattern": "11100001 | 00 | 10 | 000 | Rn | Zd",
@@ -439,7 +439,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Store Words",
     "summary": "Stores multiple vectors (2 or 4) to memory (SME2).",
-    "syntax": "ST1W { <Zd1>.S-<Zd4>.S }, [<Xn|SP>]",
+    "syntax": "ST1W { &lt;Zd1&gt;.S-&lt;Zd4&gt;.S }, [&lt;Xn|SP&gt;]",
     "encoding": {
       "format": "SME2 Store",
       "binary_pattern": "11100001 | 00 | 11 | 000 | Rn | Zd",
@@ -492,7 +492,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Move (Transpose)",
     "summary": "Moves and transposes data between 2/4 vectors (SME2).",
-    "syntax": "MOVT { <Zd1>.H-<Zd2>.H }, { <Zn1>.H-<Zn2>.H }",
+    "syntax": "MOVT { &lt;Zd1&gt;.H-&lt;Zd2&gt;.H }, { &lt;Zn1&gt;.H-&lt;Zn2&gt;.H }",
     "encoding": {
       "format": "SME2 Move",
       "binary_pattern": "11000000 | 00 | 10 | 0000 | Zn | Zd",
@@ -586,7 +586,7 @@
     "architecture": "ARMv9-A",
     "full_name": "BFloat16 Sum of Outer Products Accumulate",
     "summary": "BFloat16 outer product accumulate (SME2).",
-    "syntax": "BFMOPA <ZAda>.S, <Zn>.H, <Zm>.H",
+    "syntax": "BFMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.H, &lt;Zm&gt;.H",
     "encoding": {
       "format": "SME2 Matrix",
       "binary_pattern": "10000001 | 10 | 0 | 00000 | Zm | Zn | ZAda",
@@ -647,7 +647,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Realm Management Pointer Adjust",
     "summary": "Adjusts the RMP entry for a physical address (Realm Management).",
-    "syntax": "RMPADJUST <Xt>, <Xn>, <Xm>",
+    "syntax": "RMPADJUST &lt;Xt&gt;, &lt;Xn&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "1100100000 | 001 | Xm | 0000 | Xn | Xt",
@@ -704,7 +704,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Realm Management Pointer Read",
     "summary": "Reads the RMP entry for a physical address.",
-    "syntax": "RMPREAD <Xt>, <Xn>",
+    "syntax": "RMPREAD &lt;Xt&gt;, &lt;Xn&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "1100100000 | 001 | 11111 | 0001 | Xn | Xt",
@@ -781,7 +781,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Data Value Memory Permission",
     "summary": "Broadcasts permission checking for data values (Realm).",
-    "syntax": "DVMP <Xt>",
+    "syntax": "DVMP &lt;Xt&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "11010101000000110010000100100000 | Rt",
@@ -814,7 +814,7 @@
     "architecture": "ARMv9-A",
     "full_name": "TLB Invalidate (Realm IPA)",
     "summary": "Invalidates TLB entries for a Realm Intermediate Physical Address.",
-    "syntax": "TLBI RIPAS2E1, <Xt>",
+    "syntax": "TLBI RIPAS2E1, &lt;Xt&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "11010101000010001001001001100000 | Rt",
@@ -847,7 +847,7 @@
     "architecture": "ARMv9-A",
     "full_name": "TLB Invalidate (Realm PA)",
     "summary": "Invalidates TLB entries by Realm Physical Address.",
-    "syntax": "TLBI RVAE1, <Xt>",
+    "syntax": "TLBI RVAE1, &lt;Xt&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "11010101000010001001011000100000 | Rt",
@@ -880,7 +880,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Branch Record Buffer Inject",
     "summary": "Injects a record into the Branch Record Buffer.",
-    "syntax": "BRBINJ <Xt>",
+    "syntax": "BRBINJ &lt;Xt&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "11010101000000110010000101000000 | Rt",
@@ -937,7 +937,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Copy Forward Prologue (MOPS)",
     "summary": "Optimized memory copy prologue (Forward).",
-    "syntax": "CPYFP [<Xd>]!, [<Xn>]!, <Xm>!",
+    "syntax": "CPYFP [&lt;Xd&gt;]!, [&lt;Xn&gt;]!, &lt;Xm&gt;!",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001000000000100000000000000 | Rn | Rd",
@@ -982,7 +982,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Copy Forward Main (MOPS)",
     "summary": "Optimized memory copy main loop (Forward).",
-    "syntax": "CPYFM [<Xd>]!, [<Xn>]!, <Xm>!",
+    "syntax": "CPYFM [&lt;Xd&gt;]!, [&lt;Xn&gt;]!, &lt;Xm&gt;!",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001010000000100000000000000 | Rn | Rd",
@@ -1027,7 +1027,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Copy Forward Epilogue (MOPS)",
     "summary": "Optimized memory copy epilogue (Forward).",
-    "syntax": "CPYFE [<Xd>]!, [<Xn>]!, <Xm>!",
+    "syntax": "CPYFE [&lt;Xd&gt;]!, [&lt;Xn&gt;]!, &lt;Xm&gt;!",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001100000000100000000000000 | Rn | Rd",
@@ -1072,7 +1072,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Set Prologue (MOPS)",
     "summary": "Optimized memory set prologue.",
-    "syntax": "SETP [<Xd>]!, <Xn>!, <Xm>",
+    "syntax": "SETP [&lt;Xd&gt;]!, &lt;Xn&gt;!, &lt;Xm&gt;",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001001100000100000000000000 | Rn | Rd",
@@ -1117,7 +1117,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Set Main (MOPS)",
     "summary": "Optimized memory set main loop.",
-    "syntax": "SETM [<Xd>]!, <Xn>!, <Xm>",
+    "syntax": "SETM [&lt;Xd&gt;]!, &lt;Xn&gt;!, &lt;Xm&gt;",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001011100000100000000000000 | Rn | Rd",
@@ -1162,7 +1162,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Set Epilogue (MOPS)",
     "summary": "Optimized memory set epilogue.",
-    "syntax": "SETE [<Xd>]!, <Xn>!, <Xm>",
+    "syntax": "SETE [&lt;Xd&gt;]!, &lt;Xn&gt;!, &lt;Xm&gt;",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001101100000100000000000000 | Rn | Rd",
@@ -1207,7 +1207,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Add Checked Pointer",
     "summary": "Adds offset to pointer with tag check (Checked Pointer Arithmetic).",
-    "syntax": "ADDPT <Xd|SP>, <Xn|SP>, <Xm>",
+    "syntax": "ADDPT &lt;Xd|SP&gt;, &lt;Xn|SP&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "Data Processing",
       "binary_pattern": "10011011001 | Xm | 000000 | Xn | Xd",
@@ -1260,7 +1260,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Subtract Checked Pointer",
     "summary": "Subtracts offset from pointer with tag check (Checked Pointer Arithmetic).",
-    "syntax": "SUBPT <Xd|SP>, <Xn|SP>, <Xm>",
+    "syntax": "SUBPT &lt;Xd|SP&gt;, &lt;Xn|SP&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "Data Processing",
       "binary_pattern": "11011011001 | Xm | 000000 | Xn | Xd",
@@ -1313,7 +1313,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multiply Add Checked Pointer",
     "summary": "Calculates Ptr + (A * B) with tag check.",
-    "syntax": "MADDPT <Xd>, <Xn>, <Xm>, <Xa>",
+    "syntax": "MADDPT &lt;Xd&gt;, &lt;Xn&gt;, &lt;Xm&gt;, &lt;Xa&gt;",
     "encoding": {
       "format": "Data Processing",
       "binary_pattern": "10011011001 | Xm | 100000 | Xn | Xd",
@@ -1370,7 +1370,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multiply Subtract Checked Pointer",
     "summary": "Calculates Ptr - (A * B) with tag check.",
-    "syntax": "MSUBPT <Xd>, <Xn>, <Xm>, <Xa>",
+    "syntax": "MSUBPT &lt;Xd&gt;, &lt;Xn&gt;, &lt;Xm&gt;, &lt;Xa&gt;",
     "encoding": {
       "format": "Data Processing",
       "binary_pattern": "10011011001 | Xm | 100001 | Xn | Xd",
@@ -1427,7 +1427,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-Point Clamp",
     "summary": "Clamps floating-point elements between min and max (SVE2.1).",
-    "syntax": "FCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "FCLAMP &lt;Zdn&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2.1",
       "binary_pattern": "01100100 | sz | 0 | 01100 | Zm | Zn | Zdn",
@@ -1488,7 +1488,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Integer Clamp",
     "summary": "Clamps signed integer elements between min and max (SVE2.1).",
-    "syntax": "SCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "SCLAMP &lt;Zdn&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2.1",
       "binary_pattern": "01000100 | sz | 0 | 01100 | Zm | Zn | Zdn",
@@ -1549,7 +1549,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Unsigned Integer Clamp",
     "summary": "Clamps unsigned integer elements between min and max (SVE2.1).",
-    "syntax": "UCLAMP <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "UCLAMP &lt;Zdn&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2.1",
       "binary_pattern": "01000100 | sz | 0 | 01101 | Zm | Zn | Zdn",
@@ -1610,7 +1610,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Predicate Select",
     "summary": "Selects a predicate register based on a boolean condition (SME2).",
-    "syntax": "PSEL <Pd>, <Pn>, <Pm>.<T>[<imm>]",
+    "syntax": "PSEL &lt;Pd&gt;, &lt;Pn&gt;, &lt;Pm&gt;.&lt;T&gt;[&lt;imm&gt;]",
     "encoding": {
       "format": "SME2",
       "binary_pattern": "00100101 | 00 | 100000 | Pm | Pn | Pd",
@@ -1667,7 +1667,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Reverse Doublewords",
     "summary": "Reverses 64-bit doublewords within 128-bit quadwords (SVE2).",
-    "syntax": "REVD <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+    "syntax": "REVD &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zn&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2",
       "binary_pattern": "00000101 | sz | 00010 | 10 | Pg | Zn | Zd",
@@ -1728,7 +1728,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Transaction Start",
     "summary": "Starts a new memory transaction (TME).",
-    "syntax": "TSTART <Xt>",
+    "syntax": "TSTART &lt;Xt&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "11010101001 | 00011 | 0011 | 0011 | 001 | Rt",
@@ -1801,7 +1801,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Transaction Cancel",
     "summary": "Cancels the current transaction.",
-    "syntax": "TCANCEL #<imm>",
+    "syntax": "TCANCEL #&lt;imm&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "11010100010 | imm16 | 00000",
@@ -1838,7 +1838,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Transaction Test",
     "summary": "Tests the transaction depth.",
-    "syntax": "TTEST <Xt>",
+    "syntax": "TTEST &lt;Xt&gt;",
     "encoding": {
       "format": "System",
       "binary_pattern": "11010101001 | 00011 | 0011 | 0011 | 100 | Rt",
@@ -1887,7 +1887,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Copy Forward (Prologue)",
     "summary": "First step of a hardware-accelerated memcpy (Forward direction).",
-    "syntax": "CPYFP [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!",
+    "syntax": "CPYFP [&lt;Wd&gt;|SP]!, [&lt;Wn&gt;|SP]!, &lt;Xn&gt;!",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001 | 00 | 000000 | 01 | Rn | Rd",
@@ -1944,7 +1944,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Copy Forward (Main)",
     "summary": "Main loop of a hardware-accelerated memcpy (Forward direction).",
-    "syntax": "CPYFM [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!",
+    "syntax": "CPYFM [&lt;Wd&gt;|SP]!, [&lt;Wn&gt;|SP]!, &lt;Xn&gt;!",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001 | 01 | 000000 | 01 | Rn | Rd",
@@ -2001,7 +2001,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Copy Forward (Epilogue)",
     "summary": "Final step of a hardware-accelerated memcpy (Forward direction).",
-    "syntax": "CPYFE [<Wd>|SP]!, [<Wn>|SP]!, <Xn>!",
+    "syntax": "CPYFE [&lt;Wd&gt;|SP]!, [&lt;Wn&gt;|SP]!, &lt;Xn&gt;!",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001 | 10 | 000000 | 01 | Rn | Rd",
@@ -2058,7 +2058,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Set (Prologue)",
     "summary": "First step of a hardware-accelerated memset.",
-    "syntax": "SETP [<Wd>|SP]!, <Xn>!, <Xm>",
+    "syntax": "SETP [&lt;Wd&gt;|SP]!, &lt;Xn&gt;!, &lt;Xm&gt;",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001 | 00 | 110000 | 01 | Rn | Rd",
@@ -2115,7 +2115,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Set (Main)",
     "summary": "Main loop of a hardware-accelerated memset.",
-    "syntax": "SETM [<Wd>|SP]!, <Xn>!, <Xm>",
+    "syntax": "SETM [&lt;Wd&gt;|SP]!, &lt;Xn&gt;!, &lt;Xm&gt;",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001 | 01 | 110000 | 01 | Rn | Rd",
@@ -2172,7 +2172,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Memory Set (Epilogue)",
     "summary": "Final step of a hardware-accelerated memset.",
-    "syntax": "SETE [<Wd>|SP]!, <Xn>!, <Xm>",
+    "syntax": "SETE [&lt;Wd&gt;|SP]!, &lt;Xn&gt;!, &lt;Xm&gt;",
     "encoding": {
       "format": "MOPS",
       "binary_pattern": "00011001 | 10 | 110000 | 01 | Rn | Rd",
@@ -2229,7 +2229,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Guarded Control Stack Store",
     "summary": "Stores a value to the GCS (Control Flow Integrity).",
-    "syntax": "GCSSTR <Xd>, [<Xn|SP>]",
+    "syntax": "GCSSTR &lt;Xd&gt;, [&lt;Xn|SP&gt;]",
     "encoding": {
       "format": "Load/Store",
       "binary_pattern": "11011001 | 000 | 11111 | 00 | Rn | Rt",
@@ -2330,7 +2330,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Histogram Count (SVE2)",
     "summary": "Counts matching elements in a vector to build a histogram.",
-    "syntax": "HISTCNT <Zd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "HISTCNT &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/Z, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Histogram",
       "binary_pattern": "01000101 | sz | 0 | 1 | 01000 | Zm | Pg | Zn | Zd",
@@ -2399,7 +2399,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Histogram Segment (SVE2)",
     "summary": "Counts matching elements in segments of a vector.",
-    "syntax": "HISTSEG <Zd>.B, <Zn>.B, <Zm>.B",
+    "syntax": "HISTSEG &lt;Zd&gt;.B, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Histogram",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 01010 | Zm | Zn | Zd",
@@ -2464,7 +2464,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Detect Matches (SVE2)",
     "summary": "Detects matches between vector elements and sets a predicate (String processing).",
-    "syntax": "MATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "MATCH &lt;Pd&gt;.&lt;T&gt;, &lt;Pg&gt;/Z, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 String",
       "binary_pattern": "01000101 | sz | 0 | 1 | 00000 | Zm | Pg | Zn | Pd",
@@ -2533,7 +2533,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Detect No Matches (SVE2)",
     "summary": "Detects mismatches between vector elements (String processing).",
-    "syntax": "NMATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "NMATCH &lt;Pd&gt;.&lt;T&gt;, &lt;Pg&gt;/Z, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 String",
       "binary_pattern": "01000101 | sz | 0 | 1 | 00001 | Zm | Pg | Zn | Pd",
@@ -2602,7 +2602,7 @@
     "architecture": "ARMv9-A",
     "full_name": "AES Encrypt (SVE2)",
     "summary": "AES single round encryption on SVE vectors.",
-    "syntax": "AESE <Zdn>.B, <Zm>.B",
+    "syntax": "AESE &lt;Zdn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Crypto",
       "binary_pattern": "01000101 | 00 | 0 | 00111 | 00100 | Zm | Zdn",
@@ -2659,7 +2659,7 @@
     "architecture": "ARMv9-A",
     "full_name": "AES Decrypt (SVE2)",
     "summary": "AES single round decryption on SVE vectors.",
-    "syntax": "AESD <Zdn>.B, <Zm>.B",
+    "syntax": "AESD &lt;Zdn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Crypto",
       "binary_pattern": "01000101 | 00 | 0 | 00111 | 00101 | Zm | Zdn",
@@ -2716,7 +2716,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SM4 Encrypt (SVE2)",
     "summary": "SM4 block cipher encryption on SVE vectors.",
-    "syntax": "SM4E <Zdn>.S, <Zm>.S",
+    "syntax": "SM4E &lt;Zdn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SVE2 Crypto",
       "binary_pattern": "01000101 | 00 | 0 | 00111 | 00110 | Zm | Zdn",
@@ -2773,7 +2773,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Rotate and Exclusive OR (SVE2)",
     "summary": "Rotates source by 1 and XORs (SHA3 acceleration).",
-    "syntax": "RAX1 <Zdn>.D, <Zn>.D, <Zm>.D",
+    "syntax": "RAX1 &lt;Zdn&gt;.D, &lt;Zn&gt;.D, &lt;Zm&gt;.D",
     "encoding": {
       "format": "SVE2 Crypto",
       "binary_pattern": "01000101 | 00 | 0 | 01110 | Zm | Zn | Zdn",
@@ -2834,7 +2834,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Floating-point Add (SME2)",
     "summary": "Adds 2 or 4 FP vectors.",
-    "syntax": "FADD { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "FADD { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Float",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 001 | Zn | 00 | Zd",
@@ -2899,7 +2899,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Floating-point Subtract (SME2)",
     "summary": "Subtracts 2 or 4 FP vectors.",
-    "syntax": "FSUB { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "FSUB { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Float",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 001 | Zn | 01 | Zd",
@@ -2964,7 +2964,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Floating-point Maximum (SME2)",
     "summary": "Maximum of 2 or 4 FP vectors.",
-    "syntax": "FMAX { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "FMAX { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Float",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 011 | Zn | 00 | Zd",
@@ -3029,7 +3029,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Floating-point Minimum (SME2)",
     "summary": "Minimum of 2 or 4 FP vectors.",
-    "syntax": "FMIN { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "FMIN { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Float",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 011 | Zn | 01 | Zd",
@@ -3094,7 +3094,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Floating-point Multiply (SME2)",
     "summary": "Multiplies 2 or 4 FP vectors.",
-    "syntax": "FMUL { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "FMUL { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Float",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 010 | Zn | 10 | Zd",
@@ -3159,7 +3159,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Signed Maximum (SME2)",
     "summary": "Signed maximum of 2 or 4 vectors.",
-    "syntax": "SMAX { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "SMAX { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Int",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 000 | Zn | 10 | Zd",
@@ -3224,7 +3224,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Signed Minimum (SME2)",
     "summary": "Signed minimum of 2 or 4 vectors.",
-    "syntax": "SMIN { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "SMIN { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Int",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 000 | Zn | 11 | Zd",
@@ -3289,7 +3289,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Unsigned Maximum (SME2)",
     "summary": "Unsigned maximum of 2 or 4 vectors.",
-    "syntax": "UMAX { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "UMAX { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Int",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 001 | Zn | 10 | Zd",
@@ -3354,7 +3354,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Unsigned Minimum (SME2)",
     "summary": "Unsigned minimum of 2 or 4 vectors.",
-    "syntax": "UMIN { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "UMIN { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Int",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 001 | Zn | 11 | Zd",
@@ -3419,7 +3419,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-point Outer Product Accumulate (Non-widening)",
     "summary": "Non-widening floating-point outer product (SME2).",
-    "syntax": "FMOPA <ZAda>.S, <Zn>.S, <Zm>.S",
+    "syntax": "FMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SME2 Matrix",
       "binary_pattern": "10000000 | 10 | 0 | 00000 | Zm | Zn | ZAda",
@@ -3480,7 +3480,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Integer Outer Product Accumulate (Non-widening)",
     "summary": "Non-widening signed integer outer product (SME2).",
-    "syntax": "SMOPA <ZAda>.S, <Zn>.S, <Zm>.S",
+    "syntax": "SMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SME2 Matrix",
       "binary_pattern": "10100000 | 10 | 0 | 00000 | Zm | Zn | ZAda",
@@ -3541,7 +3541,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Unsigned Integer Outer Product Accumulate (Non-widening)",
     "summary": "Non-widening unsigned integer outer product (SME2).",
-    "syntax": "UMOPA <ZAda>.S, <Zn>.S, <Zm>.S",
+    "syntax": "UMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SME2 Matrix",
       "binary_pattern": "10100000 | 10 | 0 | 10000 | Zm | Zn | ZAda",
@@ -3602,7 +3602,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed/Unsigned Integer Outer Product Accumulate",
     "summary": "Outer product of Signed x Unsigned integers (SME2).",
-    "syntax": "SUMOPA <ZAda>.S, <Zn>.S, <Zm>.S",
+    "syntax": "SUMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SME2 Matrix",
       "binary_pattern": "10100000 | 10 | 0 | 01000 | Zm | Zn | ZAda",
@@ -3663,7 +3663,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Unsigned/Signed Integer Outer Product Accumulate",
     "summary": "Outer product of Unsigned x Signed integers (SME2).",
-    "syntax": "USMOPA <ZAda>.S, <Zn>.S, <Zm>.S",
+    "syntax": "USMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SME2 Matrix",
       "binary_pattern": "10100000 | 10 | 0 | 11000 | Zm | Zn | ZAda",
@@ -3724,7 +3724,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multi-vector Signed Saturating Doubling Multiply High",
     "summary": "Saturating doubling multiply high on 2 or 4 vectors.",
-    "syntax": "SQDMULH { <Zd1>.S-<Zd2>.S }, { <Zn1>.S-<Zn2>.S }, { <Zm1>.S-<Zm2>.S }",
+    "syntax": "SQDMULH { &lt;Zd1&gt;.S-&lt;Zd2&gt;.S }, { &lt;Zn1&gt;.S-&lt;Zn2&gt;.S }, { &lt;Zm1&gt;.S-&lt;Zm2&gt;.S }",
     "encoding": {
       "format": "SME2 Int",
       "binary_pattern": "11000001 | 00 | 1 | Zm | 010 | Zn | 00 | Zd",
@@ -3789,7 +3789,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Exclusive OR and Rotate (SVE2)",
     "summary": "XORs two vectors then rotates the result.",
-    "syntax": "XAR <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>, #<imm>",
+    "syntax": "XAR &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;, #&lt;imm&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | sz | 1 | tsz | imm3 | Zm | Zdn",
@@ -3850,7 +3850,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bitwise Clear and Exclusive OR (SVE2)",
     "summary": "Calculates (Zn AND NOT Zm) XOR Zk.",
-    "syntax": "BCAX <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D",
+    "syntax": "BCAX &lt;Zdn&gt;.D, &lt;Zdn&gt;.D, &lt;Zm&gt;.D, &lt;Zk&gt;.D",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | 00 | 1 | 00000 | Zm | Zk | Zdn",
@@ -3911,7 +3911,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bitwise Select (SVE2)",
     "summary": "Bitwise select using (Zdn AND Zm) OR (NOT Zdn AND Zk).",
-    "syntax": "BSL <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D",
+    "syntax": "BSL &lt;Zdn&gt;.D, &lt;Zdn&gt;.D, &lt;Zm&gt;.D, &lt;Zk&gt;.D",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | 00 | 1 | 00001 | Zm | Zk | Zdn",
@@ -3972,7 +3972,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bitwise Select 1 NOT (SVE2)",
     "summary": "Bitwise select with first operand inverted.",
-    "syntax": "BSL1N <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D",
+    "syntax": "BSL1N &lt;Zdn&gt;.D, &lt;Zdn&gt;.D, &lt;Zm&gt;.D, &lt;Zk&gt;.D",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | 00 | 1 | 00010 | Zm | Zk | Zdn",
@@ -4033,7 +4033,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bitwise Select 2 NOT (SVE2)",
     "summary": "Bitwise select with second operand inverted.",
-    "syntax": "BSL2N <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D",
+    "syntax": "BSL2N &lt;Zdn&gt;.D, &lt;Zdn&gt;.D, &lt;Zm&gt;.D, &lt;Zk&gt;.D",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | 00 | 1 | 00011 | Zm | Zk | Zdn",
@@ -4094,7 +4094,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bitwise Exclusive OR (3-way) (SVE2)",
     "summary": "Exclusive OR of three vectors.",
-    "syntax": "EOR3 <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D",
+    "syntax": "EOR3 &lt;Zdn&gt;.D, &lt;Zdn&gt;.D, &lt;Zm&gt;.D, &lt;Zk&gt;.D",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | 00 | 1 | 00100 | Zm | Zk | Zdn",
@@ -4155,7 +4155,7 @@
     "architecture": "ARMv9-A",
     "full_name": "NOT Bitwise Select (SVE2)",
     "summary": "Inverted result of bitwise select.",
-    "syntax": "NBSL <Zdn>.D, <Zdn>.D, <Zm>.D, <Zk>.D",
+    "syntax": "NBSL &lt;Zdn&gt;.D, &lt;Zdn&gt;.D, &lt;Zm&gt;.D, &lt;Zk&gt;.D",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | 00 | 1 | 00101 | Zm | Zk | Zdn",
@@ -4216,7 +4216,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Add High Narrow (Bottom) (SVE2)",
     "summary": "Adds wide elements, narrows, and stores in bottom half.",
-    "syntax": "ADDHNB <Zd>.B, <Zn>.H, <Zm>.H",
+    "syntax": "ADDHNB &lt;Zd&gt;.B, &lt;Zn&gt;.H, &lt;Zm&gt;.H",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 00000 | Zm | Zn | Zd",
@@ -4281,7 +4281,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Add High Narrow (Top) (SVE2)",
     "summary": "Adds wide elements, narrows, and stores in top half.",
-    "syntax": "ADDHNT <Zd>.B, <Zn>.H, <Zm>.H",
+    "syntax": "ADDHNT &lt;Zd&gt;.B, &lt;Zn&gt;.H, &lt;Zm&gt;.H",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 00001 | Zm | Zn | Zd",
@@ -4346,7 +4346,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Subtract High Narrow (Bottom) (SVE2)",
     "summary": "Subtracts wide elements, narrows, and stores in bottom half.",
-    "syntax": "SUBHNB <Zd>.B, <Zn>.H, <Zm>.H",
+    "syntax": "SUBHNB &lt;Zd&gt;.B, &lt;Zn&gt;.H, &lt;Zm&gt;.H",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 00010 | Zm | Zn | Zd",
@@ -4411,7 +4411,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Subtract High Narrow (Top) (SVE2)",
     "summary": "Subtracts wide elements, narrows, and stores in top half.",
-    "syntax": "SUBHNT <Zd>.B, <Zn>.H, <Zm>.H",
+    "syntax": "SUBHNT &lt;Zd&gt;.B, &lt;Zn&gt;.H, &lt;Zm&gt;.H",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 00011 | Zm | Zn | Zd",
@@ -4476,7 +4476,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multiply Long (Bottom) (SVE2)",
     "summary": "Multiplies bottom elements of vectors, producing wide result.",
-    "syntax": "MULLB <Zd>.H, <Zn>.B, <Zm>.B",
+    "syntax": "MULLB &lt;Zd&gt;.H, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 01100 | Zm | Zn | Zd",
@@ -4541,7 +4541,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Multiply Long (Top) (SVE2)",
     "summary": "Multiplies top elements of vectors, producing wide result.",
-    "syntax": "MULLT <Zd>.H, <Zn>.B, <Zm>.B",
+    "syntax": "MULLT &lt;Zd&gt;.H, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 01101 | Zm | Zn | Zd",
@@ -4606,7 +4606,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Saturating Doubling Multiply Add Long (Bot x Top) (SVE2)",
     "summary": "Complex integer multiply-accumulate.",
-    "syntax": "SQDMLALBT <Zd>.H, <Zn>.B, <Zm>.B",
+    "syntax": "SQDMLALBT &lt;Zd&gt;.H, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000100 | 00 | 0 | 0 | 00001 | Zm | Zn | Zd",
@@ -4671,7 +4671,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Saturating Doubling Multiply Add Long (Top x Bot) (SVE2)",
     "summary": "Complex integer multiply-accumulate.",
-    "syntax": "SQDMLALTB <Zd>.H, <Zn>.B, <Zm>.B",
+    "syntax": "SQDMLALTB &lt;Zd&gt;.H, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000100 | 00 | 0 | 0 | 00010 | Zm | Zn | Zd",
@@ -4736,7 +4736,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Polynomial Multiply (SVE2)",
     "summary": "Performs polynomial multiplication (GF(2) arithmetic).",
-    "syntax": "PMUL <Zdn>.B, <Zdn>.B, <Zm>.B",
+    "syntax": "PMUL &lt;Zdn&gt;.B, &lt;Zdn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Crypto",
       "binary_pattern": "00000100 | 00 | 1 | 01101 | Zm | Zdn | Zdn",
@@ -4793,7 +4793,7 @@
     "architecture": "ARMv9-A",
     "full_name": "While Read/Write (SVE2)",
     "summary": "Generates a predicate for concurrent read/write loop iterations.",
-    "syntax": "WHILERW <Pd>.<T>, <Xn>, <Xm>",
+    "syntax": "WHILERW &lt;Pd&gt;.&lt;T&gt;, &lt;Xn&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "SVE2 Predicate",
       "binary_pattern": "00100101 | 00 | 1 | 00011 | 0 | Xm | Xn | Pd",
@@ -4858,7 +4858,7 @@
     "architecture": "ARMv9-A",
     "full_name": "While Write/Read (SVE2)",
     "summary": "Generates a predicate for concurrent write/read loop iterations.",
-    "syntax": "WHILEWR <Pd>.<T>, <Xn>, <Xm>",
+    "syntax": "WHILEWR &lt;Pd&gt;.&lt;T&gt;, &lt;Xn&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "SVE2 Predicate",
       "binary_pattern": "00100101 | 00 | 1 | 00011 | 1 | Xm | Xn | Pd",
@@ -4923,7 +4923,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Add with Carry Long (Bottom) (SVE2)",
     "summary": "Adds bottom halves with carry.",
-    "syntax": "ADCLB <Zd>.S, <Zn>.S, <Zm>.S",
+    "syntax": "ADCLB &lt;Zd&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 00100 | Zm | Zn | Zd",
@@ -4988,7 +4988,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Add with Carry Long (Top) (SVE2)",
     "summary": "Adds top halves with carry.",
-    "syntax": "ADCLT <Zd>.S, <Zn>.S, <Zm>.S",
+    "syntax": "ADCLT &lt;Zd&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 00101 | Zm | Zn | Zd",
@@ -5053,7 +5053,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Histogram Count",
     "summary": "Counts active elements that match specific bit patterns (Histogram acceleration).",
-    "syntax": "HISTCNT <Zd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "HISTCNT &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/Z, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Histogram",
       "binary_pattern": "01000101 | sz | 1 | 00101 | Pg | Zm | Zn | Zd",
@@ -5122,7 +5122,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Match",
     "summary": "Detects if elements in Zn match any element in Zm (String matching).",
-    "syntax": "MATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "MATCH &lt;Pd&gt;.&lt;T&gt;, &lt;Pg&gt;/Z, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Match",
       "binary_pattern": "01000101 | sz | 1 | 00000 | Pg | Zm | Zn | Pd",
@@ -5191,7 +5191,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE No Match",
     "summary": "Detects if elements in Zn match *none* of the elements in Zm.",
-    "syntax": "NMATCH <Pd>.<T>, <Pg>/Z, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "NMATCH &lt;Pd&gt;.&lt;T&gt;, &lt;Pg&gt;/Z, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Match",
       "binary_pattern": "01000101 | sz | 1 | 00001 | Pg | Zm | Zn | Pd",
@@ -5260,7 +5260,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Bit Deposit",
     "summary": "Scatters bits from LSBs of source to positions specified by mask.",
-    "syntax": "BDEP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "BDEP &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "01000101 | sz | 0 | 01100 | 01 | Zm | Zdn | Zdn",
@@ -5321,7 +5321,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Bit Extract",
     "summary": "Gathers bits from source based on mask positions to LSBs.",
-    "syntax": "BEXT <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "BEXT &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "01000101 | sz | 0 | 01101 | 01 | Zm | Zdn | Zdn",
@@ -5382,7 +5382,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Bit Group",
     "summary": "Groups bits from source based on mask (0s to left, 1s to right).",
-    "syntax": "BGRP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "BGRP &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "01000101 | sz | 0 | 01110 | 01 | Zm | Zdn | Zdn",
@@ -5443,7 +5443,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Exclusive OR and Rotate",
     "summary": "Performs XOR followed by a right rotation (used in SHA-3/SM3).",
-    "syntax": "XAR <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>, #<imm>",
+    "syntax": "XAR &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;, #&lt;imm&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "00000100 | sz | 1 | 00110 | 1 | Zm | imm6 | Zdn",
@@ -5508,7 +5508,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Polynomial Multiply Long (Bottom)",
     "summary": "Polynomial multiply of even elements producing wide result.",
-    "syntax": "PMULLB <Zda>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "PMULLB &lt;Zda&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Poly",
       "binary_pattern": "01000101 | sz | 0 | 01010 | 01 | Zm | Zn | Zda",
@@ -5573,7 +5573,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Polynomial Multiply Long (Top)",
     "summary": "Polynomial multiply of odd elements producing wide result.",
-    "syntax": "PMULLT <Zda>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "PMULLT &lt;Zda&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Poly",
       "binary_pattern": "01000101 | sz | 0 | 01010 | 11 | Zm | Zn | Zda",
@@ -5638,7 +5638,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE While Read/Write",
     "summary": "Generates predicates to avoid data races (Memory Consistency).",
-    "syntax": "WHILERW <Pd>.<T>, <Xn>, <Xm>",
+    "syntax": "WHILERW &lt;Pd&gt;.&lt;T&gt;, &lt;Xn&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "SVE2 Loop",
       "binary_pattern": "00100101 | 01 | 000 | 110 | 0 | Rm | Rn | Pd",
@@ -5703,7 +5703,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE While Write/Read",
     "summary": "Generates predicates to avoid write-after-read hazards.",
-    "syntax": "WHILEWR <Pd>.<T>, <Xn>, <Xm>",
+    "syntax": "WHILEWR &lt;Pd&gt;.&lt;T&gt;, &lt;Xn&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "SVE2 Loop",
       "binary_pattern": "00100101 | 01 | 000 | 111 | 0 | Rm | Rn | Pd",
@@ -5768,7 +5768,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Streaming Mode Start",
     "summary": "Enables Streaming SVE (SS) and ZA storage (Matrix mode).",
-    "syntax": "SMSTART { <mode> }",
+    "syntax": "SMSTART { &lt;mode&gt; }",
     "encoding": {
       "format": "SME Control",
       "binary_pattern": "11010101 | 000 | 00011 | 0100 | 001 | mode | 11111",
@@ -5821,7 +5821,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Streaming Mode Stop",
     "summary": "Disables Streaming SVE and/or ZA storage.",
-    "syntax": "SMSTOP { <mode> }",
+    "syntax": "SMSTOP { &lt;mode&gt; }",
     "encoding": {
       "format": "SME Control",
       "binary_pattern": "11010101 | 000 | 00011 | 0100 | 011 | mode | 11111",
@@ -5874,7 +5874,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Zero Matrix Tile",
     "summary": "Zeros the entire ZA matrix array or specific tiles.",
-    "syntax": "ZERO { <mask> }",
+    "syntax": "ZERO { &lt;mask&gt; }",
     "encoding": {
       "format": "SME Control",
       "binary_pattern": "11000000 | 00001000 | 00000000 | mask",
@@ -5915,7 +5915,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-Point Matrix Outer Product Accumulate",
     "summary": "Computes (Zn x Zm) + ZA (Outer Product) for floats.",
-    "syntax": "FMOPA <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.S, <Zm>.S",
+    "syntax": "FMOPA &lt;ZAda&gt;.S, &lt;Pg&gt;/M, &lt;Pg&gt;/M, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SME Arithmetic",
       "binary_pattern": "10000000 | 00 | 0 | 00000 | Pm | Pn | Zm | Zn | da",
@@ -5988,7 +5988,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-Point Matrix Outer Product Subtract",
     "summary": "Computes ZA - (Zn x Zm) (Outer Product).",
-    "syntax": "FMOPS <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.S, <Zm>.S",
+    "syntax": "FMOPS &lt;ZAda&gt;.S, &lt;Pg&gt;/M, &lt;Pg&gt;/M, &lt;Zn&gt;.S, &lt;Zm&gt;.S",
     "encoding": {
       "format": "SME Arithmetic",
       "binary_pattern": "10000000 | 00 | 0 | 00001 | Pm | Pn | Zm | Zn | da",
@@ -6057,7 +6057,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Unsigned Integer Matrix Outer Product Accumulate",
     "summary": "Computes outer product for unsigned integers.",
-    "syntax": "UMOPA <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.B, <Zm>.B",
+    "syntax": "UMOPA &lt;ZAda&gt;.S, &lt;Pg&gt;/M, &lt;Pg&gt;/M, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SME Arithmetic",
       "binary_pattern": "10100000 | 00 | 0 | 00000 | Pm | Pn | Zm | Zn | da",
@@ -6126,7 +6126,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Integer Matrix Outer Product Accumulate",
     "summary": "Computes outer product for signed integers.",
-    "syntax": "SMOPA <ZAda>.S, <Pg>/M, <Pg>/M, <Zn>.B, <Zm>.B",
+    "syntax": "SMOPA &lt;ZAda&gt;.S, &lt;Pg&gt;/M, &lt;Pg&gt;/M, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SME Arithmetic",
       "binary_pattern": "10100000 | 00 | 0 | 00001 | Pm | Pn | Zm | Zn | da",
@@ -6195,7 +6195,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Load Matrix Tile Slice (Horizontal)",
     "summary": "Loads a horizontal slice (row) of a tile from memory.",
-    "syntax": "LD1W { <ZAdaH>.S[<slice>, #<imm>] }, <Pg>/Z, [<Xn|SP>]",
+    "syntax": "LD1W { &lt;ZAdaH&gt;.S[&lt;slice&gt;, #&lt;imm&gt;] }, &lt;Pg&gt;/Z, [&lt;Xn|SP&gt;]",
     "encoding": {
       "format": "SME Load",
       "binary_pattern": "11100000 | 00 | 000000 | Pg | Rn | 0000",
@@ -6252,7 +6252,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Load Matrix Tile Slice (Vertical)",
     "summary": "Loads a vertical slice (column) of a tile from memory.",
-    "syntax": "LD1W { <ZAdaV>.S[<slice>, #<imm>] }, <Pg>/Z, [<Xn|SP>]",
+    "syntax": "LD1W { &lt;ZAdaV&gt;.S[&lt;slice&gt;, #&lt;imm&gt;] }, &lt;Pg&gt;/Z, [&lt;Xn|SP&gt;]",
     "encoding": {
       "format": "SME Load",
       "binary_pattern": "11100000 | 00 | 000001 | Pg | Rn | 0000",
@@ -6309,7 +6309,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Store Matrix Tile Slice (Horizontal)",
     "summary": "Stores a horizontal slice (row) of a tile to memory.",
-    "syntax": "ST1W { <ZAdaH>.S[<slice>, #<imm>] }, <Pg>, [<Xn|SP>]",
+    "syntax": "ST1W { &lt;ZAdaH&gt;.S[&lt;slice&gt;, #&lt;imm&gt;] }, &lt;Pg&gt;, [&lt;Xn|SP&gt;]",
     "encoding": {
       "format": "SME Store",
       "binary_pattern": "11100000 | 00 | 010000 | Pg | Rn | 0000",
@@ -6366,7 +6366,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Store Matrix Tile Slice (Vertical)",
     "summary": "Stores a vertical slice (column) of a tile to memory.",
-    "syntax": "ST1W { <ZAdaV>.S[<slice>, #<imm>] }, <Pg>, [<Xn|SP>]",
+    "syntax": "ST1W { &lt;ZAdaV&gt;.S[&lt;slice&gt;, #&lt;imm&gt;] }, &lt;Pg&gt;, [&lt;Xn|SP&gt;]",
     "encoding": {
       "format": "SME Store",
       "binary_pattern": "11100000 | 00 | 010001 | Pg | Rn | 0000",
@@ -6423,7 +6423,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Read Streaming Vector Length",
     "summary": "Reads the current vector length in streaming mode.",
-    "syntax": "RDSVL <Xd>, #<imm>",
+    "syntax": "RDSVL &lt;Xd&gt;, #&lt;imm&gt;",
     "encoding": {
       "format": "SME General",
       "binary_pattern": "00000100 | 10111111 | 01011 | imm6 | Rd",
@@ -6472,7 +6472,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Signed Saturating Rounding Doubling Multiply High",
     "summary": "Multiplies, doubles, rounds, and returns high half (Fixed point math).",
-    "syntax": "SQRDMULH <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "SQRDMULH &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Integer Binary",
       "binary_pattern": "00000100 | sz | 0 | 01110 | 01 | Zm | Zdn | Zdn",
@@ -6533,7 +6533,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Rounding Subtract Narrow (Bottom)",
     "summary": "Subtracts, rounds, and narrows (Bottom half).",
-    "syntax": "RSUBHNB <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "RSUBHNB &lt;Zd&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Narrowing",
       "binary_pattern": "01000101 | sz | 0 | 00110 | 01 | Zm | Zn | Zd",
@@ -6598,7 +6598,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Rounding Subtract Narrow (Top)",
     "summary": "Subtracts, rounds, and narrows (Top half).",
-    "syntax": "RSUBHNT <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "RSUBHNT &lt;Zd&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Narrowing",
       "binary_pattern": "01000101 | sz | 0 | 00110 | 11 | Zm | Zn | Zd",
@@ -6663,7 +6663,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Complex Integer Add",
     "summary": "Performs complex integer addition with rotation.",
-    "syntax": "CADD <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>, #<rot>",
+    "syntax": "CADD &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;, #&lt;rot&gt;",
     "encoding": {
       "format": "SVE2 Complex",
       "binary_pattern": "01000101 | sz | 0 | 00000 | 0 | rot | Zm | Zdn | Zdn",
@@ -6732,7 +6732,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Complex Integer Multiply-Accumulate",
     "summary": "Performs complex integer multiply-accumulate with rotation.",
-    "syntax": "CMLA <Zda>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot>",
+    "syntax": "CMLA &lt;Zda&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;, #&lt;rot&gt;",
     "encoding": {
       "format": "SVE2 Complex",
       "binary_pattern": "01000100 | sz | 0 | rot | 0010 | Zm | Zn | Zda",
@@ -6801,7 +6801,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Add Narrow (Bottom)",
     "summary": "Adds wide elements, narrows result to bottom half.",
-    "syntax": "ADDHNB <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "ADDHNB &lt;Zd&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Narrowing",
       "binary_pattern": "01000101 | sz | 0 | 00100 | 01 | Zm | Zn | Zd",
@@ -6866,7 +6866,7 @@
     "architecture": "ARMv9-A",
     "full_name": "SVE Add Narrow (Top)",
     "summary": "Adds wide elements, narrows result to top half.",
-    "syntax": "ADDHNT <Zd>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "ADDHNT &lt;Zd&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Narrowing",
       "binary_pattern": "01000101 | sz | 0 | 00100 | 11 | Zm | Zn | Zd",
@@ -6931,7 +6931,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Load Non-Temporal Byte (SVE2)",
     "summary": "Loads bytes hinting non-temporal (no cache alloc).",
-    "syntax": "LDNT1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>, <Zm>, LSL #0]",
+    "syntax": "LDNT1B { &lt;Zt&gt;.B }, &lt;Pg&gt;/Z, [&lt;Xn|SP&gt;, &lt;Zm&gt;, LSL #0]",
     "encoding": {
       "format": "SVE2 Load",
       "binary_pattern": "10000100 | 00 | 0 | mmm | 000 | Pg | Zn | Zt",
@@ -6996,7 +6996,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Store Non-Temporal Byte (SVE2)",
     "summary": "Stores bytes hinting non-temporal.",
-    "syntax": "STNT1B { <Zt>.B }, <Pg>, [<Xn|SP>, <Zm>, LSL #0]",
+    "syntax": "STNT1B { &lt;Zt&gt;.B }, &lt;Pg&gt;, [&lt;Xn|SP&gt;, &lt;Zm&gt;, LSL #0]",
     "encoding": {
       "format": "SVE2 Store",
       "binary_pattern": "11100100 | 00 | 0 | mmm | 000 | Pg | Zn | Zt",
@@ -7061,7 +7061,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Add Long (Bottom) (SVE2)",
     "summary": "Signed add of bottom halves, widening.",
-    "syntax": "SADDLB <Zd>.H, <Zn>.B, <Zm>.B",
+    "syntax": "SADDLB &lt;Zd&gt;.H, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SVE2 Math",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 00000 | Zm | Zn | Zd",
@@ -7126,7 +7126,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Gather Load Bytes (SVE)",
     "summary": "Loads bytes from non-contiguous memory addresses specified by a vector index.",
-    "syntax": "LD1B { <Zt>.B }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW]",
+    "syntax": "LD1B { &lt;Zt&gt;.B }, &lt;Pg&gt;/Z, [&lt;Xn|SP&gt;, &lt;Zm&gt;.S, SXTW]",
     "encoding": {
       "format": "SVE Gather",
       "binary_pattern": "10000100 | 00 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7191,7 +7191,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Gather Load Halfwords (SVE)",
     "summary": "Loads halfwords from non-contiguous memory addresses.",
-    "syntax": "LD1H { <Zt>.H }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW #1]",
+    "syntax": "LD1H { &lt;Zt&gt;.H }, &lt;Pg&gt;/Z, [&lt;Xn|SP&gt;, &lt;Zm&gt;.S, SXTW #1]",
     "encoding": {
       "format": "SVE Gather",
       "binary_pattern": "10000100 | 01 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7256,7 +7256,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Gather Load Words (SVE)",
     "summary": "Loads words from non-contiguous memory addresses.",
-    "syntax": "LD1W { <Zt>.S }, <Pg>/Z, [<Xn|SP>, <Zm>.S, SXTW #2]",
+    "syntax": "LD1W { &lt;Zt&gt;.S }, &lt;Pg&gt;/Z, [&lt;Xn|SP&gt;, &lt;Zm&gt;.S, SXTW #2]",
     "encoding": {
       "format": "SVE Gather",
       "binary_pattern": "10000100 | 10 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7321,7 +7321,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Gather Load Doublewords (SVE)",
     "summary": "Loads doublewords from non-contiguous memory addresses.",
-    "syntax": "LD1D { <Zt>.D }, <Pg>/Z, [<Xn|SP>, <Zm>.D, LSL #3]",
+    "syntax": "LD1D { &lt;Zt&gt;.D }, &lt;Pg&gt;/Z, [&lt;Xn|SP&gt;, &lt;Zm&gt;.D, LSL #3]",
     "encoding": {
       "format": "SVE Gather",
       "binary_pattern": "11000100 | 11 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7386,7 +7386,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Scatter Store Bytes (SVE)",
     "summary": "Stores bytes to non-contiguous memory addresses.",
-    "syntax": "ST1B { <Zt>.B }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW]",
+    "syntax": "ST1B { &lt;Zt&gt;.B }, &lt;Pg&gt;, [&lt;Xn|SP&gt;, &lt;Zm&gt;.S, SXTW]",
     "encoding": {
       "format": "SVE Scatter",
       "binary_pattern": "11100100 | 00 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7451,7 +7451,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Scatter Store Halfwords (SVE)",
     "summary": "Stores halfwords to non-contiguous memory addresses.",
-    "syntax": "ST1H { <Zt>.H }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW #1]",
+    "syntax": "ST1H { &lt;Zt&gt;.H }, &lt;Pg&gt;, [&lt;Xn|SP&gt;, &lt;Zm&gt;.S, SXTW #1]",
     "encoding": {
       "format": "SVE Scatter",
       "binary_pattern": "11100100 | 01 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7516,7 +7516,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Scatter Store Words (SVE)",
     "summary": "Stores words to non-contiguous memory addresses.",
-    "syntax": "ST1W { <Zt>.S }, <Pg>, [<Xn|SP>, <Zm>.S, SXTW #2]",
+    "syntax": "ST1W { &lt;Zt&gt;.S }, &lt;Pg&gt;, [&lt;Xn|SP&gt;, &lt;Zm&gt;.S, SXTW #2]",
     "encoding": {
       "format": "SVE Scatter",
       "binary_pattern": "11100100 | 10 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7581,7 +7581,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Scatter Store Doublewords (SVE)",
     "summary": "Stores doublewords to non-contiguous memory addresses.",
-    "syntax": "ST1D { <Zt>.D }, <Pg>, [<Xn|SP>, <Zm>.D, LSL #3]",
+    "syntax": "ST1D { &lt;Zt&gt;.D }, &lt;Pg&gt;, [&lt;Xn|SP&gt;, &lt;Zm&gt;.D, LSL #3]",
     "encoding": {
       "format": "SVE Scatter",
       "binary_pattern": "11100100 | 11 | 1 | mmm | 000 | Pg | Zn | Zt",
@@ -7646,7 +7646,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Move Vector to Tile Slice (Horizontal)",
     "summary": "Moves an SVE vector into a horizontal slice of a ZA tile.",
-    "syntax": "MOVA <ZA>.<T>H[<Ws>, <imm>], <Pg>/M, <Zn>.<T>",
+    "syntax": "MOVA &lt;ZA&gt;.&lt;T&gt;H[&lt;Ws&gt;, &lt;imm&gt;], &lt;Pg&gt;/M, &lt;Zn&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SME Move",
       "binary_pattern": "11000000 | 00 | 0000 | 000 | Pg | Zn | 00000",
@@ -7703,7 +7703,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Move Vector to Tile Slice (Vertical)",
     "summary": "Moves an SVE vector into a vertical slice of a ZA tile.",
-    "syntax": "MOVA <ZA>.<T>V[<Ws>, <imm>], <Pg>/M, <Zn>.<T>",
+    "syntax": "MOVA &lt;ZA&gt;.&lt;T&gt;V[&lt;Ws&gt;, &lt;imm&gt;], &lt;Pg&gt;/M, &lt;Zn&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SME Move",
       "binary_pattern": "11000000 | 00 | 0000 | 001 | Pg | Zn | 00000",
@@ -7760,7 +7760,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Move Tile Slice to Vector (Horizontal)",
     "summary": "Moves a horizontal slice of a ZA tile into an SVE vector.",
-    "syntax": "MOVA <Zd>.<T>, <Pg>/M, <ZA>.<T>H[<Ws>, <imm>]",
+    "syntax": "MOVA &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;ZA&gt;.&lt;T&gt;H[&lt;Ws&gt;, &lt;imm&gt;]",
     "encoding": {
       "format": "SME Move",
       "binary_pattern": "11000000 | 00 | 0000 | 100 | Pg | 00000 | Zd",
@@ -7817,7 +7817,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Move Tile Slice to Vector (Vertical)",
     "summary": "Moves a vertical slice of a ZA tile into an SVE vector.",
-    "syntax": "MOVA <Zd>.<T>, <Pg>/M, <ZA>.<T>V[<Ws>, <imm>]",
+    "syntax": "MOVA &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;ZA&gt;.&lt;T&gt;V[&lt;Ws&gt;, &lt;imm&gt;]",
     "encoding": {
       "format": "SME Move",
       "binary_pattern": "11000000 | 00 | 0000 | 101 | Pg | 00000 | Zd",
@@ -7874,7 +7874,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Load ZA Tile Slice",
     "summary": "Loads a tile slice from memory directly into ZA.",
-    "syntax": "LDSZA <ZA>.<T>V[<Ws>, <imm>], [<Xn|SP>, <Xm>, LSL <scale>]",
+    "syntax": "LDSZA &lt;ZA&gt;.&lt;T&gt;V[&lt;Ws&gt;, &lt;imm&gt;], [&lt;Xn|SP&gt;, &lt;Xm&gt;, LSL &lt;scale&gt;]",
     "encoding": {
       "format": "SME Load",
       "binary_pattern": "11100001 | 00 | 000000 | 00 | Rm | Rn | 00000",
@@ -7931,7 +7931,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Store ZA Tile Slice",
     "summary": "Stores a tile slice from ZA directly to memory.",
-    "syntax": "STSZA <ZA>.<T>V[<Ws>, <imm>], [<Xn|SP>, <Xm>, LSL <scale>]",
+    "syntax": "STSZA &lt;ZA&gt;.&lt;T&gt;V[&lt;Ws&gt;, &lt;imm&gt;], [&lt;Xn|SP&gt;, &lt;Xm&gt;, LSL &lt;scale&gt;]",
     "encoding": {
       "format": "SME Store",
       "binary_pattern": "11100001 | 00 | 010000 | 00 | Rm | Rn | 00000",
@@ -7988,7 +7988,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bit Deposit (SVE2)",
     "summary": "Deposits bits from source to destination based on a mask (Scatter bits).",
-    "syntax": "BDEP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "BDEP &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "01000101 | sz | 0 | 0 | 11010 | Zm | 01000 | Zdn",
@@ -8049,7 +8049,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bit Extract (SVE2)",
     "summary": "Extracts bits from source to destination based on a mask (Gather bits).",
-    "syntax": "BEXT <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "BEXT &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "01000101 | sz | 0 | 0 | 11010 | Zm | 01100 | Zdn",
@@ -8110,7 +8110,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Bit Group (SVE2)",
     "summary": "Groups bits from source to left/right based on a mask.",
-    "syntax": "BGRP <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "BGRP &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Bitwise",
       "binary_pattern": "01000101 | sz | 0 | 0 | 11010 | Zm | 00100 | Zdn",
@@ -8171,7 +8171,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Polynomial Multiply Long (Bottom)",
     "summary": "Polynomial multiply of bottom 64-bits (Crypto/CRC).",
-    "syntax": "PMULLB <Zdn>.Q, <Zn>.D, <Zm>.D",
+    "syntax": "PMULLB &lt;Zdn&gt;.Q, &lt;Zn&gt;.D, &lt;Zm&gt;.D",
     "encoding": {
       "format": "SVE2 Crypto",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 11000 | Zm | Zn | Zdn",
@@ -8236,7 +8236,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Polynomial Multiply Long (Top)",
     "summary": "Polynomial multiply of top 64-bits (Crypto/CRC).",
-    "syntax": "PMULLT <Zdn>.Q, <Zn>.D, <Zm>.D",
+    "syntax": "PMULLT &lt;Zdn&gt;.Q, &lt;Zn&gt;.D, &lt;Zm&gt;.D",
     "encoding": {
       "format": "SVE2 Crypto",
       "binary_pattern": "01000101 | 00 | 0 | 0 | 11001 | Zm | Zn | Zdn",
@@ -8301,7 +8301,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-Point 8 Convert",
     "summary": "Converts between FP8 and other formats.",
-    "syntax": "F8CVT <Zd>.H, <Zn>.B, #<imm>",
+    "syntax": "F8CVT &lt;Zd&gt;.H, &lt;Zn&gt;.B, #&lt;imm&gt;",
     "encoding": {
       "format": "FP8",
       "binary_pattern": "01100101 | 00 | 0010 | 0010 | 00 | Zn | Zd",
@@ -8358,7 +8358,7 @@
     "architecture": "ARMv9-A",
     "full_name": "FP8 Matrix Outer Product Accumulate",
     "summary": "Outer product of FP8 vectors accumulating to FP32.",
-    "syntax": "F8MOPA <ZAda>.S, <Zn>.B, <Zm>.B",
+    "syntax": "F8MOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.B, &lt;Zm&gt;.B",
     "encoding": {
       "format": "SME2 FP8",
       "binary_pattern": "10000000 | 00 | 0 | 00000 | Zm | Zn | ZAda",
@@ -8419,7 +8419,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Complex Dot Product (SVE2)",
     "summary": "Computes complex integer dot product.",
-    "syntax": "CDOT <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot>",
+    "syntax": "CDOT &lt;Zdn&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;, #&lt;rot&gt;",
     "encoding": {
       "format": "SVE2 Complex",
       "binary_pattern": "01000100 | 10 | 0 | 00000 | Zm | Zn | Zdn",
@@ -8480,7 +8480,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Complex Multiply Accumulate (SVE2)",
     "summary": "Computes complex integer multiply-accumulate.",
-    "syntax": "CMLA <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>, #<rot>",
+    "syntax": "CMLA &lt;Zdn&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;, #&lt;rot&gt;",
     "encoding": {
       "format": "SVE2 Complex",
       "binary_pattern": "01000100 | 10 | 0 | 00100 | Zm | Zn | Zdn",
@@ -8541,7 +8541,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Saturating Rounding Doubling Multiply High (SVE2)",
     "summary": "Saturating, rounding, doubling high multiply.",
-    "syntax": "SQRDMULH <Zdn>.<T>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "SQRDMULH &lt;Zdn&gt;.&lt;T&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Int",
       "binary_pattern": "01000100 | sz | 0 | 0 | 01110 | Zm | Zn | Zdn",
@@ -8602,7 +8602,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Saturating Rounding Shift Left (SVE2)",
     "summary": "Saturating, rounding left shift by vector.",
-    "syntax": "SQRSHL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "SQRSHL &lt;Zdn&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Shift",
       "binary_pattern": "01000100 | sz | 0 | 0 | 11110 | Zm | Pg | Zdn | Zdn",
@@ -8667,7 +8667,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Unsigned Saturating Rounding Shift Left (SVE2)",
     "summary": "Unsigned saturating, rounding left shift.",
-    "syntax": "UQRSHL <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "UQRSHL &lt;Zdn&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE2 Shift",
       "binary_pattern": "01000100 | sz | 0 | 0 | 11111 | Zm | Pg | Zdn | Zdn",
@@ -8732,7 +8732,7 @@
     "architecture": "ARMv9-A",
     "full_name": "While Less Than or Equal (SVE2)",
     "summary": "Generates a predicate for a loop (start <= end).",
-    "syntax": "WHILELE <Pd>.<T>, <Xn>, <Xm>",
+    "syntax": "WHILELE &lt;Pd&gt;.&lt;T&gt;, &lt;Xn&gt;, &lt;Xm&gt;",
     "encoding": {
       "format": "SVE Predicate",
       "binary_pattern": "00100101 | sz | 1 | 00000 | 1 | Xm | Xn | Pd",
@@ -8797,7 +8797,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Table Lookup (SVE)",
     "summary": "Vector table lookup (SVE version of TBL).",
-    "syntax": "TBL <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "TBL &lt;Zdn&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Permute",
       "binary_pattern": "00000101 | 00 | 1 | 01100 | Zm | Zn | Zdn",
@@ -8858,7 +8858,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Table Lookup Extension (SVE)",
     "summary": "Vector table extension (SVE version of TBX).",
-    "syntax": "TBX <Zdn>.<T>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "TBX &lt;Zdn&gt;.&lt;T&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Permute",
       "binary_pattern": "00000101 | 00 | 1 | 01101 | Zm | Zn | Zdn",
@@ -8919,7 +8919,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Signed Divide (SVE)",
     "summary": "Signed integer division (vector).",
-    "syntax": "SDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "SDIV &lt;Zdn&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Math",
       "binary_pattern": "00000100 | sz | 1 | 00000 | Zm | Pg | Zdn | Zdn",
@@ -8980,7 +8980,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Unsigned Divide (SVE)",
     "summary": "Unsigned integer division (vector).",
-    "syntax": "UDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "UDIV &lt;Zdn&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Math",
       "binary_pattern": "00000100 | sz | 1 | 00001 | Zm | Pg | Zdn | Zdn",
@@ -9041,7 +9041,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-Point Divide (SVE)",
     "summary": "Floating-point division (vector).",
-    "syntax": "FDIV <Zdn>.<T>, <Pg>/M, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "FDIV &lt;Zdn&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Float",
       "binary_pattern": "01100101 | sz | 0 | 01100 | Zm | Pg | Zdn | Zdn",
@@ -9102,7 +9102,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-Point Square Root (SVE)",
     "summary": "Floating-point square root (vector).",
-    "syntax": "FSQRT <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+    "syntax": "FSQRT &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zn&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Float",
       "binary_pattern": "01100101 | sz | 0 | 11010 | Pg | Zn | Zd",
@@ -9159,7 +9159,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Floating-Point Round Nearest (SVE)",
     "summary": "Rounds float to integer (Nearest Even) (vector).",
-    "syntax": "FRINTN <Zd>.<T>, <Pg>/M, <Zn>.<T>",
+    "syntax": "FRINTN &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;Zn&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Float",
       "binary_pattern": "01100101 | sz | 0 | 11000 | Pg | Zn | Zd",
@@ -9216,7 +9216,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Compact Last Element (Before)",
     "summary": "Extracts the last active element (SVE).",
-    "syntax": "CLASTB <Rd>, <Pg>, <Rd>, <Zn>.<T>",
+    "syntax": "CLASTB &lt;Rd&gt;, &lt;Pg&gt;, &lt;Rd&gt;, &lt;Zn&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Reduction",
       "binary_pattern": "00000101 | sz | 1 | 00000 | Pg | Zn | Rd",
@@ -9273,7 +9273,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Splice Vectors",
     "summary": "Splices two vectors based on a predicate.",
-    "syntax": "SPLICE <Zdn>.<T>, <Pg>, <Zdn>.<T>, <Zm>.<T>",
+    "syntax": "SPLICE &lt;Zdn&gt;.&lt;T&gt;, &lt;Pg&gt;, &lt;Zdn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Permute",
       "binary_pattern": "00000101 | sz | 1 | 01011 | Zm | Pg | Zdn | Zdn",
@@ -9334,7 +9334,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Select Elements (SVE)",
     "summary": "Selects elements from two vectors based on predicate.",
-    "syntax": "SEL <Zd>.<T>, <Pg>, <Zn>.<T>, <Zm>.<T>",
+    "syntax": "SEL &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;, &lt;Zn&gt;.&lt;T&gt;, &lt;Zm&gt;.&lt;T&gt;",
     "encoding": {
       "format": "SVE Permute",
       "binary_pattern": "00000101 | sz | 1 | 01100 | Zm | Pg | Zn | Zd",
@@ -9399,7 +9399,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Insert Scalar into Vector",
     "summary": "Shifts vector and inserts scalar at element 0.",
-    "syntax": "INSR <Zdn>.<T>, <Rm>",
+    "syntax": "INSR &lt;Zdn&gt;.&lt;T&gt;, &lt;Rm&gt;",
     "encoding": {
       "format": "SVE Permute",
       "binary_pattern": "00000101 | sz | 1 | 00011 | Rm | Zdn | Zdn",
@@ -9456,7 +9456,7 @@
     "architecture": "ARMv9-A",
     "full_name": "Duplicate Scalar (SVE)",
     "summary": "Broadcasts a scalar value to all vector elements.",
-    "syntax": "DUP <Zd>.<T>, <Rn|SP>",
+    "syntax": "DUP &lt;Zd&gt;.&lt;T&gt;, &lt;Rn|SP&gt;",
     "encoding": {
       "format": "SVE Permute",
       "binary_pattern": "00000101 | sz | 1 | 00000 | Rn | Zd",
