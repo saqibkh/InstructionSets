@@ -22709,6 +22709,2104 @@
       "linked_pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;"
     },
     {
+      "mnemonic": "VLSEG3E8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Segment (3 fields, 8-bit)",
+      "summary": "Loads 3 fields (e.g., RGB) of 8-bit elements into 3 vector registers.",
+      "syntax": "VLSEG3E8.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000110 | 00101 | vm | rs1 | 000 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "00101",
+            "clean": "00101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Group (3 regs)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "Load 3 interleaved 8-bit streams into 3 vector registers.",
+      "slug": "vlseg3e8_v",
+      "rel_url": "risc-v/vlseg3e8_v/",
+      "linked_summary": "Loads 3 fields (e.g., RGB) of 8-<a href=\"../../armv8-a/bit/\">bit</a> elements into 3 vector registers.",
+      "linked_pseudocode": "Load 3 interleaved 8-<a href=\"../../armv8-a/bit/\">bit</a> streams into 3 vector registers."
+    },
+    {
+      "mnemonic": "VSSEG3E8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Segment (3 fields, 8-bit)",
+      "summary": "Stores 3 vector registers (e.g., RGB) into memory as interleaved 8-bit fields.",
+      "syntax": "VSSEG3E8.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000110 | 00101 | vm | rs1 | 000 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "00101",
+            "clean": "00101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Src Group (3 regs)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "Store 3 vector registers as interleaved 8-bit fields.",
+      "slug": "vsseg3e8_v",
+      "rel_url": "risc-v/vsseg3e8_v/",
+      "linked_summary": "Stores 3 vector registers (e.g., RGB) into memory as interleaved 8-<a href=\"../../armv8-a/bit/\">bit</a> fields.",
+      "linked_pseudocode": "Store 3 vector registers as interleaved 8-<a href=\"../../armv8-a/bit/\">bit</a> fields."
+    },
+    {
+      "mnemonic": "VLSEG4E8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Segment (4 fields, 8-bit)",
+      "summary": "Loads 4 fields (e.g., RGBA) of 8-bit elements into 4 vector registers.",
+      "syntax": "VLSEG4E8.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000110 | 00111 | vm | rs1 | 000 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "00111",
+            "clean": "00111"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Group (4 regs)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "Load 4 interleaved 8-bit streams into 4 vector registers.",
+      "slug": "vlseg4e8_v",
+      "rel_url": "risc-v/vlseg4e8_v/",
+      "linked_summary": "Loads 4 fields (e.g., RGBA) of 8-<a href=\"../../armv8-a/bit/\">bit</a> elements into 4 vector registers.",
+      "linked_pseudocode": "Load 4 interleaved 8-<a href=\"../../armv8-a/bit/\">bit</a> streams into 4 vector registers."
+    },
+    {
+      "mnemonic": "VSSEG4E8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Segment (4 fields, 8-bit)",
+      "summary": "Stores 4 vector registers (e.g., RGBA) into memory as interleaved 8-bit fields.",
+      "syntax": "VSSEG4E8.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000110 | 00111 | vm | rs1 | 000 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "00111",
+            "clean": "00111"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Src Group (4 regs)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "Store 4 vector registers as interleaved 8-bit fields.",
+      "slug": "vsseg4e8_v",
+      "rel_url": "risc-v/vsseg4e8_v/",
+      "linked_summary": "Stores 4 vector registers (e.g., RGBA) into memory as interleaved 8-<a href=\"../../armv8-a/bit/\">bit</a> fields.",
+      "linked_pseudocode": "Store 4 vector registers as interleaved 8-<a href=\"../../armv8-a/bit/\">bit</a> fields."
+    },
+    {
+      "mnemonic": "VLSEG2E16.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Segment (2 fields, 16-bit)",
+      "summary": "Loads 2 fields (e.g., Complex Real/Imag) of 16-bit elements.",
+      "syntax": "VLSEG2E16.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000110 | 00011 | vm | rs1 | 101 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "00011",
+            "clean": "00011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "101",
+            "clean": "101"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Group (2 regs)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "Load 2 interleaved 16-bit streams.",
+      "slug": "vlseg2e16_v",
+      "rel_url": "risc-v/vlseg2e16_v/",
+      "linked_summary": "Loads 2 fields (e.g., Complex Real/Imag) of 16-<a href=\"../../armv8-a/bit/\">bit</a> elements.",
+      "linked_pseudocode": "Load 2 interleaved 16-<a href=\"../../armv8-a/bit/\">bit</a> streams."
+    },
+    {
+      "mnemonic": "VSSEG2E16.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Segment (2 fields, 16-bit)",
+      "summary": "Stores 2 vector registers as interleaved 16-bit fields.",
+      "syntax": "VSSEG2E16.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000110 | 00011 | vm | rs1 | 101 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "00011",
+            "clean": "00011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "101",
+            "clean": "101"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Src Group (2 regs)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "Store 2 interleaved 16-bit streams.",
+      "slug": "vsseg2e16_v",
+      "rel_url": "risc-v/vsseg2e16_v/",
+      "linked_summary": "Stores 2 vector registers as interleaved 16-<a href=\"../../armv8-a/bit/\">bit</a> fields.",
+      "linked_pseudocode": "Store 2 interleaved 16-<a href=\"../../armv8-a/bit/\">bit</a> streams."
+    },
+    {
+      "mnemonic": "VLE8FF.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load 8-bit Fault-Only-First",
+      "summary": "Loads 8-bit elements, suppressing faults on elements after the first. Sets VL to number of elements loaded. Critical for strings.",
+      "syntax": "VLE8FF.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | 10000 | vm | rs1 | 000 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "vl = LoadFaultFirst(vd, rs1, 1);",
+      "slug": "vle8ff_v",
+      "rel_url": "risc-v/vle8ff_v/",
+      "linked_summary": "Loads 8-<a href=\"../../armv8-a/bit/\">bit</a> elements, suppressing faults on elements after the first. Sets VL to number of elements loaded. Critical for strings.",
+      "linked_pseudocode": "vl = LoadFaultFirst(vd, rs1, 1);"
+    },
+    {
+      "mnemonic": "VLE16FF.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load 16-bit Fault-Only-First",
+      "summary": "Loads 16-bit elements with fault suppression.",
+      "syntax": "VLE16FF.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | 10000 | vm | rs1 | 101 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "101",
+            "clean": "101"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "vl = LoadFaultFirst(vd, rs1, 2);",
+      "slug": "vle16ff_v",
+      "rel_url": "risc-v/vle16ff_v/",
+      "linked_summary": "Loads 16-<a href=\"../../armv8-a/bit/\">bit</a> elements with fault suppression.",
+      "linked_pseudocode": "vl = LoadFaultFirst(vd, rs1, 2);"
+    },
+    {
+      "mnemonic": "VLE32FF.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load 32-bit Fault-Only-First",
+      "summary": "Loads 32-bit elements with fault suppression.",
+      "syntax": "VLE32FF.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | 10000 | vm | rs1 | 110 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "vl = LoadFaultFirst(vd, rs1, 4);",
+      "slug": "vle32ff_v",
+      "rel_url": "risc-v/vle32ff_v/",
+      "linked_summary": "Loads 32-<a href=\"../../armv8-a/bit/\">bit</a> elements with fault suppression.",
+      "linked_pseudocode": "vl = LoadFaultFirst(vd, rs1, 4);"
+    },
+    {
+      "mnemonic": "VLE64FF.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load 64-bit Fault-Only-First",
+      "summary": "Loads 64-bit elements with fault suppression.",
+      "syntax": "VLE64FF.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | 10000 | vm | rs1 | 111 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Addr"
+        }
+      ],
+      "pseudocode": "vl = LoadFaultFirst(vd, rs1, 8);",
+      "slug": "vle64ff_v",
+      "rel_url": "risc-v/vle64ff_v/",
+      "linked_summary": "Loads 64-<a href=\"../../armv8-a/bit/\">bit</a> elements with fault suppression.",
+      "linked_pseudocode": "vl = LoadFaultFirst(vd, rs1, 8);"
+    },
+    {
+      "mnemonic": "VAMOADDW.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Add Word",
+      "summary": "Atomically adds elements from vs2 to memory addresses in rs1 (indexed by vs2? No, rs1 is base, vs2 is index).",
+      "syntax": "VAMOADDW.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 00000 | vm | rs1 | 110 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Old Val)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicAdd(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoaddw_v",
+      "rel_url": "risc-v/vamoaddw_v/",
+      "linked_summary": "Atomically <a href=\"../../armv8-a/adds_5/\">adds</a> elements from vs2 to memory addresses <a href=\"../../x86/in/\">in</a> rs1 (indexed by vs2? No, rs1 is base, vs2 is <a href=\"../../armv8-a/index/\">index</a>).",
+      "linked_pseudocode": "AtomicAdd(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOADDD.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Add Doubleword",
+      "summary": "Atomically adds elements from vs2 to memory addresses (64-bit).",
+      "syntax": "VAMOADDD.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 00000 | vm | rs1 | 111 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Old Val)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicAdd(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoaddd_v",
+      "rel_url": "risc-v/vamoaddd_v/",
+      "linked_summary": "Atomically <a href=\"../../armv8-a/adds_5/\">adds</a> elements from vs2 to memory addresses (64-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "AtomicAdd(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOANDW.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic AND Word",
+      "summary": "Atomically ANDs elements.",
+      "syntax": "VAMOANDW.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 01100 | vm | rs1 | 110 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "01100",
+            "clean": "01100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicAnd(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoandw_v",
+      "rel_url": "risc-v/vamoandw_v/",
+      "linked_summary": "Atomically ANDs elements.",
+      "linked_pseudocode": "AtomicAnd(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOANDD.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic AND Doubleword",
+      "summary": "Atomically ANDs elements (64-bit).",
+      "syntax": "VAMOANDD.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 01100 | vm | rs1 | 111 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "01100",
+            "clean": "01100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicAnd(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoandd_v",
+      "rel_url": "risc-v/vamoandd_v/",
+      "linked_summary": "Atomically ANDs elements (64-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "AtomicAnd(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOORW.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic OR Word",
+      "summary": "Atomically ORs elements.",
+      "syntax": "VAMOORW.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 01000 | vm | rs1 | 110 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "01000",
+            "clean": "01000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicOr(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoorw_v",
+      "rel_url": "risc-v/vamoorw_v/",
+      "linked_summary": "Atomically ORs elements.",
+      "linked_pseudocode": "AtomicOr(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOORD.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic OR Doubleword",
+      "summary": "Atomically ORs elements (64-bit).",
+      "syntax": "VAMOORD.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 01000 | vm | rs1 | 111 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "01000",
+            "clean": "01000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicOr(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoord_v",
+      "rel_url": "risc-v/vamoord_v/",
+      "linked_summary": "Atomically ORs elements (64-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "AtomicOr(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOXORW.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic XOR Word",
+      "summary": "Atomically XORs elements.",
+      "syntax": "VAMOXORW.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 00100 | vm | rs1 | 110 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "00100",
+            "clean": "00100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicXor(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoxorw_v",
+      "rel_url": "risc-v/vamoxorw_v/",
+      "linked_summary": "Atomically XORs elements.",
+      "linked_pseudocode": "AtomicXor(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOXORD.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic XOR Doubleword",
+      "summary": "Atomically XORs elements (64-bit).",
+      "syntax": "VAMOXORD.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 00100 | vm | rs1 | 111 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "00100",
+            "clean": "00100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicXor(rs1 + vs2[i], vd[i]);",
+      "slug": "vamoxord_v",
+      "rel_url": "risc-v/vamoxord_v/",
+      "linked_summary": "Atomically XORs elements (64-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "AtomicXor(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOMAXW.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Max Word",
+      "summary": "Atomic Max (Signed).",
+      "syntax": "VAMOMAXW.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 10100 | vm | rs1 | 110 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "10100",
+            "clean": "10100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicMax(rs1 + vs2[i], vd[i]);",
+      "slug": "vamomaxw_v",
+      "rel_url": "risc-v/vamomaxw_v/",
+      "linked_summary": "Atomic Max (Signed).",
+      "linked_pseudocode": "AtomicMax(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOMAXD.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Max Doubleword",
+      "summary": "Atomic Max (Signed, 64-bit).",
+      "syntax": "VAMOMAXD.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 10100 | vm | rs1 | 111 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "10100",
+            "clean": "10100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicMax(rs1 + vs2[i], vd[i]);",
+      "slug": "vamomaxd_v",
+      "rel_url": "risc-v/vamomaxd_v/",
+      "linked_summary": "Atomic Max (Signed, 64-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "AtomicMax(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOMINW.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Min Word",
+      "summary": "Atomic Min (Signed).",
+      "syntax": "VAMOMINW.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 10000 | vm | rs1 | 110 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicMin(rs1 + vs2[i], vd[i]);",
+      "slug": "vamominw_v",
+      "rel_url": "risc-v/vamominw_v/",
+      "linked_summary": "Atomic Min (Signed).",
+      "linked_pseudocode": "AtomicMin(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOMIND.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Min Doubleword",
+      "summary": "Atomic Min (Signed, 64-bit).",
+      "syntax": "VAMOMIND.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 10000 | vm | rs1 | 111 | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicMin(rs1 + vs2[i], vd[i]);",
+      "slug": "vamomind_v",
+      "rel_url": "risc-v/vamomind_v/",
+      "linked_summary": "Atomic Min (Signed, 64-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "AtomicMin(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOMAXU.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Max Unsigned",
+      "summary": "Atomic Max (Unsigned, Width implicit).",
+      "syntax": "VAMOMAXU.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 11100 | vm | rs1 | width | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "11100",
+            "clean": "11100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "width",
+            "clean": "width"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicMaxU(rs1 + vs2[i], vd[i]);",
+      "slug": "vamomaxu_v",
+      "rel_url": "risc-v/vamomaxu_v/",
+      "linked_summary": "Atomic Max (Unsigned, Width implicit).",
+      "linked_pseudocode": "AtomicMaxU(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VAMOMINU.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Atomic Min Unsigned",
+      "summary": "Atomic Min (Unsigned, Width implicit).",
+      "syntax": "VAMOMINU.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VAMO",
+        "binary_pattern": "000001 | 11000 | vm | rs1 | width | vd | 0101111",
+        "hex_opcode": "0x2F",
+        "visual_parts": [
+          {
+            "raw": "000001",
+            "clean": "000001"
+          },
+          {
+            "raw": "11000",
+            "clean": "11000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "width",
+            "clean": "width"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0101111",
+            "clean": "0101111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Index"
+        }
+      ],
+      "pseudocode": "AtomicMinU(rs1 + vs2[i], vd[i]);",
+      "slug": "vamominu_v",
+      "rel_url": "risc-v/vamominu_v/",
+      "linked_summary": "Atomic Min (Unsigned, Width implicit).",
+      "linked_pseudocode": "AtomicMinU(rs1 + vs2[i], vd[i]);"
+    },
+    {
+      "mnemonic": "VSLIDE1UP.VX",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Slide One Element Up",
+      "summary": "Moves elements up by 1, injecting scalar into index 0.",
+      "syntax": "VSLIDE1UP.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "001110 | vm | vs2 | rs1 | 110 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "001110",
+            "clean": "001110"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Vec"
+        },
+        {
+          "name": "rs1",
+          "desc": "Scalar"
+        }
+      ],
+      "pseudocode": "vd[0] = rs1; vd[i] = vs2[i-1];",
+      "slug": "vslide1up_vx",
+      "rel_url": "risc-v/vslide1up_vx/",
+      "linked_summary": "Moves elements up by 1, injecting scalar into <a href=\"../../armv8-a/index/\">index</a> 0.",
+      "linked_pseudocode": "vd[0] = rs1; vd[i] = vs2[i-1];"
+    },
+    {
+      "mnemonic": "VSLIDE1DOWN.VX",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Slide One Element Down",
+      "summary": "Moves elements down by 1, injecting scalar into top index.",
+      "syntax": "VSLIDE1DOWN.VX vd, vs2, rs1, vm",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "001111 | vm | vs2 | rs1 | 110 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "001111",
+            "clean": "001111"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Vec"
+        },
+        {
+          "name": "rs1",
+          "desc": "Scalar"
+        }
+      ],
+      "pseudocode": "vd[i] = vs2[i+1]; vd[vl-1] = rs1;",
+      "slug": "vslide1down_vx",
+      "rel_url": "risc-v/vslide1down_vx/",
+      "linked_summary": "Moves elements down by 1, injecting scalar into top <a href=\"../../armv8-a/index/\">index</a>.",
+      "linked_pseudocode": "vd[i] = vs2[i+1]; vd[vl-1] = rs1;"
+    },
+    {
+      "mnemonic": "VFREDOSUM.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Ordered Float Reduction Sum",
+      "summary": "Sums float vector elements in exact order (0 to vl-1).",
+      "syntax": "VFREDOSUM.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "000011 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "000011",
+            "clean": "000011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Scalar Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Vector"
+        },
+        {
+          "name": "vs1",
+          "desc": "Start"
+        }
+      ],
+      "pseudocode": "vd[0] = vs1[0]; for i in 0..vl-1: vd[0] += vs2[i];",
+      "slug": "vfredosum_vs",
+      "rel_url": "risc-v/vfredosum_vs/",
+      "linked_summary": "Sums float vector elements <a href=\"../../x86/in/\">in</a> exact order (0 to vl-1).",
+      "linked_pseudocode": "vd[0] = vs1[0]; for i <a href=\"../../x86/in/\">in</a> 0..vl-1: vd[0] += vs2[i];"
+    },
+    {
+      "mnemonic": "VFWREDUSUM.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Unordered Float Reduction Sum",
+      "summary": "Sums N-bit floats into 2*N-bit scalar accumulator (Unordered).",
+      "syntax": "VFWREDUSUM.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "110001 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "110001",
+            "clean": "110001"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Wide Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Narrow Vec"
+        },
+        {
+          "name": "vs1",
+          "desc": "Wide Start"
+        }
+      ],
+      "pseudocode": "vd[0] = vs1[0] + sum(vs2[*]);",
+      "slug": "vfwredusum_vs",
+      "rel_url": "risc-v/vfwredusum_vs/",
+      "linked_summary": "Sums N-<a href=\"../../armv8-a/bit/\">bit</a> floats into 2*N-<a href=\"../../armv8-a/bit/\">bit</a> scalar accumulator (Unordered).",
+      "linked_pseudocode": "vd[0] = vs1[0] + sum(vs2[*]);"
+    },
+    {
+      "mnemonic": "VFWREDOSUM.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Ordered Float Reduction Sum",
+      "summary": "Sums N-bit floats into 2*N-bit scalar accumulator (Ordered).",
+      "syntax": "VFWREDOSUM.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "110011 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "110011",
+            "clean": "110011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Wide Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Narrow Vec"
+        },
+        {
+          "name": "vs1",
+          "desc": "Wide Start"
+        }
+      ],
+      "pseudocode": "vd[0] = vs1[0]; for i: vd[0] += extend(vs2[i]);",
+      "slug": "vfwredosum_vs",
+      "rel_url": "risc-v/vfwredosum_vs/",
+      "linked_summary": "Sums N-<a href=\"../../armv8-a/bit/\">bit</a> floats into 2*N-<a href=\"../../armv8-a/bit/\">bit</a> scalar accumulator (Ordered).",
+      "linked_pseudocode": "vd[0] = vs1[0]; for i: vd[0] += extend(vs2[i]);"
+    },
+    {
+      "mnemonic": "VMERGE.VXM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Merge Scalar",
+      "summary": "Merges integer scalar vs vector based on mask.",
+      "syntax": "VMERGE.VXM vd, vs2, rs1, v0",
+      "encoding": {
+        "format": "OPIVX",
+        "binary_pattern": "010111 | 0 | vs2 | rs1 | 100 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010111",
+            "clean": "010111"
+          },
+          {
+            "raw": "0",
+            "clean": "0"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "False"
+        },
+        {
+          "name": "rs1",
+          "desc": "True (Scalar)"
+        }
+      ],
+      "pseudocode": "vd[i] = v0[i] ? rs1 : vs2[i];",
+      "slug": "vmerge_vxm",
+      "rel_url": "risc-v/vmerge_vxm/",
+      "linked_summary": "Merges integer scalar vs vector based on mask.",
+      "linked_pseudocode": "vd[i] = v0[i] ? rs1 : vs2[i];"
+    },
+    {
+      "mnemonic": "VMERGE.VIM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Merge Immediate",
+      "summary": "Merges immediate vs vector based on mask.",
+      "syntax": "VMERGE.VIM vd, vs2, imm, v0",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "010111 | 0 | vs2 | imm | 011 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010111",
+            "clean": "010111"
+          },
+          {
+            "raw": "0",
+            "clean": "0"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "imm",
+            "clean": "imm"
+          },
+          {
+            "raw": "011",
+            "clean": "011"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "False"
+        },
+        {
+          "name": "imm",
+          "desc": "True (Imm)"
+        }
+      ],
+      "pseudocode": "vd[i] = v0[i] ? imm : vs2[i];",
+      "slug": "vmerge_vim",
+      "rel_url": "risc-v/vmerge_vim/",
+      "linked_summary": "Merges immediate vs vector based on mask.",
+      "linked_pseudocode": "vd[i] = v0[i] ? imm : vs2[i];"
+    },
+    {
+      "mnemonic": "SHA512SIG0",
+      "architecture": "RISC-V",
+      "extension": "Zknh (Scalar Crypto)",
+      "full_name": "SHA-512 Sigma0",
+      "summary": "Performs SHA-512 Sigma0 transformation (RV64).",
+      "syntax": "SHA512SIG0 rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | 00110 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "0001000",
+            "clean": "0001000"
+          },
+          {
+            "raw": "00110",
+            "clean": "00110"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "rd = sigma0_512(rs1);",
+      "slug": "sha512sig0",
+      "rel_url": "risc-v/sha512sig0/",
+      "linked_summary": "Performs SHA-512 Sigma0 transformation (RV64).",
+      "linked_pseudocode": "rd = sigma0_512(rs1);"
+    },
+    {
+      "mnemonic": "SHA512SIG1",
+      "architecture": "RISC-V",
+      "extension": "Zknh (Scalar Crypto)",
+      "full_name": "SHA-512 Sigma1",
+      "summary": "Performs SHA-512 Sigma1 transformation (RV64).",
+      "syntax": "SHA512SIG1 rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | 00111 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "0001000",
+            "clean": "0001000"
+          },
+          {
+            "raw": "00111",
+            "clean": "00111"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "rd = sigma1_512(rs1);",
+      "slug": "sha512sig1",
+      "rel_url": "risc-v/sha512sig1/",
+      "linked_summary": "Performs SHA-512 Sigma1 transformation (RV64).",
+      "linked_pseudocode": "rd = sigma1_512(rs1);"
+    },
+    {
+      "mnemonic": "SHA512SUM0",
+      "architecture": "RISC-V",
+      "extension": "Zknh (Scalar Crypto)",
+      "full_name": "SHA-512 Sum0",
+      "summary": "Performs SHA-512 Sum0 transformation (RV64).",
+      "syntax": "SHA512SUM0 rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | 00100 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "0001000",
+            "clean": "0001000"
+          },
+          {
+            "raw": "00100",
+            "clean": "00100"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "rd = sum0_512(rs1);",
+      "slug": "sha512sum0",
+      "rel_url": "risc-v/sha512sum0/",
+      "linked_summary": "Performs SHA-512 Sum0 transformation (RV64).",
+      "linked_pseudocode": "rd = sum0_512(rs1);"
+    },
+    {
+      "mnemonic": "SHA512SUM1",
+      "architecture": "RISC-V",
+      "extension": "Zknh (Scalar Crypto)",
+      "full_name": "SHA-512 Sum1",
+      "summary": "Performs SHA-512 Sum1 transformation (RV64).",
+      "syntax": "SHA512SUM1 rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | 00101 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "0001000",
+            "clean": "0001000"
+          },
+          {
+            "raw": "00101",
+            "clean": "00101"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src"
+        }
+      ],
+      "pseudocode": "rd = sum1_512(rs1);",
+      "slug": "sha512sum1",
+      "rel_url": "risc-v/sha512sum1/",
+      "linked_summary": "Performs SHA-512 Sum1 transformation (RV64).",
+      "linked_pseudocode": "rd = sum1_512(rs1);"
+    },
+    {
       "mnemonic": "C.FLD",
       "architecture": "RISC-V",
       "extension": "C (Compressed)",

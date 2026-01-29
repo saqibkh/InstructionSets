@@ -2101,6 +2101,34 @@
 		    <td style="color: var(--text-muted);">Performs the Sum0 transformation function for SHA-256.</td>
 		</tr>
 		
+		<tr onclick="window.location='sha512sig0/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SHA512SIG0</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SHA512SIG0 rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs SHA-512 Sigma0 transformation (RV64).</td>
+		</tr>
+		
+		<tr onclick="window.location='sha512sig1/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SHA512SIG1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SHA512SIG1 rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs SHA-512 Sigma1 transformation (RV64).</td>
+		</tr>
+		
+		<tr onclick="window.location='sha512sum0/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SHA512SUM0</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SHA512SUM0 rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs SHA-512 Sum0 transformation (RV64).</td>
+		</tr>
+		
+		<tr onclick="window.location='sha512sum1/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SHA512SUM1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SHA512SUM1 rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs SHA-512 Sum1 transformation (RV64).</td>
+		</tr>
+		
 		<tr onclick="window.location='sll/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">SLL</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SLL rd, rs1, rs2</td>
@@ -2353,6 +2381,104 @@
 		    <td style="color: var(--text-muted);">Generates the next round key for AES (Step 2).</td>
 		</tr>
 		
+		<tr onclick="window.location='vamoaddd_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOADDD.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOADDD.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically adds elements from vs2 to memory addresses (64-bit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamoaddw_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOADDW.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOADDW.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically adds elements from vs2 to memory addresses in rs1 (indexed by vs2? No, rs1 is base, vs2 is index).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamoandd_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOANDD.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOANDD.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically ANDs elements (64-bit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamoandw_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOANDW.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOANDW.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically ANDs elements.</td>
+		</tr>
+		
+		<tr onclick="window.location='vamomaxd_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOMAXD.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOMAXD.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomic Max (Signed, 64-bit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamomaxu_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOMAXU.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOMAXU.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomic Max (Unsigned, Width implicit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamomaxw_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOMAXW.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOMAXW.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomic Max (Signed).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamomind_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOMIND.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOMIND.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomic Min (Signed, 64-bit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamominu_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOMINU.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOMINU.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomic Min (Unsigned, Width implicit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamominw_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOMINW.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOMINW.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomic Min (Signed).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamoord_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOORD.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOORD.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically ORs elements (64-bit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamoorw_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOORW.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOORW.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically ORs elements.</td>
+		</tr>
+		
+		<tr onclick="window.location='vamoxord_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOXORD.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOXORD.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically XORs elements (64-bit).</td>
+		</tr>
+		
+		<tr onclick="window.location='vamoxorw_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAMOXORW.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAMOXORW.V vd, (rs1), vs2, vm</td>
+		    <td><span class="badge">VAMO</span></td>
+		    <td style="color: var(--text-muted);">Atomically XORs elements.</td>
+		</tr>
+		
 		<tr onclick="window.location='vand_vi/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VAND.VI</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VAND.VI vd, vs2, imm, vm</td>
@@ -2570,6 +2696,13 @@
 		    <td style="color: var(--text-muted);">Reduces a float vector to a scalar by finding the maximum element.</td>
 		</tr>
 		
+		<tr onclick="window.location='vfredosum_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFREDOSUM.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFREDOSUM.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPFVV</span></td>
+		    <td style="color: var(--text-muted);">Sums float vector elements in exact order (0 to vl-1).</td>
+		</tr>
+		
 		<tr onclick="window.location='vfredusum_vs/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFREDUSUM.VS</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFREDUSUM.VS vd, vs2, vs1, vm</td>
@@ -2633,6 +2766,20 @@
 		    <td style="color: var(--text-muted);">Multiplies N-bit floats to produce 2*N-bit float results.</td>
 		</tr>
 		
+		<tr onclick="window.location='vfwredosum_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFWREDOSUM.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFWREDOSUM.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPFVV</span></td>
+		    <td style="color: var(--text-muted);">Sums N-bit floats into 2*N-bit scalar accumulator (Ordered).</td>
+		</tr>
+		
+		<tr onclick="window.location='vfwredusum_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFWREDUSUM.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFWREDUSUM.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPFVV</span></td>
+		    <td style="color: var(--text-muted);">Sums N-bit floats into 2*N-bit scalar accumulator (Unordered).</td>
+		</tr>
+		
 		<tr onclick="window.location='vghsh_vv/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VGHSH.VV</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VGHSH.VV vd, vs2, vs1</td>
@@ -2668,11 +2815,25 @@
 		    <td style="color: var(--text-muted);">Loads a vector of 16-bit elements from memory.</td>
 		</tr>
 		
+		<tr onclick="window.location='vle16ff_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLE16FF.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLE16FF.V vd, (rs1), vm</td>
+		    <td><span class="badge">VL-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads 16-bit elements with fault suppression.</td>
+		</tr>
+		
 		<tr onclick="window.location='vle32_v/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLE32.V</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLE32.V vd, (rs1), vm</td>
 		    <td><span class="badge">V-Load</span></td>
 		    <td style="color: var(--text-muted);">Loads a vector of 32-bit elements from memory into a vector register.</td>
+		</tr>
+		
+		<tr onclick="window.location='vle32ff_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLE32FF.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLE32FF.V vd, (rs1), vm</td>
+		    <td><span class="badge">VL-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads 32-bit elements with fault suppression.</td>
 		</tr>
 		
 		<tr onclick="window.location='vle64_v/';" style="cursor: pointer;">
@@ -2682,11 +2843,25 @@
 		    <td style="color: var(--text-muted);">Loads a vector of 64-bit elements from memory.</td>
 		</tr>
 		
+		<tr onclick="window.location='vle64ff_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLE64FF.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLE64FF.V vd, (rs1), vm</td>
+		    <td><span class="badge">VL-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads 64-bit elements with fault suppression.</td>
+		</tr>
+		
 		<tr onclick="window.location='vle8_v/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLE8.V</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLE8.V vd, (rs1), vm</td>
 		    <td><span class="badge">VL-Type</span></td>
 		    <td style="color: var(--text-muted);">Loads a vector of 8-bit elements from memory.</td>
+		</tr>
+		
+		<tr onclick="window.location='vle8ff_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLE8FF.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLE8FF.V vd, (rs1), vm</td>
+		    <td><span class="badge">VL-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads 8-bit elements, suppressing faults on elements after the first. Sets VL to number of elements loaded. Critical for strings.</td>
 		</tr>
 		
 		<tr onclick="window.location='vlm_v/';" style="cursor: pointer;">
@@ -2708,6 +2883,27 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLSE32.V vd, (rs1), rs2, vm</td>
 		    <td><span class="badge">VL-Type</span></td>
 		    <td style="color: var(--text-muted);">Loads elements from memory with a fixed stride.</td>
+		</tr>
+		
+		<tr onclick="window.location='vlseg2e16_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLSEG2E16.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLSEG2E16.V vd, (rs1), vm</td>
+		    <td><span class="badge">VL-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads 2 fields (e.g., Complex Real/Imag) of 16-bit elements.</td>
+		</tr>
+		
+		<tr onclick="window.location='vlseg3e8_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLSEG3E8.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLSEG3E8.V vd, (rs1), vm</td>
+		    <td><span class="badge">VL-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads 3 fields (e.g., RGB) of 8-bit elements into 3 vector registers.</td>
+		</tr>
+		
+		<tr onclick="window.location='vlseg4e8_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VLSEG4E8.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLSEG4E8.V vd, (rs1), vm</td>
+		    <td><span class="badge">VL-Type</span></td>
+		    <td style="color: var(--text-muted);">Loads 4 fields (e.g., RGBA) of 8-bit elements into 4 vector registers.</td>
 		</tr>
 		
 		<tr onclick="window.location='vluxei32_v/';" style="cursor: pointer;">
@@ -2766,11 +2962,25 @@
 		    <td style="color: var(--text-muted);">Computes the unsigned maximum of elements in two vectors.</td>
 		</tr>
 		
+		<tr onclick="window.location='vmerge_vim/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMERGE.VIM</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMERGE.VIM vd, vs2, imm, v0</td>
+		    <td><span class="badge">OPIVI</span></td>
+		    <td style="color: var(--text-muted);">Merges immediate vs vector based on mask.</td>
+		</tr>
+		
 		<tr onclick="window.location='vmerge_vvm/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMERGE.VVM</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMERGE.VVM vd, vs2, vs1, v0</td>
 		    <td><span class="badge">OPIVV</span></td>
 		    <td style="color: var(--text-muted);">Merges two vectors based on the mask (if mask=0, pick vs2; if mask=1, pick vs1).</td>
+		</tr>
+		
+		<tr onclick="window.location='vmerge_vxm/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMERGE.VXM</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMERGE.VXM vd, vs2, rs1, v0</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Merges integer scalar vs vector based on mask.</td>
 		</tr>
 		
 		<tr onclick="window.location='vmfeq_vv/';" style="cursor: pointer;">
@@ -3312,6 +3522,20 @@
 		    <td style="color: var(--text-muted);">Generates SHA-256 message schedule words.</td>
 		</tr>
 		
+		<tr onclick="window.location='vslide1down_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSLIDE1DOWN.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSLIDE1DOWN.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Moves elements down by 1, injecting scalar into top index.</td>
+		</tr>
+		
+		<tr onclick="window.location='vslide1up_vx/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSLIDE1UP.VX</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSLIDE1UP.VX vd, vs2, rs1, vm</td>
+		    <td><span class="badge">OPIVX</span></td>
+		    <td style="color: var(--text-muted);">Moves elements up by 1, injecting scalar into index 0.</td>
+		</tr>
+		
 		<tr onclick="window.location='vslidedown_vi/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSLIDEDOWN.VI</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSLIDEDOWN.VI vd, vs2, imm, vm</td>
@@ -3408,6 +3632,27 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSSE32.V vs3, (rs1), rs2, vm</td>
 		    <td><span class="badge">VS-Type</span></td>
 		    <td style="color: var(--text-muted);">Stores elements to memory with a fixed stride.</td>
+		</tr>
+		
+		<tr onclick="window.location='vsseg2e16_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSSEG2E16.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSSEG2E16.V vs3, (rs1), vm</td>
+		    <td><span class="badge">VS-Type</span></td>
+		    <td style="color: var(--text-muted);">Stores 2 vector registers as interleaved 16-bit fields.</td>
+		</tr>
+		
+		<tr onclick="window.location='vsseg3e8_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSSEG3E8.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSSEG3E8.V vs3, (rs1), vm</td>
+		    <td><span class="badge">VS-Type</span></td>
+		    <td style="color: var(--text-muted);">Stores 3 vector registers (e.g., RGB) into memory as interleaved 8-bit fields.</td>
+		</tr>
+		
+		<tr onclick="window.location='vsseg4e8_v/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSSEG4E8.V</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSSEG4E8.V vs3, (rs1), vm</td>
+		    <td><span class="badge">VS-Type</span></td>
+		    <td style="color: var(--text-muted);">Stores 4 vector registers (e.g., RGBA) into memory as interleaved 8-bit fields.</td>
 		</tr>
 		
 		<tr onclick="window.location='vssra_vv/';" style="cursor: pointer;">
