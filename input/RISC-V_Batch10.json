@@ -1,0 +1,210 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "VNCLIP.WV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Clip (Arithmetic Shift)",
+      "summary": "Shifts elements right, rounds, and clips (saturates) the result to the destination width. Critical for Quantization.",
+      "syntax": "VNCLIP.WV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101111 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Narrow)" },
+        { "name": "vs2", "desc": "Src Vector (Wide)" },
+        { "name": "vs1", "desc": "Shift Vector" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = clip(round(vs2[i] >> vs1[i]));"
+    },
+    {
+      "mnemonic": "VNCLIPU.WI",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Clip Unsigned (Immediate)",
+      "summary": "Shifts right (logical), rounds, and clips to unsigned destination. Used for pixel packing.",
+      "syntax": "VNCLIPU.WI vd, vs2, imm, vm",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "101110 | vm | vs2 | imm | 011 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Narrow)" },
+        { "name": "vs2", "desc": "Src Vector (Wide)" },
+        { "name": "imm", "desc": "Shift Amount" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = clip_u(round(vs2[i] >>u imm));"
+    },
+    {
+      "mnemonic": "VFCVT.X.F.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float to Signed Integer Convert",
+      "summary": "Converts floating-point elements to signed integers.",
+      "syntax": "VFCVT.X.F.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 00001 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Int)" },
+        { "name": "vs2", "desc": "Src (Float)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = float_to_int(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFCVT.F.X.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Signed Integer to Float Convert",
+      "summary": "Converts signed integer elements to floating-point.",
+      "syntax": "VFCVT.F.X.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 00011 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Float)" },
+        { "name": "vs2", "desc": "Src (Int)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = int_to_float(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFWCVT.F.X.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Integer to Float Convert",
+      "summary": "Converts N-bit integers to 2*N-bit floats (e.g., Int16 -> FP32).",
+      "syntax": "VFWCVT.F.X.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 01011 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Wide Float)" },
+        { "name": "vs2", "desc": "Src (Narrow Int)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = int_to_wide_float(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFNCVT.F.F.W",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Float Convert",
+      "summary": "Converts 2*N-bit floats to N-bit floats (e.g., FP32 -> FP16).",
+      "syntax": "VFNCVT.F.F.W vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 10100 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Narrow Float)" },
+        { "name": "vs2", "desc": "Src (Wide Float)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = narrow_float(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFREC7.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Reciprocal Estimate 7-bit",
+      "summary": "Computes an estimate of 1/x (7-bit precision). Used for fast division/normalization loops.",
+      "syntax": "VFREC7.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010011 | vm | vs2 | 00101 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Source" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = approx_reciprocal(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFRSQRT7.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Reciprocal Sqrt Estimate 7-bit",
+      "summary": "Computes an estimate of 1/sqrt(x). Critical for vector normalization.",
+      "syntax": "VFRSQRT7.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010011 | vm | vs2 | 00100 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Source" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = approx_rsqrt(vs2[i]);"
+    },
+    {
+      "mnemonic": "VADDC.VVM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Add with Carry",
+      "summary": "Adds two vectors plus a carry-in from the mask register (v0).",
+      "syntax": "VADDC.VVM vd, vs2, vs1, v0",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010000 | 0 | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" },
+        { "name": "v0", "desc": "Carry-In Mask" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] + vs2[i] + v0[i];"
+    },
+    {
+      "mnemonic": "VMADC.VVM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Add with Carry (Produce Mask)",
+      "summary": "Adds two vectors and a carry-in, producing the carry-out to the destination mask.",
+      "syntax": "VMADC.VVM vd, vs2, vs1, v0",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010001 | 0 | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Mask (Carry Out)" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" },
+        { "name": "v0", "desc": "Carry-In Mask" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = carry_out(vs1[i] + vs2[i] + v0[i]);"
+    },
+    {
+      "mnemonic": "VSBC.VVM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Subtract with Borrow",
+      "summary": "Subtracts two vectors minus a borrow-in from the mask register.",
+      "syntax": "VSBC.VVM vd, vs2, vs1, v0",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010010 | 0 | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" },
+        { "name": "v0", "desc": "Borrow-In Mask" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] - vs2[i] - v0[i];"
+    }
+  ]
+}

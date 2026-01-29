@@ -3025,6 +3025,760 @@
       "linked_pseudocode": "PC = UEPC; Priv = U; UIE = UPIE;"
     },
     {
+      "mnemonic": "VLE8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Element (8-bit)",
+      "summary": "Loads a vector of 8-bit elements from memory.",
+      "syntax": "VLE8.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 000 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i];",
+      "slug": "vle8_v",
+      "rel_url": "risc-v/vle8_v/",
+      "linked_summary": "Loads a vector of 8-<a href=\"../../armv8-a/bit/\">bit</a> elements from memory.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i];"
+    },
+    {
+      "mnemonic": "VLE16.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Element (16-bit)",
+      "summary": "Loads a vector of 16-bit elements from memory.",
+      "syntax": "VLE16.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 101 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "101",
+            "clean": "101"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i*2];",
+      "slug": "vle16_v",
+      "rel_url": "risc-v/vle16_v/",
+      "linked_summary": "Loads a vector of 16-<a href=\"../../armv8-a/bit/\">bit</a> elements from memory.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i*2];"
+    },
+    {
+      "mnemonic": "VLE64.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Element (64-bit)",
+      "summary": "Loads a vector of 64-bit elements from memory.",
+      "syntax": "VLE64.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 111 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i*8];",
+      "slug": "vle64_v",
+      "rel_url": "risc-v/vle64_v/",
+      "linked_summary": "Loads a vector of 64-<a href=\"../../armv8-a/bit/\">bit</a> elements from memory.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i*8];"
+    },
+    {
+      "mnemonic": "VSE8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Element (8-bit)",
+      "summary": "Stores a vector of 8-bit elements to memory.",
+      "syntax": "VSE8.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 000 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Source"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): M[rs1 + i] = vs3[i];",
+      "slug": "vse8_v",
+      "rel_url": "risc-v/vse8_v/",
+      "linked_summary": "Stores a vector of 8-<a href=\"../../armv8-a/bit/\">bit</a> elements to memory.",
+      "linked_pseudocode": "foreach(i < vl): M[rs1 + i] = vs3[i];"
+    },
+    {
+      "mnemonic": "VSE16.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Element (16-bit)",
+      "summary": "Stores a vector of 16-bit elements to memory.",
+      "syntax": "VSE16.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 101 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "101",
+            "clean": "101"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Source"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): M[rs1 + i*2] = vs3[i];",
+      "slug": "vse16_v",
+      "rel_url": "risc-v/vse16_v/",
+      "linked_summary": "Stores a vector of 16-<a href=\"../../armv8-a/bit/\">bit</a> elements to memory.",
+      "linked_pseudocode": "foreach(i < vl): M[rs1 + i*2] = vs3[i];"
+    },
+    {
+      "mnemonic": "VSE64.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Element (64-bit)",
+      "summary": "Stores a vector of 64-bit elements to memory.",
+      "syntax": "VSE64.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 111 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Source"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): M[rs1 + i*8] = vs3[i];",
+      "slug": "vse64_v",
+      "rel_url": "risc-v/vse64_v/",
+      "linked_summary": "Stores a vector of 64-<a href=\"../../armv8-a/bit/\">bit</a> elements to memory.",
+      "linked_pseudocode": "foreach(i < vl): M[rs1 + i*8] = vs3[i];"
+    },
+    {
+      "mnemonic": "VMV1R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 1 Register (Whole)",
+      "summary": "Moves a single vector register to another, ignoring VL and VTYPE (used for spilling).",
+      "syntax": "VMV1R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00000 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source"
+        }
+      ],
+      "pseudocode": "vd = vs2; // Copies entire register content",
+      "slug": "vmv1r_v",
+      "rel_url": "risc-v/vmv1r_v/",
+      "linked_summary": "Moves a single vector register to another, ignoring VL <a href=\"../../armv8-a/and_6/\">and</a> VTYPE (used for spilling).",
+      "linked_pseudocode": "vd = vs2; // Copies entire register content"
+    },
+    {
+      "mnemonic": "VMV2R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 2 Registers (Whole)",
+      "summary": "Moves 2 consecutive vector registers, ignoring VL and VTYPE.",
+      "syntax": "VMV2R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00001 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00001",
+            "clean": "00001"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Group"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source Group"
+        }
+      ],
+      "pseudocode": "vd[0:1] = vs2[0:1];",
+      "slug": "vmv2r_v",
+      "rel_url": "risc-v/vmv2r_v/",
+      "linked_summary": "Moves 2 consecutive vector registers, ignoring VL <a href=\"../../armv8-a/and_6/\">and</a> VTYPE.",
+      "linked_pseudocode": "vd[0:1] = vs2[0:1];"
+    },
+    {
+      "mnemonic": "VMV4R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 4 Registers (Whole)",
+      "summary": "Moves 4 consecutive vector registers, ignoring VL and VTYPE.",
+      "syntax": "VMV4R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00011 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00011",
+            "clean": "00011"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Group"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source Group"
+        }
+      ],
+      "pseudocode": "vd[0:3] = vs2[0:3];",
+      "slug": "vmv4r_v",
+      "rel_url": "risc-v/vmv4r_v/",
+      "linked_summary": "Moves 4 consecutive vector registers, ignoring VL <a href=\"../../armv8-a/and_6/\">and</a> VTYPE.",
+      "linked_pseudocode": "vd[0:3] = vs2[0:3];"
+    },
+    {
+      "mnemonic": "VMV8R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 8 Registers (Whole)",
+      "summary": "Moves 8 consecutive vector registers, ignoring VL and VTYPE.",
+      "syntax": "VMV8R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00111 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00111",
+            "clean": "00111"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Group"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source Group"
+        }
+      ],
+      "pseudocode": "vd[0:7] = vs2[0:7];",
+      "slug": "vmv8r_v",
+      "rel_url": "risc-v/vmv8r_v/",
+      "linked_summary": "Moves 8 consecutive vector registers, ignoring VL <a href=\"../../armv8-a/and_6/\">and</a> VTYPE.",
+      "linked_pseudocode": "vd[0:7] = vs2[0:7];"
+    },
+    {
+      "mnemonic": "VSETIVLI",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Set VL Immediate",
+      "summary": "Sets vector length (VL) and type (VTYPE) using a 5-bit immediate for the requested length.",
+      "syntax": "VSETIVLI rd, uimm, vtypei",
+      "encoding": {
+        "format": "V-Type",
+        "binary_pattern": "11 | zimm[10:0] | uimm | 111 | rd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "11",
+            "clean": "11"
+          },
+          {
+            "raw": "zimm[10:0]",
+            "clean": "zimm"
+          },
+          {
+            "raw": "uimm",
+            "clean": "uimm"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (New VL)"
+        },
+        {
+          "name": "uimm",
+          "desc": "Req VL (Imm)"
+        },
+        {
+          "name": "vtypei",
+          "desc": "Config"
+        }
+      ],
+      "pseudocode": "vl = set_config(uimm, vtypei); R[rd] = vl;",
+      "slug": "vsetivli",
+      "rel_url": "risc-v/vsetivli/",
+      "linked_summary": "Sets vector length (VL) <a href=\"../../armv8-a/and_6/\">and</a> type (VTYPE) using a 5-<a href=\"../../armv8-a/bit/\">bit</a> immediate for the requested length.",
+      "linked_pseudocode": "vl = set_config(uimm, vtypei); R[rd] = vl;"
+    },
+    {
+      "mnemonic": "VLM.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Mask",
+      "summary": "Loads a vector mask register from memory.",
+      "syntax": "VLM.V vd, (rs1)",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | 01011 | 1 | rs1 | 000 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "01011",
+            "clean": "01011"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "vd = LoadMask(rs1);",
+      "slug": "vlm_v",
+      "rel_url": "risc-v/vlm_v/",
+      "linked_summary": "Loads a vector mask register from memory.",
+      "linked_pseudocode": "vd = LoadMask(rs1);"
+    },
+    {
+      "mnemonic": "VSM.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Mask",
+      "summary": "Stores a vector mask register to memory.",
+      "syntax": "VSM.V vs3, (rs1)",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | 01011 | 1 | rs1 | 000 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000000",
+            "clean": "000000"
+          },
+          {
+            "raw": "01011",
+            "clean": "01011"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Src Mask"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base Address"
+        }
+      ],
+      "pseudocode": "StoreMask(rs1, vs3);",
+      "slug": "vsm_v",
+      "rel_url": "risc-v/vsm_v/",
+      "linked_summary": "Stores a vector mask register to memory.",
+      "linked_pseudocode": "StoreMask(rs1, vs3);"
+    },
+    {
       "mnemonic": "AMOMINU.D",
       "architecture": "RISC-V",
       "extension": "A (Atomic)",
@@ -11100,6 +11854,1902 @@
       "rel_url": "risc-v/vcompress_vm/",
       "linked_summary": "Compacts elements from source vector into contiguous elements <a href=\"../../x86/in/\">in</a> dest where the mask is 1.",
       "linked_pseudocode": "idx = 0; foreach(i < vl): if vs1[i]: vd[idx++] = vs2[i];"
+    },
+    {
+      "mnemonic": "FSUB.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Subtract (Half)",
+      "summary": "Performs 16-bit floating-point subtraction.",
+      "syntax": "FSUB.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000100 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0000100",
+            "clean": "0000100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "F[rd] = F[rs1] - F[rs2];",
+      "slug": "fsub_h",
+      "rel_url": "risc-v/fsub_h/",
+      "linked_summary": "Performs 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point subtraction.",
+      "linked_pseudocode": "F[rd] = F[rs1] - F[rs2];"
+    },
+    {
+      "mnemonic": "FMUL.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Multiply (Half)",
+      "summary": "Performs 16-bit floating-point multiplication.",
+      "syntax": "FMUL.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0001000",
+            "clean": "0001000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "F[rd] = F[rs1] * F[rs2];",
+      "slug": "fmul_h",
+      "rel_url": "risc-v/fmul_h/",
+      "linked_summary": "Performs 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point multiplication.",
+      "linked_pseudocode": "F[rd] = F[rs1] * F[rs2];"
+    },
+    {
+      "mnemonic": "FDIV.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Divide (Half)",
+      "summary": "Performs 16-bit floating-point division.",
+      "syntax": "FDIV.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001100 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0001100",
+            "clean": "0001100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Dividend"
+        },
+        {
+          "name": "rs2",
+          "desc": "Divisor"
+        }
+      ],
+      "pseudocode": "F[rd] = F[rs1] / F[rs2];",
+      "slug": "fdiv_h",
+      "rel_url": "risc-v/fdiv_h/",
+      "linked_summary": "Performs 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point division.",
+      "linked_pseudocode": "F[rd] = F[rs1] / F[rs2];"
+    },
+    {
+      "mnemonic": "FSQRT.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Square Root (Half)",
+      "summary": "Computes the square root of a 16-bit floating-point number.",
+      "syntax": "FSQRT.H rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "0101100 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0101100",
+            "clean": "0101100"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Source"
+        }
+      ],
+      "pseudocode": "F[rd] = sqrt(F[rs1]);",
+      "slug": "fsqrt_h",
+      "rel_url": "risc-v/fsqrt_h/",
+      "linked_summary": "Computes the square root of a 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point number.",
+      "linked_pseudocode": "F[rd] = sqrt(F[rs1]);"
+    },
+    {
+      "mnemonic": "FMIN.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Minimum (Half)",
+      "summary": "Writes the smaller of two 16-bit floating-point values to rd.",
+      "syntax": "FMIN.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0010100",
+            "clean": "0010100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "F[rd] = min(F[rs1], F[rs2]);",
+      "slug": "fmin_h",
+      "rel_url": "risc-v/fmin_h/",
+      "linked_summary": "Writes the smaller of two 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point values to rd.",
+      "linked_pseudocode": "F[rd] = min(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMAX.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Maximum (Half)",
+      "summary": "Writes the larger of two 16-bit floating-point values to rd.",
+      "syntax": "FMAX.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0010100",
+            "clean": "0010100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "F[rd] = max(F[rs1], F[rs2]);",
+      "slug": "fmax_h",
+      "rel_url": "risc-v/fmax_h/",
+      "linked_summary": "Writes the larger of two 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point values to rd.",
+      "linked_pseudocode": "F[rd] = max(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMADD.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Fused Multiply-Add (Half)",
+      "summary": "Computes (rs1 * rs2) + rs3 with single rounding (16-bit).",
+      "syntax": "FMADD.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1000011",
+        "hex_opcode": "0x43",
+        "visual_parts": [
+          {
+            "raw": "rs3",
+            "clean": "rs3"
+          },
+          {
+            "raw": "00",
+            "clean": "00"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1000011",
+            "clean": "1000011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "rs3",
+          "desc": "Src 3"
+        }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) + F[rs3];",
+      "slug": "fmadd_h",
+      "rel_url": "risc-v/fmadd_h/",
+      "linked_summary": "Computes (rs1 * rs2) + rs3 with single rounding (16-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "F[rd] = (F[rs1] * F[rs2]) + F[rs3];"
+    },
+    {
+      "mnemonic": "FMSUB.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Fused Multiply-Subtract (Half)",
+      "summary": "Computes (rs1 * rs2) - rs3 with single rounding (16-bit).",
+      "syntax": "FMSUB.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1000111",
+        "hex_opcode": "0x47",
+        "visual_parts": [
+          {
+            "raw": "rs3",
+            "clean": "rs3"
+          },
+          {
+            "raw": "00",
+            "clean": "00"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1000111",
+            "clean": "1000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "rs3",
+          "desc": "Src 3"
+        }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) - F[rs3];",
+      "slug": "fmsub_h",
+      "rel_url": "risc-v/fmsub_h/",
+      "linked_summary": "Computes (rs1 * rs2) - rs3 with single rounding (16-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "F[rd] = (F[rs1] * F[rs2]) - F[rs3];"
+    },
+    {
+      "mnemonic": "FNMADD.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Negated Fused Multiply-Add (Half)",
+      "summary": "Computes -(rs1 * rs2) - rs3 with single rounding (16-bit).",
+      "syntax": "FNMADD.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1001111",
+        "hex_opcode": "0x4F",
+        "visual_parts": [
+          {
+            "raw": "rs3",
+            "clean": "rs3"
+          },
+          {
+            "raw": "00",
+            "clean": "00"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1001111",
+            "clean": "1001111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "rs3",
+          "desc": "Src 3"
+        }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) + F[rs3]);",
+      "slug": "fnmadd_h",
+      "rel_url": "risc-v/fnmadd_h/",
+      "linked_summary": "Computes -(rs1 * rs2) - rs3 with single rounding (16-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "F[rd] = -((F[rs1] * F[rs2]) + F[rs3]);"
+    },
+    {
+      "mnemonic": "FNMSUB.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Negated Fused Multiply-Subtract (Half)",
+      "summary": "Computes -(rs1 * rs2) + rs3 with single rounding (16-bit).",
+      "syntax": "FNMSUB.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1001011",
+        "hex_opcode": "0x4B",
+        "visual_parts": [
+          {
+            "raw": "rs3",
+            "clean": "rs3"
+          },
+          {
+            "raw": "00",
+            "clean": "00"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1001011",
+            "clean": "1001011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "rs3",
+          "desc": "Src 3"
+        }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) - F[rs3]);",
+      "slug": "fnmsub_h",
+      "rel_url": "risc-v/fnmsub_h/",
+      "linked_summary": "Computes -(rs1 * rs2) + rs3 with single rounding (16-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "F[rd] = -((F[rs1] * F[rs2]) - F[rs3]);"
+    },
+    {
+      "mnemonic": "FEQ.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Equal (Half)",
+      "summary": "Sets integer rd to 1 if half-precision rs1 equals rs2, else 0.",
+      "syntax": "FEQ.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 010 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1010000",
+            "clean": "1010000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Int)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1 (Half)"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2 (Half)"
+        }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] == F[rs2]) ? 1 : 0;",
+      "slug": "feq_h",
+      "rel_url": "risc-v/feq_h/",
+      "linked_summary": "Sets integer rd to 1 if half-precision rs1 equals rs2, else 0.",
+      "linked_pseudocode": "R[rd] = (F[rs1] == F[rs2]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "FLT.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Less Than (Half)",
+      "summary": "Sets integer rd to 1 if half-precision rs1 is less than rs2, else 0.",
+      "syntax": "FLT.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1010000",
+            "clean": "1010000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Int)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1 (Half)"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2 (Half)"
+        }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] < F[rs2]) ? 1 : 0;",
+      "slug": "flt_h",
+      "rel_url": "risc-v/flt_h/",
+      "linked_summary": "Sets integer rd to 1 if half-precision rs1 is less than rs2, else 0.",
+      "linked_pseudocode": "R[rd] = (F[rs1] < F[rs2]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "FLE.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Less or Equal (Half)",
+      "summary": "Sets integer rd to 1 if half-precision rs1 is less than or equal to rs2, else 0.",
+      "syntax": "FLE.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1010000",
+            "clean": "1010000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Int)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1 (Half)"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2 (Half)"
+        }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;",
+      "slug": "fle_h",
+      "rel_url": "risc-v/fle_h/",
+      "linked_summary": "Sets integer rd to 1 if half-precision rs1 is less than <a href=\"../../powerisa/or/\">or</a> equal to rs2, else 0.",
+      "linked_pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "FCLASS.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Classify (Half)",
+      "summary": "Examines a 16-bit floating-point number and generates a classification bitmask.",
+      "syntax": "FCLASS.H rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1110000 | 00000 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1110000",
+            "clean": "1110000"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Int)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src (Half)"
+        }
+      ],
+      "pseudocode": "R[rd] = classify_half(F[rs1]);",
+      "slug": "fclass_h",
+      "rel_url": "risc-v/fclass_h/",
+      "linked_summary": "Examines a 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point number <a href=\"../../armv8-a/and_6/\">and</a> generates a classification bitmask.",
+      "linked_pseudocode": "R[rd] = classify_half(F[rs1]);"
+    },
+    {
+      "mnemonic": "FSGNJ.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Sign Injection (Half)",
+      "summary": "Injects the sign of rs2 into rs1 (16-bit).",
+      "syntax": "FSGNJ.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0010000",
+            "clean": "0010000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Sign Src"
+        }
+      ],
+      "pseudocode": "F[rd] = {F[rs2][15], F[rs1][14:0]};",
+      "slug": "fsgnj_h",
+      "rel_url": "risc-v/fsgnj_h/",
+      "linked_summary": "Injects the sign of rs2 into rs1 (16-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "F[rd] = {F[rs2][15], F[rs1][14:0]};"
+    },
+    {
+      "mnemonic": "FSGNJN.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Sign Injection Negate (Half)",
+      "summary": "Injects the negated sign of rs2 into rs1 (16-bit).",
+      "syntax": "FSGNJN.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0010000",
+            "clean": "0010000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Sign Src"
+        }
+      ],
+      "pseudocode": "F[rd] = {~F[rs2][15], F[rs1][14:0]};",
+      "slug": "fsgnjn_h",
+      "rel_url": "risc-v/fsgnjn_h/",
+      "linked_summary": "Injects the negated sign of rs2 into rs1 (16-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "F[rd] = {~F[rs2][15], F[rs1][14:0]};"
+    },
+    {
+      "mnemonic": "FSGNJX.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Sign Injection XOR (Half)",
+      "summary": "Injects the XOR of signs of rs1 and rs2 (16-bit).",
+      "syntax": "FSGNJX.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 010 | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "0010000",
+            "clean": "0010000"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Sign Src"
+        }
+      ],
+      "pseudocode": "F[rd] = {F[rs1][15] ^ F[rs2][15], F[rs1][14:0]};",
+      "slug": "fsgnjx_h",
+      "rel_url": "risc-v/fsgnjx_h/",
+      "linked_summary": "Injects the <a href=\"../../risc-v/xor/\">XOR</a> of signs of rs1 <a href=\"../../armv8-a/and_6/\">and</a> rs2 (16-<a href=\"../../armv8-a/bit/\">bit</a>).",
+      "linked_pseudocode": "F[rd] = {F[rs1][15] ^ F[rs2][15], F[rs1][14:0]};"
+    },
+    {
+      "mnemonic": "FCVT.W.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Half to Word",
+      "summary": "Converts a 16-bit floating-point number to a 32-bit signed integer.",
+      "syntax": "FCVT.W.H rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100000 | 00010 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1100000",
+            "clean": "1100000"
+          },
+          {
+            "raw": "00010",
+            "clean": "00010"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Int)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src (Half)"
+        }
+      ],
+      "pseudocode": "R[rd] = sext(f16_to_i32(F[rs1]));",
+      "slug": "fcvt_w_h",
+      "rel_url": "risc-v/fcvt_w_h/",
+      "linked_summary": "Converts a 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point number to a 32-<a href=\"../../armv8-a/bit/\">bit</a> signed integer.",
+      "linked_pseudocode": "R[rd] = sext(f16_to_i32(F[rs1]));"
+    },
+    {
+      "mnemonic": "FCVT.WU.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Half to Unsigned Word",
+      "summary": "Converts a 16-bit floating-point number to a 32-bit unsigned integer.",
+      "syntax": "FCVT.WU.H rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100000 | 00011 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1100000",
+            "clean": "1100000"
+          },
+          {
+            "raw": "00011",
+            "clean": "00011"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (UInt)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src (Half)"
+        }
+      ],
+      "pseudocode": "R[rd] = sext(f16_to_u32(F[rs1]));",
+      "slug": "fcvt_wu_h",
+      "rel_url": "risc-v/fcvt_wu_h/",
+      "linked_summary": "Converts a 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point number to a 32-<a href=\"../../armv8-a/bit/\">bit</a> unsigned integer.",
+      "linked_pseudocode": "R[rd] = sext(f16_to_u32(F[rs1]));"
+    },
+    {
+      "mnemonic": "FCVT.H.W",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Word to Half",
+      "summary": "Converts a 32-bit signed integer to a 16-bit floating-point number.",
+      "syntax": "FCVT.H.W rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101000 | 00010 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1101000",
+            "clean": "1101000"
+          },
+          {
+            "raw": "00010",
+            "clean": "00010"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Half)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src (Int)"
+        }
+      ],
+      "pseudocode": "F[rd] = i32_to_f16(R[rs1]);",
+      "slug": "fcvt_h_w",
+      "rel_url": "risc-v/fcvt_h_w/",
+      "linked_summary": "Converts a 32-<a href=\"../../armv8-a/bit/\">bit</a> signed integer to a 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point number.",
+      "linked_pseudocode": "F[rd] = i32_to_f16(R[rs1]);"
+    },
+    {
+      "mnemonic": "FCVT.H.WU",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Unsigned Word to Half",
+      "summary": "Converts a 32-bit unsigned integer to a 16-bit floating-point number.",
+      "syntax": "FCVT.H.WU rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101000 | 00011 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53",
+        "visual_parts": [
+          {
+            "raw": "1101000",
+            "clean": "1101000"
+          },
+          {
+            "raw": "00011",
+            "clean": "00011"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "rm",
+            "clean": "rm"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1010011",
+            "clean": "1010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest (Half)"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src (UInt)"
+        }
+      ],
+      "pseudocode": "F[rd] = u32_to_f16(R[rs1]);",
+      "slug": "fcvt_h_wu",
+      "rel_url": "risc-v/fcvt_h_wu/",
+      "linked_summary": "Converts a 32-<a href=\"../../armv8-a/bit/\">bit</a> unsigned integer to a 16-<a href=\"../../armv8-a/bit/\">bit</a> floating-point number.",
+      "linked_pseudocode": "F[rd] = u32_to_f16(R[rs1]);"
+    },
+    {
+      "mnemonic": "VNCLIP.WV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Clip (Arithmetic Shift)",
+      "summary": "Shifts elements right, rounds, and clips (saturates) the result to the destination width. Critical for Quantization.",
+      "syntax": "VNCLIP.WV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101111 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101111",
+            "clean": "101111"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Narrow)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Vector (Wide)"
+        },
+        {
+          "name": "vs1",
+          "desc": "Shift Vector"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = clip(round(vs2[i] >> vs1[i]));",
+      "slug": "vnclip_wv",
+      "rel_url": "risc-v/vnclip_wv/",
+      "linked_summary": "Shifts elements right, rounds, <a href=\"../../armv8-a/and_6/\">and</a> clips (saturates) the result to the destination width. Critical for Quantization.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = clip(round(vs2[i] >> vs1[i]));"
+    },
+    {
+      "mnemonic": "VNCLIPU.WI",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Clip Unsigned (Immediate)",
+      "summary": "Shifts right (logical), rounds, and clips to unsigned destination. Used for pixel packing.",
+      "syntax": "VNCLIPU.WI vd, vs2, imm, vm",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "101110 | vm | vs2 | imm | 011 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101110",
+            "clean": "101110"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "imm",
+            "clean": "imm"
+          },
+          {
+            "raw": "011",
+            "clean": "011"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Narrow)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src Vector (Wide)"
+        },
+        {
+          "name": "imm",
+          "desc": "Shift Amount"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = clip_u(round(vs2[i] >>u imm));",
+      "slug": "vnclipu_wi",
+      "rel_url": "risc-v/vnclipu_wi/",
+      "linked_summary": "Shifts right (logical), rounds, <a href=\"../../armv8-a/and_6/\">and</a> clips to unsigned destination. Used for pixel packing.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = clip_u(round(vs2[i] >>u imm));"
+    },
+    {
+      "mnemonic": "VFCVT.X.F.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float to Signed Integer Convert",
+      "summary": "Converts floating-point elements to signed integers.",
+      "syntax": "VFCVT.X.F.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 00001 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00001",
+            "clean": "00001"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Int)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Float)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = float_to_int(vs2[i]);",
+      "slug": "vfcvt_x_f_v",
+      "rel_url": "risc-v/vfcvt_x_f_v/",
+      "linked_summary": "Converts floating-point elements to signed integers.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = float_to_int(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFCVT.F.X.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Signed Integer to Float Convert",
+      "summary": "Converts signed integer elements to floating-point.",
+      "syntax": "VFCVT.F.X.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 00011 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00011",
+            "clean": "00011"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Float)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Int)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = int_to_float(vs2[i]);",
+      "slug": "vfcvt_f_x_v",
+      "rel_url": "risc-v/vfcvt_f_x_v/",
+      "linked_summary": "Converts signed integer elements to floating-point.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = int_to_float(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFWCVT.F.X.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Integer to Float Convert",
+      "summary": "Converts N-bit integers to 2*N-bit floats (e.g., Int16 -> FP32).",
+      "syntax": "VFWCVT.F.X.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 01011 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01011",
+            "clean": "01011"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Wide Float)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Narrow Int)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = int_to_wide_float(vs2[i]);",
+      "slug": "vfwcvt_f_x_v",
+      "rel_url": "risc-v/vfwcvt_f_x_v/",
+      "linked_summary": "Converts N-<a href=\"../../armv8-a/bit/\">bit</a> integers to 2*N-<a href=\"../../armv8-a/bit/\">bit</a> floats (e.g., Int16 -> FP32).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = int_to_wide_float(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFNCVT.F.F.W",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Narrowing Float Convert",
+      "summary": "Converts 2*N-bit floats to N-bit floats (e.g., FP32 -> FP16).",
+      "syntax": "VFNCVT.F.F.W vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 10100 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "10100",
+            "clean": "10100"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Narrow Float)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Wide Float)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = narrow_float(vs2[i]);",
+      "slug": "vfncvt_f_f_w",
+      "rel_url": "risc-v/vfncvt_f_f_w/",
+      "linked_summary": "Converts 2*N-<a href=\"../../armv8-a/bit/\">bit</a> floats to N-<a href=\"../../armv8-a/bit/\">bit</a> floats (e.g., FP32 -> FP16).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = narrow_float(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFREC7.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Reciprocal Estimate 7-bit",
+      "summary": "Computes an estimate of 1/x (7-bit precision). Used for fast division/normalization loops.",
+      "syntax": "VFREC7.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010011 | vm | vs2 | 00101 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010011",
+            "clean": "010011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00101",
+            "clean": "00101"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = approx_reciprocal(vs2[i]);",
+      "slug": "vfrec7_v",
+      "rel_url": "risc-v/vfrec7_v/",
+      "linked_summary": "Computes an estimate of 1/x (7-<a href=\"../../armv8-a/bit/\">bit</a> precision). Used for fast division/normalization loops.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = approx_reciprocal(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFRSQRT7.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Reciprocal Sqrt Estimate 7-bit",
+      "summary": "Computes an estimate of 1/sqrt(x). Critical for vector normalization.",
+      "syntax": "VFRSQRT7.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010011 | vm | vs2 | 00100 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010011",
+            "clean": "010011"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "00100",
+            "clean": "00100"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = approx_rsqrt(vs2[i]);",
+      "slug": "vfrsqrt7_v",
+      "rel_url": "risc-v/vfrsqrt7_v/",
+      "linked_summary": "Computes an estimate of 1/sqrt(x). Critical for vector normalization.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = approx_rsqrt(vs2[i]);"
+    },
+    {
+      "mnemonic": "VADDC.VVM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Add with Carry",
+      "summary": "Adds two vectors plus a carry-in from the mask register (v0).",
+      "syntax": "VADDC.VVM vd, vs2, vs1, v0",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010000 | 0 | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010000",
+            "clean": "010000"
+          },
+          {
+            "raw": "0",
+            "clean": "0"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "v0",
+          "desc": "Carry-In Mask"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] + vs2[i] + v0[i];",
+      "slug": "vaddc_vvm",
+      "rel_url": "risc-v/vaddc_vvm/",
+      "linked_summary": "Adds two vectors plus a carry-<a href=\"../../x86/in/\">in</a> from the mask register (v0).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] + vs2[i] + v0[i];"
+    },
+    {
+      "mnemonic": "VMADC.VVM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Add with Carry (Produce Mask)",
+      "summary": "Adds two vectors and a carry-in, producing the carry-out to the destination mask.",
+      "syntax": "VMADC.VVM vd, vs2, vs1, v0",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010001 | 0 | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010001",
+            "clean": "010001"
+          },
+          {
+            "raw": "0",
+            "clean": "0"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask (Carry Out)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "v0",
+          "desc": "Carry-In Mask"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = carry_out(vs1[i] + vs2[i] + v0[i]);",
+      "slug": "vmadc_vvm",
+      "rel_url": "risc-v/vmadc_vvm/",
+      "linked_summary": "Adds two vectors <a href=\"../../armv8-a/and_6/\">and</a> a carry-<a href=\"../../x86/in/\">in</a>, producing the carry-<a href=\"../../x86/out/\">out</a> to the destination mask.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = carry_out(vs1[i] + vs2[i] + v0[i]);"
+    },
+    {
+      "mnemonic": "VSBC.VVM",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Subtract with Borrow",
+      "summary": "Subtracts two vectors minus a borrow-in from the mask register.",
+      "syntax": "VSBC.VVM vd, vs2, vs1, v0",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "010010 | 0 | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "0",
+            "clean": "0"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "v0",
+          "desc": "Borrow-In Mask"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] - vs2[i] - v0[i];",
+      "slug": "vsbc_vvm",
+      "rel_url": "risc-v/vsbc_vvm/",
+      "linked_summary": "Subtracts two vectors minus a borrow-<a href=\"../../x86/in/\">in</a> from the mask register.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] - vs2[i] - v0[i];"
     },
     {
       "mnemonic": "VMACC.VV",

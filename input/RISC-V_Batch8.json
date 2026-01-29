@@ -1,0 +1,401 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "FSUB.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Subtract (Half)",
+      "summary": "Performs 16-bit floating-point subtraction.",
+      "syntax": "FSUB.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000100 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] - F[rs2];"
+    },
+    {
+      "mnemonic": "FMUL.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Multiply (Half)",
+      "summary": "Performs 16-bit floating-point multiplication.",
+      "syntax": "FMUL.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001000 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] * F[rs2];"
+    },
+    {
+      "mnemonic": "FDIV.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Divide (Half)",
+      "summary": "Performs 16-bit floating-point division.",
+      "syntax": "FDIV.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0001100 | rs2 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Dividend" },
+        { "name": "rs2", "desc": "Divisor" }
+      ],
+      "pseudocode": "F[rd] = F[rs1] / F[rs2];"
+    },
+    {
+      "mnemonic": "FSQRT.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Square Root (Half)",
+      "summary": "Computes the square root of a 16-bit floating-point number.",
+      "syntax": "FSQRT.H rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "0101100 | 00000 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Source" }
+      ],
+      "pseudocode": "F[rd] = sqrt(F[rs1]);"
+    },
+    {
+      "mnemonic": "FMIN.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Minimum (Half)",
+      "summary": "Writes the smaller of two 16-bit floating-point values to rd.",
+      "syntax": "FMIN.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = min(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMAX.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Maximum (Half)",
+      "summary": "Writes the larger of two 16-bit floating-point values to rd.",
+      "syntax": "FMAX.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010100 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "F[rd] = max(F[rs1], F[rs2]);"
+    },
+    {
+      "mnemonic": "FMADD.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Fused Multiply-Add (Half)",
+      "summary": "Computes (rs1 * rs2) + rs3 with single rounding (16-bit).",
+      "syntax": "FMADD.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1000011",
+        "hex_opcode": "0x43"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) + F[rs3];"
+    },
+    {
+      "mnemonic": "FMSUB.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Fused Multiply-Subtract (Half)",
+      "summary": "Computes (rs1 * rs2) - rs3 with single rounding (16-bit).",
+      "syntax": "FMSUB.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1000111",
+        "hex_opcode": "0x47"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = (F[rs1] * F[rs2]) - F[rs3];"
+    },
+    {
+      "mnemonic": "FNMADD.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Negated Fused Multiply-Add (Half)",
+      "summary": "Computes -(rs1 * rs2) - rs3 with single rounding (16-bit).",
+      "syntax": "FNMADD.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1001111",
+        "hex_opcode": "0x4F"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) + F[rs3]);"
+    },
+    {
+      "mnemonic": "FNMSUB.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Negated Fused Multiply-Subtract (Half)",
+      "summary": "Computes -(rs1 * rs2) + rs3 with single rounding (16-bit).",
+      "syntax": "FNMSUB.H rd, rs1, rs2, rs3",
+      "encoding": {
+        "format": "R4-Type",
+        "binary_pattern": "rs3 | 00 | rs2 | rs1 | rm | rd | 1001011",
+        "hex_opcode": "0x4B"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Src 2" },
+        { "name": "rs3", "desc": "Src 3" }
+      ],
+      "pseudocode": "F[rd] = -((F[rs1] * F[rs2]) - F[rs3]);"
+    },
+    {
+      "mnemonic": "FEQ.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Equal (Half)",
+      "summary": "Sets integer rd to 1 if half-precision rs1 equals rs2, else 0.",
+      "syntax": "FEQ.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 010 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int)" },
+        { "name": "rs1", "desc": "Src 1 (Half)" },
+        { "name": "rs2", "desc": "Src 2 (Half)" }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] == F[rs2]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "FLT.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Less Than (Half)",
+      "summary": "Sets integer rd to 1 if half-precision rs1 is less than rs2, else 0.",
+      "syntax": "FLT.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int)" },
+        { "name": "rs1", "desc": "Src 1 (Half)" },
+        { "name": "rs2", "desc": "Src 2 (Half)" }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] < F[rs2]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "FLE.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Less or Equal (Half)",
+      "summary": "Sets integer rd to 1 if half-precision rs1 is less than or equal to rs2, else 0.",
+      "syntax": "FLE.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1010000 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int)" },
+        { "name": "rs1", "desc": "Src 1 (Half)" },
+        { "name": "rs2", "desc": "Src 2 (Half)" }
+      ],
+      "pseudocode": "R[rd] = (F[rs1] <= F[rs2]) ? 1 : 0;"
+    },
+    {
+      "mnemonic": "FCLASS.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Classify (Half)",
+      "summary": "Examines a 16-bit floating-point number and generates a classification bitmask.",
+      "syntax": "FCLASS.H rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "1110000 | 00000 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int)" },
+        { "name": "rs1", "desc": "Src (Half)" }
+      ],
+      "pseudocode": "R[rd] = classify_half(F[rs1]);"
+    },
+    {
+      "mnemonic": "FSGNJ.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Sign Injection (Half)",
+      "summary": "Injects the sign of rs2 into rs1 (16-bit).",
+      "syntax": "FSGNJ.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 000 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Sign Src" }
+      ],
+      "pseudocode": "F[rd] = {F[rs2][15], F[rs1][14:0]};"
+    },
+    {
+      "mnemonic": "FSGNJN.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Sign Injection Negate (Half)",
+      "summary": "Injects the negated sign of rs2 into rs1 (16-bit).",
+      "syntax": "FSGNJN.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 001 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Sign Src" }
+      ],
+      "pseudocode": "F[rd] = {~F[rs2][15], F[rs1][14:0]};"
+    },
+    {
+      "mnemonic": "FSGNJX.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Float Sign Injection XOR (Half)",
+      "summary": "Injects the XOR of signs of rs1 and rs2 (16-bit).",
+      "syntax": "FSGNJX.H rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0010000 | rs2 | rs1 | 010 | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Src 1" },
+        { "name": "rs2", "desc": "Sign Src" }
+      ],
+      "pseudocode": "F[rd] = {F[rs1][15] ^ F[rs2][15], F[rs1][14:0]};"
+    },
+    {
+      "mnemonic": "FCVT.W.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Half to Word",
+      "summary": "Converts a 16-bit floating-point number to a 32-bit signed integer.",
+      "syntax": "FCVT.W.H rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100000 | 00010 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Int)" },
+        { "name": "rs1", "desc": "Src (Half)" }
+      ],
+      "pseudocode": "R[rd] = sext(f16_to_i32(F[rs1]));"
+    },
+    {
+      "mnemonic": "FCVT.WU.H",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Half to Unsigned Word",
+      "summary": "Converts a 16-bit floating-point number to a 32-bit unsigned integer.",
+      "syntax": "FCVT.WU.H rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1100000 | 00011 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (UInt)" },
+        { "name": "rs1", "desc": "Src (Half)" }
+      ],
+      "pseudocode": "R[rd] = sext(f16_to_u32(F[rs1]));"
+    },
+    {
+      "mnemonic": "FCVT.H.W",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Word to Half",
+      "summary": "Converts a 32-bit signed integer to a 16-bit floating-point number.",
+      "syntax": "FCVT.H.W rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101000 | 00010 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Half)" },
+        { "name": "rs1", "desc": "Src (Int)" }
+      ],
+      "pseudocode": "F[rd] = i32_to_f16(R[rs1]);"
+    },
+    {
+      "mnemonic": "FCVT.H.WU",
+      "architecture": "RISC-V",
+      "extension": "Zfh (Half-Float)",
+      "full_name": "Convert Unsigned Word to Half",
+      "summary": "Converts a 32-bit unsigned integer to a 16-bit floating-point number.",
+      "syntax": "FCVT.H.WU rd, rs1",
+      "encoding": {
+        "format": "I-Type (Float)",
+        "binary_pattern": "1101000 | 00011 | rs1 | rm | rd | 1010011",
+        "hex_opcode": "0x53"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (Half)" },
+        { "name": "rs1", "desc": "Src (UInt)" }
+      ],
+      "pseudocode": "F[rd] = u32_to_f16(R[rs1]);"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "VLE8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Element (8-bit)",
+      "summary": "Loads a vector of 8-bit elements from memory.",
+      "syntax": "VLE8.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 000 | vd | 0000111",
+        "hex_opcode": "0x07"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i];"
+    },
+    {
+      "mnemonic": "VLE16.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Element (16-bit)",
+      "summary": "Loads a vector of 16-bit elements from memory.",
+      "syntax": "VLE16.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 101 | vd | 0000111",
+        "hex_opcode": "0x07"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i*2];"
+    },
+    {
+      "mnemonic": "VLE64.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Element (64-bit)",
+      "summary": "Loads a vector of 64-bit elements from memory.",
+      "syntax": "VLE64.V vd, (rs1), vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 111 | vd | 0000111",
+        "hex_opcode": "0x07"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = M[rs1 + i*8];"
+    },
+    {
+      "mnemonic": "VSE8.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Element (8-bit)",
+      "summary": "Stores a vector of 8-bit elements to memory.",
+      "syntax": "VSE8.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 000 | vs3 | 0100111",
+        "hex_opcode": "0x27"
+      },
+      "operands": [
+        { "name": "vs3", "desc": "Source" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "foreach(i < vl): M[rs1 + i] = vs3[i];"
+    },
+    {
+      "mnemonic": "VSE16.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Element (16-bit)",
+      "summary": "Stores a vector of 16-bit elements to memory.",
+      "syntax": "VSE16.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 101 | vs3 | 0100111",
+        "hex_opcode": "0x27"
+      },
+      "operands": [
+        { "name": "vs3", "desc": "Source" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "foreach(i < vl): M[rs1 + i*2] = vs3[i];"
+    },
+    {
+      "mnemonic": "VSE64.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Element (64-bit)",
+      "summary": "Stores a vector of 64-bit elements to memory.",
+      "syntax": "VSE64.V vs3, (rs1), vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | mop | vm | rs1 | 111 | vs3 | 0100111",
+        "hex_opcode": "0x27"
+      },
+      "operands": [
+        { "name": "vs3", "desc": "Source" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "foreach(i < vl): M[rs1 + i*8] = vs3[i];"
+    },
+    {
+      "mnemonic": "VMV1R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 1 Register (Whole)",
+      "summary": "Moves a single vector register to another, ignoring VL and VTYPE (used for spilling).",
+      "syntax": "VMV1R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00000 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Source" }
+      ],
+      "pseudocode": "vd = vs2; // Copies entire register content"
+    },
+    {
+      "mnemonic": "VMV2R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 2 Registers (Whole)",
+      "summary": "Moves 2 consecutive vector registers, ignoring VL and VTYPE.",
+      "syntax": "VMV2R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00001 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Group" },
+        { "name": "vs2", "desc": "Source Group" }
+      ],
+      "pseudocode": "vd[0:1] = vs2[0:1];"
+    },
+    {
+      "mnemonic": "VMV4R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 4 Registers (Whole)",
+      "summary": "Moves 4 consecutive vector registers, ignoring VL and VTYPE.",
+      "syntax": "VMV4R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00011 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Group" },
+        { "name": "vs2", "desc": "Source Group" }
+      ],
+      "pseudocode": "vd[0:3] = vs2[0:3];"
+    },
+    {
+      "mnemonic": "VMV8R.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Move 8 Registers (Whole)",
+      "summary": "Moves 8 consecutive vector registers, ignoring VL and VTYPE.",
+      "syntax": "VMV8R.V vd, vs2",
+      "encoding": {
+        "format": "OPVI",
+        "binary_pattern": "100111 | 1 | vs2 | 00111 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Group" },
+        { "name": "vs2", "desc": "Source Group" }
+      ],
+      "pseudocode": "vd[0:7] = vs2[0:7];"
+    },
+    {
+      "mnemonic": "VSETIVLI",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Set VL Immediate",
+      "summary": "Sets vector length (VL) and type (VTYPE) using a 5-bit immediate for the requested length.",
+      "syntax": "VSETIVLI rd, uimm, vtypei",
+      "encoding": {
+        "format": "V-Type",
+        "binary_pattern": "11 | zimm[10:0] | uimm | 111 | rd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "rd", "desc": "Dest (New VL)" },
+        { "name": "uimm", "desc": "Req VL (Imm)" },
+        { "name": "vtypei", "desc": "Config" }
+      ],
+      "pseudocode": "vl = set_config(uimm, vtypei); R[rd] = vl;"
+    },
+    {
+      "mnemonic": "VLM.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Load Mask",
+      "summary": "Loads a vector mask register from memory.",
+      "syntax": "VLM.V vd, (rs1)",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000000 | 01011 | 1 | rs1 | 000 | vd | 0000111",
+        "hex_opcode": "0x07"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Mask" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "vd = LoadMask(rs1);"
+    },
+    {
+      "mnemonic": "VSM.V",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Store Mask",
+      "summary": "Stores a vector mask register to memory.",
+      "syntax": "VSM.V vs3, (rs1)",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000000 | 01011 | 1 | rs1 | 000 | vs3 | 0100111",
+        "hex_opcode": "0x27"
+      },
+      "operands": [
+        { "name": "vs3", "desc": "Src Mask" },
+        { "name": "rs1", "desc": "Base Address" }
+      ],
+      "pseudocode": "StoreMask(rs1, vs3);"
+    }
+  ]
+}
