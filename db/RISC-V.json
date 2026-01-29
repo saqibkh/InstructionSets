@@ -16617,6 +16617,2174 @@
       "linked_pseudocode": "R[rd] = clmul(R[rs1], R[rs2]);"
     },
     {
+      "mnemonic": "VSADDU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Saturating Integer Add Unsigned",
+      "summary": "Adds unsigned integers with saturation (clips to max instead of wrapping).",
+      "syntax": "VSADDU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100000 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100000",
+            "clean": "100000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = saturate_u(vs1[i] + vs2[i]);",
+      "slug": "vsaddu_vv",
+      "rel_url": "risc-v/vsaddu_vv/",
+      "linked_summary": "Adds unsigned integers with saturation (clips to max instead of wrapping).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = saturate_u(vs1[i] + vs2[i]);"
+    },
+    {
+      "mnemonic": "VSSUBU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Saturating Integer Subtract Unsigned",
+      "summary": "Subtracts unsigned integers with saturation (clips to 0 instead of wrapping).",
+      "syntax": "VSSUBU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100010 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100010",
+            "clean": "100010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = saturate_u(vs1[i] - vs2[i]);",
+      "slug": "vssubu_vv",
+      "rel_url": "risc-v/vssubu_vv/",
+      "linked_summary": "Subtracts unsigned integers with saturation (clips to 0 instead of wrapping).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = saturate_u(vs1[i] - vs2[i]);"
+    },
+    {
+      "mnemonic": "VAADDU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Averaging Add Unsigned",
+      "summary": "Computes (a + b + 1) >> 1 for unsigned integers.",
+      "syntax": "VAADDU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100100 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100100",
+            "clean": "100100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs1[i] + vs2[i] + 1) >> 1;",
+      "slug": "vaaddu_vv",
+      "rel_url": "risc-v/vaaddu_vv/",
+      "linked_summary": "Computes (a + <a href=\"../../armv8-a/b_1/\">b</a> + 1) >> 1 for unsigned integers.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs1[i] + vs2[i] + 1) >> 1;"
+    },
+    {
+      "mnemonic": "VASUB.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Averaging Subtract Signed",
+      "summary": "Computes (a - b) >> 1 for signed integers.",
+      "syntax": "VASUB.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100110 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100110",
+            "clean": "100110"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs1[i] - vs2[i]) >> 1;",
+      "slug": "vasub_vv",
+      "rel_url": "risc-v/vasub_vv/",
+      "linked_summary": "Computes (a - <a href=\"../../armv8-a/b_1/\">b</a>) >> 1 for signed integers.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs1[i] - vs2[i]) >> 1;"
+    },
+    {
+      "mnemonic": "VASUBU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Averaging Subtract Unsigned",
+      "summary": "Computes (a - b) >> 1 for unsigned integers.",
+      "syntax": "VASUBU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100110 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100110",
+            "clean": "100110"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs1[i] - vs2[i]) >> 1;",
+      "slug": "vasubu_vv",
+      "rel_url": "risc-v/vasubu_vv/",
+      "linked_summary": "Computes (a - <a href=\"../../armv8-a/b_1/\">b</a>) >> 1 for unsigned integers.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs1[i] - vs2[i]) >> 1;"
+    },
+    {
+      "mnemonic": "VSSRA.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Saturating Shift Right Arithmetic",
+      "summary": "Shifts right with sign extension and rounding/saturation logic.",
+      "syntax": "VSSRA.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101001 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101001",
+            "clean": "101001"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source"
+        },
+        {
+          "name": "vs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = saturate(vs2[i] >>s vs1[i]);",
+      "slug": "vssra_vv",
+      "rel_url": "risc-v/vssra_vv/",
+      "linked_summary": "Shifts right with sign extension <a href=\"../../armv8-a/and_6/\">and</a> rounding/saturation logic.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = saturate(vs2[i] >>s vs1[i]);"
+    },
+    {
+      "mnemonic": "VSSRL.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Saturating Shift Right Logical",
+      "summary": "Shifts right with zero extension and rounding/saturation logic.",
+      "syntax": "VSSRL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "101000 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101000",
+            "clean": "101000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Source"
+        },
+        {
+          "name": "vs1",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = saturate(vs2[i] >>u vs1[i]);",
+      "slug": "vssrl_vv",
+      "rel_url": "risc-v/vssrl_vv/",
+      "linked_summary": "Shifts right with <a href=\"../../armv9-a/zero_1/\">zero</a> extension <a href=\"../../armv8-a/and_6/\">and</a> rounding/saturation logic.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = saturate(vs2[i] >>u vs1[i]);"
+    },
+    {
+      "mnemonic": "VWREDSUM.VS",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Widening Reduction Sum Signed",
+      "summary": "Sums N-bit elements into a 2*N-bit scalar accumulator (Signed).",
+      "syntax": "VWREDSUM.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "110001 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "110001",
+            "clean": "110001"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Scalar Wide)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Vector (Narrow)"
+        },
+        {
+          "name": "vs1",
+          "desc": "Start (Wide)"
+        }
+      ],
+      "pseudocode": "vd[0] = vs1[0] + sum(extend(vs2[*]));",
+      "slug": "vwredsum_vs",
+      "rel_url": "risc-v/vwredsum_vs/",
+      "linked_summary": "Sums N-<a href=\"../../armv8-a/bit/\">bit</a> elements into a 2*N-<a href=\"../../armv8-a/bit/\">bit</a> scalar accumulator (Signed).",
+      "linked_pseudocode": "vd[0] = vs1[0] + sum(extend(vs2[*]));"
+    },
+    {
+      "mnemonic": "VWREDSUMU.VS",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Widening Reduction Sum Unsigned",
+      "summary": "Sums N-bit elements into a 2*N-bit scalar accumulator (Unsigned).",
+      "syntax": "VWREDSUMU.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "110000 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "110000",
+            "clean": "110000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Scalar Wide)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Vector (Narrow)"
+        },
+        {
+          "name": "vs1",
+          "desc": "Start (Wide)"
+        }
+      ],
+      "pseudocode": "vd[0] = vs1[0] + sum(zext(vs2[*]));",
+      "slug": "vwredsumu_vs",
+      "rel_url": "risc-v/vwredsumu_vs/",
+      "linked_summary": "Sums N-<a href=\"../../armv8-a/bit/\">bit</a> elements into a 2*N-<a href=\"../../armv8-a/bit/\">bit</a> scalar accumulator (Unsigned).",
+      "linked_pseudocode": "vd[0] = vs1[0] + sum(zext(vs2[*]));"
+    },
+    {
+      "mnemonic": "VMANDN.MM",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Mask AND NOT",
+      "summary": "Computes vd = vs1 & ~vs2 (mask operation).",
+      "syntax": "VMANDN.MM vd, vs2, vs1",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "011000 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "011000",
+            "clean": "011000"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "vd = vs1 & ~vs2;",
+      "slug": "vmandn_mm",
+      "rel_url": "risc-v/vmandn_mm/",
+      "linked_summary": "Computes vd = vs1 & ~vs2 (mask operation).",
+      "linked_pseudocode": "vd = vs1 & ~vs2;"
+    },
+    {
+      "mnemonic": "VMORN.MM",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Mask OR NOT",
+      "summary": "Computes vd = vs1 | ~vs2 (mask operation).",
+      "syntax": "VMORN.MM vd, vs2, vs1",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "011010 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "011010",
+            "clean": "011010"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "vd = vs1 | ~vs2;",
+      "slug": "vmorn_mm",
+      "rel_url": "risc-v/vmorn_mm/",
+      "linked_summary": "Computes vd = vs1 | ~vs2 (mask operation).",
+      "linked_pseudocode": "vd = vs1 | ~vs2;"
+    },
+    {
+      "mnemonic": "VMXNOR.MM",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Mask XNOR",
+      "summary": "Computes vd = ~(vs1 ^ vs2) (mask operation).",
+      "syntax": "VMXNOR.MM vd, vs2, vs1",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "011011 | 1 | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "011011",
+            "clean": "011011"
+          },
+          {
+            "raw": "1",
+            "clean": "1"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest Mask"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "vd = ~(vs1 ^ vs2);",
+      "slug": "vmxnor_mm",
+      "rel_url": "risc-v/vmxnor_mm/",
+      "linked_summary": "Computes vd = ~(vs1 ^ vs2) (mask operation).",
+      "linked_pseudocode": "vd = ~(vs1 ^ vs2);"
+    },
+    {
+      "mnemonic": "MAXU",
+      "architecture": "RISC-V",
+      "extension": "Zbb",
+      "full_name": "Maximum Unsigned",
+      "summary": "Computes the maximum of two unsigned integers.",
+      "syntax": "MAXU rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000101 | rs2 | rs1 | 111 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "0000101",
+            "clean": "0000101"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0110011",
+            "clean": "0110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] >u R[rs2]) ? R[rs1] : R[rs2];",
+      "slug": "maxu",
+      "rel_url": "risc-v/maxu/",
+      "linked_summary": "Computes the maximum of two unsigned integers.",
+      "linked_pseudocode": "R[rd] = (R[rs1] >u R[rs2]) ? R[rs1] : R[rs2];"
+    },
+    {
+      "mnemonic": "MINU",
+      "architecture": "RISC-V",
+      "extension": "Zbb",
+      "full_name": "Minimum Unsigned",
+      "summary": "Computes the minimum of two unsigned integers.",
+      "syntax": "MINU rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000101 | rs2 | rs1 | 101 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "0000101",
+            "clean": "0000101"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "101",
+            "clean": "101"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0110011",
+            "clean": "0110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "R[rd] = (R[rs1] <u R[rs2]) ? R[rs1] : R[rs2];",
+      "slug": "minu",
+      "rel_url": "risc-v/minu/",
+      "linked_summary": "Computes the minimum of two unsigned integers.",
+      "linked_pseudocode": "R[rd] = (R[rs1] <u R[rs2]) ? R[rs1] : R[rs2];"
+    },
+    {
+      "mnemonic": "PACK",
+      "architecture": "RISC-V",
+      "extension": "Zbkb",
+      "full_name": "Pack two words into a register",
+      "summary": "Packs the lower halves of rs1 and rs2 into rd.",
+      "syntax": "PACK rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000100 | rs2 | rs1 | 100 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "0000100",
+            "clean": "0000100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0110011",
+            "clean": "0110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Lower Half"
+        },
+        {
+          "name": "rs2",
+          "desc": "Upper Half"
+        }
+      ],
+      "pseudocode": "R[rd] = (R[rs2] << XLEN/2) | (R[rs1] & ((1 << XLEN/2)-1));",
+      "slug": "pack",
+      "rel_url": "risc-v/pack/",
+      "linked_summary": "Packs the lower halves of rs1 <a href=\"../../armv8-a/and_6/\">and</a> rs2 into rd.",
+      "linked_pseudocode": "R[rd] = (R[rs2] << XLEN/2) | (R[rs1] & ((1 << XLEN/2)-1));"
+    },
+    {
+      "mnemonic": "PACKH",
+      "architecture": "RISC-V",
+      "extension": "Zbkb",
+      "full_name": "Pack Byte",
+      "summary": "Packs the lower bytes of rs1 and rs2 into a 16-bit value.",
+      "syntax": "PACKH rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0000100 | rs2 | rs1 | 111 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "0000100",
+            "clean": "0000100"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "111",
+            "clean": "111"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0110011",
+            "clean": "0110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Src 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Src 2"
+        }
+      ],
+      "pseudocode": "R[rd] = (R[rs2] << 8) | (R[rs1] & 0xFF);",
+      "slug": "packh",
+      "rel_url": "risc-v/packh/",
+      "linked_summary": "Packs the lower bytes of rs1 <a href=\"../../armv8-a/and_6/\">and</a> rs2 into a 16-<a href=\"../../armv8-a/bit/\">bit</a> value.",
+      "linked_pseudocode": "R[rd] = (R[rs2] << 8) | (R[rs1] & 0xFF);"
+    },
+    {
+      "mnemonic": "HLV.WU",
+      "architecture": "RISC-V",
+      "extension": "H",
+      "full_name": "Hypervisor Load Word Unsigned",
+      "summary": "Loads a word from guest physical memory (unsigned).",
+      "syntax": "HLV.WU rd, (rs1)",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0110100 | 00000 | rs1 | 100 | rd | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          {
+            "raw": "0110100",
+            "clean": "0110100"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1110011",
+            "clean": "1110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Guest Addr"
+        }
+      ],
+      "pseudocode": "R[rd] = zext(GuestMem[rs1][31:0]);",
+      "slug": "hlv_wu",
+      "rel_url": "risc-v/hlv_wu/",
+      "linked_summary": "Loads a word from guest physical memory (unsigned).",
+      "linked_pseudocode": "R[rd] = zext(GuestMem[rs1][31:0]);"
+    },
+    {
+      "mnemonic": "HLV.D",
+      "architecture": "RISC-V",
+      "extension": "H",
+      "full_name": "Hypervisor Load Double",
+      "summary": "Loads a doubleword from guest physical memory.",
+      "syntax": "HLV.D rd, (rs1)",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0110110 | 00000 | rs1 | 100 | rd | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          {
+            "raw": "0110110",
+            "clean": "0110110"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "1110011",
+            "clean": "1110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Guest Addr"
+        }
+      ],
+      "pseudocode": "R[rd] = GuestMem[rs1][63:0];",
+      "slug": "hlv_d",
+      "rel_url": "risc-v/hlv_d/",
+      "linked_summary": "Loads a doubleword from guest physical memory.",
+      "linked_pseudocode": "R[rd] = GuestMem[rs1][63:0];"
+    },
+    {
+      "mnemonic": "HSV.D",
+      "architecture": "RISC-V",
+      "extension": "H",
+      "full_name": "Hypervisor Store Double",
+      "summary": "Stores a doubleword to guest physical memory.",
+      "syntax": "HSV.D rs2, (rs1)",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0110111 | rs2 | rs1 | 100 | 00000 | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          {
+            "raw": "0110111",
+            "clean": "0110111"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "100",
+            "clean": "100"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "1110011",
+            "clean": "1110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rs2",
+          "desc": "Source"
+        },
+        {
+          "name": "rs1",
+          "desc": "Guest Addr"
+        }
+      ],
+      "pseudocode": "GuestMem[rs1][63:0] = R[rs2];",
+      "slug": "hsv_d",
+      "rel_url": "risc-v/hsv_d/",
+      "linked_summary": "Stores a doubleword to guest physical memory.",
+      "linked_pseudocode": "GuestMem[rs1][63:0] = R[rs2];"
+    },
+    {
+      "mnemonic": "VLOXEI32.V",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Load Ordered Indexed (32-bit indices)",
+      "summary": "Loads elements using indices, ensuring order (useful for I/O buffers).",
+      "syntax": "VLOXEI32.V vd, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VL-Type",
+        "binary_pattern": "000110 | mop | vm | rs1 | 110 | vd | 0000111",
+        "hex_opcode": "0x07",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "0000111",
+            "clean": "0000111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Indices"
+        }
+      ],
+      "pseudocode": "Ordered_Load(vd, rs1, vs2);",
+      "slug": "vloxei32_v",
+      "rel_url": "risc-v/vloxei32_v/",
+      "linked_summary": "Loads elements using indices, ensuring order (useful for I/O buffers).",
+      "linked_pseudocode": "Ordered_Load(vd, rs1, vs2);"
+    },
+    {
+      "mnemonic": "VSOXEI32.V",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Store Ordered Indexed (32-bit indices)",
+      "summary": "Stores elements using indices, ensuring order.",
+      "syntax": "VSOXEI32.V vs3, (rs1), vs2, vm",
+      "encoding": {
+        "format": "VS-Type",
+        "binary_pattern": "000110 | mop | vm | rs1 | 110 | vs3 | 0100111",
+        "hex_opcode": "0x27",
+        "visual_parts": [
+          {
+            "raw": "000110",
+            "clean": "000110"
+          },
+          {
+            "raw": "mop",
+            "clean": "mop"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "110",
+            "clean": "110"
+          },
+          {
+            "raw": "vs3",
+            "clean": "vs3"
+          },
+          {
+            "raw": "0100111",
+            "clean": "0100111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vs3",
+          "desc": "Source"
+        },
+        {
+          "name": "rs1",
+          "desc": "Base"
+        },
+        {
+          "name": "vs2",
+          "desc": "Indices"
+        }
+      ],
+      "pseudocode": "Ordered_Store(vs3, rs1, vs2);",
+      "slug": "vsoxei32_v",
+      "rel_url": "risc-v/vsoxei32_v/",
+      "linked_summary": "Stores elements using indices, ensuring order.",
+      "linked_pseudocode": "Ordered_Store(vs3, rs1, vs2);"
+    },
+    {
+      "mnemonic": "VMULH.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Multiply High Signed",
+      "summary": "Multiplies signed integers and keeps the high N bits.",
+      "syntax": "VMULH.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100111 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100111",
+            "clean": "100111"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (sext(vs1[i]) * sext(vs2[i])) >> SEW;",
+      "slug": "vmulh_vv",
+      "rel_url": "risc-v/vmulh_vv/",
+      "linked_summary": "Multiplies signed integers <a href=\"../../armv8-a/and_6/\">and</a> keeps the high N bits.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (sext(vs1[i]) * sext(vs2[i])) >> SEW;"
+    },
+    {
+      "mnemonic": "VMULHU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Multiply High Unsigned",
+      "summary": "Multiplies unsigned integers and keeps the high N bits.",
+      "syntax": "VMULHU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100100 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100100",
+            "clean": "100100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (zext(vs1[i]) * zext(vs2[i])) >> SEW;",
+      "slug": "vmulhu_vv",
+      "rel_url": "risc-v/vmulhu_vv/",
+      "linked_summary": "Multiplies unsigned integers <a href=\"../../armv8-a/and_6/\">and</a> keeps the high N bits.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (zext(vs1[i]) * zext(vs2[i])) >> SEW;"
+    },
+    {
+      "mnemonic": "VDIV.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Integer Divide Signed",
+      "summary": "Divides signed vector elements.",
+      "syntax": "VDIV.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100000 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100000",
+            "clean": "100000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Divisor"
+        },
+        {
+          "name": "vs1",
+          "desc": "Dividend"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] / vs2[i];",
+      "slug": "vdiv_vv",
+      "rel_url": "risc-v/vdiv_vv/",
+      "linked_summary": "Divides signed vector elements.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] / vs2[i];"
+    },
+    {
+      "mnemonic": "VDIVU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Integer Divide Unsigned",
+      "summary": "Divides unsigned vector elements.",
+      "syntax": "VDIVU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100000 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100000",
+            "clean": "100000"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Divisor"
+        },
+        {
+          "name": "vs1",
+          "desc": "Dividend"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] /u vs2[i];",
+      "slug": "vdivu_vv",
+      "rel_url": "risc-v/vdivu_vv/",
+      "linked_summary": "Divides unsigned vector elements.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] /u vs2[i];"
+    },
+    {
+      "mnemonic": "VREM.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Remainder Signed",
+      "summary": "Computes signed remainder.",
+      "syntax": "VREM.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100010 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100010",
+            "clean": "100010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Divisor"
+        },
+        {
+          "name": "vs1",
+          "desc": "Dividend"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] % vs2[i];",
+      "slug": "vrem_vv",
+      "rel_url": "risc-v/vrem_vv/",
+      "linked_summary": "Computes signed remainder.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] % vs2[i];"
+    },
+    {
+      "mnemonic": "VREMU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Remainder Unsigned",
+      "summary": "Computes unsigned remainder.",
+      "syntax": "VREMU.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "100010 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "100010",
+            "clean": "100010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Divisor"
+        },
+        {
+          "name": "vs1",
+          "desc": "Dividend"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vs1[i] %u vs2[i];",
+      "slug": "vremu_vv",
+      "rel_url": "risc-v/vremu_vv/",
+      "linked_summary": "Computes unsigned remainder.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vs1[i] %u vs2[i];"
+    },
+    {
+      "mnemonic": "VWMACC.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Widening Multiply-Accumulate",
+      "summary": "Computes vd = vd + (vs1 * vs2) with widening (N*N -> 2N + 2N).",
+      "syntax": "VWMACC.VV vd, vs1, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "111101 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "111101",
+            "clean": "111101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest/Acc (2*SEW)"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1 (SEW)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2 (SEW)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vd[i] + (sext(vs1[i]) * sext(vs2[i]));",
+      "slug": "vwmacc_vv",
+      "rel_url": "risc-v/vwmacc_vv/",
+      "linked_summary": "Computes vd = vd + (vs1 * vs2) with widening (N*N -> 2N + 2N).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vd[i] + (sext(vs1[i]) * sext(vs2[i]));"
+    },
+    {
+      "mnemonic": "VWMACCU.VV",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Widening Multiply-Accumulate Unsigned",
+      "summary": "Computes vd = vd + (vs1 * vs2) widening unsigned.",
+      "syntax": "VWMACCU.VV vd, vs1, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "111100 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "111100",
+            "clean": "111100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "vs1",
+            "clean": "vs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest/Acc (2*SEW)"
+        },
+        {
+          "name": "vs1",
+          "desc": "Src 1 (SEW)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src 2 (SEW)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vd[i] + (zext(vs1[i]) * zext(vs2[i]));",
+      "slug": "vwmaccu_vv",
+      "rel_url": "risc-v/vwmaccu_vv/",
+      "linked_summary": "Computes vd = vd + (vs1 * vs2) widening unsigned.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = vd[i] + (zext(vs1[i]) * zext(vs2[i]));"
+    },
+    {
+      "mnemonic": "VIOTA.M",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Iota",
+      "summary": "Writes the index of the active element to the destination. Useful for parallel prefix sums.",
+      "syntax": "VIOTA.M vd, vs2, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "010100 | vm | vs2 | 10000 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010100",
+            "clean": "010100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "10000",
+            "clean": "10000"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        },
+        {
+          "name": "vs2",
+          "desc": "Mask Src"
+        }
+      ],
+      "pseudocode": "count = 0; foreach(i < vl): if vm[i]: vd[i] = count++;",
+      "slug": "viota_m",
+      "rel_url": "risc-v/viota_m/",
+      "linked_summary": "Writes the <a href=\"../../armv8-a/index/\">index</a> of the active element to the destination. Useful for parallel prefix sums.",
+      "linked_pseudocode": "count = 0; foreach(i < vl): if vm[i]: vd[i] = count++;"
+    },
+    {
+      "mnemonic": "VID.V",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Element Index",
+      "summary": "Writes the element index (0, 1, 2...) to the destination.",
+      "syntax": "VID.V vd, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "010100 | vm | 00000 | 10001 | 010 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010100",
+            "clean": "010100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "10001",
+            "clean": "10001"
+          },
+          {
+            "raw": "010",
+            "clean": "010"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = i;",
+      "slug": "vid_v",
+      "rel_url": "risc-v/vid_v/",
+      "linked_summary": "Writes the element <a href=\"../../armv8-a/index/\">index</a> (0, 1, 2...) to the destination.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = i;"
+    },
+    {
+      "mnemonic": "VFWCVT.F.F.V",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Widening Float to Float Convert",
+      "summary": "Converts N-bit floats to 2*N-bit floats (e.g., FP16 -> FP32).",
+      "syntax": "VFWCVT.F.F.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 01110 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01110",
+            "clean": "01110"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Wide)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Narrow)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = convert_w(vs2[i]);",
+      "slug": "vfwcvt_f_f_v",
+      "rel_url": "risc-v/vfwcvt_f_f_v/",
+      "linked_summary": "Converts N-<a href=\"../../armv8-a/bit/\">bit</a> floats to 2*N-<a href=\"../../armv8-a/bit/\">bit</a> floats (e.g., FP16 -> FP32).",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = convert_w(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFWCVT.X.F.V",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Widening Float to Signed Int",
+      "summary": "Converts N-bit float to 2*N-bit signed integer.",
+      "syntax": "VFWCVT.X.F.V vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 01000 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "01000",
+            "clean": "01000"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Wide Int)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Float)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = f_to_x_w(vs2[i]);",
+      "slug": "vfwcvt_x_f_v",
+      "rel_url": "risc-v/vfwcvt_x_f_v/",
+      "linked_summary": "Converts N-<a href=\"../../armv8-a/bit/\">bit</a> float to 2*N-<a href=\"../../armv8-a/bit/\">bit</a> signed integer.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = f_to_x_w(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFNCVT.X.F.W",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Narrowing Float to Signed Int",
+      "summary": "Converts 2*N-bit float to N-bit signed integer.",
+      "syntax": "VFNCVT.X.F.W vd, vs2, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "010010 | vm | vs2 | 10001 | 001 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "010010",
+            "clean": "010010"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "10001",
+            "clean": "10001"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Int)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Wide Float)"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = f_to_x_n(vs2[i]);",
+      "slug": "vfncvt_x_f_w",
+      "rel_url": "risc-v/vfncvt_x_f_w/",
+      "linked_summary": "Converts 2*N-<a href=\"../../armv8-a/bit/\">bit</a> float to N-<a href=\"../../armv8-a/bit/\">bit</a> signed integer.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = f_to_x_n(vs2[i]);"
+    },
+    {
+      "mnemonic": "VNSRL.WI",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Narrowing Shift Right Logical Immediate",
+      "summary": "Shifts wide elements right by immediate and narrows.",
+      "syntax": "VNSRL.WI vd, vs2, imm, vm",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "101100 | vm | vs2 | imm | 011 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101100",
+            "clean": "101100"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "imm",
+            "clean": "imm"
+          },
+          {
+            "raw": "011",
+            "clean": "011"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Narrow)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Wide)"
+        },
+        {
+          "name": "imm",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >>u imm) & Mask;",
+      "slug": "vnsrl_wi",
+      "rel_url": "risc-v/vnsrl_wi/",
+      "linked_summary": "Shifts wide elements right by immediate <a href=\"../../armv8-a/and_6/\">and</a> narrows.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >>u imm) & Mask;"
+    },
+    {
+      "mnemonic": "VNSRA.WI",
+      "architecture": "RISC-V",
+      "extension": "V",
+      "full_name": "Vector Narrowing Shift Right Arithmetic Immediate",
+      "summary": "Shifts wide elements right (arithmetic) by immediate and narrows.",
+      "syntax": "VNSRA.WI vd, vs2, imm, vm",
+      "encoding": {
+        "format": "OPIVI",
+        "binary_pattern": "101101 | vm | vs2 | imm | 011 | vd | 1010111",
+        "hex_opcode": "0x57",
+        "visual_parts": [
+          {
+            "raw": "101101",
+            "clean": "101101"
+          },
+          {
+            "raw": "vm",
+            "clean": "vm"
+          },
+          {
+            "raw": "vs2",
+            "clean": "vs2"
+          },
+          {
+            "raw": "imm",
+            "clean": "imm"
+          },
+          {
+            "raw": "011",
+            "clean": "011"
+          },
+          {
+            "raw": "vd",
+            "clean": "vd"
+          },
+          {
+            "raw": "1010111",
+            "clean": "1010111"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "vd",
+          "desc": "Dest (Narrow)"
+        },
+        {
+          "name": "vs2",
+          "desc": "Src (Wide)"
+        },
+        {
+          "name": "imm",
+          "desc": "Shift"
+        }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >>s imm) & Mask;",
+      "slug": "vnsra_wi",
+      "rel_url": "risc-v/vnsra_wi/",
+      "linked_summary": "Shifts wide elements right (arithmetic) by immediate <a href=\"../../armv8-a/and_6/\">and</a> narrows.",
+      "linked_pseudocode": "foreach(i < vl): vd[i] = (vs2[i] >>s imm) & Mask;"
+    },
+    {
       "mnemonic": "FCLASS.S",
       "architecture": "RISC-V",
       "extension": "F",
