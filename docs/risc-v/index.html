@@ -2045,6 +2045,20 @@
 		    <td style="color: var(--text-muted);">Moves a scalar float register to element 0 of a vector.</td>
 		</tr>
 		
+		<tr onclick="window.location='vfredmax_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFREDMAX.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFREDMAX.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPFVV</span></td>
+		    <td style="color: var(--text-muted);">Reduces a float vector to a scalar by finding the maximum element.</td>
+		</tr>
+		
+		<tr onclick="window.location='vfredusum_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFREDUSUM.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFREDUSUM.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPFVV</span></td>
+		    <td style="color: var(--text-muted);">Reduces a float vector to a scalar by summing elements (Order not preserved, faster).</td>
+		</tr>
+		
 		<tr onclick="window.location='vfsgnj_vv/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFSGNJ.VV</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFSGNJ.VV vd, vs2, vs1, vm</td>
@@ -2057,6 +2071,20 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFSQRT.V vd, vs2, vm</td>
 		    <td><span class="badge">OPFVV</span></td>
 		    <td style="color: var(--text-muted);">Computes the square root of elements in a floating-point vector.</td>
+		</tr>
+		
+		<tr onclick="window.location='vfwadd_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFWADD.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFWADD.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPFVV</span></td>
+		    <td style="color: var(--text-muted);">Adds N-bit floats to produce 2*N-bit float results (e.g., FP16 + FP16 -> FP32).</td>
+		</tr>
+		
+		<tr onclick="window.location='vfwmul_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VFWMUL.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFWMUL.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPFVV</span></td>
+		    <td style="color: var(--text-muted);">Multiplies N-bit floats to produce 2*N-bit float results.</td>
 		</tr>
 		
 		<tr onclick="window.location='vle32_v/';" style="cursor: pointer;">
@@ -2078,6 +2106,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLUXEI32.V vd, (rs1), vs2, vm</td>
 		    <td><span class="badge">VL-Type</span></td>
 		    <td style="color: var(--text-muted);">Loads elements from memory using a vector of indices (Gather).</td>
+		</tr>
+		
+		<tr onclick="window.location='vmacc_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMACC.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMACC.VV vd, vs1, vs2, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = vd + (vs1 * vs2). Essential for dot products.</td>
 		</tr>
 		
 		<tr onclick="window.location='vmand_mm/';" style="cursor: pointer;">
@@ -2150,6 +2185,13 @@
 		    <td style="color: var(--text-muted);">Performs bitwise NAND on vector mask registers. Used to invert masks (NOT).</td>
 		</tr>
 		
+		<tr onclick="window.location='vmsbc_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMSBC.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSBC.VV vd, vs2, vs1</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Writes a mask where bits are 1 before the first element in vs2 that is 1.</td>
+		</tr>
+		
 		<tr onclick="window.location='vmseq_vv/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VMSEQ.VV</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSEQ.VV vd, vs2, vs1, vm</td>
@@ -2199,6 +2241,13 @@
 		    <td style="color: var(--text-muted);">Copies element 0 of a vector to an integer register.</td>
 		</tr>
 		
+		<tr onclick="window.location='vnmsub_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VNMSUB.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VNMSUB.VV vd, vs1, vs2, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Computes vd = -(vd - (vs1 * vs2)).</td>
+		</tr>
+		
 		<tr onclick="window.location='vnsra_wx/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">VNSRA.WX</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VNSRA.WX vd, vs2, rs1, vm</td>
@@ -2218,6 +2267,34 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VOR.VV vd, vs2, vs1, vm</td>
 		    <td><span class="badge">OPIVV</span></td>
 		    <td style="color: var(--text-muted);">Performs bitwise OR on elements of two vectors.</td>
+		</tr>
+		
+		<tr onclick="window.location='vredand_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VREDAND.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDAND.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Reduces a vector to a scalar using bitwise AND.</td>
+		</tr>
+		
+		<tr onclick="window.location='vredmax_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VREDMAX.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDMAX.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Reduces a vector to a scalar by finding the maximum signed element.</td>
+		</tr>
+		
+		<tr onclick="window.location='vredmin_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VREDMIN.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDMIN.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Reduces a vector to a scalar by finding the minimum signed element.</td>
+		</tr>
+		
+		<tr onclick="window.location='vredor_vs/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VREDOR.VS</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDOR.VS vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPMVV</span></td>
+		    <td style="color: var(--text-muted);">Reduces a vector to a scalar using bitwise OR.</td>
 		</tr>
 		
 		<tr onclick="window.location='vredsum_vs/';" style="cursor: pointer;">
@@ -2281,6 +2358,13 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSLL.VV vd, vs2, vs1, vm</td>
 		    <td><span class="badge">OPIVV</span></td>
 		    <td style="color: var(--text-muted);">Shifts elements of vector vs2 left by amounts in vs1.</td>
+		</tr>
+		
+		<tr onclick="window.location='vsmul_vv/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">VSMUL.VV</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSMUL.VV vd, vs2, vs1, vm</td>
+		    <td><span class="badge">OPIVV</span></td>
+		    <td style="color: var(--text-muted);">Performs signed saturating multiplication, keeping the high half of the product (Fixed-point support).</td>
 		</tr>
 		
 		<tr onclick="window.location='vsra_vv/';" style="cursor: pointer;">

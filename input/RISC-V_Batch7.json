@@ -1,0 +1,231 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "VMACC.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Integer Multiply-Accumulate",
+      "summary": "Computes vd = vd + (vs1 * vs2). Essential for dot products.",
+      "syntax": "VMACC.VV vd, vs1, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "111001 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest/Accumulator" },
+        { "name": "vs1", "desc": "Src 1" },
+        { "name": "vs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = vd[i] + (vs1[i] * vs2[i]);"
+    },
+    {
+      "mnemonic": "VNMSUB.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Integer Negative Multiply-Subtract",
+      "summary": "Computes vd = -(vd - (vs1 * vs2)).",
+      "syntax": "VNMSUB.VV vd, vs1, vs2, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "111011 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest/Accumulator" },
+        { "name": "vs1", "desc": "Src 1" },
+        { "name": "vs2", "desc": "Src 2" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = -(vd[i] - (vs1[i] * vs2[i]));"
+    },
+    {
+      "mnemonic": "VSMUL.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Single-Width Saturating Multiply",
+      "summary": "Performs signed saturating multiplication, keeping the high half of the product (Fixed-point support).",
+      "syntax": "VSMUL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPIVV",
+        "binary_pattern": "111101 | vm | vs2 | vs1 | 000 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest" },
+        { "name": "vs2", "desc": "Src 2" },
+        { "name": "vs1", "desc": "Src 1" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = (sext(vs1[i]) * sext(vs2[i])) >> (SEW-1);"
+    },
+    {
+      "mnemonic": "VREDMAX.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Reduction Maximum (Signed)",
+      "summary": "Reduces a vector to a scalar by finding the maximum signed element.",
+      "syntax": "VREDMAX.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "000111 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Scalar)" },
+        { "name": "vs2", "desc": "Src Vector" },
+        { "name": "vs1", "desc": "Start Scalar" }
+      ],
+      "pseudocode": "vd[0] = max(vs1[0], max_element(vs2));"
+    },
+    {
+      "mnemonic": "VREDMIN.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Reduction Minimum (Signed)",
+      "summary": "Reduces a vector to a scalar by finding the minimum signed element.",
+      "syntax": "VREDMIN.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "000101 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Scalar)" },
+        { "name": "vs2", "desc": "Src Vector" },
+        { "name": "vs1", "desc": "Start Scalar" }
+      ],
+      "pseudocode": "vd[0] = min(vs1[0], min_element(vs2));"
+    },
+    {
+      "mnemonic": "VREDAND.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Reduction AND",
+      "summary": "Reduces a vector to a scalar using bitwise AND.",
+      "syntax": "VREDAND.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "000001 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Scalar)" },
+        { "name": "vs2", "desc": "Src Vector" },
+        { "name": "vs1", "desc": "Start Scalar" }
+      ],
+      "pseudocode": "vd[0] = vs1[0] & reduce_and(vs2);"
+    },
+    {
+      "mnemonic": "VREDOR.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Reduction OR",
+      "summary": "Reduces a vector to a scalar using bitwise OR.",
+      "syntax": "VREDOR.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "000010 | vm | vs2 | vs1 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Scalar)" },
+        { "name": "vs2", "desc": "Src Vector" },
+        { "name": "vs1", "desc": "Start Scalar" }
+      ],
+      "pseudocode": "vd[0] = vs1[0] | reduce_or(vs2);"
+    },
+    {
+      "mnemonic": "VFWADD.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Float Add",
+      "summary": "Adds N-bit floats to produce 2*N-bit float results (e.g., FP16 + FP16 -> FP32).",
+      "syntax": "VFWADD.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "110000 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (2*SEW)" },
+        { "name": "vs2", "desc": "Src 2 (SEW)" },
+        { "name": "vs1", "desc": "Src 1 (SEW)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = extend(vs1[i]) + extend(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFWMUL.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Widening Float Multiply",
+      "summary": "Multiplies N-bit floats to produce 2*N-bit float results.",
+      "syntax": "VFWMUL.VV vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "111000 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (2*SEW)" },
+        { "name": "vs2", "desc": "Src 2 (SEW)" },
+        { "name": "vs1", "desc": "Src 1 (SEW)" }
+      ],
+      "pseudocode": "foreach(i < vl): vd[i] = extend(vs1[i]) * extend(vs2[i]);"
+    },
+    {
+      "mnemonic": "VFREDUSUM.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Unordered Float Reduction Sum",
+      "summary": "Reduces a float vector to a scalar by summing elements (Order not preserved, faster).",
+      "syntax": "VFREDUSUM.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "000001 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Scalar)" },
+        { "name": "vs2", "desc": "Src Vector" },
+        { "name": "vs1", "desc": "Start Scalar" }
+      ],
+      "pseudocode": "vd[0] = vs1[0] + sum(vs2[*]); // Non-deterministic order"
+    },
+    {
+      "mnemonic": "VFREDMAX.VS",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Float Reduction Maximum",
+      "summary": "Reduces a float vector to a scalar by finding the maximum element.",
+      "syntax": "VFREDMAX.VS vd, vs2, vs1, vm",
+      "encoding": {
+        "format": "OPFVV",
+        "binary_pattern": "000111 | vm | vs2 | vs1 | 001 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest (Scalar)" },
+        { "name": "vs2", "desc": "Src Vector" },
+        { "name": "vs1", "desc": "Start Scalar" }
+      ],
+      "pseudocode": "vd[0] = max(vs1[0], max_element(vs2));"
+    },
+    {
+      "mnemonic": "VMSBC.VV",
+      "architecture": "RISC-V",
+      "extension": "V (Vector)",
+      "full_name": "Vector Mask Set Before First",
+      "summary": "Writes a mask where bits are 1 before the first element in vs2 that is 1.",
+      "syntax": "VMSBC.VV vd, vs2, vs1",
+      "encoding": {
+        "format": "OPMVV",
+        "binary_pattern": "011110 | 0 | vs2 | 00000 | 010 | vd | 1010111",
+        "hex_opcode": "0x57"
+      },
+      "operands": [
+        { "name": "vd", "desc": "Dest Mask" },
+        { "name": "vs2", "desc": "Src Mask" }
+      ],
+      "pseudocode": "Sets mask bits to 1 up to (but not including) the first set bit in vs2."
+    }
+  ]
+}
