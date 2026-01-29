@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const searchInput = document.getElementById('search-input');
-    const resultsContainer = document.getElementById('search-results');
+    // Shared Search Index
     let searchIndex = [];
-    let selectedIndex = -1;
-
-    // 1. Fetch Search Index
+    
     try {
+        // Handle different path depths (root vs sub-pages)
         const path = typeof SEARCH_INDEX_PATH !== 'undefined' ? SEARCH_INDEX_PATH : 'search.json';
         const response = await fetch(path);
         searchIndex = await response.json();
@@ -13,131 +11,92 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Could not load search index:", error);
     }
 
-    // 2. Search Logic (Only runs if input exists)
-    if (searchInput) {
-        
-        // --- NEW: Update Placeholder based on Scope ---
-        if (typeof CURRENT_ARCH !== 'undefined' && CURRENT_ARCH) {
-            searchInput.placeholder = `Search ${CURRENT_ARCH} instructions...`;
+    class SearchController {
+        constructor(inputId, resultsId, isGlobal = false) {
+            this.input = document.getElementById(inputId);
+            this.results = document.getElementById(resultsId);
+            this.isGlobal = isGlobal;
+            this.selectedIndex = -1;
+            
+            if (this.input && this.results) this.init();
         }
 
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            selectedIndex = -1;
+        init() {
+            // Placeholder logic: Show "Search RISC-V..." if inside that section
+            if (typeof CURRENT_ARCH !== 'undefined' && CURRENT_ARCH && !this.isGlobal) {
+                this.input.placeholder = `Search ${CURRENT_ARCH} instructions...`;
+            }
+
+            this.input.addEventListener('input', (e) => this.handleInput(e));
             
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest(`#${this.input.id}`) && !e.target.closest(`#${this.results.id}`)) {
+                    this.results.style.display = 'none';
+                }
+            });
+        }
+
+        handleInput(e) {
+            const query = e.target.value.toLowerCase().trim();
+            this.selectedIndex = -1;
+
             if (query.length < 2) {
-                resultsContainer.style.display = 'none';
+                this.results.style.display = 'none';
                 return;
             }
 
-            // --- NEW: Filter by Architecture Scope ---
+            // Filter Logic
             let pool = searchIndex;
-            if (typeof CURRENT_ARCH !== 'undefined' && CURRENT_ARCH) {
+            // Only filter by Arch if we are NOT the global/hero search
+            if (!this.isGlobal && typeof CURRENT_ARCH !== 'undefined' && CURRENT_ARCH) {
                 pool = searchIndex.filter(item => item.arch === CURRENT_ARCH);
             }
 
-            // Weighted Search: Score results based on relevance
-            const results = pool.map(item => {
-                let score = 0;
-                const label = item.label.toLowerCase();
-                const summary = item.summary.toLowerCase();
-                const queryLower = query.toLowerCase();
-
-                // 1. Exact Match (Highest Priority)
-                if (label === queryLower || item.label.toLowerCase().startsWith(queryLower + " ")) score += 100;
-                // 2. Starts With (High Priority)
-                else if (label.startsWith(queryLower)) score += 50;
-                // 3. Contains in Mnemonic/Title (Medium Priority)
-                else if (label.includes(queryLower)) score += 10;
-                // 4. Contains in Summary (Low Priority)
-                else if (summary.includes(queryLower)) score += 1;
-                
-                return { item, score };
-            })
-            .filter(r => r.score > 0) // Remove non-matches
-            .sort((a, b) => b.score - a.score) // Sort by highest score
-            .map(r => r.item); // Unwrap back to original item format
-
-            renderResults(results);
-        });
-
-        // 3. Keyboard Navigation (Arrows/Enter)
-        searchInput.addEventListener('keydown', (e) => {
-            const items = resultsContainer.querySelectorAll('.search-result-item');
-            if (items.length === 0) return;
-
-            if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                selectedIndex = (selectedIndex + 1) % items.length;
-                updateSelection(items);
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                selectedIndex = (selectedIndex - 1 + items.length) % items.length;
-                updateSelection(items);
-            } else if (e.key === 'Enter') {
-                e.preventDefault();
-                if (selectedIndex >= 0) {
-                    items[selectedIndex].querySelector('a').click();
-                }
-            }
-        });
-    }
-
-    // 4. Global Keyboard Shortcut (Ctrl+K)
-    document.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-            e.preventDefault(); 
-            const heroInput = document.getElementById('hero-search');
-            const navInput = document.getElementById('search-input');
-
-            // Focus hero if visible (homepage), otherwise nav
-            if (heroInput && heroInput.offsetParent !== null) {
-                heroInput.focus();
-            } else if (navInput) {
-                navInput.focus();
-            }
-        }
-    });
-
-    function renderResults(results) {
-        resultsContainer.innerHTML = '';
-        if (results.length > 0) {
-            resultsContainer.style.display = 'block';
-            results.slice(0, 10).forEach((result, index) => {
-                const div = document.createElement('div');
-                div.className = 'search-result-item';
-                div.innerHTML = `
-                    <a href="${typeof SEARCH_INDEX_PATH !== 'undefined' ? SEARCH_INDEX_PATH.replace('search.json', '') : './'}${result.url}">
-                        <div class="result-title">${result.label}</div>
-                        <div class="result-summary">${result.summary}</div>
-                    </a>
-                `;
-                div.addEventListener('mouseenter', () => {
-                    selectedIndex = index;
-                    updateSelection(resultsContainer.querySelectorAll('.search-result-item'));
-                });
-                resultsContainer.appendChild(div);
+            // Fuzzy-ish Match: Check if all typed terms exist in label or summary
+            const terms = query.split(" ").filter(t => t);
+            const results = pool.filter(item => {
+                const text = `${item.label} ${item.mnemonic} ${item.summary}`.toLowerCase();
+                return terms.every(term => text.includes(term));
             });
-        } else {
-            resultsContainer.style.display = 'none';
-        }
-    }
 
-    function updateSelection(items) {
-        items.forEach((item, index) => {
-            if (index === selectedIndex) {
-                item.classList.add('selected');
-                item.scrollIntoView({ block: 'nearest' });
+            this.render(results);
+        }
+
+        render(results) {
+            this.results.innerHTML = '';
+            if (results.length > 0) {
+                this.results.style.display = 'block';
+                // Show max 10 results
+                results.slice(0, 10).forEach((result, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'search-result-item';
+                    
+                    // Fix pathing for links
+                    let basePath = typeof SEARCH_INDEX_PATH !== 'undefined' ? SEARCH_INDEX_PATH.replace('search.json', '') : './';
+                    if (this.isGlobal) basePath = ""; // Hero search is always at root
+
+                    div.innerHTML = `
+                        <a href="${basePath}${result.url}" style="text-decoration: none; color: inherit;">
+                            <div class="result-title">
+                                ${result.label} 
+                                <span class="badge" style="font-size: 0.7em; opacity: 0.7;">${result.arch}</span>
+                            </div>
+                            <div class="result-summary">${result.summary}</div>
+                        </a>
+                    `;
+                    this.results.appendChild(div);
+                });
             } else {
-                item.classList.remove('selected');
+                this.results.style.display = 'none';
             }
-        });
+        }
     }
 
-    // Close on click outside
-    document.addEventListener('click', (e) => {
-        if (searchInput && !e.target.closest('.search-wrapper')) {
-            resultsContainer.style.display = 'none';
-        }
-    });
+    // Initialize Controllers
+    // 1. Navigation Bar Search
+    new SearchController('search-input', 'search-results'); 
+    
+    // 2. Homepage Hero Search
+    new SearchController('hero-search', 'hero-results', true); 
 });

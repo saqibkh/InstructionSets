@@ -33,48 +33,4 @@
 
 <script src="static/animation.js"></script>
 
-<script>
-    // Bridge the hero input to the main search logic if present
-    document.addEventListener('DOMContentLoaded', () => {
-        const heroInput = document.getElementById('hero-search');
-        const heroResults = document.getElementById('hero-results');
-        const mainInput = document.getElementById('search-input'); // The nav bar input
-        
-        // Hide nav bar input on homepage to avoid clutter
-        if(mainInput && window.innerWidth > 768) {
-             mainInput.closest('.search-wrapper').style.visibility = 'hidden';
-        }
-
-        // Reuse the logic by dispatching events or simple duplication
-        // For simplicity in this mega-update, I'll let search.js handle the Nav one, 
-        // and copy the minimal fetch logic here for the Hero one to ensure it works 100%
-        
-        let searchIndex = [];
-        fetch('search.json')
-            .then(res => res.json())
-            .then(data => searchIndex = data);
-
-        heroInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            heroResults.innerHTML = '';
-            if (query.length < 2) { heroResults.style.display = 'none'; return; }
-
-            const terms = query.split(" ");
-            const results = searchIndex.filter(item => {
-                const text = (item.label + " " + item.summary).toLowerCase();
-                return terms.every(term => text.includes(term));
-            });
-
-            if (results.length > 0) {
-                heroResults.style.display = 'block';
-                results.slice(0, 8).forEach(result => {
-                    const div = document.createElement('div');
-                    div.className = 'search-result-item';
-                    div.innerHTML = `<a href="${result.url}"><div class="result-title">${result.label}</div><div class="result-summary">${result.summary}</div></a>`;
-                    heroResults.appendChild(div);
-                });
-            } else { heroResults.style.display = 'none'; }
-        });
-    });
-</script>
 {% endblock %}
