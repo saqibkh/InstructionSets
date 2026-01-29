@@ -90,4 +90,74 @@ document.addEventListener('DOMContentLoaded', () => {
         block.style.position = 'relative';
         block.appendChild(button);
     });
+
+    // --- Sidebar Filter Logic ---
+    const sidebarFilter = document.getElementById('sidebar-filter');
+    if (sidebarFilter) {
+        sidebarFilter.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            
+            // 1. Filter individual links
+            document.querySelectorAll('.group-links a').forEach(link => {
+                const text = link.innerText.toLowerCase();
+                link.style.display = text.includes(term) ? 'block' : 'none';
+            });
+
+            // 2. Hide empty groups (accordions)
+            document.querySelectorAll('.nav-group').forEach(group => {
+                const visibleLinks = group.querySelectorAll('.group-links a[style="display: block"]');
+                const summaryText = group.querySelector('summary').innerText.toLowerCase();
+                
+                // If filter is empty, show everything.
+                if (term === "") {
+                    group.style.display = 'block';
+                } 
+                // If the Group Name matches OR it has visible children, show it.
+                else {
+                    const matchesGroup = summaryText.includes(term);
+                    const hasChildren = visibleLinks.length > 0;
+                    
+                    if (matchesGroup || hasChildren) {
+                        group.style.display = 'block';
+                        // Auto-expand if searching
+                        if (!matchesGroup && hasChildren) group.open = true;
+                    } else {
+                        group.style.display = 'none';
+                    }
+                }
+            });
+        });
+    }
+
+    // --- Table Sorting Logic ---
+    document.querySelectorAll('th').forEach((th, index) => {
+        th.style.cursor = 'pointer';
+        th.title = "Click to sort";
+        
+        th.addEventListener('click', () => {
+            const table = th.closest('table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const isAsc = th.dataset.order !== 'asc'; // Toggle sort order
+            
+            // Sort rows based on the text content of the clicked column
+            rows.sort((a, b) => {
+                const cellA = a.children[index].innerText.toLowerCase().trim();
+                const cellB = b.children[index].innerText.toLowerCase().trim();
+                
+                return isAsc ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+            });
+
+            // Re-append sorted rows
+            rows.forEach(row => tbody.appendChild(row));
+            
+            // Reset other headers and update indicator
+            table.querySelectorAll('th').forEach(h => {
+                h.dataset.order = '';
+                h.style.color = ''; // Reset color
+            });
+            th.dataset.order = isAsc ? 'asc' : 'desc';
+            th.style.color = 'var(--accent)'; // Highlight active sort
+        });
+    });
 });
