@@ -3,8 +3,13 @@ import json
 import shutil
 import re
 import html
+import time
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
+
+
+# Generate cache buster
+CACHE_BUST = int(time.time())
 
 # Configuration
 INPUT_DIR = 'input'
@@ -43,7 +48,12 @@ def load_data():
                     # Merge into master_db grouped by Architecture
                     for inst in data.get('instructions', []):
                         arch = inst.get('architecture', 'Unknown')
-                        
+
+                        # Enhancement: Wrap pseudocode for Syntax Highlighting
+                        if 'pseudocode' in inst and inst['pseudocode']:
+                            code = html.escape(inst['pseudocode'])
+                            inst['pseudocode_html'] = f'<pre><code class="language-clike">{code}</code></pre>'
+
                         # Deduplication Logic
                         signature = (
                             inst.get('mnemonic', '').strip(),
@@ -233,7 +243,7 @@ def generate_site(master_db):
         arch_dir = os.path.join(OUTPUT_DIR, arch.lower())
         os.makedirs(arch_dir, exist_ok=True)
         with open(os.path.join(arch_dir, 'index.html'), 'w') as f:
-            f.write(template_summary.render(arch=arch, instructions=sorted_insts, root=".."))
+            f.write(template_summary.render(arch=arch, instructions=sorted_insts, root="..", version=CACHE_BUST))
             
         # OPCODE TABLE
         table_dir = os.path.join(arch_dir, 'table')
