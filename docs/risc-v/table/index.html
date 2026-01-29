@@ -359,6 +359,14 @@
                     <td style="color: var(--text-muted);">Branch if Greater or Equal</td>
                 </tr>
                 
+                <tr onclick="window.location='../bgeu/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x63</td>
+                    <td class="mono">BGEU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BGEU rs1, rs2, offset</td>
+                    <td><span class="badge">B-Type</span></td>
+                    <td style="color: var(--text-muted);">Branch if Greater or Equal Unsigned</td>
+                </tr>
+                
                 <tr onclick="window.location='../binv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x33</td>
                     <td class="mono">BINV</td>
@@ -381,6 +389,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLT rs1, rs2, offset</td>
                     <td><span class="badge">B-Type</span></td>
                     <td style="color: var(--text-muted);">Branch if Less Than</td>
+                </tr>
+                
+                <tr onclick="window.location='../bltu/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x63</td>
+                    <td class="mono">BLTU</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLTU rs1, rs2, offset</td>
+                    <td><span class="badge">B-Type</span></td>
+                    <td style="color: var(--text-muted);">Branch if Less Than Unsigned</td>
                 </tr>
                 
                 <tr onclick="window.location='../bne/';" style="cursor: pointer;">
@@ -447,6 +463,22 @@
                     <td style="color: var(--text-muted);">Compressed Add Immediate to Stack Pointer (Non-zero)</td>
                 </tr>
                 
+                <tr onclick="window.location='../c_addiw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">01</td>
+                    <td class="mono">C.ADDIW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ADDIW rd, imm</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Compressed Add Immediate Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../c_addw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">01</td>
+                    <td class="mono">C.ADDW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.ADDW rd&#x27;, rs2&#x27;</td>
+                    <td><span class="badge">CA</span></td>
+                    <td style="color: var(--text-muted);">Compressed Add Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../c_and/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.AND</td>
@@ -495,12 +527,28 @@
                     <td style="color: var(--text-muted);">Compressed Float Load Double</td>
                 </tr>
                 
+                <tr onclick="window.location='../c_fldsp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">02</td>
+                    <td class="mono">C.FLDSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FLDSP rd, offset(x2)</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Compressed Float Load Double from Stack Pointer</td>
+                </tr>
+                
                 <tr onclick="window.location='../c_flw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">00</td>
                     <td class="mono">C.FLW</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FLW rd&#x27;, offset(rs1&#x27;)</td>
                     <td><span class="badge">CL</span></td>
                     <td style="color: var(--text-muted);">Compressed Float Load Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../c_flwsp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">02</td>
+                    <td class="mono">C.FLWSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FLWSP rd, offset(x2)</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Compressed Float Load Word from Stack Pointer</td>
                 </tr>
                 
                 <tr onclick="window.location='../c_fsd/';" style="cursor: pointer;">
@@ -511,12 +559,28 @@
                     <td style="color: var(--text-muted);">Compressed Float Store Double</td>
                 </tr>
                 
+                <tr onclick="window.location='../c_fsdsp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">02</td>
+                    <td class="mono">C.FSDSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FSDSP rs2, offset(x2)</td>
+                    <td><span class="badge">CSS</span></td>
+                    <td style="color: var(--text-muted);">Compressed Float Store Double to Stack Pointer</td>
+                </tr>
+                
                 <tr onclick="window.location='../c_fsw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">00</td>
                     <td class="mono">C.FSW</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FSW rs2&#x27;, offset(rs1&#x27;)</td>
                     <td><span class="badge">CS</span></td>
                     <td style="color: var(--text-muted);">Compressed Float Store Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../c_fswsp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">02</td>
+                    <td class="mono">C.FSWSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.FSWSP rs2, offset(x2)</td>
+                    <td><span class="badge">CSS</span></td>
+                    <td style="color: var(--text-muted);">Compressed Float Store Word to Stack Pointer</td>
                 </tr>
                 
                 <tr onclick="window.location='../c_j/';" style="cursor: pointer;">
@@ -559,6 +623,14 @@
                     <td style="color: var(--text-muted);">Compressed Load Doubleword</td>
                 </tr>
                 
+                <tr onclick="window.location='../c_ldsp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">02</td>
+                    <td class="mono">C.LDSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.LDSP rd, offset(x2)</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Compressed Load Doubleword from Stack Pointer</td>
+                </tr>
+                
                 <tr onclick="window.location='../c_li/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.LI</td>
@@ -599,6 +671,14 @@
                     <td style="color: var(--text-muted);">Compressed Move</td>
                 </tr>
                 
+                <tr onclick="window.location='../c_nop/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">01</td>
+                    <td class="mono">C.NOP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.NOP</td>
+                    <td><span class="badge">CI</span></td>
+                    <td style="color: var(--text-muted);">Compressed No Operation</td>
+                </tr>
+                
                 <tr onclick="window.location='../c_or/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">01</td>
                     <td class="mono">C.OR</td>
@@ -613,6 +693,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SD rs2&#x27;, offset(rs1&#x27;)</td>
                     <td><span class="badge">CS</span></td>
                     <td style="color: var(--text-muted);">Compressed Store Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../c_sdsp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">02</td>
+                    <td class="mono">C.SDSP</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SDSP rs2, offset(x2)</td>
+                    <td><span class="badge">CSS</span></td>
+                    <td style="color: var(--text-muted);">Compressed Store Doubleword to Stack Pointer</td>
                 </tr>
                 
                 <tr onclick="window.location='../c_slli/';" style="cursor: pointer;">
@@ -645,6 +733,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SUB rd&#x27;, rs2&#x27;</td>
                     <td><span class="badge">CA</span></td>
                     <td style="color: var(--text-muted);">Compressed Subtract</td>
+                </tr>
+                
+                <tr onclick="window.location='../c_subw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">01</td>
+                    <td class="mono">C.SUBW</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">C.SUBW rd&#x27;, rs2&#x27;</td>
+                    <td><span class="badge">CA</span></td>
+                    <td style="color: var(--text-muted);">Compressed Subtract Word</td>
                 </tr>
                 
                 <tr onclick="window.location='../c_sw/';" style="cursor: pointer;">
@@ -1279,12 +1375,28 @@
                     <td style="color: var(--text-muted);">Float Multiply (Single)</td>
                 </tr>
                 
+                <tr onclick="window.location='../fmv_d_x/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x53</td>
+                    <td class="mono">FMV.D.X</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMV.D.X rd, rs1</td>
+                    <td><span class="badge">I-Type (Float)</span></td>
+                    <td style="color: var(--text-muted);">Move Integer to Double</td>
+                </tr>
+                
                 <tr onclick="window.location='../fmv_w_x/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x53</td>
                     <td class="mono">FMV.W.X</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMV.W.X rd, rs1</td>
                     <td><span class="badge">I-Type (Float)</span></td>
                     <td style="color: var(--text-muted);">Move Integer to Float</td>
+                </tr>
+                
+                <tr onclick="window.location='../fmv_x_d/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x53</td>
+                    <td class="mono">FMV.X.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FMV.X.D rd, rs1</td>
+                    <td><span class="badge">I-Type (Float)</span></td>
+                    <td style="color: var(--text-muted);">Move Double to Integer</td>
                 </tr>
                 
                 <tr onclick="window.location='../fmv_x_w/';" style="cursor: pointer;">
@@ -1365,6 +1477,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSGNJN.S rd, rs1, rs2</td>
                     <td><span class="badge">R-Type</span></td>
                     <td style="color: var(--text-muted);">Float Sign Injection Negate (Single)</td>
+                </tr>
+                
+                <tr onclick="window.location='../fsgnjx_d/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x53</td>
+                    <td class="mono">FSGNJX.D</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FSGNJX.D rd, rs1, rs2</td>
+                    <td><span class="badge">R-Type</span></td>
+                    <td style="color: var(--text-muted);">Float Sign Injection XOR (Double)</td>
                 </tr>
                 
                 <tr onclick="window.location='../fsgnjx_s/';" style="cursor: pointer;">
@@ -2135,12 +2255,92 @@
                     <td style="color: var(--text-muted);">Vector Load Element (32-bit)</td>
                 </tr>
                 
+                <tr onclick="window.location='../vlse32_v/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x07</td>
+                    <td class="mono">VLSE32.V</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLSE32.V vd, (rs1), rs2, vm</td>
+                    <td><span class="badge">VL-Type</span></td>
+                    <td style="color: var(--text-muted);">Vector Load Strided Element (32-bit)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vluxei32_v/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x07</td>
+                    <td class="mono">VLUXEI32.V</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VLUXEI32.V vd, (rs1), vs2, vm</td>
+                    <td><span class="badge">VL-Type</span></td>
+                    <td style="color: var(--text-muted);">Vector Load Unordered Indexed (32-bit indices)</td>
+                </tr>
+                
                 <tr onclick="window.location='../vmand_mm/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x57</td>
                     <td class="mono">VMAND.MM</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMAND.MM vd, vs2, vs1</td>
                     <td><span class="badge">OPMVV</span></td>
                     <td style="color: var(--text-muted);">Vector Mask AND</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmax_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMAX.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMAX.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Maximum (Signed)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmaxu_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMAXU.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMAXU.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Maximum (Unsigned)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmin_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMIN.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMIN.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Minimum (Signed)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vminu_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMINU.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMINU.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Minimum (Unsigned)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmnand_mm/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMNAND.MM</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMNAND.MM vd, vs2, vs1</td>
+                    <td><span class="badge">OPMVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Mask NAND</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmseq_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMSEQ.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSEQ.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Mask Set Equal</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmslt_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMSLT.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSLT.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Mask Set Less Than (Signed)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmsltu_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VMSLTU.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSLTU.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Mask Set Less Than (Unsigned)</td>
                 </tr>
                 
                 <tr onclick="window.location='../vmul_vv/';" style="cursor: pointer;">
@@ -2151,12 +2351,36 @@
                     <td style="color: var(--text-muted);">Vector Integer Multiply</td>
                 </tr>
                 
+                <tr onclick="window.location='../vor_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VOR.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VOR.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Bitwise OR</td>
+                </tr>
+                
+                <tr onclick="window.location='../vredsum_vs/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VREDSUM.VS</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDSUM.VS vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPMVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Reduction Sum</td>
+                </tr>
+                
                 <tr onclick="window.location='../vrgather_vv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x57</td>
                     <td class="mono">VRGATHER.VV</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VRGATHER.VV vd, vs2, vs1, vm</td>
                     <td><span class="badge">OPIVV</span></td>
                     <td style="color: var(--text-muted);">Vector Register Gather</td>
+                </tr>
+                
+                <tr onclick="window.location='../vrsub_vx/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VRSUB.VX</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VRSUB.VX vd, vs2, rs1, vm</td>
+                    <td><span class="badge">OPIVX</span></td>
+                    <td style="color: var(--text-muted);">Vector Integer Reverse Subtract Scalar</td>
                 </tr>
                 
                 <tr onclick="window.location='../vse32_v/';" style="cursor: pointer;">
@@ -2173,6 +2397,78 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSETVLI rd, rs1, vtypei</td>
                     <td><span class="badge">V-Type</span></td>
                     <td style="color: var(--text-muted);">Vector Set VL Immediate</td>
+                </tr>
+                
+                <tr onclick="window.location='../vslidedown_vx/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VSLIDEDOWN.VX</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSLIDEDOWN.VX vd, vs2, rs1, vm</td>
+                    <td><span class="badge">OPIVX</span></td>
+                    <td style="color: var(--text-muted);">Vector Slide Down</td>
+                </tr>
+                
+                <tr onclick="window.location='../vslideup_vx/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VSLIDEUP.VX</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSLIDEUP.VX vd, vs2, rs1, vm</td>
+                    <td><span class="badge">OPIVX</span></td>
+                    <td style="color: var(--text-muted);">Vector Slide Up</td>
+                </tr>
+                
+                <tr onclick="window.location='../vsll_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VSLL.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSLL.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Shift Left Logical</td>
+                </tr>
+                
+                <tr onclick="window.location='../vsra_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VSRA.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSRA.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Shift Right Arithmetic</td>
+                </tr>
+                
+                <tr onclick="window.location='../vsrl_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VSRL.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSRL.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Shift Right Logical</td>
+                </tr>
+                
+                <tr onclick="window.location='../vsse32_v/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x27</td>
+                    <td class="mono">VSSE32.V</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSSE32.V vs3, (rs1), rs2, vm</td>
+                    <td><span class="badge">VS-Type</span></td>
+                    <td style="color: var(--text-muted);">Vector Store Strided Element (32-bit)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vsub_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VSUB.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSUB.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Integer Subtract</td>
+                </tr>
+                
+                <tr onclick="window.location='../vsuxei32_v/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x27</td>
+                    <td class="mono">VSUXEI32.V</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSUXEI32.V vs3, (rs1), vs2, vm</td>
+                    <td><span class="badge">VS-Type</span></td>
+                    <td style="color: var(--text-muted);">Vector Store Unordered Indexed (32-bit indices)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vxor_vv/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x57</td>
+                    <td class="mono">VXOR.VV</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VXOR.VV vd, vs2, vs1, vm</td>
+                    <td><span class="badge">OPIVV</span></td>
+                    <td style="color: var(--text-muted);">Vector Bitwise XOR</td>
                 </tr>
                 
                 <tr onclick="window.location='../wfi/';" style="cursor: pointer;">
