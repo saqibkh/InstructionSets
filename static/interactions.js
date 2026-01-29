@@ -184,8 +184,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 h.dataset.order = '';
                 h.style.color = ''; // Reset color
             });
-            th.dataset.order = isAsc ? 'asc' : 'desc';
+	    th.dataset.order = isAsc ? 'asc' : 'desc';
             th.style.color = 'var(--accent)'; // Highlight active sort
         });
     });
+
+    // --- Extension Filter Logic ---
+    const extFilter = document.getElementById('extension-filter');
+    if (extFilter) {
+        extFilter.addEventListener('change', (e) => {
+            const filter = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('.data-table tbody tr');
+            
+            rows.forEach(row => {
+                // Check both the specific data attribute and the raw text for flexibility
+                const extData = (row.dataset.extension || '').toLowerCase();
+                const rawText = row.innerText.toLowerCase();
+                
+                // If filter matches data-attribute OR is found in text (like "Vector" in Summary)
+                if (filter === "" || extData.includes(filter) || rawText.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    }
 });

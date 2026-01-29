@@ -4,6 +4,21 @@
 
 {% block content %}
 <div class="container" style="padding-top: 40px;">
+    
+    <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+        <label for="extension-filter" style="font-weight: 500; color: var(--text-muted);">Filter by Extension:</label>
+        <select id="extension-filter" style="padding: 8px 12px; border-radius: 6px; background: var(--bg-hover); color: var(--text-main); border: 1px solid var(--border); font-family: inherit; outline: none;">
+            <option value="">Show All</option>
+            <option value="Vector">Vector</option>
+            <option value="Float">Floating Point</option>
+            <option value="Crypto">Cryptography</option>
+            <option value="Compressed">Compressed</option>
+            <option value="Atomic">Atomics</option>
+            <option value="BitManip">Bit Manipulation</option>
+            <option value="Privileged">System/Privileged</option>
+        </select>
+    </div>
+
     <div class="table-container">
         <table class="data-table">
             <thead>
@@ -15,9 +30,10 @@
             </thead>
             <tbody>
 		{% for inst in instructions %}
-		<tr onclick="window.location='{{ inst.slug }}/';" style="cursor: pointer;">
+        <tr onclick="window.location='{{ inst.slug }}/';" style="cursor: pointer;" data-extension="{{ inst.extension }}">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">{{ inst.mnemonic }}</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">{{ inst.syntax }}</td>
+
 		    <td><span class="badge">{{ inst.encoding.format }}</span></td>
 		    <td style="color: var(--text-muted);">{{ inst.summary }}</td>
 		</tr>
