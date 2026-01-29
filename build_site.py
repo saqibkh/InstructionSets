@@ -249,7 +249,7 @@ def generate_site(master_db):
         table_dir = os.path.join(arch_dir, 'table')
         os.makedirs(table_dir, exist_ok=True)
         with open(os.path.join(table_dir, 'index.html'), 'w') as f:
-            f.write(template_table.render(arch=arch, instructions=sorted_insts, root="../.."))
+            f.write(template_table.render(arch=arch, instructions=sorted_insts, root="../..", version=CACHE_BUST))
 
         # INSTRUCTION DETAIL PAGES
         for inst in instructions:
@@ -260,7 +260,8 @@ def generate_site(master_db):
                     instruction=inst,
                     sidebar_groups=sorted_groups,
                     current_page=inst['mnemonic'],
-                    root="../.."
+                    root="../..",
+                    version=CACHE_BUST
                 ))
     
     # Save Master DB
