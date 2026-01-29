@@ -106,6 +106,27 @@
 		    <td style="color: var(--text-muted);">Performs one round of AES-128 encryption key schedule generation.</td>
 		</tr>
 		
+		<tr onclick="window.location='aes64im/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">AES64IM</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AES64IM rd, rs1</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs the Inverse MixColumns transformation for AES decryption (RV64).</td>
+		</tr>
+		
+		<tr onclick="window.location='aes64ks1i/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">AES64KS1I</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AES64KS1I rd, rs1, rcon</td>
+		    <td><span class="badge">I-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs the first part of the AES-128/192/256 key schedule generation (RV64).</td>
+		</tr>
+		
+		<tr onclick="window.location='aes64ks2/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">AES64KS2</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AES64KS2 rd, rs1, rs2</td>
+		    <td><span class="badge">R-Type</span></td>
+		    <td style="color: var(--text-muted);">Performs the second part of the AES-192/256 key schedule generation (RV64).</td>
+		</tr>
+		
 		<tr onclick="window.location='amoadd_d/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">AMOADD.D</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AMOADD.D rd, rs2, (rs1)</td>
@@ -1856,6 +1877,34 @@
 		    <td style="color: var(--text-muted);">Computes the bitwise logical negation (one's complement).</td>
 		</tr>
 		
+		<tr onclick="window.location='ntl_all/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">NTL.ALL</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NTL.ALL</td>
+		    <td><span class="badge">Pseudo</span></td>
+		    <td style="color: var(--text-muted);">Hint that the subsequent store should bypass all cache levels.</td>
+		</tr>
+		
+		<tr onclick="window.location='ntl_p1/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">NTL.P1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NTL.P1</td>
+		    <td><span class="badge">Pseudo</span></td>
+		    <td style="color: var(--text-muted);">Hint that the target cache block will be needed, but is likely to be discarded after use (Stream data).</td>
+		</tr>
+		
+		<tr onclick="window.location='ntl_pall/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">NTL.PALL</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NTL.PALL</td>
+		    <td><span class="badge">Pseudo</span></td>
+		    <td style="color: var(--text-muted);">Hint that the target data should not be cached in any level of the cache hierarchy (Transient data).</td>
+		</tr>
+		
+		<tr onclick="window.location='ntl_s1/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">NTL.S1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">NTL.S1</td>
+		    <td><span class="badge">Pseudo</span></td>
+		    <td style="color: var(--text-muted);">Hint that the subsequent store is non-temporal (Streaming Store).</td>
+		</tr>
+		
 		<tr onclick="window.location='or/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">OR</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">OR rd, rs1, rs2</td>
@@ -2052,11 +2101,25 @@
 		    <td style="color: var(--text-muted);">Sign-extends the lowest halfword (16 bits) to XLEN bits.</td>
 		</tr>
 		
+		<tr onclick="window.location='sfence_inval_ir/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SFENCE.INVAL.IR</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SFENCE.INVAL.IR</td>
+		    <td><span class="badge">R-Type (System)</span></td>
+		    <td style="color: var(--text-muted);">Invalidates a range of address translations based on ASID and Virtual Address.</td>
+		</tr>
+		
 		<tr onclick="window.location='sfence_vma/';" style="cursor: pointer;">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">SFENCE.VMA</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SFENCE.VMA rs1, rs2</td>
 		    <td><span class="badge">R-Type (System)</span></td>
 		    <td style="color: var(--text-muted);">Synchronizes updates to in-memory address translation data structures (TLB flush).</td>
+		</tr>
+		
+		<tr onclick="window.location='sfence_w_inval/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">SFENCE.W.INVAL</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SFENCE.W.INVAL</td>
+		    <td><span class="badge">R-Type (System)</span></td>
+		    <td style="color: var(--text-muted);">Orders previous stores against subsequent local instruction fetches or translations (Memory Management).</td>
 		</tr>
 		
 		<tr onclick="window.location='sh/';" style="cursor: pointer;">
@@ -3821,6 +3884,20 @@
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WFI</td>
 		    <td><span class="badge">R-Type (System)</span></td>
 		    <td style="color: var(--text-muted);">Provides a hint to the implementation that the current hart can be stalled until an interrupt occurs.</td>
+		</tr>
+		
+		<tr onclick="window.location='wrs_nto/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">WRS.NTO</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WRS.NTO</td>
+		    <td><span class="badge">I-Type</span></td>
+		    <td style="color: var(--text-muted);">Stalls the hart until a reservation set is invalid or a short timeout expires. Used for efficient polling/spinlocks.</td>
+		</tr>
+		
+		<tr onclick="window.location='wrs_sto/';" style="cursor: pointer;">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">WRS.STO</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">WRS.STO</td>
+		    <td><span class="badge">I-Type</span></td>
+		    <td style="color: var(--text-muted);">Stalls the hart until a reservation set is invalid or a very short implementation-defined timeout expires.</td>
 		</tr>
 		
 		<tr onclick="window.location='xnor/';" style="cursor: pointer;">

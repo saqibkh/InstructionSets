@@ -11610,6 +11610,444 @@
       "linked_pseudocode": "R[rd] = Byteswap(R[rs1]);"
     },
     {
+      "mnemonic": "AES64KS1I",
+      "architecture": "RISC-V",
+      "extension": "Zkne (Scalar Crypto)",
+      "full_name": "AES-64 Key Schedule Instruction 1",
+      "summary": "Performs the first part of the AES-128/192/256 key schedule generation (RV64).",
+      "syntax": "AES64KS1I rd, rs1, rcon",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "rcon | rs1 | 000 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "rcon",
+            "clean": "rcon"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Source Key"
+        },
+        {
+          "name": "rcon",
+          "desc": "Round Constant (0-10)"
+        }
+      ],
+      "pseudocode": "rd = aes_key_schedule_1(rs1, rcon);",
+      "slug": "aes64ks1i",
+      "rel_url": "risc-v/aes64ks1i/",
+      "linked_summary": "Performs the first part of the AES-128/192/256 key schedule generation (RV64).",
+      "linked_pseudocode": "rd = aes_key_schedule_1(rs1, rcon);"
+    },
+    {
+      "mnemonic": "AES64KS2",
+      "architecture": "RISC-V",
+      "extension": "Zkne (Scalar Crypto)",
+      "full_name": "AES-64 Key Schedule Instruction 2",
+      "summary": "Performs the second part of the AES-192/256 key schedule generation (RV64).",
+      "syntax": "AES64KS2 rd, rs1, rs2",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0111111 | rs2 | rs1 | 000 | rd | 0110011",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "0111111",
+            "clean": "0111111"
+          },
+          {
+            "raw": "rs2",
+            "clean": "rs2"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0110011",
+            "clean": "0110011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Source 1"
+        },
+        {
+          "name": "rs2",
+          "desc": "Source 2"
+        }
+      ],
+      "pseudocode": "rd = aes_key_schedule_2(rs1, rs2);",
+      "slug": "aes64ks2",
+      "rel_url": "risc-v/aes64ks2/",
+      "linked_summary": "Performs the second part of the AES-192/256 key schedule generation (RV64).",
+      "linked_pseudocode": "rd = aes_key_schedule_2(rs1, rs2);"
+    },
+    {
+      "mnemonic": "AES64IM",
+      "architecture": "RISC-V",
+      "extension": "Zknd (Scalar Crypto)",
+      "full_name": "AES-64 Inverse MixColumns",
+      "summary": "Performs the Inverse MixColumns transformation for AES decryption (RV64).",
+      "syntax": "AES64IM rd, rs1",
+      "encoding": {
+        "format": "R-Type",
+        "binary_pattern": "0011000 | 00000 | rs1 | 001 | rd | 0010011",
+        "hex_opcode": "0x13",
+        "visual_parts": [
+          {
+            "raw": "0011000",
+            "clean": "0011000"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "rs1",
+            "clean": "rs1"
+          },
+          {
+            "raw": "001",
+            "clean": "001"
+          },
+          {
+            "raw": "rd",
+            "clean": "rd"
+          },
+          {
+            "raw": "0010011",
+            "clean": "0010011"
+          }
+        ]
+      },
+      "operands": [
+        {
+          "name": "rd",
+          "desc": "Dest"
+        },
+        {
+          "name": "rs1",
+          "desc": "Source State"
+        }
+      ],
+      "pseudocode": "rd = aes_inverse_mix_columns(rs1);",
+      "slug": "aes64im",
+      "rel_url": "risc-v/aes64im/",
+      "linked_summary": "Performs the Inverse MixColumns transformation for AES decryption (RV64).",
+      "linked_pseudocode": "rd = aes_inverse_mix_columns(rs1);"
+    },
+    {
+      "mnemonic": "WRS.NTO",
+      "architecture": "RISC-V",
+      "extension": "Zawrs",
+      "full_name": "Wait on Reservation Set (Normal Time-Out)",
+      "summary": "Stalls the hart until a reservation set is invalid or a short timeout expires. Used for efficient polling/spinlocks.",
+      "syntax": "WRS.NTO",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000001101 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          {
+            "raw": "000000001101",
+            "clean": "000000001101"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "1110011",
+            "clean": "1110011"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "while (reservation_valid() && !timeout) { pause(); }",
+      "slug": "wrs_nto",
+      "rel_url": "risc-v/wrs_nto/",
+      "linked_summary": "Stalls the hart until a reservation set is invalid <a href=\"../../powerisa/or/\">or</a> a short timeout expires. Used for efficient polling/spinlocks.",
+      "linked_pseudocode": "while (reservation_valid() && !timeout) { <a href=\"../../x86/pause/\">pause</a>(); }"
+    },
+    {
+      "mnemonic": "WRS.STO",
+      "architecture": "RISC-V",
+      "extension": "Zawrs",
+      "full_name": "Wait on Reservation Set (Short Time-Out)",
+      "summary": "Stalls the hart until a reservation set is invalid or a very short implementation-defined timeout expires.",
+      "syntax": "WRS.STO",
+      "encoding": {
+        "format": "I-Type",
+        "binary_pattern": "000000011101 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          {
+            "raw": "000000011101",
+            "clean": "000000011101"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "1110011",
+            "clean": "1110011"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "while (reservation_valid() && !short_timeout) { pause(); }",
+      "slug": "wrs_sto",
+      "rel_url": "risc-v/wrs_sto/",
+      "linked_summary": "Stalls the hart until a reservation set is invalid <a href=\"../../powerisa/or/\">or</a> a very short implementation-defined timeout expires.",
+      "linked_pseudocode": "while (reservation_valid() && !short_timeout) { <a href=\"../../x86/pause/\">pause</a>(); }"
+    },
+    {
+      "mnemonic": "SFENCE.W.INVAL",
+      "architecture": "RISC-V",
+      "extension": "Svinval (Privileged)",
+      "full_name": "Supervisor Fence Write Invalidate",
+      "summary": "Orders previous stores against subsequent local instruction fetches or translations (Memory Management).",
+      "syntax": "SFENCE.W.INVAL",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0001100 | 00000 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          {
+            "raw": "0001100",
+            "clean": "0001100"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "1110011",
+            "clean": "1110011"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "Fence_Write_Invalidate();",
+      "slug": "sfence_w_inval",
+      "rel_url": "risc-v/sfence_w_inval/",
+      "linked_summary": "Orders previous stores against subsequent local instruction fetches <a href=\"../../powerisa/or/\">or</a> translations (Memory Management).",
+      "linked_pseudocode": "Fence_Write_Invalidate();"
+    },
+    {
+      "mnemonic": "SFENCE.INVAL.IR",
+      "architecture": "RISC-V",
+      "extension": "Svinval (Privileged)",
+      "full_name": "Supervisor Fence Invalidate Range",
+      "summary": "Invalidates a range of address translations based on ASID and Virtual Address.",
+      "syntax": "SFENCE.INVAL.IR",
+      "encoding": {
+        "format": "R-Type (System)",
+        "binary_pattern": "0001100 | 00001 | 00000 | 000 | 00000 | 1110011",
+        "hex_opcode": "0x73",
+        "visual_parts": [
+          {
+            "raw": "0001100",
+            "clean": "0001100"
+          },
+          {
+            "raw": "00001",
+            "clean": "00001"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "000",
+            "clean": "000"
+          },
+          {
+            "raw": "00000",
+            "clean": "00000"
+          },
+          {
+            "raw": "1110011",
+            "clean": "1110011"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "Invalidate_TLB_Range();",
+      "slug": "sfence_inval_ir",
+      "rel_url": "risc-v/sfence_inval_ir/",
+      "linked_summary": "Invalidates a range of address translations based on ASID <a href=\"../../armv8-a/and_6/\">and</a> Virtual Address.",
+      "linked_pseudocode": "Invalidate_TLB_Range();"
+    },
+    {
+      "mnemonic": "NTL.P1",
+      "architecture": "RISC-V",
+      "extension": "Zihintntl",
+      "full_name": "Non-Temporal Locality Hint (Prefetch Level 1)",
+      "summary": "Hint that the target cache block will be needed, but is likely to be discarded after use (Stream data).",
+      "syntax": "NTL.P1",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "ADD x0, x0, x3",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "ADD x0, x0, x3",
+            "clean": "ADD x0, x0, x3"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "Hint(NonTemporal_Level1);",
+      "slug": "ntl_p1",
+      "rel_url": "risc-v/ntl_p1/",
+      "linked_summary": "Hint that the target cache block will be needed, but is likely to be discarded after use (Stream data).",
+      "linked_pseudocode": "Hint(NonTemporal_Level1);"
+    },
+    {
+      "mnemonic": "NTL.PALL",
+      "architecture": "RISC-V",
+      "extension": "Zihintntl",
+      "full_name": "Non-Temporal Locality Hint (All Levels)",
+      "summary": "Hint that the target data should not be cached in any level of the cache hierarchy (Transient data).",
+      "syntax": "NTL.PALL",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "ADD x0, x0, x2",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "ADD x0, x0, x2",
+            "clean": "ADD x0, x0, x2"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "Hint(NonTemporal_All);",
+      "slug": "ntl_pall",
+      "rel_url": "risc-v/ntl_pall/",
+      "linked_summary": "Hint that the target data should <a href=\"../../armv8-a/not_1/\">not</a> be cached <a href=\"../../x86/in/\">in</a> any level of the cache hierarchy (Transient data).",
+      "linked_pseudocode": "Hint(NonTemporal_All);"
+    },
+    {
+      "mnemonic": "NTL.S1",
+      "architecture": "RISC-V",
+      "extension": "Zihintntl",
+      "full_name": "Non-Temporal Locality Hint (Store Level 1)",
+      "summary": "Hint that the subsequent store is non-temporal (Streaming Store).",
+      "syntax": "NTL.S1",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "ADD x0, x0, x4",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "ADD x0, x0, x4",
+            "clean": "ADD x0, x0, x4"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "Hint(NonTemporal_Store_Level1);",
+      "slug": "ntl_s1",
+      "rel_url": "risc-v/ntl_s1/",
+      "linked_summary": "Hint that the subsequent store is non-temporal (Streaming Store).",
+      "linked_pseudocode": "Hint(NonTemporal_Store_Level1);"
+    },
+    {
+      "mnemonic": "NTL.ALL",
+      "architecture": "RISC-V",
+      "extension": "Zihintntl",
+      "full_name": "Non-Temporal Locality Hint (Store All)",
+      "summary": "Hint that the subsequent store should bypass all cache levels.",
+      "syntax": "NTL.ALL",
+      "encoding": {
+        "format": "Pseudo",
+        "binary_pattern": "ADD x0, x0, x5",
+        "hex_opcode": "0x33",
+        "visual_parts": [
+          {
+            "raw": "ADD x0, x0, x5",
+            "clean": "ADD x0, x0, x5"
+          }
+        ]
+      },
+      "operands": [],
+      "pseudocode": "Hint(NonTemporal_Store_All);",
+      "slug": "ntl_all",
+      "rel_url": "risc-v/ntl_all/",
+      "linked_summary": "Hint that the subsequent store should bypass all cache levels.",
+      "linked_pseudocode": "Hint(NonTemporal_Store_All);"
+    },
+    {
       "mnemonic": "VWADD.VV",
       "architecture": "RISC-V",
       "extension": "V (Vector)",
