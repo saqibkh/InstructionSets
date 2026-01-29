@@ -19,6 +19,11 @@ if os.path.exists(OUTPUT_DIR):
 os.makedirs(OUTPUT_DIR)
 os.makedirs(DB_DIR, exist_ok=True)
 
+# Copy CNAME if it exists in root
+if os.path.exists('CNAME'):
+    shutil.copy('CNAME', os.path.join(OUTPUT_DIR, 'CNAME'))
+    print("✅ Copied CNAME to output directory")
+
 def load_data():
     master_db = {}
     seen_hashes = set() # Track unique signatures to prevent exact duplicates
