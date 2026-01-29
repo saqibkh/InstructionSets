@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Extension Filter Logic ---
+    // --- ADD THIS BLOCK ---
     const extFilter = document.getElementById('extension-filter');
     if (extFilter) {
         extFilter.addEventListener('change', (e) => {
@@ -197,11 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const rows = document.querySelectorAll('.data-table tbody tr');
             
             rows.forEach(row => {
-                // Check both the specific data attribute and the raw text for flexibility
                 const extData = (row.dataset.extension || '').toLowerCase();
                 const rawText = row.innerText.toLowerCase();
                 
-                // If filter matches data-attribute OR is found in text (like "Vector" in Summary)
                 if (filter === "" || extData.includes(filter) || rawText.includes(filter)) {
                     row.style.display = '';
                 } else {
@@ -210,4 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // ---------------------
+
 });

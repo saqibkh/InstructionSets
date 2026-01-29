@@ -24,6 +24,16 @@ if os.path.exists(OUTPUT_DIR):
 os.makedirs(OUTPUT_DIR)
 os.makedirs(DB_DIR, exist_ok=True)
 
+# --- COPY STATIC ASSETS ---
+static_src = 'static'
+static_dst = os.path.join(OUTPUT_DIR, 'static')
+if os.path.exists(static_src):
+    shutil.copytree(static_src, static_dst)
+    print(f"✅ Copied static assets to {static_dst}")
+else:
+    print(f"⚠️ Warning: '{static_src}' folder not found!")
+# --------------------------
+
 # Copy CNAME if it exists in root
 if os.path.exists('CNAME'):
     shutil.copy('CNAME', os.path.join(OUTPUT_DIR, 'CNAME'))
