@@ -313,6 +313,14 @@
 		    <td style="color: var(--text-muted);">Extracts sequence of bits from source using index/length.</td>
 		</tr>
 		
+        <tr onclick="window.location='blcfill/';" style="cursor: pointer;" data-extension="TBM">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">blcfill</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLCFILL r32, r/m32</td>
+
+		    <td><span class="badge">TBM</span></td>
+		    <td style="color: var(--text-muted);">Sets all bits below the lowest clear bit (x & (x+1)).</td>
+		</tr>
+		
         <tr onclick="window.location='blendps/';" style="cursor: pointer;" data-extension="SSE4.1">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">blendps</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLENDPS xmm1, xmm2/m128, imm8</td>
@@ -785,12 +793,28 @@
 		    <td style="color: var(--text-muted);">Accumulates CRC32C (Castagnoli) value.</td>
 		</tr>
 		
+        <tr onclick="window.location='cvtdq2pd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtdq2pd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTDQ2PD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts two 32-bit integers to two 64-bit doubles.</td>
+		</tr>
+		
         <tr onclick="window.location='cvtdq2ps/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtdq2ps</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTDQ2PS xmm1, xmm2/m128</td>
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Converts four 32-bit integers to floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='cvtpd2dq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtpd2dq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTPD2DQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts two doubles to two 32-bit integers (Rounded).</td>
 		</tr>
 		
         <tr onclick="window.location='cvtpd2ps/';" style="cursor: pointer;" data-extension="SSE2">
@@ -815,6 +839,14 @@
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Converts lower two floats to doubles.</td>
+		</tr>
+		
+        <tr onclick="window.location='cvtsd2si/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtsd2si</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTSD2SI r32, xmm/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts low double to integer (Rounded according to MXCSR).</td>
 		</tr>
 		
         <tr onclick="window.location='cvtsd2ss/';" style="cursor: pointer;" data-extension="SSE2">
@@ -847,6 +879,22 @@
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Converts float to double.</td>
+		</tr>
+		
+        <tr onclick="window.location='cvtss2si/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtss2si</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTSS2SI r32, xmm/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Converts low float to integer (Rounded according to MXCSR).</td>
+		</tr>
+		
+        <tr onclick="window.location='cvttpd2dq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvttpd2dq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTTPD2DQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts two doubles to two 32-bit integers (Truncated).</td>
 		</tr>
 		
         <tr onclick="window.location='cvttps2dq/';" style="cursor: pointer;" data-extension="SSE2">
@@ -1625,6 +1673,14 @@
 		    <td style="color: var(--text-muted);">Calls to interrupt procedure.</td>
 		</tr>
 		
+        <tr onclick="window.location='int1/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">int1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INT1</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Single byte opcode (0xF1) used for In-Circuit Emulation.</td>
+		</tr>
+		
         <tr onclick="window.location='int3/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">int3</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INT3</td>
@@ -2369,7 +2425,15 @@
 		    <td style="color: var(--text-muted);">Stores 64-bit MMX data bypassing cache.</td>
 		</tr>
 		
-        <tr onclick="window.location='movq/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='movq/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVQ mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Moves 64-bit data between MMX registers/memory.</td>
+		</tr>
+		
+        <tr onclick="window.location='movq_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">movq</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVQ xmm, xmm/m64</td>
 
@@ -2377,7 +2441,15 @@
 		    <td style="color: var(--text-muted);">Moves 64 bits between XMM registers or memory.</td>
 		</tr>
 		
-        <tr onclick="window.location='movsd/';" style="cursor: pointer;" data-extension="Base">
+        <tr onclick="window.location='movsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Moves a single double (low 64 bits) between XMM/Memory.</td>
+		</tr>
+		
+        <tr onclick="window.location='movsd_1/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSD</td>
 
@@ -2409,6 +2481,14 @@
 		    <td style="color: var(--text-muted);">Moves quadword from [RSI] to [RDI].</td>
 		</tr>
 		
+        <tr onclick="window.location='movss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Moves a single float (low 32 bits) between XMM/Memory.</td>
+		</tr>
+		
         <tr onclick="window.location='movsw/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSW</td>
@@ -2423,6 +2503,14 @@
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Copies and sign-extends a smaller value to a larger register.</td>
+		</tr>
+		
+        <tr onclick="window.location='movsxd/';" style="cursor: pointer;" data-extension="Base (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsxd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSXD r64, r/m32</td>
+
+		    <td><span class="badge">Base (64-bit)</span></td>
+		    <td style="color: var(--text-muted);">Sign-extends 32-bit register to 64-bit.</td>
 		</tr>
 		
         <tr onclick="window.location='movupd/';" style="cursor: pointer;" data-extension="SSE2">
@@ -2649,7 +2737,15 @@
 		    <td style="color: var(--text-muted);">Adds 2 quadwords (Wraparound).</td>
 		</tr>
 		
-        <tr onclick="window.location='paddsb/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='paddsb/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddsb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDSB mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Adds 8 signed bytes with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='paddsb_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddsb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDSB xmm, xmm/m128</td>
 
@@ -2657,7 +2753,15 @@
 		    <td style="color: var(--text-muted);">Adds 16 signed bytes with saturation.</td>
 		</tr>
 		
-        <tr onclick="window.location='paddsw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='paddsw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDSW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Adds 4 signed words with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='paddsw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddsw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDSW xmm1, xmm2/m128</td>
 
@@ -2665,7 +2769,15 @@
 		    <td style="color: var(--text-muted);">Adds 16-bit words with signed saturation.</td>
 		</tr>
 		
-        <tr onclick="window.location='paddusb/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='paddusb/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddusb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSB mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Adds 8 unsigned bytes with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='paddusb_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddusb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSB xmm, xmm/m128</td>
 
@@ -2673,7 +2785,15 @@
 		    <td style="color: var(--text-muted);">Adds 16 unsigned bytes with saturation.</td>
 		</tr>
 		
-        <tr onclick="window.location='paddusw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='paddusw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddusw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Adds 4 unsigned words with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='paddusw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddusw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSW xmm1, xmm2/m128</td>
 
@@ -2697,12 +2817,28 @@
 		    <td style="color: var(--text-muted);">Concatenates dest and src, extracts 128 bits byte-aligned.</td>
 		</tr>
 		
-        <tr onclick="window.location='pand/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pand/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pand</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAND mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Bitwise AND of 64-bit MMX registers.</td>
+		</tr>
+		
+        <tr onclick="window.location='pand_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pand</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAND xmm, xmm/m128</td>
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Bitwise AND of 128-bit integers.</td>
+		</tr>
+		
+        <tr onclick="window.location='pandn/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pandn</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PANDN mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Bitwise AND NOT of 64-bit MMX registers.</td>
 		</tr>
 		
         <tr onclick="window.location='pause/';" style="cursor: pointer;" data-extension="Base">
@@ -2753,7 +2889,15 @@
 		    <td style="color: var(--text-muted);">Performs carry-less multiply (Galois Field math for GCM).</td>
 		</tr>
 		
-        <tr onclick="window.location='pcmpeqb/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pcmpeqb/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpeqb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPEQB mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Compares bytes for equality (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpeqb_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpeqb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPEQB xmm, xmm/m128</td>
 
@@ -2761,7 +2905,15 @@
 		    <td style="color: var(--text-muted);">Compares bytes for equality (Result mask 0xFF or 0x00).</td>
 		</tr>
 		
-        <tr onclick="window.location='pcmpeqd/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pcmpeqd/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpeqd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPEQD mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Compares doublewords for equality (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpeqd_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpeqd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPEQD xmm, xmm/m128</td>
 
@@ -2777,7 +2929,15 @@
 		    <td style="color: var(--text-muted);">Compares 64-bit integers for equality.</td>
 		</tr>
 		
-        <tr onclick="window.location='pcmpeqw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pcmpeqw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpeqw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPEQW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Compares words for equality (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpeqw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpeqw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPEQW xmm, xmm/m128</td>
 
@@ -2801,7 +2961,15 @@
 		    <td style="color: var(--text-muted);">String compare/search, returns mask (XMM0).</td>
 		</tr>
 		
-        <tr onclick="window.location='pcmpgtb/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pcmpgtb/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTB mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Compares bytes for greater than (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpgtb_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTB xmm1, xmm2/m128</td>
 
@@ -2809,7 +2977,15 @@
 		    <td style="color: var(--text-muted);">Compares bytes for greater than (signed).</td>
 		</tr>
 		
-        <tr onclick="window.location='pcmpgtd/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pcmpgtd/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTD mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Compares doublewords for greater than (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpgtd_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTD xmm1, xmm2/m128</td>
 
@@ -2817,7 +2993,15 @@
 		    <td style="color: var(--text-muted);">Compares doublewords for greater than (signed).</td>
 		</tr>
 		
-        <tr onclick="window.location='pcmpgtw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pcmpgtw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Compares words for greater than (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpgtw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTW xmm1, xmm2/m128</td>
 
@@ -2961,7 +3145,15 @@
 		    <td style="color: var(--text-muted);">Multiplies signed/unsigned bytes and adds pairs to words.</td>
 		</tr>
 		
-        <tr onclick="window.location='pmaddwd/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pmaddwd/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmaddwd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMADDWD mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Multiplies words and adds adjacent pairs (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pmaddwd_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmaddwd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMADDWD xmm1, xmm2/m128</td>
 
@@ -3113,7 +3305,15 @@
 		    <td style="color: var(--text-muted);">Multiplies unsigned words, keeps high 16 bits.</td>
 		</tr>
 		
-        <tr onclick="window.location='pmulhw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pmulhw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmulhw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULHW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Multiplies 4 signed words and stores high 16 bits (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pmulhw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmulhw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULHW xmm1, xmm2/m128</td>
 
@@ -3129,7 +3329,15 @@
 		    <td style="color: var(--text-muted);">Multiplies 32-bit integers, stores low 32-bit result.</td>
 		</tr>
 		
-        <tr onclick="window.location='pmullw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pmullw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmullw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Multiplies 4 words and stores low 16 bits (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pmullw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmullw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLW xmm1, xmm2/m128</td>
 
@@ -3177,7 +3385,15 @@
 		    <td style="color: var(--text-muted);">Pops stack into EFLAGS.</td>
 		</tr>
 		
-        <tr onclick="window.location='por/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='por/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">por</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">POR mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Bitwise OR of 64-bit MMX registers.</td>
+		</tr>
+		
+        <tr onclick="window.location='por_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">por</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">POR xmm, xmm/m128</td>
 
@@ -3199,6 +3415,22 @@
 
 		    <td><span class="badge">SSE</span></td>
 		    <td style="color: var(--text-muted);">Prefetches data to L1 cache.</td>
+		</tr>
+		
+        <tr onclick="window.location='prefetcht1/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">prefetcht1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PREFETCHT1 m8</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Hints to fetch data to L2 and L3 caches.</td>
+		</tr>
+		
+        <tr onclick="window.location='prefetcht2/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">prefetcht2</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PREFETCHT2 m8</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Hints to fetch data to L3 cache only.</td>
 		</tr>
 		
         <tr onclick="window.location='prefetchw/';" style="cursor: pointer;" data-extension="PREFETCHW">
@@ -3265,7 +3497,15 @@
 		    <td style="color: var(--text-muted);">Negates/Zeroes bytes in dest based on sign of src.</td>
 		</tr>
 		
-        <tr onclick="window.location='pslld/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pslld/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pslld</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLD mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts doublewords left (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='pslld_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pslld</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLD xmm, imm8</td>
 
@@ -3281,7 +3521,23 @@
 		    <td style="color: var(--text-muted);">Shifts the entire 128-bit register left by bytes.</td>
 		</tr>
 		
-        <tr onclick="window.location='psllw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='psllq/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psllq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLQ mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts quadword left (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psllw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psllw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLW mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts words left (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psllw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psllw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLW xmm, imm8</td>
 
@@ -3289,7 +3545,15 @@
 		    <td style="color: var(--text-muted);">Shifts words left.</td>
 		</tr>
 		
-        <tr onclick="window.location='psrad/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='psrad/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrad</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRAD mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts doublewords right arithmetic (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psrad_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrad</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRAD xmm, imm8</td>
 
@@ -3297,7 +3561,15 @@
 		    <td style="color: var(--text-muted);">Shifts doublewords right arithmetic.</td>
 		</tr>
 		
-        <tr onclick="window.location='psraw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='psraw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psraw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRAW mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts words right arithmetic (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psraw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psraw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRAW xmm, imm8</td>
 
@@ -3305,7 +3577,15 @@
 		    <td style="color: var(--text-muted);">Shifts words right arithmetic (sign bit).</td>
 		</tr>
 		
-        <tr onclick="window.location='psrld/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='psrld/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrld</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLD mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts doublewords right logical (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psrld_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrld</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLD xmm, imm8</td>
 
@@ -3321,7 +3601,23 @@
 		    <td style="color: var(--text-muted);">Shifts the entire 128-bit register right by bytes.</td>
 		</tr>
 		
-        <tr onclick="window.location='psrlw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='psrlq/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrlq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLQ mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts quadword right logical (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psrlw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrlw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLW mm, imm8</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Shifts words right logical (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psrlw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrlw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLW xmm, imm8</td>
 
@@ -3353,7 +3649,23 @@
 		    <td style="color: var(--text-muted);">Subtracts packed quadwords.</td>
 		</tr>
 		
-        <tr onclick="window.location='psubsw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='psubsb/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubsb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBSB mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Subtracts 8 signed bytes with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psubsw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBSW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Subtracts 4 signed words with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psubsw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubsw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBSW xmm1, xmm2/m128</td>
 
@@ -3361,7 +3673,23 @@
 		    <td style="color: var(--text-muted);">Subtracts 16-bit words with signed saturation.</td>
 		</tr>
 		
-        <tr onclick="window.location='psubusw/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='psubusb/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubusb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBUSB mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Subtracts 8 unsigned bytes with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psubusw/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubusw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBUSW mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Subtracts 4 unsigned words with saturation (MMX).</td>
+		</tr>
+		
+        <tr onclick="window.location='psubusw_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubusw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBUSW xmm1, xmm2/m128</td>
 
@@ -3481,7 +3809,15 @@
 		    <td style="color: var(--text-muted);">Pushes EFLAGS onto stack.</td>
 		</tr>
 		
-        <tr onclick="window.location='pxor/';" style="cursor: pointer;" data-extension="SSE2">
+        <tr onclick="window.location='pxor/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pxor</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PXOR mm, mm/m64</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Bitwise XOR of 64-bit MMX registers.</td>
+		</tr>
+		
+        <tr onclick="window.location='pxor_1/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pxor</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PXOR xmm, xmm/m128</td>
 
@@ -4537,6 +4873,22 @@
 		    <td style="color: var(--text-muted);">Converts two float vectors to one BFloat16 vector.</td>
 		</tr>
 		
+        <tr onclick="window.location='vcvtph2ps/';" style="cursor: pointer;" data-extension="F16C">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vcvtph2ps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCVTPH2PS xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Converts half-precision floats to single-precision.</td>
+		</tr>
+		
+        <tr onclick="window.location='vcvtps2ph/';" style="cursor: pointer;" data-extension="F16C">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vcvtps2ph</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCVTPS2PH xmm1/m64, xmm2, imm8</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Converts single-precision floats to half-precision.</td>
+		</tr>
+		
         <tr onclick="window.location='vcvtudq2ps/';" style="cursor: pointer;" data-extension="AVX-512F">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vcvtudq2ps</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VCVTUDQ2PS zmm1 {k1}, zmm2/m512</td>
@@ -4761,12 +5113,28 @@
 		    <td style="color: var(--text-muted);">Extracts exponents from doubles as float values.</td>
 		</tr>
 		
+        <tr onclick="window.location='vgetexpss/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vgetexpss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VGETEXPSS xmm1 {k1}, xmm2, xmm3/m32</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Extracts exponent from low float.</td>
+		</tr>
+		
         <tr onclick="window.location='vgetmantpd/';" style="cursor: pointer;" data-extension="AVX-512F">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vgetmantpd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VGETMANTPD zmm1 {k1}, zmm2/m512, imm8</td>
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Extracts mantissas from doubles.</td>
+		</tr>
+		
+        <tr onclick="window.location='vgetmantsd/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vgetmantsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VGETMANTSD xmm1 {k1}, xmm2, xmm3/m64, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Extracts mantissa from low double.</td>
 		</tr>
 		
         <tr onclick="window.location='vinsertf128/';" style="cursor: pointer;" data-extension="AVX">
@@ -5041,6 +5409,22 @@
 		    <td style="color: var(--text-muted);">Carry-less multiply on 512-bit vector.</td>
 		</tr>
 		
+        <tr onclick="window.location='vpcmov/';" style="cursor: pointer;" data-extension="XOP">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpcmov</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPCMOV xmm1, xmm2, xmm3, xmm4</td>
+
+		    <td><span class="badge">XOP</span></td>
+		    <td style="color: var(--text-muted);">Bitwise conditional move based on selector.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpcomb/';" style="cursor: pointer;" data-extension="XOP">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpcomb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPCOMB xmm1, xmm2, xmm3/m128, imm8</td>
+
+		    <td><span class="badge">XOP</span></td>
+		    <td style="color: var(--text-muted);">Compares bytes using immediate condition.</td>
+		</tr>
+		
         <tr onclick="window.location='vpcompressb/';" style="cursor: pointer;" data-extension="AVX-512_VBMI2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpcompressb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPCOMPRESSB m512 {k1}, zmm1</td>
@@ -5087,6 +5471,14 @@
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Dot product of signed words, accum to dword (Saturate).</td>
+		</tr>
+		
+        <tr onclick="window.location='vperm2f128/';" style="cursor: pointer;" data-extension="AVX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vperm2f128</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPERM2F128 ymm1, ymm2, ymm3/m256, imm8</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Shuffles 128-bit float lanes between YMM registers.</td>
 		</tr>
 		
         <tr onclick="window.location='vperm2i128/';" style="cursor: pointer;" data-extension="AVX2">
@@ -5607,6 +5999,22 @@
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Subtracts low FP16 value.</td>
+		</tr>
+		
+        <tr onclick="window.location='vtestpd/';" style="cursor: pointer;" data-extension="AVX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vtestpd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VTESTPD xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">AVX</span></td>
+		    <td style="color: var(--text-muted);">Sets ZF/CF based on sign bit comparisons of doubles.</td>
+		</tr>
+		
+        <tr onclick="window.location='vtestps/';" style="cursor: pointer;" data-extension="AVX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vtestps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VTESTPS xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">AVX</span></td>
+		    <td style="color: var(--text-muted);">Sets ZF/CF based on sign bit comparisons of floats.</td>
 		</tr>
 		
         <tr onclick="window.location='vzeroall/';" style="cursor: pointer;" data-extension="AVX">

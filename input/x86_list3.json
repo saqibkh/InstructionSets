@@ -1,0 +1,463 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "movss",
+      "architecture": "x86",
+      "full_name": "Move Scalar Single-Precision",
+      "summary": "Moves a single float (low 32 bits) between XMM/Memory.",
+      "syntax": "MOVSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 10" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movsd",
+      "architecture": "x86",
+      "full_name": "Move Scalar Double-Precision",
+      "summary": "Moves a single double (low 64 bits) between XMM/Memory.",
+      "syntax": "MOVSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 10" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvtdq2pd",
+      "architecture": "x86",
+      "full_name": "Convert Packed Doubleword to Packed Double-Precision",
+      "summary": "Converts two 32-bit integers to two 64-bit doubles.",
+      "syntax": "CVTDQ2PD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F3 0F E6" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvtpd2dq",
+      "architecture": "x86",
+      "full_name": "Convert Packed Double-Precision to Packed Doubleword",
+      "summary": "Converts two doubles to two 32-bit integers (Rounded).",
+      "syntax": "CVTPD2DQ xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F E6" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvttpd2dq",
+      "architecture": "x86",
+      "full_name": "Convert with Truncation Packed Double to Packed Doubleword",
+      "summary": "Converts two doubles to two 32-bit integers (Truncated).",
+      "syntax": "CVTTPD2DQ xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F E6" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvtss2si",
+      "architecture": "x86",
+      "full_name": "Convert Scalar Single to Integer",
+      "summary": "Converts low float to integer (Rounded according to MXCSR).",
+      "syntax": "CVTSS2SI r32, xmm/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 2D" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "cvtsd2si",
+      "architecture": "x86",
+      "full_name": "Convert Scalar Double to Integer",
+      "summary": "Converts low double to integer (Rounded according to MXCSR).",
+      "syntax": "CVTSD2SI r32, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 2D" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "vcvtph2ps",
+      "architecture": "x86",
+      "full_name": "Convert 16-bit FP to 32-bit FP",
+      "summary": "Converts half-precision floats to single-precision.",
+      "syntax": "VCVTPH2PS xmm1, xmm2/m64",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 13" },
+      "extension": "F16C"
+    },
+    {
+      "mnemonic": "vcvtps2ph",
+      "architecture": "x86",
+      "full_name": "Convert 32-bit FP to 16-bit FP",
+      "summary": "Converts single-precision floats to half-precision.",
+      "syntax": "VCVTPS2PH xmm1/m64, xmm2, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 3A 1D" },
+      "extension": "F16C"
+    },
+    {
+      "mnemonic": "vtestps",
+      "architecture": "x86",
+      "full_name": "Packed Bit Test Single-Precision",
+      "summary": "Sets ZF/CF based on sign bit comparisons of floats.",
+      "syntax": "VTESTPS xmm1, xmm2/m128",
+      "encoding": { "format": "AVX", "hex_opcode": "66 0F 38 0E" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vtestpd",
+      "architecture": "x86",
+      "full_name": "Packed Bit Test Double-Precision",
+      "summary": "Sets ZF/CF based on sign bit comparisons of doubles.",
+      "syntax": "VTESTPD xmm1, xmm2/m128",
+      "encoding": { "format": "AVX", "hex_opcode": "66 0F 38 0F" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vperm2f128",
+      "architecture": "x86",
+      "full_name": "Permute Floating-Point 128-bit Blocks",
+      "summary": "Shuffles 128-bit float lanes between YMM registers.",
+      "syntax": "VPERM2F128 ymm1, ymm2, ymm3/m256, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 3A 06" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "prefetcht1",
+      "architecture": "x86",
+      "full_name": "Prefetch Data to L2 Cache",
+      "summary": "Hints to fetch data to L2 and L3 caches.",
+      "syntax": "PREFETCHT1 m8",
+      "encoding": { "format": "SSE", "hex_opcode": "0F 18 /2" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "prefetcht2",
+      "architecture": "x86",
+      "full_name": "Prefetch Data to L3 Cache",
+      "summary": "Hints to fetch data to L3 cache only.",
+      "syntax": "PREFETCHT2 m8",
+      "encoding": { "format": "SSE", "hex_opcode": "0F 18 /3" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movsxd",
+      "architecture": "x86",
+      "full_name": "Move with Sign-Extension Doubleword",
+      "summary": "Sign-extends 32-bit register to 64-bit.",
+      "syntax": "MOVSXD r64, r/m32",
+      "encoding": { "format": "Base (64-bit)", "hex_opcode": "63" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "int1",
+      "architecture": "x86",
+      "full_name": "ICE Breakpoint",
+      "summary": "Single byte opcode (0xF1) used for In-Circuit Emulation.",
+      "syntax": "INT1",
+      "encoding": { "format": "Legacy", "hex_opcode": "F1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "vpcmov",
+      "architecture": "x86",
+      "full_name": "Vector Packed Conditional Move",
+      "summary": "Bitwise conditional move based on selector.",
+      "syntax": "VPCMOV xmm1, xmm2, xmm3, xmm4",
+      "encoding": { "format": "XOP", "hex_opcode": "08 A2" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vpcomb",
+      "architecture": "x86",
+      "full_name": "Vector Packed Compare Byte",
+      "summary": "Compares bytes using immediate condition.",
+      "syntax": "VPCOMB xmm1, xmm2, xmm3/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "08 CC" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "blcfill",
+      "architecture": "x86",
+      "full_name": "Fill From Lowest Clear Bit",
+      "summary": "Sets all bits below the lowest clear bit (x & (x+1)).",
+      "syntax": "BLCFILL r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 01" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "vgetexpss",
+      "architecture": "x86",
+      "full_name": "Get Exponent Scalar Single",
+      "summary": "Extracts exponent from low float.",
+      "syntax": "VGETEXPSS xmm1 {k1}, xmm2, xmm3/m32",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 43" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vgetmantsd",
+      "architecture": "x86",
+      "full_name": "Get Mantissa Scalar Double",
+      "summary": "Extracts mantissa from low double.",
+      "syntax": "VGETMANTSD xmm1 {k1}, xmm2, xmm3/m64, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 27" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "movq",
+      "architecture": "x86",
+      "full_name": "Move Quadword (MMX)",
+      "summary": "Moves 64-bit data between MMX registers/memory.",
+      "syntax": "MOVQ mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 6F" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "paddusb",
+      "architecture": "x86",
+      "full_name": "Packed Add Unsigned Saturate Byte (MMX)",
+      "summary": "Adds 8 unsigned bytes with saturation (MMX).",
+      "syntax": "PADDUSB mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F DC" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "paddsb",
+      "architecture": "x86",
+      "full_name": "Packed Add Signed Saturate Byte (MMX)",
+      "summary": "Adds 8 signed bytes with saturation (MMX).",
+      "syntax": "PADDSB mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F EC" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "paddusw",
+      "architecture": "x86",
+      "full_name": "Packed Add Unsigned Saturate Word (MMX)",
+      "summary": "Adds 4 unsigned words with saturation (MMX).",
+      "syntax": "PADDUSW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F DD" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "paddsw",
+      "architecture": "x86",
+      "full_name": "Packed Add Signed Saturate Word (MMX)",
+      "summary": "Adds 4 signed words with saturation (MMX).",
+      "syntax": "PADDSW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F ED" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psubusb",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Unsigned Saturate Byte (MMX)",
+      "summary": "Subtracts 8 unsigned bytes with saturation (MMX).",
+      "syntax": "PSUBUSB mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F D8" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psubsb",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Signed Saturate Byte (MMX)",
+      "summary": "Subtracts 8 signed bytes with saturation (MMX).",
+      "syntax": "PSUBSB mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F E8" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psubusw",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Unsigned Saturate Word (MMX)",
+      "summary": "Subtracts 4 unsigned words with saturation (MMX).",
+      "syntax": "PSUBUSW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F D9" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psubsw",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Signed Saturate Word (MMX)",
+      "summary": "Subtracts 4 signed words with saturation (MMX).",
+      "syntax": "PSUBSW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F E9" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pmullw",
+      "architecture": "x86",
+      "full_name": "Packed Multiply Low Word (MMX)",
+      "summary": "Multiplies 4 words and stores low 16 bits (MMX).",
+      "syntax": "PMULLW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F D5" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pmulhw",
+      "architecture": "x86",
+      "full_name": "Packed Multiply High Word (MMX)",
+      "summary": "Multiplies 4 signed words and stores high 16 bits (MMX).",
+      "syntax": "PMULHW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F E5" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pmaddwd",
+      "architecture": "x86",
+      "full_name": "Packed Multiply Add Word to Doubleword (MMX)",
+      "summary": "Multiplies words and adds adjacent pairs (MMX).",
+      "syntax": "PMADDWD mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F F5" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pand",
+      "architecture": "x86",
+      "full_name": "Packed Logical AND (MMX)",
+      "summary": "Bitwise AND of 64-bit MMX registers.",
+      "syntax": "PAND mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F DB" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "por",
+      "architecture": "x86",
+      "full_name": "Packed Logical OR (MMX)",
+      "summary": "Bitwise OR of 64-bit MMX registers.",
+      "syntax": "POR mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F EB" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pxor",
+      "architecture": "x86",
+      "full_name": "Packed Logical XOR (MMX)",
+      "summary": "Bitwise XOR of 64-bit MMX registers.",
+      "syntax": "PXOR mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F EF" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pandn",
+      "architecture": "x86",
+      "full_name": "Packed Logical AND NOT (MMX)",
+      "summary": "Bitwise AND NOT of 64-bit MMX registers.",
+      "syntax": "PANDN mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F DF" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pcmpgtb",
+      "architecture": "x86",
+      "full_name": "Packed Compare Greater Than Byte (MMX)",
+      "summary": "Compares bytes for greater than (MMX).",
+      "syntax": "PCMPGTB mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 64" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pcmpgtw",
+      "architecture": "x86",
+      "full_name": "Packed Compare Greater Than Word (MMX)",
+      "summary": "Compares words for greater than (MMX).",
+      "syntax": "PCMPGTW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 65" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pcmpgtd",
+      "architecture": "x86",
+      "full_name": "Packed Compare Greater Than Doubleword (MMX)",
+      "summary": "Compares doublewords for greater than (MMX).",
+      "syntax": "PCMPGTD mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 66" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pcmpeqb",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Byte (MMX)",
+      "summary": "Compares bytes for equality (MMX).",
+      "syntax": "PCMPEQB mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 74" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pcmpeqw",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Word (MMX)",
+      "summary": "Compares words for equality (MMX).",
+      "syntax": "PCMPEQW mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 75" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pcmpeqd",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Doubleword (MMX)",
+      "summary": "Compares doublewords for equality (MMX).",
+      "syntax": "PCMPEQD mm, mm/m64",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 76" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psllw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Logical Word (MMX)",
+      "summary": "Shifts words left (MMX).",
+      "syntax": "PSLLW mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 71 /6" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "pslld",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Logical Doubleword (MMX)",
+      "summary": "Shifts doublewords left (MMX).",
+      "syntax": "PSLLD mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 72 /6" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psllq",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Logical Quadword (MMX)",
+      "summary": "Shifts quadword left (MMX).",
+      "syntax": "PSLLQ mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 73 /6" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psrlw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Logical Word (MMX)",
+      "summary": "Shifts words right logical (MMX).",
+      "syntax": "PSRLW mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 71 /2" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psrld",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Logical Doubleword (MMX)",
+      "summary": "Shifts doublewords right logical (MMX).",
+      "syntax": "PSRLD mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 72 /2" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psrlq",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Logical Quadword (MMX)",
+      "summary": "Shifts quadword right logical (MMX).",
+      "syntax": "PSRLQ mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 73 /2" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psraw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Arithmetic Word (MMX)",
+      "summary": "Shifts words right arithmetic (MMX).",
+      "syntax": "PSRAW mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 71 /4" },
+      "extension": "MMX"
+    },
+    {
+      "mnemonic": "psrad",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Arithmetic Doubleword (MMX)",
+      "summary": "Shifts doublewords right arithmetic (MMX).",
+      "syntax": "PSRAD mm, imm8",
+      "encoding": { "format": "MMX", "hex_opcode": "0F 72 /4" },
+      "extension": "MMX"
+    }
+  ]
+}
