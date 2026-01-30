@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Non-widening signed integer outer product (SME2).">
-    <title>smopa - ARMv9-A</title>
+    <meta name="description" content="Streaming SVE Matrix Outer Product Accumulate (Floating-point)">
+    <title>SMOPA - ARMv9-A</title>
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="ISA Database">
@@ -58,6 +58,21 @@
             <details open class="nav-group">
                 <summary>Base Instruction</summary>
                 <div class="group-links">
+                    
+                    <a href="../tcancel_1/" 
+                       class="">
+                        TCANCEL
+                    </a>
+                    
+                    <a href="../tcommit_1/" 
+                       class="">
+                        TCOMMIT
+                    </a>
+                    
+                    <a href="../tstart_1/" 
+                       class="">
+                        TSTART
+                    </a>
                     
                     <a href="../addpt/" 
                        class="">
@@ -237,8 +252,75 @@
             </details>
             
             <details open class="nav-group">
+                <summary>Memory Tagging (MTE)</summary>
+                <div class="group-links">
+                    
+                    <a href="../gmi/" 
+                       class="">
+                        GMI
+                    </a>
+                    
+                    <a href="../irg/" 
+                       class="">
+                        IRG
+                    </a>
+                    
+                    <a href="../ldg/" 
+                       class="">
+                        LDG
+                    </a>
+                    
+                    <a href="../stg/" 
+                       class="">
+                        STG
+                    </a>
+                    
+                    <a href="../stz2g/" 
+                       class="">
+                        STZ2G
+                    </a>
+                    
+                    <a href="../subp/" 
+                       class="">
+                        SUBP
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
                 <summary>SME (Matrix Extensions)</summary>
                 <div class="group-links">
+                    
+                    <a href="../ldr_(tile)/" 
+                       class="">
+                        LDR (Tile)
+                    </a>
+                    
+                    <a href="../mova/" 
+                       class="">
+                        MOVA
+                    </a>
+                    
+                    <a href="../smopa/" 
+                       class="">
+                        SMOPA
+                    </a>
+                    
+                    <a href="../str_(tile)/" 
+                       class="">
+                        STR (Tile)
+                    </a>
+                    
+                    <a href="../sumopa/" 
+                       class="">
+                        SUMOPA
+                    </a>
+                    
+                    <a href="../zero_1/" 
+                       class="">
+                        ZERO
+                    </a>
                     
                     <a href="../add/" 
                        class="">
@@ -330,11 +412,6 @@
                         luti4
                     </a>
                     
-                    <a href="../mova/" 
-                       class="">
-                        mova
-                    </a>
-                    
                     <a href="../mova_1/" 
                        class="">
                         mova
@@ -346,6 +423,11 @@
                     </a>
                     
                     <a href="../mova_3/" 
+                       class="">
+                        mova
+                    </a>
+                    
+                    <a href="../mova_4/" 
                        class="">
                         mova
                     </a>
@@ -375,12 +457,12 @@
                         smin
                     </a>
                     
-                    <a href="../smopa/" 
-                       class="active">
+                    <a href="../smopa_1/" 
+                       class="">
                         smopa
                     </a>
                     
-                    <a href="../smopa_1/" 
+                    <a href="../smopa_2/" 
                        class="">
                         smopa
                     </a>
@@ -425,7 +507,7 @@
                         sub
                     </a>
                     
-                    <a href="../sumopa/" 
+                    <a href="../sumopa_1/" 
                        class="">
                         sumopa
                     </a>
@@ -460,7 +542,7 @@
                         zero
                     </a>
                     
-                    <a href="../zero_1/" 
+                    <a href="../zero_2/" 
                        class="">
                         zero
                     </a>
@@ -907,18 +989,18 @@
             <div class="breadcrumb">
                 <a href="../../">Home</a> <span>/</span> 
                 <a href="../../armv9-a/">ARMv9-A</a> <span>/</span> 
-                smopa
+                SMOPA
             </div>
 
-            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">smopa</h1>
-            <h2 style="font-weight: 400; color: var(--text-muted);">Signed Integer Outer Product Accumulate (Non-widening)</h2>
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">SMOPA</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);"></h2>
             
             <div class="syntax-box">
-                SMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S
+                SMOPA ZA.S[Wv, &lt;imm&gt;], Pm.M, Pn.M, Zn.S, Zm.S
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Non-widening signed integer outer product (SME2).
+                Streaming SVE Matrix Outer Product Accumulate (Floating-point)
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -927,7 +1009,10 @@
 		    <div class="panel">
                         <h3>Pseudocode Operation</h3>
                         <div class="code-block" style="border:none; padding:0; background: transparent;">
-                            
+                            <pre><code class="language-clike">if !HaveSME() then UNDEFINED;
+CheckSMEEnabled();
+// Compute outer product of Zn and Zm
+// Accumulate into Tile ZA</code></pre>
                         </div>
                     </div>
 
@@ -942,32 +1027,8 @@
                             <div class="bit-grid-label">Binary Layout</div>
                             <div class="bit-row">
                                 
-                                <div class="bit-box" data-op="10100000">
-                                    <span class="bit-value">10100000</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="10">
-                                    <span class="bit-value">10</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="0">
-                                    <span class="bit-value">0</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="00000">
-                                    <span class="bit-value">00000</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="Zm">
-                                    <span class="bit-value">Zm</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="Zn">
-                                    <span class="bit-value">Zn</span>
-                                </div>
-                                
-                                <div class="bit-box" data-op="ZAda">
-                                    <span class="bit-value">ZAda</span>
+                                <div class="bit-box" data-op="10100000000000000000000000000000">
+                                    <span class="bit-value">10100000000000000000000000000000</span>
                                 </div>
                                 
                             </div>
@@ -979,11 +1040,11 @@
                         <div class="meta-grid">
                             <div class="meta-item">
                                 <span class="meta-label">Format</span>
-                                <span class="badge">SME2 Matrix</span>
+                                <span class="badge"></span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Opcode</span>
-                                <span class="mono accent">0xA0800000</span>
+                                <span class="mono accent">A0000000</span>
                             </div>
                         </div>
                     </div>
@@ -991,24 +1052,6 @@
                     <div class="panel">
                         <h3>Operands</h3>
                         <ul class="operand-list" style="list-style: none;">
-                            
-                            <li class="operand-row" data-op="ZAda" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">ZAda</span>
-                                <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Tile</span>
-                            </li>
-                            
-                            <li class="operand-row" data-op="Zn" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Zn</span>
-                                <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Col</span>
-                            </li>
-                            
-                            <li class="operand-row" data-op="Zm" style="padding: 8px 0; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 4px; padding-left: 8px;">
-                                <span class="op-name" style="color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;">Zm</span>
-                                <br>
-                                <span style="font-size: 0.85rem; color: var(--text-muted);">Row</span>
-                            </li>
                             
                         </ul>
                     </div>
@@ -1022,9 +1065,9 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "smopa (ARMv9-A)",
-  "description": "Non-widening signed integer outer product (SME2).",
-  "articleBody": "Signed Integer Outer Product Accumulate (Non-widening). Syntax: SMOPA &lt;ZAda&gt;.S, &lt;Zn&gt;.S, &lt;Zm&gt;.S. Opcode: 0xA0800000",
+  "headline": "SMOPA (ARMv9-A)",
+  "description": "Streaming SVE Matrix Outer Product Accumulate (Floating-point)",
+  "articleBody": ". Syntax: SMOPA ZA.S[Wv, &lt;imm&gt;], Pm.M, Pn.M, Zn.S, Zm.S. Opcode: A0000000",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

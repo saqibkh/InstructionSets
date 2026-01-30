@@ -1,0 +1,189 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "SMOPA",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Streaming SVE Matrix Outer Product Accumulate (Floating-point)",
+      "syntax": "SMOPA ZA.S[Wv, <imm>], Pm.M, Pn.M, Zn.S, Zm.S",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Compute outer product of Zn and Zm\n// Accumulate into Tile ZA",
+      "encoding": {
+        "hex_opcode": "A0000000",
+        "pattern": "10100000000000000000000000000000",
+        "visual_parts": [
+            {"raw": "10100000", "clean": "Opcode"},
+            {"raw": "Zm", "clean": "Vector M"},
+            {"raw": "Zn", "clean": "Vector N"}
+        ]
+      }
+    },
+    {
+      "mnemonic": "SUMOPA",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Streaming SVE Signed/Unsigned Integer Matrix Outer Product",
+      "syntax": "SUMOPA ZA.S[Wv, <imm>], Pm.M, Pn.M, Zn.S, Zm.S",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Signed * Unsigned outer product accumulation",
+      "encoding": {
+        "hex_opcode": "A0000001",
+        "pattern": "10100000010000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "MOVA",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Move Vector to/from Tile Slice",
+      "syntax": "MOVA ZA.S[Wv, <imm>], Pg/M, Zn.S",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Move data between SVE Z-registers and SME Matrix Tiles",
+      "encoding": {
+        "hex_opcode": "C0000000",
+        "pattern": "11000000000000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "ZERO",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Zero a list of 64-bit element tiles",
+      "syntax": "ZERO { <tile_list> }",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Clear specified ZA tiles to zero",
+      "encoding": {
+        "hex_opcode": "C0080000",
+        "pattern": "11000000000010000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "LDR (Tile)",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Load Multiple Vectors to Tile",
+      "syntax": "LDR ZA[<Wv>, <imm>], [Xn, #<imm>, MUL VL]",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Load data from memory directly into ZA Matrix Tile",
+      "encoding": {
+        "hex_opcode": "E1000000",
+        "pattern": "11100001000000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "STR (Tile)",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Store Multiple Vectors from Tile",
+      "syntax": "STR ZA[<Wv>, <imm>], [Xn, #<imm>, MUL VL]",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Store data from ZA Matrix Tile to memory",
+      "encoding": {
+        "hex_opcode": "E1200000",
+        "pattern": "11100001001000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "IRG",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Insert Random Tag",
+      "syntax": "IRG Xd, Xn, {Xm}",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Inserts a random Logical Address Tag into Xd",
+      "encoding": {
+        "hex_opcode": "9AC01000",
+        "pattern": "10011010110000000001000000000000"
+      }
+    },
+    {
+      "mnemonic": "GMI",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Tag Mask Insert",
+      "syntax": "GMI Xd, Xn, Xm",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Manipulate excluded tags for IRG generation",
+      "encoding": {
+        "hex_opcode": "9AC01001",
+        "pattern": "10011010110000000001000000000001"
+      }
+    },
+    {
+      "mnemonic": "LDG",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Load Allocation Tag",
+      "syntax": "LDG Xt, [Xn, #<simm>]",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Load the Allocation Tag from memory corresponding to the address",
+      "encoding": {
+        "hex_opcode": "D9600000",
+        "pattern": "11011001011000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "STG",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Store Allocation Tag",
+      "syntax": "STG Xt, [Xn, #<simm>]",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Writes the Allocation Tag to granule memory",
+      "encoding": {
+        "hex_opcode": "D9200000",
+        "pattern": "11011001001000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "STZ2G",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Store Zero and Two Allocation Tags",
+      "syntax": "STZ2G Xt, [Xn, #<simm>]",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Zeroes memory and writes tags for two granules",
+      "encoding": {
+        "hex_opcode": "D9200400",
+        "pattern": "11011001001000000000010000000000"
+      }
+    },
+    {
+      "mnemonic": "SUBP",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Subtract Pointer",
+      "syntax": "SUBP Xd, Xn, Xm",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Subtracts addresses ignoring the tags",
+      "encoding": {
+        "hex_opcode": "9AC00000",
+        "pattern": "10011010110000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "TSTART",
+      "architecture": "ARMv9-A",
+      "extension": "TME",
+      "summary": "Transaction Start",
+      "syntax": "TSTART Xd",
+      "pseudocode": "if !HaveTME() then UNDEFINED;\n// Starts a new transaction. Returns 0 on success.",
+      "encoding": {
+        "hex_opcode": "D503305F",
+        "pattern": "11010101000000110011000001011111"
+      }
+    },
+    {
+      "mnemonic": "TCOMMIT",
+      "architecture": "ARMv9-A",
+      "extension": "TME",
+      "summary": "Transaction Commit",
+      "syntax": "TCOMMIT",
+      "pseudocode": "if !HaveTME() then UNDEFINED;\n// Commits the current transaction",
+      "encoding": {
+        "hex_opcode": "D503309F",
+        "pattern": "11010101000000110011000010011111"
+      }
+    },
+    {
+      "mnemonic": "TCANCEL",
+      "architecture": "ARMv9-A",
+      "extension": "TME",
+      "summary": "Transaction Cancel",
+      "syntax": "TCANCEL #<imm>",
+      "pseudocode": "if !HaveTME() then UNDEFINED;\n// Cancels the current transaction and reverts state",
+      "encoding": {
+        "hex_opcode": "D50330DF",
+        "pattern": "11010101000000110011000011011111"
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Moves a vertical slice of a ZA tile into an SVE vector.">
+    <meta name="description" content="Moves a horizontal slice of a ZA tile into an SVE vector.">
     <title>mova - ARMv9-A</title>
     
     <meta property="og:type" content="website">
@@ -58,6 +58,21 @@
             <details open class="nav-group">
                 <summary>Base Instruction</summary>
                 <div class="group-links">
+                    
+                    <a href="../tcancel_1/" 
+                       class="">
+                        TCANCEL
+                    </a>
+                    
+                    <a href="../tcommit_1/" 
+                       class="">
+                        TCOMMIT
+                    </a>
+                    
+                    <a href="../tstart_1/" 
+                       class="">
+                        TSTART
+                    </a>
                     
                     <a href="../addpt/" 
                        class="">
@@ -237,8 +252,75 @@
             </details>
             
             <details open class="nav-group">
+                <summary>Memory Tagging (MTE)</summary>
+                <div class="group-links">
+                    
+                    <a href="../gmi/" 
+                       class="">
+                        GMI
+                    </a>
+                    
+                    <a href="../irg/" 
+                       class="">
+                        IRG
+                    </a>
+                    
+                    <a href="../ldg/" 
+                       class="">
+                        LDG
+                    </a>
+                    
+                    <a href="../stg/" 
+                       class="">
+                        STG
+                    </a>
+                    
+                    <a href="../stz2g/" 
+                       class="">
+                        STZ2G
+                    </a>
+                    
+                    <a href="../subp/" 
+                       class="">
+                        SUBP
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
                 <summary>SME (Matrix Extensions)</summary>
                 <div class="group-links">
+                    
+                    <a href="../ldr_(tile)/" 
+                       class="">
+                        LDR (Tile)
+                    </a>
+                    
+                    <a href="../mova/" 
+                       class="active">
+                        MOVA
+                    </a>
+                    
+                    <a href="../smopa/" 
+                       class="">
+                        SMOPA
+                    </a>
+                    
+                    <a href="../str_(tile)/" 
+                       class="">
+                        STR (Tile)
+                    </a>
+                    
+                    <a href="../sumopa/" 
+                       class="">
+                        SUMOPA
+                    </a>
+                    
+                    <a href="../zero_1/" 
+                       class="">
+                        ZERO
+                    </a>
                     
                     <a href="../add/" 
                        class="">
@@ -330,11 +412,6 @@
                         luti4
                     </a>
                     
-                    <a href="../mova/" 
-                       class="active">
-                        mova
-                    </a>
-                    
                     <a href="../mova_1/" 
                        class="">
                         mova
@@ -346,6 +423,11 @@
                     </a>
                     
                     <a href="../mova_3/" 
+                       class="">
+                        mova
+                    </a>
+                    
+                    <a href="../mova_4/" 
                        class="">
                         mova
                     </a>
@@ -375,12 +457,12 @@
                         smin
                     </a>
                     
-                    <a href="../smopa/" 
+                    <a href="../smopa_1/" 
                        class="">
                         smopa
                     </a>
                     
-                    <a href="../smopa_1/" 
+                    <a href="../smopa_2/" 
                        class="">
                         smopa
                     </a>
@@ -425,7 +507,7 @@
                         sub
                     </a>
                     
-                    <a href="../sumopa/" 
+                    <a href="../sumopa_1/" 
                        class="">
                         sumopa
                     </a>
@@ -460,7 +542,7 @@
                         zero
                     </a>
                     
-                    <a href="../zero_1/" 
+                    <a href="../zero_2/" 
                        class="">
                         zero
                     </a>
@@ -911,14 +993,14 @@
             </div>
 
             <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">mova</h1>
-            <h2 style="font-weight: 400; color: var(--text-muted);">Move Tile Slice to Vector (Vertical)</h2>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Move Tile Slice to Vector (Horizontal)</h2>
             
             <div class="syntax-box">
-                MOVA &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;ZA&gt;.&lt;T&gt;V[&lt;Ws&gt;, &lt;imm&gt;]
+                MOVA &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;ZA&gt;.&lt;T&gt;H[&lt;Ws&gt;, &lt;imm&gt;]
             </div>
 
             <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
-                Moves a vertical slice of a ZA tile into an SVE vector.
+                Moves a horizontal slice of a ZA tile into an SVE vector.
             </p>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
@@ -954,8 +1036,8 @@
                                     <span class="bit-value">0000</span>
                                 </div>
                                 
-                                <div class="bit-box" data-op="101">
-                                    <span class="bit-value">101</span>
+                                <div class="bit-box" data-op="100">
+                                    <span class="bit-value">100</span>
                                 </div>
                                 
                                 <div class="bit-box" data-op="Pg">
@@ -983,7 +1065,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Opcode</span>
-                                <span class="mono accent">0xC0018000</span>
+                                <span class="mono accent">0xC0010000</span>
                             </div>
                         </div>
                     </div>
@@ -1017,8 +1099,8 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "mova (ARMv9-A)",
-  "description": "Moves a vertical slice of a ZA tile into an SVE vector.",
-  "articleBody": "Move Tile Slice to Vector (Vertical). Syntax: MOVA &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;ZA&gt;.&lt;T&gt;V[&lt;Ws&gt;, &lt;imm&gt;]. Opcode: 0xC0018000",
+  "description": "Moves a horizontal slice of a ZA tile into an SVE vector.",
+  "articleBody": "Move Tile Slice to Vector (Horizontal). Syntax: MOVA &lt;Zd&gt;.&lt;T&gt;, &lt;Pg&gt;/M, &lt;ZA&gt;.&lt;T&gt;H[&lt;Ws&gt;, &lt;imm&gt;]. Opcode: 0xC0010000",
   "proficiencyLevel": "Expert",
   "datePublished": "2024-01-01"
 }

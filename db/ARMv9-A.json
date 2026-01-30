@@ -2327,6 +2327,381 @@
       "linked_pseudocode": ""
     },
     {
+      "mnemonic": "SMOPA",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Streaming SVE Matrix Outer Product Accumulate (Floating-point)",
+      "syntax": "SMOPA ZA.S[Wv, &lt;imm&gt;], Pm.M, Pn.M, Zn.S, Zm.S",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Compute outer product of Zn and Zm\n// Accumulate into Tile ZA",
+      "encoding": {
+        "hex_opcode": "A0000000",
+        "pattern": "10100000000000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "10100000000000000000000000000000",
+            "clean": "10100000000000000000000000000000"
+          }
+        ],
+        "binary_pattern": "10100000000000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Compute outer product of Zn and Zm\n// Accumulate into Tile ZA</code></pre>",
+      "slug": "smopa",
+      "rel_url": "armv9-a/smopa/",
+      "operands": [],
+      "linked_summary": "Streaming SVE Matrix Outer Product Accumulate (Floating-point)",
+      "linked_pseudocode": "if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Compute outer product of Zn <a href=\"../../armv8-a/and_6/\">and</a> Zm\n// Accumulate into Tile ZA"
+    },
+    {
+      "mnemonic": "SUMOPA",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Streaming SVE Signed/Unsigned Integer Matrix Outer Product",
+      "syntax": "SUMOPA ZA.S[Wv, &lt;imm&gt;], Pm.M, Pn.M, Zn.S, Zm.S",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Signed * Unsigned outer product accumulation",
+      "encoding": {
+        "hex_opcode": "A0000001",
+        "pattern": "10100000010000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "10100000010000000000000000000000",
+            "clean": "10100000010000000000000000000000"
+          }
+        ],
+        "binary_pattern": "10100000010000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveSME() then UNDEFINED;\n// Signed * Unsigned outer product accumulation</code></pre>",
+      "slug": "sumopa",
+      "rel_url": "armv9-a/sumopa/",
+      "operands": [],
+      "linked_summary": "Streaming SVE Signed/Unsigned Integer Matrix Outer Product",
+      "linked_pseudocode": "if !HaveSME() then UNDEFINED;\n// Signed * Unsigned outer product accumulation"
+    },
+    {
+      "mnemonic": "MOVA",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Move Vector to/from Tile Slice",
+      "syntax": "MOVA ZA.S[Wv, &lt;imm&gt;], Pg/M, Zn.S",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Move data between SVE Z-registers and SME Matrix Tiles",
+      "encoding": {
+        "hex_opcode": "C0000000",
+        "pattern": "11000000000000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "11000000000000000000000000000000",
+            "clean": "11000000000000000000000000000000"
+          }
+        ],
+        "binary_pattern": "11000000000000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveSME() then UNDEFINED;\n// Move data between SVE Z-registers and SME Matrix Tiles</code></pre>",
+      "slug": "mova",
+      "rel_url": "armv9-a/mova/",
+      "operands": [],
+      "linked_summary": "Move Vector to/from Tile Slice",
+      "linked_pseudocode": "if !HaveSME() then UNDEFINED;\n// Move data between SVE Z-registers <a href=\"../../armv8-a/and_6/\">and</a> SME Matrix Tiles"
+    },
+    {
+      "mnemonic": "ZERO",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Zero a list of 64-bit element tiles",
+      "syntax": "ZERO { &lt;tile_list&gt; }",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Clear specified ZA tiles to zero",
+      "encoding": {
+        "hex_opcode": "C0080000",
+        "pattern": "11000000000010000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "11000000000010000000000000000000",
+            "clean": "11000000000010000000000000000000"
+          }
+        ],
+        "binary_pattern": "11000000000010000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Clear specified ZA tiles to zero</code></pre>",
+      "slug": "zero_1",
+      "rel_url": "armv9-a/zero_1/",
+      "operands": [],
+      "linked_summary": "Zero a list of 64-<a href=\"../../armv8-a/bit/\">bit</a> element tiles",
+      "linked_pseudocode": "if !HaveSME() then UNDEFINED;\nCheckSMEEnabled();\n// Clear specified ZA tiles to <a href=\"../../armv9-a/zero_2/\">zero</a>"
+    },
+    {
+      "mnemonic": "LDR (Tile)",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Load Multiple Vectors to Tile",
+      "syntax": "LDR ZA[&lt;Wv&gt;, &lt;imm&gt;], [Xn, #&lt;imm&gt;, MUL VL]",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Load data from memory directly into ZA Matrix Tile",
+      "encoding": {
+        "hex_opcode": "E1000000",
+        "pattern": "11100001000000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "11100001000000000000000000000000",
+            "clean": "11100001000000000000000000000000"
+          }
+        ],
+        "binary_pattern": "11100001000000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveSME() then UNDEFINED;\n// Load data from memory directly into ZA Matrix Tile</code></pre>",
+      "slug": "ldr_(tile)",
+      "rel_url": "armv9-a/ldr_(tile)/",
+      "operands": [],
+      "linked_summary": "Load Multiple Vectors to Tile",
+      "linked_pseudocode": "if !HaveSME() then UNDEFINED;\n// Load data from memory directly into ZA Matrix Tile"
+    },
+    {
+      "mnemonic": "STR (Tile)",
+      "architecture": "ARMv9-A",
+      "extension": "SME",
+      "summary": "Store Multiple Vectors from Tile",
+      "syntax": "STR ZA[&lt;Wv&gt;, &lt;imm&gt;], [Xn, #&lt;imm&gt;, MUL VL]",
+      "pseudocode": "if !HaveSME() then UNDEFINED;\n// Store data from ZA Matrix Tile to memory",
+      "encoding": {
+        "hex_opcode": "E1200000",
+        "pattern": "11100001001000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "11100001001000000000000000000000",
+            "clean": "11100001001000000000000000000000"
+          }
+        ],
+        "binary_pattern": "11100001001000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveSME() then UNDEFINED;\n// Store data from ZA Matrix Tile to memory</code></pre>",
+      "slug": "str_(tile)",
+      "rel_url": "armv9-a/str_(tile)/",
+      "operands": [],
+      "linked_summary": "Store Multiple Vectors from Tile",
+      "linked_pseudocode": "if !HaveSME() then UNDEFINED;\n// Store data from ZA Matrix Tile to memory"
+    },
+    {
+      "mnemonic": "IRG",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Insert Random Tag",
+      "syntax": "IRG Xd, Xn, {Xm}",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Inserts a random Logical Address Tag into Xd",
+      "encoding": {
+        "hex_opcode": "9AC01000",
+        "pattern": "10011010110000000001000000000000",
+        "visual_parts": [
+          {
+            "raw": "10011010110000000001000000000000",
+            "clean": "10011010110000000001000000000000"
+          }
+        ],
+        "binary_pattern": "10011010110000000001000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveMTE() then UNDEFINED;\n// Inserts a random Logical Address Tag into Xd</code></pre>",
+      "slug": "irg",
+      "rel_url": "armv9-a/irg/",
+      "operands": [],
+      "linked_summary": "Insert Random Tag",
+      "linked_pseudocode": "if !HaveMTE() then UNDEFINED;\n// Inserts a random Logical Address Tag into Xd"
+    },
+    {
+      "mnemonic": "GMI",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Tag Mask Insert",
+      "syntax": "GMI Xd, Xn, Xm",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Manipulate excluded tags for IRG generation",
+      "encoding": {
+        "hex_opcode": "9AC01001",
+        "pattern": "10011010110000000001000000000001",
+        "visual_parts": [
+          {
+            "raw": "10011010110000000001000000000001",
+            "clean": "10011010110000000001000000000001"
+          }
+        ],
+        "binary_pattern": "10011010110000000001000000000001"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveMTE() then UNDEFINED;\n// Manipulate excluded tags for IRG generation</code></pre>",
+      "slug": "gmi",
+      "rel_url": "armv9-a/gmi/",
+      "operands": [],
+      "linked_summary": "Tag Mask Insert",
+      "linked_pseudocode": "if !HaveMTE() then UNDEFINED;\n// Manipulate excluded tags for <a href=\"../../armv9-a/irg/\">IRG</a> generation"
+    },
+    {
+      "mnemonic": "LDG",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Load Allocation Tag",
+      "syntax": "LDG Xt, [Xn, #&lt;simm&gt;]",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Load the Allocation Tag from memory corresponding to the address",
+      "encoding": {
+        "hex_opcode": "D9600000",
+        "pattern": "11011001011000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "11011001011000000000000000000000",
+            "clean": "11011001011000000000000000000000"
+          }
+        ],
+        "binary_pattern": "11011001011000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveMTE() then UNDEFINED;\n// Load the Allocation Tag from memory corresponding to the address</code></pre>",
+      "slug": "ldg",
+      "rel_url": "armv9-a/ldg/",
+      "operands": [],
+      "linked_summary": "Load Allocation Tag",
+      "linked_pseudocode": "if !HaveMTE() then UNDEFINED;\n// Load the Allocation Tag from memory corresponding to the address"
+    },
+    {
+      "mnemonic": "STG",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Store Allocation Tag",
+      "syntax": "STG Xt, [Xn, #&lt;simm&gt;]",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Writes the Allocation Tag to granule memory",
+      "encoding": {
+        "hex_opcode": "D9200000",
+        "pattern": "11011001001000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "11011001001000000000000000000000",
+            "clean": "11011001001000000000000000000000"
+          }
+        ],
+        "binary_pattern": "11011001001000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveMTE() then UNDEFINED;\n// Writes the Allocation Tag to granule memory</code></pre>",
+      "slug": "stg",
+      "rel_url": "armv9-a/stg/",
+      "operands": [],
+      "linked_summary": "Store Allocation Tag",
+      "linked_pseudocode": "if !HaveMTE() then UNDEFINED;\n// Writes the Allocation Tag to granule memory"
+    },
+    {
+      "mnemonic": "STZ2G",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Store Zero and Two Allocation Tags",
+      "syntax": "STZ2G Xt, [Xn, #&lt;simm&gt;]",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Zeroes memory and writes tags for two granules",
+      "encoding": {
+        "hex_opcode": "D9200400",
+        "pattern": "11011001001000000000010000000000",
+        "visual_parts": [
+          {
+            "raw": "11011001001000000000010000000000",
+            "clean": "11011001001000000000010000000000"
+          }
+        ],
+        "binary_pattern": "11011001001000000000010000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveMTE() then UNDEFINED;\n// Zeroes memory and writes tags for two granules</code></pre>",
+      "slug": "stz2g",
+      "rel_url": "armv9-a/stz2g/",
+      "operands": [],
+      "linked_summary": "Store Zero <a href=\"../../armv8-a/and_6/\">and</a> Two Allocation Tags",
+      "linked_pseudocode": "if !HaveMTE() then UNDEFINED;\n// Zeroes memory <a href=\"../../armv8-a/and_6/\">and</a> writes tags for two granules"
+    },
+    {
+      "mnemonic": "SUBP",
+      "architecture": "ARMv9-A",
+      "extension": "MTE",
+      "summary": "Subtract Pointer",
+      "syntax": "SUBP Xd, Xn, Xm",
+      "pseudocode": "if !HaveMTE() then UNDEFINED;\n// Subtracts addresses ignoring the tags",
+      "encoding": {
+        "hex_opcode": "9AC00000",
+        "pattern": "10011010110000000000000000000000",
+        "visual_parts": [
+          {
+            "raw": "10011010110000000000000000000000",
+            "clean": "10011010110000000000000000000000"
+          }
+        ],
+        "binary_pattern": "10011010110000000000000000000000"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveMTE() then UNDEFINED;\n// Subtracts addresses ignoring the tags</code></pre>",
+      "slug": "subp",
+      "rel_url": "armv9-a/subp/",
+      "operands": [],
+      "linked_summary": "Subtract Pointer",
+      "linked_pseudocode": "if !HaveMTE() then UNDEFINED;\n// Subtracts addresses ignoring the tags"
+    },
+    {
+      "mnemonic": "TSTART",
+      "architecture": "ARMv9-A",
+      "extension": "TME",
+      "summary": "Transaction Start",
+      "syntax": "TSTART Xd",
+      "pseudocode": "if !HaveTME() then UNDEFINED;\n// Starts a new transaction. Returns 0 on success.",
+      "encoding": {
+        "hex_opcode": "D503305F",
+        "pattern": "11010101000000110011000001011111",
+        "visual_parts": [
+          {
+            "raw": "11010101000000110011000001011111",
+            "clean": "11010101000000110011000001011111"
+          }
+        ],
+        "binary_pattern": "11010101000000110011000001011111"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveTME() then UNDEFINED;\n// Starts a new transaction. Returns 0 on success.</code></pre>",
+      "slug": "tstart_1",
+      "rel_url": "armv9-a/tstart_1/",
+      "operands": [],
+      "linked_summary": "Transaction Start",
+      "linked_pseudocode": "if !HaveTME() then UNDEFINED;\n// Starts a new transaction. Returns 0 on success."
+    },
+    {
+      "mnemonic": "TCOMMIT",
+      "architecture": "ARMv9-A",
+      "extension": "TME",
+      "summary": "Transaction Commit",
+      "syntax": "TCOMMIT",
+      "pseudocode": "if !HaveTME() then UNDEFINED;\n// Commits the current transaction",
+      "encoding": {
+        "hex_opcode": "D503309F",
+        "pattern": "11010101000000110011000010011111",
+        "visual_parts": [
+          {
+            "raw": "11010101000000110011000010011111",
+            "clean": "11010101000000110011000010011111"
+          }
+        ],
+        "binary_pattern": "11010101000000110011000010011111"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveTME() then UNDEFINED;\n// Commits the current transaction</code></pre>",
+      "slug": "tcommit_1",
+      "rel_url": "armv9-a/tcommit_1/",
+      "operands": [],
+      "linked_summary": "Transaction Commit",
+      "linked_pseudocode": "if !HaveTME() then UNDEFINED;\n// Commits the current transaction"
+    },
+    {
+      "mnemonic": "TCANCEL",
+      "architecture": "ARMv9-A",
+      "extension": "TME",
+      "summary": "Transaction Cancel",
+      "syntax": "TCANCEL #&lt;imm&gt;",
+      "pseudocode": "if !HaveTME() then UNDEFINED;\n// Cancels the current transaction and reverts state",
+      "encoding": {
+        "hex_opcode": "D50330DF",
+        "pattern": "11010101000000110011000011011111",
+        "visual_parts": [
+          {
+            "raw": "11010101000000110011000011011111",
+            "clean": "11010101000000110011000011011111"
+          }
+        ],
+        "binary_pattern": "11010101000000110011000011011111"
+      },
+      "pseudocode_html": "<pre><code class=\"language-clike\">if !HaveTME() then UNDEFINED;\n// Cancels the current transaction and reverts state</code></pre>",
+      "slug": "tcancel_1",
+      "rel_url": "armv9-a/tcancel_1/",
+      "operands": [],
+      "linked_summary": "Transaction Cancel",
+      "linked_pseudocode": "if !HaveTME() then UNDEFINED;\n// Cancels the current transaction <a href=\"../../armv8-a/and_6/\">and</a> reverts state"
+    },
+    {
       "mnemonic": "histcnt",
       "architecture": "ARMv9-A",
       "full_name": "Histogram Count (SVE2)",
@@ -3532,8 +3907,8 @@
         }
       ],
       "extension": "SME2",
-      "slug": "smopa",
-      "rel_url": "armv9-a/smopa/",
+      "slug": "smopa_1",
+      "rel_url": "armv9-a/smopa_1/",
       "linked_summary": "Non-widening signed integer outer product (SME2).",
       "linked_pseudocode": ""
     },
@@ -3654,8 +4029,8 @@
         }
       ],
       "extension": "SME2",
-      "slug": "sumopa",
-      "rel_url": "armv9-a/sumopa/",
+      "slug": "sumopa_1",
+      "rel_url": "armv9-a/sumopa_1/",
       "linked_summary": "Outer product of Signed x Unsigned integers (SME2).",
       "linked_pseudocode": ""
     },
@@ -5906,8 +6281,8 @@
         }
       ],
       "extension": "SME (Matrix)",
-      "slug": "zero_1",
-      "rel_url": "armv9-a/zero_1/",
+      "slug": "zero_2",
+      "rel_url": "armv9-a/zero_2/",
       "linked_summary": "Zeros the entire ZA matrix array <a href=\"../../powerisa/or/\">or</a> specific tiles.",
       "linked_pseudocode": ""
     },
@@ -6186,8 +6561,8 @@
         }
       ],
       "extension": "SME (Matrix)",
-      "slug": "smopa_1",
-      "rel_url": "armv9-a/smopa_1/",
+      "slug": "smopa_2",
+      "rel_url": "armv9-a/smopa_2/",
       "linked_summary": "Computes outer product for signed integers.",
       "linked_pseudocode": ""
     },
@@ -7694,8 +8069,8 @@
         }
       ],
       "extension": "SME",
-      "slug": "mova",
-      "rel_url": "armv9-a/mova/",
+      "slug": "mova_1",
+      "rel_url": "armv9-a/mova_1/",
       "linked_summary": "Moves an SVE vector into a horizontal slice of a ZA tile.",
       "linked_pseudocode": ""
     },
@@ -7751,8 +8126,8 @@
         }
       ],
       "extension": "SME",
-      "slug": "mova_1",
-      "rel_url": "armv9-a/mova_1/",
+      "slug": "mova_2",
+      "rel_url": "armv9-a/mova_2/",
       "linked_summary": "Moves an SVE vector into a vertical slice of a ZA tile.",
       "linked_pseudocode": ""
     },
@@ -7808,8 +8183,8 @@
         }
       ],
       "extension": "SME",
-      "slug": "mova_2",
-      "rel_url": "armv9-a/mova_2/",
+      "slug": "mova_3",
+      "rel_url": "armv9-a/mova_3/",
       "linked_summary": "Moves a horizontal slice of a ZA tile into an SVE vector.",
       "linked_pseudocode": ""
     },
@@ -7865,8 +8240,8 @@
         }
       ],
       "extension": "SME",
-      "slug": "mova_3",
-      "rel_url": "armv9-a/mova_3/",
+      "slug": "mova_4",
+      "rel_url": "armv9-a/mova_4/",
       "linked_summary": "Moves a vertical slice of a ZA tile into an SVE vector.",
       "linked_pseudocode": ""
     },
