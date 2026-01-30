@@ -1,0 +1,499 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vpmovb2m",
+      "architecture": "x86",
+      "full_name": "Move Byte Mask to Mask Register",
+      "summary": "Moves byte integer mask from ZMM to k-register.",
+      "syntax": "VPMOVB2M k1, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 29" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpmovw2m",
+      "architecture": "x86",
+      "full_name": "Move Word Mask to Mask Register",
+      "summary": "Moves word integer mask from ZMM to k-register.",
+      "syntax": "VPMOVW2M k1, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 29" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpmovd2m",
+      "architecture": "x86",
+      "full_name": "Move Doubleword Mask to Mask Register",
+      "summary": "Moves doubleword integer mask from ZMM to k-register.",
+      "syntax": "VPMOVD2M k1, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 39" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "vpmovq2m",
+      "architecture": "x86",
+      "full_name": "Move Quadword Mask to Mask Register",
+      "summary": "Moves quadword integer mask from ZMM to k-register.",
+      "syntax": "VPMOVQ2M k1, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 39" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "vpmovm2b",
+      "architecture": "x86",
+      "full_name": "Move Mask Register to Byte Mask",
+      "summary": "Expands k-register bits to byte elements in ZMM.",
+      "syntax": "VPMOVM2B zmm1, k1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 28" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpmovm2w",
+      "architecture": "x86",
+      "full_name": "Move Mask Register to Word Mask",
+      "summary": "Expands k-register bits to word elements in ZMM.",
+      "syntax": "VPMOVM2W zmm1, k1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 28" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpmovm2d",
+      "architecture": "x86",
+      "full_name": "Move Mask Register to Doubleword Mask",
+      "summary": "Expands k-register bits to doubleword elements in ZMM.",
+      "syntax": "VPMOVM2D zmm1, k1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 38" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "vpmovm2q",
+      "architecture": "x86",
+      "full_name": "Move Mask Register to Quadword Mask",
+      "summary": "Expands k-register bits to quadword elements in ZMM.",
+      "syntax": "VPMOVM2Q zmm1, k1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 38" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "kshiftrb",
+      "architecture": "x86",
+      "full_name": "Shift Right Mask Byte",
+      "summary": "Logically shifts 8-bit mask right.",
+      "syntax": "KSHIFTRB k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 30" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "kshiftrw",
+      "architecture": "x86",
+      "full_name": "Shift Right Mask Word",
+      "summary": "Logically shifts 16-bit mask right.",
+      "syntax": "KSHIFTRW k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 32" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "kshiftrd",
+      "architecture": "x86",
+      "full_name": "Shift Right Mask Doubleword",
+      "summary": "Logically shifts 32-bit mask right.",
+      "syntax": "KSHIFTRD k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 34" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kshiftrq",
+      "architecture": "x86",
+      "full_name": "Shift Right Mask Quadword",
+      "summary": "Logically shifts 64-bit mask right.",
+      "syntax": "KSHIFTRQ k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 36" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kshiftlb",
+      "architecture": "x86",
+      "full_name": "Shift Left Mask Byte",
+      "summary": "Logically shifts 8-bit mask left.",
+      "syntax": "KSHIFTLB k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 31" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "kshiftlw",
+      "architecture": "x86",
+      "full_name": "Shift Left Mask Word",
+      "summary": "Logically shifts 16-bit mask left.",
+      "syntax": "KSHIFTLW k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 33" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "kshiftld",
+      "architecture": "x86",
+      "full_name": "Shift Left Mask Doubleword",
+      "summary": "Logically shifts 32-bit mask left.",
+      "syntax": "KSHIFTLD k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 35" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kshiftlq",
+      "architecture": "x86",
+      "full_name": "Shift Left Mask Quadword",
+      "summary": "Logically shifts 64-bit mask left.",
+      "syntax": "KSHIFTLQ k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 37" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "knotb",
+      "architecture": "x86",
+      "full_name": "NOT Mask Byte",
+      "summary": "Bitwise NOT of 8-bit mask.",
+      "syntax": "KNOTB k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 44" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "knotd",
+      "architecture": "x86",
+      "full_name": "NOT Mask Doubleword",
+      "summary": "Bitwise NOT of 32-bit mask.",
+      "syntax": "KNOTD k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 44" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "korb",
+      "architecture": "x86",
+      "full_name": "OR Mask Byte",
+      "summary": "Bitwise OR of 8-bit masks.",
+      "syntax": "KORB k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 45" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "kord",
+      "architecture": "x86",
+      "full_name": "OR Mask Doubleword",
+      "summary": "Bitwise OR of 32-bit masks.",
+      "syntax": "KORD k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 45" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kxorq",
+      "architecture": "x86",
+      "full_name": "XOR Mask Quadword",
+      "summary": "Bitwise XOR of 64-bit masks.",
+      "syntax": "KXORQ k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 47" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kxord",
+      "architecture": "x86",
+      "full_name": "XOR Mask Doubleword",
+      "summary": "Bitwise XOR of 32-bit masks.",
+      "syntax": "KXORD k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 47" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kxorb",
+      "architecture": "x86",
+      "full_name": "XOR Mask Byte",
+      "summary": "Bitwise XOR of 8-bit masks.",
+      "syntax": "KXORB k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 47" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "kortestb",
+      "architecture": "x86",
+      "full_name": "OR Masks and Set Flags Byte",
+      "summary": "ORs 8-bit masks and sets EFLAGS (ZF/CF).",
+      "syntax": "KORTESTB k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 98" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "kortestq",
+      "architecture": "x86",
+      "full_name": "OR Masks and Set Flags Quadword",
+      "summary": "ORs 64-bit masks and sets EFLAGS (ZF/CF).",
+      "syntax": "KORTESTQ k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 98" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "ktestb",
+      "architecture": "x86",
+      "full_name": "Test Masks Byte",
+      "summary": "ANDs 8-bit masks and sets EFLAGS (ZF/CF).",
+      "syntax": "KTESTB k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 99" },
+      "extension": "AVX-512DQ"
+    },
+    {
+      "mnemonic": "ktestw",
+      "architecture": "x86",
+      "full_name": "Test Masks Word",
+      "summary": "ANDs 16-bit masks and sets EFLAGS (ZF/CF).",
+      "syntax": "KTESTW k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 99" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "ktestd",
+      "architecture": "x86",
+      "full_name": "Test Masks Doubleword",
+      "summary": "ANDs 32-bit masks and sets EFLAGS (ZF/CF).",
+      "syntax": "KTESTD k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 99" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "ktestq",
+      "architecture": "x86",
+      "full_name": "Test Masks Quadword",
+      "summary": "ANDs 64-bit masks and sets EFLAGS (ZF/CF).",
+      "syntax": "KTESTQ k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 99" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vcvtudq2pd",
+      "architecture": "x86",
+      "full_name": "Convert Packed Unsigned Doubleword to Double",
+      "summary": "Converts unsigned 32-bit integers to 64-bit doubles.",
+      "syntax": "VCVTUDQ2PD zmm1 {k1}, ymm2/m256",
+      "encoding": { "format": "EVEX", "hex_opcode": "F3 0F 7A" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcvtpd2udq",
+      "architecture": "x86",
+      "full_name": "Convert Packed Double to Unsigned Doubleword",
+      "summary": "Converts 64-bit doubles to unsigned 32-bit integers.",
+      "syntax": "VCVTPD2UDQ ymm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 79" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcvtps2udq",
+      "architecture": "x86",
+      "full_name": "Convert Packed Single to Unsigned Doubleword",
+      "summary": "Converts 32-bit floats to unsigned 32-bit integers.",
+      "syntax": "VCVTPS2UDQ zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 79" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcvtuq2ps",
+      "architecture": "x86",
+      "full_name": "Convert Packed Unsigned Quadword to Single",
+      "summary": "Converts unsigned 64-bit integers to 32-bit floats.",
+      "syntax": "VCVTUQ2PS ymm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "F2 0F 7A" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcvtuq2pd",
+      "architecture": "x86",
+      "full_name": "Convert Packed Unsigned Quadword to Double",
+      "summary": "Converts unsigned 64-bit integers to 64-bit doubles.",
+      "syntax": "VCVTUQ2PD zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "F3 0F 7A" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcvtps2uq",
+      "architecture": "x86",
+      "full_name": "Convert Packed Single to Unsigned Quadword",
+      "summary": "Converts 32-bit floats to unsigned 64-bit integers.",
+      "syntax": "VCVTPS2UQ zmm1 {k1}, ymm2/m256",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 79" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vcvtpd2uq",
+      "architecture": "x86",
+      "full_name": "Convert Packed Double to Unsigned Quadword",
+      "summary": "Converts 64-bit doubles to unsigned 64-bit integers.",
+      "syntax": "VCVTPD2UQ zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 79" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vfmaddcph",
+      "architecture": "x86",
+      "full_name": "Complex Multiply-Add FP16",
+      "summary": "Complex multiply-add for half-precision.",
+      "syntax": "VFMADDCPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F6 ... 56" },
+      "extension": "AVX-512-FP16"
+    },
+    {
+      "mnemonic": "vfcmaddcph",
+      "architecture": "x86",
+      "full_name": "Complex Conjugate Multiply-Add FP16",
+      "summary": "Complex conjugate multiply-add for half-precision.",
+      "syntax": "VFCMADDCPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F6 ... 57" },
+      "extension": "AVX-512-FP16"
+    },
+    {
+      "mnemonic": "vfmaddcsh",
+      "architecture": "x86",
+      "full_name": "Complex Multiply-Add Scalar FP16",
+      "summary": "Complex multiply-add for scalar half-precision.",
+      "syntax": "VFMADDCSH xmm1 {k1}, xmm2, xmm3/m32",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F6 ... 57" },
+      "extension": "AVX-512-FP16"
+    },
+    {
+      "mnemonic": "vcmpps",
+      "architecture": "x86",
+      "full_name": "Compare Packed Single-Precision (AVX)",
+      "summary": "Compares packed floats (AVX version with immediate).",
+      "syntax": "VCMPPS ymm1, ymm2, ymm3/m256, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 ... C2" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vcmppd",
+      "architecture": "x86",
+      "full_name": "Compare Packed Double-Precision (AVX)",
+      "summary": "Compares packed doubles (AVX version with immediate).",
+      "syntax": "VCMPPD ymm1, ymm2, ymm3/m256, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "C5 ... C2" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vpcmpb",
+      "architecture": "x86",
+      "full_name": "Compare Packed Byte Integers",
+      "summary": "Compares bytes and stores result in k-register mask.",
+      "syntax": "VPCMPB k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 3F" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpcmpw",
+      "architecture": "x86",
+      "full_name": "Compare Packed Word Integers",
+      "summary": "Compares words and stores result in k-register mask.",
+      "syntax": "VPCMPW k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 3F" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpcmpd",
+      "architecture": "x86",
+      "full_name": "Compare Packed Doubleword Integers",
+      "summary": "Compares doublewords and stores result in k-register mask.",
+      "syntax": "VPCMPD k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 1F" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpcmpq",
+      "architecture": "x86",
+      "full_name": "Compare Packed Quadword Integers",
+      "summary": "Compares quadwords and stores result in k-register mask.",
+      "syntax": "VPCMPQ k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 1F" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpcmpub",
+      "architecture": "x86",
+      "full_name": "Compare Packed Unsigned Byte Integers",
+      "summary": "Compares unsigned bytes and stores result in k-register.",
+      "syntax": "VPCMPUB k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 3E" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpcmpuw",
+      "architecture": "x86",
+      "full_name": "Compare Packed Unsigned Word Integers",
+      "summary": "Compares unsigned words and stores result in k-register.",
+      "syntax": "VPCMPUW k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 3E" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpcmpud",
+      "architecture": "x86",
+      "full_name": "Compare Packed Unsigned Doubleword Integers",
+      "summary": "Compares unsigned doublewords and stores result in k-register.",
+      "syntax": "VPCMPUD k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 1E" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpcmpuq",
+      "architecture": "x86",
+      "full_name": "Compare Packed Unsigned Quadword Integers",
+      "summary": "Compares unsigned quadwords and stores result in k-register.",
+      "syntax": "VPCMPUQ k1 {k2}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F3 ... 1E" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vptestmb",
+      "architecture": "x86",
+      "full_name": "Packed Test Mask Byte",
+      "summary": "Tests byte integers and sets k-register mask.",
+      "syntax": "VPTESTMB k1 {k2}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 26" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vptestmw",
+      "architecture": "x86",
+      "full_name": "Packed Test Mask Word",
+      "summary": "Tests word integers and sets k-register mask.",
+      "syntax": "VPTESTMW k1 {k2}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 26" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vptestmd",
+      "architecture": "x86",
+      "full_name": "Packed Test Mask Doubleword",
+      "summary": "Tests doubleword integers and sets k-register mask.",
+      "syntax": "VPTESTMD k1 {k2}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 27" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vptestmq",
+      "architecture": "x86",
+      "full_name": "Packed Test Mask Quadword",
+      "summary": "Tests quadword integers and sets k-register mask.",
+      "syntax": "VPTESTMQ k1 {k2}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 27" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "monitorx",
+      "architecture": "x86",
+      "full_name": "Monitor Extended",
+      "summary": "Sets up a monitor address (AMD extension).",
+      "syntax": "MONITORX",
+      "encoding": { "format": "AMD", "hex_opcode": "0F 01 FA" },
+      "extension": "AMD"
+    },
+    {
+      "mnemonic": "mwaitx",
+      "architecture": "x86",
+      "full_name": "Monitor Wait Extended",
+      "summary": "Waits for a write to monitored address (AMD extension).",
+      "syntax": "MWAITX",
+      "encoding": { "format": "AMD", "hex_opcode": "0F 01 FB" },
+      "extension": "AMD"
+    }
+  ]
+}

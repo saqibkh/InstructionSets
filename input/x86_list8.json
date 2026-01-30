@@ -1,0 +1,490 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "cvtsq2ss",
+      "architecture": "x86",
+      "full_name": "Convert Signed Quadword Integer to Scalar Single-Precision",
+      "summary": "Converts 64-bit integer to float.",
+      "syntax": "CVTSQ2SS xmm1, r/m64",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 2A" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "cvtsq2sd",
+      "architecture": "x86",
+      "full_name": "Convert Signed Quadword Integer to Scalar Double-Precision",
+      "summary": "Converts 64-bit integer to double.",
+      "syntax": "CVTSQ2SD xmm1, r/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 2A" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "cvtss2sq",
+      "architecture": "x86",
+      "full_name": "Convert Scalar Single-Precision to Signed Quadword Integer",
+      "summary": "Converts float to 64-bit integer (Rounded).",
+      "syntax": "CVTSS2SQ r64, xmm/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 2D" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "cvtsd2sq",
+      "architecture": "x86",
+      "full_name": "Convert Scalar Double-Precision to Signed Quadword Integer",
+      "summary": "Converts double to 64-bit integer (Rounded).",
+      "syntax": "CVTSD2SQ r64, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 2D" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "cvttss2sq",
+      "architecture": "x86",
+      "full_name": "Convert with Truncation Scalar Single-Precision to Signed Quadword Integer",
+      "summary": "Converts float to 64-bit integer (Truncated).",
+      "syntax": "CVTTSS2SQ r64, xmm/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 2C" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "cvttsd2sq",
+      "architecture": "x86",
+      "full_name": "Convert with Truncation Scalar Double-Precision to Signed Quadword Integer",
+      "summary": "Converts double to 64-bit integer (Truncated).",
+      "syntax": "CVTTSD2SQ r64, xmm/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 2C" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "haddpd",
+      "architecture": "x86",
+      "full_name": "Horizontal Add Packed Double-Precision",
+      "summary": "Adds adjacent double-precision elements horizontally.",
+      "syntax": "HADDPD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "66 0F 7C" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "hsubps",
+      "architecture": "x86",
+      "full_name": "Horizontal Subtract Packed Single-Precision",
+      "summary": "Subtracts adjacent single-precision elements horizontally.",
+      "syntax": "HSUBPS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F 7D" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "hsubpd",
+      "architecture": "x86",
+      "full_name": "Horizontal Subtract Packed Double-Precision",
+      "summary": "Subtracts adjacent double-precision elements horizontally.",
+      "syntax": "HSUBPD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "66 0F 7D" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "addsubpd",
+      "architecture": "x86",
+      "full_name": "Packed Double-FP Add/Subtract",
+      "summary": "Adds odd elements, subtracts even elements (Double).",
+      "syntax": "ADDSUBPD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "66 0F D0" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "vpermi2q",
+      "architecture": "x86",
+      "full_name": "Permute Two-Source Quadwords",
+      "summary": "Shuffles quadwords from two ZMM registers into destination.",
+      "syntax": "VPERMI2Q zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 76" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpermt2q",
+      "architecture": "x86",
+      "full_name": "Permute Two-Source Quadwords (Overwrite)",
+      "summary": "Shuffles 2 sources, overwriting the index register (Quadword).",
+      "syntax": "VPERMT2Q zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 7F" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpsllvd",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Left Logical Doubleword",
+      "summary": "Shifts doublewords left by individual counts.",
+      "syntax": "VPSLLVD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 47" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsllvq",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Left Logical Quadword",
+      "summary": "Shifts quadwords left by individual counts.",
+      "syntax": "VPSLLVQ ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 47" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsravd",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Right Arithmetic Doubleword",
+      "summary": "Shifts doublewords right arithmetic by individual counts.",
+      "syntax": "VPSRAVD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 46" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsravq",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Right Arithmetic Quadword",
+      "summary": "Shifts quadwords right arithmetic by individual counts.",
+      "syntax": "VPSRAVQ zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 46" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpsrlvd",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Right Logical Doubleword",
+      "summary": "Shifts doublewords right logical by individual counts.",
+      "syntax": "VPSRLVD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 45" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsrlvq",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Right Logical Quadword",
+      "summary": "Shifts quadwords right logical by individual counts.",
+      "syntax": "VPSRLVQ ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 45" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "pminsb",
+      "architecture": "x86",
+      "full_name": "Minimum of Packed Signed Byte Integers",
+      "summary": "Returns minimum of signed bytes.",
+      "syntax": "PMINSB xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 38" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pmaxsb",
+      "architecture": "x86",
+      "full_name": "Maximum of Packed Signed Byte Integers",
+      "summary": "Returns maximum of signed bytes.",
+      "syntax": "PMAXSB xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 3C" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pminuw",
+      "architecture": "x86",
+      "full_name": "Minimum of Packed Unsigned Word Integers",
+      "summary": "Returns minimum of unsigned words.",
+      "syntax": "PMINUW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 3A" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pmaxuw",
+      "architecture": "x86",
+      "full_name": "Maximum of Packed Unsigned Word Integers",
+      "summary": "Returns maximum of unsigned words.",
+      "syntax": "PMAXUW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 3E" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pminud",
+      "architecture": "x86",
+      "full_name": "Minimum of Packed Unsigned Doubleword Integers",
+      "summary": "Returns minimum of unsigned doublewords.",
+      "syntax": "PMINUD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 3B" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pmaxud",
+      "architecture": "x86",
+      "full_name": "Maximum of Packed Unsigned Doubleword Integers",
+      "summary": "Returns maximum of unsigned doublewords.",
+      "syntax": "PMAXUD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 3F" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pminsd",
+      "architecture": "x86",
+      "full_name": "Minimum of Packed Signed Doubleword Integers",
+      "summary": "Returns minimum of signed doublewords.",
+      "syntax": "PMINSD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 39" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pmaxsd",
+      "architecture": "x86",
+      "full_name": "Maximum of Packed Signed Doubleword Integers",
+      "summary": "Returns maximum of signed doublewords.",
+      "syntax": "PMAXSD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 3D" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pinsrd",
+      "architecture": "x86",
+      "full_name": "Packed Insert Doubleword",
+      "summary": "Inserts a doubleword from register to XMM.",
+      "syntax": "PINSRD xmm1, r32/m32, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 22" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pinsrq",
+      "architecture": "x86",
+      "full_name": "Packed Insert Quadword",
+      "summary": "Inserts a quadword from register to XMM.",
+      "syntax": "PINSRQ xmm1, r64/m64, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 22" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pextrd",
+      "architecture": "x86",
+      "full_name": "Packed Extract Doubleword",
+      "summary": "Extracts a doubleword from XMM to register.",
+      "syntax": "PEXTRD r32/m32, xmm1, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 16" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pextrq",
+      "architecture": "x86",
+      "full_name": "Packed Extract Quadword",
+      "summary": "Extracts a quadword from XMM to register.",
+      "syntax": "PEXTRQ r64/m64, xmm1, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 16" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "movntdqa",
+      "architecture": "x86",
+      "full_name": "Load Double Quadword Non-Temporal Aligned",
+      "summary": "Efficiently loads 128-bits from WC memory (Streaming Load).",
+      "syntax": "MOVNTDQA xmm1, m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 2A" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pcmpgtq",
+      "architecture": "x86",
+      "full_name": "Packed Compare Greater Than Quadword",
+      "summary": "Compares quadwords for greater than (signed).",
+      "syntax": "PCMPGTQ xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "66 0F 38 37" },
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "packusdw",
+      "architecture": "x86",
+      "full_name": "Pack with Unsigned Saturation Doubleword to Word",
+      "summary": "Converts signed dwords to unsigned words with saturation.",
+      "syntax": "PACKUSDW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 2B" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "sets",
+      "architecture": "x86",
+      "full_name": "Set Byte on Sign",
+      "summary": "Sets byte to 1 if SF=1 (Negative).",
+      "syntax": "SETS r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 98" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setns",
+      "architecture": "x86",
+      "full_name": "Set Byte on Not Sign",
+      "summary": "Sets byte to 1 if SF=0 (Positive).",
+      "syntax": "SETNS r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 99" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setp",
+      "architecture": "x86",
+      "full_name": "Set Byte on Parity",
+      "summary": "Sets byte to 1 if PF=1 (Even Parity).",
+      "syntax": "SETP r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 9A" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setnp",
+      "architecture": "x86",
+      "full_name": "Set Byte on Not Parity",
+      "summary": "Sets byte to 1 if PF=0 (Odd Parity).",
+      "syntax": "SETNP r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 9B" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setl",
+      "architecture": "x86",
+      "full_name": "Set Byte on Less",
+      "summary": "Sets byte to 1 if SF!=OF.",
+      "syntax": "SETL r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 9C" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setle",
+      "architecture": "x86",
+      "full_name": "Set Byte on Less or Equal",
+      "summary": "Sets byte to 1 if ZF=1 or SF!=OF.",
+      "syntax": "SETLE r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 9E" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setg",
+      "architecture": "x86",
+      "full_name": "Set Byte on Greater",
+      "summary": "Sets byte to 1 if ZF=0 and SF=OF.",
+      "syntax": "SETG r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 9F" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setge",
+      "architecture": "x86",
+      "full_name": "Set Byte on Greater or Equal",
+      "summary": "Sets byte to 1 if SF=OF.",
+      "syntax": "SETGE r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 9D" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setb",
+      "architecture": "x86",
+      "full_name": "Set Byte on Below",
+      "summary": "Sets byte to 1 if CF=1.",
+      "syntax": "SETB r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 92" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setbe",
+      "architecture": "x86",
+      "full_name": "Set Byte on Below or Equal",
+      "summary": "Sets byte to 1 if CF=1 or ZF=1.",
+      "syntax": "SETBE r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 96" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "seta",
+      "architecture": "x86",
+      "full_name": "Set Byte on Above",
+      "summary": "Sets byte to 1 if CF=0 and ZF=0.",
+      "syntax": "SETA r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 97" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setae",
+      "architecture": "x86",
+      "full_name": "Set Byte on Above or Equal",
+      "summary": "Sets byte to 1 if CF=0.",
+      "syntax": "SETAE r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 93" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "kunpckwd",
+      "architecture": "x86",
+      "full_name": "Unpack and Interleave Masks Word to Doubleword",
+      "summary": "Interleaves 16-bit masks into 32-bit mask.",
+      "syntax": "KUNPCKWD k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 4B" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "kunpckdq",
+      "architecture": "x86",
+      "full_name": "Unpack and Interleave Masks Doubleword to Quadword",
+      "summary": "Interleaves 32-bit masks into 64-bit mask.",
+      "syntax": "KUNPCKDQ k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 4B" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpconflictq",
+      "architecture": "x86",
+      "full_name": "Detect Conflicts Within a Vector of Packed Quadword Values",
+      "summary": "Detects duplicate values in a quadword vector.",
+      "syntax": "VPCONFLICTQ zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 C4" },
+      "extension": "AVX-512CD"
+    },
+    {
+      "mnemonic": "vplzcntq",
+      "architecture": "x86",
+      "full_name": "Count Leading Zero Bits Quadword",
+      "summary": "Counts leading zeros for each quadword element.",
+      "syntax": "VPLZCNTQ zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 44" },
+      "extension": "AVX-512CD"
+    },
+    {
+      "mnemonic": "vpermw",
+      "architecture": "x86",
+      "full_name": "Permute Word Integers",
+      "summary": "Full permutation of 32 words using indices.",
+      "syntax": "VPERMW zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 8D" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpermq",
+      "architecture": "x86",
+      "full_name": "Permute Quadword Integers",
+      "summary": "Shuffles quadwords within 256-bit lanes using immediate.",
+      "syntax": "VPERMQ ymm1, ymm2/m256, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 3A 00" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vprolvq",
+      "architecture": "x86",
+      "full_name": "Rotate Left Quadword Variable",
+      "summary": "Rotates quadwords left by amounts in second vector.",
+      "syntax": "VPROLVQ zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 15" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vprorvd",
+      "architecture": "x86",
+      "full_name": "Rotate Right Doubleword Variable",
+      "summary": "Rotates doublewords right by amounts in second vector.",
+      "syntax": "VPRORVD zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 14" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vprorvq",
+      "architecture": "x86",
+      "full_name": "Rotate Right Quadword Variable",
+      "summary": "Rotates quadwords right by amounts in second vector.",
+      "syntax": "VPRORVQ zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 14" },
+      "extension": "AVX-512F"
+    }
+  ]
+}

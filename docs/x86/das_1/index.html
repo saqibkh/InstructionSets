@@ -1,0 +1,6011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adjusts AL after subtraction for packed BCD.">
+    <title>das - x86</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ISA Database">
+    <meta property="og:description" content="Reference for CPU instruction sets.">
+    
+    <link rel="stylesheet" href="../../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                    ☰
+                </button>
+                <a href="../../" class="logo">ISA_<span>DB</span></a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Search instructions...">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+        
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    	const SEARCH_INDEX_PATH = "../../search.json";
+        /* Default: Global Search (null). Child templates override this block. */
+        const CURRENT_ARCH = "x86";
+    </script>
+    
+    <script src="../../static/search.js"></script>
+
+    
+<div class="container doc-layout">
+    
+    <aside class="sidebar">
+        <h3>x86 Reference</h3>
+        <div style="padding: 0 0 15px 0;">
+            <input type="text" id="sidebar-filter" placeholder="Filter instructions..." 
+                   style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main);">
+        </div>
+        <div class="sidebar-list">
+            
+            <details open class="nav-group">
+                <summary>Base Integer</summary>
+                <div class="group-links">
+                    
+                    <a href="../aaa/" 
+                       class="">
+                        aaa
+                    </a>
+                    
+                    <a href="../aaa_1/" 
+                       class="">
+                        aaa
+                    </a>
+                    
+                    <a href="../aad/" 
+                       class="">
+                        aad
+                    </a>
+                    
+                    <a href="../aad_1/" 
+                       class="">
+                        aad
+                    </a>
+                    
+                    <a href="../aadd/" 
+                       class="">
+                        aadd
+                    </a>
+                    
+                    <a href="../aam/" 
+                       class="">
+                        aam
+                    </a>
+                    
+                    <a href="../aam_1/" 
+                       class="">
+                        aam
+                    </a>
+                    
+                    <a href="../aand/" 
+                       class="">
+                        aand
+                    </a>
+                    
+                    <a href="../aas/" 
+                       class="">
+                        aas
+                    </a>
+                    
+                    <a href="../aas_1/" 
+                       class="">
+                        aas
+                    </a>
+                    
+                    <a href="../adc/" 
+                       class="">
+                        adc
+                    </a>
+                    
+                    <a href="../adcx/" 
+                       class="">
+                        adcx
+                    </a>
+                    
+                    <a href="../add/" 
+                       class="">
+                        add
+                    </a>
+                    
+                    <a href="../add_1/" 
+                       class="">
+                        add
+                    </a>
+                    
+                    <a href="../addpd/" 
+                       class="">
+                        addpd
+                    </a>
+                    
+                    <a href="../addpd_1/" 
+                       class="">
+                        addpd
+                    </a>
+                    
+                    <a href="../addps/" 
+                       class="">
+                        addps
+                    </a>
+                    
+                    <a href="../addps_1/" 
+                       class="">
+                        addps
+                    </a>
+                    
+                    <a href="../addsd/" 
+                       class="">
+                        addsd
+                    </a>
+                    
+                    <a href="../addsd_1/" 
+                       class="">
+                        addsd
+                    </a>
+                    
+                    <a href="../addss/" 
+                       class="">
+                        addss
+                    </a>
+                    
+                    <a href="../addss_1/" 
+                       class="">
+                        addss
+                    </a>
+                    
+                    <a href="../addsubpd/" 
+                       class="">
+                        addsubpd
+                    </a>
+                    
+                    <a href="../addsubps/" 
+                       class="">
+                        addsubps
+                    </a>
+                    
+                    <a href="../adox/" 
+                       class="">
+                        adox
+                    </a>
+                    
+                    <a href="../aesdec/" 
+                       class="">
+                        aesdec
+                    </a>
+                    
+                    <a href="../aesdec128kl/" 
+                       class="">
+                        aesdec128kl
+                    </a>
+                    
+                    <a href="../aesenc/" 
+                       class="">
+                        aesenc
+                    </a>
+                    
+                    <a href="../aesenc128kl/" 
+                       class="">
+                        aesenc128kl
+                    </a>
+                    
+                    <a href="../aesenclast/" 
+                       class="">
+                        aesenclast
+                    </a>
+                    
+                    <a href="../aesencwide128kl/" 
+                       class="">
+                        aesencwide128kl
+                    </a>
+                    
+                    <a href="../aesencwide256kl/" 
+                       class="">
+                        aesencwide256kl
+                    </a>
+                    
+                    <a href="../aesimc/" 
+                       class="">
+                        aesimc
+                    </a>
+                    
+                    <a href="../aeskeygenassist/" 
+                       class="">
+                        aeskeygenassist
+                    </a>
+                    
+                    <a href="../and/" 
+                       class="">
+                        and
+                    </a>
+                    
+                    <a href="../and_1/" 
+                       class="">
+                        and
+                    </a>
+                    
+                    <a href="../andpd/" 
+                       class="">
+                        andpd
+                    </a>
+                    
+                    <a href="../andpd_1/" 
+                       class="">
+                        andpd
+                    </a>
+                    
+                    <a href="../andps/" 
+                       class="">
+                        andps
+                    </a>
+                    
+                    <a href="../andps_1/" 
+                       class="">
+                        andps
+                    </a>
+                    
+                    <a href="../aor/" 
+                       class="">
+                        aor
+                    </a>
+                    
+                    <a href="../axor/" 
+                       class="">
+                        axor
+                    </a>
+                    
+                    <a href="../blendpd/" 
+                       class="">
+                        blendpd
+                    </a>
+                    
+                    <a href="../blendps/" 
+                       class="">
+                        blendps
+                    </a>
+                    
+                    <a href="../blendvpd/" 
+                       class="">
+                        blendvpd
+                    </a>
+                    
+                    <a href="../blendvps/" 
+                       class="">
+                        blendvps
+                    </a>
+                    
+                    <a href="../bound/" 
+                       class="">
+                        bound
+                    </a>
+                    
+                    <a href="../bound_1/" 
+                       class="">
+                        bound
+                    </a>
+                    
+                    <a href="../bsf/" 
+                       class="">
+                        bsf
+                    </a>
+                    
+                    <a href="../bsf_1/" 
+                       class="">
+                        bsf
+                    </a>
+                    
+                    <a href="../bsr/" 
+                       class="">
+                        bsr
+                    </a>
+                    
+                    <a href="../bsr_1/" 
+                       class="">
+                        bsr
+                    </a>
+                    
+                    <a href="../bswap/" 
+                       class="">
+                        bswap
+                    </a>
+                    
+                    <a href="../bswap_1/" 
+                       class="">
+                        bswap
+                    </a>
+                    
+                    <a href="../bswap_2/" 
+                       class="">
+                        bswap
+                    </a>
+                    
+                    <a href="../bswap_3/" 
+                       class="">
+                        bswap
+                    </a>
+                    
+                    <a href="../bt/" 
+                       class="">
+                        bt
+                    </a>
+                    
+                    <a href="../bt_1/" 
+                       class="">
+                        bt
+                    </a>
+                    
+                    <a href="../btc/" 
+                       class="">
+                        btc
+                    </a>
+                    
+                    <a href="../btc_1/" 
+                       class="">
+                        btc
+                    </a>
+                    
+                    <a href="../btr/" 
+                       class="">
+                        btr
+                    </a>
+                    
+                    <a href="../btr_1/" 
+                       class="">
+                        btr
+                    </a>
+                    
+                    <a href="../bts/" 
+                       class="">
+                        bts
+                    </a>
+                    
+                    <a href="../bts_1/" 
+                       class="">
+                        bts
+                    </a>
+                    
+                    <a href="../call/" 
+                       class="">
+                        call
+                    </a>
+                    
+                    <a href="../call_1/" 
+                       class="">
+                        call
+                    </a>
+                    
+                    <a href="../cbw/" 
+                       class="">
+                        cbw
+                    </a>
+                    
+                    <a href="../cbw_1/" 
+                       class="">
+                        cbw
+                    </a>
+                    
+                    <a href="../clc/" 
+                       class="">
+                        clc
+                    </a>
+                    
+                    <a href="../clc_1/" 
+                       class="">
+                        clc
+                    </a>
+                    
+                    <a href="../cld/" 
+                       class="">
+                        cld
+                    </a>
+                    
+                    <a href="../cld_1/" 
+                       class="">
+                        cld
+                    </a>
+                    
+                    <a href="../clflush/" 
+                       class="">
+                        clflush
+                    </a>
+                    
+                    <a href="../clflush_1/" 
+                       class="">
+                        clflush
+                    </a>
+                    
+                    <a href="../clflushopt/" 
+                       class="">
+                        clflushopt
+                    </a>
+                    
+                    <a href="../cli/" 
+                       class="">
+                        cli
+                    </a>
+                    
+                    <a href="../cli_1/" 
+                       class="">
+                        cli
+                    </a>
+                    
+                    <a href="../clrssbsy/" 
+                       class="">
+                        clrssbsy
+                    </a>
+                    
+                    <a href="../cltd/" 
+                       class="">
+                        cltd
+                    </a>
+                    
+                    <a href="../cltd_1/" 
+                       class="">
+                        cltd
+                    </a>
+                    
+                    <a href="../clui/" 
+                       class="">
+                        clui
+                    </a>
+                    
+                    <a href="../clwb/" 
+                       class="">
+                        clwb
+                    </a>
+                    
+                    <a href="../clzero/" 
+                       class="">
+                        clzero
+                    </a>
+                    
+                    <a href="../cmc/" 
+                       class="">
+                        cmc
+                    </a>
+                    
+                    <a href="../cmc_1/" 
+                       class="">
+                        cmc
+                    </a>
+                    
+                    <a href="../cmp/" 
+                       class="">
+                        cmp
+                    </a>
+                    
+                    <a href="../cmp_1/" 
+                       class="">
+                        cmp
+                    </a>
+                    
+                    <a href="../cmps/" 
+                       class="">
+                        cmps
+                    </a>
+                    
+                    <a href="../cmpsd/" 
+                       class="">
+                        cmpsd
+                    </a>
+                    
+                    <a href="../cmpsd_1/" 
+                       class="">
+                        cmpsd
+                    </a>
+                    
+                    <a href="../cmpsq/" 
+                       class="">
+                        cmpsq
+                    </a>
+                    
+                    <a href="../cmpss/" 
+                       class="">
+                        cmpss
+                    </a>
+                    
+                    <a href="../cmpsw/" 
+                       class="">
+                        cmpsw
+                    </a>
+                    
+                    <a href="../cmpxchg/" 
+                       class="">
+                        cmpxchg
+                    </a>
+                    
+                    <a href="../cmpxchg_1/" 
+                       class="">
+                        cmpxchg
+                    </a>
+                    
+                    <a href="../cmpxchg16b/" 
+                       class="">
+                        cmpxchg16b
+                    </a>
+                    
+                    <a href="../cmpxchg8b/" 
+                       class="">
+                        cmpxchg8b
+                    </a>
+                    
+                    <a href="../cmpxchg8b_1/" 
+                       class="">
+                        cmpxchg8b
+                    </a>
+                    
+                    <a href="../comisd/" 
+                       class="">
+                        comisd
+                    </a>
+                    
+                    <a href="../comiss/" 
+                       class="">
+                        comiss
+                    </a>
+                    
+                    <a href="../cpuid/" 
+                       class="">
+                        cpuid
+                    </a>
+                    
+                    <a href="../cpuid_1/" 
+                       class="">
+                        cpuid
+                    </a>
+                    
+                    <a href="../cqto/" 
+                       class="">
+                        cqto
+                    </a>
+                    
+                    <a href="../cqto_1/" 
+                       class="">
+                        cqto
+                    </a>
+                    
+                    <a href="../crc32/" 
+                       class="">
+                        crc32
+                    </a>
+                    
+                    <a href="../cvtdq2pd/" 
+                       class="">
+                        cvtdq2pd
+                    </a>
+                    
+                    <a href="../cvtdq2ps/" 
+                       class="">
+                        cvtdq2ps
+                    </a>
+                    
+                    <a href="../cvtpd2dq/" 
+                       class="">
+                        cvtpd2dq
+                    </a>
+                    
+                    <a href="../cvtpd2ps/" 
+                       class="">
+                        cvtpd2ps
+                    </a>
+                    
+                    <a href="../cvtps2dq/" 
+                       class="">
+                        cvtps2dq
+                    </a>
+                    
+                    <a href="../cvtps2pd/" 
+                       class="">
+                        cvtps2pd
+                    </a>
+                    
+                    <a href="../cvtsd2si/" 
+                       class="">
+                        cvtsd2si
+                    </a>
+                    
+                    <a href="../cvtsd2sq/" 
+                       class="">
+                        cvtsd2sq
+                    </a>
+                    
+                    <a href="../cvtsd2ss/" 
+                       class="">
+                        cvtsd2ss
+                    </a>
+                    
+                    <a href="../cvtsd2ss_1/" 
+                       class="">
+                        cvtsd2ss
+                    </a>
+                    
+                    <a href="../cvtsi2sd/" 
+                       class="">
+                        cvtsi2sd
+                    </a>
+                    
+                    <a href="../cvtsi2sd_1/" 
+                       class="">
+                        cvtsi2sd
+                    </a>
+                    
+                    <a href="../cvtsi2ss/" 
+                       class="">
+                        cvtsi2ss
+                    </a>
+                    
+                    <a href="../cvtsi2ss_1/" 
+                       class="">
+                        cvtsi2ss
+                    </a>
+                    
+                    <a href="../cvtsq2sd/" 
+                       class="">
+                        cvtsq2sd
+                    </a>
+                    
+                    <a href="../cvtsq2ss/" 
+                       class="">
+                        cvtsq2ss
+                    </a>
+                    
+                    <a href="../cvtss2sd/" 
+                       class="">
+                        cvtss2sd
+                    </a>
+                    
+                    <a href="../cvtss2sd_1/" 
+                       class="">
+                        cvtss2sd
+                    </a>
+                    
+                    <a href="../cvtss2si/" 
+                       class="">
+                        cvtss2si
+                    </a>
+                    
+                    <a href="../cvtss2sq/" 
+                       class="">
+                        cvtss2sq
+                    </a>
+                    
+                    <a href="../cvttpd2dq/" 
+                       class="">
+                        cvttpd2dq
+                    </a>
+                    
+                    <a href="../cvttps2dq/" 
+                       class="">
+                        cvttps2dq
+                    </a>
+                    
+                    <a href="../cvttps2pi/" 
+                       class="">
+                        cvttps2pi
+                    </a>
+                    
+                    <a href="../cvttsd2si/" 
+                       class="">
+                        cvttsd2si
+                    </a>
+                    
+                    <a href="../cvttsd2si_1/" 
+                       class="">
+                        cvttsd2si
+                    </a>
+                    
+                    <a href="../cvttsd2sq/" 
+                       class="">
+                        cvttsd2sq
+                    </a>
+                    
+                    <a href="../cvttss2si/" 
+                       class="">
+                        cvttss2si
+                    </a>
+                    
+                    <a href="../cvttss2si_1/" 
+                       class="">
+                        cvttss2si
+                    </a>
+                    
+                    <a href="../cvttss2sq/" 
+                       class="">
+                        cvttss2sq
+                    </a>
+                    
+                    <a href="../cwd/" 
+                       class="">
+                        cwd
+                    </a>
+                    
+                    <a href="../cwd_1/" 
+                       class="">
+                        cwd
+                    </a>
+                    
+                    <a href="../cwtl/" 
+                       class="">
+                        cwtl
+                    </a>
+                    
+                    <a href="../cwtl_1/" 
+                       class="">
+                        cwtl
+                    </a>
+                    
+                    <a href="../daa/" 
+                       class="">
+                        daa
+                    </a>
+                    
+                    <a href="../daa_1/" 
+                       class="">
+                        daa
+                    </a>
+                    
+                    <a href="../das/" 
+                       class="active">
+                        das
+                    </a>
+                    
+                    <a href="../das_1/" 
+                       class="">
+                        das
+                    </a>
+                    
+                    <a href="../dec/" 
+                       class="">
+                        dec
+                    </a>
+                    
+                    <a href="../dec_1/" 
+                       class="">
+                        dec
+                    </a>
+                    
+                    <a href="../div/" 
+                       class="">
+                        div
+                    </a>
+                    
+                    <a href="../div_1/" 
+                       class="">
+                        div
+                    </a>
+                    
+                    <a href="../divpd/" 
+                       class="">
+                        divpd
+                    </a>
+                    
+                    <a href="../divpd_1/" 
+                       class="">
+                        divpd
+                    </a>
+                    
+                    <a href="../divps/" 
+                       class="">
+                        divps
+                    </a>
+                    
+                    <a href="../divps_1/" 
+                       class="">
+                        divps
+                    </a>
+                    
+                    <a href="../divsd/" 
+                       class="">
+                        divsd
+                    </a>
+                    
+                    <a href="../divss/" 
+                       class="">
+                        divss
+                    </a>
+                    
+                    <a href="../dppd/" 
+                       class="">
+                        dppd
+                    </a>
+                    
+                    <a href="../dpps/" 
+                       class="">
+                        dpps
+                    </a>
+                    
+                    <a href="../encls/" 
+                       class="">
+                        encls
+                    </a>
+                    
+                    <a href="../enclu/" 
+                       class="">
+                        enclu
+                    </a>
+                    
+                    <a href="../encodekey128/" 
+                       class="">
+                        encodekey128
+                    </a>
+                    
+                    <a href="../endbr32/" 
+                       class="">
+                        endbr32
+                    </a>
+                    
+                    <a href="../endbr64/" 
+                       class="">
+                        endbr64
+                    </a>
+                    
+                    <a href="../enter/" 
+                       class="">
+                        enter
+                    </a>
+                    
+                    <a href="../enter_1/" 
+                       class="">
+                        enter
+                    </a>
+                    
+                    <a href="../erets/" 
+                       class="">
+                        erets
+                    </a>
+                    
+                    <a href="../eretu/" 
+                       class="">
+                        eretu
+                    </a>
+                    
+                    <a href="../extractps/" 
+                       class="">
+                        extractps
+                    </a>
+                    
+                    <a href="../extrq/" 
+                       class="">
+                        extrq
+                    </a>
+                    
+                    <a href="../f2xm1/" 
+                       class="">
+                        f2xm1
+                    </a>
+                    
+                    <a href="../fabs/" 
+                       class="">
+                        fabs
+                    </a>
+                    
+                    <a href="../fabs_1/" 
+                       class="">
+                        fabs
+                    </a>
+                    
+                    <a href="../fadd/" 
+                       class="">
+                        fadd
+                    </a>
+                    
+                    <a href="../fadd_1/" 
+                       class="">
+                        fadd
+                    </a>
+                    
+                    <a href="../fchs/" 
+                       class="">
+                        fchs
+                    </a>
+                    
+                    <a href="../fchs_1/" 
+                       class="">
+                        fchs
+                    </a>
+                    
+                    <a href="../fclex/" 
+                       class="">
+                        fclex
+                    </a>
+                    
+                    <a href="../fclex_1/" 
+                       class="">
+                        fclex
+                    </a>
+                    
+                    <a href="../fcmovb/" 
+                       class="">
+                        fcmovb
+                    </a>
+                    
+                    <a href="../fcmovbe/" 
+                       class="">
+                        fcmovbe
+                    </a>
+                    
+                    <a href="../fcmove/" 
+                       class="">
+                        fcmove
+                    </a>
+                    
+                    <a href="../fcmovnb/" 
+                       class="">
+                        fcmovnb
+                    </a>
+                    
+                    <a href="../fcmovnbe/" 
+                       class="">
+                        fcmovnbe
+                    </a>
+                    
+                    <a href="../fcmovne/" 
+                       class="">
+                        fcmovne
+                    </a>
+                    
+                    <a href="../fcmovnu/" 
+                       class="">
+                        fcmovnu
+                    </a>
+                    
+                    <a href="../fcmovu/" 
+                       class="">
+                        fcmovu
+                    </a>
+                    
+                    <a href="../fcom/" 
+                       class="">
+                        fcom
+                    </a>
+                    
+                    <a href="../fcom_1/" 
+                       class="">
+                        fcom
+                    </a>
+                    
+                    <a href="../fcomi/" 
+                       class="">
+                        fcomi
+                    </a>
+                    
+                    <a href="../fcomi_1/" 
+                       class="">
+                        fcomi
+                    </a>
+                    
+                    <a href="../fcos/" 
+                       class="">
+                        fcos
+                    </a>
+                    
+                    <a href="../fcos_1/" 
+                       class="">
+                        fcos
+                    </a>
+                    
+                    <a href="../fdecstp/" 
+                       class="">
+                        fdecstp
+                    </a>
+                    
+                    <a href="../fdiv/" 
+                       class="">
+                        fdiv
+                    </a>
+                    
+                    <a href="../fdiv_1/" 
+                       class="">
+                        fdiv
+                    </a>
+                    
+                    <a href="../ffree/" 
+                       class="">
+                        ffree
+                    </a>
+                    
+                    <a href="../fild/" 
+                       class="">
+                        fild
+                    </a>
+                    
+                    <a href="../fild_1/" 
+                       class="">
+                        fild
+                    </a>
+                    
+                    <a href="../fincstp/" 
+                       class="">
+                        fincstp
+                    </a>
+                    
+                    <a href="../finit/" 
+                       class="">
+                        finit
+                    </a>
+                    
+                    <a href="../finit_1/" 
+                       class="">
+                        finit
+                    </a>
+                    
+                    <a href="../fist/" 
+                       class="">
+                        fist
+                    </a>
+                    
+                    <a href="../fist_1/" 
+                       class="">
+                        fist
+                    </a>
+                    
+                    <a href="../fistp/" 
+                       class="">
+                        fistp
+                    </a>
+                    
+                    <a href="../fistp_1/" 
+                       class="">
+                        fistp
+                    </a>
+                    
+                    <a href="../fld/" 
+                       class="">
+                        fld
+                    </a>
+                    
+                    <a href="../fld_1/" 
+                       class="">
+                        fld
+                    </a>
+                    
+                    <a href="../fld1/" 
+                       class="">
+                        fld1
+                    </a>
+                    
+                    <a href="../fldcw/" 
+                       class="">
+                        fldcw
+                    </a>
+                    
+                    <a href="../fldcw_1/" 
+                       class="">
+                        fldcw
+                    </a>
+                    
+                    <a href="../fldl2e/" 
+                       class="">
+                        fldl2e
+                    </a>
+                    
+                    <a href="../fldl2t/" 
+                       class="">
+                        fldl2t
+                    </a>
+                    
+                    <a href="../fldlg2/" 
+                       class="">
+                        fldlg2
+                    </a>
+                    
+                    <a href="../fldln2/" 
+                       class="">
+                        fldln2
+                    </a>
+                    
+                    <a href="../fldpi/" 
+                       class="">
+                        fldpi
+                    </a>
+                    
+                    <a href="../fldz/" 
+                       class="">
+                        fldz
+                    </a>
+                    
+                    <a href="../fmul/" 
+                       class="">
+                        fmul
+                    </a>
+                    
+                    <a href="../fmul_1/" 
+                       class="">
+                        fmul
+                    </a>
+                    
+                    <a href="../fpatan/" 
+                       class="">
+                        fpatan
+                    </a>
+                    
+                    <a href="../fpatan_1/" 
+                       class="">
+                        fpatan
+                    </a>
+                    
+                    <a href="../fprem/" 
+                       class="">
+                        fprem
+                    </a>
+                    
+                    <a href="../fprem_1/" 
+                       class="">
+                        fprem
+                    </a>
+                    
+                    <a href="../fptan/" 
+                       class="">
+                        fptan
+                    </a>
+                    
+                    <a href="../fptan_1/" 
+                       class="">
+                        fptan
+                    </a>
+                    
+                    <a href="../frndint/" 
+                       class="">
+                        frndint
+                    </a>
+                    
+                    <a href="../frstor/" 
+                       class="">
+                        frstor
+                    </a>
+                    
+                    <a href="../frstor_1/" 
+                       class="">
+                        frstor
+                    </a>
+                    
+                    <a href="../fsave/" 
+                       class="">
+                        fsave
+                    </a>
+                    
+                    <a href="../fsave_1/" 
+                       class="">
+                        fsave
+                    </a>
+                    
+                    <a href="../fscale/" 
+                       class="">
+                        fscale
+                    </a>
+                    
+                    <a href="../fsin/" 
+                       class="">
+                        fsin
+                    </a>
+                    
+                    <a href="../fsin_1/" 
+                       class="">
+                        fsin
+                    </a>
+                    
+                    <a href="../fsincos/" 
+                       class="">
+                        fsincos
+                    </a>
+                    
+                    <a href="../fsincos_1/" 
+                       class="">
+                        fsincos
+                    </a>
+                    
+                    <a href="../fsqrt/" 
+                       class="">
+                        fsqrt
+                    </a>
+                    
+                    <a href="../fsqrt_1/" 
+                       class="">
+                        fsqrt
+                    </a>
+                    
+                    <a href="../fst/" 
+                       class="">
+                        fst
+                    </a>
+                    
+                    <a href="../fst_1/" 
+                       class="">
+                        fst
+                    </a>
+                    
+                    <a href="../fstcw/" 
+                       class="">
+                        fstcw
+                    </a>
+                    
+                    <a href="../fstcw_1/" 
+                       class="">
+                        fstcw
+                    </a>
+                    
+                    <a href="../fstp/" 
+                       class="">
+                        fstp
+                    </a>
+                    
+                    <a href="../fstp_1/" 
+                       class="">
+                        fstp
+                    </a>
+                    
+                    <a href="../fstsw/" 
+                       class="">
+                        fstsw
+                    </a>
+                    
+                    <a href="../fstsw_1/" 
+                       class="">
+                        fstsw
+                    </a>
+                    
+                    <a href="../fsub/" 
+                       class="">
+                        fsub
+                    </a>
+                    
+                    <a href="../fsub_1/" 
+                       class="">
+                        fsub
+                    </a>
+                    
+                    <a href="../fucom/" 
+                       class="">
+                        fucom
+                    </a>
+                    
+                    <a href="../fxch/" 
+                       class="">
+                        fxch
+                    </a>
+                    
+                    <a href="../fxch_1/" 
+                       class="">
+                        fxch
+                    </a>
+                    
+                    <a href="../fxtract/" 
+                       class="">
+                        fxtract
+                    </a>
+                    
+                    <a href="../fyl2x/" 
+                       class="">
+                        fyl2x
+                    </a>
+                    
+                    <a href="../fyl2x_1/" 
+                       class="">
+                        fyl2x
+                    </a>
+                    
+                    <a href="../fyl2xp1/" 
+                       class="">
+                        fyl2xp1
+                    </a>
+                    
+                    <a href="../gf2p8affineinvqb/" 
+                       class="">
+                        gf2p8affineinvqb
+                    </a>
+                    
+                    <a href="../gf2p8affineqb/" 
+                       class="">
+                        gf2p8affineqb
+                    </a>
+                    
+                    <a href="../gf2p8mulb/" 
+                       class="">
+                        gf2p8mulb
+                    </a>
+                    
+                    <a href="../haddpd/" 
+                       class="">
+                        haddpd
+                    </a>
+                    
+                    <a href="../haddps/" 
+                       class="">
+                        haddps
+                    </a>
+                    
+                    <a href="../hlt/" 
+                       class="">
+                        hlt
+                    </a>
+                    
+                    <a href="../hlt_1/" 
+                       class="">
+                        hlt
+                    </a>
+                    
+                    <a href="../hreset/" 
+                       class="">
+                        hreset
+                    </a>
+                    
+                    <a href="../hsubpd/" 
+                       class="">
+                        hsubpd
+                    </a>
+                    
+                    <a href="../hsubps/" 
+                       class="">
+                        hsubps
+                    </a>
+                    
+                    <a href="../idiv/" 
+                       class="">
+                        idiv
+                    </a>
+                    
+                    <a href="../idiv_1/" 
+                       class="">
+                        idiv
+                    </a>
+                    
+                    <a href="../imul/" 
+                       class="">
+                        imul
+                    </a>
+                    
+                    <a href="../imul_1/" 
+                       class="">
+                        imul
+                    </a>
+                    
+                    <a href="../in/" 
+                       class="">
+                        in
+                    </a>
+                    
+                    <a href="../inc/" 
+                       class="">
+                        inc
+                    </a>
+                    
+                    <a href="../inc_1/" 
+                       class="">
+                        inc
+                    </a>
+                    
+                    <a href="../incsspq/" 
+                       class="">
+                        incsspq
+                    </a>
+                    
+                    <a href="../ins/" 
+                       class="">
+                        ins
+                    </a>
+                    
+                    <a href="../insd/" 
+                       class="">
+                        insd
+                    </a>
+                    
+                    <a href="../insertps/" 
+                       class="">
+                        insertps
+                    </a>
+                    
+                    <a href="../insertq/" 
+                       class="">
+                        insertq
+                    </a>
+                    
+                    <a href="../insw/" 
+                       class="">
+                        insw
+                    </a>
+                    
+                    <a href="../int/" 
+                       class="">
+                        int
+                    </a>
+                    
+                    <a href="../int_1/" 
+                       class="">
+                        int
+                    </a>
+                    
+                    <a href="../int1/" 
+                       class="">
+                        int1
+                    </a>
+                    
+                    <a href="../int3/" 
+                       class="">
+                        int3
+                    </a>
+                    
+                    <a href="../int3_1/" 
+                       class="">
+                        int3
+                    </a>
+                    
+                    <a href="../invpcid/" 
+                       class="">
+                        invpcid
+                    </a>
+                    
+                    <a href="../iret/" 
+                       class="">
+                        iret
+                    </a>
+                    
+                    <a href="../ja/" 
+                       class="">
+                        ja
+                    </a>
+                    
+                    <a href="../ja_1/" 
+                       class="">
+                        ja
+                    </a>
+                    
+                    <a href="../jb/" 
+                       class="">
+                        jb
+                    </a>
+                    
+                    <a href="../jb_1/" 
+                       class="">
+                        jb
+                    </a>
+                    
+                    <a href="../je/" 
+                       class="">
+                        je
+                    </a>
+                    
+                    <a href="../je_1/" 
+                       class="">
+                        je
+                    </a>
+                    
+                    <a href="../jecxz/" 
+                       class="">
+                        jecxz
+                    </a>
+                    
+                    <a href="../jecxz_1/" 
+                       class="">
+                        jecxz
+                    </a>
+                    
+                    <a href="../jg/" 
+                       class="">
+                        jg
+                    </a>
+                    
+                    <a href="../jg_1/" 
+                       class="">
+                        jg
+                    </a>
+                    
+                    <a href="../jl/" 
+                       class="">
+                        jl
+                    </a>
+                    
+                    <a href="../jl_1/" 
+                       class="">
+                        jl
+                    </a>
+                    
+                    <a href="../jmp/" 
+                       class="">
+                        jmp
+                    </a>
+                    
+                    <a href="../jmp_1/" 
+                       class="">
+                        jmp
+                    </a>
+                    
+                    <a href="../jne/" 
+                       class="">
+                        jne
+                    </a>
+                    
+                    <a href="../jne_1/" 
+                       class="">
+                        jne
+                    </a>
+                    
+                    <a href="../jno/" 
+                       class="">
+                        jno
+                    </a>
+                    
+                    <a href="../jnp/" 
+                       class="">
+                        jnp
+                    </a>
+                    
+                    <a href="../jns/" 
+                       class="">
+                        jns
+                    </a>
+                    
+                    <a href="../jo/" 
+                       class="">
+                        jo
+                    </a>
+                    
+                    <a href="../jp/" 
+                       class="">
+                        jp
+                    </a>
+                    
+                    <a href="../js/" 
+                       class="">
+                        js
+                    </a>
+                    
+                    <a href="../kaddb/" 
+                       class="">
+                        kaddb
+                    </a>
+                    
+                    <a href="../kaddw/" 
+                       class="">
+                        kaddw
+                    </a>
+                    
+                    <a href="../kandnw/" 
+                       class="">
+                        kandnw
+                    </a>
+                    
+                    <a href="../kandq/" 
+                       class="">
+                        kandq
+                    </a>
+                    
+                    <a href="../kandw/" 
+                       class="">
+                        kandw
+                    </a>
+                    
+                    <a href="../kmovq/" 
+                       class="">
+                        kmovq
+                    </a>
+                    
+                    <a href="../kmovw/" 
+                       class="">
+                        kmovw
+                    </a>
+                    
+                    <a href="../knotb/" 
+                       class="">
+                        knotb
+                    </a>
+                    
+                    <a href="../knotd/" 
+                       class="">
+                        knotd
+                    </a>
+                    
+                    <a href="../knotq/" 
+                       class="">
+                        knotq
+                    </a>
+                    
+                    <a href="../knotw/" 
+                       class="">
+                        knotw
+                    </a>
+                    
+                    <a href="../korb/" 
+                       class="">
+                        korb
+                    </a>
+                    
+                    <a href="../kord/" 
+                       class="">
+                        kord
+                    </a>
+                    
+                    <a href="../korq/" 
+                       class="">
+                        korq
+                    </a>
+                    
+                    <a href="../kortestb/" 
+                       class="">
+                        kortestb
+                    </a>
+                    
+                    <a href="../kortestq/" 
+                       class="">
+                        kortestq
+                    </a>
+                    
+                    <a href="../kortestw/" 
+                       class="">
+                        kortestw
+                    </a>
+                    
+                    <a href="../korw/" 
+                       class="">
+                        korw
+                    </a>
+                    
+                    <a href="../kshiftlb/" 
+                       class="">
+                        kshiftlb
+                    </a>
+                    
+                    <a href="../kshiftld/" 
+                       class="">
+                        kshiftld
+                    </a>
+                    
+                    <a href="../kshiftlq/" 
+                       class="">
+                        kshiftlq
+                    </a>
+                    
+                    <a href="../kshiftlw/" 
+                       class="">
+                        kshiftlw
+                    </a>
+                    
+                    <a href="../kshiftrb/" 
+                       class="">
+                        kshiftrb
+                    </a>
+                    
+                    <a href="../kshiftrd/" 
+                       class="">
+                        kshiftrd
+                    </a>
+                    
+                    <a href="../kshiftrq/" 
+                       class="">
+                        kshiftrq
+                    </a>
+                    
+                    <a href="../kshiftrw/" 
+                       class="">
+                        kshiftrw
+                    </a>
+                    
+                    <a href="../ktestb/" 
+                       class="">
+                        ktestb
+                    </a>
+                    
+                    <a href="../ktestd/" 
+                       class="">
+                        ktestd
+                    </a>
+                    
+                    <a href="../ktestq/" 
+                       class="">
+                        ktestq
+                    </a>
+                    
+                    <a href="../ktestw/" 
+                       class="">
+                        ktestw
+                    </a>
+                    
+                    <a href="../kunpckbw/" 
+                       class="">
+                        kunpckbw
+                    </a>
+                    
+                    <a href="../kunpckdq/" 
+                       class="">
+                        kunpckdq
+                    </a>
+                    
+                    <a href="../kunpckwd/" 
+                       class="">
+                        kunpckwd
+                    </a>
+                    
+                    <a href="../kxorb/" 
+                       class="">
+                        kxorb
+                    </a>
+                    
+                    <a href="../kxord/" 
+                       class="">
+                        kxord
+                    </a>
+                    
+                    <a href="../kxorq/" 
+                       class="">
+                        kxorq
+                    </a>
+                    
+                    <a href="../kxorw/" 
+                       class="">
+                        kxorw
+                    </a>
+                    
+                    <a href="../lahf/" 
+                       class="">
+                        lahf
+                    </a>
+                    
+                    <a href="../lahf_1/" 
+                       class="">
+                        lahf
+                    </a>
+                    
+                    <a href="../lddqu/" 
+                       class="">
+                        lddqu
+                    </a>
+                    
+                    <a href="../ldmxcsr/" 
+                       class="">
+                        ldmxcsr
+                    </a>
+                    
+                    <a href="../ldmxcsr_1/" 
+                       class="">
+                        ldmxcsr
+                    </a>
+                    
+                    <a href="../lds/" 
+                       class="">
+                        lds
+                    </a>
+                    
+                    <a href="../lea/" 
+                       class="">
+                        lea
+                    </a>
+                    
+                    <a href="../lea_1/" 
+                       class="">
+                        lea
+                    </a>
+                    
+                    <a href="../leave/" 
+                       class="">
+                        leave
+                    </a>
+                    
+                    <a href="../leave_1/" 
+                       class="">
+                        leave
+                    </a>
+                    
+                    <a href="../les/" 
+                       class="">
+                        les
+                    </a>
+                    
+                    <a href="../lfence/" 
+                       class="">
+                        lfence
+                    </a>
+                    
+                    <a href="../lfence_1/" 
+                       class="">
+                        lfence
+                    </a>
+                    
+                    <a href="../lfs/" 
+                       class="">
+                        lfs
+                    </a>
+                    
+                    <a href="../lgs/" 
+                       class="">
+                        lgs
+                    </a>
+                    
+                    <a href="../lkgs/" 
+                       class="">
+                        lkgs
+                    </a>
+                    
+                    <a href="../loadiwkey/" 
+                       class="">
+                        loadiwkey
+                    </a>
+                    
+                    <a href="../lods/" 
+                       class="">
+                        lods
+                    </a>
+                    
+                    <a href="../lodsd/" 
+                       class="">
+                        lodsd
+                    </a>
+                    
+                    <a href="../lodsq/" 
+                       class="">
+                        lodsq
+                    </a>
+                    
+                    <a href="../lodsw/" 
+                       class="">
+                        lodsw
+                    </a>
+                    
+                    <a href="../loop/" 
+                       class="">
+                        loop
+                    </a>
+                    
+                    <a href="../loop_1/" 
+                       class="">
+                        loop
+                    </a>
+                    
+                    <a href="../loope/" 
+                       class="">
+                        loope
+                    </a>
+                    
+                    <a href="../loope_1/" 
+                       class="">
+                        loope
+                    </a>
+                    
+                    <a href="../loopne/" 
+                       class="">
+                        loopne
+                    </a>
+                    
+                    <a href="../loopne_1/" 
+                       class="">
+                        loopne
+                    </a>
+                    
+                    <a href="../lss/" 
+                       class="">
+                        lss
+                    </a>
+                    
+                    <a href="../maskmovdqu/" 
+                       class="">
+                        maskmovdqu
+                    </a>
+                    
+                    <a href="../maskmovdqu_1/" 
+                       class="">
+                        maskmovdqu
+                    </a>
+                    
+                    <a href="../maxps/" 
+                       class="">
+                        maxps
+                    </a>
+                    
+                    <a href="../maxps_1/" 
+                       class="">
+                        maxps
+                    </a>
+                    
+                    <a href="../maxsd/" 
+                       class="">
+                        maxsd
+                    </a>
+                    
+                    <a href="../maxss/" 
+                       class="">
+                        maxss
+                    </a>
+                    
+                    <a href="../mfence/" 
+                       class="">
+                        mfence
+                    </a>
+                    
+                    <a href="../mfence_1/" 
+                       class="">
+                        mfence
+                    </a>
+                    
+                    <a href="../minps/" 
+                       class="">
+                        minps
+                    </a>
+                    
+                    <a href="../minps_1/" 
+                       class="">
+                        minps
+                    </a>
+                    
+                    <a href="../minsd/" 
+                       class="">
+                        minsd
+                    </a>
+                    
+                    <a href="../minss/" 
+                       class="">
+                        minss
+                    </a>
+                    
+                    <a href="../monitor/" 
+                       class="">
+                        monitor
+                    </a>
+                    
+                    <a href="../mov/" 
+                       class="">
+                        mov
+                    </a>
+                    
+                    <a href="../mov_1/" 
+                       class="">
+                        mov
+                    </a>
+                    
+                    <a href="../movapd/" 
+                       class="">
+                        movapd
+                    </a>
+                    
+                    <a href="../movapd_1/" 
+                       class="">
+                        movapd
+                    </a>
+                    
+                    <a href="../movaps/" 
+                       class="">
+                        movaps
+                    </a>
+                    
+                    <a href="../movaps_1/" 
+                       class="">
+                        movaps
+                    </a>
+                    
+                    <a href="../movddup/" 
+                       class="">
+                        movddup
+                    </a>
+                    
+                    <a href="../movdqa/" 
+                       class="">
+                        movdqa
+                    </a>
+                    
+                    <a href="../movdqa_1/" 
+                       class="">
+                        movdqa
+                    </a>
+                    
+                    <a href="../movdqu/" 
+                       class="">
+                        movdqu
+                    </a>
+                    
+                    <a href="../movdqu_1/" 
+                       class="">
+                        movdqu
+                    </a>
+                    
+                    <a href="../movmskpd/" 
+                       class="">
+                        movmskpd
+                    </a>
+                    
+                    <a href="../movmskps/" 
+                       class="">
+                        movmskps
+                    </a>
+                    
+                    <a href="../movntdqa/" 
+                       class="">
+                        movntdqa
+                    </a>
+                    
+                    <a href="../movnti/" 
+                       class="">
+                        movnti
+                    </a>
+                    
+                    <a href="../movntpd/" 
+                       class="">
+                        movntpd
+                    </a>
+                    
+                    <a href="../movntps/" 
+                       class="">
+                        movntps
+                    </a>
+                    
+                    <a href="../movntq/" 
+                       class="">
+                        movntq
+                    </a>
+                    
+                    <a href="../movntsd/" 
+                       class="">
+                        movntsd
+                    </a>
+                    
+                    <a href="../movntss/" 
+                       class="">
+                        movntss
+                    </a>
+                    
+                    <a href="../movq_1/" 
+                       class="">
+                        movq
+                    </a>
+                    
+                    <a href="../movq_2/" 
+                       class="">
+                        movq
+                    </a>
+                    
+                    <a href="../movsd/" 
+                       class="">
+                        movsd
+                    </a>
+                    
+                    <a href="../movsd_1/" 
+                       class="">
+                        movsd
+                    </a>
+                    
+                    <a href="../movshdup/" 
+                       class="">
+                        movshdup
+                    </a>
+                    
+                    <a href="../movsldup/" 
+                       class="">
+                        movsldup
+                    </a>
+                    
+                    <a href="../movsq/" 
+                       class="">
+                        movsq
+                    </a>
+                    
+                    <a href="../movss/" 
+                       class="">
+                        movss
+                    </a>
+                    
+                    <a href="../movsw/" 
+                       class="">
+                        movsw
+                    </a>
+                    
+                    <a href="../movsx/" 
+                       class="">
+                        movsx
+                    </a>
+                    
+                    <a href="../movsx_1/" 
+                       class="">
+                        movsx
+                    </a>
+                    
+                    <a href="../movsxd/" 
+                       class="">
+                        movsxd
+                    </a>
+                    
+                    <a href="../movupd/" 
+                       class="">
+                        movupd
+                    </a>
+                    
+                    <a href="../movupd_1/" 
+                       class="">
+                        movupd
+                    </a>
+                    
+                    <a href="../movups/" 
+                       class="">
+                        movups
+                    </a>
+                    
+                    <a href="../movups_1/" 
+                       class="">
+                        movups
+                    </a>
+                    
+                    <a href="../movzx/" 
+                       class="">
+                        movzx
+                    </a>
+                    
+                    <a href="../movzx_1/" 
+                       class="">
+                        movzx
+                    </a>
+                    
+                    <a href="../mpsadbw/" 
+                       class="">
+                        mpsadbw
+                    </a>
+                    
+                    <a href="../mul/" 
+                       class="">
+                        mul
+                    </a>
+                    
+                    <a href="../mul_1/" 
+                       class="">
+                        mul
+                    </a>
+                    
+                    <a href="../mulpd/" 
+                       class="">
+                        mulpd
+                    </a>
+                    
+                    <a href="../mulpd_1/" 
+                       class="">
+                        mulpd
+                    </a>
+                    
+                    <a href="../mulps/" 
+                       class="">
+                        mulps
+                    </a>
+                    
+                    <a href="../mulps_1/" 
+                       class="">
+                        mulps
+                    </a>
+                    
+                    <a href="../mulsd/" 
+                       class="">
+                        mulsd
+                    </a>
+                    
+                    <a href="../mulss/" 
+                       class="">
+                        mulss
+                    </a>
+                    
+                    <a href="../mwait/" 
+                       class="">
+                        mwait
+                    </a>
+                    
+                    <a href="../neg/" 
+                       class="">
+                        neg
+                    </a>
+                    
+                    <a href="../neg_1/" 
+                       class="">
+                        neg
+                    </a>
+                    
+                    <a href="../nop/" 
+                       class="">
+                        nop
+                    </a>
+                    
+                    <a href="../nop_1/" 
+                       class="">
+                        nop
+                    </a>
+                    
+                    <a href="../not/" 
+                       class="">
+                        not
+                    </a>
+                    
+                    <a href="../not_1/" 
+                       class="">
+                        not
+                    </a>
+                    
+                    <a href="../or/" 
+                       class="">
+                        or
+                    </a>
+                    
+                    <a href="../or_1/" 
+                       class="">
+                        or
+                    </a>
+                    
+                    <a href="../orps/" 
+                       class="">
+                        orps
+                    </a>
+                    
+                    <a href="../orps_1/" 
+                       class="">
+                        orps
+                    </a>
+                    
+                    <a href="../out/" 
+                       class="">
+                        out
+                    </a>
+                    
+                    <a href="../outs/" 
+                       class="">
+                        outs
+                    </a>
+                    
+                    <a href="../outsd/" 
+                       class="">
+                        outsd
+                    </a>
+                    
+                    <a href="../outsw/" 
+                       class="">
+                        outsw
+                    </a>
+                    
+                    <a href="../pabsb/" 
+                       class="">
+                        pabsb
+                    </a>
+                    
+                    <a href="../packssdw/" 
+                       class="">
+                        packssdw
+                    </a>
+                    
+                    <a href="../packssdw_1/" 
+                       class="">
+                        packssdw
+                    </a>
+                    
+                    <a href="../packsswb/" 
+                       class="">
+                        packsswb
+                    </a>
+                    
+                    <a href="../packsswb_1/" 
+                       class="">
+                        packsswb
+                    </a>
+                    
+                    <a href="../packusdw/" 
+                       class="">
+                        packusdw
+                    </a>
+                    
+                    <a href="../packuswb/" 
+                       class="">
+                        packuswb
+                    </a>
+                    
+                    <a href="../paddb/" 
+                       class="">
+                        paddb
+                    </a>
+                    
+                    <a href="../paddb_1/" 
+                       class="">
+                        paddb
+                    </a>
+                    
+                    <a href="../paddd/" 
+                       class="">
+                        paddd
+                    </a>
+                    
+                    <a href="../paddd_1/" 
+                       class="">
+                        paddd
+                    </a>
+                    
+                    <a href="../paddq/" 
+                       class="">
+                        paddq
+                    </a>
+                    
+                    <a href="../paddq_1/" 
+                       class="">
+                        paddq
+                    </a>
+                    
+                    <a href="../paddsb_1/" 
+                       class="">
+                        paddsb
+                    </a>
+                    
+                    <a href="../paddsb_2/" 
+                       class="">
+                        paddsb
+                    </a>
+                    
+                    <a href="../paddsw_1/" 
+                       class="">
+                        paddsw
+                    </a>
+                    
+                    <a href="../paddusb_1/" 
+                       class="">
+                        paddusb
+                    </a>
+                    
+                    <a href="../paddusb_2/" 
+                       class="">
+                        paddusb
+                    </a>
+                    
+                    <a href="../paddusw_1/" 
+                       class="">
+                        paddusw
+                    </a>
+                    
+                    <a href="../paddw/" 
+                       class="">
+                        paddw
+                    </a>
+                    
+                    <a href="../paddw_1/" 
+                       class="">
+                        paddw
+                    </a>
+                    
+                    <a href="../palignr/" 
+                       class="">
+                        palignr
+                    </a>
+                    
+                    <a href="../pand_1/" 
+                       class="">
+                        pand
+                    </a>
+                    
+                    <a href="../pand_2/" 
+                       class="">
+                        pand
+                    </a>
+                    
+                    <a href="../pause/" 
+                       class="">
+                        pause
+                    </a>
+                    
+                    <a href="../pause_1/" 
+                       class="">
+                        pause
+                    </a>
+                    
+                    <a href="../pavgb/" 
+                       class="">
+                        pavgb
+                    </a>
+                    
+                    <a href="../pavgw/" 
+                       class="">
+                        pavgw
+                    </a>
+                    
+                    <a href="../pblendvb/" 
+                       class="">
+                        pblendvb
+                    </a>
+                    
+                    <a href="../pblendw/" 
+                       class="">
+                        pblendw
+                    </a>
+                    
+                    <a href="../pcmpeqb_1/" 
+                       class="">
+                        pcmpeqb
+                    </a>
+                    
+                    <a href="../pcmpeqb_2/" 
+                       class="">
+                        pcmpeqb
+                    </a>
+                    
+                    <a href="../pcmpeqd_1/" 
+                       class="">
+                        pcmpeqd
+                    </a>
+                    
+                    <a href="../pcmpeqd_2/" 
+                       class="">
+                        pcmpeqd
+                    </a>
+                    
+                    <a href="../pcmpeqq/" 
+                       class="">
+                        pcmpeqq
+                    </a>
+                    
+                    <a href="../pcmpeqw_1/" 
+                       class="">
+                        pcmpeqw
+                    </a>
+                    
+                    <a href="../pcmpeqw_2/" 
+                       class="">
+                        pcmpeqw
+                    </a>
+                    
+                    <a href="../pcmpestri/" 
+                       class="">
+                        pcmpestri
+                    </a>
+                    
+                    <a href="../pcmpestrm/" 
+                       class="">
+                        pcmpestrm
+                    </a>
+                    
+                    <a href="../pcmpgtb_1/" 
+                       class="">
+                        pcmpgtb
+                    </a>
+                    
+                    <a href="../pcmpgtd_1/" 
+                       class="">
+                        pcmpgtd
+                    </a>
+                    
+                    <a href="../pcmpgtq/" 
+                       class="">
+                        pcmpgtq
+                    </a>
+                    
+                    <a href="../pcmpgtw_1/" 
+                       class="">
+                        pcmpgtw
+                    </a>
+                    
+                    <a href="../pcmpistri/" 
+                       class="">
+                        pcmpistri
+                    </a>
+                    
+                    <a href="../pconfig/" 
+                       class="">
+                        pconfig
+                    </a>
+                    
+                    <a href="../pextrb/" 
+                       class="">
+                        pextrb
+                    </a>
+                    
+                    <a href="../pextrd/" 
+                       class="">
+                        pextrd
+                    </a>
+                    
+                    <a href="../pextrq/" 
+                       class="">
+                        pextrq
+                    </a>
+                    
+                    <a href="../pextrw/" 
+                       class="">
+                        pextrw
+                    </a>
+                    
+                    <a href="../pfadd/" 
+                       class="">
+                        pfadd
+                    </a>
+                    
+                    <a href="../pfmul/" 
+                       class="">
+                        pfmul
+                    </a>
+                    
+                    <a href="../pfrcp/" 
+                       class="">
+                        pfrcp
+                    </a>
+                    
+                    <a href="../pfrsqrt/" 
+                       class="">
+                        pfrsqrt
+                    </a>
+                    
+                    <a href="../pfsub/" 
+                       class="">
+                        pfsub
+                    </a>
+                    
+                    <a href="../phaddw/" 
+                       class="">
+                        phaddw
+                    </a>
+                    
+                    <a href="../phminposuw/" 
+                       class="">
+                        phminposuw
+                    </a>
+                    
+                    <a href="../phsubd/" 
+                       class="">
+                        phsubd
+                    </a>
+                    
+                    <a href="../phsubw/" 
+                       class="">
+                        phsubw
+                    </a>
+                    
+                    <a href="../pinsrb/" 
+                       class="">
+                        pinsrb
+                    </a>
+                    
+                    <a href="../pinsrd/" 
+                       class="">
+                        pinsrd
+                    </a>
+                    
+                    <a href="../pinsrq/" 
+                       class="">
+                        pinsrq
+                    </a>
+                    
+                    <a href="../pinsrw/" 
+                       class="">
+                        pinsrw
+                    </a>
+                    
+                    <a href="../pmaddubsw/" 
+                       class="">
+                        pmaddubsw
+                    </a>
+                    
+                    <a href="../pmaddwd_1/" 
+                       class="">
+                        pmaddwd
+                    </a>
+                    
+                    <a href="../pmaxsb/" 
+                       class="">
+                        pmaxsb
+                    </a>
+                    
+                    <a href="../pmaxsd/" 
+                       class="">
+                        pmaxsd
+                    </a>
+                    
+                    <a href="../pmaxsw/" 
+                       class="">
+                        pmaxsw
+                    </a>
+                    
+                    <a href="../pmaxub/" 
+                       class="">
+                        pmaxub
+                    </a>
+                    
+                    <a href="../pmaxud/" 
+                       class="">
+                        pmaxud
+                    </a>
+                    
+                    <a href="../pmaxuw/" 
+                       class="">
+                        pmaxuw
+                    </a>
+                    
+                    <a href="../pminsb/" 
+                       class="">
+                        pminsb
+                    </a>
+                    
+                    <a href="../pminsd/" 
+                       class="">
+                        pminsd
+                    </a>
+                    
+                    <a href="../pminsw/" 
+                       class="">
+                        pminsw
+                    </a>
+                    
+                    <a href="../pminub/" 
+                       class="">
+                        pminub
+                    </a>
+                    
+                    <a href="../pminud/" 
+                       class="">
+                        pminud
+                    </a>
+                    
+                    <a href="../pminuw/" 
+                       class="">
+                        pminuw
+                    </a>
+                    
+                    <a href="../pmovmskb/" 
+                       class="">
+                        pmovmskb
+                    </a>
+                    
+                    <a href="../pmovmskb_1/" 
+                       class="">
+                        pmovmskb
+                    </a>
+                    
+                    <a href="../pmovsxbq/" 
+                       class="">
+                        pmovsxbq
+                    </a>
+                    
+                    <a href="../pmovsxbw/" 
+                       class="">
+                        pmovsxbw
+                    </a>
+                    
+                    <a href="../pmovsxdq/" 
+                       class="">
+                        pmovsxdq
+                    </a>
+                    
+                    <a href="../pmovsxwd/" 
+                       class="">
+                        pmovsxwd
+                    </a>
+                    
+                    <a href="../pmovsxwq/" 
+                       class="">
+                        pmovsxwq
+                    </a>
+                    
+                    <a href="../pmovzxbd/" 
+                       class="">
+                        pmovzxbd
+                    </a>
+                    
+                    <a href="../pmovzxbq/" 
+                       class="">
+                        pmovzxbq
+                    </a>
+                    
+                    <a href="../pmovzxbw/" 
+                       class="">
+                        pmovzxbw
+                    </a>
+                    
+                    <a href="../pmovzxdq/" 
+                       class="">
+                        pmovzxdq
+                    </a>
+                    
+                    <a href="../pmovzxwd/" 
+                       class="">
+                        pmovzxwd
+                    </a>
+                    
+                    <a href="../pmovzxwq/" 
+                       class="">
+                        pmovzxwq
+                    </a>
+                    
+                    <a href="../pmulhrsw/" 
+                       class="">
+                        pmulhrsw
+                    </a>
+                    
+                    <a href="../pmulhuw/" 
+                       class="">
+                        pmulhuw
+                    </a>
+                    
+                    <a href="../pmulhw_1/" 
+                       class="">
+                        pmulhw
+                    </a>
+                    
+                    <a href="../pmulld/" 
+                       class="">
+                        pmulld
+                    </a>
+                    
+                    <a href="../pmullw_1/" 
+                       class="">
+                        pmullw
+                    </a>
+                    
+                    <a href="../pmuludq/" 
+                       class="">
+                        pmuludq
+                    </a>
+                    
+                    <a href="../pop/" 
+                       class="">
+                        pop
+                    </a>
+                    
+                    <a href="../pop_1/" 
+                       class="">
+                        pop
+                    </a>
+                    
+                    <a href="../popa/" 
+                       class="">
+                        popa
+                    </a>
+                    
+                    <a href="../popa_1/" 
+                       class="">
+                        popa
+                    </a>
+                    
+                    <a href="../popcnt/" 
+                       class="">
+                        popcnt
+                    </a>
+                    
+                    <a href="../popf/" 
+                       class="">
+                        popf
+                    </a>
+                    
+                    <a href="../popf_1/" 
+                       class="">
+                        popf
+                    </a>
+                    
+                    <a href="../por_1/" 
+                       class="">
+                        por
+                    </a>
+                    
+                    <a href="../por_2/" 
+                       class="">
+                        por
+                    </a>
+                    
+                    <a href="../prefetchnta/" 
+                       class="">
+                        prefetchnta
+                    </a>
+                    
+                    <a href="../prefetchnta_1/" 
+                       class="">
+                        prefetchnta
+                    </a>
+                    
+                    <a href="../prefetcht0/" 
+                       class="">
+                        prefetcht0
+                    </a>
+                    
+                    <a href="../prefetcht0_1/" 
+                       class="">
+                        prefetcht0
+                    </a>
+                    
+                    <a href="../prefetcht1/" 
+                       class="">
+                        prefetcht1
+                    </a>
+                    
+                    <a href="../prefetcht2/" 
+                       class="">
+                        prefetcht2
+                    </a>
+                    
+                    <a href="../prefetchw/" 
+                       class="">
+                        prefetchw
+                    </a>
+                    
+                    <a href="../prefetchwt1/" 
+                       class="">
+                        prefetchwt1
+                    </a>
+                    
+                    <a href="../psadbw/" 
+                       class="">
+                        psadbw
+                    </a>
+                    
+                    <a href="../pshufb/" 
+                       class="">
+                        pshufb
+                    </a>
+                    
+                    <a href="../pshufd/" 
+                       class="">
+                        pshufd
+                    </a>
+                    
+                    <a href="../pshufd_1/" 
+                       class="">
+                        pshufd
+                    </a>
+                    
+                    <a href="../pshufhw/" 
+                       class="">
+                        pshufhw
+                    </a>
+                    
+                    <a href="../pshuflw/" 
+                       class="">
+                        pshuflw
+                    </a>
+                    
+                    <a href="../psignb/" 
+                       class="">
+                        psignb
+                    </a>
+                    
+                    <a href="../pslld_1/" 
+                       class="">
+                        pslld
+                    </a>
+                    
+                    <a href="../pslld_2/" 
+                       class="">
+                        pslld
+                    </a>
+                    
+                    <a href="../pslldq/" 
+                       class="">
+                        pslldq
+                    </a>
+                    
+                    <a href="../psllw_1/" 
+                       class="">
+                        psllw
+                    </a>
+                    
+                    <a href="../psllw_2/" 
+                       class="">
+                        psllw
+                    </a>
+                    
+                    <a href="../psrad_1/" 
+                       class="">
+                        psrad
+                    </a>
+                    
+                    <a href="../psrad_2/" 
+                       class="">
+                        psrad
+                    </a>
+                    
+                    <a href="../psraw_1/" 
+                       class="">
+                        psraw
+                    </a>
+                    
+                    <a href="../psraw_2/" 
+                       class="">
+                        psraw
+                    </a>
+                    
+                    <a href="../psrld_1/" 
+                       class="">
+                        psrld
+                    </a>
+                    
+                    <a href="../psrld_2/" 
+                       class="">
+                        psrld
+                    </a>
+                    
+                    <a href="../psrldq/" 
+                       class="">
+                        psrldq
+                    </a>
+                    
+                    <a href="../psrlw_1/" 
+                       class="">
+                        psrlw
+                    </a>
+                    
+                    <a href="../psrlw_2/" 
+                       class="">
+                        psrlw
+                    </a>
+                    
+                    <a href="../psubb/" 
+                       class="">
+                        psubb
+                    </a>
+                    
+                    <a href="../psubb_1/" 
+                       class="">
+                        psubb
+                    </a>
+                    
+                    <a href="../psubd/" 
+                       class="">
+                        psubd
+                    </a>
+                    
+                    <a href="../psubd_1/" 
+                       class="">
+                        psubd
+                    </a>
+                    
+                    <a href="../psubq/" 
+                       class="">
+                        psubq
+                    </a>
+                    
+                    <a href="../psubsw_1/" 
+                       class="">
+                        psubsw
+                    </a>
+                    
+                    <a href="../psubusw_1/" 
+                       class="">
+                        psubusw
+                    </a>
+                    
+                    <a href="../psubw/" 
+                       class="">
+                        psubw
+                    </a>
+                    
+                    <a href="../psubw_1/" 
+                       class="">
+                        psubw
+                    </a>
+                    
+                    <a href="../ptest/" 
+                       class="">
+                        ptest
+                    </a>
+                    
+                    <a href="../ptwrite/" 
+                       class="">
+                        ptwrite
+                    </a>
+                    
+                    <a href="../punpckhbw/" 
+                       class="">
+                        punpckhbw
+                    </a>
+                    
+                    <a href="../punpckhdq/" 
+                       class="">
+                        punpckhdq
+                    </a>
+                    
+                    <a href="../punpckhqdq/" 
+                       class="">
+                        punpckhqdq
+                    </a>
+                    
+                    <a href="../punpckhwd/" 
+                       class="">
+                        punpckhwd
+                    </a>
+                    
+                    <a href="../punpcklbw/" 
+                       class="">
+                        punpcklbw
+                    </a>
+                    
+                    <a href="../punpcklbw_1/" 
+                       class="">
+                        punpcklbw
+                    </a>
+                    
+                    <a href="../punpckldq/" 
+                       class="">
+                        punpckldq
+                    </a>
+                    
+                    <a href="../punpckldq_1/" 
+                       class="">
+                        punpckldq
+                    </a>
+                    
+                    <a href="../punpcklqdq/" 
+                       class="">
+                        punpcklqdq
+                    </a>
+                    
+                    <a href="../punpcklqdq_1/" 
+                       class="">
+                        punpcklqdq
+                    </a>
+                    
+                    <a href="../punpcklwd/" 
+                       class="">
+                        punpcklwd
+                    </a>
+                    
+                    <a href="../punpcklwd_1/" 
+                       class="">
+                        punpcklwd
+                    </a>
+                    
+                    <a href="../push/" 
+                       class="">
+                        push
+                    </a>
+                    
+                    <a href="../push_1/" 
+                       class="">
+                        push
+                    </a>
+                    
+                    <a href="../pusha/" 
+                       class="">
+                        pusha
+                    </a>
+                    
+                    <a href="../pusha_1/" 
+                       class="">
+                        pusha
+                    </a>
+                    
+                    <a href="../pushf/" 
+                       class="">
+                        pushf
+                    </a>
+                    
+                    <a href="../pushf_1/" 
+                       class="">
+                        pushf
+                    </a>
+                    
+                    <a href="../pxor_1/" 
+                       class="">
+                        pxor
+                    </a>
+                    
+                    <a href="../pxor_2/" 
+                       class="">
+                        pxor
+                    </a>
+                    
+                    <a href="../rcl/" 
+                       class="">
+                        rcl
+                    </a>
+                    
+                    <a href="../rcl_1/" 
+                       class="">
+                        rcl
+                    </a>
+                    
+                    <a href="../rcpps/" 
+                       class="">
+                        rcpps
+                    </a>
+                    
+                    <a href="../rcpps_1/" 
+                       class="">
+                        rcpps
+                    </a>
+                    
+                    <a href="../rcpss/" 
+                       class="">
+                        rcpss
+                    </a>
+                    
+                    <a href="../rcr/" 
+                       class="">
+                        rcr
+                    </a>
+                    
+                    <a href="../rcr_1/" 
+                       class="">
+                        rcr
+                    </a>
+                    
+                    <a href="../rdfsbase/" 
+                       class="">
+                        rdfsbase
+                    </a>
+                    
+                    <a href="../rdgsbase/" 
+                       class="">
+                        rdgsbase
+                    </a>
+                    
+                    <a href="../rdpid/" 
+                       class="">
+                        rdpid
+                    </a>
+                    
+                    <a href="../rdpkru/" 
+                       class="">
+                        rdpkru
+                    </a>
+                    
+                    <a href="../rdrand/" 
+                       class="">
+                        rdrand
+                    </a>
+                    
+                    <a href="../rdseed/" 
+                       class="">
+                        rdseed
+                    </a>
+                    
+                    <a href="../rdsspq/" 
+                       class="">
+                        rdsspq
+                    </a>
+                    
+                    <a href="../rdtsc/" 
+                       class="">
+                        rdtsc
+                    </a>
+                    
+                    <a href="../rdtsc_1/" 
+                       class="">
+                        rdtsc
+                    </a>
+                    
+                    <a href="../rdtscp/" 
+                       class="">
+                        rdtscp
+                    </a>
+                    
+                    <a href="../rep_movs/" 
+                       class="">
+                        rep movs
+                    </a>
+                    
+                    <a href="../rep_movs_1/" 
+                       class="">
+                        rep movs
+                    </a>
+                    
+                    <a href="../rep_stos/" 
+                       class="">
+                        rep stos
+                    </a>
+                    
+                    <a href="../rep_stos_1/" 
+                       class="">
+                        rep stos
+                    </a>
+                    
+                    <a href="../repe_cmps/" 
+                       class="">
+                        repe cmps
+                    </a>
+                    
+                    <a href="../repe_cmps_1/" 
+                       class="">
+                        repe cmps
+                    </a>
+                    
+                    <a href="../repne_scas/" 
+                       class="">
+                        repne scas
+                    </a>
+                    
+                    <a href="../repne_scas_1/" 
+                       class="">
+                        repne scas
+                    </a>
+                    
+                    <a href="../ret/" 
+                       class="">
+                        ret
+                    </a>
+                    
+                    <a href="../ret_1/" 
+                       class="">
+                        ret
+                    </a>
+                    
+                    <a href="../rol/" 
+                       class="">
+                        rol
+                    </a>
+                    
+                    <a href="../rol_1/" 
+                       class="">
+                        rol
+                    </a>
+                    
+                    <a href="../ror/" 
+                       class="">
+                        ror
+                    </a>
+                    
+                    <a href="../ror_1/" 
+                       class="">
+                        ror
+                    </a>
+                    
+                    <a href="../roundpd/" 
+                       class="">
+                        roundpd
+                    </a>
+                    
+                    <a href="../roundps/" 
+                       class="">
+                        roundps
+                    </a>
+                    
+                    <a href="../roundsd/" 
+                       class="">
+                        roundsd
+                    </a>
+                    
+                    <a href="../roundss/" 
+                       class="">
+                        roundss
+                    </a>
+                    
+                    <a href="../rsqrtps/" 
+                       class="">
+                        rsqrtps
+                    </a>
+                    
+                    <a href="../rsqrtps_1/" 
+                       class="">
+                        rsqrtps
+                    </a>
+                    
+                    <a href="../rsqrtss/" 
+                       class="">
+                        rsqrtss
+                    </a>
+                    
+                    <a href="../rstorssp/" 
+                       class="">
+                        rstorssp
+                    </a>
+                    
+                    <a href="../sahf/" 
+                       class="">
+                        sahf
+                    </a>
+                    
+                    <a href="../sahf_1/" 
+                       class="">
+                        sahf
+                    </a>
+                    
+                    <a href="../sal/" 
+                       class="">
+                        sal
+                    </a>
+                    
+                    <a href="../sar/" 
+                       class="">
+                        sar
+                    </a>
+                    
+                    <a href="../sar_1/" 
+                       class="">
+                        sar
+                    </a>
+                    
+                    <a href="../saveprevssp/" 
+                       class="">
+                        saveprevssp
+                    </a>
+                    
+                    <a href="../sbb/" 
+                       class="">
+                        sbb
+                    </a>
+                    
+                    <a href="../scas/" 
+                       class="">
+                        scas
+                    </a>
+                    
+                    <a href="../scasd/" 
+                       class="">
+                        scasd
+                    </a>
+                    
+                    <a href="../scasq/" 
+                       class="">
+                        scasq
+                    </a>
+                    
+                    <a href="../scasw/" 
+                       class="">
+                        scasw
+                    </a>
+                    
+                    <a href="../senduipi/" 
+                       class="">
+                        senduipi
+                    </a>
+                    
+                    <a href="../serialize/" 
+                       class="">
+                        serialize
+                    </a>
+                    
+                    <a href="../seta/" 
+                       class="">
+                        seta
+                    </a>
+                    
+                    <a href="../setae/" 
+                       class="">
+                        setae
+                    </a>
+                    
+                    <a href="../setb/" 
+                       class="">
+                        setb
+                    </a>
+                    
+                    <a href="../setbe/" 
+                       class="">
+                        setbe
+                    </a>
+                    
+                    <a href="../setcc/" 
+                       class="">
+                        setcc
+                    </a>
+                    
+                    <a href="../setcc_1/" 
+                       class="">
+                        setcc
+                    </a>
+                    
+                    <a href="../setg/" 
+                       class="">
+                        setg
+                    </a>
+                    
+                    <a href="../setge/" 
+                       class="">
+                        setge
+                    </a>
+                    
+                    <a href="../setl/" 
+                       class="">
+                        setl
+                    </a>
+                    
+                    <a href="../setle/" 
+                       class="">
+                        setle
+                    </a>
+                    
+                    <a href="../setno/" 
+                       class="">
+                        setno
+                    </a>
+                    
+                    <a href="../setnp/" 
+                       class="">
+                        setnp
+                    </a>
+                    
+                    <a href="../setns/" 
+                       class="">
+                        setns
+                    </a>
+                    
+                    <a href="../setnz/" 
+                       class="">
+                        setnz
+                    </a>
+                    
+                    <a href="../seto/" 
+                       class="">
+                        seto
+                    </a>
+                    
+                    <a href="../setp/" 
+                       class="">
+                        setp
+                    </a>
+                    
+                    <a href="../sets/" 
+                       class="">
+                        sets
+                    </a>
+                    
+                    <a href="../setz/" 
+                       class="">
+                        setz
+                    </a>
+                    
+                    <a href="../sfence/" 
+                       class="">
+                        sfence
+                    </a>
+                    
+                    <a href="../sfence_1/" 
+                       class="">
+                        sfence
+                    </a>
+                    
+                    <a href="../sha1msg1/" 
+                       class="">
+                        sha1msg1
+                    </a>
+                    
+                    <a href="../sha1msg2/" 
+                       class="">
+                        sha1msg2
+                    </a>
+                    
+                    <a href="../sha1nexte/" 
+                       class="">
+                        sha1nexte
+                    </a>
+                    
+                    <a href="../sha1rnds4/" 
+                       class="">
+                        sha1rnds4
+                    </a>
+                    
+                    <a href="../sha256msg1/" 
+                       class="">
+                        sha256msg1
+                    </a>
+                    
+                    <a href="../sha256msg2/" 
+                       class="">
+                        sha256msg2
+                    </a>
+                    
+                    <a href="../sha256rnds2/" 
+                       class="">
+                        sha256rnds2
+                    </a>
+                    
+                    <a href="../shl/" 
+                       class="">
+                        shl
+                    </a>
+                    
+                    <a href="../shl_1/" 
+                       class="">
+                        shl
+                    </a>
+                    
+                    <a href="../shld/" 
+                       class="">
+                        shld
+                    </a>
+                    
+                    <a href="../shr/" 
+                       class="">
+                        shr
+                    </a>
+                    
+                    <a href="../shr_1/" 
+                       class="">
+                        shr
+                    </a>
+                    
+                    <a href="../shrd/" 
+                       class="">
+                        shrd
+                    </a>
+                    
+                    <a href="../shufpd/" 
+                       class="">
+                        shufpd
+                    </a>
+                    
+                    <a href="../shufpd_1/" 
+                       class="">
+                        shufpd
+                    </a>
+                    
+                    <a href="../shufpd_2/" 
+                       class="">
+                        shufpd
+                    </a>
+                    
+                    <a href="../shufps/" 
+                       class="">
+                        shufps
+                    </a>
+                    
+                    <a href="../shufps_1/" 
+                       class="">
+                        shufps
+                    </a>
+                    
+                    <a href="../shufps_2/" 
+                       class="">
+                        shufps
+                    </a>
+                    
+                    <a href="../sqrtpd/" 
+                       class="">
+                        sqrtpd
+                    </a>
+                    
+                    <a href="../sqrtpd_1/" 
+                       class="">
+                        sqrtpd
+                    </a>
+                    
+                    <a href="../sqrtps/" 
+                       class="">
+                        sqrtps
+                    </a>
+                    
+                    <a href="../sqrtps_1/" 
+                       class="">
+                        sqrtps
+                    </a>
+                    
+                    <a href="../sqrtsd/" 
+                       class="">
+                        sqrtsd
+                    </a>
+                    
+                    <a href="../sqrtss/" 
+                       class="">
+                        sqrtss
+                    </a>
+                    
+                    <a href="../stc/" 
+                       class="">
+                        stc
+                    </a>
+                    
+                    <a href="../stc_1/" 
+                       class="">
+                        stc
+                    </a>
+                    
+                    <a href="../std/" 
+                       class="">
+                        std
+                    </a>
+                    
+                    <a href="../std_1/" 
+                       class="">
+                        std
+                    </a>
+                    
+                    <a href="../sti/" 
+                       class="">
+                        sti
+                    </a>
+                    
+                    <a href="../sti_1/" 
+                       class="">
+                        sti
+                    </a>
+                    
+                    <a href="../stmxcsr/" 
+                       class="">
+                        stmxcsr
+                    </a>
+                    
+                    <a href="../stmxcsr_1/" 
+                       class="">
+                        stmxcsr
+                    </a>
+                    
+                    <a href="../stos/" 
+                       class="">
+                        stos
+                    </a>
+                    
+                    <a href="../stosd/" 
+                       class="">
+                        stosd
+                    </a>
+                    
+                    <a href="../stosq/" 
+                       class="">
+                        stosq
+                    </a>
+                    
+                    <a href="../stosw/" 
+                       class="">
+                        stosw
+                    </a>
+                    
+                    <a href="../stui/" 
+                       class="">
+                        stui
+                    </a>
+                    
+                    <a href="../sub/" 
+                       class="">
+                        sub
+                    </a>
+                    
+                    <a href="../sub_1/" 
+                       class="">
+                        sub
+                    </a>
+                    
+                    <a href="../subpd/" 
+                       class="">
+                        subpd
+                    </a>
+                    
+                    <a href="../subpd_1/" 
+                       class="">
+                        subpd
+                    </a>
+                    
+                    <a href="../subps/" 
+                       class="">
+                        subps
+                    </a>
+                    
+                    <a href="../subps_1/" 
+                       class="">
+                        subps
+                    </a>
+                    
+                    <a href="../subsd/" 
+                       class="">
+                        subsd
+                    </a>
+                    
+                    <a href="../subss/" 
+                       class="">
+                        subss
+                    </a>
+                    
+                    <a href="../test/" 
+                       class="">
+                        test
+                    </a>
+                    
+                    <a href="../test_1/" 
+                       class="">
+                        test
+                    </a>
+                    
+                    <a href="../testui/" 
+                       class="">
+                        testui
+                    </a>
+                    
+                    <a href="../tpause/" 
+                       class="">
+                        tpause
+                    </a>
+                    
+                    <a href="../ucomisd/" 
+                       class="">
+                        ucomisd
+                    </a>
+                    
+                    <a href="../ucomisd_1/" 
+                       class="">
+                        ucomisd
+                    </a>
+                    
+                    <a href="../ucomiss/" 
+                       class="">
+                        ucomiss
+                    </a>
+                    
+                    <a href="../ucomiss_1/" 
+                       class="">
+                        ucomiss
+                    </a>
+                    
+                    <a href="../ud0/" 
+                       class="">
+                        ud0
+                    </a>
+                    
+                    <a href="../ud2/" 
+                       class="">
+                        ud2
+                    </a>
+                    
+                    <a href="../ud2_1/" 
+                       class="">
+                        ud2
+                    </a>
+                    
+                    <a href="../uiret/" 
+                       class="">
+                        uiret
+                    </a>
+                    
+                    <a href="../umonitor/" 
+                       class="">
+                        umonitor
+                    </a>
+                    
+                    <a href="../umwait/" 
+                       class="">
+                        umwait
+                    </a>
+                    
+                    <a href="../unpckhpd/" 
+                       class="">
+                        unpckhpd
+                    </a>
+                    
+                    <a href="../unpckhps/" 
+                       class="">
+                        unpckhps
+                    </a>
+                    
+                    <a href="../unpckhps_1/" 
+                       class="">
+                        unpckhps
+                    </a>
+                    
+                    <a href="../unpcklpd/" 
+                       class="">
+                        unpcklpd
+                    </a>
+                    
+                    <a href="../unpcklps/" 
+                       class="">
+                        unpcklps
+                    </a>
+                    
+                    <a href="../unpcklps_1/" 
+                       class="">
+                        unpcklps
+                    </a>
+                    
+                    <a href="../vaddph/" 
+                       class="">
+                        vaddph
+                    </a>
+                    
+                    <a href="../vaddps/" 
+                       class="">
+                        vaddps
+                    </a>
+                    
+                    <a href="../vaddsh/" 
+                       class="">
+                        vaddsh
+                    </a>
+                    
+                    <a href="../vaddss/" 
+                       class="">
+                        vaddss
+                    </a>
+                    
+                    <a href="../vaesdec/" 
+                       class="">
+                        vaesdec
+                    </a>
+                    
+                    <a href="../vaesenc/" 
+                       class="">
+                        vaesenc
+                    </a>
+                    
+                    <a href="../valignd/" 
+                       class="">
+                        valignd
+                    </a>
+                    
+                    <a href="../valignq/" 
+                       class="">
+                        valignq
+                    </a>
+                    
+                    <a href="../vbroadcastf128/" 
+                       class="">
+                        vbroadcastf128
+                    </a>
+                    
+                    <a href="../vbroadcasti128/" 
+                       class="">
+                        vbroadcasti128
+                    </a>
+                    
+                    <a href="../vbroadcastsd/" 
+                       class="">
+                        vbroadcastsd
+                    </a>
+                    
+                    <a href="../vbroadcastss/" 
+                       class="">
+                        vbroadcastss
+                    </a>
+                    
+                    <a href="../vcmppd/" 
+                       class="">
+                        vcmppd
+                    </a>
+                    
+                    <a href="../vcmpps/" 
+                       class="">
+                        vcmpps
+                    </a>
+                    
+                    <a href="../vcompresspd/" 
+                       class="">
+                        vcompresspd
+                    </a>
+                    
+                    <a href="../vcompressps/" 
+                       class="">
+                        vcompressps
+                    </a>
+                    
+                    <a href="../vcvtne2ps2bf16/" 
+                       class="">
+                        vcvtne2ps2bf16
+                    </a>
+                    
+                    <a href="../vcvtpd2udq/" 
+                       class="">
+                        vcvtpd2udq
+                    </a>
+                    
+                    <a href="../vcvtpd2uq/" 
+                       class="">
+                        vcvtpd2uq
+                    </a>
+                    
+                    <a href="../vcvtph2ps/" 
+                       class="">
+                        vcvtph2ps
+                    </a>
+                    
+                    <a href="../vcvtps2ph/" 
+                       class="">
+                        vcvtps2ph
+                    </a>
+                    
+                    <a href="../vcvtps2udq/" 
+                       class="">
+                        vcvtps2udq
+                    </a>
+                    
+                    <a href="../vcvtps2uq/" 
+                       class="">
+                        vcvtps2uq
+                    </a>
+                    
+                    <a href="../vcvtudq2pd/" 
+                       class="">
+                        vcvtudq2pd
+                    </a>
+                    
+                    <a href="../vcvtudq2ps/" 
+                       class="">
+                        vcvtudq2ps
+                    </a>
+                    
+                    <a href="../vcvtuq2pd/" 
+                       class="">
+                        vcvtuq2pd
+                    </a>
+                    
+                    <a href="../vcvtuq2ps/" 
+                       class="">
+                        vcvtuq2ps
+                    </a>
+                    
+                    <a href="../vdbpsadbw/" 
+                       class="">
+                        vdbpsadbw
+                    </a>
+                    
+                    <a href="../vdivph/" 
+                       class="">
+                        vdivph
+                    </a>
+                    
+                    <a href="../vdivsh/" 
+                       class="">
+                        vdivsh
+                    </a>
+                    
+                    <a href="../vdpbf16ps/" 
+                       class="">
+                        vdpbf16ps
+                    </a>
+                    
+                    <a href="../vexpandpd/" 
+                       class="">
+                        vexpandpd
+                    </a>
+                    
+                    <a href="../vexpandps/" 
+                       class="">
+                        vexpandps
+                    </a>
+                    
+                    <a href="../vextractf128/" 
+                       class="">
+                        vextractf128
+                    </a>
+                    
+                    <a href="../vextracti128/" 
+                       class="">
+                        vextracti128
+                    </a>
+                    
+                    <a href="../vfcmaddcph/" 
+                       class="">
+                        vfcmaddcph
+                    </a>
+                    
+                    <a href="../vfixupimmpd/" 
+                       class="">
+                        vfixupimmpd
+                    </a>
+                    
+                    <a href="../vfixupimmps/" 
+                       class="">
+                        vfixupimmps
+                    </a>
+                    
+                    <a href="../vfixupimmss/" 
+                       class="">
+                        vfixupimmss
+                    </a>
+                    
+                    <a href="../vfmadd132ph/" 
+                       class="">
+                        vfmadd132ph
+                    </a>
+                    
+                    <a href="../vfmadd132sh/" 
+                       class="">
+                        vfmadd132sh
+                    </a>
+                    
+                    <a href="../vfmadd213ph/" 
+                       class="">
+                        vfmadd213ph
+                    </a>
+                    
+                    <a href="../vfmadd231ph/" 
+                       class="">
+                        vfmadd231ph
+                    </a>
+                    
+                    <a href="../vfmaddcph/" 
+                       class="">
+                        vfmaddcph
+                    </a>
+                    
+                    <a href="../vfmaddcsh/" 
+                       class="">
+                        vfmaddcsh
+                    </a>
+                    
+                    <a href="../vfpclasspd/" 
+                       class="">
+                        vfpclasspd
+                    </a>
+                    
+                    <a href="../vfpclassps/" 
+                       class="">
+                        vfpclassps
+                    </a>
+                    
+                    <a href="../vgatherdpd/" 
+                       class="">
+                        vgatherdpd
+                    </a>
+                    
+                    <a href="../vgatherdps/" 
+                       class="">
+                        vgatherdps
+                    </a>
+                    
+                    <a href="../vgatherpf0dpd/" 
+                       class="">
+                        vgatherpf0dpd
+                    </a>
+                    
+                    <a href="../vgatherpf0dps/" 
+                       class="">
+                        vgatherpf0dps
+                    </a>
+                    
+                    <a href="../vgatherpf0qpd/" 
+                       class="">
+                        vgatherpf0qpd
+                    </a>
+                    
+                    <a href="../vgatherpf0qps/" 
+                       class="">
+                        vgatherpf0qps
+                    </a>
+                    
+                    <a href="../vgetexppd/" 
+                       class="">
+                        vgetexppd
+                    </a>
+                    
+                    <a href="../vgetexpss/" 
+                       class="">
+                        vgetexpss
+                    </a>
+                    
+                    <a href="../vgetmantpd/" 
+                       class="">
+                        vgetmantpd
+                    </a>
+                    
+                    <a href="../vgetmantsd/" 
+                       class="">
+                        vgetmantsd
+                    </a>
+                    
+                    <a href="../vinsertf128/" 
+                       class="">
+                        vinsertf128
+                    </a>
+                    
+                    <a href="../vinserti128/" 
+                       class="">
+                        vinserti128
+                    </a>
+                    
+                    <a href="../vmaskmovpd/" 
+                       class="">
+                        vmaskmovpd
+                    </a>
+                    
+                    <a href="../vmaskmovps/" 
+                       class="">
+                        vmaskmovps
+                    </a>
+                    
+                    <a href="../vmaxph/" 
+                       class="">
+                        vmaxph
+                    </a>
+                    
+                    <a href="../vminph/" 
+                       class="">
+                        vminph
+                    </a>
+                    
+                    <a href="../vmulph/" 
+                       class="">
+                        vmulph
+                    </a>
+                    
+                    <a href="../vmulps/" 
+                       class="">
+                        vmulps
+                    </a>
+                    
+                    <a href="../vmulsh/" 
+                       class="">
+                        vmulsh
+                    </a>
+                    
+                    <a href="../vmulss/" 
+                       class="">
+                        vmulss
+                    </a>
+                    
+                    <a href="../vp2intersectd/" 
+                       class="">
+                        vp2intersectd
+                    </a>
+                    
+                    <a href="../vp4dpwssd/" 
+                       class="">
+                        vp4dpwssd
+                    </a>
+                    
+                    <a href="../vp4dpwssds/" 
+                       class="">
+                        vp4dpwssds
+                    </a>
+                    
+                    <a href="../vpabsd/" 
+                       class="">
+                        vpabsd
+                    </a>
+                    
+                    <a href="../vpabsq/" 
+                       class="">
+                        vpabsq
+                    </a>
+                    
+                    <a href="../vpaddb/" 
+                       class="">
+                        vpaddb
+                    </a>
+                    
+                    <a href="../vpaddd/" 
+                       class="">
+                        vpaddd
+                    </a>
+                    
+                    <a href="../vpbroadcastb/" 
+                       class="">
+                        vpbroadcastb
+                    </a>
+                    
+                    <a href="../vpbroadcastd/" 
+                       class="">
+                        vpbroadcastd
+                    </a>
+                    
+                    <a href="../vpbroadcastq/" 
+                       class="">
+                        vpbroadcastq
+                    </a>
+                    
+                    <a href="../vpbroadcastw/" 
+                       class="">
+                        vpbroadcastw
+                    </a>
+                    
+                    <a href="../vpcmov/" 
+                       class="">
+                        vpcmov
+                    </a>
+                    
+                    <a href="../vpcmpb/" 
+                       class="">
+                        vpcmpb
+                    </a>
+                    
+                    <a href="../vpcmpd/" 
+                       class="">
+                        vpcmpd
+                    </a>
+                    
+                    <a href="../vpcmpq/" 
+                       class="">
+                        vpcmpq
+                    </a>
+                    
+                    <a href="../vpcmpub/" 
+                       class="">
+                        vpcmpub
+                    </a>
+                    
+                    <a href="../vpcmpud/" 
+                       class="">
+                        vpcmpud
+                    </a>
+                    
+                    <a href="../vpcmpuq/" 
+                       class="">
+                        vpcmpuq
+                    </a>
+                    
+                    <a href="../vpcmpuw/" 
+                       class="">
+                        vpcmpuw
+                    </a>
+                    
+                    <a href="../vpcmpw/" 
+                       class="">
+                        vpcmpw
+                    </a>
+                    
+                    <a href="../vpcomb/" 
+                       class="">
+                        vpcomb
+                    </a>
+                    
+                    <a href="../vpconflictd/" 
+                       class="">
+                        vpconflictd
+                    </a>
+                    
+                    <a href="../vpconflictq/" 
+                       class="">
+                        vpconflictq
+                    </a>
+                    
+                    <a href="../vpdpbusd/" 
+                       class="">
+                        vpdpbusd
+                    </a>
+                    
+                    <a href="../vpdpbusds/" 
+                       class="">
+                        vpdpbusds
+                    </a>
+                    
+                    <a href="../vpdpwssd/" 
+                       class="">
+                        vpdpwssd
+                    </a>
+                    
+                    <a href="../vpdpwssds/" 
+                       class="">
+                        vpdpwssds
+                    </a>
+                    
+                    <a href="../vperm2f128/" 
+                       class="">
+                        vperm2f128
+                    </a>
+                    
+                    <a href="../vperm2i128/" 
+                       class="">
+                        vperm2i128
+                    </a>
+                    
+                    <a href="../vpermd/" 
+                       class="">
+                        vpermd
+                    </a>
+                    
+                    <a href="../vpermi2d/" 
+                       class="">
+                        vpermi2d
+                    </a>
+                    
+                    <a href="../vpermi2q/" 
+                       class="">
+                        vpermi2q
+                    </a>
+                    
+                    <a href="../vpermilpd/" 
+                       class="">
+                        vpermilpd
+                    </a>
+                    
+                    <a href="../vpermilps/" 
+                       class="">
+                        vpermilps
+                    </a>
+                    
+                    <a href="../vpermps/" 
+                       class="">
+                        vpermps
+                    </a>
+                    
+                    <a href="../vpermq/" 
+                       class="">
+                        vpermq
+                    </a>
+                    
+                    <a href="../vpermt2d/" 
+                       class="">
+                        vpermt2d
+                    </a>
+                    
+                    <a href="../vpermt2q/" 
+                       class="">
+                        vpermt2q
+                    </a>
+                    
+                    <a href="../vpermw/" 
+                       class="">
+                        vpermw
+                    </a>
+                    
+                    <a href="../vpgatherdd/" 
+                       class="">
+                        vpgatherdd
+                    </a>
+                    
+                    <a href="../vpgatherdq/" 
+                       class="">
+                        vpgatherdq
+                    </a>
+                    
+                    <a href="../vpgatherqd/" 
+                       class="">
+                        vpgatherqd
+                    </a>
+                    
+                    <a href="../vpgatherqq/" 
+                       class="">
+                        vpgatherqq
+                    </a>
+                    
+                    <a href="../vphaddbd/" 
+                       class="">
+                        vphaddbd
+                    </a>
+                    
+                    <a href="../vphaddbq/" 
+                       class="">
+                        vphaddbq
+                    </a>
+                    
+                    <a href="../vphaddbw/" 
+                       class="">
+                        vphaddbw
+                    </a>
+                    
+                    <a href="../vphadddq/" 
+                       class="">
+                        vphadddq
+                    </a>
+                    
+                    <a href="../vphaddwd/" 
+                       class="">
+                        vphaddwd
+                    </a>
+                    
+                    <a href="../vphaddwq/" 
+                       class="">
+                        vphaddwq
+                    </a>
+                    
+                    <a href="../vplzcntd/" 
+                       class="">
+                        vplzcntd
+                    </a>
+                    
+                    <a href="../vplzcntq/" 
+                       class="">
+                        vplzcntq
+                    </a>
+                    
+                    <a href="../vpmacssww/" 
+                       class="">
+                        vpmacssww
+                    </a>
+                    
+                    <a href="../vpmacsww/" 
+                       class="">
+                        vpmacsww
+                    </a>
+                    
+                    <a href="../vpmaxsq/" 
+                       class="">
+                        vpmaxsq
+                    </a>
+                    
+                    <a href="../vpmaxuq/" 
+                       class="">
+                        vpmaxuq
+                    </a>
+                    
+                    <a href="../vpminsq/" 
+                       class="">
+                        vpminsq
+                    </a>
+                    
+                    <a href="../vpminuq/" 
+                       class="">
+                        vpminuq
+                    </a>
+                    
+                    <a href="../vpmovb2m/" 
+                       class="">
+                        vpmovb2m
+                    </a>
+                    
+                    <a href="../vpmovd2m/" 
+                       class="">
+                        vpmovd2m
+                    </a>
+                    
+                    <a href="../vpmovdb/" 
+                       class="">
+                        vpmovdb
+                    </a>
+                    
+                    <a href="../vpmovm2b/" 
+                       class="">
+                        vpmovm2b
+                    </a>
+                    
+                    <a href="../vpmovm2d/" 
+                       class="">
+                        vpmovm2d
+                    </a>
+                    
+                    <a href="../vpmovm2q/" 
+                       class="">
+                        vpmovm2q
+                    </a>
+                    
+                    <a href="../vpmovm2w/" 
+                       class="">
+                        vpmovm2w
+                    </a>
+                    
+                    <a href="../vpmovq2m/" 
+                       class="">
+                        vpmovq2m
+                    </a>
+                    
+                    <a href="../vpmovsqb/" 
+                       class="">
+                        vpmovsqb
+                    </a>
+                    
+                    <a href="../vpmovswb/" 
+                       class="">
+                        vpmovswb
+                    </a>
+                    
+                    <a href="../vpmovusdb/" 
+                       class="">
+                        vpmovusdb
+                    </a>
+                    
+                    <a href="../vpmovusqb/" 
+                       class="">
+                        vpmovusqb
+                    </a>
+                    
+                    <a href="../vpmovuswb/" 
+                       class="">
+                        vpmovuswb
+                    </a>
+                    
+                    <a href="../vpmovw2m/" 
+                       class="">
+                        vpmovw2m
+                    </a>
+                    
+                    <a href="../vpmulld/" 
+                       class="">
+                        vpmulld
+                    </a>
+                    
+                    <a href="../vpmullq/" 
+                       class="">
+                        vpmullq
+                    </a>
+                    
+                    <a href="../vpopcntb/" 
+                       class="">
+                        vpopcntb
+                    </a>
+                    
+                    <a href="../vpopcntd/" 
+                       class="">
+                        vpopcntd
+                    </a>
+                    
+                    <a href="../vprolq/" 
+                       class="">
+                        vprolq
+                    </a>
+                    
+                    <a href="../vprolvd/" 
+                       class="">
+                        vprolvd
+                    </a>
+                    
+                    <a href="../vprolvq/" 
+                       class="">
+                        vprolvq
+                    </a>
+                    
+                    <a href="../vprorq/" 
+                       class="">
+                        vprorq
+                    </a>
+                    
+                    <a href="../vprorvd/" 
+                       class="">
+                        vprorvd
+                    </a>
+                    
+                    <a href="../vprorvq/" 
+                       class="">
+                        vprorvq
+                    </a>
+                    
+                    <a href="../vprotb/" 
+                       class="">
+                        vprotb
+                    </a>
+                    
+                    <a href="../vprotd/" 
+                       class="">
+                        vprotd
+                    </a>
+                    
+                    <a href="../vprotq/" 
+                       class="">
+                        vprotq
+                    </a>
+                    
+                    <a href="../vprotw/" 
+                       class="">
+                        vprotw
+                    </a>
+                    
+                    <a href="../vpshab/" 
+                       class="">
+                        vpshab
+                    </a>
+                    
+                    <a href="../vpshad/" 
+                       class="">
+                        vpshad
+                    </a>
+                    
+                    <a href="../vpshaq/" 
+                       class="">
+                        vpshaq
+                    </a>
+                    
+                    <a href="../vpshaw/" 
+                       class="">
+                        vpshaw
+                    </a>
+                    
+                    <a href="../vpshufb/" 
+                       class="">
+                        vpshufb
+                    </a>
+                    
+                    <a href="../vpshufbitqmb/" 
+                       class="">
+                        vpshufbitqmb
+                    </a>
+                    
+                    <a href="../vpsllvd/" 
+                       class="">
+                        vpsllvd
+                    </a>
+                    
+                    <a href="../vpsllvq/" 
+                       class="">
+                        vpsllvq
+                    </a>
+                    
+                    <a href="../vpsravd/" 
+                       class="">
+                        vpsravd
+                    </a>
+                    
+                    <a href="../vpsravq/" 
+                       class="">
+                        vpsravq
+                    </a>
+                    
+                    <a href="../vpsrlvd/" 
+                       class="">
+                        vpsrlvd
+                    </a>
+                    
+                    <a href="../vpsrlvq/" 
+                       class="">
+                        vpsrlvq
+                    </a>
+                    
+                    <a href="../vpsubd/" 
+                       class="">
+                        vpsubd
+                    </a>
+                    
+                    <a href="../vpternlogd/" 
+                       class="">
+                        vpternlogd
+                    </a>
+                    
+                    <a href="../vpternlogq/" 
+                       class="">
+                        vpternlogq
+                    </a>
+                    
+                    <a href="../vptestmb/" 
+                       class="">
+                        vptestmb
+                    </a>
+                    
+                    <a href="../vptestmd/" 
+                       class="">
+                        vptestmd
+                    </a>
+                    
+                    <a href="../vptestmq/" 
+                       class="">
+                        vptestmq
+                    </a>
+                    
+                    <a href="../vptestmw/" 
+                       class="">
+                        vptestmw
+                    </a>
+                    
+                    <a href="../vrangeps/" 
+                       class="">
+                        vrangeps
+                    </a>
+                    
+                    <a href="../vrangess/" 
+                       class="">
+                        vrangess
+                    </a>
+                    
+                    <a href="../vrcp14ps/" 
+                       class="">
+                        vrcp14ps
+                    </a>
+                    
+                    <a href="../vreduceps/" 
+                       class="">
+                        vreduceps
+                    </a>
+                    
+                    <a href="../vreducess/" 
+                       class="">
+                        vreducess
+                    </a>
+                    
+                    <a href="../vrndscalepd/" 
+                       class="">
+                        vrndscalepd
+                    </a>
+                    
+                    <a href="../vrsqrt14ps/" 
+                       class="">
+                        vrsqrt14ps
+                    </a>
+                    
+                    <a href="../vscalefpd/" 
+                       class="">
+                        vscalefpd
+                    </a>
+                    
+                    <a href="../vscatterdpd/" 
+                       class="">
+                        vscatterdpd
+                    </a>
+                    
+                    <a href="../vscatterdps/" 
+                       class="">
+                        vscatterdps
+                    </a>
+                    
+                    <a href="../vscatterpf0dpd/" 
+                       class="">
+                        vscatterpf0dpd
+                    </a>
+                    
+                    <a href="../vscatterpf0dps/" 
+                       class="">
+                        vscatterpf0dps
+                    </a>
+                    
+                    <a href="../vscatterpf0qpd/" 
+                       class="">
+                        vscatterpf0qpd
+                    </a>
+                    
+                    <a href="../vscatterpf0qps/" 
+                       class="">
+                        vscatterpf0qps
+                    </a>
+                    
+                    <a href="../vscatterqpd/" 
+                       class="">
+                        vscatterqpd
+                    </a>
+                    
+                    <a href="../vscatterqps/" 
+                       class="">
+                        vscatterqps
+                    </a>
+                    
+                    <a href="../vsha512msg1/" 
+                       class="">
+                        vsha512msg1
+                    </a>
+                    
+                    <a href="../vsha512msg2/" 
+                       class="">
+                        vsha512msg2
+                    </a>
+                    
+                    <a href="../vsha512rnds2/" 
+                       class="">
+                        vsha512rnds2
+                    </a>
+                    
+                    <a href="../vshuff32x4/" 
+                       class="">
+                        vshuff32x4
+                    </a>
+                    
+                    <a href="../vsqrtph/" 
+                       class="">
+                        vsqrtph
+                    </a>
+                    
+                    <a href="../vsqrtsh/" 
+                       class="">
+                        vsqrtsh
+                    </a>
+                    
+                    <a href="../vsubph/" 
+                       class="">
+                        vsubph
+                    </a>
+                    
+                    <a href="../vsubsh/" 
+                       class="">
+                        vsubsh
+                    </a>
+                    
+                    <a href="../vtestpd/" 
+                       class="">
+                        vtestpd
+                    </a>
+                    
+                    <a href="../vtestps/" 
+                       class="">
+                        vtestps
+                    </a>
+                    
+                    <a href="../vzeroall/" 
+                       class="">
+                        vzeroall
+                    </a>
+                    
+                    <a href="../vzeroupper/" 
+                       class="">
+                        vzeroupper
+                    </a>
+                    
+                    <a href="../wait/" 
+                       class="">
+                        wait
+                    </a>
+                    
+                    <a href="../wait_1/" 
+                       class="">
+                        wait
+                    </a>
+                    
+                    <a href="../wbnoinvd/" 
+                       class="">
+                        wbnoinvd
+                    </a>
+                    
+                    <a href="../wrfsbase/" 
+                       class="">
+                        wrfsbase
+                    </a>
+                    
+                    <a href="../wrgsbase/" 
+                       class="">
+                        wrgsbase
+                    </a>
+                    
+                    <a href="../wrpkru/" 
+                       class="">
+                        wrpkru
+                    </a>
+                    
+                    <a href="../xadd/" 
+                       class="">
+                        xadd
+                    </a>
+                    
+                    <a href="../xadd_1/" 
+                       class="">
+                        xadd
+                    </a>
+                    
+                    <a href="../xchg/" 
+                       class="">
+                        xchg
+                    </a>
+                    
+                    <a href="../xchg_1/" 
+                       class="">
+                        xchg
+                    </a>
+                    
+                    <a href="../xgetbv/" 
+                       class="">
+                        xgetbv
+                    </a>
+                    
+                    <a href="../xlat/" 
+                       class="">
+                        xlat
+                    </a>
+                    
+                    <a href="../xlat_1/" 
+                       class="">
+                        xlat
+                    </a>
+                    
+                    <a href="../xor/" 
+                       class="">
+                        xor
+                    </a>
+                    
+                    <a href="../xor_1/" 
+                       class="">
+                        xor
+                    </a>
+                    
+                    <a href="../xorps/" 
+                       class="">
+                        xorps
+                    </a>
+                    
+                    <a href="../xorps_1/" 
+                       class="">
+                        xorps
+                    </a>
+                    
+                    <a href="../xrstor/" 
+                       class="">
+                        xrstor
+                    </a>
+                    
+                    <a href="../xrstors/" 
+                       class="">
+                        xrstors
+                    </a>
+                    
+                    <a href="../xsave/" 
+                       class="">
+                        xsave
+                    </a>
+                    
+                    <a href="../xsavec/" 
+                       class="">
+                        xsavec
+                    </a>
+                    
+                    <a href="../xsaveopt/" 
+                       class="">
+                        xsaveopt
+                    </a>
+                    
+                    <a href="../xsaves/" 
+                       class="">
+                        xsaves
+                    </a>
+                    
+                    <a href="../xsetbv/" 
+                       class="">
+                        xsetbv
+                    </a>
+                    
+                    <a href="../xtest/" 
+                       class="">
+                        xtest
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>Math Extensions (M)</summary>
+                <div class="group-links">
+                    
+                    <a href="../andn/" 
+                       class="">
+                        andn
+                    </a>
+                    
+                    <a href="../bextr/" 
+                       class="">
+                        bextr
+                    </a>
+                    
+                    <a href="../blcfill/" 
+                       class="">
+                        blcfill
+                    </a>
+                    
+                    <a href="../blci/" 
+                       class="">
+                        blci
+                    </a>
+                    
+                    <a href="../blcic/" 
+                       class="">
+                        blcic
+                    </a>
+                    
+                    <a href="../blcmsk/" 
+                       class="">
+                        blcmsk
+                    </a>
+                    
+                    <a href="../blcs/" 
+                       class="">
+                        blcs
+                    </a>
+                    
+                    <a href="../blsfill/" 
+                       class="">
+                        blsfill
+                    </a>
+                    
+                    <a href="../blsi/" 
+                       class="">
+                        blsi
+                    </a>
+                    
+                    <a href="../blsic/" 
+                       class="">
+                        blsic
+                    </a>
+                    
+                    <a href="../blsmsk/" 
+                       class="">
+                        blsmsk
+                    </a>
+                    
+                    <a href="../blsr/" 
+                       class="">
+                        blsr
+                    </a>
+                    
+                    <a href="../bndcl/" 
+                       class="">
+                        bndcl
+                    </a>
+                    
+                    <a href="../bndcu/" 
+                       class="">
+                        bndcu
+                    </a>
+                    
+                    <a href="../bndmk/" 
+                       class="">
+                        bndmk
+                    </a>
+                    
+                    <a href="../bndmov/" 
+                       class="">
+                        bndmov
+                    </a>
+                    
+                    <a href="../bzhi/" 
+                       class="">
+                        bzhi
+                    </a>
+                    
+                    <a href="../clac/" 
+                       class="">
+                        clac
+                    </a>
+                    
+                    <a href="../cldemote/" 
+                       class="">
+                        cldemote
+                    </a>
+                    
+                    <a href="../clgi/" 
+                       class="">
+                        clgi
+                    </a>
+                    
+                    <a href="../cmovcc/" 
+                       class="">
+                        cmovcc
+                    </a>
+                    
+                    <a href="../cmovcc_1/" 
+                       class="">
+                        cmovcc
+                    </a>
+                    
+                    <a href="../cmovg/" 
+                       class="">
+                        cmovg
+                    </a>
+                    
+                    <a href="../cmovge/" 
+                       class="">
+                        cmovge
+                    </a>
+                    
+                    <a href="../cmovl/" 
+                       class="">
+                        cmovl
+                    </a>
+                    
+                    <a href="../cmovle/" 
+                       class="">
+                        cmovle
+                    </a>
+                    
+                    <a href="../cmovnz/" 
+                       class="">
+                        cmovnz
+                    </a>
+                    
+                    <a href="../cmovz/" 
+                       class="">
+                        cmovz
+                    </a>
+                    
+                    <a href="../cmpccxadd/" 
+                       class="">
+                        cmpccxadd
+                    </a>
+                    
+                    <a href="../emms/" 
+                       class="">
+                        emms
+                    </a>
+                    
+                    <a href="../emms_1/" 
+                       class="">
+                        emms
+                    </a>
+                    
+                    <a href="../enqcmd/" 
+                       class="">
+                        enqcmd
+                    </a>
+                    
+                    <a href="../getsec/" 
+                       class="">
+                        getsec
+                    </a>
+                    
+                    <a href="../invept/" 
+                       class="">
+                        invept
+                    </a>
+                    
+                    <a href="../invlpga/" 
+                       class="">
+                        invlpga
+                    </a>
+                    
+                    <a href="../invvpid/" 
+                       class="">
+                        invvpid
+                    </a>
+                    
+                    <a href="../ldtilecfg/" 
+                       class="">
+                        ldtilecfg
+                    </a>
+                    
+                    <a href="../lzcnt/" 
+                       class="">
+                        lzcnt
+                    </a>
+                    
+                    <a href="../maskmovq/" 
+                       class="">
+                        maskmovq
+                    </a>
+                    
+                    <a href="../monitorx/" 
+                       class="">
+                        monitorx
+                    </a>
+                    
+                    <a href="../movbe/" 
+                       class="">
+                        movbe
+                    </a>
+                    
+                    <a href="../movd/" 
+                       class="">
+                        movd
+                    </a>
+                    
+                    <a href="../movd_1/" 
+                       class="">
+                        movd
+                    </a>
+                    
+                    <a href="../movdir64b/" 
+                       class="">
+                        movdir64b
+                    </a>
+                    
+                    <a href="../movdiri/" 
+                       class="">
+                        movdiri
+                    </a>
+                    
+                    <a href="../movq/" 
+                       class="">
+                        movq
+                    </a>
+                    
+                    <a href="../mulx/" 
+                       class="">
+                        mulx
+                    </a>
+                    
+                    <a href="../mwaitx/" 
+                       class="">
+                        mwaitx
+                    </a>
+                    
+                    <a href="../paddsb/" 
+                       class="">
+                        paddsb
+                    </a>
+                    
+                    <a href="../paddsw/" 
+                       class="">
+                        paddsw
+                    </a>
+                    
+                    <a href="../paddusb/" 
+                       class="">
+                        paddusb
+                    </a>
+                    
+                    <a href="../paddusw/" 
+                       class="">
+                        paddusw
+                    </a>
+                    
+                    <a href="../pand/" 
+                       class="">
+                        pand
+                    </a>
+                    
+                    <a href="../pandn/" 
+                       class="">
+                        pandn
+                    </a>
+                    
+                    <a href="../pclmulqdq/" 
+                       class="">
+                        pclmulqdq
+                    </a>
+                    
+                    <a href="../pcmpeqb/" 
+                       class="">
+                        pcmpeqb
+                    </a>
+                    
+                    <a href="../pcmpeqd/" 
+                       class="">
+                        pcmpeqd
+                    </a>
+                    
+                    <a href="../pcmpeqw/" 
+                       class="">
+                        pcmpeqw
+                    </a>
+                    
+                    <a href="../pcmpgtb/" 
+                       class="">
+                        pcmpgtb
+                    </a>
+                    
+                    <a href="../pcmpgtd/" 
+                       class="">
+                        pcmpgtd
+                    </a>
+                    
+                    <a href="../pcmpgtw/" 
+                       class="">
+                        pcmpgtw
+                    </a>
+                    
+                    <a href="../pdep/" 
+                       class="">
+                        pdep
+                    </a>
+                    
+                    <a href="../pext/" 
+                       class="">
+                        pext
+                    </a>
+                    
+                    <a href="../pmaddwd/" 
+                       class="">
+                        pmaddwd
+                    </a>
+                    
+                    <a href="../pmulhw/" 
+                       class="">
+                        pmulhw
+                    </a>
+                    
+                    <a href="../pmullw/" 
+                       class="">
+                        pmullw
+                    </a>
+                    
+                    <a href="../por/" 
+                       class="">
+                        por
+                    </a>
+                    
+                    <a href="../pslld/" 
+                       class="">
+                        pslld
+                    </a>
+                    
+                    <a href="../psllq/" 
+                       class="">
+                        psllq
+                    </a>
+                    
+                    <a href="../psllw/" 
+                       class="">
+                        psllw
+                    </a>
+                    
+                    <a href="../psrad/" 
+                       class="">
+                        psrad
+                    </a>
+                    
+                    <a href="../psraw/" 
+                       class="">
+                        psraw
+                    </a>
+                    
+                    <a href="../psrld/" 
+                       class="">
+                        psrld
+                    </a>
+                    
+                    <a href="../psrlq/" 
+                       class="">
+                        psrlq
+                    </a>
+                    
+                    <a href="../psrlw/" 
+                       class="">
+                        psrlw
+                    </a>
+                    
+                    <a href="../psubsb/" 
+                       class="">
+                        psubsb
+                    </a>
+                    
+                    <a href="../psubsw/" 
+                       class="">
+                        psubsw
+                    </a>
+                    
+                    <a href="../psubusb/" 
+                       class="">
+                        psubusb
+                    </a>
+                    
+                    <a href="../psubusw/" 
+                       class="">
+                        psubusw
+                    </a>
+                    
+                    <a href="../pxor/" 
+                       class="">
+                        pxor
+                    </a>
+                    
+                    <a href="../rorx/" 
+                       class="">
+                        rorx
+                    </a>
+                    
+                    <a href="../sarx/" 
+                       class="">
+                        sarx
+                    </a>
+                    
+                    <a href="../shlx/" 
+                       class="">
+                        shlx
+                    </a>
+                    
+                    <a href="../shrx/" 
+                       class="">
+                        shrx
+                    </a>
+                    
+                    <a href="../stac/" 
+                       class="">
+                        stac
+                    </a>
+                    
+                    <a href="../stgi/" 
+                       class="">
+                        stgi
+                    </a>
+                    
+                    <a href="../sttilecfg/" 
+                       class="">
+                        sttilecfg
+                    </a>
+                    
+                    <a href="../t1mskc/" 
+                       class="">
+                        t1mskc
+                    </a>
+                    
+                    <a href="../tdpbf16ps/" 
+                       class="">
+                        tdpbf16ps
+                    </a>
+                    
+                    <a href="../tdpbssd/" 
+                       class="">
+                        tdpbssd
+                    </a>
+                    
+                    <a href="../tdpbsud/" 
+                       class="">
+                        tdpbsud
+                    </a>
+                    
+                    <a href="../tdpfp16ps/" 
+                       class="">
+                        tdpfp16ps
+                    </a>
+                    
+                    <a href="../tileloadd/" 
+                       class="">
+                        tileloadd
+                    </a>
+                    
+                    <a href="../tilestored/" 
+                       class="">
+                        tilestored
+                    </a>
+                    
+                    <a href="../tilezero/" 
+                       class="">
+                        tilezero
+                    </a>
+                    
+                    <a href="../tzcnt/" 
+                       class="">
+                        tzcnt
+                    </a>
+                    
+                    <a href="../tzmsk/" 
+                       class="">
+                        tzmsk
+                    </a>
+                    
+                    <a href="../v4fmaddps/" 
+                       class="">
+                        v4fmaddps
+                    </a>
+                    
+                    <a href="../v4fmaddss/" 
+                       class="">
+                        v4fmaddss
+                    </a>
+                    
+                    <a href="../v4fnmaddps/" 
+                       class="">
+                        v4fnmaddps
+                    </a>
+                    
+                    <a href="../v4fnmaddss/" 
+                       class="">
+                        v4fnmaddss
+                    </a>
+                    
+                    <a href="../vfmadd132ps/" 
+                       class="">
+                        vfmadd132ps
+                    </a>
+                    
+                    <a href="../vfmadd132ss/" 
+                       class="">
+                        vfmadd132ss
+                    </a>
+                    
+                    <a href="../vfmadd213ps/" 
+                       class="">
+                        vfmadd213ps
+                    </a>
+                    
+                    <a href="../vfmadd213ss/" 
+                       class="">
+                        vfmadd213ss
+                    </a>
+                    
+                    <a href="../vfmadd231ps/" 
+                       class="">
+                        vfmadd231ps
+                    </a>
+                    
+                    <a href="../vfmadd231ss/" 
+                       class="">
+                        vfmadd231ss
+                    </a>
+                    
+                    <a href="../vfmsub132ps/" 
+                       class="">
+                        vfmsub132ps
+                    </a>
+                    
+                    <a href="../vfnmadd132ps/" 
+                       class="">
+                        vfnmadd132ps
+                    </a>
+                    
+                    <a href="../vmcall/" 
+                       class="">
+                        vmcall
+                    </a>
+                    
+                    <a href="../vmclear/" 
+                       class="">
+                        vmclear
+                    </a>
+                    
+                    <a href="../vmfunc/" 
+                       class="">
+                        vmfunc
+                    </a>
+                    
+                    <a href="../vmlaunch/" 
+                       class="">
+                        vmlaunch
+                    </a>
+                    
+                    <a href="../vmload/" 
+                       class="">
+                        vmload
+                    </a>
+                    
+                    <a href="../vmoff/" 
+                       class="">
+                        vmoff
+                    </a>
+                    
+                    <a href="../vmptrld/" 
+                       class="">
+                        vmptrld
+                    </a>
+                    
+                    <a href="../vmptrst/" 
+                       class="">
+                        vmptrst
+                    </a>
+                    
+                    <a href="../vmread/" 
+                       class="">
+                        vmread
+                    </a>
+                    
+                    <a href="../vmresume/" 
+                       class="">
+                        vmresume
+                    </a>
+                    
+                    <a href="../vmrun/" 
+                       class="">
+                        vmrun
+                    </a>
+                    
+                    <a href="../vmsave/" 
+                       class="">
+                        vmsave
+                    </a>
+                    
+                    <a href="../vmwrite/" 
+                       class="">
+                        vmwrite
+                    </a>
+                    
+                    <a href="../vmxon/" 
+                       class="">
+                        vmxon
+                    </a>
+                    
+                    <a href="../vpclmulqdq/" 
+                       class="">
+                        vpclmulqdq
+                    </a>
+                    
+                    <a href="../vpcompressb/" 
+                       class="">
+                        vpcompressb
+                    </a>
+                    
+                    <a href="../vpermb/" 
+                       class="">
+                        vpermb
+                    </a>
+                    
+                    <a href="../vpermi2b/" 
+                       class="">
+                        vpermi2b
+                    </a>
+                    
+                    <a href="../vpermt2b/" 
+                       class="">
+                        vpermt2b
+                    </a>
+                    
+                    <a href="../vpexpandb/" 
+                       class="">
+                        vpexpandb
+                    </a>
+                    
+                    <a href="../vpmadd52huq/" 
+                       class="">
+                        vpmadd52huq
+                    </a>
+                    
+                    <a href="../vpmadd52luq/" 
+                       class="">
+                        vpmadd52luq
+                    </a>
+                    
+                    <a href="../vpmultishiftqb/" 
+                       class="">
+                        vpmultishiftqb
+                    </a>
+                    
+                    <a href="../vpshldd/" 
+                       class="">
+                        vpshldd
+                    </a>
+                    
+                    <a href="../vpshrdd/" 
+                       class="">
+                        vpshrdd
+                    </a>
+                    
+                    <a href="../vsm3msg1/" 
+                       class="">
+                        vsm3msg1
+                    </a>
+                    
+                    <a href="../vsm3rnds2/" 
+                       class="">
+                        vsm3rnds2
+                    </a>
+                    
+                    <a href="../vsm4e/" 
+                       class="">
+                        vsm4e
+                    </a>
+                    
+                    <a href="../vsm4key4/" 
+                       class="">
+                        vsm4key4
+                    </a>
+                    
+                    <a href="../xabort/" 
+                       class="">
+                        xabort
+                    </a>
+                    
+                    <a href="../xbegin/" 
+                       class="">
+                        xbegin
+                    </a>
+                    
+                    <a href="../xend/" 
+                       class="">
+                        xend
+                    </a>
+                    
+                </div>
+            </details>
+            
+            <details open class="nav-group">
+                <summary>System & Privileged</summary>
+                <div class="group-links">
+                    
+                    <a href="../arpl/" 
+                       class="">
+                        arpl
+                    </a>
+                    
+                    <a href="../arpl_1/" 
+                       class="">
+                        arpl
+                    </a>
+                    
+                    <a href="../clts/" 
+                       class="">
+                        clts
+                    </a>
+                    
+                    <a href="../clts_1/" 
+                       class="">
+                        clts
+                    </a>
+                    
+                    <a href="../invd/" 
+                       class="">
+                        invd
+                    </a>
+                    
+                    <a href="../invd_1/" 
+                       class="">
+                        invd
+                    </a>
+                    
+                    <a href="../invlpg/" 
+                       class="">
+                        invlpg
+                    </a>
+                    
+                    <a href="../invlpg_1/" 
+                       class="">
+                        invlpg
+                    </a>
+                    
+                    <a href="../lar/" 
+                       class="">
+                        lar
+                    </a>
+                    
+                    <a href="../lar_1/" 
+                       class="">
+                        lar
+                    </a>
+                    
+                    <a href="../lgdt/" 
+                       class="">
+                        lgdt
+                    </a>
+                    
+                    <a href="../lgdt_1/" 
+                       class="">
+                        lgdt
+                    </a>
+                    
+                    <a href="../lidt/" 
+                       class="">
+                        lidt
+                    </a>
+                    
+                    <a href="../lidt_1/" 
+                       class="">
+                        lidt
+                    </a>
+                    
+                    <a href="../lldt/" 
+                       class="">
+                        lldt
+                    </a>
+                    
+                    <a href="../lldt_1/" 
+                       class="">
+                        lldt
+                    </a>
+                    
+                    <a href="../lmsw/" 
+                       class="">
+                        lmsw
+                    </a>
+                    
+                    <a href="../lmsw_1/" 
+                       class="">
+                        lmsw
+                    </a>
+                    
+                    <a href="../lsl/" 
+                       class="">
+                        lsl
+                    </a>
+                    
+                    <a href="../lsl_1/" 
+                       class="">
+                        lsl
+                    </a>
+                    
+                    <a href="../ltr/" 
+                       class="">
+                        ltr
+                    </a>
+                    
+                    <a href="../ltr_1/" 
+                       class="">
+                        ltr
+                    </a>
+                    
+                    <a href="../mov_cr/" 
+                       class="">
+                        mov cr
+                    </a>
+                    
+                    <a href="../mov_cr_1/" 
+                       class="">
+                        mov cr
+                    </a>
+                    
+                    <a href="../mov_dr/" 
+                       class="">
+                        mov dr
+                    </a>
+                    
+                    <a href="../mov_dr_1/" 
+                       class="">
+                        mov dr
+                    </a>
+                    
+                    <a href="../rdmsr/" 
+                       class="">
+                        rdmsr
+                    </a>
+                    
+                    <a href="../rdmsr_1/" 
+                       class="">
+                        rdmsr
+                    </a>
+                    
+                    <a href="../rdpmc/" 
+                       class="">
+                        rdpmc
+                    </a>
+                    
+                    <a href="../rdpmc_1/" 
+                       class="">
+                        rdpmc
+                    </a>
+                    
+                    <a href="../rsm/" 
+                       class="">
+                        rsm
+                    </a>
+                    
+                    <a href="../rsm_1/" 
+                       class="">
+                        rsm
+                    </a>
+                    
+                    <a href="../sgdt/" 
+                       class="">
+                        sgdt
+                    </a>
+                    
+                    <a href="../sgdt_1/" 
+                       class="">
+                        sgdt
+                    </a>
+                    
+                    <a href="../sidt/" 
+                       class="">
+                        sidt
+                    </a>
+                    
+                    <a href="../sidt_1/" 
+                       class="">
+                        sidt
+                    </a>
+                    
+                    <a href="../sldt/" 
+                       class="">
+                        sldt
+                    </a>
+                    
+                    <a href="../sldt_1/" 
+                       class="">
+                        sldt
+                    </a>
+                    
+                    <a href="../smsw/" 
+                       class="">
+                        smsw
+                    </a>
+                    
+                    <a href="../smsw_1/" 
+                       class="">
+                        smsw
+                    </a>
+                    
+                    <a href="../str/" 
+                       class="">
+                        str
+                    </a>
+                    
+                    <a href="../str_1/" 
+                       class="">
+                        str
+                    </a>
+                    
+                    <a href="../swapgs/" 
+                       class="">
+                        swapgs
+                    </a>
+                    
+                    <a href="../syscall/" 
+                       class="">
+                        syscall
+                    </a>
+                    
+                    <a href="../sysenter/" 
+                       class="">
+                        sysenter
+                    </a>
+                    
+                    <a href="../sysenter_1/" 
+                       class="">
+                        sysenter
+                    </a>
+                    
+                    <a href="../sysexit/" 
+                       class="">
+                        sysexit
+                    </a>
+                    
+                    <a href="../sysexit_1/" 
+                       class="">
+                        sysexit
+                    </a>
+                    
+                    <a href="../sysret/" 
+                       class="">
+                        sysret
+                    </a>
+                    
+                    <a href="../verr/" 
+                       class="">
+                        verr
+                    </a>
+                    
+                    <a href="../verr_1/" 
+                       class="">
+                        verr
+                    </a>
+                    
+                    <a href="../verw/" 
+                       class="">
+                        verw
+                    </a>
+                    
+                    <a href="../verw_1/" 
+                       class="">
+                        verw
+                    </a>
+                    
+                    <a href="../wbinvd/" 
+                       class="">
+                        wbinvd
+                    </a>
+                    
+                    <a href="../wbinvd_1/" 
+                       class="">
+                        wbinvd
+                    </a>
+                    
+                    <a href="../wrmsr/" 
+                       class="">
+                        wrmsr
+                    </a>
+                    
+                    <a href="../wrmsr_1/" 
+                       class="">
+                        wrmsr
+                    </a>
+                    
+                </div>
+            </details>
+            
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <a href="../../x86/" style="color: var(--text-muted);">← All Instructions</a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div>
+            <div class="breadcrumb">
+                <a href="../../">Home</a> <span>/</span> 
+                <a href="../../x86/">x86</a> <span>/</span> 
+                das
+            </div>
+
+            <h1 class="mono" style="font-size: 3rem; margin-top: 10px;">das</h1>
+            <h2 style="font-weight: 400; color: var(--text-muted);">Decimal Adjust After Subtraction</h2>
+            
+            <div class="syntax-box">
+                DAS
+            </div>
+
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-main);">
+                Adjusts AL after subtraction for packed BCD.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                
+                <div>
+		    <div class="panel">
+                        <h3>Pseudocode Operation</h3>
+                        <div class="code-block" style="border:none; padding:0; background: transparent;">
+                            
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="flex-col">
+                    <div class="panel">
+                        <h3>Encoding</h3>
+                        
+                        <div class="bit-grid-container">
+                            <div class="bit-grid-label">Binary Layout</div>
+                            <div class="bit-row">
+                                
+                            </div>
+                            <div id="bit-tooltip" style="min-height: 24px; color: var(--accent); font-size: 0.9rem; margin-top: 12px; font-family: 'Inter', sans-serif; font-weight: 500; transition: opacity 0.2s; opacity: 0;">
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Format</span>
+                                <span class="badge">Legacy</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Opcode</span>
+                                <span class="mono accent">0x2F</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Operands</h3>
+                        <ul class="operand-list" style="list-style: none;">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "das (x86)",
+  "description": "Adjusts AL after subtraction for packed BCD.",
+  "articleBody": "Decimal Adjust After Subtraction. Syntax: DAS. Opcode: 0x2F",
+  "proficiencyLevel": "Expert",
+  "datePublished": "2024-01-01"
+}
+</script>
+
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>Generated automatically from JSON definitions. <a href="../../sitemap.xml" style="color: var(--accent);">Sitemap</a></p>
+    </footer>
+
+    <script src="../../static/theme.js"></script>
+
+    <script src="../../static/interactions.js"></script>
+
+    <script>
+        // Mobile Sidebar Logic
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

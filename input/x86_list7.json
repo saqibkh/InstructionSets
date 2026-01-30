@@ -1,0 +1,2479 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "mov",
+      "architecture": "x86",
+      "full_name": "Move",
+      "summary": "Copies data from source to destination.",
+      "syntax": "MOV r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "88/89/8A/8B" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "add",
+      "architecture": "x86",
+      "full_name": "Add",
+      "summary": "Adds source to destination.",
+      "syntax": "ADD r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "00-05" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "x86",
+      "full_name": "Subtract",
+      "summary": "Subtracts source from destination.",
+      "syntax": "SUB r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "28-2D" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "inc",
+      "architecture": "x86",
+      "full_name": "Increment",
+      "summary": "Increments operand by 1.",
+      "syntax": "INC r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "FF /0" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "dec",
+      "architecture": "x86",
+      "full_name": "Decrement",
+      "summary": "Decrements operand by 1.",
+      "syntax": "DEC r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "FF /1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mul",
+      "architecture": "x86",
+      "full_name": "Unsigned Multiply",
+      "summary": "Unsigned multiply (AX = AL * src).",
+      "syntax": "MUL r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F7 /4" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "imul",
+      "architecture": "x86",
+      "full_name": "Signed Multiply",
+      "summary": "Signed multiply.",
+      "syntax": "IMUL r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F AF" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "div",
+      "architecture": "x86",
+      "full_name": "Unsigned Divide",
+      "summary": "Unsigned divide (AX / src).",
+      "syntax": "DIV r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F7 /6" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "idiv",
+      "architecture": "x86",
+      "full_name": "Signed Divide",
+      "summary": "Signed divide (AX / src).",
+      "syntax": "IDIV r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F7 /7" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "and",
+      "architecture": "x86",
+      "full_name": "Logical AND",
+      "summary": "Performs bitwise AND.",
+      "syntax": "AND r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "20-25" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "or",
+      "architecture": "x86",
+      "full_name": "Logical OR",
+      "summary": "Performs bitwise OR.",
+      "syntax": "OR r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "08-0D" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xor",
+      "architecture": "x86",
+      "full_name": "Logical Exclusive OR",
+      "summary": "Performs bitwise XOR.",
+      "syntax": "XOR r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "30-35" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "not",
+      "architecture": "x86",
+      "full_name": "One's Complement Negation",
+      "summary": "Reverses bits of operand.",
+      "syntax": "NOT r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F7 /2" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "neg",
+      "architecture": "x86",
+      "full_name": "Two's Complement Negation",
+      "summary": "Negates value (0 - operand).",
+      "syntax": "NEG r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F7 /3" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "shl",
+      "architecture": "x86",
+      "full_name": "Shift Logical Left",
+      "summary": "Shifts bits left (same as SAL).",
+      "syntax": "SHL r/m, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C1 /4" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "shr",
+      "architecture": "x86",
+      "full_name": "Shift Logical Right",
+      "summary": "Shifts bits right, filling with zeros.",
+      "syntax": "SHR r/m, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C1 /5" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sar",
+      "architecture": "x86",
+      "full_name": "Shift Arithmetic Right",
+      "summary": "Shifts bits right, preserving sign bit.",
+      "syntax": "SAR r/m, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C1 /7" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmp",
+      "architecture": "x86",
+      "full_name": "Compare Two Operands",
+      "summary": "Subtracts src from dest and updates flags (dest not modified).",
+      "syntax": "CMP r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "38-3D" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "test",
+      "architecture": "x86",
+      "full_name": "Logical Compare",
+      "summary": "ANDs operands and updates flags (result discarded).",
+      "syntax": "TEST r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "84-85" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jmp",
+      "architecture": "x86",
+      "full_name": "Jump",
+      "summary": "Unconditional jump to target.",
+      "syntax": "JMP rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "EB / E9" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "je",
+      "architecture": "x86",
+      "full_name": "Jump if Equal",
+      "summary": "Jump if ZF=1 (Same as JZ).",
+      "syntax": "JE rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "74" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jne",
+      "architecture": "x86",
+      "full_name": "Jump if Not Equal",
+      "summary": "Jump if ZF=0 (Same as JNZ).",
+      "syntax": "JNE rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "75" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jg",
+      "architecture": "x86",
+      "full_name": "Jump if Greater",
+      "summary": "Jump if ZF=0 and SF=OF (Signed >).",
+      "syntax": "JG rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "7F" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jl",
+      "architecture": "x86",
+      "full_name": "Jump if Less",
+      "summary": "Jump if SF!=OF (Signed <).",
+      "syntax": "JL rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "7C" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ja",
+      "architecture": "x86",
+      "full_name": "Jump if Above",
+      "summary": "Jump if CF=0 and ZF=0 (Unsigned >).",
+      "syntax": "JA rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "77" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jb",
+      "architecture": "x86",
+      "full_name": "Jump if Below",
+      "summary": "Jump if CF=1 (Unsigned <).",
+      "syntax": "JB rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "72" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "call",
+      "architecture": "x86",
+      "full_name": "Call Procedure",
+      "summary": "Push EIP/RIP and jump to target.",
+      "syntax": "CALL rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "E8" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ret",
+      "architecture": "x86",
+      "full_name": "Return from Procedure",
+      "summary": "Pop EIP/RIP and resume execution.",
+      "syntax": "RET",
+      "encoding": { "format": "Legacy", "hex_opcode": "C3" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "push",
+      "architecture": "x86",
+      "full_name": "Push Value Onto Stack",
+      "summary": "Decrements SP and stores operand on stack.",
+      "syntax": "PUSH r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "FF /6" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "pop",
+      "architecture": "x86",
+      "full_name": "Pop Value from Stack",
+      "summary": "Loads operand from stack and increments SP.",
+      "syntax": "POP r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "8F /0" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lea",
+      "architecture": "x86",
+      "full_name": "Load Effective Address",
+      "summary": "Computes effective address and stores in register.",
+      "syntax": "LEA r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "8D" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "nop",
+      "architecture": "x86",
+      "full_name": "No Operation",
+      "summary": "Does nothing (alias for XCHG EAX, EAX).",
+      "syntax": "NOP",
+      "encoding": { "format": "Legacy", "hex_opcode": "90" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xchg",
+      "architecture": "x86",
+      "full_name": "Exchange Register/Memory with Register",
+      "summary": "Exchanges content of two operands.",
+      "syntax": "XCHG r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "87" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cpuid",
+      "architecture": "x86",
+      "full_name": "CPU Identification",
+      "summary": "Returns processor information based on EAX value.",
+      "syntax": "CPUID",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F A2" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rdtsc",
+      "architecture": "x86",
+      "full_name": "Read Time-Stamp Counter",
+      "summary": "Reads the time-stamp counter into EDX:EAX.",
+      "syntax": "RDTSC",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 31" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "movsx",
+      "architecture": "x86",
+      "full_name": "Move with Sign-Extension",
+      "summary": "Copies and sign-extends a smaller value to a larger register.",
+      "syntax": "MOVSX r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F BE" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "movzx",
+      "architecture": "x86",
+      "full_name": "Move with Zero-Extension",
+      "summary": "Copies and zero-extends a smaller value to a larger register.",
+      "syntax": "MOVZX r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F B6" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cwtl",
+      "architecture": "x86",
+      "full_name": "Convert Word to Long",
+      "summary": "Sign-extends AX into EAX (also CWDE).",
+      "syntax": "CWTL",
+      "encoding": { "format": "Legacy", "hex_opcode": "98" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cltd",
+      "architecture": "x86",
+      "full_name": "Convert Long to Double Long",
+      "summary": "Sign-extends EAX into EDX:EAX (also CDQ).",
+      "syntax": "CLTD",
+      "encoding": { "format": "Legacy", "hex_opcode": "99" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cqto",
+      "architecture": "x86",
+      "full_name": "Convert Quadword to Octoword",
+      "summary": "Sign-extends RAX into RDX:RAX (also CQO).",
+      "syntax": "CQTO",
+      "encoding": { "format": "Legacy", "hex_opcode": "48 99" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "bswap",
+      "architecture": "x86",
+      "full_name": "Byte Swap",
+      "summary": "Reverses the byte order of a register (Endian swap).",
+      "syntax": "BSWAP r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C8+rd" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xadd",
+      "architecture": "x86",
+      "full_name": "Exchange and Add",
+      "summary": "Exchanges dest and src, then loads sum into dest.",
+      "syntax": "XADD r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmpxchg",
+      "architecture": "x86",
+      "full_name": "Compare and Exchange",
+      "summary": "Compares accumulator with dest; if equal, dest = src; else accumulator = dest.",
+      "syntax": "CMPXCHG r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F B1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmovcc",
+      "architecture": "x86",
+      "full_name": "Conditional Move",
+      "summary": "Moves data if condition code is met (e.g., CMOVE, CMOVNE).",
+      "syntax": "CMOVcc r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 4x" },
+      "extension": "CMOV"
+    },
+    {
+      "mnemonic": "setcc",
+      "architecture": "x86",
+      "full_name": "Set Byte on Condition",
+      "summary": "Sets byte to 1 if condition met, else 0 (e.g., SETE, SETZ).",
+      "syntax": "SETcc r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 9x" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "hlt",
+      "architecture": "x86",
+      "full_name": "Halt",
+      "summary": "Stops instruction execution and places processor in HALT state.",
+      "syntax": "HLT",
+      "encoding": { "format": "Legacy", "hex_opcode": "F4" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "int",
+      "architecture": "x86",
+      "full_name": "Interrupt",
+      "summary": "Calls to interrupt procedure.",
+      "syntax": "INT imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "CD" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "int3",
+      "architecture": "x86",
+      "full_name": "Breakpoint",
+      "summary": "Calls to interrupt vector 3 (Debugger breakpoint).",
+      "syntax": "INT3",
+      "encoding": { "format": "Legacy", "hex_opcode": "CC" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ud2",
+      "architecture": "x86",
+      "full_name": "Undefined Instruction",
+      "summary": "Generates an invalid opcode exception.",
+      "syntax": "UD2",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 0B" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "pause",
+      "architecture": "x86",
+      "full_name": "Spin Loop Hint",
+      "summary": "Improves performance of spin-wait loops (alias for REP NOP).",
+      "syntax": "PAUSE",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 90" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "clc",
+      "architecture": "x86",
+      "full_name": "Clear Carry Flag",
+      "summary": "Sets the CF flag to 0.",
+      "syntax": "CLC",
+      "encoding": { "format": "Legacy", "hex_opcode": "F8" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stc",
+      "architecture": "x86",
+      "full_name": "Set Carry Flag",
+      "summary": "Sets the CF flag to 1.",
+      "syntax": "STC",
+      "encoding": { "format": "Legacy", "hex_opcode": "F9" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmc",
+      "architecture": "x86",
+      "full_name": "Complement Carry Flag",
+      "summary": "Toggles the CF flag.",
+      "syntax": "CMC",
+      "encoding": { "format": "Legacy", "hex_opcode": "F5" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cld",
+      "architecture": "x86",
+      "full_name": "Clear Direction Flag",
+      "summary": "Sets DF to 0 (String operations increment).",
+      "syntax": "CLD",
+      "encoding": { "format": "Legacy", "hex_opcode": "FC" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "std",
+      "architecture": "x86",
+      "full_name": "Set Direction Flag",
+      "summary": "Sets DF to 1 (String operations decrement).",
+      "syntax": "STD",
+      "encoding": { "format": "Legacy", "hex_opcode": "FD" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cli",
+      "architecture": "x86",
+      "full_name": "Clear Interrupt Flag",
+      "summary": "Disables maskable hardware interrupts.",
+      "syntax": "CLI",
+      "encoding": { "format": "Legacy", "hex_opcode": "FA" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sti",
+      "architecture": "x86",
+      "full_name": "Set Interrupt Flag",
+      "summary": "Enables maskable hardware interrupts.",
+      "syntax": "STI",
+      "encoding": { "format": "Legacy", "hex_opcode": "FB" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sahf",
+      "architecture": "x86",
+      "full_name": "Store AH into Flags",
+      "summary": "Loads SF, ZF, AF, PF, and CF from AH.",
+      "syntax": "SAHF",
+      "encoding": { "format": "Legacy", "hex_opcode": "9E" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lahf",
+      "architecture": "x86",
+      "full_name": "Load Flags into AH",
+      "summary": "Loads bits 0, 2, 4, 6, and 7 of EFLAGS into AH.",
+      "syntax": "LAHF",
+      "encoding": { "format": "Legacy", "hex_opcode": "9F" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "loop",
+      "architecture": "x86",
+      "full_name": "Loop",
+      "summary": "Decrements ECX/RCX and jumps if not zero.",
+      "syntax": "LOOP rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "E2" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "loope",
+      "architecture": "x86",
+      "full_name": "Loop if Equal",
+      "summary": "Decrements count; jumps if count!=0 and ZF=1.",
+      "syntax": "LOOPE rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "E1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "loopne",
+      "architecture": "x86",
+      "full_name": "Loop if Not Equal",
+      "summary": "Decrements count; jumps if count!=0 and ZF=0.",
+      "syntax": "LOOPNE rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "E0" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jecxz",
+      "architecture": "x86",
+      "full_name": "Jump if ECX is Zero",
+      "summary": "Jumps if ECX register is 0.",
+      "syntax": "JECXZ rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "E3" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "enter",
+      "architecture": "x86",
+      "full_name": "Make Stack Frame",
+      "summary": "Creates a stack frame for procedure parameters.",
+      "syntax": "ENTER imm16, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C8" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "leave",
+      "architecture": "x86",
+      "full_name": "High Level Procedure Exit",
+      "summary": "Releases stack frame (MOV ESP, EBP; POP EBP).",
+      "syntax": "LEAVE",
+      "encoding": { "format": "Legacy", "hex_opcode": "C9" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rep movs",
+      "architecture": "x86",
+      "full_name": "Repeat Move String",
+      "summary": "Moves ECX bytes/words from [ESI] to [EDI].",
+      "syntax": "REP MOVS m, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 A4/A5" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rep stos",
+      "architecture": "x86",
+      "full_name": "Repeat Store String",
+      "summary": "Fills [EDI] with AL/AX/EAX for ECX repeats.",
+      "syntax": "REP STOS m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 AA/AB" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "repe cmps",
+      "architecture": "x86",
+      "full_name": "Repeat Compare String Equal",
+      "summary": "Compares [ESI] and [EDI] until mismatch or ECX=0.",
+      "syntax": "REPE CMPS m, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 A6/A7" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "repne scas",
+      "architecture": "x86",
+      "full_name": "Repeat Scan String Not Equal",
+      "summary": "Scans [EDI] for AL/AX/EAX until match or ECX=0.",
+      "syntax": "REPNE SCAS m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 AE/AF" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rol",
+      "architecture": "x86",
+      "full_name": "Rotate Left",
+      "summary": "Rotates bits left.",
+      "syntax": "ROL r/m, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C1 /0" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ror",
+      "architecture": "x86",
+      "full_name": "Rotate Right",
+      "summary": "Rotates bits right.",
+      "syntax": "ROR r/m, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C1 /1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rcl",
+      "architecture": "x86",
+      "full_name": "Rotate Carry Left",
+      "summary": "Rotates bits left through Carry Flag.",
+      "syntax": "RCL r/m, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C1 /2" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "rcr",
+      "architecture": "x86",
+      "full_name": "Rotate Carry Right",
+      "summary": "Rotates bits right through Carry Flag.",
+      "syntax": "RCR r/m, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C1 /3" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bt",
+      "architecture": "x86",
+      "full_name": "Bit Test",
+      "summary": "Selects a bit and stores it in CF.",
+      "syntax": "BT r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F A3" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bts",
+      "architecture": "x86",
+      "full_name": "Bit Test and Set",
+      "summary": "Stores bit in CF and sets bit to 1.",
+      "syntax": "BTS r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F AB" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "btr",
+      "architecture": "x86",
+      "full_name": "Bit Test and Reset",
+      "summary": "Stores bit in CF and clears bit to 0.",
+      "syntax": "BTR r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F B3" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "btc",
+      "architecture": "x86",
+      "full_name": "Bit Test and Complement",
+      "summary": "Stores bit in CF and complements the bit.",
+      "syntax": "BTC r/m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F BB" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bsf",
+      "architecture": "x86",
+      "full_name": "Bit Scan Forward",
+      "summary": "Scans for LSB set to 1.",
+      "syntax": "BSF r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F BC" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "bsr",
+      "architecture": "x86",
+      "full_name": "Bit Scan Reverse",
+      "summary": "Scans for MSB set to 1.",
+      "syntax": "BSR r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F BD" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lzcnt",
+      "architecture": "x86",
+      "full_name": "Count Leading Zeros",
+      "summary": "Counts number of leading zeros.",
+      "syntax": "LZCNT r, r/m",
+      "encoding": { "format": "VEX", "hex_opcode": "F3 0F BD" },
+      "extension": "ABM/BMI"
+    },
+    {
+      "mnemonic": "popcnt",
+      "architecture": "x86",
+      "full_name": "Population Count",
+      "summary": "Counts number of bits set to 1.",
+      "syntax": "POPCNT r, r/m",
+      "encoding": { "format": "VEX", "hex_opcode": "F3 0F B8" },
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "xlat",
+      "architecture": "x86",
+      "full_name": "Table Look-up Translation",
+      "summary": "Replaces AL with byte from table at [EBX+AL].",
+      "syntax": "XLAT m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "D7" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "pushf",
+      "architecture": "x86",
+      "full_name": "Push Flags",
+      "summary": "Pushes EFLAGS onto stack.",
+      "syntax": "PUSHF",
+      "encoding": { "format": "Legacy", "hex_opcode": "9C" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "popf",
+      "architecture": "x86",
+      "full_name": "Pop Flags",
+      "summary": "Pops stack into EFLAGS.",
+      "syntax": "POPF",
+      "encoding": { "format": "Legacy", "hex_opcode": "9D" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "pusha",
+      "architecture": "x86",
+      "full_name": "Push All General-Purpose Registers",
+      "summary": "Pushes AX, CX, DX, BX, SP, BP, SI, DI (Invalid in 64-bit).",
+      "syntax": "PUSHA",
+      "encoding": { "format": "Legacy", "hex_opcode": "60" },
+      "extension": "Base (32-bit only)"
+    },
+    {
+      "mnemonic": "popa",
+      "architecture": "x86",
+      "full_name": "Pop All General-Purpose Registers",
+      "summary": "Pops into DI, SI, BP, SP, BX, DX, CX, AX (Invalid in 64-bit).",
+      "syntax": "POPA",
+      "encoding": { "format": "Legacy", "hex_opcode": "61" },
+      "extension": "Base (32-bit only)"
+    },
+    {
+      "mnemonic": "bound",
+      "architecture": "x86",
+      "full_name": "Check Array Index Against Bounds",
+      "summary": "Checks if operand is within bounds defined in memory.",
+      "syntax": "BOUND r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "62" },
+      "extension": "Base (32-bit only)"
+    },
+    {
+      "mnemonic": "aaa",
+      "architecture": "x86",
+      "full_name": "ASCII Adjust After Addition",
+      "summary": "Adjusts AL after addition for unpacked BCD.",
+      "syntax": "AAA",
+      "encoding": { "format": "Legacy", "hex_opcode": "37" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "aas",
+      "architecture": "x86",
+      "full_name": "ASCII Adjust After Subtraction",
+      "summary": "Adjusts AL after subtraction for unpacked BCD.",
+      "syntax": "AAS",
+      "encoding": { "format": "Legacy", "hex_opcode": "3F" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "daa",
+      "architecture": "x86",
+      "full_name": "Decimal Adjust After Addition",
+      "summary": "Adjusts AL after addition for packed BCD.",
+      "syntax": "DAA",
+      "encoding": { "format": "Legacy", "hex_opcode": "27" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "das",
+      "architecture": "x86",
+      "full_name": "Decimal Adjust After Subtraction",
+      "summary": "Adjusts AL after subtraction for packed BCD.",
+      "syntax": "DAS",
+      "encoding": { "format": "Legacy", "hex_opcode": "2F" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "aam",
+      "architecture": "x86",
+      "full_name": "ASCII Adjust After Multiply",
+      "summary": "Adjusts AX after multiply for unpacked BCD.",
+      "syntax": "AAM imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "D4" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "aad",
+      "architecture": "x86",
+      "full_name": "ASCII Adjust Before Division",
+      "summary": "Adjusts AX before division for unpacked BCD.",
+      "syntax": "AAD imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "D5" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "cbw",
+      "architecture": "x86",
+      "full_name": "Convert Byte to Word",
+      "summary": "Sign-extends AL into AX.",
+      "syntax": "CBW",
+      "encoding": { "format": "Legacy", "hex_opcode": "98" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cwd",
+      "architecture": "x86",
+      "full_name": "Convert Word to Doubleword",
+      "summary": "Sign-extends AX into DX:AX.",
+      "syntax": "CWD",
+      "encoding": { "format": "Legacy", "hex_opcode": "99" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "wait",
+      "architecture": "x86",
+      "full_name": "Wait",
+      "summary": "Wait for FPU (same as FWAIT).",
+      "syntax": "WAIT",
+      "encoding": { "format": "Legacy", "hex_opcode": "9B" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ldtilecfg",
+      "architecture": "x86",
+      "full_name": "Load Tile Configuration",
+      "summary": "Loads AMX tile configuration from memory.",
+      "syntax": "LDTILECFG m512",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 49" },
+      "extension": "AMX-TILE"
+    },
+    {
+      "mnemonic": "sttilecfg",
+      "architecture": "x86",
+      "full_name": "Store Tile Configuration",
+      "summary": "Stores AMX tile configuration to memory.",
+      "syntax": "STTILECFG m512",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 49" },
+      "extension": "AMX-TILE"
+    },
+    {
+      "mnemonic": "tileloadd",
+      "architecture": "x86",
+      "full_name": "Load Tile Data",
+      "summary": "Loads data into an AMX tile register.",
+      "syntax": "TILELOADD tmm1, m",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 4B" },
+      "extension": "AMX-TILE"
+    },
+    {
+      "mnemonic": "tilestored",
+      "architecture": "x86",
+      "full_name": "Store Tile Data",
+      "summary": "Stores data from an AMX tile register to memory.",
+      "syntax": "TILESTORED m, tmm1",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 4B" },
+      "extension": "AMX-TILE"
+    },
+    {
+      "mnemonic": "tilezero",
+      "architecture": "x86",
+      "full_name": "Zero Tile",
+      "summary": "Clears an AMX tile register.",
+      "syntax": "TILEZERO tmm1",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 49" },
+      "extension": "AMX-TILE"
+    },
+    {
+      "mnemonic": "tdpbssd",
+      "architecture": "x86",
+      "full_name": "Tile Dot Product Byte Signed Signed Doubleword",
+      "summary": "Matrix multiply (Signed Int8 * Signed Int8) accumulating to Int32.",
+      "syntax": "TDPBSSD tmm1, tmm2, tmm3",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 5E" },
+      "extension": "AMX-INT8"
+    },
+    {
+      "mnemonic": "tdpbsud",
+      "architecture": "x86",
+      "full_name": "Tile Dot Product Byte Signed Unsigned Doubleword",
+      "summary": "Matrix multiply (Signed * Unsigned) accumulating to Int32.",
+      "syntax": "TDPBSUD tmm1, tmm2, tmm3",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 5E" },
+      "extension": "AMX-INT8"
+    },
+    {
+      "mnemonic": "tdpbf16ps",
+      "architecture": "x86",
+      "full_name": "Tile Dot Product BFloat16 Packed Single",
+      "summary": "Matrix multiply (BFloat16) accumulating to Float32.",
+      "syntax": "TDPBF16PS tmm1, tmm2, tmm3",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 5C" },
+      "extension": "AMX-BF16"
+    },
+    {
+      "mnemonic": "endbr64",
+      "architecture": "x86",
+      "full_name": "End Branch 64-bit",
+      "summary": "Marker instruction for Indirect Branch Tracking (IBT).",
+      "syntax": "ENDBR64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 1E FA" },
+      "extension": "CET-IBT"
+    },
+    {
+      "mnemonic": "endbr32",
+      "architecture": "x86",
+      "full_name": "End Branch 32-bit",
+      "summary": "Marker instruction for Indirect Branch Tracking (IBT).",
+      "syntax": "ENDBR32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 1E FB" },
+      "extension": "CET-IBT"
+    },
+    {
+      "mnemonic": "rdsspq",
+      "architecture": "x86",
+      "full_name": "Read Shadow Stack Pointer (Quadword)",
+      "summary": "Reads the current shadow stack pointer into a register.",
+      "syntax": "RDSSPQ r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 1E /1" },
+      "extension": "CET-SS"
+    },
+    {
+      "mnemonic": "incsspq",
+      "architecture": "x86",
+      "full_name": "Increment Shadow Stack Pointer (Quadword)",
+      "summary": "Adjusts the shadow stack pointer.",
+      "syntax": "INCSSPQ r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /5" },
+      "extension": "CET-SS"
+    },
+    {
+      "mnemonic": "rstorssp",
+      "architecture": "x86",
+      "full_name": "Restore Shadow Stack Pointer",
+      "summary": "Restores SSP from memory token.",
+      "syntax": "RSTORSSP m64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 /5" },
+      "extension": "CET-SS"
+    },
+    {
+      "mnemonic": "saveprevssp",
+      "architecture": "x86",
+      "full_name": "Save Previous Shadow Stack Pointer",
+      "summary": "Saves the previous SSP to the shadow stack token.",
+      "syntax": "SAVEPREVSSP",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 EA" },
+      "extension": "CET-SS"
+    },
+    {
+      "mnemonic": "clwb",
+      "architecture": "x86",
+      "full_name": "Cache Line Write Back",
+      "summary": "Writes back modified cache line without flushing (Persistent Memory).",
+      "syntax": "CLWB m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F AE /6" },
+      "extension": "CLWB"
+    },
+    {
+      "mnemonic": "clflushopt",
+      "architecture": "x86",
+      "full_name": "Optimized Cache Line Flush",
+      "summary": "Optimized version of CLFLUSH (Higher throughput).",
+      "syntax": "CLFLUSHOPT m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F AE /7" },
+      "extension": "CLFLUSHOPT"
+    },
+    {
+      "mnemonic": "cldemote",
+      "architecture": "x86",
+      "full_name": "Cache Line Demote",
+      "summary": "Hints to move cache line to lower cache level.",
+      "syntax": "CLDEMOTE m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 1C /0" },
+      "extension": "CLDEMOTE"
+    },
+    {
+      "mnemonic": "movdiri",
+      "architecture": "x86",
+      "full_name": "Move Direct Store Integer",
+      "summary": "Moves 32/64-bit data avoiding cache pollution (Direct IO).",
+      "syntax": "MOVDIRI m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 F9" },
+      "extension": "MOVDIRI"
+    },
+    {
+      "mnemonic": "movdir64b",
+      "architecture": "x86",
+      "full_name": "Move Direct Store 64-Bytes",
+      "summary": "Atomically moves 64-byte block avoiding cache pollution.",
+      "syntax": "MOVDIR64B m512, m512",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F 38 F8" },
+      "extension": "MOVDIR64B"
+    },
+    {
+      "mnemonic": "xbegin",
+      "architecture": "x86",
+      "full_name": "Transaction Begin",
+      "summary": "Specifies start of Restricted Transactional Memory region.",
+      "syntax": "XBEGIN rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "C7 F8" },
+      "extension": "RTM (TSX)"
+    },
+    {
+      "mnemonic": "xend",
+      "architecture": "x86",
+      "full_name": "Transaction End",
+      "summary": "Specifies end of RTM region.",
+      "syntax": "XEND",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D5" },
+      "extension": "RTM (TSX)"
+    },
+    {
+      "mnemonic": "xabort",
+      "architecture": "x86",
+      "full_name": "Transaction Abort",
+      "summary": "Forces an RTM abort.",
+      "syntax": "XABORT imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C6 F8" },
+      "extension": "RTM (TSX)"
+    },
+    {
+      "mnemonic": "xtest",
+      "architecture": "x86",
+      "full_name": "Test If In Transaction",
+      "summary": "Sets ZF if processor is in transactional region.",
+      "syntax": "XTEST",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D6" },
+      "extension": "TSX"
+    },
+    {
+      "mnemonic": "umonitor",
+      "architecture": "x86",
+      "full_name": "User Level Monitor",
+      "summary": "Sets up a monitor address for User Wait instructions.",
+      "syntax": "UMONITOR r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /6" },
+      "extension": "WAITPKG"
+    },
+    {
+      "mnemonic": "umwait",
+      "architecture": "x86",
+      "full_name": "User Level Monitor Wait",
+      "summary": "Waits for store to monitored address (Low power state).",
+      "syntax": "UMWAIT r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F AE /6" },
+      "extension": "WAITPKG"
+    },
+    {
+      "mnemonic": "tpause",
+      "architecture": "x86",
+      "full_name": "Timed Pause",
+      "summary": "Pauses execution for a specified time or until trigger.",
+      "syntax": "TPAUSE r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F AE /6" },
+      "extension": "WAITPKG"
+    },
+    {
+      "mnemonic": "vaddph",
+      "architecture": "x86",
+      "full_name": "Add Packed FP16 Values",
+      "summary": "Adds half-precision floating-point values.",
+      "syntax": "VADDPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "58" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vsubph",
+      "architecture": "x86",
+      "full_name": "Subtract Packed FP16 Values",
+      "summary": "Subtracts half-precision floating-point values.",
+      "syntax": "VSUBPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "5C" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vmulph",
+      "architecture": "x86",
+      "full_name": "Multiply Packed FP16 Values",
+      "summary": "Multiplies half-precision floating-point values.",
+      "syntax": "VMULPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "59" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vdivph",
+      "architecture": "x86",
+      "full_name": "Divide Packed FP16 Values",
+      "summary": "Divides half-precision floating-point values.",
+      "syntax": "VDIVPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "5E" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vsqrtph",
+      "architecture": "x86",
+      "full_name": "Square Root Packed FP16 Values",
+      "summary": "Square root of half-precision values.",
+      "syntax": "VSQRTPH zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "51" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vminph",
+      "architecture": "x86",
+      "full_name": "Minimum Packed FP16 Values",
+      "summary": "Minimum of half-precision values.",
+      "syntax": "VMINPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "5D" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vmaxph",
+      "architecture": "x86",
+      "full_name": "Maximum Packed FP16 Values",
+      "summary": "Maximum of half-precision values.",
+      "syntax": "VMAXPH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "5F" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vfmadd132ph",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add (132) Packed FP16",
+      "summary": "Computes (Dest * Src2) + Src1 in half-precision.",
+      "syntax": "VFMADD132PH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "98" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vfmadd213ph",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add (213) Packed FP16",
+      "summary": "Computes (Src1 * Dest) + Src2 in half-precision.",
+      "syntax": "VFMADD213PH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "A8" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vfmadd231ph",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add (231) Packed FP16",
+      "summary": "Computes (Src1 * Src2) + Dest in half-precision.",
+      "syntax": "VFMADD231PH zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "B8" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vcvtne2ps2bf16",
+      "architecture": "x86",
+      "full_name": "Convert Two Packed Single to Packed BFloat16",
+      "summary": "Converts two float vectors to one BFloat16 vector.",
+      "syntax": "VCVTNE2PS2BF16 zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "72" },
+      "extension": "AVX512-BF16"
+    },
+    {
+      "mnemonic": "vdpbf16ps",
+      "architecture": "x86",
+      "full_name": "Dot Product BFloat16 to Packed Single",
+      "summary": "BFloat16 dot product accumulating to Float32.",
+      "syntax": "VDPBF16PS zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "52" },
+      "extension": "AVX512-BF16"
+    },
+    {
+      "mnemonic": "vaesenc",
+      "architecture": "x86",
+      "full_name": "Vector AES Encrypt (AVX512)",
+      "summary": "AES Encrypt on 512-bit vector.",
+      "syntax": "VAESENC zmm1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "DC" },
+      "extension": "AVX512-VAES"
+    },
+    {
+      "mnemonic": "vaesdec",
+      "architecture": "x86",
+      "full_name": "Vector AES Decrypt (AVX512)",
+      "summary": "AES Decrypt on 512-bit vector.",
+      "syntax": "VAESDEC zmm1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "DE" },
+      "extension": "AVX512-VAES"
+    },
+    {
+      "mnemonic": "vpclmulqdq",
+      "architecture": "x86",
+      "full_name": "Vector Carry-Less Multiplication (AVX512)",
+      "summary": "Carry-less multiply on 512-bit vector.",
+      "syntax": "VPCLMULQDQ zmm1, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "44" },
+      "extension": "AVX512-VPCLMULQDQ"
+    },
+    {
+      "mnemonic": "vsha512msg1",
+      "architecture": "x86",
+      "full_name": "SHA512 Message Schedule 1",
+      "summary": "SHA512 intermediate calculation (AVX512).",
+      "syntax": "VSHA512MSG1 ymm1, xmm2",
+      "encoding": { "format": "EVEX", "hex_opcode": "CC" },
+      "extension": "SHA512"
+    },
+    {
+      "mnemonic": "vsha512msg2",
+      "architecture": "x86",
+      "full_name": "SHA512 Message Schedule 2",
+      "summary": "SHA512 final calculation (AVX512).",
+      "syntax": "VSHA512MSG2 ymm1, ymm2",
+      "encoding": { "format": "EVEX", "hex_opcode": "CD" },
+      "extension": "SHA512"
+    },
+    {
+      "mnemonic": "vsha512rnds2",
+      "architecture": "x86",
+      "full_name": "SHA512 Rounds 2",
+      "summary": "SHA512 2 rounds calculation (AVX512).",
+      "syntax": "VSHA512RNDS2 ymm1, ymm2, xmm3",
+      "encoding": { "format": "EVEX", "hex_opcode": "CB" },
+      "extension": "SHA512"
+    },
+    {
+      "mnemonic": "vsm3msg1",
+      "architecture": "x86",
+      "full_name": "SM3 Message Schedule 1",
+      "summary": "SM3 crypto message schedule part 1.",
+      "syntax": "VSM3MSG1 xmm1, xmm2, xmm3",
+      "encoding": { "format": "VEX", "hex_opcode": "DA" },
+      "extension": "SM3"
+    },
+    {
+      "mnemonic": "vsm3rnds2",
+      "architecture": "x86",
+      "full_name": "SM3 Rounds 2",
+      "summary": "SM3 crypto 2 rounds.",
+      "syntax": "VSM3RNDS2 xmm1, xmm2, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "DE" },
+      "extension": "SM3"
+    },
+    {
+      "mnemonic": "vsm4e",
+      "architecture": "x86",
+      "full_name": "SM4 Encrypt",
+      "summary": "SM4 crypto encryption round.",
+      "syntax": "VSM4E xmm1, xmm2",
+      "encoding": { "format": "VEX", "hex_opcode": "DA" },
+      "extension": "SM4"
+    },
+    {
+      "mnemonic": "vsm4key4",
+      "architecture": "x86",
+      "full_name": "SM4 Key Generation",
+      "summary": "SM4 key generation.",
+      "syntax": "VSM4KEY4 xmm1, xmm2",
+      "encoding": { "format": "VEX", "hex_opcode": "DA" },
+      "extension": "SM4"
+    },
+    {
+      "mnemonic": "loadiwkey",
+      "architecture": "x86",
+      "full_name": "Load Internal Wrapping Key",
+      "summary": "Loads the Key Locker internal wrapping key.",
+      "syntax": "LOADIWKEY xmm1, xmm2",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 DC" },
+      "extension": "KEYLOCKER"
+    },
+    {
+      "mnemonic": "encodekey128",
+      "architecture": "x86",
+      "full_name": "Encode 128-bit Key",
+      "summary": "Wraps a 128-bit AES key into a handle.",
+      "syntax": "ENCODEKEY128 r32, r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 FA" },
+      "extension": "KEYLOCKER"
+    },
+    {
+      "mnemonic": "aesenc128kl",
+      "architecture": "x86",
+      "full_name": "AES Encrypt 128-bit Key Locker",
+      "summary": "Encrypts data using Key Locker handle.",
+      "syntax": "AESENC128KL m128, xmm",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 DD" },
+      "extension": "KEYLOCKER"
+    },
+    {
+      "mnemonic": "aesdec128kl",
+      "architecture": "x86",
+      "full_name": "AES Decrypt 128-bit Key Locker",
+      "summary": "Decrypts data using Key Locker handle.",
+      "syntax": "AESDEC128KL m128, xmm",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 DE" },
+      "extension": "KEYLOCKER"
+    },
+    {
+      "mnemonic": "hreset",
+      "architecture": "x86",
+      "full_name": "History Reset",
+      "summary": "Resets processor history (prediction) structures.",
+      "syntax": "HRESET imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 3A F0" },
+      "extension": "HRESET"
+    },
+    {
+      "mnemonic": "serialize",
+      "architecture": "x86",
+      "full_name": "Serialize Instruction Execution",
+      "summary": "Forces serialization of instruction fetch/execution.",
+      "syntax": "SERIALIZE",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 E8" },
+      "extension": "SERIALIZE"
+    },
+    {
+      "mnemonic": "rdpid",
+      "architecture": "x86",
+      "full_name": "Read Processor ID",
+      "summary": "Reads the processor ID (TSC_AUX) into register.",
+      "syntax": "RDPID r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F C7 /7" },
+      "extension": "RDPID"
+    },
+    {
+      "mnemonic": "xsaves",
+      "architecture": "x86",
+      "full_name": "Save Supervisor States",
+      "summary": "Saves supervisor state components to memory (Compact).",
+      "syntax": "XSAVES m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C7 /5" },
+      "extension": "XSAVES"
+    },
+    {
+      "mnemonic": "xrstors",
+      "architecture": "x86",
+      "full_name": "Restore Supervisor States",
+      "summary": "Restores supervisor state components from memory (Compact).",
+      "syntax": "XRSTORS m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C7 /3" },
+      "extension": "XSAVES"
+    },
+    {
+      "mnemonic": "ptwrite",
+      "architecture": "x86",
+      "full_name": "Write Data to Processor Trace",
+      "summary": "Writes data to the Intel Processor Trace stream.",
+      "syntax": "PTWRITE r32/r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /4" },
+      "extension": "PTWRITE"
+    },
+    {
+      "mnemonic": "uiret",
+      "architecture": "x86",
+      "full_name": "User Interrupt Return",
+      "summary": "Returns from a User Interrupt handler.",
+      "syntax": "UIRET",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 EC" },
+      "extension": "UINTR"
+    },
+    {
+      "mnemonic": "senduipi",
+      "architecture": "x86",
+      "full_name": "Send User Inter-Processor Interrupt",
+      "summary": "Sends a User IPI to another processor.",
+      "syntax": "SENDUIPI r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F C7 /6" },
+      "extension": "UINTR"
+    },
+    {
+      "mnemonic": "in",
+      "architecture": "x86",
+      "full_name": "Input from Port",
+      "summary": "Reads data from an I/O port into AL/AX/EAX.",
+      "syntax": "IN AL, imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "E4" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "out",
+      "architecture": "x86",
+      "full_name": "Output to Port",
+      "summary": "Writes data from AL/AX/EAX to an I/O port.",
+      "syntax": "OUT imm8, AL",
+      "encoding": { "format": "Legacy", "hex_opcode": "E6" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ins",
+      "architecture": "x86",
+      "full_name": "Input String from Port",
+      "summary": "Reads string from I/O port to memory at [EDI].",
+      "syntax": "INSB",
+      "encoding": { "format": "Legacy", "hex_opcode": "6C" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "outs",
+      "architecture": "x86",
+      "full_name": "Output String to Port",
+      "summary": "Writes string from memory at [ESI] to I/O port.",
+      "syntax": "OUTSB",
+      "encoding": { "format": "Legacy", "hex_opcode": "6E" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lods",
+      "architecture": "x86",
+      "full_name": "Load String",
+      "summary": "Loads byte/word/dword from [ESI] into AL/AX/EAX.",
+      "syntax": "LODSB",
+      "encoding": { "format": "Legacy", "hex_opcode": "AC" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "stos",
+      "architecture": "x86",
+      "full_name": "Store String",
+      "summary": "Stores AL/AX/EAX to memory at [EDI].",
+      "syntax": "STOSB",
+      "encoding": { "format": "Legacy", "hex_opcode": "AA" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "scas",
+      "architecture": "x86",
+      "full_name": "Scan String",
+      "summary": "Compares AL/AX/EAX with memory at [EDI].",
+      "syntax": "SCASB",
+      "encoding": { "format": "Legacy", "hex_opcode": "AE" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmps",
+      "architecture": "x86",
+      "full_name": "Compare String",
+      "summary": "Compares byte/word at [ESI] with [EDI].",
+      "syntax": "CMPSB",
+      "encoding": { "format": "Legacy", "hex_opcode": "A6" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lds",
+      "architecture": "x86",
+      "full_name": "Load Far Pointer using DS",
+      "summary": "Loads pointer into DS and register.",
+      "syntax": "LDS r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "C5" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "les",
+      "architecture": "x86",
+      "full_name": "Load Far Pointer using ES",
+      "summary": "Loads pointer into ES and register.",
+      "syntax": "LES r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "C4" },
+      "extension": "Base (Legacy)"
+    },
+    {
+      "mnemonic": "lfs",
+      "architecture": "x86",
+      "full_name": "Load Far Pointer using FS",
+      "summary": "Loads pointer into FS and register.",
+      "syntax": "LFS r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F B4" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lgs",
+      "architecture": "x86",
+      "full_name": "Load Far Pointer using GS",
+      "summary": "Loads pointer into GS and register.",
+      "syntax": "LGS r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F B5" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lss",
+      "architecture": "x86",
+      "full_name": "Load Far Pointer using SS",
+      "summary": "Loads pointer into SS and register.",
+      "syntax": "LSS r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F B2" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "swapgs",
+      "architecture": "x86",
+      "full_name": "Swap GS Base Register",
+      "summary": "Swaps user/kernel GS base address (System).",
+      "syntax": "SWAPGS",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 F8" },
+      "extension": "Base (64-bit System)"
+    },
+    {
+      "mnemonic": "rdfsbase",
+      "architecture": "x86",
+      "full_name": "Read FS Base",
+      "summary": "Reads the FS base address into a register.",
+      "syntax": "RDFSBASE r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /0" },
+      "extension": "FSGSBASE"
+    },
+    {
+      "mnemonic": "rdgsbase",
+      "architecture": "x86",
+      "full_name": "Read GS Base",
+      "summary": "Reads the GS base address into a register.",
+      "syntax": "RDGSBASE r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /1" },
+      "extension": "FSGSBASE"
+    },
+    {
+      "mnemonic": "wrfsbase",
+      "architecture": "x86",
+      "full_name": "Write FS Base",
+      "summary": "Writes a register to the FS base address.",
+      "syntax": "WRFSBASE r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /2" },
+      "extension": "FSGSBASE"
+    },
+    {
+      "mnemonic": "wrgsbase",
+      "architecture": "x86",
+      "full_name": "Write GS Base",
+      "summary": "Writes a register to the GS base address.",
+      "syntax": "WRGSBASE r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /3" },
+      "extension": "FSGSBASE"
+    },
+    {
+      "mnemonic": "monitor",
+      "architecture": "x86",
+      "full_name": "Monitor",
+      "summary": "Sets up a linear address range to be monitored.",
+      "syntax": "MONITOR",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 C8" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "mwait",
+      "architecture": "x86",
+      "full_name": "Monitor Wait",
+      "summary": "Waits for a write to a monitored address.",
+      "syntax": "MWAIT",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 C9" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "getsec",
+      "architecture": "x86",
+      "full_name": "Get Security Extensions",
+      "summary": "Entry point for Safer Mode Extensions (Trusted Execution).",
+      "syntax": "GETSEC",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 37" },
+      "extension": "SMX"
+    },
+    {
+      "mnemonic": "bndmk",
+      "architecture": "x86",
+      "full_name": "Make Bounds",
+      "summary": "Creates bounds data for MPX.",
+      "syntax": "BNDMK b, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 1B" },
+      "extension": "MPX"
+    },
+    {
+      "mnemonic": "bndcl",
+      "architecture": "x86",
+      "full_name": "Check Lower Bound",
+      "summary": "Checks if address is within lower bound.",
+      "syntax": "BNDCL b, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 1A" },
+      "extension": "MPX"
+    },
+    {
+      "mnemonic": "bndcu",
+      "architecture": "x86",
+      "full_name": "Check Upper Bound",
+      "summary": "Checks if address is within upper bound.",
+      "syntax": "BNDCU b, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 1A" },
+      "extension": "MPX"
+    },
+    {
+      "mnemonic": "bndmov",
+      "architecture": "x86",
+      "full_name": "Move Bounds",
+      "summary": "Moves MPX bounds data.",
+      "syntax": "BNDMOV b, b/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F 1A" },
+      "extension": "MPX"
+    },
+    {
+      "mnemonic": "rdpkru",
+      "architecture": "x86",
+      "full_name": "Read Protection Key Rights",
+      "summary": "Reads PKRU register into EAX (User-mode pages).",
+      "syntax": "RDPKRU",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 EE" },
+      "extension": "PKU"
+    },
+    {
+      "mnemonic": "wrpkru",
+      "architecture": "x86",
+      "full_name": "Write Protection Key Rights",
+      "summary": "Writes EAX/EDX to PKRU register.",
+      "syntax": "WRPKRU",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 EF" },
+      "extension": "PKU"
+    },
+    {
+      "mnemonic": "vpdpbusd",
+      "architecture": "x86",
+      "full_name": "Multiply and Add Unsigned and Signed Bytes",
+      "summary": "Dot product of unsigned/signed bytes, accum to dword.",
+      "syntax": "VPDPBUSD zmm1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 50" },
+      "extension": "AVX512_VNNI"
+    },
+    {
+      "mnemonic": "vpdpbusds",
+      "architecture": "x86",
+      "full_name": "Multiply and Add Unsigned and Signed Bytes with Saturation",
+      "summary": "Dot product of unsigned/signed bytes, accum to dword (Saturate).",
+      "syntax": "VPDPBUSDS zmm1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 51" },
+      "extension": "AVX512_VNNI"
+    },
+    {
+      "mnemonic": "vpdpwssd",
+      "architecture": "x86",
+      "full_name": "Multiply and Add Signed Words",
+      "summary": "Dot product of signed words, accum to dword.",
+      "syntax": "VPDPWSSD zmm1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 52" },
+      "extension": "AVX512_VNNI"
+    },
+    {
+      "mnemonic": "vpdpwssds",
+      "architecture": "x86",
+      "full_name": "Multiply and Add Signed Words with Saturation",
+      "summary": "Dot product of signed words, accum to dword (Saturate).",
+      "syntax": "VPDPWSSDS zmm1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 53" },
+      "extension": "AVX512_VNNI"
+    },
+    {
+      "mnemonic": "gf2p8affineinvqb",
+      "architecture": "x86",
+      "full_name": "Galois Field Affine Transformation Inverse",
+      "summary": "Computes inverse affine transformation in GF(2^8).",
+      "syntax": "GF2P8AFFINEINVQB xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 3A CF" },
+      "extension": "GFNI"
+    },
+    {
+      "mnemonic": "prefetchw",
+      "architecture": "x86",
+      "full_name": "Prefetch Data into Caches in Anticipation of a Write",
+      "summary": "Prefetches data with intent to write (RFO).",
+      "syntax": "PREFETCHW m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 0D /1" },
+      "extension": "PREFETCHW"
+    },
+    {
+      "mnemonic": "prefetchwt1",
+      "architecture": "x86",
+      "full_name": "Prefetch Hint T1 with Intent to Write",
+      "summary": "Prefetches data to L2 (T1 hint) with intent to write.",
+      "syntax": "PREFETCHWT1 m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 0D /2" },
+      "extension": "PREFETCHWT1"
+    },
+    {
+      "mnemonic": "vscatterdps",
+      "architecture": "x86",
+      "full_name": "Scatter Packed Single Precision",
+      "summary": "Stores floats to non-contiguous memory locations.",
+      "syntax": "VSCATTERDPS [base+zmm_idx*scale] {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 A2" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vscatterdpd",
+      "architecture": "x86",
+      "full_name": "Scatter Packed Double Precision",
+      "summary": "Stores doubles to non-contiguous memory locations.",
+      "syntax": "VSCATTERDPD [base+zmm_idx*scale] {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 A2" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vscatterqps",
+      "architecture": "x86",
+      "full_name": "Scatter Packed Single Precision (Quadword Indices)",
+      "summary": "Stores floats using 64-bit indices.",
+      "syntax": "VSCATTERQPS [base+zmm_idx*scale] {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 A3" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vscatterqpd",
+      "architecture": "x86",
+      "full_name": "Scatter Packed Double Precision (Quadword Indices)",
+      "summary": "Stores doubles using 64-bit indices.",
+      "syntax": "VSCATTERQPD [base+zmm_idx*scale] {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 A3" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vfpclassps",
+      "architecture": "x86",
+      "full_name": "Floating-Point Class Single",
+      "summary": "Tests for category (NaN, Inf, Denormal) for floats.",
+      "syntax": "VFPCLASSPS k1 {k2}, zmm2/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 66" },
+      "extension": "AVX512DQ"
+    },
+    {
+      "mnemonic": "vfpclasspd",
+      "architecture": "x86",
+      "full_name": "Floating-Point Class Double",
+      "summary": "Tests for category (NaN, Inf, Denormal) for doubles.",
+      "syntax": "VFPCLASSPD k1 {k2}, zmm2/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 67" },
+      "extension": "AVX512DQ"
+    },
+    {
+      "mnemonic": "vrangeps",
+      "architecture": "x86",
+      "full_name": "Range Restriction Calculation Packed Single",
+      "summary": "Calculates range (min/max/abs) of float values.",
+      "syntax": "VRANGEPS zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 50" },
+      "extension": "AVX512DQ"
+    },
+    {
+      "mnemonic": "vreduceps",
+      "architecture": "x86",
+      "full_name": "Perform Reduction Transformation Packed Single",
+      "summary": "Performs reduction on floats (e.g. range reduction for trig).",
+      "syntax": "VREDUCEPS zmm1 {k1}, zmm2/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 56" },
+      "extension": "AVX512DQ"
+    },
+    {
+      "mnemonic": "vfixupimmps",
+      "architecture": "x86",
+      "full_name": "Fix Up Special Packed Float32 Values",
+      "summary": "Fixes special cases (NaN, Inf) using a table (Float32).",
+      "syntax": "VFIXUPIMMPS zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 54" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vrsqrt14ps",
+      "architecture": "x86",
+      "full_name": "Compute Approximate Reciprocal Square Root (14-bit)",
+      "summary": "Approximate 1/sqrt(x) with 2^-14 error.",
+      "syntax": "VRSQRT14PS zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 4E" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vrcp14ps",
+      "architecture": "x86",
+      "full_name": "Compute Approximate Reciprocal (14-bit)",
+      "summary": "Approximate 1/x with 2^-14 error.",
+      "syntax": "VRCP14PS zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 4C" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "clui",
+      "architecture": "x86",
+      "full_name": "Clear User Interrupt Flag",
+      "summary": "Clears the User Interrupt Flag (UIF).",
+      "syntax": "CLUI",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 EE" },
+      "extension": "UINTR"
+    },
+    {
+      "mnemonic": "stui",
+      "architecture": "x86",
+      "full_name": "Set User Interrupt Flag",
+      "summary": "Sets the User Interrupt Flag (UIF).",
+      "syntax": "STUI",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 EF" },
+      "extension": "UINTR"
+    },
+    {
+      "mnemonic": "testui",
+      "architecture": "x86",
+      "full_name": "Test User Interrupt",
+      "summary": "Sets CF if UIF is 1, ZF if User Interrupt Pending.",
+      "syntax": "TESTUI",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 ED" },
+      "extension": "UINTR"
+    },
+    {
+      "mnemonic": "fld",
+      "architecture": "x86",
+      "full_name": "Load Floating Point Value",
+      "summary": "Pushes a floating-point value onto the FPU register stack (ST0).",
+      "syntax": "FLD m32fp/m64fp/m80fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 /0" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fst",
+      "architecture": "x86",
+      "full_name": "Store Floating Point Value",
+      "summary": "Copies the value in ST(0) to memory or another register.",
+      "syntax": "FST m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 /2" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fstp",
+      "architecture": "x86",
+      "full_name": "Store Floating Point Value and Pop",
+      "summary": "Copies ST(0) to destination and pops the register stack.",
+      "syntax": "FSTP m32fp/m64fp/m80fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 /3" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fild",
+      "architecture": "x86",
+      "full_name": "Load Integer",
+      "summary": "Converts integer in memory to double-extended-precision float and pushes to ST(0).",
+      "syntax": "FILD m16int/m32int/m64int",
+      "encoding": { "format": "Legacy", "hex_opcode": "DF /0" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fist",
+      "architecture": "x86",
+      "full_name": "Store Integer",
+      "summary": "Converts ST(0) to integer and stores in memory.",
+      "syntax": "FIST m16int/m32int",
+      "encoding": { "format": "Legacy", "hex_opcode": "DF /2" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fistp",
+      "architecture": "x86",
+      "full_name": "Store Integer and Pop",
+      "summary": "Converts ST(0) to integer, stores in memory, and pops stack.",
+      "syntax": "FISTP m16int/m32int/m64int",
+      "encoding": { "format": "Legacy", "hex_opcode": "DF /3" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fadd",
+      "architecture": "x86",
+      "full_name": "Add Floating Point",
+      "summary": "Adds src to dest (ST(0) += src).",
+      "syntax": "FADD m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D8 /0" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsub",
+      "architecture": "x86",
+      "full_name": "Subtract Floating Point",
+      "summary": "Subtracts src from dest.",
+      "syntax": "FSUB m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D8 /4" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fmul",
+      "architecture": "x86",
+      "full_name": "Multiply Floating Point",
+      "summary": "Multiplies dest by src.",
+      "syntax": "FMUL m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D8 /1" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fdiv",
+      "architecture": "x86",
+      "full_name": "Divide Floating Point",
+      "summary": "Divides dest by src.",
+      "syntax": "FDIV m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D8 /6" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fprem",
+      "architecture": "x86",
+      "full_name": "Partial Remainder",
+      "summary": "Computes remainder of ST(0) / ST(1).",
+      "syntax": "FPREM",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 F8" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fabs",
+      "architecture": "x86",
+      "full_name": "Absolute Value",
+      "summary": "Replaces ST(0) with its absolute value.",
+      "syntax": "FABS",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 E1" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fchs",
+      "architecture": "x86",
+      "full_name": "Change Sign",
+      "summary": "Reverses the sign of ST(0).",
+      "syntax": "FCHS",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 E0" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsqrt",
+      "architecture": "x86",
+      "full_name": "Square Root",
+      "summary": "Computes square root of ST(0).",
+      "syntax": "FSQRT",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 FA" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsin",
+      "architecture": "x86",
+      "full_name": "Sine",
+      "summary": "Computes sine of ST(0) (in radians).",
+      "syntax": "FSIN",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 FE" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fcos",
+      "architecture": "x86",
+      "full_name": "Cosine",
+      "summary": "Computes cosine of ST(0) (in radians).",
+      "syntax": "FCOS",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 FF" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsincos",
+      "architecture": "x86",
+      "full_name": "Sine and Cosine",
+      "summary": "Computes sine and cosine of ST(0), pushing both to stack.",
+      "syntax": "FSINCOS",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 FB" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fptan",
+      "architecture": "x86",
+      "full_name": "Partial Tangent",
+      "summary": "Computes tangent of ST(0) and pushes 1.0.",
+      "syntax": "FPTAN",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 F2" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fpatan",
+      "architecture": "x86",
+      "full_name": "Partial Arctangent",
+      "summary": "Computes arctan(ST(1)/ST(0)).",
+      "syntax": "FPATAN",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 F3" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fyl2x",
+      "architecture": "x86",
+      "full_name": "Y * log2(X)",
+      "summary": "Computes ST(1) * log2(ST(0)).",
+      "syntax": "FYL2X",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 F1" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fxch",
+      "architecture": "x86",
+      "full_name": "Exchange Register",
+      "summary": "Exchanges contents of ST(0) and ST(i).",
+      "syntax": "FXCH ST(i)",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 C8+i" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fcom",
+      "architecture": "x86",
+      "full_name": "Compare Real",
+      "summary": "Compares ST(0) with source.",
+      "syntax": "FCOM m32fp/m64fp",
+      "encoding": { "format": "Legacy", "hex_opcode": "D8 /2" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fcomi",
+      "architecture": "x86",
+      "full_name": "Compare Real and Set EFLAGS",
+      "summary": "Compares ST(0) with ST(i) and sets CPU EFLAGS directly.",
+      "syntax": "FCOMI ST(0), ST(i)",
+      "encoding": { "format": "Legacy", "hex_opcode": "DB F0+i" },
+      "extension": "x87 FPU (P6+)"
+    },
+    {
+      "mnemonic": "finit",
+      "architecture": "x86",
+      "full_name": "Initialize FPU",
+      "summary": "Resets FPU to default state.",
+      "syntax": "FINIT",
+      "encoding": { "format": "Legacy", "hex_opcode": "9B DB E3" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fclex",
+      "architecture": "x86",
+      "full_name": "Clear Exceptions",
+      "summary": "Clears floating-point exception flags.",
+      "syntax": "FCLEX",
+      "encoding": { "format": "Legacy", "hex_opcode": "9B DB E2" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fstsw",
+      "architecture": "x86",
+      "full_name": "Store Status Word",
+      "summary": "Stores FPU status word to AX or memory.",
+      "syntax": "FSTSW AX",
+      "encoding": { "format": "Legacy", "hex_opcode": "9B DF E0" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fldcw",
+      "architecture": "x86",
+      "full_name": "Load Control Word",
+      "summary": "Loads FPU control word from memory.",
+      "syntax": "FLDCW m2byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "D9 /5" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fstcw",
+      "architecture": "x86",
+      "full_name": "Store Control Word",
+      "summary": "Stores FPU control word to memory.",
+      "syntax": "FSTCW m2byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "9B D9 /7" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "frstor",
+      "architecture": "x86",
+      "full_name": "Restore FPU State",
+      "summary": "Loads FPU state from memory.",
+      "syntax": "FRSTOR m108byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "DD /4" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "fsave",
+      "architecture": "x86",
+      "full_name": "Save FPU State",
+      "summary": "Stores FPU state to memory and re-initializes FPU.",
+      "syntax": "FSAVE m108byte",
+      "encoding": { "format": "Legacy", "hex_opcode": "9B DD /6" },
+      "extension": "x87 FPU"
+    },
+    {
+      "mnemonic": "lgdt",
+      "architecture": "x86",
+      "full_name": "Load Global Descriptor Table Register",
+      "summary": "Loads the GDT register (Privileged).",
+      "syntax": "LGDT m16&32",
+      "encoding": { "format": "System", "hex_opcode": "0F 01 /2" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lidt",
+      "architecture": "x86",
+      "full_name": "Load Interrupt Descriptor Table Register",
+      "summary": "Loads the IDT register (Privileged).",
+      "syntax": "LIDT m16&32",
+      "encoding": { "format": "System", "hex_opcode": "0F 01 /3" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sgdt",
+      "architecture": "x86",
+      "full_name": "Store Global Descriptor Table Register",
+      "summary": "Stores GDT limit and base address to memory.",
+      "syntax": "SGDT m",
+      "encoding": { "format": "System", "hex_opcode": "0F 01 /0" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sidt",
+      "architecture": "x86",
+      "full_name": "Store Interrupt Descriptor Table Register",
+      "summary": "Stores IDT limit and base address to memory.",
+      "syntax": "SIDT m",
+      "encoding": { "format": "System", "hex_opcode": "0F 01 /1" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lldt",
+      "architecture": "x86",
+      "full_name": "Load Local Descriptor Table Register",
+      "summary": "Loads LDT segment selector (Privileged).",
+      "syntax": "LLDT r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 00 /2" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sldt",
+      "architecture": "x86",
+      "full_name": "Store Local Descriptor Table Register",
+      "summary": "Stores LDT segment selector.",
+      "syntax": "SLDT r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 00 /0" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "ltr",
+      "architecture": "x86",
+      "full_name": "Load Task Register",
+      "summary": "Loads Task Register (Privileged).",
+      "syntax": "LTR r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 00 /3" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "str",
+      "architecture": "x86",
+      "full_name": "Store Task Register",
+      "summary": "Stores Task Register.",
+      "syntax": "STR r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 00 /1" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "mov cr",
+      "architecture": "x86",
+      "full_name": "Move Control Register",
+      "summary": "Moves data to/from Control Registers (CR0, CR3, etc.) (Privileged).",
+      "syntax": "MOV CRn, r",
+      "encoding": { "format": "System", "hex_opcode": "0F 22 /r" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "mov dr",
+      "architecture": "x86",
+      "full_name": "Move Debug Register",
+      "summary": "Moves data to/from Debug Registers (DR0-DR7) (Privileged).",
+      "syntax": "MOV DRn, r",
+      "encoding": { "format": "System", "hex_opcode": "0F 23 /r" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lmsw",
+      "architecture": "x86",
+      "full_name": "Load Machine Status Word",
+      "summary": "Loads Machine Status Word (Legacy CR0 modification).",
+      "syntax": "LMSW r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 01 /6" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "smsw",
+      "architecture": "x86",
+      "full_name": "Store Machine Status Word",
+      "summary": "Stores Machine Status Word.",
+      "syntax": "SMSW r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 01 /4" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "clts",
+      "architecture": "x86",
+      "full_name": "Clear Task-Switched Flag",
+      "summary": "Clears the TS flag in CR0 (Privileged).",
+      "syntax": "CLTS",
+      "encoding": { "format": "System", "hex_opcode": "0F 06" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "invd",
+      "architecture": "x86",
+      "full_name": "Invalidate Internal Caches",
+      "summary": "Flushes internal caches without writing back data (Privileged).",
+      "syntax": "INVD",
+      "encoding": { "format": "System", "hex_opcode": "0F 08" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "wbinvd",
+      "architecture": "x86",
+      "full_name": "Write Back and Invalidate Cache",
+      "summary": "Writes back modified data and invalidates caches (Privileged).",
+      "syntax": "WBINVD",
+      "encoding": { "format": "System", "hex_opcode": "0F 09" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "invlpg",
+      "architecture": "x86",
+      "full_name": "Invalidate TLB Entry",
+      "summary": "Invalidates a specific TLB entry (Privileged).",
+      "syntax": "INVLPG m",
+      "encoding": { "format": "System", "hex_opcode": "0F 01 /7" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "rdmsr",
+      "architecture": "x86",
+      "full_name": "Read Model Specific Register",
+      "summary": "Reads MSR specified by ECX into EDX:EAX (Privileged).",
+      "syntax": "RDMSR",
+      "encoding": { "format": "System", "hex_opcode": "0F 32" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "wrmsr",
+      "architecture": "x86",
+      "full_name": "Write Model Specific Register",
+      "summary": "Writes EDX:EAX to MSR specified by ECX (Privileged).",
+      "syntax": "WRMSR",
+      "encoding": { "format": "System", "hex_opcode": "0F 30" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "rdpmc",
+      "architecture": "x86",
+      "full_name": "Read Performance-Monitoring Counters",
+      "summary": "Reads performance counter specified by ECX into EDX:EAX.",
+      "syntax": "RDPMC",
+      "encoding": { "format": "System", "hex_opcode": "0F 33" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sysenter",
+      "architecture": "x86",
+      "full_name": "Fast System Call",
+      "summary": "Fast call to level 0 system procedures.",
+      "syntax": "SYSENTER",
+      "encoding": { "format": "System", "hex_opcode": "0F 34" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "sysexit",
+      "architecture": "x86",
+      "full_name": "Fast Return from System Call",
+      "summary": "Fast return to level 3 user code.",
+      "syntax": "SYSEXIT",
+      "encoding": { "format": "System", "hex_opcode": "0F 35" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lar",
+      "architecture": "x86",
+      "full_name": "Load Access Rights Byte",
+      "summary": "Reads access rights from segment descriptor.",
+      "syntax": "LAR r, r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 02" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "lsl",
+      "architecture": "x86",
+      "full_name": "Load Segment Limit",
+      "summary": "Reads segment limit from descriptor.",
+      "syntax": "LSL r, r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 03" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "verr",
+      "architecture": "x86",
+      "full_name": "Verify Segment for Reading",
+      "summary": "Checks if segment can be read; sets ZF.",
+      "syntax": "VERR r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 00 /4" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "verw",
+      "architecture": "x86",
+      "full_name": "Verify Segment for Writing",
+      "summary": "Checks if segment can be written; sets ZF.",
+      "syntax": "VERW r/m16",
+      "encoding": { "format": "System", "hex_opcode": "0F 00 /5" },
+      "extension": "System"
+    },
+    {
+      "mnemonic": "arpl",
+      "architecture": "x86",
+      "full_name": "Adjust Requested Privilege Level",
+      "summary": "Adjusts RPL of selector to match current CPL (Legacy).",
+      "syntax": "ARPL r/m16, r16",
+      "encoding": { "format": "System", "hex_opcode": "63" },
+      "extension": "System (32-bit)"
+    },
+    {
+      "mnemonic": "rsm",
+      "architecture": "x86",
+      "full_name": "Resume from System Management Mode",
+      "summary": "Exits SMM and returns to previous state (Privileged).",
+      "syntax": "RSM",
+      "encoding": { "format": "System", "hex_opcode": "0F AA" },
+      "extension": "System (SMM)"
+    },
+    {
+      "mnemonic": "bswap",
+      "architecture": "x86",
+      "full_name": "Byte Swap",
+      "summary": "Reverses the byte order of a 32/64-bit register.",
+      "syntax": "BSWAP r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C8" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmpxchg8b",
+      "architecture": "x86",
+      "full_name": "Compare and Exchange 8 Bytes",
+      "summary": "Atomically compares EDX:EAX with memory; swaps if equal.",
+      "syntax": "CMPXCHG8B m64",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C7 /1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "addsubps",
+      "architecture": "x86",
+      "full_name": "Packed Single-FP Add/Subtract",
+      "summary": "Adds odd elements, subtracts even elements (Complex Math).",
+      "syntax": "ADDSUBPS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F D0" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "haddps",
+      "architecture": "x86",
+      "full_name": "Horizontal Add Packed Single-Precision",
+      "summary": "Adds adjacent float elements horizontally.",
+      "syntax": "HADDPS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F 7C" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "movddup",
+      "architecture": "x86",
+      "full_name": "Move One Double-FP and Duplicate",
+      "summary": "Loads 64-bit double and duplicates it to fill 128-bit register.",
+      "syntax": "MOVDDUP xmm1, xmm2/m64",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F 12" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "lddqu",
+      "architecture": "x86",
+      "full_name": "Load Unaligned Integer 128-bit",
+      "summary": "Loads unaligned data avoiding split-line penalties.",
+      "syntax": "LDDQU xmm1, m128",
+      "encoding": { "format": "SSE3", "hex_opcode": "F2 0F F0" },
+      "extension": "SSE3"
+    },
+    {
+      "mnemonic": "pshufb",
+      "architecture": "x86",
+      "full_name": "Packed Shuffle Bytes",
+      "summary": "Shuffles bytes according to indices in source operand.",
+      "syntax": "PSHUFB xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 00" },
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "phaddw",
+      "architecture": "x86",
+      "full_name": "Packed Horizontal Add Word",
+      "summary": "Adds adjacent 16-bit integers horizontally.",
+      "syntax": "PHADDW xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 01" },
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "palignr",
+      "architecture": "x86",
+      "full_name": "Packed Align Right",
+      "summary": "Concatenates dest and src, extracts 128 bits byte-aligned.",
+      "syntax": "PALIGNR xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 3A 0F" },
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "pmulhrsw",
+      "architecture": "x86",
+      "full_name": "Packed Multiply High with Round and Scale",
+      "summary": "Multiplies signed 16-bit words, rounds, and scales.",
+      "syntax": "PMULHRSW xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 0B" },
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "psignb",
+      "architecture": "x86",
+      "full_name": "Packed Sign Byte",
+      "summary": "Negates/Zeroes bytes in dest based on sign of src.",
+      "syntax": "PSIGNB xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 08" },
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "pabsb",
+      "architecture": "x86",
+      "full_name": "Packed Absolute Value Byte",
+      "summary": "Computes absolute value of bytes.",
+      "syntax": "PABSB xmm1, xmm2/m128",
+      "encoding": { "format": "SSSE3", "hex_opcode": "66 0F 38 1C" },
+      "extension": "SSSE3"
+    },
+    {
+      "mnemonic": "blendps",
+      "architecture": "x86",
+      "full_name": "Blend Packed Single-Precision",
+      "summary": "Selects floats from two sources based on immediate mask.",
+      "syntax": "BLENDPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0C" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pblendw",
+      "architecture": "x86",
+      "full_name": "Packed Blend Words",
+      "summary": "Selects words from two sources based on immediate mask.",
+      "syntax": "PBLENDW xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0E" },
+      "extension": "SSE4.1"
+    }
+  ]
+}

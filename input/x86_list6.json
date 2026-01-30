@@ -1,0 +1,391 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "extrq",
+      "architecture": "x86",
+      "full_name": "Extract Field from Register",
+      "summary": "Extracts bit field from register (AMD SSE4a).",
+      "syntax": "EXTRQ xmm1, xmm2",
+      "encoding": { "format": "SSE4a", "hex_opcode": "66 0F 79 /0" },
+      "extension": "SSE4a"
+    },
+    {
+      "mnemonic": "insertq",
+      "architecture": "x86",
+      "full_name": "Insert Field to Register",
+      "summary": "Inserts bit field into register (AMD SSE4a).",
+      "syntax": "INSERTQ xmm1, xmm2",
+      "encoding": { "format": "SSE4a", "hex_opcode": "66 0F 79 /4" },
+      "extension": "SSE4a"
+    },
+    {
+      "mnemonic": "movntss",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Scalar Single",
+      "summary": "Stores scalar float bypassing cache (AMD SSE4a).",
+      "syntax": "MOVNTSS m32, xmm1",
+      "encoding": { "format": "SSE4a", "hex_opcode": "F3 0F 2B" },
+      "extension": "SSE4a"
+    },
+    {
+      "mnemonic": "movntsd",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Scalar Double",
+      "summary": "Stores scalar double bypassing cache (AMD SSE4a).",
+      "syntax": "MOVNTSD m64, xmm1",
+      "encoding": { "format": "SSE4a", "hex_opcode": "F2 0F 2B" },
+      "extension": "SSE4a"
+    },
+    {
+      "mnemonic": "clzero",
+      "architecture": "x86",
+      "full_name": "Zero Cache Line",
+      "summary": "Clears the cache line at address RAX/EAX (AMD).",
+      "syntax": "CLZERO",
+      "encoding": { "format": "AMD", "hex_opcode": "0F 01 FC" },
+      "extension": "CLZERO"
+    },
+    {
+      "mnemonic": "blci",
+      "architecture": "x86",
+      "full_name": "Bit Line Create Isolated",
+      "summary": "Sets all bits to 0 except the lowest set bit inverted (x | ~(x+1)).",
+      "syntax": "BLCI r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 02" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "blcic",
+      "architecture": "x86",
+      "full_name": "Bit Line Create Isolated and Complement",
+      "summary": "Isolates lowest clear bit (~x & (x+1)).",
+      "syntax": "BLCIC r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 05" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "blcmsk",
+      "architecture": "x86",
+      "full_name": "Bit Line Create Mask",
+      "summary": "Creates mask from lowest clear bit (x ^ (x+1)).",
+      "syntax": "BLCMSK r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 01" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "blcs",
+      "architecture": "x86",
+      "full_name": "Bit Line Create Set",
+      "summary": "Sets lowest clear bit (x | (x+1)).",
+      "syntax": "BLCS r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 03" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "blsfill",
+      "architecture": "x86",
+      "full_name": "Bit Line Set Fill",
+      "summary": "Sets all bits below lowest set bit ((x-1) | x).",
+      "syntax": "BLSFILL r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 04" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "blsic",
+      "architecture": "x86",
+      "full_name": "Bit Line Set Isolated and Complement",
+      "summary": "Isolates lowest set bit and complements (~x | (x-1)).",
+      "syntax": "BLSIC r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 06" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "t1mskc",
+      "architecture": "x86",
+      "full_name": "Inverse Mask From Trailing Ones",
+      "summary": "Creates mask from trailing ones (~x | (x+1)).",
+      "syntax": "T1MSKC r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 07" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "tzmsk",
+      "architecture": "x86",
+      "full_name": "Mask From Trailing Zeros",
+      "summary": "Creates mask from trailing zeros (~x & (x-1)).",
+      "syntax": "TZMSK r32, r/m32",
+      "encoding": { "format": "TBM", "hex_opcode": "8F ... 04" },
+      "extension": "TBM"
+    },
+    {
+      "mnemonic": "vprotb",
+      "architecture": "x86",
+      "full_name": "Vector Packed Rotate Byte",
+      "summary": "Rotates bytes in XMM register.",
+      "syntax": "VPROTB xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 90" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vprotw",
+      "architecture": "x86",
+      "full_name": "Vector Packed Rotate Word",
+      "summary": "Rotates words in XMM register.",
+      "syntax": "VPROTW xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 91" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vprotd",
+      "architecture": "x86",
+      "full_name": "Vector Packed Rotate Doubleword",
+      "summary": "Rotates doublewords in XMM register.",
+      "syntax": "VPROTD xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 92" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vprotq",
+      "architecture": "x86",
+      "full_name": "Vector Packed Rotate Quadword",
+      "summary": "Rotates quadwords in XMM register.",
+      "syntax": "VPROTQ xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 93" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vpshab",
+      "architecture": "x86",
+      "full_name": "Vector Packed Shift Arithmetic Byte",
+      "summary": "Shifts bytes arithmetically.",
+      "syntax": "VPSHAB xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 98" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vpshaw",
+      "architecture": "x86",
+      "full_name": "Vector Packed Shift Arithmetic Word",
+      "summary": "Shifts words arithmetically.",
+      "syntax": "VPSHAW xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 99" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vpshad",
+      "architecture": "x86",
+      "full_name": "Vector Packed Shift Arithmetic Doubleword",
+      "summary": "Shifts doublewords arithmetically.",
+      "syntax": "VPSHAD xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 9A" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vpshaq",
+      "architecture": "x86",
+      "full_name": "Vector Packed Shift Arithmetic Quadword",
+      "summary": "Shifts quadwords arithmetically.",
+      "syntax": "VPSHAQ xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 9B" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vphaddbw",
+      "architecture": "x86",
+      "full_name": "Vector Packed Horizontal Add Byte to Word",
+      "summary": "Adds adjacent bytes to words.",
+      "syntax": "VPHADDBW xmm1, xmm2/m128",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... C1" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vphaddbd",
+      "architecture": "x86",
+      "full_name": "Vector Packed Horizontal Add Byte to Doubleword",
+      "summary": "Adds adjacent bytes to doublewords.",
+      "syntax": "VPHADDBD xmm1, xmm2/m128",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... C2" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vphaddbq",
+      "architecture": "x86",
+      "full_name": "Vector Packed Horizontal Add Byte to Quadword",
+      "summary": "Adds adjacent bytes to quadwords.",
+      "syntax": "VPHADDBQ xmm1, xmm2/m128",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... C3" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vphaddwd",
+      "architecture": "x86",
+      "full_name": "Vector Packed Horizontal Add Word to Doubleword",
+      "summary": "Adds adjacent words to doublewords.",
+      "syntax": "VPHADDWD xmm1, xmm2/m128",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... C6" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vphaddwq",
+      "architecture": "x86",
+      "full_name": "Vector Packed Horizontal Add Word to Quadword",
+      "summary": "Adds adjacent words to quadwords.",
+      "syntax": "VPHADDWQ xmm1, xmm2/m128",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... C7" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vphadddq",
+      "architecture": "x86",
+      "full_name": "Vector Packed Horizontal Add Doubleword to Quadword",
+      "summary": "Adds adjacent doublewords to quadwords.",
+      "syntax": "VPHADDDQ xmm1, xmm2/m128",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... CB" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vpmacsww",
+      "architecture": "x86",
+      "full_name": "Vector Packed Multiply Accumulate Signed Word",
+      "summary": "Multiply-accumulate signed words.",
+      "syntax": "VPMACSWW xmm1, xmm2, xmm3, xmm4",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 83" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vpmacssww",
+      "architecture": "x86",
+      "full_name": "Vector Packed Multiply Accumulate Signed Saturate Word",
+      "summary": "Multiply-accumulate signed words with saturation.",
+      "syntax": "VPMACSSWW xmm1, xmm2, xmm3, xmm4",
+      "encoding": { "format": "XOP", "hex_opcode": "8F ... 87" },
+      "extension": "XOP"
+    },
+    {
+      "mnemonic": "vgatherpf0dps",
+      "architecture": "x86",
+      "full_name": "Gather Prefetch Packed Single (L1)",
+      "summary": "Prefetches floats to L1 cache using indices.",
+      "syntax": "VGATHERPF0DPS {k1}, [base+zmm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C6 /1" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vgatherpf0qps",
+      "architecture": "x86",
+      "full_name": "Gather Prefetch Packed Single (L1, Qword Indices)",
+      "summary": "Prefetches floats to L1 using 64-bit indices.",
+      "syntax": "VGATHERPF0QPS {k1}, [base+zmm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C7 /1" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vgatherpf0dpd",
+      "architecture": "x86",
+      "full_name": "Gather Prefetch Packed Double (L1)",
+      "summary": "Prefetches doubles to L1 cache using indices.",
+      "syntax": "VGATHERPF0DPD {k1}, [base+ymm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C6 /1" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vgatherpf0qpd",
+      "architecture": "x86",
+      "full_name": "Gather Prefetch Packed Double (L1, Qword Indices)",
+      "summary": "Prefetches doubles to L1 using 64-bit indices.",
+      "syntax": "VGATHERPF0QPD {k1}, [base+zmm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C7 /1" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vscatterpf0dps",
+      "architecture": "x86",
+      "full_name": "Scatter Prefetch Packed Single (L1)",
+      "summary": "Prefetches cache lines for scatter write (L1).",
+      "syntax": "VSCATTERPF0DPS {k1}, [base+zmm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C6 /5" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vscatterpf0qps",
+      "architecture": "x86",
+      "full_name": "Scatter Prefetch Packed Single (L1, Qword Indices)",
+      "summary": "Prefetches lines for scatter write (L1, 64-bit idx).",
+      "syntax": "VSCATTERPF0QPS {k1}, [base+zmm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C7 /5" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vscatterpf0dpd",
+      "architecture": "x86",
+      "full_name": "Scatter Prefetch Packed Double (L1)",
+      "summary": "Prefetches lines for scatter write (L1, Double).",
+      "syntax": "VSCATTERPF0DPD {k1}, [base+ymm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C6 /5" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vscatterpf0qpd",
+      "architecture": "x86",
+      "full_name": "Scatter Prefetch Packed Double (L1, Qword Indices)",
+      "summary": "Prefetches lines for scatter write (L1, Double, 64-bit idx).",
+      "syntax": "VSCATTERPF0QPD {k1}, [base+zmm_idx]",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... C7 /5" },
+      "extension": "AVX-512PF"
+    },
+    {
+      "mnemonic": "vp4dpwssd",
+      "architecture": "x86",
+      "full_name": "Dot Product Signed Word to Signed Doubleword (4-iterations)",
+      "summary": "Neural Net 4-way dot product.",
+      "syntax": "VP4DPWSSD zmm1 {k1}, zmm2+3, m128",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 52" },
+      "extension": "AVX-512-4VNNIW"
+    },
+    {
+      "mnemonic": "vp4dpwssds",
+      "architecture": "x86",
+      "full_name": "Dot Product Signed Word to Signed Doubleword Saturate (4-iter)",
+      "summary": "Neural Net 4-way dot product with saturation.",
+      "syntax": "VP4DPWSSDS zmm1 {k1}, zmm2+3, m128",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 53" },
+      "extension": "AVX-512-4VNNIW"
+    },
+    {
+      "mnemonic": "v4fmaddps",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add Packed Single (4-iterations)",
+      "summary": "4-way FMA for Neural Nets (Single).",
+      "syntax": "V4FMADDPS zmm1 {k1}, zmm2+3, m128",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 9A" },
+      "extension": "AVX-512-4FMAPS"
+    },
+    {
+      "mnemonic": "v4fmaddss",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add Scalar Single (4-iterations)",
+      "summary": "4-way FMA for Neural Nets (Scalar).",
+      "syntax": "V4FMADDSS xmm1 {k1}, xmm2+3, m128",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 9B" },
+      "extension": "AVX-512-4FMAPS"
+    },
+    {
+      "mnemonic": "v4fnmaddps",
+      "architecture": "x86",
+      "full_name": "Fused Negative Multiply-Add Packed Single (4-iterations)",
+      "summary": "4-way Negative FMA for Neural Nets (Single).",
+      "syntax": "V4FNMADDPS zmm1 {k1}, zmm2+3, m128",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... AA" },
+      "extension": "AVX-512-4FMAPS"
+    },
+    {
+      "mnemonic": "v4fnmaddss",
+      "architecture": "x86",
+      "full_name": "Fused Negative Multiply-Add Scalar Single (4-iterations)",
+      "summary": "4-way Negative FMA for Neural Nets (Scalar).",
+      "syntax": "V4FNMADDSS xmm1 {k1}, xmm2+3, m128",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... AB" },
+      "extension": "AVX-512-4FMAPS"
+    }
+  ]
+}

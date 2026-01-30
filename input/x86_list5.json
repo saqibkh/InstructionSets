@@ -1,0 +1,373 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "lfence",
+      "architecture": "x86",
+      "full_name": "Load Fence",
+      "summary": "Serializes load operations (Wait for prior loads to complete).",
+      "syntax": "LFENCE",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F AE E8" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "sfence",
+      "architecture": "x86",
+      "full_name": "Store Fence",
+      "summary": "Serializes store operations (Wait for prior stores to complete).",
+      "syntax": "SFENCE",
+      "encoding": { "format": "SSE", "hex_opcode": "0F AE F8" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "mfence",
+      "architecture": "x86",
+      "full_name": "Memory Fence",
+      "summary": "Serializes all load and store operations.",
+      "syntax": "MFENCE",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F AE F0" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "clflush",
+      "architecture": "x86",
+      "full_name": "Cache Line Flush",
+      "summary": "Flushes the cache line containing the operand from all caches.",
+      "syntax": "CLFLUSH m8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F AE /7" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "rdtscp",
+      "architecture": "x86",
+      "full_name": "Read Time-Stamp Counter and Processor ID",
+      "summary": "Reads TSC into EDX:EAX and Processor ID into ECX.",
+      "syntax": "RDTSCP",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 F9" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xsave",
+      "architecture": "x86",
+      "full_name": "Save Processor Extended States",
+      "summary": "Saves specified state components (AVX, SSE, etc.) to memory.",
+      "syntax": "XSAVE m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F AE /4" },
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "xrstor",
+      "architecture": "x86",
+      "full_name": "Restore Processor Extended States",
+      "summary": "Restores specified state components from memory.",
+      "syntax": "XRSTOR m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F AE /5" },
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "xgetbv",
+      "architecture": "x86",
+      "full_name": "Get Value of Extended Control Register",
+      "summary": "Reads the state of XCR0 (feature mask) into EDX:EAX.",
+      "syntax": "XGETBV",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D0" },
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "xsetbv",
+      "architecture": "x86",
+      "full_name": "Set Value of Extended Control Register",
+      "summary": "Writes EDX:EAX to XCR0 (Enables/disables AVX/SSE states).",
+      "syntax": "XSETBV",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D1" },
+      "extension": "XSAVE"
+    },
+    {
+      "mnemonic": "xbegin",
+      "architecture": "x86",
+      "full_name": "Transaction Begin",
+      "summary": "Marks the start of a Transactional Memory (RTM) region.",
+      "syntax": "XBEGIN rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "C7 F8" },
+      "extension": "RTM (TSX)"
+    },
+    {
+      "mnemonic": "xend",
+      "architecture": "x86",
+      "full_name": "Transaction End",
+      "summary": "Marks the end of an RTM region.",
+      "syntax": "XEND",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D5" },
+      "extension": "RTM (TSX)"
+    },
+    {
+      "mnemonic": "xabort",
+      "architecture": "x86",
+      "full_name": "Transaction Abort",
+      "summary": "Forces an RTM transaction to abort with a user code.",
+      "syntax": "XABORT imm8",
+      "encoding": { "format": "Legacy", "hex_opcode": "C6 F8" },
+      "extension": "RTM (TSX)"
+    },
+    {
+      "mnemonic": "xtest",
+      "architecture": "x86",
+      "full_name": "Test If In Transaction",
+      "summary": "Checks if the processor is currently executing a transaction.",
+      "syntax": "XTEST",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 D6" },
+      "extension": "RTM (TSX)"
+    },
+    {
+      "mnemonic": "shufps",
+      "architecture": "x86",
+      "full_name": "Shuffle Packed Single-Precision",
+      "summary": "Shuffles 32-bit floats between two XMM registers.",
+      "syntax": "SHUFPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE", "hex_opcode": "0F C6" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "shufpd",
+      "architecture": "x86",
+      "full_name": "Shuffle Packed Double-Precision",
+      "summary": "Shuffles 64-bit doubles between two XMM registers.",
+      "syntax": "SHUFPD xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F C6" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "unpcklps",
+      "architecture": "x86",
+      "full_name": "Unpack Low Packed Single-Precision",
+      "summary": "Interleaves low floats from two registers.",
+      "syntax": "UNPCKLPS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0F 14" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "unpckhps",
+      "architecture": "x86",
+      "full_name": "Unpack High Packed Single-Precision",
+      "summary": "Interleaves high floats from two registers.",
+      "syntax": "UNPCKHPS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE", "hex_opcode": "0F 15" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movntps",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Packed Single",
+      "summary": "Stores float vectors directly to RAM, bypassing cache.",
+      "syntax": "MOVNTPS m128, xmm",
+      "encoding": { "format": "SSE", "hex_opcode": "0F 2B" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movntpd",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Packed Double",
+      "summary": "Stores double vectors directly to RAM, bypassing cache.",
+      "syntax": "MOVNTPD m128, xmm",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F 2B" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "blendps",
+      "architecture": "x86",
+      "full_name": "Blend Packed Single-Precision",
+      "summary": "Selects floats from two sources based on immediate mask.",
+      "syntax": "BLENDPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0C" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "blendpd",
+      "architecture": "x86",
+      "full_name": "Blend Packed Double-Precision",
+      "summary": "Selects doubles from two sources based on immediate mask.",
+      "syntax": "BLENDPD xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0D" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pblendw",
+      "architecture": "x86",
+      "full_name": "Packed Blend Words",
+      "summary": "Selects words from two sources based on immediate mask.",
+      "syntax": "PBLENDW xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0E" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "insertps",
+      "architecture": "x86",
+      "full_name": "Insert Packed Single-Precision",
+      "summary": "Inserts a single float into a specific index of XMM.",
+      "syntax": "INSERTPS xmm1, xmm2/m32, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 21" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "extractps",
+      "architecture": "x86",
+      "full_name": "Extract Packed Single-Precision",
+      "summary": "Extracts a single float from XMM to an integer register.",
+      "syntax": "EXTRACTPS r32/m32, xmm1, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 17" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "dpps",
+      "architecture": "x86",
+      "full_name": "Dot Product Packed Single-Precision",
+      "summary": "Computes the dot product of two float vectors.",
+      "syntax": "DPPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 40" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "dppd",
+      "architecture": "x86",
+      "full_name": "Dot Product Packed Double-Precision",
+      "summary": "Computes the dot product of two double vectors.",
+      "syntax": "DPPD xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 41" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "roundps",
+      "architecture": "x86",
+      "full_name": "Round Packed Single-Precision",
+      "summary": "Rounds all packed floats according to immediate mode.",
+      "syntax": "ROUNDPS xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 08" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "roundpd",
+      "architecture": "x86",
+      "full_name": "Round Packed Double-Precision",
+      "summary": "Rounds all packed doubles according to immediate mode.",
+      "syntax": "ROUNDPD xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 09" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pcmpeqq",
+      "architecture": "x86",
+      "full_name": "Packed Compare Equal Quadword",
+      "summary": "Checks if 64-bit integer elements are equal.",
+      "syntax": "PCMPEQQ xmm1, xmm2/m128",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 29" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pcmpestri",
+      "architecture": "x86",
+      "full_name": "Packed Compare Explicit Length Strings, Return Index",
+      "summary": "Complex string search/compare; returns index in ECX.",
+      "syntax": "PCMPESTRI xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "66 0F 3A 61" },
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "pcmpestrm",
+      "architecture": "x86",
+      "full_name": "Packed Compare Explicit Length Strings, Return Mask",
+      "summary": "Complex string search/compare; returns mask in XMM0.",
+      "syntax": "PCMPESTRM xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "66 0F 3A 60" },
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "pcmpistri",
+      "architecture": "x86",
+      "full_name": "Packed Compare Implicit Length Strings, Return Index",
+      "summary": "String search (null-terminated); returns index in ECX.",
+      "syntax": "PCMPISTRI xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "66 0F 3A 63" },
+      "extension": "SSE4.2"
+    },
+    {
+      "mnemonic": "vfmadd132ss",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add Scalar Single (132)",
+      "summary": "Scalar FMA: Dest = (Dest * Src2) + Src1.",
+      "syntax": "VFMADD132SS xmm1, xmm2, xmm3/m32",
+      "encoding": { "format": "FMA3", "hex_opcode": "C4 ... 99" },
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vfmadd213ss",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add Scalar Single (213)",
+      "summary": "Scalar FMA: Dest = (Src1 * Dest) + Src2.",
+      "syntax": "VFMADD213SS xmm1, xmm2, xmm3/m32",
+      "encoding": { "format": "FMA3", "hex_opcode": "C4 ... A9" },
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vfmadd231ss",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add Scalar Single (231)",
+      "summary": "Scalar FMA: Dest = (Src1 * Src2) + Dest.",
+      "syntax": "VFMADD231SS xmm1, xmm2, xmm3/m32",
+      "encoding": { "format": "FMA3", "hex_opcode": "C4 ... B9" },
+      "extension": "FMA3"
+    },
+    {
+      "mnemonic": "vpermilps",
+      "architecture": "x86",
+      "full_name": "Permute In-Lane Packed Single",
+      "summary": "Shuffles floats within 128-bit lanes (AVX).",
+      "syntax": "VPERMILPS ymm1, ymm2/m256, imm8",
+      "encoding": { "format": "AVX", "hex_opcode": "C4 ... 04" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vpermilpd",
+      "architecture": "x86",
+      "full_name": "Permute In-Lane Packed Double",
+      "summary": "Shuffles doubles within 128-bit lanes (AVX).",
+      "syntax": "VPERMILPD ymm1, ymm2/m256, imm8",
+      "encoding": { "format": "AVX", "hex_opcode": "C4 ... 05" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vbroadcastss",
+      "architecture": "x86",
+      "full_name": "Broadcast Scalar Single",
+      "summary": "Loads one float and replicates it to all YMM elements.",
+      "syntax": "VBROADCASTSS ymm1, m32",
+      "encoding": { "format": "AVX", "hex_opcode": "C4 ... 18" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vpbroadcastd",
+      "architecture": "x86",
+      "full_name": "Broadcast Doubleword",
+      "summary": "Loads one integer and replicates it to all YMM elements.",
+      "syntax": "VPBROADCASTD ymm1, xmm2/m32",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 58" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "pclmulqdq",
+      "architecture": "x86",
+      "full_name": "Carry-Less Multiplication",
+      "summary": "Performs carry-less multiplication (Galois Field math for AES-GCM).",
+      "syntax": "PCLMULQDQ xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "PCLMUL", "hex_opcode": "66 0F 3A 44" },
+      "extension": "PCLMULQDQ"
+    },
+    {
+      "mnemonic": "crc32",
+      "architecture": "x86",
+      "full_name": "Accumulate CRC32 Value",
+      "summary": "Accumulates CRC32C value using polynomial 0x11EDC6F41.",
+      "syntax": "CRC32 r32, r/m",
+      "encoding": { "format": "SSE4.2", "hex_opcode": "F2 0F 38 F1" },
+      "extension": "SSE4.2"
+    }
+  ]
+}

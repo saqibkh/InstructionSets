@@ -557,7 +557,7 @@
       "slug": "vrev8_v",
       "rel_url": "risc-v/vrev8_v/",
       "linked_summary": "Reverses the order of bytes within each element (Endian swap).",
-      "linked_pseudocode": "foreach(i < vl): vd[i] = <a href=\"../../x86/bswap_1/\">bswap</a>(vs2[i]);"
+      "linked_pseudocode": "foreach(i < vl): vd[i] = <a href=\"../../x86/bswap_3/\">bswap</a>(vs2[i]);"
     },
     {
       "mnemonic": "VCLZ.V",
@@ -1489,7 +1489,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">vd = GHASH_Step(vd, vs1, vs2);</code></pre>",
       "slug": "vgsha_vv",
       "rel_url": "risc-v/vgsha_vv/",
-      "linked_summary": "Used <a href=\"../../x86/in/\">in</a> GCM GHASH <a href=\"../../x86/loop/\">loop</a>.",
+      "linked_summary": "Used <a href=\"../../x86/in/\">in</a> GCM GHASH <a href=\"../../x86/loop_1/\">loop</a>.",
       "linked_pseudocode": "vd = GHASH_Step(vd, vs1, vs2);"
     },
     {
@@ -8217,7 +8217,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">RaiseException(EnvironmentCall);</code></pre>",
       "slug": "ecall",
       "rel_url": "risc-v/ecall/",
-      "linked_summary": "Generates an environment <a href=\"../../x86/call/\">call</a> exception (system <a href=\"../../x86/call/\">call</a>).",
+      "linked_summary": "Generates an environment <a href=\"../../x86/call_1/\">call</a> exception (system <a href=\"../../x86/call_1/\">call</a>).",
       "linked_pseudocode": "RaiseException(EnvironmentCall);"
     },
     {
@@ -10978,7 +10978,7 @@
       "slug": "clz",
       "rel_url": "risc-v/clz/",
       "linked_summary": "Counts the number of 0 bits <a href=\"../../armv8-a/at_2/\">at</a> the <a href=\"../../armv9-a/msb/\">MSB</a> end of the register.",
-      "linked_pseudocode": "<a href=\"../../x86/int/\">int</a> count = 0; while(rs1[XLEN-1-count] == 0) count++; R[rd] = count;"
+      "linked_pseudocode": "<a href=\"../../x86/int_1/\">int</a> count = 0; while(rs1[XLEN-1-count] == 0) count++; R[rd] = count;"
     },
     {
       "mnemonic": "CTZ",
@@ -11035,7 +11035,7 @@
       "slug": "ctz",
       "rel_url": "risc-v/ctz/",
       "linked_summary": "Counts the number of 0 bits <a href=\"../../armv8-a/at_2/\">at</a> the LSB end of the register.",
-      "linked_pseudocode": "<a href=\"../../x86/int/\">int</a> count = 0; while(rs1[count] == 0) count++; R[rd] = count;"
+      "linked_pseudocode": "<a href=\"../../x86/int_1/\">int</a> count = 0; while(rs1[count] == 0) count++; R[rd] = count;"
     },
     {
       "mnemonic": "CPOP",
@@ -12015,7 +12015,7 @@
       "slug": "wrs_nto",
       "rel_url": "risc-v/wrs_nto/",
       "linked_summary": "Stalls the hart until a reservation set is invalid <a href=\"../../powerisa/or/\">or</a> a short timeout expires. Used for efficient polling/spinlocks.",
-      "linked_pseudocode": "while (reservation_valid() && !timeout) { <a href=\"../../x86/pause/\">pause</a>(); }"
+      "linked_pseudocode": "while (reservation_valid() && !timeout) { <a href=\"../../x86/pause_1/\">pause</a>(); }"
     },
     {
       "mnemonic": "WRS.STO",
@@ -12057,7 +12057,7 @@
       "slug": "wrs_sto",
       "rel_url": "risc-v/wrs_sto/",
       "linked_summary": "Stalls the hart until a reservation set is invalid <a href=\"../../powerisa/or/\">or</a> a very short implementation-defined timeout expires.",
-      "linked_pseudocode": "while (reservation_valid() && !short_timeout) { <a href=\"../../x86/pause/\">pause</a>(); }"
+      "linked_pseudocode": "while (reservation_valid() && !short_timeout) { <a href=\"../../x86/pause_1/\">pause</a>(); }"
     },
     {
       "mnemonic": "SFENCE.W.INVAL",
@@ -18466,7 +18466,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">if (R[rs2] == 0) R[rd] = 0; else R[rd] = R[rs1];</code></pre>",
       "slug": "czero_eqz",
       "rel_url": "risc-v/czero_eqz/",
-      "linked_summary": "Moves rs1 to rd if rs2 is non-<a href=\"../../armv9-a/zero_2/\">zero</a>, otherwise sets rd to <a href=\"../../armv9-a/zero_2/\">zero</a>.",
+      "linked_summary": "Moves rs1 to rd if rs2 is non-<a href=\"../../armv9-a/zero_2/\">zero</a>, otherwise <a href=\"../../x86/sets/\">sets</a> rd to <a href=\"../../armv9-a/zero_2/\">zero</a>.",
       "linked_pseudocode": "if (R[rs2] == 0) R[rd] = 0; else R[rd] = R[rs1];"
     },
     {
@@ -18527,7 +18527,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">if (R[rs2] != 0) R[rd] = 0; else R[rd] = R[rs1];</code></pre>",
       "slug": "czero_nez",
       "rel_url": "risc-v/czero_nez/",
-      "linked_summary": "Moves rs1 to rd if rs2 is <a href=\"../../armv9-a/zero_2/\">zero</a>, otherwise sets rd to <a href=\"../../armv9-a/zero_2/\">zero</a>.",
+      "linked_summary": "Moves rs1 to rd if rs2 is <a href=\"../../armv9-a/zero_2/\">zero</a>, otherwise <a href=\"../../x86/sets/\">sets</a> rd to <a href=\"../../armv9-a/zero_2/\">zero</a>.",
       "linked_pseudocode": "if (R[rs2] != 0) R[rd] = 0; else R[rd] = R[rs1];"
     },
     {
@@ -18571,7 +18571,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">// Implementation-defined delay/yield</code></pre>",
       "slug": "pause",
       "rel_url": "risc-v/pause/",
-      "linked_summary": "Hints that the current hart is <a href=\"../../x86/in/\">in</a> a spin-<a href=\"../../powerisa/wait_1/\">wait</a> <a href=\"../../x86/loop/\">loop</a>, allowing the hardware to reduce power consumption <a href=\"../../powerisa/or/\">or</a> <a href=\"../../armv8-a/yield_2/\">yield</a> resources.",
+      "linked_summary": "Hints that the current hart is <a href=\"../../x86/in/\">in</a> a spin-<a href=\"../../powerisa/wait_1/\">wait</a> <a href=\"../../x86/loop_1/\">loop</a>, allowing the hardware to reduce power consumption <a href=\"../../powerisa/or/\">or</a> <a href=\"../../armv8-a/yield_2/\">yield</a> resources.",
       "linked_pseudocode": "// Implementation-defined delay/<a href=\"../../armv8-a/yield_2/\">yield</a>"
     },
     {
@@ -18947,7 +18947,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">PC = R[1];</code></pre>",
       "slug": "ret",
       "rel_url": "risc-v/ret/",
-      "linked_summary": "Returns from a subroutine <a href=\"../../x86/call/\">call</a>.",
+      "linked_summary": "Returns from a subroutine <a href=\"../../x86/call_1/\">call</a>.",
       "linked_pseudocode": "PC = R[1];"
     },
     {
