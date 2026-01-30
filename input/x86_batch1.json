@@ -1,0 +1,224 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "add",
+      "architecture": "x86",
+      "full_name": "Add",
+      "summary": "Adds src to dest and stores result in dest.",
+      "syntax": "ADD r/m, r",
+      "pseudocode": "DEST ← DEST + SRC;\n// Flags Affected: OF, SF, ZF, AF, CF, PF",
+      "example": "ADD EAX, EBX  ; Add EBX to EAX\nADD [EAX], 5  ; Add 5 to the 32-bit integer at address EAX",
+      "encoding": { "format": "Legacy", "hex_opcode": "01", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sub",
+      "architecture": "x86",
+      "full_name": "Subtract",
+      "summary": "Subtracts src from dest.",
+      "syntax": "SUB r/m, r",
+      "pseudocode": "DEST ← DEST - SRC;\n// Flags Affected: OF, SF, ZF, AF, CF, PF",
+      "example": "SUB EAX, 10   ; Subtract 10 from EAX\nSUB ECX, EDX  ; Subtract EDX from ECX",
+      "encoding": { "format": "Legacy", "hex_opcode": "29", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mov",
+      "architecture": "x86",
+      "full_name": "Move",
+      "summary": "Copies data from source to destination.",
+      "syntax": "MOV r/m, r",
+      "pseudocode": "DEST ← SRC;",
+      "example": "MOV EAX, 5    ; Load 5 into EAX\nMOV [EBX], EAX ; Store EAX to memory at EBX",
+      "encoding": { "format": "Legacy", "hex_opcode": "89", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmp",
+      "architecture": "x86",
+      "full_name": "Compare Two Operands",
+      "summary": "Subtracts src from dest and updates flags (dest not modified).",
+      "syntax": "CMP r/m, r",
+      "pseudocode": "temp ← DEST - SRC;\nModifyFlags(temp);\n// DEST is NOT modified",
+      "example": "CMP EAX, 10   ; Compare EAX with 10\nJE label      ; Jump if Equal",
+      "encoding": { "format": "Legacy", "hex_opcode": "39", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jmp",
+      "architecture": "x86",
+      "full_name": "Jump",
+      "summary": "Unconditional jump to target.",
+      "syntax": "JMP rel",
+      "pseudocode": "RIP ← RIP + Offset;",
+      "example": "JMP 0x401000  ; Jump to address\nJMP label     ; Jump to label",
+      "encoding": { "format": "Legacy", "hex_opcode": "E9", "length": "5" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "adc",
+      "architecture": "x86",
+      "full_name": "Add with Carry",
+      "summary": "Adds operands and the Carry Flag (CF).",
+      "syntax": "ADC r/m, r",
+      "pseudocode": "DEST ← DEST + SRC + CF;",
+      "example": "ADC EAX, EBX  ; Add EBX and Carry Flag to EAX\nADC AL, 1     ; Add 1 and Carry Flag to AL",
+      "encoding": { "format": "Legacy", "hex_opcode": "11", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "sbb",
+      "architecture": "x86",
+      "full_name": "Subtract with Borrow",
+      "summary": "Subtracts operands and the Carry Flag (CF).",
+      "syntax": "SBB r/m, r",
+      "pseudocode": "DEST ← DEST - (SRC + CF);",
+      "example": "SBB EAX, EBX  ; Subtract EBX and Carry from EAX\nSBB [EAX], 1  ; Subtract 1+CF from memory",
+      "encoding": { "format": "Legacy", "hex_opcode": "19", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "inc",
+      "architecture": "x86",
+      "full_name": "Increment",
+      "summary": "Increments the operand by 1.",
+      "syntax": "INC r/m",
+      "pseudocode": "DEST ← DEST + 1;\n// CF is NOT affected",
+      "example": "INC EAX       ; EAX = EAX + 1\nINC byte [EBX] ; Increment byte at address EBX",
+      "encoding": { "format": "Legacy", "hex_opcode": "FF /0", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "dec",
+      "architecture": "x86",
+      "full_name": "Decrement",
+      "summary": "Decrements the operand by 1.",
+      "syntax": "DEC r/m",
+      "pseudocode": "DEST ← DEST - 1;\n// CF is NOT affected",
+      "example": "DEC EAX       ; EAX = EAX - 1\nDEC word [ESI] ; Decrement word at ESI",
+      "encoding": { "format": "Legacy", "hex_opcode": "FF /1", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "lea",
+      "architecture": "x86",
+      "full_name": "Load Effective Address",
+      "summary": "Computes effective address and stores in register.",
+      "syntax": "LEA r, m",
+      "pseudocode": "DEST ← EffectiveAddress(SRC);",
+      "example": "LEA EAX, [EBX+ECX*4+8] ; Calculate address and store in EAX",
+      "encoding": { "format": "Legacy", "hex_opcode": "8D", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "push",
+      "architecture": "x86",
+      "full_name": "Push Value Onto Stack",
+      "summary": "Decrements SP and stores operand on stack.",
+      "syntax": "PUSH r/m",
+      "pseudocode": "RSP ← RSP - OperandSize;\nMemory[RSP] ← SRC;",
+      "example": "PUSH EAX      ; Push EAX onto stack\nPUSH 5        ; Push immediate 5",
+      "encoding": { "format": "Legacy", "hex_opcode": "FF /6", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "pop",
+      "architecture": "x86",
+      "full_name": "Pop Value from Stack",
+      "summary": "Loads operand from stack and increments SP.",
+      "syntax": "POP r/m",
+      "pseudocode": "DEST ← Memory[RSP];\nRSP ← RSP + OperandSize;",
+      "example": "POP EAX       ; Pop top of stack into EAX\nPOP [EBX]     ; Pop into memory",
+      "encoding": { "format": "Legacy", "hex_opcode": "8F /0", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "and",
+      "architecture": "x86",
+      "full_name": "Logical AND",
+      "summary": "Performs bitwise AND.",
+      "syntax": "AND r/m, r",
+      "pseudocode": "DEST ← DEST AND SRC;\nCF ← 0; OF ← 0;",
+      "example": "AND EAX, 0xFF ; Keep lowest 8 bits\nAND ECX, EDX  ; Bitwise AND of ECX and EDX",
+      "encoding": { "format": "Legacy", "hex_opcode": "21", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "or",
+      "architecture": "x86",
+      "full_name": "Logical OR",
+      "summary": "Performs bitwise OR.",
+      "syntax": "OR r/m, r",
+      "pseudocode": "DEST ← DEST OR SRC;\nCF ← 0; OF ← 0;",
+      "example": "OR EAX, 1     ; Set lowest bit\nOR EAX, EAX   ; Check if EAX is zero (sets ZF)",
+      "encoding": { "format": "Legacy", "hex_opcode": "09", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "xor",
+      "architecture": "x86",
+      "full_name": "Logical Exclusive OR",
+      "summary": "Performs bitwise XOR.",
+      "syntax": "XOR r/m, r",
+      "pseudocode": "DEST ← DEST XOR SRC;\nCF ← 0; OF ← 0;",
+      "example": "XOR EAX, EAX  ; Clear EAX (set to 0)\nXOR EAX, 5    ; Toggle bits 0 and 2",
+      "encoding": { "format": "Legacy", "hex_opcode": "31", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "call",
+      "architecture": "x86",
+      "full_name": "Call Procedure",
+      "summary": "Push EIP/RIP and jump to target.",
+      "syntax": "CALL rel",
+      "pseudocode": "PUSH(RIP_next);\nRIP ← RIP + RelativeOffset;",
+      "example": "CALL MyFunc   ; Call subroutine MyFunc\nCALL EAX      ; Indirect call to address in EAX",
+      "encoding": { "format": "Legacy", "hex_opcode": "E8", "length": "5" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "ret",
+      "architecture": "x86",
+      "full_name": "Return from Procedure",
+      "summary": "Pop EIP/RIP and resume execution.",
+      "syntax": "RET",
+      "pseudocode": "RIP ← POP();\nIF (OptionalImm) RSP ← RSP + OptionalImm;",
+      "example": "RET           ; Return to caller\nRET 4         ; Return and clean 4 bytes from stack",
+      "encoding": { "format": "Legacy", "hex_opcode": "C3", "length": "1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "nop",
+      "architecture": "x86",
+      "full_name": "No Operation",
+      "summary": "Does nothing (alias for XCHG EAX, EAX).",
+      "syntax": "NOP",
+      "pseudocode": "// No Operation",
+      "example": "NOP           ; Do nothing (padding)",
+      "encoding": { "format": "Legacy", "hex_opcode": "90", "length": "1" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "test",
+      "architecture": "x86",
+      "full_name": "Logical Compare",
+      "summary": "ANDs operands and updates flags (result discarded).",
+      "syntax": "TEST r/m, r",
+      "pseudocode": "temp ← DEST AND SRC;\nSF ← MSB(temp); ZF ← (temp = 0);\nPF ← Parity(temp); CF ← 0; OF ← 0;",
+      "example": "TEST EAX, EAX ; Check if EAX is 0\nTEST AL, 1    ; Check if lowest bit is set",
+      "encoding": { "format": "Legacy", "hex_opcode": "85", "length": "2+" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "mul",
+      "architecture": "x86",
+      "full_name": "Unsigned Multiply",
+      "summary": "Unsigned multiply (AX = AL * src).",
+      "syntax": "MUL r/m",
+      "pseudocode": "IF OperandSize = 8 THEN\n  AX ← AL * SRC;\nELSE IF OperandSize = 16 THEN\n  DX:AX ← AX * SRC;\nELSE IF OperandSize = 32 THEN\n  EDX:EAX ← EAX * SRC;",
+      "example": "MUL EBX       ; EDX:EAX = EAX * EBX\nMUL BL        ; AX = AL * BL",
+      "encoding": { "format": "Legacy", "hex_opcode": "F7 /4", "length": "2+" },
+      "extension": "Base"
+    }
+  ]
+}
