@@ -60,7 +60,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">foreach(i &lt; vl): vd[i] = vs2[i] &amp; ~vs1[i];</code></pre>",
       "slug": "vandn_vv",
       "rel_url": "risc-v/vandn_vv/",
-      "linked_summary": "Computes vd = vs2 & ~vs1 (bitwise <a href=\"../../risc-v/and/\">AND</a> with inverted source).",
+      "linked_summary": "Computes vd = vs2 & ~vs1 (bitwise <a href=\"../../armv9-a/and_1/\">AND</a> with inverted source).",
       "linked_pseudocode": "foreach(i < vl): vd[i] = vs2[i] & ~vs1[i];"
     },
     {
@@ -186,7 +186,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">foreach(i &lt; vl): vd[i] = ~(vs2[i] ^ vs1[i]);</code></pre>",
       "slug": "vxnor_vv",
       "rel_url": "risc-v/vxnor_vv/",
-      "linked_summary": "Computes vd = ~(vs2 ^ vs1) (bitwise Exclusive-NOR).",
+      "linked_summary": "Computes vd = ~(vs2 ^ vs1) (bitwise Exclusive-<a href=\"../../armv9-a/nor/\">NOR</a>).",
       "linked_pseudocode": "foreach(i < vl): vd[i] = ~(vs2[i] ^ vs1[i]);"
     },
     {
@@ -4387,7 +4387,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">vd = ~(vs1 &amp; vs2);</code></pre>",
       "slug": "vmnand_mm",
       "rel_url": "risc-v/vmnand_mm/",
-      "linked_summary": "Performs bitwise NAND on vector mask registers. Used to invert masks (<a href=\"../../risc-v/not/\">NOT</a>).",
+      "linked_summary": "Performs bitwise <a href=\"../../armv9-a/nand/\">NAND</a> on vector mask registers. Used to invert masks (<a href=\"../../armv9-a/not/\">NOT</a>).",
       "linked_pseudocode": "vd = ~(vs1 & vs2);"
     },
     {
@@ -7312,7 +7312,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">vd = vs1 &amp; vs2;</code></pre>",
       "slug": "vmand_mm",
       "rel_url": "risc-v/vmand_mm/",
-      "linked_summary": "Performs bitwise <a href=\"../../risc-v/and/\">AND</a> on vector mask registers.",
+      "linked_summary": "Performs bitwise <a href=\"../../armv9-a/and_1/\">AND</a> on vector mask registers.",
       "linked_pseudocode": "vd = vs1 & vs2;"
     },
     {
@@ -7519,7 +7519,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">temp = M[R[rs1]]; M[R[rs1]] = temp &amp; R[rs2]; R[rd] = temp;</code></pre>",
       "slug": "amoand_d",
       "rel_url": "risc-v/amoand_d/",
-      "linked_summary": "Atomically performs bitwise <a href=\"../../risc-v/and/\">AND</a> on a 64-<a href=\"../../armv8-a/bit/\">bit</a> doubleword <a href=\"../../x86/in/\">in</a> memory.",
+      "linked_summary": "Atomically performs bitwise <a href=\"../../armv9-a/and_1/\">AND</a> on a 64-<a href=\"../../armv8-a/bit/\">bit</a> doubleword <a href=\"../../x86/in/\">in</a> memory.",
       "linked_pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp & R[rs2]; R[rd] = temp;"
     },
     {
@@ -9026,7 +9026,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">CSRs[csr] &amp;= ~R[rs];</code></pre>",
       "slug": "csrc",
       "rel_url": "risc-v/csrc/",
-      "linked_summary": "Clears bits <a href=\"../../x86/in/\">in</a> a CSR (bitwise <a href=\"../../risc-v/and/\">AND</a> <a href=\"../../risc-v/not/\">NOT</a>).",
+      "linked_summary": "Clears bits <a href=\"../../x86/in/\">in</a> a CSR (bitwise <a href=\"../../armv9-a/and_1/\">AND</a> <a href=\"../../armv9-a/not/\">NOT</a>).",
       "linked_pseudocode": "CSRs[csr] &= ~R[rs];"
     },
     {
@@ -10977,7 +10977,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">int count = 0; while(rs1[XLEN-1-count] == 0) count++; R[rd] = count;</code></pre>",
       "slug": "clz",
       "rel_url": "risc-v/clz/",
-      "linked_summary": "Counts the number of 0 bits <a href=\"../../armv8-a/at_2/\">at</a> the MSB end of the register.",
+      "linked_summary": "Counts the number of 0 bits <a href=\"../../armv8-a/at_2/\">at</a> the <a href=\"../../armv9-a/msb/\">MSB</a> end of the register.",
       "linked_pseudocode": "<a href=\"../../x86/int/\">int</a> count = 0; while(rs1[XLEN-1-count] == 0) count++; R[rd] = count;"
     },
     {
@@ -11152,7 +11152,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">R[rd] = R[rs1] &amp; ~R[rs2];</code></pre>",
       "slug": "andn",
       "rel_url": "risc-v/andn/",
-      "linked_summary": "Performs bitwise <a href=\"../../risc-v/and/\">AND</a> with the bitwise negation of rs2 (rs1 & ~rs2).",
+      "linked_summary": "Performs bitwise <a href=\"../../armv9-a/and_1/\">AND</a> with the bitwise negation of rs2 (rs1 & ~rs2).",
       "linked_pseudocode": "R[rd] = R[rs1] & ~R[rs2];"
     },
     {
@@ -11274,7 +11274,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">R[rd] = ~(R[rs1] ^ R[rs2]);</code></pre>",
       "slug": "xnor",
       "rel_url": "risc-v/xnor/",
-      "linked_summary": "Performs bitwise exclusive-NOR (rs1 ^ ~rs2).",
+      "linked_summary": "Performs bitwise exclusive-<a href=\"../../armv9-a/nor/\">NOR</a> (rs1 ^ ~rs2).",
       "linked_pseudocode": "R[rd] = ~(R[rs1] ^ R[rs2]);"
     },
     {
@@ -18031,7 +18031,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">vd[0] = vs1[0] &amp; reduce_and(vs2);</code></pre>",
       "slug": "vredand_vs",
       "rel_url": "risc-v/vredand_vs/",
-      "linked_summary": "Reduces a vector to a scalar using bitwise <a href=\"../../risc-v/and/\">AND</a>.",
+      "linked_summary": "Reduces a vector to a scalar using bitwise <a href=\"../../armv9-a/and_1/\">AND</a>.",
       "linked_pseudocode": "vd[0] = vs1[0] & reduce_and(vs2);"
     },
     {
@@ -26389,7 +26389,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">R[rd&#x27;] = R[rd&#x27;] &amp; sext(imm);</code></pre>",
       "slug": "c_andi",
       "rel_url": "risc-v/c_andi/",
-      "linked_summary": "Computes bitwise <a href=\"../../risc-v/and/\">AND</a> with a signed immediate.",
+      "linked_summary": "Computes bitwise <a href=\"../../armv9-a/and_1/\">AND</a> with a signed immediate.",
       "linked_pseudocode": "R[rd'] = R[rd'] & sext(imm);"
     },
     {
@@ -26601,7 +26601,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">R[rd&#x27;] = R[rd&#x27;] &amp; R[rs2&#x27;];</code></pre>",
       "slug": "c_and",
       "rel_url": "risc-v/c_and/",
-      "linked_summary": "Bitwise <a href=\"../../risc-v/and/\">AND</a> of two registers.",
+      "linked_summary": "Bitwise <a href=\"../../armv9-a/and_1/\">AND</a> of two registers.",
       "linked_pseudocode": "R[rd'] = R[rd'] & R[rs2'];"
     },
     {
@@ -30804,7 +30804,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">vd = vs2 &amp; imm;</code></pre>",
       "slug": "vand_vi",
       "rel_url": "risc-v/vand_vi/",
-      "linked_summary": "Bitwise <a href=\"../../risc-v/and/\">AND</a> with immediate.",
+      "linked_summary": "Bitwise <a href=\"../../armv9-a/and_1/\">AND</a> with immediate.",
       "linked_pseudocode": "vd = vs2 & imm;"
     },
     {
@@ -31980,7 +31980,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">R[rd] = R[rs1] &amp; R[rs2];</code></pre>",
       "slug": "and",
       "rel_url": "risc-v/and/",
-      "linked_summary": "Performs a bitwise logical <a href=\"../../risc-v/and/\">AND</a> operation between two registers.",
+      "linked_summary": "Performs a bitwise logical <a href=\"../../armv9-a/and_1/\">AND</a> operation between two registers.",
       "linked_pseudocode": "R[rd] = R[rs1] & R[rs2];"
     },
     {
@@ -32036,7 +32036,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">R[rd] = R[rs1] &amp; sext(imm);</code></pre>",
       "slug": "andi",
       "rel_url": "risc-v/andi/",
-      "linked_summary": "Performs a bitwise logical <a href=\"../../risc-v/and/\">AND</a> between a register <a href=\"../../armv8-a/and_6/\">and</a> a sign-extended 12-<a href=\"../../armv8-a/bit/\">bit</a> immediate.",
+      "linked_summary": "Performs a bitwise logical <a href=\"../../armv9-a/and_1/\">AND</a> between a register <a href=\"../../armv8-a/and_6/\">and</a> a sign-extended 12-<a href=\"../../armv8-a/bit/\">bit</a> immediate.",
       "linked_pseudocode": "R[rd] = R[rs1] & sext(imm);"
     },
     {
@@ -32287,7 +32287,7 @@
       "pseudocode_html": "<pre><code class=\"language-clike\">temp = M[R[rs1]]; M[R[rs1]] = temp &amp; R[rs2]; R[rd] = temp;</code></pre>",
       "slug": "amoand_w",
       "rel_url": "risc-v/amoand_w/",
-      "linked_summary": "Atomically performs bitwise <a href=\"../../risc-v/and/\">AND</a> on a word <a href=\"../../x86/in/\">in</a> memory.",
+      "linked_summary": "Atomically performs bitwise <a href=\"../../armv9-a/and_1/\">AND</a> on a word <a href=\"../../x86/in/\">in</a> memory.",
       "linked_pseudocode": "temp = M[R[rs1]]; M[R[rs1]] = temp & R[rs2]; R[rd] = temp;"
     }
   ]

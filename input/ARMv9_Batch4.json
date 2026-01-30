@@ -1,0 +1,196 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "ABS",
+      "architecture": "ARMv9-A",
+      "extension": "CSSC",
+      "summary": "Absolute Value",
+      "syntax": "ABS Wd, Wn",
+      "pseudocode": "if !HaveCSSC() then UNDEFINED;\n// Computes absolute value of signed integer",
+      "encoding": {
+        "hex_opcode": "1AC00000",
+        "pattern": "00011010110000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "CNT",
+      "architecture": "ARMv9-A",
+      "extension": "CSSC",
+      "summary": "Population Count (Scalar)",
+      "syntax": "CNT Wd, Wn",
+      "pseudocode": "if !HaveCSSC() then UNDEFINED;\n// Counts the number of bits set to 1 (PopCount) in scalar register",
+      "encoding": {
+        "hex_opcode": "1AC06000",
+        "pattern": "00011010110000000110000000000000"
+      }
+    },
+    {
+      "mnemonic": "CTZ",
+      "architecture": "ARMv9-A",
+      "extension": "CSSC",
+      "summary": "Count Trailing Zeros",
+      "syntax": "CTZ Wd, Wn",
+      "pseudocode": "if !HaveCSSC() then UNDEFINED;\n// Counts trailing zero bits starting from LSB",
+      "encoding": {
+        "hex_opcode": "1AC05800",
+        "pattern": "00011010110000000101100000000000"
+      }
+    },
+    {
+      "mnemonic": "SMAX",
+      "architecture": "ARMv9-A",
+      "extension": "CSSC",
+      "summary": "Signed Maximum",
+      "syntax": "SMAX Wd, Wn, Wm",
+      "pseudocode": "if !HaveCSSC() then UNDEFINED;\n// Writes the larger of two signed integer values to Wd",
+      "encoding": {
+        "hex_opcode": "1AC06400",
+        "pattern": "00011010110000000110010000000000"
+      }
+    },
+    {
+      "mnemonic": "SMIN",
+      "architecture": "ARMv9-A",
+      "extension": "CSSC",
+      "summary": "Signed Minimum",
+      "syntax": "SMIN Wd, Wn, Wm",
+      "pseudocode": "if !HaveCSSC() then UNDEFINED;\n// Writes the smaller of two signed integer values to Wd",
+      "encoding": {
+        "hex_opcode": "1AC06800",
+        "pattern": "00011010110000000110100000000000"
+      }
+    },
+    {
+      "mnemonic": "UMAX",
+      "architecture": "ARMv9-A",
+      "extension": "CSSC",
+      "summary": "Unsigned Maximum",
+      "syntax": "UMAX Wd, Wn, Wm",
+      "pseudocode": "if !HaveCSSC() then UNDEFINED;\n// Writes the larger of two unsigned integer values to Wd",
+      "encoding": {
+        "hex_opcode": "1AC06C00",
+        "pattern": "00011010110000000110110000000000"
+      }
+    },
+    {
+      "mnemonic": "UMIN",
+      "architecture": "ARMv9-A",
+      "extension": "CSSC",
+      "summary": "Unsigned Minimum",
+      "syntax": "UMIN Wd, Wn, Wm",
+      "pseudocode": "if !HaveCSSC() then UNDEFINED;\n// Writes the smaller of two unsigned integer values to Wd",
+      "encoding": {
+        "hex_opcode": "1AC07000",
+        "pattern": "00011010110000000111000000000000"
+      }
+    },
+    {
+      "mnemonic": "CPYP",
+      "architecture": "ARMv9-A",
+      "extension": "MOPS",
+      "summary": "Memory Copy Prologue",
+      "syntax": "CPYP [Xd]!, [Xn]!, Xm!",
+      "pseudocode": "if !HaveMOPS() then UNDEFINED;\n// First instruction in a hardware-accelerated memcpy sequence",
+      "encoding": {
+        "hex_opcode": "19010400",
+        "pattern": "00011001000000010000010000000000"
+      }
+    },
+    {
+      "mnemonic": "CPYM",
+      "architecture": "ARMv9-A",
+      "extension": "MOPS",
+      "summary": "Memory Copy Main",
+      "syntax": "CPYM [Xd]!, [Xn]!, Xm!",
+      "pseudocode": "if !HaveMOPS() then UNDEFINED;\n// Main instruction in a hardware-accelerated memcpy sequence",
+      "encoding": {
+        "hex_opcode": "19410400",
+        "pattern": "00011001010000010000010000000000"
+      }
+    },
+    {
+      "mnemonic": "CPYE",
+      "architecture": "ARMv9-A",
+      "extension": "MOPS",
+      "summary": "Memory Copy Epilogue",
+      "syntax": "CPYE [Xd]!, [Xn]!, Xm!",
+      "pseudocode": "if !HaveMOPS() then UNDEFINED;\n// Final instruction in a hardware-accelerated memcpy sequence",
+      "encoding": {
+        "hex_opcode": "19810400",
+        "pattern": "00011001100000010000010000000000"
+      }
+    },
+    {
+      "mnemonic": "SETP",
+      "architecture": "ARMv9-A",
+      "extension": "MOPS",
+      "summary": "Memory Set Prologue",
+      "syntax": "SETP [Xd]!, Xn!, Xm",
+      "pseudocode": "if !HaveMOPS() then UNDEFINED;\n// First instruction in a hardware-accelerated memset sequence",
+      "encoding": {
+        "hex_opcode": "19C10400",
+        "pattern": "00011001110000010000010000000000"
+      }
+    },
+    {
+      "mnemonic": "SETM",
+      "architecture": "ARMv9-A",
+      "extension": "MOPS",
+      "summary": "Memory Set Main",
+      "syntax": "SETM [Xd]!, Xn!, Xm",
+      "pseudocode": "if !HaveMOPS() then UNDEFINED;\n// Main instruction in a hardware-accelerated memset sequence",
+      "encoding": {
+        "hex_opcode": "19411400",
+        "pattern": "00011001010000010001010000000000"
+      }
+    },
+    {
+      "mnemonic": "LD64B",
+      "architecture": "ARMv9-A",
+      "extension": "LS64",
+      "summary": "Single-copy Atomic Load (64-byte)",
+      "syntax": "LD64B Wd, [Xn]",
+      "pseudocode": "if !HaveLS64() then UNDEFINED;\n// Atomic load of a 64-byte block of data to consecutive registers",
+      "encoding": {
+        "hex_opcode": "19200000",
+        "pattern": "00011001001000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "ST64B",
+      "architecture": "ARMv9-A",
+      "extension": "LS64",
+      "summary": "Single-copy Atomic Store (64-byte)",
+      "syntax": "ST64B Ws, [Xn]",
+      "pseudocode": "if !HaveLS64() then UNDEFINED;\n// Atomic store of a 64-byte block of data from consecutive registers",
+      "encoding": {
+        "hex_opcode": "19A00000",
+        "pattern": "00011001101000000000000000000000"
+      }
+    },
+    {
+      "mnemonic": "ST64BV",
+      "architecture": "ARMv9-A",
+      "extension": "LS64",
+      "summary": "Atomic Store 64-byte with Status",
+      "syntax": "ST64BV Ws, Wd, [Xn]",
+      "pseudocode": "if !HaveLS64() then UNDEFINED;\n// Atomic store 64-byte with success/failure status returned in Wd",
+      "encoding": {
+        "hex_opcode": "19A02000",
+        "pattern": "00011001101000000010000000000000"
+      }
+    },
+    {
+      "mnemonic": "WFIT",
+      "architecture": "ARMv9-A",
+      "extension": "System",
+      "summary": "Wait For Interrupt with Timeout",
+      "syntax": "WFIT Xn",
+      "pseudocode": "if !HaveFEAT_WFxT() then UNDEFINED;\n// Wait for interrupt or until timeout counter expires",
+      "encoding": {
+        "hex_opcode": "D5031020",
+        "pattern": "11010101000000110001000000100000"
+      }
+    }
+  ]
+}

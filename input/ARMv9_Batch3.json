@@ -1,0 +1,153 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "WHILEWR",
+      "architecture": "ARMv9-A",
+      "extension": "SVE2",
+      "summary": "While free of read-after-write conflicts",
+      "syntax": "WHILEWR Pd.B, Xn, Xm",
+      "pseudocode": "if !HaveSVE2() then UNDEFINED;\n// Generate predicate for conflict-free vectorization loops",
+      "encoding": {
+        "hex_opcode": "25200000",
+        "pattern": "00100101001000000000000000000000",
+        "visual_parts": [
+            {"raw": "00100101", "clean": "SVE2 Prefix"},
+            {"raw": "Xn", "clean": "Start Addr"},
+            {"raw": "Xm", "clean": "End Addr"}
+        ]
+      }
+    },
+    {
+      "mnemonic": "HISTCNT",
+      "architecture": "ARMv9-A",
+      "extension": "SVE2",
+      "summary": "Histogram Count",
+      "syntax": "HISTCNT Zn.S, Pg/Z, Zm.S",
+      "pseudocode": "if !HaveSVE2() then UNDEFINED;\n// Count matching elements in a vector to build a histogram",
+      "encoding": {
+        "hex_opcode": "4520A000",
+        "pattern": "01000101001000001010000000000000"
+      }
+    },
+    {
+      "mnemonic": "MATCH",
+      "architecture": "ARMv9-A",
+      "extension": "SVE2",
+      "summary": "Detect Matches in Vector",
+      "syntax": "MATCH Pd.B, Pg/Z, Zn.B, Zm.B",
+      "pseudocode": "if !HaveSVE2() then UNDEFINED;\n// Sets destination predicate true where Zn elements match Zm",
+      "encoding": {
+        "hex_opcode": "45208000",
+        "pattern": "01000101001000001000000000000000"
+      }
+    },
+    {
+      "mnemonic": "XAR",
+      "architecture": "ARMv9-A",
+      "extension": "SVE2",
+      "summary": "Exclusive OR and Rotate",
+      "syntax": "XAR Zd.B, Zn.B, Zm.B, #<imm>",
+      "pseudocode": "if !HaveSVE2() then UNDEFINED;\n// Bitwise XOR followed by a right rotation (SHA-3 helper)",
+      "encoding": {
+        "hex_opcode": "04203000",
+        "pattern": "00000100001000000011000000000000"
+      }
+    },
+    {
+      "mnemonic": "SM4E",
+      "architecture": "ARMv9-A",
+      "extension": "Crypto",
+      "summary": "SM4 Encryption",
+      "syntax": "SM4E Vd.4S, Vn.4S",
+      "pseudocode": "if !HaveSM4() then UNDEFINED;\n// SM4 block cipher encryption round",
+      "encoding": {
+        "hex_opcode": "CEC08400",
+        "pattern": "11001110110000001000010000000000"
+      }
+    },
+    {
+      "mnemonic": "SM4EKEY",
+      "architecture": "ARMv9-A",
+      "extension": "Crypto",
+      "summary": "SM4 Key Generation",
+      "syntax": "SM4EKEY Vd.4S, Vn.4S, Vm.4S",
+      "pseudocode": "if !HaveSM4() then UNDEFINED;\n// SM4 block cipher key generation round",
+      "encoding": {
+        "hex_opcode": "CEC0C800",
+        "pattern": "11001110110000001100100000000000"
+      }
+    },
+    {
+      "mnemonic": "SM3PARTW1",
+      "architecture": "ARMv9-A",
+      "extension": "Crypto",
+      "summary": "SM3 Hash Part 1",
+      "syntax": "SM3PARTW1 Vd.4S, Vn.4S, Vm.4S",
+      "pseudocode": "if !HaveSM3() then UNDEFINED;\n// SM3 cryptographic hash update (part 1)",
+      "encoding": {
+        "hex_opcode": "CEC0C000",
+        "pattern": "11001110110000001100000000000000"
+      }
+    },
+    {
+      "mnemonic": "RAX1",
+      "architecture": "ARMv9-A",
+      "extension": "Crypto",
+      "summary": "Rotate and XOR (SHA-3)",
+      "syntax": "RAX1 Vd.2D, Vn.2D, Vm.2D",
+      "pseudocode": "if !HaveSHA3() then UNDEFINED;\n// SHA-3 acceleration: Rotate and Exclusive OR",
+      "encoding": {
+        "hex_opcode": "CE608C00",
+        "pattern": "11001110011000001000110000000000"
+      }
+    },
+    {
+      "mnemonic": "BTI",
+      "architecture": "ARMv9-A",
+      "extension": "System",
+      "summary": "Branch Target Identification",
+      "syntax": "BTI <target>",
+      "pseudocode": "if !HaveBTI() then UNDEFINED;\n// Mark a valid target for indirect branches (Guard against ROP/JOP)",
+      "encoding": {
+        "hex_opcode": "D5032400",
+        "pattern": "11010101000000110010010000000000"
+      }
+    },
+    {
+      "mnemonic": "WFET",
+      "architecture": "ARMv9-A",
+      "extension": "System",
+      "summary": "Wait For Event with Timeout",
+      "syntax": "WFET Xn",
+      "pseudocode": "if !HaveFEAT_WFxT() then UNDEFINED;\n// Wait for event or until timeout counter expires",
+      "encoding": {
+        "hex_opcode": "D5031000",
+        "pattern": "11010101000000110001000000000000"
+      }
+    },
+    {
+      "mnemonic": "PACGA",
+      "architecture": "ARMv9-A",
+      "extension": "PAC",
+      "summary": "Pointer Auth Code, Generic Address",
+      "syntax": "PACGA Xd, Xn, Xm",
+      "pseudocode": "if !HavePAC() then UNDEFINED;\n// Computes a pointer authentication code for a generic address",
+      "encoding": {
+        "hex_opcode": "9AC03000",
+        "pattern": "10011010110000000011000000000000"
+      }
+    },
+    {
+      "mnemonic": "FMLAL",
+      "architecture": "ARMv9-A",
+      "extension": "Float",
+      "summary": "Fused Multiply-Add Long (FP16)",
+      "syntax": "FMLAL Vd.4S, Vn.4H, Vm.4H",
+      "pseudocode": "if !HaveFP16() then UNDEFINED;\n// Widening multiply-add of FP16 elements into FP32 destination",
+      "encoding": {
+        "hex_opcode": "0E20E000",
+        "pattern": "00001110001000001110000000000000"
+      }
+    }
+  ]
+}
