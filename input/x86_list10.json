@@ -1,0 +1,391 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "addss",
+      "architecture": "x86",
+      "full_name": "Add Scalar Single-Precision",
+      "summary": "Adds the low 32-bit float from source to destination.",
+      "syntax": "ADDSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 58" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "addsd",
+      "architecture": "x86",
+      "full_name": "Add Scalar Double-Precision",
+      "summary": "Adds the low 64-bit double from source to destination.",
+      "syntax": "ADDSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 58" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "subss",
+      "architecture": "x86",
+      "full_name": "Subtract Scalar Single-Precision",
+      "summary": "Subtracts low 32-bit float in source from destination.",
+      "syntax": "SUBSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 5C" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "subsd",
+      "architecture": "x86",
+      "full_name": "Subtract Scalar Double-Precision",
+      "summary": "Subtracts low 64-bit double in source from destination.",
+      "syntax": "SUBSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 5C" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "mulss",
+      "architecture": "x86",
+      "full_name": "Multiply Scalar Single-Precision",
+      "summary": "Multiplies low 32-bit float in destination by source.",
+      "syntax": "MULSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 59" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "mulsd",
+      "architecture": "x86",
+      "full_name": "Multiply Scalar Double-Precision",
+      "summary": "Multiplies low 64-bit double in destination by source.",
+      "syntax": "MULSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 59" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "divss",
+      "architecture": "x86",
+      "full_name": "Divide Scalar Single-Precision",
+      "summary": "Divides low 32-bit float in destination by source.",
+      "syntax": "DIVSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 5E" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "divsd",
+      "architecture": "x86",
+      "full_name": "Divide Scalar Double-Precision",
+      "summary": "Divides low 64-bit double in destination by source.",
+      "syntax": "DIVSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 5E" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "sqrtss",
+      "architecture": "x86",
+      "full_name": "Square Root Scalar Single-Precision",
+      "summary": "Computes square root of low 32-bit float.",
+      "syntax": "SQRTSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 51" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "sqrtsd",
+      "architecture": "x86",
+      "full_name": "Square Root Scalar Double-Precision",
+      "summary": "Computes square root of low 64-bit double.",
+      "syntax": "SQRTSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 51" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "lfence",
+      "architecture": "x86",
+      "full_name": "Load Fence",
+      "summary": "Serializes load operations (Wait for all prior loads).",
+      "syntax": "LFENCE",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F AE E8" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "sfence",
+      "architecture": "x86",
+      "full_name": "Store Fence",
+      "summary": "Serializes store operations (Wait for all prior stores).",
+      "syntax": "SFENCE",
+      "encoding": { "format": "SSE", "hex_opcode": "0F AE F8" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "mfence",
+      "architecture": "x86",
+      "full_name": "Memory Fence",
+      "summary": "Serializes all load and store operations.",
+      "syntax": "MFENCE",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F AE F0" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "clflush",
+      "architecture": "x86",
+      "full_name": "Flush Cache Line",
+      "summary": "Flushes the cache line containing the address.",
+      "syntax": "CLFLUSH m8",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F AE /7" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "rdrand",
+      "architecture": "x86",
+      "full_name": "Read Random Number",
+      "summary": "Retrieves a hardware-generated random number.",
+      "syntax": "RDRAND r16/r32/r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C7 /6" },
+      "extension": "RDRAND"
+    },
+    {
+      "mnemonic": "rdseed",
+      "architecture": "x86",
+      "full_name": "Read Random Seed",
+      "summary": "Retrieves a random seed from hardware entropy source.",
+      "syntax": "RDSEED r16/r32/r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F C7 /7" },
+      "extension": "RDSEED"
+    },
+    {
+      "mnemonic": "rdtscp",
+      "architecture": "x86",
+      "full_name": "Read Time-Stamp Counter and Processor ID",
+      "summary": "Reads TSC into EDX:EAX and Processor ID into ECX.",
+      "syntax": "RDTSCP",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 F9" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "vcvtdq2ps",
+      "architecture": "x86",
+      "full_name": "Convert Packed Doubleword to Packed Single",
+      "summary": "Converts four 32-bit integers to floats.",
+      "syntax": "VCVTDQ2PS ymm1, ymm2/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "0F 5B" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vcvtps2dq",
+      "architecture": "x86",
+      "full_name": "Convert Packed Single to Packed Doubleword",
+      "summary": "Converts four floats to 32-bit integers (Rounded).",
+      "syntax": "VCVTPS2DQ ymm1, ymm2/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 5B" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vcvttps2dq",
+      "architecture": "x86",
+      "full_name": "Convert with Truncation Packed Single to Doubleword",
+      "summary": "Converts four floats to 32-bit integers (Truncated).",
+      "syntax": "VCVTTPS2DQ ymm1, ymm2/m256",
+      "encoding": { "format": "VEX", "hex_opcode": "F3 0F 5B" },
+      "extension": "AVX"
+    },
+    {
+      "mnemonic": "vpsllvd",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Left Logical Doubleword",
+      "summary": "Shifts doublewords left by individual counts.",
+      "syntax": "VPSLLVD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 47" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsllvq",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Left Logical Quadword",
+      "summary": "Shifts quadwords left by individual counts.",
+      "syntax": "VPSLLVQ ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 47" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsrlvd",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Right Logical Doubleword",
+      "summary": "Shifts doublewords right logical by individual counts.",
+      "syntax": "VPSRLVD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 45" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsrlvq",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Right Logical Quadword",
+      "summary": "Shifts quadwords right logical by individual counts.",
+      "syntax": "VPSRLVQ ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 45" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "vpsravd",
+      "architecture": "x86",
+      "full_name": "Variable Bit Shift Right Arithmetic Doubleword",
+      "summary": "Shifts doublewords right arithmetic by individual counts.",
+      "syntax": "VPSRAVD ymm1, ymm2, ymm3/m256",
+      "encoding": { "format": "AVX2", "hex_opcode": "C4 ... 46" },
+      "extension": "AVX2"
+    },
+    {
+      "mnemonic": "iret",
+      "architecture": "x86",
+      "full_name": "Interrupt Return",
+      "summary": "Returns from an interrupt, exception, or task handler.",
+      "syntax": "IRET",
+      "encoding": { "format": "Legacy", "hex_opcode": "CF" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "iretd",
+      "architecture": "x86",
+      "full_name": "Interrupt Return Doubleword",
+      "summary": "Returns from interrupt (32-bit operand size).",
+      "syntax": "IRETD",
+      "encoding": { "format": "Legacy", "hex_opcode": "CF" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "iretq",
+      "architecture": "x86",
+      "full_name": "Interrupt Return Quadword",
+      "summary": "Returns from interrupt (64-bit operand size).",
+      "syntax": "IRETQ",
+      "encoding": { "format": "Legacy", "hex_opcode": "CF" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "in_var",
+      "architecture": "x86",
+      "full_name": "Input from Port (Variable)",
+      "summary": "Reads data from I/O port specified in DX.",
+      "syntax": "IN AL/AX/EAX, DX",
+      "encoding": { "format": "Legacy", "hex_opcode": "EC/ED" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "out_var",
+      "architecture": "x86",
+      "full_name": "Output to Port (Variable)",
+      "summary": "Writes data to I/O port specified in DX.",
+      "syntax": "OUT DX, AL/AX/EAX",
+      "encoding": { "format": "Legacy", "hex_opcode": "EE/EF" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "kshiftrw",
+      "architecture": "x86",
+      "full_name": "Shift Right Mask Word",
+      "summary": "Logically shifts 16-bit mask right.",
+      "syntax": "KSHIFTRW k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 32" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "kshiftlw",
+      "architecture": "x86",
+      "full_name": "Shift Left Mask Word",
+      "summary": "Logically shifts 16-bit mask left.",
+      "syntax": "KSHIFTLW k1, k2, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 33" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "knotw",
+      "architecture": "x86",
+      "full_name": "NOT Mask Word",
+      "summary": "Bitwise NOT of 16-bit mask.",
+      "syntax": "KNOTW k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 44" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "kandw",
+      "architecture": "x86",
+      "full_name": "AND Mask Word",
+      "summary": "Bitwise AND of 16-bit masks.",
+      "syntax": "KANDW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 41" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "kandnw",
+      "architecture": "x86",
+      "full_name": "AND NOT Mask Word",
+      "summary": "Bitwise AND NOT of 16-bit masks.",
+      "syntax": "KANDNW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 42" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "korw",
+      "architecture": "x86",
+      "full_name": "OR Mask Word",
+      "summary": "Bitwise OR of 16-bit masks.",
+      "syntax": "KORW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 45" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "kxorw",
+      "architecture": "x86",
+      "full_name": "XOR Mask Word",
+      "summary": "Bitwise XOR of 16-bit masks.",
+      "syntax": "KXORW k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 47" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpmovw2m",
+      "architecture": "x86",
+      "full_name": "Move Word Mask to Mask Register",
+      "summary": "Moves word integer mask from ZMM to k-register.",
+      "syntax": "VPMOVW2M k1, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 29" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpmovm2w",
+      "architecture": "x86",
+      "full_name": "Move Mask Register to Word Mask",
+      "summary": "Expands k-register bits to word elements in ZMM.",
+      "syntax": "VPMOVM2W zmm1, k1",
+      "encoding": { "format": "EVEX", "hex_opcode": "62 F2 ... 28" },
+      "extension": "AVX-512BW"
+    },
+    {
+      "mnemonic": "vpternlogd",
+      "architecture": "x86",
+      "full_name": "Packed Doubleword Ternary Logic",
+      "summary": "Performs one of 256 logical operations on 3 inputs.",
+      "syntax": "VPTERNLOGD zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 25" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "vpternlogq",
+      "architecture": "x86",
+      "full_name": "Packed Quadword Ternary Logic",
+      "summary": "Performs one of 256 logical operations on 3 quadwords.",
+      "syntax": "VPTERNLOGQ zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 25" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "valignd",
+      "architecture": "x86",
+      "full_name": "Align Doubleword Vectors",
+      "summary": "Extracts 512-bits from two concatenated ZMMs shifted by count.",
+      "syntax": "VALIGND zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 03" },
+      "extension": "AVX-512F"
+    },
+    {
+      "mnemonic": "valignq",
+      "architecture": "x86",
+      "full_name": "Align Quadword Vectors",
+      "summary": "Extracts 512-bits from two concatenated ZMMs shifted by count.",
+      "syntax": "VALIGNQ zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 03" },
+      "extension": "AVX-512F"
+    }
+  ]
+}

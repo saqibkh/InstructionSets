@@ -1,0 +1,418 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "vpopcntd",
+      "architecture": "x86",
+      "full_name": "Packed Population Count Doubleword",
+      "summary": "Counts set bits in each doubleword element.",
+      "syntax": "VPOPCNTD zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 55" },
+      "extension": "AVX-512_VPOPCNTDQ"
+    },
+    {
+      "mnemonic": "vpopcntq",
+      "architecture": "x86",
+      "full_name": "Packed Population Count Quadword",
+      "summary": "Counts set bits in each quadword element.",
+      "syntax": "VPOPCNTQ zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 55" },
+      "extension": "AVX-512_VPOPCNTDQ"
+    },
+    {
+      "mnemonic": "vpopcntb",
+      "architecture": "x86",
+      "full_name": "Packed Population Count Byte",
+      "summary": "Counts set bits in each byte element.",
+      "syntax": "VPOPCNTB zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 54" },
+      "extension": "AVX-512_BITALG"
+    },
+    {
+      "mnemonic": "vpopcntw",
+      "architecture": "x86",
+      "full_name": "Packed Population Count Word",
+      "summary": "Counts set bits in each word element.",
+      "syntax": "VPOPCNTW zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 54" },
+      "extension": "AVX-512_BITALG"
+    },
+    {
+      "mnemonic": "vpshufbitqmb",
+      "architecture": "x86",
+      "full_name": "Shuffle Bits from Quadword Elements to Mask",
+      "summary": "Extracts bits from bytes and packs into a mask register.",
+      "syntax": "VPSHUFBITQMB k1 {k2}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 8F" },
+      "extension": "AVX-512_BITALG"
+    },
+    {
+      "mnemonic": "vpcompressb",
+      "architecture": "x86",
+      "full_name": "Store Sparse Packed Byte Integer Values",
+      "summary": "Compresses active bytes from ZMM to memory.",
+      "syntax": "VPCOMPRESSB m512 {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 63" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpcompressw",
+      "architecture": "x86",
+      "full_name": "Store Sparse Packed Word Integer Values",
+      "summary": "Compresses active words from ZMM to memory.",
+      "syntax": "VPCOMPRESSW m512 {k1}, zmm1",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 63" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpexpandb",
+      "architecture": "x86",
+      "full_name": "Load Sparse Packed Byte Integer Values",
+      "summary": "Expands bytes from memory into sparse locations in ZMM.",
+      "syntax": "VPEXPANDB zmm1 {k1}, m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 62" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpexpandw",
+      "architecture": "x86",
+      "full_name": "Load Sparse Packed Word Integer Values",
+      "summary": "Expands words from memory into sparse locations in ZMM.",
+      "syntax": "VPEXPANDW zmm1 {k1}, m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 62" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpshldw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Word Concatenate",
+      "summary": "Funnel shift left of words.",
+      "syntax": "VPSHLDW zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 70" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpshldd",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Double Concatenate",
+      "summary": "Funnel shift left of doublewords.",
+      "syntax": "VPSHLDD zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 71" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpshldq",
+      "architecture": "x86",
+      "full_name": "Packed Shift Left Quadword Concatenate",
+      "summary": "Funnel shift left of quadwords.",
+      "syntax": "VPSHLDQ zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 71" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpshrdw",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Word Concatenate",
+      "summary": "Funnel shift right of words.",
+      "syntax": "VPSHRDW zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 72" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpshrdd",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Double Concatenate",
+      "summary": "Funnel shift right of doublewords.",
+      "syntax": "VPSHRDD zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 73" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vpshrdq",
+      "architecture": "x86",
+      "full_name": "Packed Shift Right Quadword Concatenate",
+      "summary": "Funnel shift right of quadwords.",
+      "syntax": "VPSHRDQ zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 73" },
+      "extension": "AVX-512_VBMI2"
+    },
+    {
+      "mnemonic": "vp2intersectd",
+      "architecture": "x86",
+      "full_name": "Compute Intersection Pair Doublewords",
+      "summary": "Computes intersection of two ZMM registers into mask pair.",
+      "syntax": "VP2INTERSECTD k1+1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "F2 0F 38 68" },
+      "extension": "AVX-512_VP2INTERSECT"
+    },
+    {
+      "mnemonic": "vp2intersectq",
+      "architecture": "x86",
+      "full_name": "Compute Intersection Pair Quadwords",
+      "summary": "Computes intersection of two ZMM registers into mask pair.",
+      "syntax": "VP2INTERSECTQ k1+1, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "F2 0F 38 68" },
+      "extension": "AVX-512_VP2INTERSECT"
+    },
+    {
+      "mnemonic": "tdpbuud",
+      "architecture": "x86",
+      "full_name": "Tile Dot Product Byte Unsigned Unsigned Doubleword",
+      "summary": "Matrix multiply (Unsigned * Unsigned) accumulating to Int32.",
+      "syntax": "TDPBUUD tmm1, tmm2, tmm3",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 5E" },
+      "extension": "AMX-INT8"
+    },
+    {
+      "mnemonic": "tdpbusd",
+      "architecture": "x86",
+      "full_name": "Tile Dot Product Byte Unsigned Signed Doubleword",
+      "summary": "Matrix multiply (Unsigned * Signed) accumulating to Int32.",
+      "syntax": "TDPBUSD tmm1, tmm2, tmm3",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 5E" },
+      "extension": "AMX-INT8"
+    },
+    {
+      "mnemonic": "tileloaddt1",
+      "architecture": "x86",
+      "full_name": "Load Tile Data (T1 Hint)",
+      "summary": "Loads data into an AMX tile register with T1 hint.",
+      "syntax": "TILELOADDT1 tmm1, m",
+      "encoding": { "format": "VEX", "hex_opcode": "C4 ... 4B" },
+      "extension": "AMX-TILE"
+    },
+    {
+      "mnemonic": "aesencwide128kl",
+      "architecture": "x86",
+      "full_name": "AES Encrypt Wide 128-bit Key Locker",
+      "summary": "Encrypts 8 blocks using 128-bit Key Locker handle.",
+      "syntax": "AESENCWIDE128KL m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 D8" },
+      "extension": "KEYLOCKER_WIDE"
+    },
+    {
+      "mnemonic": "aesdecwide128kl",
+      "architecture": "x86",
+      "full_name": "AES Decrypt Wide 128-bit Key Locker",
+      "summary": "Decrypts 8 blocks using 128-bit Key Locker handle.",
+      "syntax": "AESDECWIDE128KL m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 D8" },
+      "extension": "KEYLOCKER_WIDE"
+    },
+    {
+      "mnemonic": "aesencwide256kl",
+      "architecture": "x86",
+      "full_name": "AES Encrypt Wide 256-bit Key Locker",
+      "summary": "Encrypts 8 blocks using 256-bit Key Locker handle.",
+      "syntax": "AESENCWIDE256KL m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 D8" },
+      "extension": "KEYLOCKER_WIDE"
+    },
+    {
+      "mnemonic": "aesdecwide256kl",
+      "architecture": "x86",
+      "full_name": "AES Decrypt Wide 256-bit Key Locker",
+      "summary": "Decrypts 8 blocks using 256-bit Key Locker handle.",
+      "syntax": "AESDECWIDE256KL m128",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 D8" },
+      "extension": "KEYLOCKER_WIDE"
+    },
+    {
+      "mnemonic": "encodekey256",
+      "architecture": "x86",
+      "full_name": "Encode 256-bit Key",
+      "summary": "Wraps a 256-bit AES key into a handle.",
+      "syntax": "ENCODEKEY256 r32, r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 FB" },
+      "extension": "KEYLOCKER"
+    },
+    {
+      "mnemonic": "aesenc256kl",
+      "architecture": "x86",
+      "full_name": "AES Encrypt 256-bit Key Locker",
+      "summary": "Encrypts data using 256-bit Key Locker handle.",
+      "syntax": "AESENC256KL m128, xmm",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 DC" },
+      "extension": "KEYLOCKER"
+    },
+    {
+      "mnemonic": "aesdec256kl",
+      "architecture": "x86",
+      "full_name": "AES Decrypt 256-bit Key Locker",
+      "summary": "Decrypts data using 256-bit Key Locker handle.",
+      "syntax": "AESDEC256KL m128, xmm",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 DD" },
+      "extension": "KEYLOCKER"
+    },
+    {
+      "mnemonic": "umonitor",
+      "architecture": "x86",
+      "full_name": "User Level Monitor",
+      "summary": "Sets up a monitor address for User Wait instructions.",
+      "syntax": "UMONITOR r64",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F AE /6" },
+      "extension": "WAITPKG"
+    },
+    {
+      "mnemonic": "umwait",
+      "architecture": "x86",
+      "full_name": "User Level Monitor Wait",
+      "summary": "Waits for store to monitored address (Low power state).",
+      "syntax": "UMWAIT r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F AE /6" },
+      "extension": "WAITPKG"
+    },
+    {
+      "mnemonic": "tpause",
+      "architecture": "x86",
+      "full_name": "Timed Pause",
+      "summary": "Pauses execution for a specified time or until trigger.",
+      "syntax": "TPAUSE r32",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F AE /6" },
+      "extension": "WAITPKG"
+    },
+    {
+      "mnemonic": "movdiri",
+      "architecture": "x86",
+      "full_name": "Move Direct Store Integer",
+      "summary": "Moves 32/64-bit data avoiding cache pollution (Direct IO).",
+      "syntax": "MOVDIRI m, r",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 F9" },
+      "extension": "MOVDIRI"
+    },
+    {
+      "mnemonic": "movdir64b",
+      "architecture": "x86",
+      "full_name": "Move Direct Store 64-Bytes",
+      "summary": "Atomically moves 64-byte block avoiding cache pollution.",
+      "syntax": "MOVDIR64B m512, m512",
+      "encoding": { "format": "Legacy", "hex_opcode": "66 0F 38 F8" },
+      "extension": "MOVDIR64B"
+    },
+    {
+      "mnemonic": "cldemote",
+      "architecture": "x86",
+      "full_name": "Cache Line Demote",
+      "summary": "Hints to move cache line to lower cache level (Improve sharing).",
+      "syntax": "CLDEMOTE m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 1C /0" },
+      "extension": "CLDEMOTE"
+    },
+    {
+      "mnemonic": "pconfig",
+      "architecture": "x86",
+      "full_name": "Platform Configuration",
+      "summary": "Configures platform features like MKTME (Memory Encryption).",
+      "syntax": "PCONFIG",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 01 C5" },
+      "extension": "PCONFIG"
+    },
+    {
+      "mnemonic": "wbnoinvd",
+      "architecture": "x86",
+      "full_name": "Write Back and Do Not Invalidate Cache",
+      "summary": "Writes back modified lines but keeps them valid in cache.",
+      "syntax": "WBNOINVD",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 09" },
+      "extension": "WBNOINVD"
+    },
+    {
+      "mnemonic": "enqcmd",
+      "architecture": "x86",
+      "full_name": "Enqueue Command",
+      "summary": "Writes a command to a device (DSA/IAA accelerator).",
+      "syntax": "ENQCMD r32, m512",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 38 F8" },
+      "extension": "ENQCMD"
+    },
+    {
+      "mnemonic": "enqcmds",
+      "architecture": "x86",
+      "full_name": "Enqueue Command Supervisor",
+      "summary": "Writes a command to a device (Supervisor mode).",
+      "syntax": "ENQCMDS r32, m512",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 38 F8" },
+      "extension": "ENQCMD"
+    },
+    {
+      "mnemonic": "tsxldtrk",
+      "architecture": "x86",
+      "full_name": "TSX Load Tracking",
+      "summary": "Suspends/Resumes tracking of load operations in TSX.",
+      "syntax": "TSXLDTRK",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 01 E8" },
+      "extension": "TSXLDTRK"
+    },
+    {
+      "mnemonic": "aadd",
+      "architecture": "x86",
+      "full_name": "Atomically Add",
+      "summary": "Atomically adds a value to a remote memory location.",
+      "syntax": "AADD m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC" },
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "aand",
+      "architecture": "x86",
+      "full_name": "Atomically AND",
+      "summary": "Atomically ANDs a value to a remote memory location.",
+      "syntax": "AAND m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC /r" },
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "aor",
+      "architecture": "x86",
+      "full_name": "Atomically OR",
+      "summary": "Atomically ORs a value to a remote memory location.",
+      "syntax": "AOR m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC /r" },
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "axor",
+      "architecture": "x86",
+      "full_name": "Atomically XOR",
+      "summary": "Atomically XORs a value to a remote memory location.",
+      "syntax": "AXOR m32, r32",
+      "encoding": { "format": "VEX", "hex_opcode": "66 0F 38 FC /r" },
+      "extension": "RAO-INT"
+    },
+    {
+      "mnemonic": "cmpccxadd",
+      "architecture": "x86",
+      "full_name": "Compare and Add if Condition is Met",
+      "summary": "Atomically adds if condition is met.",
+      "syntax": "CMPccXADD m32, r32, r32",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 E0" },
+      "extension": "CMPccXADD"
+    },
+    {
+      "mnemonic": "erets",
+      "architecture": "x86",
+      "full_name": "Event Return Supervisor",
+      "summary": "Returns from an event handler to supervisor mode (FRED).",
+      "syntax": "ERETS",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 01 CA" },
+      "extension": "FRED"
+    },
+    {
+      "mnemonic": "eretu",
+      "architecture": "x86",
+      "full_name": "Event Return User",
+      "summary": "Returns from an event handler to user mode (FRED).",
+      "syntax": "ERETU",
+      "encoding": { "format": "Legacy", "hex_opcode": "F3 0F 01 CA" },
+      "extension": "FRED"
+    },
+    {
+      "mnemonic": "lkgs",
+      "architecture": "x86",
+      "full_name": "Load Kernel GS Base",
+      "summary": "Loads the kernel GS base address (FRED support).",
+      "syntax": "LKGS r16",
+      "encoding": { "format": "Legacy", "hex_opcode": "F2 0F 00 /6" },
+      "extension": "LKGS"
+    }
+  ]
+}
