@@ -247,6 +247,14 @@
                     <td style="color: var(--text-muted);">AES Encrypt Wide 256-bit Key Locker</td>
                 </tr>
                 
+                <tr onclick="window.location='../aesimc/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 DB</td>
+                    <td class="mono">aesimc</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AESIMC xmm1, xmm2/m128</td>
+                    <td><span class="badge">AES-NI</span></td>
+                    <td style="color: var(--text-muted);">AES Inverse Mix Columns</td>
+                </tr>
+                
                 <tr onclick="window.location='../aeskeygenassist/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 3A DF</td>
                     <td class="mono">aeskeygenassist</td>
@@ -325,6 +333,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLENDPS xmm1, xmm2/m128, imm8</td>
                     <td><span class="badge">SSE4.1</span></td>
                     <td style="color: var(--text-muted);">Blend Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../blendvpd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 15</td>
+                    <td class="mono">blendvpd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLENDVPD xmm1, xmm2/m128, &lt;XMM0&gt;</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Variable Blend Packed Double</td>
+                </tr>
+                
+                <tr onclick="window.location='../blendvps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 14</td>
+                    <td class="mono">blendvps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLENDVPS xmm1, xmm2/m128, &lt;XMM0&gt;</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Variable Blend Packed Single</td>
                 </tr>
                 
                 <tr onclick="window.location='../blsi/';" style="cursor: pointer;">
@@ -527,6 +551,14 @@
                     <td style="color: var(--text-muted);">Optimized Cache Line Flush</td>
                 </tr>
                 
+                <tr onclick="window.location='../clgi/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 01 DD</td>
+                    <td class="mono">clgi</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CLGI</td>
+                    <td><span class="badge">SVM</span></td>
+                    <td style="color: var(--text-muted);">Clear Global Interrupt Flag</td>
+                </tr>
+                
                 <tr onclick="window.location='../cli/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xFA</td>
                     <td class="mono">cli</td>
@@ -591,6 +623,54 @@
                     <td style="color: var(--text-muted);">Conditional Move</td>
                 </tr>
                 
+                <tr onclick="window.location='../cmovg/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 4F</td>
+                    <td class="mono">cmovg</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVG r, r/m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Greater</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmovge/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 4D</td>
+                    <td class="mono">cmovge</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVGE r, r/m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Greater or Equal</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmovl/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 4C</td>
+                    <td class="mono">cmovl</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVL r, r/m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Less</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmovle/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 4E</td>
+                    <td class="mono">cmovle</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVLE r, r/m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Less or Equal</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmovnz/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 45</td>
+                    <td class="mono">cmovnz</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVNZ r, r/m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Not Zero</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmovz/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 44</td>
+                    <td class="mono">cmovz</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVZ r, r/m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Zero</td>
+                </tr>
+                
                 <tr onclick="window.location='../cmp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x39</td>
                     <td class="mono">cmp</td>
@@ -615,6 +695,46 @@
                     <td style="color: var(--text-muted);">Compare String</td>
                 </tr>
                 
+                <tr onclick="window.location='../cmpsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F C2</td>
+                    <td class="mono">cmpsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSD xmm1, xmm2/m64, imm8</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Compare Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmpsd_1/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">A7</td>
+                    <td class="mono">cmpsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSD</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Compare String Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmpsq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">48 A7</td>
+                    <td class="mono">cmpsq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSQ</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Compare String Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmpss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F C2</td>
+                    <td class="mono">cmpss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSS xmm1, xmm2/m32, imm8</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Compare Scalar Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../cmpsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 A7</td>
+                    <td class="mono">cmpsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSW</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Compare String Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../cmpxchg/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F B1</td>
                     <td class="mono">cmpxchg</td>
@@ -623,12 +743,36 @@
                     <td style="color: var(--text-muted);">Compare and Exchange</td>
                 </tr>
                 
+                <tr onclick="window.location='../cmpxchg16b/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F C7 /1</td>
+                    <td class="mono">cmpxchg16b</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPXCHG16B m128</td>
+                    <td><span class="badge">Base (64-bit)</span></td>
+                    <td style="color: var(--text-muted);">Compare and Exchange 16 Bytes</td>
+                </tr>
+                
                 <tr onclick="window.location='../cmpxchg8b/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F C7 /1</td>
                     <td class="mono">cmpxchg8b</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPXCHG8B m64</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Compare and Exchange 8 Bytes</td>
+                </tr>
+                
+                <tr onclick="window.location='../comisd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 2F</td>
+                    <td class="mono">comisd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">COMISD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Compare Scalar Ordered Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../comiss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 2F</td>
+                    <td class="mono">comiss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">COMISS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Compare Scalar Ordered Single-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../cpuid/';" style="cursor: pointer;">
@@ -653,6 +797,38 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CRC32 r32, r/m</td>
                     <td><span class="badge">SSE4.2</span></td>
                     <td style="color: var(--text-muted);">Accumulate CRC32 Value</td>
+                </tr>
+                
+                <tr onclick="window.location='../cvtdq2ps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 5B</td>
+                    <td class="mono">cvtdq2ps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTDQ2PS xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Convert Packed Doubleword Integers to Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../cvtpd2ps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 5A</td>
+                    <td class="mono">cvtpd2ps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTPD2PS xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Convert Packed Double to Packed Single</td>
+                </tr>
+                
+                <tr onclick="window.location='../cvtps2dq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 5B</td>
+                    <td class="mono">cvtps2dq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTPS2DQ xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Convert Packed Single-Precision to Packed Doubleword Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../cvtps2pd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 5A</td>
+                    <td class="mono">cvtps2pd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTPS2PD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Convert Packed Single to Packed Double</td>
                 </tr>
                 
                 <tr onclick="window.location='../cvtsd2ss/';" style="cursor: pointer;">
@@ -685,6 +861,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTSS2SD xmm, xmm/m32</td>
                     <td><span class="badge">SSE2</span></td>
                     <td style="color: var(--text-muted);">Convert Scalar Single to Scalar Double</td>
+                </tr>
+                
+                <tr onclick="window.location='../cvttps2dq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 5B</td>
+                    <td class="mono">cvttps2dq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTTPS2DQ xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Convert with Truncation Packed Single-Precision to Packed Doubleword Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../cvttps2pi/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 2C</td>
+                    <td class="mono">cvttps2pi</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTTPS2PI mm, xmm/m64</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Convert with Truncation Packed Single to Packed Integer (MMX)</td>
                 </tr>
                 
                 <tr onclick="window.location='../cvttsd2si/';" style="cursor: pointer;">
@@ -765,6 +957,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVPS xmm, xmm/m128</td>
                     <td><span class="badge">SSE</span></td>
                     <td style="color: var(--text-muted);">Divide Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../divsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F 5E</td>
+                    <td class="mono">divsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVSD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Divide Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../divss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 5E</td>
+                    <td class="mono">divss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Divide Scalar Single-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../dpps/';" style="cursor: pointer;">
@@ -903,6 +1111,70 @@
                     <td style="color: var(--text-muted);">Clear Exceptions</td>
                 </tr>
                 
+                <tr onclick="window.location='../fcmovb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DA C0+i</td>
+                    <td class="mono">fcmovb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVB ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Below</td>
+                </tr>
+                
+                <tr onclick="window.location='../fcmovbe/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DA D0+i</td>
+                    <td class="mono">fcmovbe</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVBE ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Below or Equal</td>
+                </tr>
+                
+                <tr onclick="window.location='../fcmove/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DA C8+i</td>
+                    <td class="mono">fcmove</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVE ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Equal</td>
+                </tr>
+                
+                <tr onclick="window.location='../fcmovnb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DB C0+i</td>
+                    <td class="mono">fcmovnb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNB ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Not Below</td>
+                </tr>
+                
+                <tr onclick="window.location='../fcmovnbe/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DB D0+i</td>
+                    <td class="mono">fcmovnbe</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNBE ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Not Below or Equal</td>
+                </tr>
+                
+                <tr onclick="window.location='../fcmovne/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DB C8+i</td>
+                    <td class="mono">fcmovne</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNE ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Not Equal</td>
+                </tr>
+                
+                <tr onclick="window.location='../fcmovnu/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DB D8+i</td>
+                    <td class="mono">fcmovnu</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNU ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Not Unordered</td>
+                </tr>
+                
+                <tr onclick="window.location='../fcmovu/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DA D8+i</td>
+                    <td class="mono">fcmovu</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVU ST(0), ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Floating-Point Conditional Move If Unordered</td>
+                </tr>
+                
                 <tr onclick="window.location='../fcom/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD8 /2</td>
                     <td class="mono">fcom</td>
@@ -927,6 +1199,14 @@
                     <td style="color: var(--text-muted);">Cosine</td>
                 </tr>
                 
+                <tr onclick="window.location='../fdecstp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 F6</td>
+                    <td class="mono">fdecstp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FDECSTP</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Decrement Stack-Top Pointer</td>
+                </tr>
+                
                 <tr onclick="window.location='../fdiv/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD8 /6</td>
                     <td class="mono">fdiv</td>
@@ -935,12 +1215,28 @@
                     <td style="color: var(--text-muted);">Divide Floating Point</td>
                 </tr>
                 
+                <tr onclick="window.location='../ffree/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">DD C0+i</td>
+                    <td class="mono">ffree</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FFREE ST(i)</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Free Floating-Point Register</td>
+                </tr>
+                
                 <tr onclick="window.location='../fild/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xDF /0</td>
                     <td class="mono">fild</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FILD m16int/m32int/m64int</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Load Integer</td>
+                </tr>
+                
+                <tr onclick="window.location='../fincstp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 F7</td>
+                    <td class="mono">fincstp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FINCSTP</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Increment Stack-Top Pointer</td>
                 </tr>
                 
                 <tr onclick="window.location='../finit/';" style="cursor: pointer;">
@@ -975,12 +1271,68 @@
                     <td style="color: var(--text-muted);">Load Floating Point Value</td>
                 </tr>
                 
+                <tr onclick="window.location='../fld1/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 E8</td>
+                    <td class="mono">fld1</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLD1</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load Constant 1.0</td>
+                </tr>
+                
                 <tr onclick="window.location='../fldcw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xD9 /5</td>
                     <td class="mono">fldcw</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDCW m2byte</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Load Control Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../fldl2e/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 EA</td>
+                    <td class="mono">fldl2e</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDL2E</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load Constant log2(e)</td>
+                </tr>
+                
+                <tr onclick="window.location='../fldl2t/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 E9</td>
+                    <td class="mono">fldl2t</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDL2T</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load Constant log2(10)</td>
+                </tr>
+                
+                <tr onclick="window.location='../fldlg2/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 EC</td>
+                    <td class="mono">fldlg2</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDLG2</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load Constant log10(2)</td>
+                </tr>
+                
+                <tr onclick="window.location='../fldln2/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 ED</td>
+                    <td class="mono">fldln2</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDLN2</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load Constant ln(2)</td>
+                </tr>
+                
+                <tr onclick="window.location='../fldpi/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 EB</td>
+                    <td class="mono">fldpi</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDPI</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load Constant Pi</td>
+                </tr>
+                
+                <tr onclick="window.location='../fldz/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">D9 EE</td>
+                    <td class="mono">fldz</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDZ</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load Constant +0.0</td>
                 </tr>
                 
                 <tr onclick="window.location='../fmul/';" style="cursor: pointer;">
@@ -1255,12 +1607,28 @@
                     <td style="color: var(--text-muted);">Input String from Port</td>
                 </tr>
                 
+                <tr onclick="window.location='../insd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">6D</td>
+                    <td class="mono">insd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INSD</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Input String Doubleword from Port</td>
+                </tr>
+                
                 <tr onclick="window.location='../insertps/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 3A 21</td>
                     <td class="mono">insertps</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INSERTPS xmm1, xmm2/m32, imm8</td>
                     <td><span class="badge">SSE4.1</span></td>
                     <td style="color: var(--text-muted);">Insert Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../insw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 6D</td>
+                    <td class="mono">insw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INSW</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Input String Word from Port</td>
                 </tr>
                 
                 <tr onclick="window.location='../int/';" style="cursor: pointer;">
@@ -1303,6 +1671,14 @@
                     <td style="color: var(--text-muted);">Invalidate TLB Entry</td>
                 </tr>
                 
+                <tr onclick="window.location='../invlpga/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 01 DF</td>
+                    <td class="mono">invlpga</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INVLPGA</td>
+                    <td><span class="badge">SVM</span></td>
+                    <td style="color: var(--text-muted);">Invalidate TLB Entry in ASID</td>
+                </tr>
+                
                 <tr onclick="window.location='../invpcid/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 82</td>
                     <td class="mono">invpcid</td>
@@ -1317,6 +1693,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INVVPID r64, m128</td>
                     <td><span class="badge">VMX</span></td>
                     <td style="color: var(--text-muted);">Invalidate Translations Based on VPID</td>
+                </tr>
+                
+                <tr onclick="window.location='../iret/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">CF</td>
+                    <td class="mono">iret</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">IRET</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Interrupt Return</td>
                 </tr>
                 
                 <tr onclick="window.location='../ja/';" style="cursor: pointer;">
@@ -1383,12 +1767,84 @@
                     <td style="color: var(--text-muted);">Jump if Not Equal</td>
                 </tr>
                 
+                <tr onclick="window.location='../jno/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">71</td>
+                    <td class="mono">jno</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JNO rel</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if Not Overflow</td>
+                </tr>
+                
+                <tr onclick="window.location='../jnp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">7B</td>
+                    <td class="mono">jnp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JNP rel</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if Not Parity</td>
+                </tr>
+                
+                <tr onclick="window.location='../jns/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">79</td>
+                    <td class="mono">jns</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JNS rel</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if Not Sign</td>
+                </tr>
+                
+                <tr onclick="window.location='../jo/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">70</td>
+                    <td class="mono">jo</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JO rel</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if Overflow</td>
+                </tr>
+                
+                <tr onclick="window.location='../jp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">7A</td>
+                    <td class="mono">jp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JP rel</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if Parity</td>
+                </tr>
+                
+                <tr onclick="window.location='../js/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">78</td>
+                    <td class="mono">js</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JS rel</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Jump if Sign</td>
+                </tr>
+                
+                <tr onclick="window.location='../kaddb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 4A</td>
+                    <td class="mono">kaddb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KADDB k1, k2, k3</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Add Masks Byte</td>
+                </tr>
+                
+                <tr onclick="window.location='../kaddw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 4A</td>
+                    <td class="mono">kaddw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KADDW k1, k2, k3</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Add Masks Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../kandnw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0F 42</td>
                     <td class="mono">kandnw</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KANDNW k1, k2, k3</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Bitwise Logical AND NOT Masks Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../kandq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 41</td>
+                    <td class="mono">kandq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KANDQ k1, k2, k3</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Bitwise Logical AND Masks Quadword</td>
                 </tr>
                 
                 <tr onclick="window.location='../kandw/';" style="cursor: pointer;">
@@ -1415,12 +1871,28 @@
                     <td style="color: var(--text-muted);">Move Word Mask Register</td>
                 </tr>
                 
+                <tr onclick="window.location='../knotq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 44</td>
+                    <td class="mono">knotq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KNOTQ k1, k2</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Bitwise Logical NOT Masks Quadword</td>
+                </tr>
+                
                 <tr onclick="window.location='../knotw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0F 44</td>
                     <td class="mono">knotw</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KNOTW k1, k2</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Bitwise Logical NOT Masks Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../korq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 45</td>
+                    <td class="mono">korq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KORQ k1, k2, k3</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Bitwise Logical OR Masks Quadword</td>
                 </tr>
                 
                 <tr onclick="window.location='../kortestw/';" style="cursor: pointer;">
@@ -1437,6 +1909,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KORW k1, k2, k3</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Bitwise Logical OR Masks Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../kunpckbw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 4B</td>
+                    <td class="mono">kunpckbw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KUNPCKBW k1, k2, k3</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Unpack and Interleave Masks Byte to Word</td>
                 </tr>
                 
                 <tr onclick="window.location='../kxorw/';" style="cursor: pointer;">
@@ -1599,6 +2079,30 @@
                     <td style="color: var(--text-muted);">Load String</td>
                 </tr>
                 
+                <tr onclick="window.location='../lodsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">AC</td>
+                    <td class="mono">lodsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LODSD</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load String Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../lodsq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">48 AC</td>
+                    <td class="mono">lodsq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LODSQ</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load String Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../lodsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 AC</td>
+                    <td class="mono">lodsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LODSW</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Load String Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../loop/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xE2</td>
                     <td class="mono">loop</td>
@@ -1663,12 +2167,36 @@
                     <td style="color: var(--text-muted);">Store Selected Bytes of Double Quadword</td>
                 </tr>
                 
+                <tr onclick="window.location='../maskmovq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F F7</td>
+                    <td class="mono">maskmovq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MASKMOVQ mm1, mm2</td>
+                    <td><span class="badge">MMX</span></td>
+                    <td style="color: var(--text-muted);">Store Selected Bytes of Quadword</td>
+                </tr>
+                
                 <tr onclick="window.location='../maxps/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F 5F</td>
                     <td class="mono">maxps</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MAXPS xmm, xmm/m128</td>
                     <td><span class="badge">SSE</span></td>
                     <td style="color: var(--text-muted);">Maximum Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../maxsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F 5F</td>
+                    <td class="mono">maxsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MAXSD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Maximum Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../maxss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 5F</td>
+                    <td class="mono">maxss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MAXSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Maximum Scalar Single-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../mfence/';" style="cursor: pointer;">
@@ -1685,6 +2213,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MINPS xmm, xmm/m128</td>
                     <td><span class="badge">SSE</span></td>
                     <td style="color: var(--text-muted);">Minimum Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../minsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F 5D</td>
+                    <td class="mono">minsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MINSD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Minimum Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../minss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 5D</td>
+                    <td class="mono">minss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MINSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Minimum Scalar Single-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../monitor/';" style="cursor: pointer;">
@@ -1735,6 +2279,14 @@
                     <td style="color: var(--text-muted);">Move Aligned Packed Single-Precision</td>
                 </tr>
                 
+                <tr onclick="window.location='../movbe/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 38 F0</td>
+                    <td class="mono">movbe</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVBE r, m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Move Big-Endian</td>
+                </tr>
+                
                 <tr onclick="window.location='../movd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F 6E</td>
                     <td class="mono">movd</td>
@@ -1783,12 +2335,100 @@
                     <td style="color: var(--text-muted);">Move Unaligned Packed Integer</td>
                 </tr>
                 
+                <tr onclick="window.location='../movmskpd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 50</td>
+                    <td class="mono">movmskpd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVMSKPD r32, xmm</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Extract Packed Double-Precision Mask</td>
+                </tr>
+                
+                <tr onclick="window.location='../movmskps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 50</td>
+                    <td class="mono">movmskps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVMSKPS r32, xmm</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Extract Packed Single-Precision Mask</td>
+                </tr>
+                
+                <tr onclick="window.location='../movnti/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F C3</td>
+                    <td class="mono">movnti</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTI m32, r32</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Move Non-Temporal Integer</td>
+                </tr>
+                
+                <tr onclick="window.location='../movntpd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 2B</td>
+                    <td class="mono">movntpd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTPD m128, xmm</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Move Non-Temporal Packed Double</td>
+                </tr>
+                
+                <tr onclick="window.location='../movntps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 2B</td>
+                    <td class="mono">movntps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTPS m128, xmm</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Move Non-Temporal Packed Single</td>
+                </tr>
+                
+                <tr onclick="window.location='../movntq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F E7</td>
+                    <td class="mono">movntq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTQ m64, mm</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Move Non-Temporal Quadword</td>
+                </tr>
+                
                 <tr onclick="window.location='../movq/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xF3 0F 7E</td>
                     <td class="mono">movq</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVQ xmm, xmm/m64</td>
                     <td><span class="badge">SSE2</span></td>
                     <td style="color: var(--text-muted);">Move Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../movsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">A5</td>
+                    <td class="mono">movsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSD</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Move String Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../movshdup/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 16</td>
+                    <td class="mono">movshdup</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSHDUP xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE3</span></td>
+                    <td style="color: var(--text-muted);">Move Packed Single-FP High and Duplicate</td>
+                </tr>
+                
+                <tr onclick="window.location='../movsldup/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 12</td>
+                    <td class="mono">movsldup</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSLDUP xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE3</span></td>
+                    <td style="color: var(--text-muted);">Move Packed Single-FP Low and Duplicate</td>
+                </tr>
+                
+                <tr onclick="window.location='../movsq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">48 A5</td>
+                    <td class="mono">movsq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSQ</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Move String Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../movsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 A5</td>
+                    <td class="mono">movsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSW</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Move String Word</td>
                 </tr>
                 
                 <tr onclick="window.location='../movsx/';" style="cursor: pointer;">
@@ -1823,6 +2463,14 @@
                     <td style="color: var(--text-muted);">Move with Zero-Extension</td>
                 </tr>
                 
+                <tr onclick="window.location='../mpsadbw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 42</td>
+                    <td class="mono">mpsadbw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MPSADBW xmm1, xmm2/m128, imm8</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Compute Multiple Sums of Absolute Differences</td>
+                </tr>
+                
                 <tr onclick="window.location='../mul/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xF7 /4</td>
                     <td class="mono">mul</td>
@@ -1845,6 +2493,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULPS xmm, xmm/m128</td>
                     <td><span class="badge">SSE</span></td>
                     <td style="color: var(--text-muted);">Multiply Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../mulsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F 59</td>
+                    <td class="mono">mulsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULSD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Multiply Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../mulss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 59</td>
+                    <td class="mono">mulss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Multiply Scalar Single-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../mulx/';" style="cursor: pointer;">
@@ -1919,6 +2583,22 @@
                     <td style="color: var(--text-muted);">Output String to Port</td>
                 </tr>
                 
+                <tr onclick="window.location='../outsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">6F</td>
+                    <td class="mono">outsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">OUTSD</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Output String Doubleword to Port</td>
+                </tr>
+                
+                <tr onclick="window.location='../outsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 6F</td>
+                    <td class="mono">outsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">OUTSW</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Output String Word to Port</td>
+                </tr>
+                
                 <tr onclick="window.location='../pabsb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 1C</td>
                     <td class="mono">pabsb</td>
@@ -1941,6 +2621,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PACKSSWB xmm, xmm/m128</td>
                     <td><span class="badge">SSE2</span></td>
                     <td style="color: var(--text-muted);">Pack with Signed Saturation Word to Byte</td>
+                </tr>
+                
+                <tr onclick="window.location='../packusdw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 2B</td>
+                    <td class="mono">packusdw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PACKUSDW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Pack with Unsigned Saturation Doubleword to Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../packuswb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 67</td>
+                    <td class="mono">packuswb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PACKUSWB xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Pack with Unsigned Saturation Word to Byte</td>
                 </tr>
                 
                 <tr onclick="window.location='../paddb/';" style="cursor: pointer;">
@@ -1975,12 +2671,28 @@
                     <td style="color: var(--text-muted);">Packed Add Bytes Signed Saturate</td>
                 </tr>
                 
+                <tr onclick="window.location='../paddsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F ED</td>
+                    <td class="mono">paddsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDSW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Add Signed Saturation Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../paddusb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x66 0F DC</td>
                     <td class="mono">paddusb</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSB xmm, xmm/m128</td>
                     <td><span class="badge">SSE2</span></td>
                     <td style="color: var(--text-muted);">Packed Add Bytes Unsigned Saturate</td>
+                </tr>
+                
+                <tr onclick="window.location='../paddusw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F DD</td>
+                    <td class="mono">paddusw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Add Unsigned Saturation Word</td>
                 </tr>
                 
                 <tr onclick="window.location='../paddw/';" style="cursor: pointer;">
@@ -2013,6 +2725,30 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAUSE</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Spin Loop Hint</td>
+                </tr>
+                
+                <tr onclick="window.location='../pavgb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F E0</td>
+                    <td class="mono">pavgb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAVGB xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Average Packed Integers (Byte)</td>
+                </tr>
+                
+                <tr onclick="window.location='../pavgw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F E3</td>
+                    <td class="mono">pavgw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAVGW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Average Packed Integers (Word)</td>
+                </tr>
+                
+                <tr onclick="window.location='../pblendvb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 10</td>
+                    <td class="mono">pblendvb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PBLENDVB xmm1, xmm2/m128, &lt;XMM0&gt;</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Variable Blend Packed Bytes</td>
                 </tr>
                 
                 <tr onclick="window.location='../pblendw/';" style="cursor: pointer;">
@@ -2079,6 +2815,30 @@
                     <td style="color: var(--text-muted);">Packed Compare Explicit Length Strings, Return Mask</td>
                 </tr>
                 
+                <tr onclick="window.location='../pcmpgtb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 64</td>
+                    <td class="mono">pcmpgtb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTB xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Compare Greater Than Byte</td>
+                </tr>
+                
+                <tr onclick="window.location='../pcmpgtd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 66</td>
+                    <td class="mono">pcmpgtd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTD xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Compare Greater Than Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pcmpgtw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 65</td>
+                    <td class="mono">pcmpgtw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Compare Greater Than Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../pconfig/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0F 01 C5</td>
                     <td class="mono">pconfig</td>
@@ -2111,12 +2871,84 @@
                     <td style="color: var(--text-muted);">Packed Extract Byte</td>
                 </tr>
                 
+                <tr onclick="window.location='../pextrw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F C5</td>
+                    <td class="mono">pextrw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PEXTRW r32, xmm1, imm8</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Packed Extract Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../pfadd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 0F /r 9E</td>
+                    <td class="mono">pfadd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFADD mm, mm/m64</td>
+                    <td><span class="badge">3DNow!</span></td>
+                    <td style="color: var(--text-muted);">Packed Floating-Point Add</td>
+                </tr>
+                
+                <tr onclick="window.location='../pfmul/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 0F /r B4</td>
+                    <td class="mono">pfmul</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFMUL mm, mm/m64</td>
+                    <td><span class="badge">3DNow!</span></td>
+                    <td style="color: var(--text-muted);">Packed Floating-Point Multiply</td>
+                </tr>
+                
+                <tr onclick="window.location='../pfrcp/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 0F /r 96</td>
+                    <td class="mono">pfrcp</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFRCP mm, mm/m64</td>
+                    <td><span class="badge">3DNow!</span></td>
+                    <td style="color: var(--text-muted);">Packed Floating-Point Reciprocal</td>
+                </tr>
+                
+                <tr onclick="window.location='../pfrsqrt/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 0F /r 97</td>
+                    <td class="mono">pfrsqrt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFRSQRT mm, mm/m64</td>
+                    <td><span class="badge">3DNow!</span></td>
+                    <td style="color: var(--text-muted);">Packed Floating-Point Reciprocal Square Root</td>
+                </tr>
+                
+                <tr onclick="window.location='../pfsub/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 0F /r 9A</td>
+                    <td class="mono">pfsub</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFSUB mm, mm/m64</td>
+                    <td><span class="badge">3DNow!</span></td>
+                    <td style="color: var(--text-muted);">Packed Floating-Point Subtract</td>
+                </tr>
+                
                 <tr onclick="window.location='../phaddw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 01</td>
                     <td class="mono">phaddw</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHADDW xmm1, xmm2/m128</td>
                     <td><span class="badge">SSSE3</span></td>
                     <td style="color: var(--text-muted);">Packed Horizontal Add Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../phminposuw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 41</td>
+                    <td class="mono">phminposuw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHMINPOSUW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Horizontal Minimum</td>
+                </tr>
+                
+                <tr onclick="window.location='../phsubd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 06</td>
+                    <td class="mono">phsubd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHSUBD xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSSE3</span></td>
+                    <td style="color: var(--text-muted);">Packed Horizontal Subtract Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../phsubw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 05</td>
+                    <td class="mono">phsubw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHSUBW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSSE3</span></td>
+                    <td style="color: var(--text-muted);">Packed Horizontal Subtract Word</td>
                 </tr>
                 
                 <tr onclick="window.location='../pinsrb/';" style="cursor: pointer;">
@@ -2127,12 +2959,76 @@
                     <td style="color: var(--text-muted);">Packed Insert Byte</td>
                 </tr>
                 
+                <tr onclick="window.location='../pinsrw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F C4</td>
+                    <td class="mono">pinsrw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PINSRW xmm1, r32/m16, imm8</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Packed Insert Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmaddubsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 04</td>
+                    <td class="mono">pmaddubsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMADDUBSW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSSE3</span></td>
+                    <td style="color: var(--text-muted);">Multiply and Add Packed Signed and Unsigned Bytes</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmaddwd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F F5</td>
+                    <td class="mono">pmaddwd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMADDWD xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Multiply and Add Word to Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmaxsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F EE</td>
+                    <td class="mono">pmaxsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMAXSW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Maximum of Packed Signed Word Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmaxub/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F DE</td>
+                    <td class="mono">pmaxub</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMAXUB xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Maximum of Packed Unsigned Byte Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../pminsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F EA</td>
+                    <td class="mono">pminsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMINSW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Minimum of Packed Signed Word Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../pminub/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F DA</td>
+                    <td class="mono">pminub</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMINUB xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Minimum of Packed Unsigned Byte Integers</td>
+                </tr>
+                
                 <tr onclick="window.location='../pmovmskb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x66 0F D7</td>
                     <td class="mono">pmovmskb</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVMSKB r32, xmm</td>
                     <td><span class="badge">SSE2</span></td>
                     <td style="color: var(--text-muted);">Move Byte Mask</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovsxbq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 22</td>
+                    <td class="mono">pmovsxbq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXBQ xmm1, xmm2/m16</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Sign Extend Byte to Quadword</td>
                 </tr>
                 
                 <tr onclick="window.location='../pmovsxbw/';" style="cursor: pointer;">
@@ -2143,12 +3039,76 @@
                     <td style="color: var(--text-muted);">Packed Move with Sign Extend Byte to Word</td>
                 </tr>
                 
+                <tr onclick="window.location='../pmovsxdq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 25</td>
+                    <td class="mono">pmovsxdq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXDQ xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Sign Extend Doubleword to Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovsxwd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 23</td>
+                    <td class="mono">pmovsxwd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXWD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Sign Extend Word to Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovsxwq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 24</td>
+                    <td class="mono">pmovsxwq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXWQ xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Sign Extend Word to Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovzxbd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 31</td>
+                    <td class="mono">pmovzxbd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXBD xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Zero Extend Byte to Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovzxbq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 32</td>
+                    <td class="mono">pmovzxbq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXBQ xmm1, xmm2/m16</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Zero Extend Byte to Quadword</td>
+                </tr>
+                
                 <tr onclick="window.location='../pmovzxbw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 30</td>
                     <td class="mono">pmovzxbw</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXBW xmm1, xmm2/m64</td>
                     <td><span class="badge">SSE4.1</span></td>
                     <td style="color: var(--text-muted);">Packed Move with Zero Extend Byte to Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovzxdq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 35</td>
+                    <td class="mono">pmovzxdq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXDQ xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Zero Extend Doubleword to Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovzxwd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 33</td>
+                    <td class="mono">pmovzxwd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXWD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Zero Extend Word to Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmovzxwq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 34</td>
+                    <td class="mono">pmovzxwq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXWQ xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Packed Move with Zero Extend Word to Quadword</td>
                 </tr>
                 
                 <tr onclick="window.location='../pmulhrsw/';" style="cursor: pointer;">
@@ -2159,12 +3119,44 @@
                     <td style="color: var(--text-muted);">Packed Multiply High with Round and Scale</td>
                 </tr>
                 
+                <tr onclick="window.location='../pmulhuw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F E4</td>
+                    <td class="mono">pmulhuw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULHUW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Multiply High Unsigned</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmulhw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F E5</td>
+                    <td class="mono">pmulhw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULHW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Multiply High Signed</td>
+                </tr>
+                
                 <tr onclick="window.location='../pmulld/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 40</td>
                     <td class="mono">pmulld</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLD xmm1, xmm2/m128</td>
                     <td><span class="badge">SSE4.1</span></td>
                     <td style="color: var(--text-muted);">Packed Multiply Low Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmullw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F D5</td>
+                    <td class="mono">pmullw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Multiply Low Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../pmuludq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F F4</td>
+                    <td class="mono">pmuludq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULUDQ xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Multiply Packed Unsigned Doubleword Integers</td>
                 </tr>
                 
                 <tr onclick="window.location='../pop/';" style="cursor: pointer;">
@@ -2239,6 +3231,14 @@
                     <td style="color: var(--text-muted);">Prefetch Hint T1 with Intent to Write</td>
                 </tr>
                 
+                <tr onclick="window.location='../psadbw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F F6</td>
+                    <td class="mono">psadbw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSADBW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Compute Sum of Absolute Differences</td>
+                </tr>
+                
                 <tr onclick="window.location='../pshufb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 00</td>
                     <td class="mono">pshufb</td>
@@ -2255,6 +3255,22 @@
                     <td style="color: var(--text-muted);">Packed Shuffle Doubleword</td>
                 </tr>
                 
+                <tr onclick="window.location='../pshufhw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 70</td>
+                    <td class="mono">pshufhw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSHUFHW xmm1, xmm2/m128, imm8</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Shuffle High Words</td>
+                </tr>
+                
+                <tr onclick="window.location='../pshuflw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F 70</td>
+                    <td class="mono">pshuflw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSHUFLW xmm1, xmm2/m128, imm8</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Shuffle Low Words</td>
+                </tr>
+                
                 <tr onclick="window.location='../psignb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 08</td>
                     <td class="mono">psignb</td>
@@ -2269,6 +3285,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLD xmm, imm8</td>
                     <td><span class="badge">SSE2</span></td>
                     <td style="color: var(--text-muted);">Packed Shift Left Logical Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../pslldq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 73 /7</td>
+                    <td class="mono">pslldq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLDQ xmm1, imm8</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Shift Double Quadword Left Logical</td>
                 </tr>
                 
                 <tr onclick="window.location='../psllw/';" style="cursor: pointer;">
@@ -2303,6 +3327,14 @@
                     <td style="color: var(--text-muted);">Packed Shift Right Logical Doubleword</td>
                 </tr>
                 
+                <tr onclick="window.location='../psrldq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 73 /3</td>
+                    <td class="mono">psrldq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLDQ xmm1, imm8</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Shift Double Quadword Right Logical</td>
+                </tr>
+                
                 <tr onclick="window.location='../psrlw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x66 0F 71 /2</td>
                     <td class="mono">psrlw</td>
@@ -2327,6 +3359,30 @@
                     <td style="color: var(--text-muted);">Packed Subtract Doublewords</td>
                 </tr>
                 
+                <tr onclick="window.location='../psubq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F FB</td>
+                    <td class="mono">psubq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBQ xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Subtract Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../psubsw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F E9</td>
+                    <td class="mono">psubsw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBSW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Subtract Signed Saturation Word</td>
+                </tr>
+                
+                <tr onclick="window.location='../psubusw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F D9</td>
+                    <td class="mono">psubusw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBUSW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Packed Subtract Unsigned Saturation Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../psubw/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x66 0F F9</td>
                     <td class="mono">psubw</td>
@@ -2349,6 +3405,38 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PTWRITE r32/r64</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Write Data to Processor Trace</td>
+                </tr>
+                
+                <tr onclick="window.location='../punpckhbw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 68</td>
+                    <td class="mono">punpckhbw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHBW xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Unpack High Data Bytes</td>
+                </tr>
+                
+                <tr onclick="window.location='../punpckhdq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 6A</td>
+                    <td class="mono">punpckhdq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHDQ xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Unpack High Data Doublewords</td>
+                </tr>
+                
+                <tr onclick="window.location='../punpckhqdq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 6D</td>
+                    <td class="mono">punpckhqdq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHQDQ xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Unpack High Data Quadwords</td>
+                </tr>
+                
+                <tr onclick="window.location='../punpckhwd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 69</td>
+                    <td class="mono">punpckhwd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHWD xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Unpack High Data Words</td>
                 </tr>
                 
                 <tr onclick="window.location='../punpcklbw/';" style="cursor: pointer;">
@@ -2429,6 +3517,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RCPPS xmm, xmm/m128</td>
                     <td><span class="badge">SSE</span></td>
                     <td style="color: var(--text-muted);">Reciprocal Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../rcpss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 53</td>
+                    <td class="mono">rcpss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RCPSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Reciprocal Scalar Single-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../rcr/';" style="cursor: pointer;">
@@ -2599,6 +3695,22 @@
                     <td style="color: var(--text-muted);">Round Packed Single-Precision</td>
                 </tr>
                 
+                <tr onclick="window.location='../roundsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 0B</td>
+                    <td class="mono">roundsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ROUNDSD xmm1, xmm2/m64, imm8</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Round Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../roundss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 0A</td>
+                    <td class="mono">roundss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ROUNDSS xmm1, xmm2/m32, imm8</td>
+                    <td><span class="badge">SSE4.1</span></td>
+                    <td style="color: var(--text-muted);">Round Scalar Single-Precision</td>
+                </tr>
+                
                 <tr onclick="window.location='../rsm/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F AA</td>
                     <td class="mono">rsm</td>
@@ -2615,6 +3727,14 @@
                     <td style="color: var(--text-muted);">Reciprocal Square Root Packed Single-Precision</td>
                 </tr>
                 
+                <tr onclick="window.location='../rsqrtss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 52</td>
+                    <td class="mono">rsqrtss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RSQRTSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Reciprocal Square Root Scalar Single-Precision</td>
+                </tr>
+                
                 <tr onclick="window.location='../rstorssp/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">F3 0F 01 /5</td>
                     <td class="mono">rstorssp</td>
@@ -2629,6 +3749,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SAHF</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Store AH into Flags</td>
+                </tr>
+                
+                <tr onclick="window.location='../sal/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0xC1 /4</td>
+                    <td class="mono">sal</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SAL r/m, imm8</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Shift Arithmetic Left</td>
                 </tr>
                 
                 <tr onclick="window.location='../sar/';" style="cursor: pointer;">
@@ -2671,6 +3799,30 @@
                     <td style="color: var(--text-muted);">Scan String</td>
                 </tr>
                 
+                <tr onclick="window.location='../scasd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">AF</td>
+                    <td class="mono">scasd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SCASD</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Scan String Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../scasq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">48 AF</td>
+                    <td class="mono">scasq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SCASQ</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Scan String Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../scasw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 AF</td>
+                    <td class="mono">scasw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SCASW</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Scan String Word</td>
+                </tr>
+                
                 <tr onclick="window.location='../senduipi/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">F3 0F C7 /6</td>
                     <td class="mono">senduipi</td>
@@ -2693,6 +3845,38 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETcc r/m8</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Set Byte on Condition</td>
+                </tr>
+                
+                <tr onclick="window.location='../setno/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 91</td>
+                    <td class="mono">setno</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETNO r/m8</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Set Byte on Not Overflow</td>
+                </tr>
+                
+                <tr onclick="window.location='../setnz/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 95</td>
+                    <td class="mono">setnz</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETNZ r/m8</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Set Byte on Not Zero</td>
+                </tr>
+                
+                <tr onclick="window.location='../seto/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 90</td>
+                    <td class="mono">seto</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETO r/m8</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Set Byte on Overflow</td>
+                </tr>
+                
+                <tr onclick="window.location='../setz/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 94</td>
+                    <td class="mono">setz</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETZ r/m8</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Set Byte on Zero</td>
                 </tr>
                 
                 <tr onclick="window.location='../sfence/';" style="cursor: pointer;">
@@ -2871,6 +4055,22 @@
                     <td style="color: var(--text-muted);">Square Root Packed Single-Precision</td>
                 </tr>
                 
+                <tr onclick="window.location='../sqrtsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F 51</td>
+                    <td class="mono">sqrtsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQRTSD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Square Root Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../sqrtss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 51</td>
+                    <td class="mono">sqrtss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQRTSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Square Root Scalar Single-Precision</td>
+                </tr>
+                
                 <tr onclick="window.location='../stac/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0F 01 CB</td>
                     <td class="mono">stac</td>
@@ -2895,6 +4095,14 @@
                     <td style="color: var(--text-muted);">Set Direction Flag</td>
                 </tr>
                 
+                <tr onclick="window.location='../stgi/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 01 DC</td>
+                    <td class="mono">stgi</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STGI</td>
+                    <td><span class="badge">SVM</span></td>
+                    <td style="color: var(--text-muted);">Set Global Interrupt Flag</td>
+                </tr>
+                
                 <tr onclick="window.location='../sti/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0xFB</td>
                     <td class="mono">sti</td>
@@ -2917,6 +4125,30 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STOSB</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Store String</td>
+                </tr>
+                
+                <tr onclick="window.location='../stosd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">AA</td>
+                    <td class="mono">stosd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STOSD</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Store String Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../stosq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">48 AA</td>
+                    <td class="mono">stosq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STOSQ</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Store String Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../stosw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 AA</td>
+                    <td class="mono">stosw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STOSW</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Store String Word</td>
                 </tr>
                 
                 <tr onclick="window.location='../str/';" style="cursor: pointer;">
@@ -2967,12 +4199,36 @@
                     <td style="color: var(--text-muted);">Subtract Packed Single-Precision</td>
                 </tr>
                 
+                <tr onclick="window.location='../subsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F2 0F 5C</td>
+                    <td class="mono">subsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBSD xmm1, xmm2/m64</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Subtract Scalar Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../subss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 5C</td>
+                    <td class="mono">subss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBSS xmm1, xmm2/m32</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Subtract Scalar Single-Precision</td>
+                </tr>
+                
                 <tr onclick="window.location='../swapgs/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0F 01 F8</td>
                     <td class="mono">swapgs</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SWAPGS</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Swap GS Base Register</td>
+                </tr>
+                
+                <tr onclick="window.location='../syscall/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 05</td>
+                    <td class="mono">syscall</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SYSCALL</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">System Call</td>
                 </tr>
                 
                 <tr onclick="window.location='../sysenter/';" style="cursor: pointer;">
@@ -2989,6 +4245,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SYSEXIT</td>
                     <td><span class="badge">System</span></td>
                     <td style="color: var(--text-muted);">Fast Return from System Call</td>
+                </tr>
+                
+                <tr onclick="window.location='../sysret/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 07</td>
+                    <td class="mono">sysret</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SYSRET</td>
+                    <td><span class="badge">System</span></td>
+                    <td style="color: var(--text-muted);">Return from System Call</td>
                 </tr>
                 
                 <tr onclick="window.location='../tdpbf16ps/';" style="cursor: pointer;">
@@ -3095,6 +4359,14 @@
                     <td style="color: var(--text-muted);">Unordered Compare Scalar Single-Precision</td>
                 </tr>
                 
+                <tr onclick="window.location='../ud0/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F FF</td>
+                    <td class="mono">ud0</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UD0</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Undefined Instruction 0</td>
+                </tr>
+                
                 <tr onclick="window.location='../ud2/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">0x0F 0B</td>
                     <td class="mono">ud2</td>
@@ -3127,6 +4399,38 @@
                     <td style="color: var(--text-muted);">User Level Monitor Wait</td>
                 </tr>
                 
+                <tr onclick="window.location='../unpckhpd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 15</td>
+                    <td class="mono">unpckhpd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKHPD xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Unpack High Packed Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../unpckhps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x0F 15</td>
+                    <td class="mono">unpckhps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKHPS xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Unpack High Packed Single-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../unpcklpd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 14</td>
+                    <td class="mono">unpcklpd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKLPD xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE2</span></td>
+                    <td style="color: var(--text-muted);">Unpack Low Packed Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../unpcklps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0x0F 14</td>
+                    <td class="mono">unpcklps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKLPS xmm1, xmm2/m128</td>
+                    <td><span class="badge">SSE</span></td>
+                    <td style="color: var(--text-muted);">Unpack Low Packed Single-Precision</td>
+                </tr>
+                
                 <tr onclick="window.location='../vaddph/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">58</td>
                     <td class="mono">vaddph</td>
@@ -3141,6 +4445,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VADDPS ymm1, ymm2, ymm3/m256</td>
                     <td><span class="badge">VEX</span></td>
                     <td style="color: var(--text-muted);">Add Packed Single-Precision (AVX)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vaddsh/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">58</td>
+                    <td class="mono">vaddsh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VADDSH xmm1 {k1}, xmm2, xmm3/m16</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Add Scalar Half-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../vaddss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">58</td>
+                    <td class="mono">vaddss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VADDSS xmm1 {k1}, xmm2, xmm3/m32</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Add Scalar Single-Precision (EVEX)</td>
                 </tr>
                 
                 <tr onclick="window.location='../vaesdec/';" style="cursor: pointer;">
@@ -3165,6 +4485,38 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VALIGND zmm1 {k1}, zmm2, zmm3/m512, imm8</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Align Doubleword Vectors</td>
+                </tr>
+                
+                <tr onclick="window.location='../valignq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 03</td>
+                    <td class="mono">valignq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VALIGNQ zmm1 {k1}, zmm2, zmm3/m512, imm8</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Align Quadword Vectors</td>
+                </tr>
+                
+                <tr onclick="window.location='../vbroadcastf128/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 1A</td>
+                    <td class="mono">vbroadcastf128</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VBROADCASTF128 ymm1, m128</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Broadcast 128-bit Floating-Point</td>
+                </tr>
+                
+                <tr onclick="window.location='../vbroadcasti128/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 5A</td>
+                    <td class="mono">vbroadcasti128</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VBROADCASTI128 ymm1, m128</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Broadcast 128-bit Integer</td>
+                </tr>
+                
+                <tr onclick="window.location='../vbroadcastsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 19</td>
+                    <td class="mono">vbroadcastsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VBROADCASTSD ymm1, m64</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Broadcast Scalar Double</td>
                 </tr>
                 
                 <tr onclick="window.location='../vbroadcastss/';" style="cursor: pointer;">
@@ -3207,12 +4559,28 @@
                     <td style="color: var(--text-muted);">Convert Packed Unsigned Doubleword Integers to Packed Single-Precision Floating-Point</td>
                 </tr>
                 
+                <tr onclick="window.location='../vdbpsadbw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 42</td>
+                    <td class="mono">vdbpsadbw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VDBPSADBW zmm1 {k1}, zmm2, zmm3/m512, imm8</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Double Block Packed Sum-Absolute-Differences</td>
+                </tr>
+                
                 <tr onclick="window.location='../vdivph/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">5E</td>
                     <td class="mono">vdivph</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VDIVPH zmm1 {k1}, zmm2, zmm3/m512</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Divide Packed FP16 Values</td>
+                </tr>
+                
+                <tr onclick="window.location='../vdivsh/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">5E</td>
+                    <td class="mono">vdivsh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VDIVSH xmm1 {k1}, xmm2, xmm3/m16</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Divide Scalar Half-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../vdpbf16ps/';" style="cursor: pointer;">
@@ -3287,6 +4655,14 @@
                     <td style="color: var(--text-muted);">Fix Up Special Packed Float32 Values</td>
                 </tr>
                 
+                <tr onclick="window.location='../vfixupimmss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 55</td>
+                    <td class="mono">vfixupimmss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFIXUPIMMSS xmm1 {k1}, xmm2, xmm3/m32, imm8</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Fix Up Special Scalar Float32 Value</td>
+                </tr>
+                
                 <tr onclick="window.location='../vfmadd132ph/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">98</td>
                     <td class="mono">vfmadd132ph</td>
@@ -3301,6 +4677,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFMADD132PS ymm1, ymm2, ymm3/m256</td>
                     <td><span class="badge">VEX</span></td>
                     <td style="color: var(--text-muted);">Fused Multiply-Add (132) Packed Single</td>
+                </tr>
+                
+                <tr onclick="window.location='../vfmadd132sh/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">99</td>
+                    <td class="mono">vfmadd132sh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFMADD132SH xmm1 {k1}, xmm2, xmm3/m16</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Fused Multiply-Add Scalar Half-Precision (132)</td>
                 </tr>
                 
                 <tr onclick="window.location='../vfmadd213ph/';" style="cursor: pointer;">
@@ -3415,6 +4799,22 @@
                     <td style="color: var(--text-muted);">Insert Integer 128-bit</td>
                 </tr>
                 
+                <tr onclick="window.location='../vmaskmovpd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 2D</td>
+                    <td class="mono">vmaskmovpd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMASKMOVPD ymm1, ymm2, m256</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Packed Double-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmaskmovps/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 2C</td>
+                    <td class="mono">vmaskmovps</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMASKMOVPS ymm1, ymm2, m256</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Conditional Move Packed Single-Precision</td>
+                </tr>
+                
                 <tr onclick="window.location='../vmaxph/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">5F</td>
                     <td class="mono">vmaxph</td>
@@ -3439,6 +4839,14 @@
                     <td style="color: var(--text-muted);">Clear Virtual-Machine Control Structure</td>
                 </tr>
                 
+                <tr onclick="window.location='../vmfunc/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 01 D4</td>
+                    <td class="mono">vmfunc</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMFUNC</td>
+                    <td><span class="badge">VMX</span></td>
+                    <td style="color: var(--text-muted);">Virtual Machine Function</td>
+                </tr>
+                
                 <tr onclick="window.location='../vminph/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">5D</td>
                     <td class="mono">vminph</td>
@@ -3453,6 +4861,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMLAUNCH</td>
                     <td><span class="badge">VMX</span></td>
                     <td style="color: var(--text-muted);">Launch Virtual Machine</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmload/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 01 DA</td>
+                    <td class="mono">vmload</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMLOAD</td>
+                    <td><span class="badge">SVM</span></td>
+                    <td style="color: var(--text-muted);">Load State from VMCB</td>
                 </tr>
                 
                 <tr onclick="window.location='../vmoff/';" style="cursor: pointer;">
@@ -3495,6 +4911,22 @@
                     <td style="color: var(--text-muted);">Resume Virtual Machine</td>
                 </tr>
                 
+                <tr onclick="window.location='../vmrun/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 01 D8</td>
+                    <td class="mono">vmrun</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMRUN</td>
+                    <td><span class="badge">SVM</span></td>
+                    <td style="color: var(--text-muted);">Run Virtual Machine</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmsave/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F 01 DB</td>
+                    <td class="mono">vmsave</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSAVE</td>
+                    <td><span class="badge">SVM</span></td>
+                    <td style="color: var(--text-muted);">Save State to VMCB</td>
+                </tr>
+                
                 <tr onclick="window.location='../vmulph/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">59</td>
                     <td class="mono">vmulph</td>
@@ -3509,6 +4941,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMULPS ymm1, ymm2, ymm3/m256</td>
                     <td><span class="badge">VEX</span></td>
                     <td style="color: var(--text-muted);">Multiply Packed Single-Precision (AVX)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmulsh/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">59</td>
+                    <td class="mono">vmulsh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMULSH xmm1 {k1}, xmm2, xmm3/m16</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Multiply Scalar Half-Precision</td>
+                </tr>
+                
+                <tr onclick="window.location='../vmulss/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">59</td>
+                    <td class="mono">vmulss</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMULSS xmm1 {k1}, xmm2, xmm3/m32</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Multiply Scalar Single-Precision (EVEX)</td>
                 </tr>
                 
                 <tr onclick="window.location='../vmwrite/';" style="cursor: pointer;">
@@ -3533,6 +4981,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VP2INTERSECTD k1+1, zmm2, zmm3/m512</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Compute Intersection Pair Doublewords</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpabsd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 1E</td>
+                    <td class="mono">vpabsd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPABSD zmm1 {k1}, zmm2/m512</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Packed Absolute Value Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpabsq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 1F</td>
+                    <td class="mono">vpabsq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPABSQ zmm1 {k1}, zmm2/m512</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Packed Absolute Value Quadword</td>
                 </tr>
                 
                 <tr onclick="window.location='../vpaddb/';" style="cursor: pointer;">
@@ -3565,6 +5029,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPBROADCASTD ymm1, xmm2/m32</td>
                     <td><span class="badge">VEX</span></td>
                     <td style="color: var(--text-muted);">Broadcast Doubleword</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpbroadcastq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 59</td>
+                    <td class="mono">vpbroadcastq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPBROADCASTQ ymm1, xmm2/m64</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Broadcast Quadword</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpbroadcastw/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 79</td>
+                    <td class="mono">vpbroadcastw</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPBROADCASTW ymm1, xmm2/m16</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Broadcast Word</td>
                 </tr>
                 
                 <tr onclick="window.location='../vpclmulqdq/';" style="cursor: pointer;">
@@ -3695,6 +5175,38 @@
                     <td style="color: var(--text-muted);">Load Sparse Packed Byte Integer Values</td>
                 </tr>
                 
+                <tr onclick="window.location='../vpgatherdd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 90</td>
+                    <td class="mono">vpgatherdd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERDD ymm1, [base+ymm_idx*scale], ymm_mask</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Gather Packed Doubleword with Signed Doubleword Indices</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpgatherdq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 90</td>
+                    <td class="mono">vpgatherdq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERDQ ymm1, [base+xmm_idx*scale], ymm_mask</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Gather Packed Quadword with Signed Doubleword Indices</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpgatherqd/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 91</td>
+                    <td class="mono">vpgatherqd</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERQD xmm1, [base+ymm_idx*scale], xmm_mask</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Gather Packed Doubleword with Signed Quadword Indices</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpgatherqq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">C4 ... 91</td>
+                    <td class="mono">vpgatherqq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERQQ ymm1, [base+ymm_idx*scale], ymm_mask</td>
+                    <td><span class="badge">VEX</span></td>
+                    <td style="color: var(--text-muted);">Gather Packed Quadword with Signed Quadword Indices</td>
+                </tr>
+                
                 <tr onclick="window.location='../vplzcntd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 44</td>
                     <td class="mono">vplzcntd</td>
@@ -3719,12 +5231,60 @@
                     <td style="color: var(--text-muted);">Packed Multiply-Add Unsigned 52-bit Integers (Low)</td>
                 </tr>
                 
+                <tr onclick="window.location='../vpmaxsq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 3D</td>
+                    <td class="mono">vpmaxsq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMAXSQ zmm1 {k1}, zmm2, zmm3/m512</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Maximum of Packed Signed Quadword Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpmaxuq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 3F</td>
+                    <td class="mono">vpmaxuq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMAXUQ zmm1 {k1}, zmm2, zmm3/m512</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Maximum of Packed Unsigned Quadword Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpminsq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 39</td>
+                    <td class="mono">vpminsq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMINSQ zmm1 {k1}, zmm2, zmm3/m512</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Minimum of Packed Signed Quadword Integers</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpminuq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 3B</td>
+                    <td class="mono">vpminuq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMINUQ zmm1 {k1}, zmm2, zmm3/m512</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Minimum of Packed Unsigned Quadword Integers</td>
+                </tr>
+                
                 <tr onclick="window.location='../vpmovdb/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">F3 0F 38 31</td>
                     <td class="mono">vpmovdb</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVDB xmm1/m128 {k1}, zmm2</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Truncate Doubleword to Byte</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpmovsqb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 38 22</td>
+                    <td class="mono">vpmovsqb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVSQB xmm1/m128 {k1}, zmm2</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Truncate Signed Quadword to Byte</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpmovswb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 38 20</td>
+                    <td class="mono">vpmovswb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVSWB xmm1/m128 {k1}, zmm2</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Truncate Signed Word to Byte</td>
                 </tr>
                 
                 <tr onclick="window.location='../vpmovusdb/';" style="cursor: pointer;">
@@ -3735,12 +5295,36 @@
                     <td style="color: var(--text-muted);">Saturate Unsigned Doubleword to Byte</td>
                 </tr>
                 
+                <tr onclick="window.location='../vpmovusqb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 38 12</td>
+                    <td class="mono">vpmovusqb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVUSQB xmm1/m128 {k1}, zmm2</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Truncate Unsigned Quadword to Byte</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpmovuswb/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">F3 0F 38 10</td>
+                    <td class="mono">vpmovuswb</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVUSWB xmm1/m128 {k1}, zmm2</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Truncate Unsigned Word to Byte</td>
+                </tr>
+                
                 <tr onclick="window.location='../vpmulld/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">C4 ... 40</td>
                     <td class="mono">vpmulld</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMULLD ymm1, ymm2, ymm3/m256</td>
                     <td><span class="badge">VEX</span></td>
                     <td style="color: var(--text-muted);">Packed Multiply Low Doubleword (AVX2)</td>
+                </tr>
+                
+                <tr onclick="window.location='../vpmullq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 38 40</td>
+                    <td class="mono">vpmullq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMULLQ zmm1 {k1}, zmm2, zmm3/m512</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Packed Multiply Low Quadword</td>
                 </tr>
                 
                 <tr onclick="window.location='../vpmultishiftqb/';" style="cursor: pointer;">
@@ -3767,12 +5351,28 @@
                     <td style="color: var(--text-muted);">Packed Population Count Doubleword</td>
                 </tr>
                 
+                <tr onclick="window.location='../vprolq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 72 /2</td>
+                    <td class="mono">vprolq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPROLQ zmm1 {k1}, zmm2, imm8</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Rotate Left Quadword</td>
+                </tr>
+                
                 <tr onclick="window.location='../vprolvd/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 15</td>
                     <td class="mono">vprolvd</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPROLVD zmm1 {k1}, zmm2, zmm3/m512</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Rotate Left Doubleword Variable</td>
+                </tr>
+                
+                <tr onclick="window.location='../vprorq/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 72 /0</td>
+                    <td class="mono">vprorq</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPRORQ zmm1 {k1}, zmm2, imm8</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Rotate Right Quadword</td>
                 </tr>
                 
                 <tr onclick="window.location='../vpshldd/';" style="cursor: pointer;">
@@ -3839,6 +5439,14 @@
                     <td style="color: var(--text-muted);">Range Restriction Calculation Packed Single</td>
                 </tr>
                 
+                <tr onclick="window.location='../vrangess/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 51</td>
+                    <td class="mono">vrangess</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VRANGESS xmm1 {k1}, xmm2, xmm3/m32, imm8</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Range Restriction Calculation Scalar Single</td>
+                </tr>
+                
                 <tr onclick="window.location='../vrcp14ps/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">66 0F 38 4C</td>
                     <td class="mono">vrcp14ps</td>
@@ -3853,6 +5461,14 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDUCEPS zmm1 {k1}, zmm2/m512, imm8</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Perform Reduction Transformation Packed Single</td>
+                </tr>
+                
+                <tr onclick="window.location='../vreducess/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">66 0F 3A 57</td>
+                    <td class="mono">vreducess</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDUCESS xmm1 {k1}, xmm2, xmm3/m32, imm8</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Perform Reduction Transformation Scalar Single</td>
                 </tr>
                 
                 <tr onclick="window.location='../vrndscalepd/';" style="cursor: pointer;">
@@ -3983,12 +5599,28 @@
                     <td style="color: var(--text-muted);">Square Root Packed FP16 Values</td>
                 </tr>
                 
+                <tr onclick="window.location='../vsqrtsh/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">51</td>
+                    <td class="mono">vsqrtsh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSQRTSH xmm1 {k1}, xmm2/m16</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Square Root Scalar Half-Precision</td>
+                </tr>
+                
                 <tr onclick="window.location='../vsubph/';" style="cursor: pointer;">
                     <td class="mono accent" style="font-weight: bold;">5C</td>
                     <td class="mono">vsubph</td>
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSUBPH zmm1 {k1}, zmm2, zmm3/m512</td>
                     <td><span class="badge">EVEX</span></td>
                     <td style="color: var(--text-muted);">Subtract Packed FP16 Values</td>
+                </tr>
+                
+                <tr onclick="window.location='../vsubsh/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">5C</td>
+                    <td class="mono">vsubsh</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSUBSH xmm1 {k1}, xmm2, xmm3/m16</td>
+                    <td><span class="badge">EVEX</span></td>
+                    <td style="color: var(--text-muted);">Subtract Scalar Half-Precision</td>
                 </tr>
                 
                 <tr onclick="window.location='../vzeroall/';" style="cursor: pointer;">
@@ -4157,6 +5789,22 @@
                     <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XSAVE m</td>
                     <td><span class="badge">Legacy</span></td>
                     <td style="color: var(--text-muted);">Save Processor Extended States</td>
+                </tr>
+                
+                <tr onclick="window.location='../xsavec/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F C7 /4</td>
+                    <td class="mono">xsavec</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XSAVEC m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Save Processor Extended States with Compaction</td>
+                </tr>
+                
+                <tr onclick="window.location='../xsaveopt/';" style="cursor: pointer;">
+                    <td class="mono accent" style="font-weight: bold;">0F AE /6</td>
+                    <td class="mono">xsaveopt</td>
+                    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XSAVEOPT m</td>
+                    <td><span class="badge">Legacy</span></td>
+                    <td style="color: var(--text-muted);">Save Processor Extended States Optimized</td>
                 </tr>
                 
                 <tr onclick="window.location='../xsaves/';" style="cursor: pointer;">

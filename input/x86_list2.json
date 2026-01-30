@@ -1,0 +1,796 @@
+{
+  "instructions": [
+    {
+      "mnemonic": "subss",
+      "architecture": "x86",
+      "full_name": "Subtract Scalar Single-Precision",
+      "summary": "Subtracts the low single-precision floating-point value.",
+      "syntax": "SUBSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 5C" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "subsd",
+      "architecture": "x86",
+      "full_name": "Subtract Scalar Double-Precision",
+      "summary": "Subtracts the low double-precision floating-point value.",
+      "syntax": "SUBSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 5C" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "mulss",
+      "architecture": "x86",
+      "full_name": "Multiply Scalar Single-Precision",
+      "summary": "Multiplies the low single-precision floating-point value.",
+      "syntax": "MULSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 59" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "mulsd",
+      "architecture": "x86",
+      "full_name": "Multiply Scalar Double-Precision",
+      "summary": "Multiplies the low double-precision floating-point value.",
+      "syntax": "MULSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 59" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "divss",
+      "architecture": "x86",
+      "full_name": "Divide Scalar Single-Precision",
+      "summary": "Divides the low single-precision floating-point value.",
+      "syntax": "DIVSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 5E" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "divsd",
+      "architecture": "x86",
+      "full_name": "Divide Scalar Double-Precision",
+      "summary": "Divides the low double-precision floating-point value.",
+      "syntax": "DIVSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 5E" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "sqrtss",
+      "architecture": "x86",
+      "full_name": "Square Root Scalar Single-Precision",
+      "summary": "Computes square root of the low float.",
+      "syntax": "SQRTSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 51" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "sqrtsd",
+      "architecture": "x86",
+      "full_name": "Square Root Scalar Double-Precision",
+      "summary": "Computes square root of the low double.",
+      "syntax": "SQRTSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 51" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "minss",
+      "architecture": "x86",
+      "full_name": "Minimum Scalar Single-Precision",
+      "summary": "Returns the minimum of two low single-precision values.",
+      "syntax": "MINSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 5D" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "minsd",
+      "architecture": "x86",
+      "full_name": "Minimum Scalar Double-Precision",
+      "summary": "Returns the minimum of two low double-precision values.",
+      "syntax": "MINSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 5D" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "maxss",
+      "architecture": "x86",
+      "full_name": "Maximum Scalar Single-Precision",
+      "summary": "Returns the maximum of two low single-precision values.",
+      "syntax": "MAXSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 5F" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "maxsd",
+      "architecture": "x86",
+      "full_name": "Maximum Scalar Double-Precision",
+      "summary": "Returns the maximum of two low double-precision values.",
+      "syntax": "MAXSD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 5F" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cmpss",
+      "architecture": "x86",
+      "full_name": "Compare Scalar Single-Precision",
+      "summary": "Compares low single-precision values and returns mask.",
+      "syntax": "CMPSS xmm1, xmm2/m32, imm8",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F C2" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "cmpsd",
+      "architecture": "x86",
+      "full_name": "Compare Scalar Double-Precision",
+      "summary": "Compares low double-precision values and returns mask.",
+      "syntax": "CMPSD xmm1, xmm2/m64, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F C2" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "rcpss",
+      "architecture": "x86",
+      "full_name": "Reciprocal Scalar Single-Precision",
+      "summary": "Computes approximate reciprocal (1/x) of low float.",
+      "syntax": "RCPSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 53" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "rsqrtss",
+      "architecture": "x86",
+      "full_name": "Reciprocal Square Root Scalar Single-Precision",
+      "summary": "Computes approximate reciprocal sqrt (1/sqrt(x)) of low float.",
+      "syntax": "RSQRTSS xmm1, xmm2/m32",
+      "encoding": { "format": "SSE", "hex_opcode": "F3 0F 52" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "roundss",
+      "architecture": "x86",
+      "full_name": "Round Scalar Single-Precision",
+      "summary": "Rounds low float according to immediate mode.",
+      "syntax": "ROUNDSS xmm1, xmm2/m32, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0A" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "roundsd",
+      "architecture": "x86",
+      "full_name": "Round Scalar Double-Precision",
+      "summary": "Rounds low double according to immediate mode.",
+      "syntax": "ROUNDSD xmm1, xmm2/m64, imm8",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 3A 0B" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "cvttps2pi",
+      "architecture": "x86",
+      "full_name": "Convert with Truncation Packed Single to Packed Integer (MMX)",
+      "summary": "Converts packed floats to packed MMX integers (Truncate).",
+      "syntax": "CVTTPS2PI mm, xmm/m64",
+      "encoding": { "format": "SSE", "hex_opcode": "0F 2C" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "cvtps2pd",
+      "architecture": "x86",
+      "full_name": "Convert Packed Single to Packed Double",
+      "summary": "Converts lower two floats to doubles.",
+      "syntax": "CVTPS2PD xmm1, xmm2/m64",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F 5A" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cvtpd2ps",
+      "architecture": "x86",
+      "full_name": "Convert Packed Double to Packed Single",
+      "summary": "Converts two doubles to two floats.",
+      "syntax": "CVTPD2PS xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F 5A" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "jo",
+      "architecture": "x86",
+      "full_name": "Jump if Overflow",
+      "summary": "Jump near if overflow flag is 1.",
+      "syntax": "JO rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "70" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jno",
+      "architecture": "x86",
+      "full_name": "Jump if Not Overflow",
+      "summary": "Jump near if overflow flag is 0.",
+      "syntax": "JNO rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "71" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "js",
+      "architecture": "x86",
+      "full_name": "Jump if Sign",
+      "summary": "Jump near if sign flag is 1 (Negative).",
+      "syntax": "JS rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "78" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jns",
+      "architecture": "x86",
+      "full_name": "Jump if Not Sign",
+      "summary": "Jump near if sign flag is 0 (Positive).",
+      "syntax": "JNS rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "79" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jp",
+      "architecture": "x86",
+      "full_name": "Jump if Parity",
+      "summary": "Jump near if parity flag is 1 (Even parity).",
+      "syntax": "JP rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "7A" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "jnp",
+      "architecture": "x86",
+      "full_name": "Jump if Not Parity",
+      "summary": "Jump near if parity flag is 0 (Odd parity).",
+      "syntax": "JNP rel",
+      "encoding": { "format": "Legacy", "hex_opcode": "7B" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "seto",
+      "architecture": "x86",
+      "full_name": "Set Byte on Overflow",
+      "summary": "Sets byte to 1 if OF=1.",
+      "syntax": "SETO r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 90" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setno",
+      "architecture": "x86",
+      "full_name": "Set Byte on Not Overflow",
+      "summary": "Sets byte to 1 if OF=0.",
+      "syntax": "SETNO r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 91" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setz",
+      "architecture": "x86",
+      "full_name": "Set Byte on Zero",
+      "summary": "Sets byte to 1 if ZF=1.",
+      "syntax": "SETZ r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 94" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "setnz",
+      "architecture": "x86",
+      "full_name": "Set Byte on Not Zero",
+      "summary": "Sets byte to 1 if ZF=0.",
+      "syntax": "SETNZ r/m8",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 95" },
+      "extension": "Base"
+    },
+    {
+      "mnemonic": "cmovg",
+      "architecture": "x86",
+      "full_name": "Conditional Move Greater",
+      "summary": "Move if ZF=0 and SF=OF.",
+      "syntax": "CMOVG r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 4F" },
+      "extension": "CMOV"
+    },
+    {
+      "mnemonic": "cmovge",
+      "architecture": "x86",
+      "full_name": "Conditional Move Greater or Equal",
+      "summary": "Move if SF=OF.",
+      "syntax": "CMOVGE r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 4D" },
+      "extension": "CMOV"
+    },
+    {
+      "mnemonic": "cmovl",
+      "architecture": "x86",
+      "full_name": "Conditional Move Less",
+      "summary": "Move if SF!=OF.",
+      "syntax": "CMOVL r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 4C" },
+      "extension": "CMOV"
+    },
+    {
+      "mnemonic": "cmovle",
+      "architecture": "x86",
+      "full_name": "Conditional Move Less or Equal",
+      "summary": "Move if ZF=1 or SF!=OF.",
+      "syntax": "CMOVLE r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 4E" },
+      "extension": "CMOV"
+    },
+    {
+      "mnemonic": "cmovz",
+      "architecture": "x86",
+      "full_name": "Conditional Move Zero",
+      "summary": "Move if ZF=1.",
+      "syntax": "CMOVZ r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 44" },
+      "extension": "CMOV"
+    },
+    {
+      "mnemonic": "cmovnz",
+      "architecture": "x86",
+      "full_name": "Conditional Move Not Zero",
+      "summary": "Move if ZF=0.",
+      "syntax": "CMOVNZ r, r/m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 45" },
+      "extension": "CMOV"
+    },
+    {
+      "mnemonic": "paddusw",
+      "architecture": "x86",
+      "full_name": "Packed Add Unsigned Saturation Word",
+      "summary": "Adds 16-bit words with unsigned saturation.",
+      "syntax": "PADDUSW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F DD" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "paddsw",
+      "architecture": "x86",
+      "full_name": "Packed Add Signed Saturation Word",
+      "summary": "Adds 16-bit words with signed saturation.",
+      "syntax": "PADDSW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F ED" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psubusw",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Unsigned Saturation Word",
+      "summary": "Subtracts 16-bit words with unsigned saturation.",
+      "syntax": "PSUBUSW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F D9" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "psubsw",
+      "architecture": "x86",
+      "full_name": "Packed Subtract Signed Saturation Word",
+      "summary": "Subtracts 16-bit words with signed saturation.",
+      "syntax": "PSUBSW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F E9" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pmullw",
+      "architecture": "x86",
+      "full_name": "Packed Multiply Low Word",
+      "summary": "Multiplies 16-bit words and stores low 16-bit result.",
+      "syntax": "PMULLW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F D5" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pmaddwd",
+      "architecture": "x86",
+      "full_name": "Packed Multiply and Add Word to Doubleword",
+      "summary": "Multiplies words, adds adjacent pairs to doublewords.",
+      "syntax": "PMADDWD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F F5" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pcmpgtb",
+      "architecture": "x86",
+      "full_name": "Packed Compare Greater Than Byte",
+      "summary": "Compares bytes for greater than (signed).",
+      "syntax": "PCMPGTB xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F 64" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pcmpgtw",
+      "architecture": "x86",
+      "full_name": "Packed Compare Greater Than Word",
+      "summary": "Compares words for greater than (signed).",
+      "syntax": "PCMPGTW xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F 65" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pcmpgtd",
+      "architecture": "x86",
+      "full_name": "Packed Compare Greater Than Doubleword",
+      "summary": "Compares doublewords for greater than (signed).",
+      "syntax": "PCMPGTD xmm1, xmm2/m128",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F 66" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pinsrw",
+      "architecture": "x86",
+      "full_name": "Packed Insert Word",
+      "summary": "Inserts a word from integer register into XMM.",
+      "syntax": "PINSRW xmm1, r32/m16, imm8",
+      "encoding": { "format": "SSE", "hex_opcode": "66 0F C4" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "pextrw",
+      "architecture": "x86",
+      "full_name": "Packed Extract Word",
+      "summary": "Extracts a word from XMM to integer register.",
+      "syntax": "PEXTRW r32, xmm1, imm8",
+      "encoding": { "format": "SSE", "hex_opcode": "66 0F C5" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "pshuflw",
+      "architecture": "x86",
+      "full_name": "Packed Shuffle Low Words",
+      "summary": "Shuffles the low 4 words of XMM.",
+      "syntax": "PSHUFLW xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "F2 0F 70" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "pshufhw",
+      "architecture": "x86",
+      "full_name": "Packed Shuffle High Words",
+      "summary": "Shuffles the high 4 words of XMM.",
+      "syntax": "PSHUFHW xmm1, xmm2/m128, imm8",
+      "encoding": { "format": "SSE2", "hex_opcode": "F3 0F 70" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "movntq",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Quadword",
+      "summary": "Stores 64-bit MMX data bypassing cache.",
+      "syntax": "MOVNTQ m64, mm",
+      "encoding": { "format": "SSE", "hex_opcode": "0F E7" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movntps",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Packed Single",
+      "summary": "Stores 128-bit float data bypassing cache.",
+      "syntax": "MOVNTPS m128, xmm",
+      "encoding": { "format": "SSE", "hex_opcode": "0F 2B" },
+      "extension": "SSE"
+    },
+    {
+      "mnemonic": "movntpd",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Packed Double",
+      "summary": "Stores 128-bit double data bypassing cache.",
+      "syntax": "MOVNTPD m128, xmm",
+      "encoding": { "format": "SSE2", "hex_opcode": "66 0F 2B" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "movnti",
+      "architecture": "x86",
+      "full_name": "Move Non-Temporal Integer",
+      "summary": "Stores integer register to memory bypassing cache.",
+      "syntax": "MOVNTI m32, r32",
+      "encoding": { "format": "SSE2", "hex_opcode": "0F C3" },
+      "extension": "SSE2"
+    },
+    {
+      "mnemonic": "cmpxchg16b",
+      "architecture": "x86",
+      "full_name": "Compare and Exchange 16 Bytes",
+      "summary": "Atomically compares 128-bit memory with RDX:RAX.",
+      "syntax": "CMPXCHG16B m128",
+      "encoding": { "format": "Base (64-bit)", "hex_opcode": "0F C7 /1" },
+      "extension": "Base (64-bit)"
+    },
+    {
+      "mnemonic": "movbe",
+      "architecture": "x86",
+      "full_name": "Move Big-Endian",
+      "summary": "Moves data swapping bytes (Big Endian load/store).",
+      "syntax": "MOVBE r, m",
+      "encoding": { "format": "Legacy", "hex_opcode": "0F 38 F0" },
+      "extension": "MOVBE"
+    },
+    {
+      "mnemonic": "blendvpd",
+      "architecture": "x86",
+      "full_name": "Variable Blend Packed Double",
+      "summary": "Blends doubles based on variable mask in XMM0.",
+      "syntax": "BLENDVPD xmm1, xmm2/m128, <XMM0>",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 15" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "blendvps",
+      "architecture": "x86",
+      "full_name": "Variable Blend Packed Single",
+      "summary": "Blends floats based on variable mask in XMM0.",
+      "syntax": "BLENDVPS xmm1, xmm2/m128, <XMM0>",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 14" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "pblendvb",
+      "architecture": "x86",
+      "full_name": "Variable Blend Packed Bytes",
+      "summary": "Blends bytes based on variable mask in XMM0.",
+      "syntax": "PBLENDVB xmm1, xmm2/m128, <XMM0>",
+      "encoding": { "format": "SSE4.1", "hex_opcode": "66 0F 38 10" },
+      "extension": "SSE4.1"
+    },
+    {
+      "mnemonic": "vmrun",
+      "architecture": "x86",
+      "full_name": "Run Virtual Machine",
+      "summary": "Switch to guest VM (AMD SVM).",
+      "syntax": "VMRUN",
+      "encoding": { "format": "SVM", "hex_opcode": "0F 01 D8" },
+      "extension": "SVM"
+    },
+    {
+      "mnemonic": "vmload",
+      "architecture": "x86",
+      "full_name": "Load State from VMCB",
+      "summary": "Loads processor state from VMCB (AMD SVM).",
+      "syntax": "VMLOAD",
+      "encoding": { "format": "SVM", "hex_opcode": "0F 01 DA" },
+      "extension": "SVM"
+    },
+    {
+      "mnemonic": "vmsave",
+      "architecture": "x86",
+      "full_name": "Save State to VMCB",
+      "summary": "Saves processor state to VMCB (AMD SVM).",
+      "syntax": "VMSAVE",
+      "encoding": { "format": "SVM", "hex_opcode": "0F 01 DB" },
+      "extension": "SVM"
+    },
+    {
+      "mnemonic": "clgi",
+      "architecture": "x86",
+      "full_name": "Clear Global Interrupt Flag",
+      "summary": "Disables global interrupts (AMD SVM).",
+      "syntax": "CLGI",
+      "encoding": { "format": "SVM", "hex_opcode": "0F 01 DD" },
+      "extension": "SVM"
+    },
+    {
+      "mnemonic": "stgi",
+      "architecture": "x86",
+      "full_name": "Set Global Interrupt Flag",
+      "summary": "Enables global interrupts (AMD SVM).",
+      "syntax": "STGI",
+      "encoding": { "format": "SVM", "hex_opcode": "0F 01 DC" },
+      "extension": "SVM"
+    },
+    {
+      "mnemonic": "invlpga",
+      "architecture": "x86",
+      "full_name": "Invalidate TLB Entry in ASID",
+      "summary": "Invalidates TLB entry for specific ASID (AMD SVM).",
+      "syntax": "INVLPGA",
+      "encoding": { "format": "SVM", "hex_opcode": "0F 01 DF" },
+      "extension": "SVM"
+    },
+    {
+      "mnemonic": "pfadd",
+      "architecture": "x86",
+      "full_name": "Packed Floating-Point Add",
+      "summary": "Adds two packed floats (3DNow!).",
+      "syntax": "PFADD mm, mm/m64",
+      "encoding": { "format": "3DNow!", "hex_opcode": "0F 0F /r 9E" },
+      "extension": "3DNow!"
+    },
+    {
+      "mnemonic": "pfsub",
+      "architecture": "x86",
+      "full_name": "Packed Floating-Point Subtract",
+      "summary": "Subtracts packed floats (3DNow!).",
+      "syntax": "PFSUB mm, mm/m64",
+      "encoding": { "format": "3DNow!", "hex_opcode": "0F 0F /r 9A" },
+      "extension": "3DNow!"
+    },
+    {
+      "mnemonic": "pfmul",
+      "architecture": "x86",
+      "full_name": "Packed Floating-Point Multiply",
+      "summary": "Multiplies packed floats (3DNow!).",
+      "syntax": "PFMUL mm, mm/m64",
+      "encoding": { "format": "3DNow!", "hex_opcode": "0F 0F /r B4" },
+      "extension": "3DNow!"
+    },
+    {
+      "mnemonic": "pfrcp",
+      "architecture": "x86",
+      "full_name": "Packed Floating-Point Reciprocal",
+      "summary": "Approximates reciprocal (3DNow!).",
+      "syntax": "PFRCP mm, mm/m64",
+      "encoding": { "format": "3DNow!", "hex_opcode": "0F 0F /r 96" },
+      "extension": "3DNow!"
+    },
+    {
+      "mnemonic": "pfrsqrt",
+      "architecture": "x86",
+      "full_name": "Packed Floating-Point Reciprocal Square Root",
+      "summary": "Approximates reciprocal sqrt (3DNow!).",
+      "syntax": "PFRSQRT mm, mm/m64",
+      "encoding": { "format": "3DNow!", "hex_opcode": "0F 0F /r 97" },
+      "extension": "3DNow!"
+    },
+    {
+      "mnemonic": "vaddsh",
+      "architecture": "x86",
+      "full_name": "Add Scalar Half-Precision",
+      "summary": "Adds low FP16 value.",
+      "syntax": "VADDSH xmm1 {k1}, xmm2, xmm3/m16",
+      "encoding": { "format": "EVEX", "hex_opcode": "58" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vsubsh",
+      "architecture": "x86",
+      "full_name": "Subtract Scalar Half-Precision",
+      "summary": "Subtracts low FP16 value.",
+      "syntax": "VSUBSH xmm1 {k1}, xmm2, xmm3/m16",
+      "encoding": { "format": "EVEX", "hex_opcode": "5C" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vmulsh",
+      "architecture": "x86",
+      "full_name": "Multiply Scalar Half-Precision",
+      "summary": "Multiplies low FP16 value.",
+      "syntax": "VMULSH xmm1 {k1}, xmm2, xmm3/m16",
+      "encoding": { "format": "EVEX", "hex_opcode": "59" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vdivsh",
+      "architecture": "x86",
+      "full_name": "Divide Scalar Half-Precision",
+      "summary": "Divides low FP16 value.",
+      "syntax": "VDIVSH xmm1 {k1}, xmm2, xmm3/m16",
+      "encoding": { "format": "EVEX", "hex_opcode": "5E" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vsqrtsh",
+      "architecture": "x86",
+      "full_name": "Square Root Scalar Half-Precision",
+      "summary": "Square root of low FP16 value.",
+      "syntax": "VSQRTSH xmm1 {k1}, xmm2/m16",
+      "encoding": { "format": "EVEX", "hex_opcode": "51" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vfmadd132sh",
+      "architecture": "x86",
+      "full_name": "Fused Multiply-Add Scalar Half-Precision (132)",
+      "summary": "Scalar FMA (Dest * Src2 + Src1) for FP16.",
+      "syntax": "VFMADD132SH xmm1 {k1}, xmm2, xmm3/m16",
+      "encoding": { "format": "EVEX", "hex_opcode": "99" },
+      "extension": "AVX512-FP16"
+    },
+    {
+      "mnemonic": "vpmullq",
+      "architecture": "x86",
+      "full_name": "Packed Multiply Low Quadword",
+      "summary": "Multiplies 64-bit integers and keeps low 64-bit result.",
+      "syntax": "VPMULLQ zmm1 {k1}, zmm2, zmm3/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 40" },
+      "extension": "AVX512DQ"
+    },
+    {
+      "mnemonic": "vpabsd",
+      "architecture": "x86",
+      "full_name": "Packed Absolute Value Doubleword",
+      "summary": "Computes absolute value of 32-bit integers.",
+      "syntax": "VPABSD zmm1 {k1}, zmm2/m512",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 38 1E" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "valignq",
+      "architecture": "x86",
+      "full_name": "Align Quadword Vectors",
+      "summary": "Extracts 512-bits from two concatenated ZMMs shifted by count.",
+      "syntax": "VALIGNQ zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 03" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vdbpsadbw",
+      "architecture": "x86",
+      "full_name": "Double Block Packed Sum-Absolute-Differences",
+      "summary": "Computes SAD on 16-bit blocks.",
+      "syntax": "VDBPSADBW zmm1 {k1}, zmm2, zmm3/m512, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 42" },
+      "extension": "AVX512BW"
+    },
+    {
+      "mnemonic": "vrangess",
+      "architecture": "x86",
+      "full_name": "Range Restriction Calculation Scalar Single",
+      "summary": "Calculates range (min/max/abs) of low float.",
+      "syntax": "VRANGESS xmm1 {k1}, xmm2, xmm3/m32, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 51" },
+      "extension": "AVX512DQ"
+    },
+    {
+      "mnemonic": "vfixupimmss",
+      "architecture": "x86",
+      "full_name": "Fix Up Special Scalar Float32 Value",
+      "summary": "Fixes special cases (NaN, Inf) in low float using table.",
+      "syntax": "VFIXUPIMMSS xmm1 {k1}, xmm2, xmm3/m32, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 55" },
+      "extension": "AVX512F"
+    },
+    {
+      "mnemonic": "vreducess",
+      "architecture": "x86",
+      "full_name": "Perform Reduction Transformation Scalar Single",
+      "summary": "Performs reduction on low float.",
+      "syntax": "VREDUCESS xmm1 {k1}, xmm2, xmm3/m32, imm8",
+      "encoding": { "format": "EVEX", "hex_opcode": "66 0F 3A 57" },
+      "extension": "AVX512DQ"
+    },
+    {
+      "mnemonic": "kandq",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical AND Masks Quadword",
+      "summary": "Bitwise AND of 64-bit mask registers.",
+      "syntax": "KANDQ k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 41" },
+      "extension": "AVX512BW"
+    },
+    {
+      "mnemonic": "korq",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical OR Masks Quadword",
+      "summary": "Bitwise OR of 64-bit mask registers.",
+      "syntax": "KORQ k1, k2, k3",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 45" },
+      "extension": "AVX512BW"
+    },
+    {
+      "mnemonic": "knotq",
+      "architecture": "x86",
+      "full_name": "Bitwise Logical NOT Masks Quadword",
+      "summary": "Bitwise NOT of 64-bit mask register.",
+      "syntax": "KNOTQ k1, k2",
+      "encoding": { "format": "EVEX", "hex_opcode": "0F 44" },
+      "extension": "AVX512BW"
+    },
+    {
+      "mnemonic": "aesimc",
+      "architecture": "x86",
+      "full_name": "AES Inverse Mix Columns",
+      "summary": "Performs AES InvMixColumns transformation (decryption helper).",
+      "syntax": "AESIMC xmm1, xmm2/m128",
+      "encoding": { "format": "AES-NI", "hex_opcode": "66 0F 38 DB" },
+      "extension": "AES-NI"
+    },
+    {
+      "mnemonic": "maskmovq",
+      "architecture": "x86",
+      "full_name": "Store Selected Bytes of Quadword",
+      "summary": "Non-temporal store of selected MMX bytes.",
+      "syntax": "MASKMOVQ mm1, mm2",
+      "encoding": { "format": "MMX", "hex_opcode": "0F F7" },
+      "extension": "MMX"
+    }
+  ]
+}

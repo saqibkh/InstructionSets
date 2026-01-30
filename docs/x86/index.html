@@ -233,6 +233,14 @@
 		    <td style="color: var(--text-muted);">Encrypts 8 blocks using 256-bit Key Locker handle.</td>
 		</tr>
 		
+        <tr onclick="window.location='aesimc/';" style="cursor: pointer;" data-extension="AES-NI">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">aesimc</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AESIMC xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">AES-NI</span></td>
+		    <td style="color: var(--text-muted);">Performs AES InvMixColumns transformation (decryption helper).</td>
+		</tr>
+		
         <tr onclick="window.location='aeskeygenassist/';" style="cursor: pointer;" data-extension="AES-NI">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">aeskeygenassist</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">AESKEYGENASSIST xmm1, xmm2/m128, imm8</td>
@@ -311,6 +319,22 @@
 
 		    <td><span class="badge">SSE4.1</span></td>
 		    <td style="color: var(--text-muted);">Selects floats from two sources based on immediate mask.</td>
+		</tr>
+		
+        <tr onclick="window.location='blendvpd/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">blendvpd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLENDVPD xmm1, xmm2/m128, &lt;XMM0&gt;</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Blends doubles based on variable mask in XMM0.</td>
+		</tr>
+		
+        <tr onclick="window.location='blendvps/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">blendvps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">BLENDVPS xmm1, xmm2/m128, &lt;XMM0&gt;</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Blends floats based on variable mask in XMM0.</td>
 		</tr>
 		
         <tr onclick="window.location='blsi/';" style="cursor: pointer;" data-extension="BMI1">
@@ -513,6 +537,14 @@
 		    <td style="color: var(--text-muted);">Optimized version of CLFLUSH (Higher throughput).</td>
 		</tr>
 		
+        <tr onclick="window.location='clgi/';" style="cursor: pointer;" data-extension="SVM">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">clgi</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CLGI</td>
+
+		    <td><span class="badge">SVM</span></td>
+		    <td style="color: var(--text-muted);">Disables global interrupts (AMD SVM).</td>
+		</tr>
+		
         <tr onclick="window.location='cli/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">cli</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CLI</td>
@@ -577,6 +609,54 @@
 		    <td style="color: var(--text-muted);">Moves data if condition code is met (e.g., CMOVE, CMOVNE).</td>
 		</tr>
 		
+        <tr onclick="window.location='cmovg/';" style="cursor: pointer;" data-extension="CMOV">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmovg</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVG r, r/m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Move if ZF=0 and SF=OF.</td>
+		</tr>
+		
+        <tr onclick="window.location='cmovge/';" style="cursor: pointer;" data-extension="CMOV">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmovge</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVGE r, r/m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Move if SF=OF.</td>
+		</tr>
+		
+        <tr onclick="window.location='cmovl/';" style="cursor: pointer;" data-extension="CMOV">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmovl</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVL r, r/m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Move if SF!=OF.</td>
+		</tr>
+		
+        <tr onclick="window.location='cmovle/';" style="cursor: pointer;" data-extension="CMOV">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmovle</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVLE r, r/m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Move if ZF=1 or SF!=OF.</td>
+		</tr>
+		
+        <tr onclick="window.location='cmovnz/';" style="cursor: pointer;" data-extension="CMOV">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmovnz</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVNZ r, r/m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Move if ZF=0.</td>
+		</tr>
+		
+        <tr onclick="window.location='cmovz/';" style="cursor: pointer;" data-extension="CMOV">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmovz</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMOVZ r, r/m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Move if ZF=1.</td>
+		</tr>
+		
         <tr onclick="window.location='cmp/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmp</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMP r/m, r</td>
@@ -601,6 +681,46 @@
 		    <td style="color: var(--text-muted);">Compares byte/word at [ESI] with [EDI].</td>
 		</tr>
 		
+        <tr onclick="window.location='cmpsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSD xmm1, xmm2/m64, imm8</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Compares low double-precision values and returns mask.</td>
+		</tr>
+		
+        <tr onclick="window.location='cmpsd_1/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSD</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Compares doubleword at [ESI] with [EDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='cmpsq/';" style="cursor: pointer;" data-extension="Base (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpsq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSQ</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Compares quadword at [RSI] with [RDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='cmpss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSS xmm1, xmm2/m32, imm8</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Compares low single-precision values and returns mask.</td>
+		</tr>
+		
+        <tr onclick="window.location='cmpsw/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPSW</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Compares word at [ESI] with [EDI].</td>
+		</tr>
+		
         <tr onclick="window.location='cmpxchg/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpxchg</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPXCHG r/m, r</td>
@@ -609,12 +729,36 @@
 		    <td style="color: var(--text-muted);">Compares accumulator with dest; if equal, dest = src; else accumulator = dest.</td>
 		</tr>
 		
+        <tr onclick="window.location='cmpxchg16b/';" style="cursor: pointer;" data-extension="Base (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpxchg16b</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPXCHG16B m128</td>
+
+		    <td><span class="badge">Base (64-bit)</span></td>
+		    <td style="color: var(--text-muted);">Atomically compares 128-bit memory with RDX:RAX.</td>
+		</tr>
+		
         <tr onclick="window.location='cmpxchg8b/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">cmpxchg8b</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CMPXCHG8B m64</td>
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Atomically compares EDX:EAX with memory; swaps if equal.</td>
+		</tr>
+		
+        <tr onclick="window.location='comisd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">comisd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">COMISD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Compares low double and sets EFLAGS (Signaling NaN raises exception).</td>
+		</tr>
+		
+        <tr onclick="window.location='comiss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">comiss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">COMISS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Compares low float and sets EFLAGS (Signaling NaN raises exception).</td>
 		</tr>
 		
         <tr onclick="window.location='cpuid/';" style="cursor: pointer;" data-extension="Base">
@@ -639,6 +783,38 @@
 
 		    <td><span class="badge">SSE4.2</span></td>
 		    <td style="color: var(--text-muted);">Accumulates CRC32C (Castagnoli) value.</td>
+		</tr>
+		
+        <tr onclick="window.location='cvtdq2ps/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtdq2ps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTDQ2PS xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts four 32-bit integers to floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='cvtpd2ps/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtpd2ps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTPD2PS xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts two doubles to two floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='cvtps2dq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtps2dq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTPS2DQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts four floats to 32-bit integers (Rounded).</td>
+		</tr>
+		
+        <tr onclick="window.location='cvtps2pd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvtps2pd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTPS2PD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts lower two floats to doubles.</td>
 		</tr>
 		
         <tr onclick="window.location='cvtsd2ss/';" style="cursor: pointer;" data-extension="SSE2">
@@ -671,6 +847,22 @@
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Converts float to double.</td>
+		</tr>
+		
+        <tr onclick="window.location='cvttps2dq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvttps2dq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTTPS2DQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts four floats to 32-bit integers (Truncated).</td>
+		</tr>
+		
+        <tr onclick="window.location='cvttps2pi/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">cvttps2pi</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">CVTTPS2PI mm, xmm/m64</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Converts packed floats to packed MMX integers (Truncate).</td>
 		</tr>
 		
         <tr onclick="window.location='cvttsd2si/';" style="cursor: pointer;" data-extension="SSE2">
@@ -751,6 +943,22 @@
 
 		    <td><span class="badge">SSE</span></td>
 		    <td style="color: var(--text-muted);">Divides four 32-bit floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='divsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">divsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVSD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Divides the low double-precision floating-point value.</td>
+		</tr>
+		
+        <tr onclick="window.location='divss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">divss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">DIVSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Divides the low single-precision floating-point value.</td>
 		</tr>
 		
         <tr onclick="window.location='dpps/';" style="cursor: pointer;" data-extension="SSE4.1">
@@ -889,6 +1097,70 @@
 		    <td style="color: var(--text-muted);">Clears floating-point exception flags.</td>
 		</tr>
 		
+        <tr onclick="window.location='fcmovb/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmovb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVB ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if CF=1.</td>
+		</tr>
+		
+        <tr onclick="window.location='fcmovbe/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmovbe</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVBE ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if CF=1 or ZF=1.</td>
+		</tr>
+		
+        <tr onclick="window.location='fcmove/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmove</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVE ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if ZF=1.</td>
+		</tr>
+		
+        <tr onclick="window.location='fcmovnb/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmovnb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNB ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if CF=0.</td>
+		</tr>
+		
+        <tr onclick="window.location='fcmovnbe/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmovnbe</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNBE ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if CF=0 and ZF=0.</td>
+		</tr>
+		
+        <tr onclick="window.location='fcmovne/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmovne</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNE ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if ZF=0.</td>
+		</tr>
+		
+        <tr onclick="window.location='fcmovnu/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmovnu</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVNU ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if PF=0.</td>
+		</tr>
+		
+        <tr onclick="window.location='fcmovu/';" style="cursor: pointer;" data-extension="x87 FPU (P6+)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcmovu</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCMOVU ST(0), ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves ST(i) to ST(0) if PF=1.</td>
+		</tr>
+		
         <tr onclick="window.location='fcom/';" style="cursor: pointer;" data-extension="x87 FPU">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">fcom</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FCOM m32fp/m64fp</td>
@@ -913,6 +1185,14 @@
 		    <td style="color: var(--text-muted);">Computes cosine of ST(0) (in radians).</td>
 		</tr>
 		
+        <tr onclick="window.location='fdecstp/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fdecstp</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FDECSTP</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Decrements the TOP field in the FPU status word.</td>
+		</tr>
+		
         <tr onclick="window.location='fdiv/';" style="cursor: pointer;" data-extension="x87 FPU">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">fdiv</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FDIV m32fp/m64fp</td>
@@ -921,12 +1201,28 @@
 		    <td style="color: var(--text-muted);">Divides dest by src.</td>
 		</tr>
 		
+        <tr onclick="window.location='ffree/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">ffree</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FFREE ST(i)</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Sets the tag for ST(i) to empty.</td>
+		</tr>
+		
         <tr onclick="window.location='fild/';" style="cursor: pointer;" data-extension="x87 FPU">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">fild</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FILD m16int/m32int/m64int</td>
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Converts integer in memory to double-extended-precision float and pushes to ST(0).</td>
+		</tr>
+		
+        <tr onclick="window.location='fincstp/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fincstp</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FINCSTP</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Increments the TOP field in the FPU status word.</td>
 		</tr>
 		
         <tr onclick="window.location='finit/';" style="cursor: pointer;" data-extension="x87 FPU">
@@ -961,12 +1257,68 @@
 		    <td style="color: var(--text-muted);">Pushes a floating-point value onto the FPU register stack (ST0).</td>
 		</tr>
 		
+        <tr onclick="window.location='fld1/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fld1</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLD1</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Pushes +1.0 onto the FPU register stack.</td>
+		</tr>
+		
         <tr onclick="window.location='fldcw/';" style="cursor: pointer;" data-extension="x87 FPU">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">fldcw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDCW m2byte</td>
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Loads FPU control word from memory.</td>
+		</tr>
+		
+        <tr onclick="window.location='fldl2e/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fldl2e</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDL2E</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Pushes log2(e) onto the FPU register stack.</td>
+		</tr>
+		
+        <tr onclick="window.location='fldl2t/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fldl2t</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDL2T</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Pushes log2(10) onto the FPU register stack.</td>
+		</tr>
+		
+        <tr onclick="window.location='fldlg2/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fldlg2</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDLG2</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Pushes log10(2) onto the FPU register stack.</td>
+		</tr>
+		
+        <tr onclick="window.location='fldln2/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fldln2</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDLN2</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Pushes ln(2) onto the FPU register stack.</td>
+		</tr>
+		
+        <tr onclick="window.location='fldpi/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fldpi</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDPI</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Pushes Pi onto the FPU register stack.</td>
+		</tr>
+		
+        <tr onclick="window.location='fldz/';" style="cursor: pointer;" data-extension="x87 FPU">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">fldz</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">FLDZ</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Pushes +0.0 onto the FPU register stack.</td>
 		</tr>
 		
         <tr onclick="window.location='fmul/';" style="cursor: pointer;" data-extension="x87 FPU">
@@ -1241,12 +1593,28 @@
 		    <td style="color: var(--text-muted);">Reads string from I/O port to memory at [EDI].</td>
 		</tr>
 		
+        <tr onclick="window.location='insd/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">insd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INSD</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Reads doubleword from I/O port to memory at [EDI].</td>
+		</tr>
+		
         <tr onclick="window.location='insertps/';" style="cursor: pointer;" data-extension="SSE4.1">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">insertps</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INSERTPS xmm1, xmm2/m32, imm8</td>
 
 		    <td><span class="badge">SSE4.1</span></td>
 		    <td style="color: var(--text-muted);">Inserts a float into XMM from another XMM or memory.</td>
+		</tr>
+		
+        <tr onclick="window.location='insw/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">insw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INSW</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Reads word from I/O port to memory at [EDI].</td>
 		</tr>
 		
         <tr onclick="window.location='int/';" style="cursor: pointer;" data-extension="Base">
@@ -1289,6 +1657,14 @@
 		    <td style="color: var(--text-muted);">Invalidates a specific TLB entry (Privileged).</td>
 		</tr>
 		
+        <tr onclick="window.location='invlpga/';" style="cursor: pointer;" data-extension="SVM">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">invlpga</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INVLPGA</td>
+
+		    <td><span class="badge">SVM</span></td>
+		    <td style="color: var(--text-muted);">Invalidates TLB entry for specific ASID (AMD SVM).</td>
+		</tr>
+		
         <tr onclick="window.location='invpcid/';" style="cursor: pointer;" data-extension="INVPCID">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">invpcid</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">INVPCID r32, m128</td>
@@ -1303,6 +1679,14 @@
 
 		    <td><span class="badge">VMX</span></td>
 		    <td style="color: var(--text-muted);">Invalidates TLB entries based on Virtual Processor ID.</td>
+		</tr>
+		
+        <tr onclick="window.location='iret/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">iret</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">IRET</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Returns from an interrupt, exception, or task handler.</td>
 		</tr>
 		
         <tr onclick="window.location='ja/';" style="cursor: pointer;" data-extension="Base">
@@ -1369,12 +1753,84 @@
 		    <td style="color: var(--text-muted);">Jump if ZF=0 (Same as JNZ).</td>
 		</tr>
 		
+        <tr onclick="window.location='jno/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">jno</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JNO rel</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Jump near if overflow flag is 0.</td>
+		</tr>
+		
+        <tr onclick="window.location='jnp/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">jnp</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JNP rel</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Jump near if parity flag is 0 (Odd parity).</td>
+		</tr>
+		
+        <tr onclick="window.location='jns/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">jns</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JNS rel</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Jump near if sign flag is 0 (Positive).</td>
+		</tr>
+		
+        <tr onclick="window.location='jo/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">jo</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JO rel</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Jump near if overflow flag is 1.</td>
+		</tr>
+		
+        <tr onclick="window.location='jp/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">jp</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JP rel</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Jump near if parity flag is 1 (Even parity).</td>
+		</tr>
+		
+        <tr onclick="window.location='js/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">js</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">JS rel</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Jump near if sign flag is 1 (Negative).</td>
+		</tr>
+		
+        <tr onclick="window.location='kaddb/';" style="cursor: pointer;" data-extension="AVX-512DQ">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">kaddb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KADDB k1, k2, k3</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Adds two 8-bit mask registers.</td>
+		</tr>
+		
+        <tr onclick="window.location='kaddw/';" style="cursor: pointer;" data-extension="AVX-512DQ">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">kaddw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KADDW k1, k2, k3</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Adds two 16-bit mask registers.</td>
+		</tr>
+		
         <tr onclick="window.location='kandnw/';" style="cursor: pointer;" data-extension="AVX-512">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">kandnw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KANDNW k1, k2, k3</td>
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Bitwise AND NOT of 16-bit masks.</td>
+		</tr>
+		
+        <tr onclick="window.location='kandq/';" style="cursor: pointer;" data-extension="AVX512BW">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">kandq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KANDQ k1, k2, k3</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Bitwise AND of 64-bit mask registers.</td>
 		</tr>
 		
         <tr onclick="window.location='kandw/';" style="cursor: pointer;" data-extension="AVX-512">
@@ -1401,12 +1857,28 @@
 		    <td style="color: var(--text-muted);">Moves 16-bit mask to/from k-register.</td>
 		</tr>
 		
+        <tr onclick="window.location='knotq/';" style="cursor: pointer;" data-extension="AVX512BW">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">knotq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KNOTQ k1, k2</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Bitwise NOT of 64-bit mask register.</td>
+		</tr>
+		
         <tr onclick="window.location='knotw/';" style="cursor: pointer;" data-extension="AVX-512">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">knotw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KNOTW k1, k2</td>
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Bitwise NOT of 16-bit mask.</td>
+		</tr>
+		
+        <tr onclick="window.location='korq/';" style="cursor: pointer;" data-extension="AVX512BW">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">korq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KORQ k1, k2, k3</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Bitwise OR of 64-bit mask registers.</td>
 		</tr>
 		
         <tr onclick="window.location='kortestw/';" style="cursor: pointer;" data-extension="AVX-512">
@@ -1423,6 +1895,14 @@
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Bitwise OR of 16-bit masks.</td>
+		</tr>
+		
+        <tr onclick="window.location='kunpckbw/';" style="cursor: pointer;" data-extension="AVX-512">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">kunpckbw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">KUNPCKBW k1, k2, k3</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Interleaves 8-bit masks into 16-bit mask.</td>
 		</tr>
 		
         <tr onclick="window.location='kxorw/';" style="cursor: pointer;" data-extension="AVX-512">
@@ -1585,6 +2065,30 @@
 		    <td style="color: var(--text-muted);">Loads byte/word/dword from [ESI] into AL/AX/EAX.</td>
 		</tr>
 		
+        <tr onclick="window.location='lodsd/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">lodsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LODSD</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Loads doubleword from [ESI] into EAX.</td>
+		</tr>
+		
+        <tr onclick="window.location='lodsq/';" style="cursor: pointer;" data-extension="Base (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">lodsq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LODSQ</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Loads quadword from [RSI] into RAX.</td>
+		</tr>
+		
+        <tr onclick="window.location='lodsw/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">lodsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LODSW</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Loads word from [ESI] into AX.</td>
+		</tr>
+		
         <tr onclick="window.location='loop/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">loop</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">LOOP rel</td>
@@ -1649,12 +2153,36 @@
 		    <td style="color: var(--text-muted);">Non-temporal store of selected bytes (masked).</td>
 		</tr>
 		
+        <tr onclick="window.location='maskmovq/';" style="cursor: pointer;" data-extension="MMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">maskmovq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MASKMOVQ mm1, mm2</td>
+
+		    <td><span class="badge">MMX</span></td>
+		    <td style="color: var(--text-muted);">Non-temporal store of selected MMX bytes.</td>
+		</tr>
+		
         <tr onclick="window.location='maxps/';" style="cursor: pointer;" data-extension="SSE">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">maxps</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MAXPS xmm, xmm/m128</td>
 
 		    <td><span class="badge">SSE</span></td>
 		    <td style="color: var(--text-muted);">Returns maximum of packed floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='maxsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">maxsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MAXSD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Returns the maximum of two low double-precision values.</td>
+		</tr>
+		
+        <tr onclick="window.location='maxss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">maxss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MAXSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Returns the maximum of two low single-precision values.</td>
 		</tr>
 		
         <tr onclick="window.location='mfence/';" style="cursor: pointer;" data-extension="SSE2">
@@ -1671,6 +2199,22 @@
 
 		    <td><span class="badge">SSE</span></td>
 		    <td style="color: var(--text-muted);">Returns minimum of packed floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='minsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">minsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MINSD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Returns the minimum of two low double-precision values.</td>
+		</tr>
+		
+        <tr onclick="window.location='minss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">minss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MINSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Returns the minimum of two low single-precision values.</td>
 		</tr>
 		
         <tr onclick="window.location='monitor/';" style="cursor: pointer;" data-extension="SSE3">
@@ -1721,6 +2265,14 @@
 		    <td style="color: var(--text-muted);">Moves 128-bit packed float data (Must be 16-byte aligned).</td>
 		</tr>
 		
+        <tr onclick="window.location='movbe/';" style="cursor: pointer;" data-extension="MOVBE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movbe</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVBE r, m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves data swapping bytes (Big Endian load/store).</td>
+		</tr>
+		
         <tr onclick="window.location='movd/';" style="cursor: pointer;" data-extension="MMX/SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">movd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVD mm/xmm, r32/m32</td>
@@ -1769,12 +2321,100 @@
 		    <td style="color: var(--text-muted);">Moves 128-bit integer data (Unaligned).</td>
 		</tr>
 		
+        <tr onclick="window.location='movmskpd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movmskpd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVMSKPD r32, xmm</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Extracts sign bits from two doubles into low 2 bits of register.</td>
+		</tr>
+		
+        <tr onclick="window.location='movmskps/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movmskps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVMSKPS r32, xmm</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Extracts sign bits from four floats into low 4 bits of register.</td>
+		</tr>
+		
+        <tr onclick="window.location='movnti/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movnti</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTI m32, r32</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Stores integer register to memory bypassing cache.</td>
+		</tr>
+		
+        <tr onclick="window.location='movntpd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movntpd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTPD m128, xmm</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Stores 128-bit double data bypassing cache.</td>
+		</tr>
+		
+        <tr onclick="window.location='movntps/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movntps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTPS m128, xmm</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Stores 128-bit float data bypassing cache.</td>
+		</tr>
+		
+        <tr onclick="window.location='movntq/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movntq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVNTQ m64, mm</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Stores 64-bit MMX data bypassing cache.</td>
+		</tr>
+		
         <tr onclick="window.location='movq/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">movq</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVQ xmm, xmm/m64</td>
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Moves 64 bits between XMM registers or memory.</td>
+		</tr>
+		
+        <tr onclick="window.location='movsd/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSD</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves doubleword from [ESI] to [EDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='movshdup/';" style="cursor: pointer;" data-extension="SSE3">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movshdup</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSHDUP xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE3</span></td>
+		    <td style="color: var(--text-muted);">Duplicates high element of each qword pair.</td>
+		</tr>
+		
+        <tr onclick="window.location='movsldup/';" style="cursor: pointer;" data-extension="SSE3">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsldup</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSLDUP xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE3</span></td>
+		    <td style="color: var(--text-muted);">Duplicates low element of each qword pair.</td>
+		</tr>
+		
+        <tr onclick="window.location='movsq/';" style="cursor: pointer;" data-extension="Base (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSQ</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves quadword from [RSI] to [RDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='movsw/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">movsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MOVSW</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Moves word from [ESI] to [EDI].</td>
 		</tr>
 		
         <tr onclick="window.location='movsx/';" style="cursor: pointer;" data-extension="Base">
@@ -1809,6 +2449,14 @@
 		    <td style="color: var(--text-muted);">Copies and zero-extends a smaller value to a larger register.</td>
 		</tr>
 		
+        <tr onclick="window.location='mpsadbw/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">mpsadbw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MPSADBW xmm1, xmm2/m128, imm8</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Computes multiple SADs of byte blocks.</td>
+		</tr>
+		
         <tr onclick="window.location='mul/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">mul</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MUL r/m</td>
@@ -1831,6 +2479,22 @@
 
 		    <td><span class="badge">SSE</span></td>
 		    <td style="color: var(--text-muted);">Multiplies four 32-bit floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='mulsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">mulsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULSD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Multiplies the low double-precision floating-point value.</td>
+		</tr>
+		
+        <tr onclick="window.location='mulss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">mulss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">MULSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Multiplies the low single-precision floating-point value.</td>
 		</tr>
 		
         <tr onclick="window.location='mulx/';" style="cursor: pointer;" data-extension="BMI2">
@@ -1905,6 +2569,22 @@
 		    <td style="color: var(--text-muted);">Writes string from memory at [ESI] to I/O port.</td>
 		</tr>
 		
+        <tr onclick="window.location='outsd/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">outsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">OUTSD</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Writes doubleword from memory at [ESI] to I/O port.</td>
+		</tr>
+		
+        <tr onclick="window.location='outsw/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">outsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">OUTSW</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Writes word from memory at [ESI] to I/O port.</td>
+		</tr>
+		
         <tr onclick="window.location='pabsb/';" style="cursor: pointer;" data-extension="SSSE3">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pabsb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PABSB xmm1, xmm2/m128</td>
@@ -1927,6 +2607,22 @@
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Converts words to bytes with saturation.</td>
+		</tr>
+		
+        <tr onclick="window.location='packusdw/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">packusdw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PACKUSDW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Converts signed dwords to unsigned words with saturation.</td>
+		</tr>
+		
+        <tr onclick="window.location='packuswb/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">packuswb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PACKUSWB xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Converts signed words to unsigned bytes with saturation.</td>
 		</tr>
 		
         <tr onclick="window.location='paddb/';" style="cursor: pointer;" data-extension="SSE2">
@@ -1961,12 +2657,28 @@
 		    <td style="color: var(--text-muted);">Adds 16 signed bytes with saturation.</td>
 		</tr>
 		
+        <tr onclick="window.location='paddsw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDSW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Adds 16-bit words with signed saturation.</td>
+		</tr>
+		
         <tr onclick="window.location='paddusb/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddusb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSB xmm, xmm/m128</td>
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Adds 16 unsigned bytes with saturation.</td>
+		</tr>
+		
+        <tr onclick="window.location='paddusw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">paddusw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PADDUSW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Adds 16-bit words with unsigned saturation.</td>
 		</tr>
 		
         <tr onclick="window.location='paddw/';" style="cursor: pointer;" data-extension="SSE2">
@@ -1999,6 +2711,30 @@
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Improves performance of spin-wait loops (alias for REP NOP).</td>
+		</tr>
+		
+        <tr onclick="window.location='pavgb/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pavgb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAVGB xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Averages packed unsigned bytes (rounded up).</td>
+		</tr>
+		
+        <tr onclick="window.location='pavgw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pavgw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PAVGW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Averages packed unsigned words (rounded up).</td>
+		</tr>
+		
+        <tr onclick="window.location='pblendvb/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pblendvb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PBLENDVB xmm1, xmm2/m128, &lt;XMM0&gt;</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Blends bytes based on variable mask in XMM0.</td>
 		</tr>
 		
         <tr onclick="window.location='pblendw/';" style="cursor: pointer;" data-extension="SSE4.1">
@@ -2065,6 +2801,30 @@
 		    <td style="color: var(--text-muted);">String compare/search, returns mask (XMM0).</td>
 		</tr>
 		
+        <tr onclick="window.location='pcmpgtb/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTB xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Compares bytes for greater than (signed).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpgtd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTD xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Compares doublewords for greater than (signed).</td>
+		</tr>
+		
+        <tr onclick="window.location='pcmpgtw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pcmpgtw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCMPGTW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Compares words for greater than (signed).</td>
+		</tr>
+		
         <tr onclick="window.location='pconfig/';" style="cursor: pointer;" data-extension="PCONFIG">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pconfig</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PCONFIG</td>
@@ -2097,12 +2857,84 @@
 		    <td style="color: var(--text-muted);">Extracts a byte from XMM to integer register.</td>
 		</tr>
 		
+        <tr onclick="window.location='pextrw/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pextrw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PEXTRW r32, xmm1, imm8</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Extracts a word from XMM to integer register.</td>
+		</tr>
+		
+        <tr onclick="window.location='pfadd/';" style="cursor: pointer;" data-extension="3DNow!">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pfadd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFADD mm, mm/m64</td>
+
+		    <td><span class="badge">3DNow!</span></td>
+		    <td style="color: var(--text-muted);">Adds two packed floats (3DNow!).</td>
+		</tr>
+		
+        <tr onclick="window.location='pfmul/';" style="cursor: pointer;" data-extension="3DNow!">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pfmul</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFMUL mm, mm/m64</td>
+
+		    <td><span class="badge">3DNow!</span></td>
+		    <td style="color: var(--text-muted);">Multiplies packed floats (3DNow!).</td>
+		</tr>
+		
+        <tr onclick="window.location='pfrcp/';" style="cursor: pointer;" data-extension="3DNow!">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pfrcp</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFRCP mm, mm/m64</td>
+
+		    <td><span class="badge">3DNow!</span></td>
+		    <td style="color: var(--text-muted);">Approximates reciprocal (3DNow!).</td>
+		</tr>
+		
+        <tr onclick="window.location='pfrsqrt/';" style="cursor: pointer;" data-extension="3DNow!">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pfrsqrt</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFRSQRT mm, mm/m64</td>
+
+		    <td><span class="badge">3DNow!</span></td>
+		    <td style="color: var(--text-muted);">Approximates reciprocal sqrt (3DNow!).</td>
+		</tr>
+		
+        <tr onclick="window.location='pfsub/';" style="cursor: pointer;" data-extension="3DNow!">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pfsub</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PFSUB mm, mm/m64</td>
+
+		    <td><span class="badge">3DNow!</span></td>
+		    <td style="color: var(--text-muted);">Subtracts packed floats (3DNow!).</td>
+		</tr>
+		
         <tr onclick="window.location='phaddw/';" style="cursor: pointer;" data-extension="SSSE3">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">phaddw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHADDW xmm1, xmm2/m128</td>
 
 		    <td><span class="badge">SSSE3</span></td>
 		    <td style="color: var(--text-muted);">Adds adjacent 16-bit integers horizontally.</td>
+		</tr>
+		
+        <tr onclick="window.location='phminposuw/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">phminposuw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHMINPOSUW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Finds minimum word and its index.</td>
+		</tr>
+		
+        <tr onclick="window.location='phsubd/';" style="cursor: pointer;" data-extension="SSSE3">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">phsubd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHSUBD xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSSE3</span></td>
+		    <td style="color: var(--text-muted);">Subtracts adjacent 32-bit integers horizontally.</td>
+		</tr>
+		
+        <tr onclick="window.location='phsubw/';" style="cursor: pointer;" data-extension="SSSE3">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">phsubw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PHSUBW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSSE3</span></td>
+		    <td style="color: var(--text-muted);">Subtracts adjacent 16-bit integers horizontally.</td>
 		</tr>
 		
         <tr onclick="window.location='pinsrb/';" style="cursor: pointer;" data-extension="SSE4.1">
@@ -2113,12 +2945,76 @@
 		    <td style="color: var(--text-muted);">Inserts a byte from integer register into XMM.</td>
 		</tr>
 		
+        <tr onclick="window.location='pinsrw/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pinsrw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PINSRW xmm1, r32/m16, imm8</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Inserts a word from integer register into XMM.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmaddubsw/';" style="cursor: pointer;" data-extension="SSSE3">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmaddubsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMADDUBSW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSSE3</span></td>
+		    <td style="color: var(--text-muted);">Multiplies signed/unsigned bytes and adds pairs to words.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmaddwd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmaddwd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMADDWD xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Multiplies words, adds adjacent pairs to doublewords.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmaxsw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmaxsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMAXSW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Returns maximum of signed words.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmaxub/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmaxub</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMAXUB xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Returns maximum of unsigned bytes.</td>
+		</tr>
+		
+        <tr onclick="window.location='pminsw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pminsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMINSW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Returns minimum of signed words.</td>
+		</tr>
+		
+        <tr onclick="window.location='pminub/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pminub</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMINUB xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Returns minimum of unsigned bytes.</td>
+		</tr>
+		
         <tr onclick="window.location='pmovmskb/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovmskb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVMSKB r32, xmm</td>
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Creates a mask from the MSB of each byte in XMM.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovsxbq/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovsxbq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXBQ xmm1, xmm2/m16</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Sign extends 8-bit integers to 64-bit.</td>
 		</tr>
 		
         <tr onclick="window.location='pmovsxbw/';" style="cursor: pointer;" data-extension="SSE4.1">
@@ -2129,12 +3025,76 @@
 		    <td style="color: var(--text-muted);">Sign extends 8-bit integers to 16-bit.</td>
 		</tr>
 		
+        <tr onclick="window.location='pmovsxdq/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovsxdq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXDQ xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Sign extends 32-bit integers to 64-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovsxwd/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovsxwd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXWD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Sign extends 16-bit integers to 32-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovsxwq/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovsxwq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVSXWQ xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Sign extends 16-bit integers to 64-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovzxbd/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovzxbd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXBD xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Zero extends 8-bit integers to 32-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovzxbq/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovzxbq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXBQ xmm1, xmm2/m16</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Zero extends 8-bit integers to 64-bit.</td>
+		</tr>
+		
         <tr onclick="window.location='pmovzxbw/';" style="cursor: pointer;" data-extension="SSE4.1">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovzxbw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXBW xmm1, xmm2/m64</td>
 
 		    <td><span class="badge">SSE4.1</span></td>
 		    <td style="color: var(--text-muted);">Zero extends 8-bit integers to 16-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovzxdq/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovzxdq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXDQ xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Zero extends 32-bit integers to 64-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovzxwd/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovzxwd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXWD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Zero extends 16-bit integers to 32-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmovzxwq/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmovzxwq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMOVZXWQ xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Zero extends 16-bit integers to 64-bit.</td>
 		</tr>
 		
         <tr onclick="window.location='pmulhrsw/';" style="cursor: pointer;" data-extension="SSSE3">
@@ -2145,12 +3105,44 @@
 		    <td style="color: var(--text-muted);">Multiplies signed 16-bit words, rounds, and scales.</td>
 		</tr>
 		
+        <tr onclick="window.location='pmulhuw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmulhuw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULHUW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Multiplies unsigned words, keeps high 16 bits.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmulhw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmulhw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULHW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Multiplies signed words, keeps high 16 bits.</td>
+		</tr>
+		
         <tr onclick="window.location='pmulld/';" style="cursor: pointer;" data-extension="SSE4.1">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmulld</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLD xmm1, xmm2/m128</td>
 
 		    <td><span class="badge">SSE4.1</span></td>
 		    <td style="color: var(--text-muted);">Multiplies 32-bit integers, stores low 32-bit result.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmullw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmullw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULLW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Multiplies 16-bit words and stores low 16-bit result.</td>
+		</tr>
+		
+        <tr onclick="window.location='pmuludq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pmuludq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PMULUDQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Multiplies low 32-bits of each 64-bit chunk to 64-bit result.</td>
 		</tr>
 		
         <tr onclick="window.location='pop/';" style="cursor: pointer;" data-extension="Base">
@@ -2225,6 +3217,14 @@
 		    <td style="color: var(--text-muted);">Prefetches data to L2 (T1 hint) with intent to write.</td>
 		</tr>
 		
+        <tr onclick="window.location='psadbw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psadbw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSADBW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Computes absolute differences of bytes and sums them to words.</td>
+		</tr>
+		
         <tr onclick="window.location='pshufb/';" style="cursor: pointer;" data-extension="SSSE3">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">pshufb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSHUFB xmm1, xmm2/m128</td>
@@ -2241,6 +3241,22 @@
 		    <td style="color: var(--text-muted);">Shuffles 32-bit integers.</td>
 		</tr>
 		
+        <tr onclick="window.location='pshufhw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pshufhw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSHUFHW xmm1, xmm2/m128, imm8</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Shuffles the high 4 words of XMM.</td>
+		</tr>
+		
+        <tr onclick="window.location='pshuflw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pshuflw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSHUFLW xmm1, xmm2/m128, imm8</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Shuffles the low 4 words of XMM.</td>
+		</tr>
+		
         <tr onclick="window.location='psignb/';" style="cursor: pointer;" data-extension="SSSE3">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psignb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSIGNB xmm1, xmm2/m128</td>
@@ -2255,6 +3271,14 @@
 
 		    <td><span class="badge">SSE2</span></td>
 		    <td style="color: var(--text-muted);">Shifts doublewords left.</td>
+		</tr>
+		
+        <tr onclick="window.location='pslldq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">pslldq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSLLDQ xmm1, imm8</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Shifts the entire 128-bit register left by bytes.</td>
 		</tr>
 		
         <tr onclick="window.location='psllw/';" style="cursor: pointer;" data-extension="SSE2">
@@ -2289,6 +3313,14 @@
 		    <td style="color: var(--text-muted);">Shifts doublewords right logical.</td>
 		</tr>
 		
+        <tr onclick="window.location='psrldq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrldq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLDQ xmm1, imm8</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Shifts the entire 128-bit register right by bytes.</td>
+		</tr>
+		
         <tr onclick="window.location='psrlw/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psrlw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSRLW xmm, imm8</td>
@@ -2313,6 +3345,30 @@
 		    <td style="color: var(--text-muted);">Subtracts 4 doublewords.</td>
 		</tr>
 		
+        <tr onclick="window.location='psubq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Subtracts packed quadwords.</td>
+		</tr>
+		
+        <tr onclick="window.location='psubsw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubsw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBSW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Subtracts 16-bit words with signed saturation.</td>
+		</tr>
+		
+        <tr onclick="window.location='psubusw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubusw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBUSW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Subtracts 16-bit words with unsigned saturation.</td>
+		</tr>
+		
         <tr onclick="window.location='psubw/';" style="cursor: pointer;" data-extension="SSE2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">psubw</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PSUBW xmm, xmm/m128</td>
@@ -2335,6 +3391,38 @@
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Writes data to the Intel Processor Trace stream.</td>
+		</tr>
+		
+        <tr onclick="window.location='punpckhbw/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">punpckhbw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHBW xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Interleaves high bytes from two sources.</td>
+		</tr>
+		
+        <tr onclick="window.location='punpckhdq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">punpckhdq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHDQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Interleaves high doublewords.</td>
+		</tr>
+		
+        <tr onclick="window.location='punpckhqdq/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">punpckhqdq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHQDQ xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Interleaves high quadwords.</td>
+		</tr>
+		
+        <tr onclick="window.location='punpckhwd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">punpckhwd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">PUNPCKHWD xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Interleaves high words.</td>
 		</tr>
 		
         <tr onclick="window.location='punpcklbw/';" style="cursor: pointer;" data-extension="SSE2">
@@ -2415,6 +3503,14 @@
 
 		    <td><span class="badge">SSE</span></td>
 		    <td style="color: var(--text-muted);">Approximate reciprocal (1/x) of four 32-bit floats.</td>
+		</tr>
+		
+        <tr onclick="window.location='rcpss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">rcpss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RCPSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Computes approximate reciprocal (1/x) of low float.</td>
 		</tr>
 		
         <tr onclick="window.location='rcr/';" style="cursor: pointer;" data-extension="Base">
@@ -2585,6 +3681,22 @@
 		    <td style="color: var(--text-muted);">Rounds floats according to immediate mode (ceil/floor/trunc).</td>
 		</tr>
 		
+        <tr onclick="window.location='roundsd/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">roundsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ROUNDSD xmm1, xmm2/m64, imm8</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Rounds low double according to immediate mode.</td>
+		</tr>
+		
+        <tr onclick="window.location='roundss/';" style="cursor: pointer;" data-extension="SSE4.1">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">roundss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">ROUNDSS xmm1, xmm2/m32, imm8</td>
+
+		    <td><span class="badge">SSE4.1</span></td>
+		    <td style="color: var(--text-muted);">Rounds low float according to immediate mode.</td>
+		</tr>
+		
         <tr onclick="window.location='rsm/';" style="cursor: pointer;" data-extension="System (SMM)">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">rsm</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RSM</td>
@@ -2601,6 +3713,14 @@
 		    <td style="color: var(--text-muted);">Approximate reciprocal sqrt (1/sqrt(x)) of four 32-bit floats.</td>
 		</tr>
 		
+        <tr onclick="window.location='rsqrtss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">rsqrtss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RSQRTSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Computes approximate reciprocal sqrt (1/sqrt(x)) of low float.</td>
+		</tr>
+		
         <tr onclick="window.location='rstorssp/';" style="cursor: pointer;" data-extension="CET-SS">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">rstorssp</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">RSTORSSP m64</td>
@@ -2615,6 +3735,14 @@
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Loads SF, ZF, AF, PF, and CF from AH.</td>
+		</tr>
+		
+        <tr onclick="window.location='sal/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">sal</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SAL r/m, imm8</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Shifts bits left (Alias for SHL).</td>
 		</tr>
 		
         <tr onclick="window.location='sar/';" style="cursor: pointer;" data-extension="Base">
@@ -2657,6 +3785,30 @@
 		    <td style="color: var(--text-muted);">Compares AL/AX/EAX with memory at [EDI].</td>
 		</tr>
 		
+        <tr onclick="window.location='scasd/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">scasd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SCASD</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Compares EAX with memory at [EDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='scasq/';" style="cursor: pointer;" data-extension="Base (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">scasq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SCASQ</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Compares RAX with memory at [RDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='scasw/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">scasw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SCASW</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Compares AX with memory at [EDI].</td>
+		</tr>
+		
         <tr onclick="window.location='senduipi/';" style="cursor: pointer;" data-extension="UINTR">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">senduipi</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SENDUIPI r64</td>
@@ -2679,6 +3831,38 @@
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Sets byte to 1 if condition met, else 0 (e.g., SETE, SETZ).</td>
+		</tr>
+		
+        <tr onclick="window.location='setno/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">setno</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETNO r/m8</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Sets byte to 1 if OF=0.</td>
+		</tr>
+		
+        <tr onclick="window.location='setnz/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">setnz</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETNZ r/m8</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Sets byte to 1 if ZF=0.</td>
+		</tr>
+		
+        <tr onclick="window.location='seto/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">seto</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETO r/m8</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Sets byte to 1 if OF=1.</td>
+		</tr>
+		
+        <tr onclick="window.location='setz/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">setz</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SETZ r/m8</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Sets byte to 1 if ZF=1.</td>
 		</tr>
 		
         <tr onclick="window.location='sfence/';" style="cursor: pointer;" data-extension="SSE">
@@ -2857,6 +4041,22 @@
 		    <td style="color: var(--text-muted);">Computes square root of four 32-bit floats.</td>
 		</tr>
 		
+        <tr onclick="window.location='sqrtsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">sqrtsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQRTSD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Computes square root of the low double.</td>
+		</tr>
+		
+        <tr onclick="window.location='sqrtss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">sqrtss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SQRTSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Computes square root of the low float.</td>
+		</tr>
+		
         <tr onclick="window.location='stac/';" style="cursor: pointer;" data-extension="SMAP">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">stac</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STAC</td>
@@ -2881,6 +4081,14 @@
 		    <td style="color: var(--text-muted);">Sets DF to 1 (String operations decrement).</td>
 		</tr>
 		
+        <tr onclick="window.location='stgi/';" style="cursor: pointer;" data-extension="SVM">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">stgi</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STGI</td>
+
+		    <td><span class="badge">SVM</span></td>
+		    <td style="color: var(--text-muted);">Enables global interrupts (AMD SVM).</td>
+		</tr>
+		
         <tr onclick="window.location='sti/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">sti</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STI</td>
@@ -2903,6 +4111,30 @@
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Stores AL/AX/EAX to memory at [EDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='stosd/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">stosd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STOSD</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Stores EAX to memory at [EDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='stosq/';" style="cursor: pointer;" data-extension="Base (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">stosq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STOSQ</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Stores RAX to memory at [RDI].</td>
+		</tr>
+		
+        <tr onclick="window.location='stosw/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">stosw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">STOSW</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Stores AX to memory at [EDI].</td>
 		</tr>
 		
         <tr onclick="window.location='str/';" style="cursor: pointer;" data-extension="System">
@@ -2953,12 +4185,36 @@
 		    <td style="color: var(--text-muted);">Subtracts four 32-bit floats.</td>
 		</tr>
 		
+        <tr onclick="window.location='subsd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">subsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBSD xmm1, xmm2/m64</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Subtracts the low double-precision floating-point value.</td>
+		</tr>
+		
+        <tr onclick="window.location='subss/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">subss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SUBSS xmm1, xmm2/m32</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Subtracts the low single-precision floating-point value.</td>
+		</tr>
+		
         <tr onclick="window.location='swapgs/';" style="cursor: pointer;" data-extension="Base (64-bit System)">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">swapgs</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SWAPGS</td>
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Swaps user/kernel GS base address (System).</td>
+		</tr>
+		
+        <tr onclick="window.location='syscall/';" style="cursor: pointer;" data-extension="System (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">syscall</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SYSCALL</td>
+
+		    <td><span class="badge">System</span></td>
+		    <td style="color: var(--text-muted);">Fast call to privilege level 0 system procedures.</td>
 		</tr>
 		
         <tr onclick="window.location='sysenter/';" style="cursor: pointer;" data-extension="System">
@@ -2975,6 +4231,14 @@
 
 		    <td><span class="badge">System</span></td>
 		    <td style="color: var(--text-muted);">Fast return to level 3 user code.</td>
+		</tr>
+		
+        <tr onclick="window.location='sysret/';" style="cursor: pointer;" data-extension="System (64-bit)">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">sysret</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">SYSRET</td>
+
+		    <td><span class="badge">System</span></td>
+		    <td style="color: var(--text-muted);">Fast return to privilege level 3 user code.</td>
 		</tr>
 		
         <tr onclick="window.location='tdpbf16ps/';" style="cursor: pointer;" data-extension="AMX-BF16">
@@ -3081,6 +4345,14 @@
 		    <td style="color: var(--text-muted);">Compares low float and sets EFLAGS.</td>
 		</tr>
 		
+        <tr onclick="window.location='ud0/';" style="cursor: pointer;" data-extension="Base">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">ud0</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UD0</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Generates invalid opcode exception.</td>
+		</tr>
+		
         <tr onclick="window.location='ud2/';" style="cursor: pointer;" data-extension="Base">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">ud2</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UD2</td>
@@ -3113,6 +4385,38 @@
 		    <td style="color: var(--text-muted);">Waits for store to monitored address (Low power state).</td>
 		</tr>
 		
+        <tr onclick="window.location='unpckhpd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">unpckhpd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKHPD xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Interleaves high doubles from two sources.</td>
+		</tr>
+		
+        <tr onclick="window.location='unpckhps/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">unpckhps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKHPS xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Interleaves high floats from two sources.</td>
+		</tr>
+		
+        <tr onclick="window.location='unpcklpd/';" style="cursor: pointer;" data-extension="SSE2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">unpcklpd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKLPD xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE2</span></td>
+		    <td style="color: var(--text-muted);">Interleaves low doubles from two sources.</td>
+		</tr>
+		
+        <tr onclick="window.location='unpcklps/';" style="cursor: pointer;" data-extension="SSE">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">unpcklps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">UNPCKLPS xmm1, xmm2/m128</td>
+
+		    <td><span class="badge">SSE</span></td>
+		    <td style="color: var(--text-muted);">Interleaves low floats from two sources.</td>
+		</tr>
+		
         <tr onclick="window.location='vaddph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vaddph</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VADDPH zmm1 {k1}, zmm2, zmm3/m512</td>
@@ -3127,6 +4431,22 @@
 
 		    <td><span class="badge">VEX</span></td>
 		    <td style="color: var(--text-muted);">Adds packed floats (256-bit YMM support).</td>
+		</tr>
+		
+        <tr onclick="window.location='vaddsh/';" style="cursor: pointer;" data-extension="AVX512-FP16">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vaddsh</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VADDSH xmm1 {k1}, xmm2, xmm3/m16</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Adds low FP16 value.</td>
+		</tr>
+		
+        <tr onclick="window.location='vaddss/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vaddss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VADDSS xmm1 {k1}, xmm2, xmm3/m32</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Adds scalar single precision (EVEX encoded with masking).</td>
 		</tr>
 		
         <tr onclick="window.location='vaesdec/';" style="cursor: pointer;" data-extension="AVX512-VAES">
@@ -3151,6 +4471,38 @@
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Extracts 512-bits from two concatenated ZMMs shifted by count.</td>
+		</tr>
+		
+        <tr onclick="window.location='valignq/';" style="cursor: pointer;" data-extension="AVX512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">valignq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VALIGNQ zmm1 {k1}, zmm2, zmm3/m512, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Extracts 512-bits from two concatenated ZMMs shifted by count.</td>
+		</tr>
+		
+        <tr onclick="window.location='vbroadcastf128/';" style="cursor: pointer;" data-extension="AVX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vbroadcastf128</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VBROADCASTF128 ymm1, m128</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Broadcasts 128-bit FP block to YMM.</td>
+		</tr>
+		
+        <tr onclick="window.location='vbroadcasti128/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vbroadcasti128</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VBROADCASTI128 ymm1, m128</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Broadcasts 128-bit integer block to YMM.</td>
+		</tr>
+		
+        <tr onclick="window.location='vbroadcastsd/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vbroadcastsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VBROADCASTSD ymm1, m64</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Broadcasts a double to all elements of YMM.</td>
 		</tr>
 		
         <tr onclick="window.location='vbroadcastss/';" style="cursor: pointer;" data-extension="AVX">
@@ -3193,12 +4545,28 @@
 		    <td style="color: var(--text-muted);">Converts unsigned int32 to float.</td>
 		</tr>
 		
+        <tr onclick="window.location='vdbpsadbw/';" style="cursor: pointer;" data-extension="AVX512BW">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vdbpsadbw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VDBPSADBW zmm1 {k1}, zmm2, zmm3/m512, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Computes SAD on 16-bit blocks.</td>
+		</tr>
+		
         <tr onclick="window.location='vdivph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vdivph</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VDIVPH zmm1 {k1}, zmm2, zmm3/m512</td>
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Divides half-precision floating-point values.</td>
+		</tr>
+		
+        <tr onclick="window.location='vdivsh/';" style="cursor: pointer;" data-extension="AVX512-FP16">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vdivsh</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VDIVSH xmm1 {k1}, xmm2, xmm3/m16</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Divides low FP16 value.</td>
 		</tr>
 		
         <tr onclick="window.location='vdpbf16ps/';" style="cursor: pointer;" data-extension="AVX512-BF16">
@@ -3273,6 +4641,14 @@
 		    <td style="color: var(--text-muted);">Fixes special cases (NaN, Inf) using a table (Float32).</td>
 		</tr>
 		
+        <tr onclick="window.location='vfixupimmss/';" style="cursor: pointer;" data-extension="AVX512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vfixupimmss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFIXUPIMMSS xmm1 {k1}, xmm2, xmm3/m32, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Fixes special cases (NaN, Inf) in low float using table.</td>
+		</tr>
+		
         <tr onclick="window.location='vfmadd132ph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vfmadd132ph</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFMADD132PH zmm1 {k1}, zmm2, zmm3/m512</td>
@@ -3287,6 +4663,14 @@
 
 		    <td><span class="badge">VEX</span></td>
 		    <td style="color: var(--text-muted);">Computes (Dest * Src2) + Src1.</td>
+		</tr>
+		
+        <tr onclick="window.location='vfmadd132sh/';" style="cursor: pointer;" data-extension="AVX512-FP16">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vfmadd132sh</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VFMADD132SH xmm1 {k1}, xmm2, xmm3/m16</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Scalar FMA (Dest * Src2 + Src1) for FP16.</td>
 		</tr>
 		
         <tr onclick="window.location='vfmadd213ph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
@@ -3401,6 +4785,22 @@
 		    <td style="color: var(--text-muted);">Inserts 128-bits of integer data into a YMM register.</td>
 		</tr>
 		
+        <tr onclick="window.location='vmaskmovpd/';" style="cursor: pointer;" data-extension="AVX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmaskmovpd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMASKMOVPD ymm1, ymm2, m256</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Conditionally loads/stores doubles based on mask.</td>
+		</tr>
+		
+        <tr onclick="window.location='vmaskmovps/';" style="cursor: pointer;" data-extension="AVX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmaskmovps</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMASKMOVPS ymm1, ymm2, m256</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Conditionally loads/stores floats based on mask.</td>
+		</tr>
+		
         <tr onclick="window.location='vmaxph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmaxph</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMAXPH zmm1 {k1}, zmm2, zmm3/m512</td>
@@ -3425,6 +4825,14 @@
 		    <td style="color: var(--text-muted);">Initializes a VMCS region in memory.</td>
 		</tr>
 		
+        <tr onclick="window.location='vmfunc/';" style="cursor: pointer;" data-extension="VMX">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmfunc</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMFUNC</td>
+
+		    <td><span class="badge">VMX</span></td>
+		    <td style="color: var(--text-muted);">Invoke VM function specified in EAX.</td>
+		</tr>
+		
         <tr onclick="window.location='vminph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vminph</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMINPH zmm1 {k1}, zmm2, zmm3/m512</td>
@@ -3439,6 +4847,14 @@
 
 		    <td><span class="badge">VMX</span></td>
 		    <td style="color: var(--text-muted);">Launches a VM managed by the current VMCS.</td>
+		</tr>
+		
+        <tr onclick="window.location='vmload/';" style="cursor: pointer;" data-extension="SVM">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmload</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMLOAD</td>
+
+		    <td><span class="badge">SVM</span></td>
+		    <td style="color: var(--text-muted);">Loads processor state from VMCB (AMD SVM).</td>
 		</tr>
 		
         <tr onclick="window.location='vmoff/';" style="cursor: pointer;" data-extension="VMX">
@@ -3481,6 +4897,22 @@
 		    <td style="color: var(--text-muted);">Resumes a VM from the current VMCS.</td>
 		</tr>
 		
+        <tr onclick="window.location='vmrun/';" style="cursor: pointer;" data-extension="SVM">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmrun</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMRUN</td>
+
+		    <td><span class="badge">SVM</span></td>
+		    <td style="color: var(--text-muted);">Switch to guest VM (AMD SVM).</td>
+		</tr>
+		
+        <tr onclick="window.location='vmsave/';" style="cursor: pointer;" data-extension="SVM">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmsave</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMSAVE</td>
+
+		    <td><span class="badge">SVM</span></td>
+		    <td style="color: var(--text-muted);">Saves processor state to VMCB (AMD SVM).</td>
+		</tr>
+		
         <tr onclick="window.location='vmulph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmulph</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMULPH zmm1 {k1}, zmm2, zmm3/m512</td>
@@ -3495,6 +4927,22 @@
 
 		    <td><span class="badge">VEX</span></td>
 		    <td style="color: var(--text-muted);">Multiplies packed floats (256-bit).</td>
+		</tr>
+		
+        <tr onclick="window.location='vmulsh/';" style="cursor: pointer;" data-extension="AVX512-FP16">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmulsh</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMULSH xmm1 {k1}, xmm2, xmm3/m16</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Multiplies low FP16 value.</td>
+		</tr>
+		
+        <tr onclick="window.location='vmulss/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vmulss</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VMULSS xmm1 {k1}, xmm2, xmm3/m32</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Multiplies scalar single precision (EVEX encoded with masking).</td>
 		</tr>
 		
         <tr onclick="window.location='vmwrite/';" style="cursor: pointer;" data-extension="VMX">
@@ -3519,6 +4967,22 @@
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Computes intersection of two ZMM registers into mask pair.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpabsd/';" style="cursor: pointer;" data-extension="AVX512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpabsd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPABSD zmm1 {k1}, zmm2/m512</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Computes absolute value of 32-bit integers.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpabsq/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpabsq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPABSQ zmm1 {k1}, zmm2/m512</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Computes absolute value of 64-bit integers.</td>
 		</tr>
 		
         <tr onclick="window.location='vpaddb/';" style="cursor: pointer;" data-extension="AVX2">
@@ -3551,6 +5015,22 @@
 
 		    <td><span class="badge">VEX</span></td>
 		    <td style="color: var(--text-muted);">Broadcasts an integer to all elements of YMM.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpbroadcastq/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpbroadcastq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPBROADCASTQ ymm1, xmm2/m64</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Broadcasts a quadword to all elements of YMM.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpbroadcastw/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpbroadcastw</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPBROADCASTW ymm1, xmm2/m16</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Broadcasts a word to all elements of YMM.</td>
 		</tr>
 		
         <tr onclick="window.location='vpclmulqdq/';" style="cursor: pointer;" data-extension="AVX512-VPCLMULQDQ">
@@ -3681,6 +5161,38 @@
 		    <td style="color: var(--text-muted);">Expands bytes from memory into sparse locations in ZMM.</td>
 		</tr>
 		
+        <tr onclick="window.location='vpgatherdd/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpgatherdd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERDD ymm1, [base+ymm_idx*scale], ymm_mask</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Gathers 32-bit integers using 32-bit indices.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpgatherdq/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpgatherdq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERDQ ymm1, [base+xmm_idx*scale], ymm_mask</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Gathers 64-bit integers using 32-bit indices.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpgatherqd/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpgatherqd</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERQD xmm1, [base+ymm_idx*scale], xmm_mask</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Gathers 32-bit integers using 64-bit indices.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpgatherqq/';" style="cursor: pointer;" data-extension="AVX2">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpgatherqq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPGATHERQQ ymm1, [base+ymm_idx*scale], ymm_mask</td>
+
+		    <td><span class="badge">VEX</span></td>
+		    <td style="color: var(--text-muted);">Gathers 64-bit integers using 64-bit indices.</td>
+		</tr>
+		
         <tr onclick="window.location='vplzcntd/';" style="cursor: pointer;" data-extension="AVX-512CD">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vplzcntd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPLZCNTD zmm1 {k1}, zmm2/m512</td>
@@ -3705,12 +5217,60 @@
 		    <td style="color: var(--text-muted);">Fused multiply-add for 52-bit integers (Low 52 bits).</td>
 		</tr>
 		
+        <tr onclick="window.location='vpmaxsq/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmaxsq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMAXSQ zmm1 {k1}, zmm2, zmm3/m512</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Returns maximum of signed 64-bit integers.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpmaxuq/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmaxuq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMAXUQ zmm1 {k1}, zmm2, zmm3/m512</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Returns maximum of unsigned 64-bit integers.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpminsq/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpminsq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMINSQ zmm1 {k1}, zmm2, zmm3/m512</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Returns minimum of signed 64-bit integers.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpminuq/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpminuq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMINUQ zmm1 {k1}, zmm2, zmm3/m512</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Returns minimum of unsigned 64-bit integers.</td>
+		</tr>
+		
         <tr onclick="window.location='vpmovdb/';" style="cursor: pointer;" data-extension="AVX-512F">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmovdb</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVDB xmm1/m128 {k1}, zmm2</td>
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Down-converts 32-bit integers to 8-bit.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpmovsqb/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmovsqb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVSQB xmm1/m128 {k1}, zmm2</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Down-converts 64-bit integers to 8-bit signed saturate.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpmovswb/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmovswb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVSWB xmm1/m128 {k1}, zmm2</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Down-converts 16-bit integers to 8-bit signed saturate.</td>
 		</tr>
 		
         <tr onclick="window.location='vpmovusdb/';" style="cursor: pointer;" data-extension="AVX-512F">
@@ -3721,12 +5281,36 @@
 		    <td style="color: var(--text-muted);">Down-converts 32-bit to 8-bit with unsigned saturation.</td>
 		</tr>
 		
+        <tr onclick="window.location='vpmovusqb/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmovusqb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVUSQB xmm1/m128 {k1}, zmm2</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Down-converts 64-bit integers to 8-bit unsigned saturate.</td>
+		</tr>
+		
+        <tr onclick="window.location='vpmovuswb/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmovuswb</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMOVUSWB xmm1/m128 {k1}, zmm2</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Down-converts 16-bit integers to 8-bit unsigned saturate.</td>
+		</tr>
+		
         <tr onclick="window.location='vpmulld/';" style="cursor: pointer;" data-extension="AVX2">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmulld</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMULLD ymm1, ymm2, ymm3/m256</td>
 
 		    <td><span class="badge">VEX</span></td>
 		    <td style="color: var(--text-muted);">Multiplies 8 integers (256-bit).</td>
+		</tr>
+		
+        <tr onclick="window.location='vpmullq/';" style="cursor: pointer;" data-extension="AVX512DQ">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vpmullq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPMULLQ zmm1 {k1}, zmm2, zmm3/m512</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Multiplies 64-bit integers and keeps low 64-bit result.</td>
 		</tr>
 		
         <tr onclick="window.location='vpmultishiftqb/';" style="cursor: pointer;" data-extension="AVX-512_VBMI">
@@ -3753,12 +5337,28 @@
 		    <td style="color: var(--text-muted);">Counts set bits in each doubleword element.</td>
 		</tr>
 		
+        <tr onclick="window.location='vprolq/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vprolq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPROLQ zmm1 {k1}, zmm2, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Rotates 64-bit integers left.</td>
+		</tr>
+		
         <tr onclick="window.location='vprolvd/';" style="cursor: pointer;" data-extension="AVX-512F">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vprolvd</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPROLVD zmm1 {k1}, zmm2, zmm3/m512</td>
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Rotates doublewords left by amounts in second vector.</td>
+		</tr>
+		
+        <tr onclick="window.location='vprorq/';" style="cursor: pointer;" data-extension="AVX-512F">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vprorq</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VPRORQ zmm1 {k1}, zmm2, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Rotates 64-bit integers right.</td>
 		</tr>
 		
         <tr onclick="window.location='vpshldd/';" style="cursor: pointer;" data-extension="AVX-512_VBMI2">
@@ -3825,6 +5425,14 @@
 		    <td style="color: var(--text-muted);">Calculates range (min/max/abs) of float values.</td>
 		</tr>
 		
+        <tr onclick="window.location='vrangess/';" style="cursor: pointer;" data-extension="AVX512DQ">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vrangess</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VRANGESS xmm1 {k1}, xmm2, xmm3/m32, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Calculates range (min/max/abs) of low float.</td>
+		</tr>
+		
         <tr onclick="window.location='vrcp14ps/';" style="cursor: pointer;" data-extension="AVX512F">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vrcp14ps</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VRCP14PS zmm1 {k1}, zmm2/m512</td>
@@ -3839,6 +5447,14 @@
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Performs reduction on floats (e.g. range reduction for trig).</td>
+		</tr>
+		
+        <tr onclick="window.location='vreducess/';" style="cursor: pointer;" data-extension="AVX512DQ">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vreducess</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VREDUCESS xmm1 {k1}, xmm2, xmm3/m32, imm8</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Performs reduction on low float.</td>
 		</tr>
 		
         <tr onclick="window.location='vrndscalepd/';" style="cursor: pointer;" data-extension="AVX-512F">
@@ -3969,12 +5585,28 @@
 		    <td style="color: var(--text-muted);">Square root of half-precision values.</td>
 		</tr>
 		
+        <tr onclick="window.location='vsqrtsh/';" style="cursor: pointer;" data-extension="AVX512-FP16">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vsqrtsh</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSQRTSH xmm1 {k1}, xmm2/m16</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Square root of low FP16 value.</td>
+		</tr>
+		
         <tr onclick="window.location='vsubph/';" style="cursor: pointer;" data-extension="AVX512-FP16">
 		    <td class="mono" style="font-weight: bold; color: var(--accent);">vsubph</td>
  		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSUBPH zmm1 {k1}, zmm2, zmm3/m512</td>
 
 		    <td><span class="badge">EVEX</span></td>
 		    <td style="color: var(--text-muted);">Subtracts half-precision floating-point values.</td>
+		</tr>
+		
+        <tr onclick="window.location='vsubsh/';" style="cursor: pointer;" data-extension="AVX512-FP16">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">vsubsh</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">VSUBSH xmm1 {k1}, xmm2, xmm3/m16</td>
+
+		    <td><span class="badge">EVEX</span></td>
+		    <td style="color: var(--text-muted);">Subtracts low FP16 value.</td>
 		</tr>
 		
         <tr onclick="window.location='vzeroall/';" style="cursor: pointer;" data-extension="AVX">
@@ -4143,6 +5775,22 @@
 
 		    <td><span class="badge">Legacy</span></td>
 		    <td style="color: var(--text-muted);">Saves state components (AVX/SSE) to memory.</td>
+		</tr>
+		
+        <tr onclick="window.location='xsavec/';" style="cursor: pointer;" data-extension="XSAVEC">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">xsavec</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XSAVEC m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Saves state components using compaction.</td>
+		</tr>
+		
+        <tr onclick="window.location='xsaveopt/';" style="cursor: pointer;" data-extension="XSAVEOPT">
+		    <td class="mono" style="font-weight: bold; color: var(--accent);">xsaveopt</td>
+ 		    <td class="mono" style="font-size: 0.9rem; color: var(--text-main);">XSAVEOPT m</td>
+
+		    <td><span class="badge">Legacy</span></td>
+		    <td style="color: var(--text-muted);">Saves state components (optimized for Modified state).</td>
 		</tr>
 		
         <tr onclick="window.location='xsaves/';" style="cursor: pointer;" data-extension="XSAVES">
